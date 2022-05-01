@@ -9,7 +9,7 @@ import UIKit
 
 /** The app's root controller - a `UIViewController` which simply holds a child `UIViewController`. */
 
-final class AppRootVC: UIViewController {
+final class AppRootVC: BaseVC {
 
     func set(childViewController controller: UIViewController) {
         addChild(controller)

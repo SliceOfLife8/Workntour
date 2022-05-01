@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B471308281ECF13002E3303 /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B4712CA281ECBA3002E3303 /* Networking.framework */; };
+		1B471309281ECF13002E3303 /* Networking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1B4712CA281ECBA3002E3303 /* Networking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1B471310281ECFA6002E3303 /* AuthorizationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B47130F281ECFA6002E3303 /* AuthorizationRouter.swift */; };
 		1B7315F1281E7DD0001F2E6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7315F0281E7DD0001F2E6A /* AppDelegate.swift */; };
 		1B7315F3281E7DD0001F2E6A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7315F2281E7DD0001F2E6A /* SceneDelegate.swift */; };
 		1B7315F5281E7DD0001F2E6A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7315F4281E7DD0001F2E6A /* ViewController.swift */; };
@@ -23,34 +26,49 @@
 		1BA2DF04281E8CD900DB128D /* LocalStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA2DF03281E8CD900DB128D /* LocalStorageManager.swift */; };
 		1BA2DF08281E8D7700DB128D /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA2DF07281E8D7700DB128D /* OnboardingCoordinator.swift */; };
 		1BA2DF0A281E8E0C00DB128D /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA2DF09281E8E0C00DB128D /* Date+Extensions.swift */; };
-		1BA2DF6B281E986000DB128D /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BA2DF68281E980900DB128D /* Networking.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		1BA2DF67281E980900DB128D /* PBXContainerItemProxy */ = {
+		1B4712C9281ECBA3002E3303 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 1BA2DF62281E980800DB128D /* Networking.xcodeproj */;
+			containerPortal = 1B4712C4281ECBA3002E3303 /* Networking.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 1BA2DF48281E980800DB128D;
+			remoteGlobalIDString = 1B4712AA281ECBA3002E3303;
 			remoteInfo = Networking;
 		};
-		1BA2DF69281E980900DB128D /* PBXContainerItemProxy */ = {
+		1B4712CB281ECBA3002E3303 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 1BA2DF62281E980800DB128D /* Networking.xcodeproj */;
+			containerPortal = 1B4712C4281ECBA3002E3303 /* Networking.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 1BA2DF52281E980800DB128D;
+			remoteGlobalIDString = 1B4712B4281ECBA3002E3303;
 			remoteInfo = NetworkingTests;
 		};
-		1BA2DF6D281E99A900DB128D /* PBXContainerItemProxy */ = {
+		1B47130B281ECF27002E3303 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 1BA2DF62281E980800DB128D /* Networking.xcodeproj */;
+			containerPortal = 1B4712C4281ECBA3002E3303 /* Networking.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 1BA2DF47281E980800DB128D;
+			remoteGlobalIDString = 1B4712A9281ECBA3002E3303;
 			remoteInfo = Networking;
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		1B47130A281ECF13002E3303 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1B471309281ECF13002E3303 /* Networking.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		1B4712C4281ECBA3002E3303 /* Networking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Networking.xcodeproj; path = ../Networking/Networking.xcodeproj; sourceTree = "<group>"; };
+		1B47130F281ECFA6002E3303 /* AuthorizationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationRouter.swift; sourceTree = "<group>"; };
 		1B7315ED281E7DCF001F2E6A /* workntour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = workntour.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B7315F0281E7DD0001F2E6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1B7315F2281E7DD0001F2E6A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -69,7 +87,6 @@
 		1BA2DF03281E8CD900DB128D /* LocalStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageManager.swift; sourceTree = "<group>"; };
 		1BA2DF07281E8D7700DB128D /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
 		1BA2DF09281E8E0C00DB128D /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
-		1BA2DF62281E980800DB128D /* Networking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Networking.xcodeproj; path = ../Networking/Networking.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,18 +94,35 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1BA2DF6B281E986000DB128D /* Networking.framework in Frameworks */,
+				1B471308281ECF13002E3303 /* Networking.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B4712C5281ECBA3002E3303 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1B4712CA281ECBA3002E3303 /* Networking.framework */,
+				1B4712CC281ECBA3002E3303 /* NetworkingTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1B47130E281ECF8F002E3303 /* NetworkLayer */ = {
+			isa = PBXGroup;
+			children = (
+				1B47130F281ECFA6002E3303 /* AuthorizationRouter.swift */,
+			);
+			path = NetworkLayer;
+			sourceTree = "<group>";
+		};
 		1B7315E4281E7DCF001F2E6A = {
 			isa = PBXGroup;
 			children = (
 				1B7315EF281E7DD0001F2E6A /* workntour */,
-				1BA2DF62281E980800DB128D /* Networking.xcodeproj */,
+				1B4712C4281ECBA3002E3303 /* Networking.xcodeproj */,
 				1B7315EE281E7DCF001F2E6A /* Products */,
 				1BA2DF3A281E971100DB128D /* Frameworks */,
 			);
@@ -105,6 +139,7 @@
 		1B7315EF281E7DD0001F2E6A /* workntour */ = {
 			isa = PBXGroup;
 			children = (
+				1B47130E281ECF8F002E3303 /* NetworkLayer */,
 				1BA2DEEC281E832200DB128D /* Core */,
 				1BA2DF05281E8D3F00DB128D /* MainApp */,
 				1BA2DEFA281E8BA900DB128D /* Extensions */,
@@ -189,15 +224,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		1BA2DF63281E980800DB128D /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				1BA2DF68281E980900DB128D /* Networking.framework */,
-				1BA2DF6A281E980900DB128D /* NetworkingTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -208,11 +234,12 @@
 				1B7315E9281E7DCF001F2E6A /* Sources */,
 				1B7315EA281E7DCF001F2E6A /* Frameworks */,
 				1B7315EB281E7DCF001F2E6A /* Resources */,
+				1B47130A281ECF13002E3303 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				1BA2DF6E281E99A900DB128D /* PBXTargetDependency */,
+				1B47130C281ECF27002E3303 /* PBXTargetDependency */,
 			);
 			name = workntour;
 			productName = workntour;
@@ -247,8 +274,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 1BA2DF63281E980800DB128D /* Products */;
-					ProjectRef = 1BA2DF62281E980800DB128D /* Networking.xcodeproj */;
+					ProductGroup = 1B4712C5281ECBA3002E3303 /* Products */;
+					ProjectRef = 1B4712C4281ECBA3002E3303 /* Networking.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -259,18 +286,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		1BA2DF68281E980900DB128D /* Networking.framework */ = {
+		1B4712CA281ECBA3002E3303 /* Networking.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = Networking.framework;
-			remoteRef = 1BA2DF67281E980900DB128D /* PBXContainerItemProxy */;
+			remoteRef = 1B4712C9281ECBA3002E3303 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		1BA2DF6A281E980900DB128D /* NetworkingTests.xctest */ = {
+		1B4712CC281ECBA3002E3303 /* NetworkingTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = NetworkingTests.xctest;
-			remoteRef = 1BA2DF69281E980900DB128D /* PBXContainerItemProxy */;
+			remoteRef = 1B4712CB281ECBA3002E3303 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -306,16 +333,17 @@
 				1BA2DEEF281E840900DB128D /* DeepLinkManager.swift in Sources */,
 				1BA2DEF5281E8AAB00DB128D /* Navigator.swift in Sources */,
 				1BA2DEF7281E8AB600DB128D /* AppCoordinator.swift in Sources */,
+				1B471310281ECFA6002E3303 /* AuthorizationRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		1BA2DF6E281E99A900DB128D /* PBXTargetDependency */ = {
+		1B47130C281ECF27002E3303 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Networking;
-			targetProxy = 1BA2DF6D281E99A900DB128D /* PBXContainerItemProxy */;
+			targetProxy = 1B47130B281ECF27002E3303 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

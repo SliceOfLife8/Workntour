@@ -6,12 +6,27 @@
 //
 
 import UIKit
+import Combine
+import Networking
 
 class BaseVC: UIViewController {
+
+    var storage: Set<AnyCancellable> = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        print("something else !")
+        let networking = Networking()
+        // networking.preference.isDebuggingEnabled = true
+        let publisher = networking.request(
+            with: MockTarget.test,
+            scheduler: DispatchQueue.main,
+            class: Welcome.self)
+
+        publisher.sink(receiveCompletion: { print ("completion: \($0)") },
+                        receiveValue: { print ("value: \($0)") })
+            .store(in: &self.storage)
     }
 
     deinit {
