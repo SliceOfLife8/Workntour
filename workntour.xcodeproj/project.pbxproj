@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1B471308281ECF13002E3303 /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B4712CA281ECBA3002E3303 /* Networking.framework */; };
-		1B471309281ECF13002E3303 /* Networking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1B4712CA281ECBA3002E3303 /* Networking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1B0EC5EB281EE6C6007FF79F /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B0EC5AD281EE542007FF79F /* Networking.framework */; };
 		1B471310281ECFA6002E3303 /* AuthorizationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B47130F281ECFA6002E3303 /* AuthorizationRouter.swift */; };
 		1B7315F1281E7DD0001F2E6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7315F0281E7DD0001F2E6A /* AppDelegate.swift */; };
 		1B7315F3281E7DD0001F2E6A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7315F2281E7DD0001F2E6A /* SceneDelegate.swift */; };
@@ -29,25 +28,25 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		1B4712C9281ECBA3002E3303 /* PBXContainerItemProxy */ = {
+		1B0EC5AC281EE542007FF79F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 1B4712C4281ECBA3002E3303 /* Networking.xcodeproj */;
+			containerPortal = 1B0EC5A7281EE541007FF79F /* Networking.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 1B4712AA281ECBA3002E3303;
+			remoteGlobalIDString = 1B0EC58D281EE541007FF79F;
 			remoteInfo = Networking;
 		};
-		1B4712CB281ECBA3002E3303 /* PBXContainerItemProxy */ = {
+		1B0EC5AE281EE542007FF79F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 1B4712C4281ECBA3002E3303 /* Networking.xcodeproj */;
+			containerPortal = 1B0EC5A7281EE541007FF79F /* Networking.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 1B4712B4281ECBA3002E3303;
+			remoteGlobalIDString = 1B0EC597281EE541007FF79F;
 			remoteInfo = NetworkingTests;
 		};
-		1B47130B281ECF27002E3303 /* PBXContainerItemProxy */ = {
+		1B0EC5EC281EE6D1007FF79F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 1B4712C4281ECBA3002E3303 /* Networking.xcodeproj */;
+			containerPortal = 1B0EC5A7281EE541007FF79F /* Networking.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 1B4712A9281ECBA3002E3303;
+			remoteGlobalIDString = 1B0EC58C281EE541007FF79F;
 			remoteInfo = Networking;
 		};
 /* End PBXContainerItemProxy section */
@@ -59,7 +58,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				1B471309281ECF13002E3303 /* Networking.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -67,7 +65,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1B4712C4281ECBA3002E3303 /* Networking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Networking.xcodeproj; path = ../Networking/Networking.xcodeproj; sourceTree = "<group>"; };
+		1B0EC5A7281EE541007FF79F /* Networking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Networking.xcodeproj; path = Networking/Networking.xcodeproj; sourceTree = SOURCE_ROOT; };
 		1B47130F281ECFA6002E3303 /* AuthorizationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationRouter.swift; sourceTree = "<group>"; };
 		1B7315ED281E7DCF001F2E6A /* workntour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = workntour.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B7315F0281E7DD0001F2E6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -94,18 +92,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B471308281ECF13002E3303 /* Networking.framework in Frameworks */,
+				1B0EC5EB281EE6C6007FF79F /* Networking.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1B4712C5281ECBA3002E3303 /* Products */ = {
+		1B0EC5A8281EE541007FF79F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1B4712CA281ECBA3002E3303 /* Networking.framework */,
-				1B4712CC281ECBA3002E3303 /* NetworkingTests.xctest */,
+				1B0EC5AD281EE542007FF79F /* Networking.framework */,
+				1B0EC5AF281EE542007FF79F /* NetworkingTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -113,6 +111,7 @@
 		1B47130E281ECF8F002E3303 /* NetworkLayer */ = {
 			isa = PBXGroup;
 			children = (
+				1B0EC5A7281EE541007FF79F /* Networking.xcodeproj */,
 				1B47130F281ECFA6002E3303 /* AuthorizationRouter.swift */,
 			);
 			path = NetworkLayer;
@@ -122,7 +121,6 @@
 			isa = PBXGroup;
 			children = (
 				1B7315EF281E7DD0001F2E6A /* workntour */,
-				1B4712C4281ECBA3002E3303 /* Networking.xcodeproj */,
 				1B7315EE281E7DCF001F2E6A /* Products */,
 				1BA2DF3A281E971100DB128D /* Frameworks */,
 			);
@@ -239,7 +237,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				1B47130C281ECF27002E3303 /* PBXTargetDependency */,
+				1B0EC5ED281EE6D1007FF79F /* PBXTargetDependency */,
 			);
 			name = workntour;
 			productName = workntour;
@@ -274,8 +272,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 1B4712C5281ECBA3002E3303 /* Products */;
-					ProjectRef = 1B4712C4281ECBA3002E3303 /* Networking.xcodeproj */;
+					ProductGroup = 1B0EC5A8281EE541007FF79F /* Products */;
+					ProjectRef = 1B0EC5A7281EE541007FF79F /* Networking.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -286,18 +284,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		1B4712CA281ECBA3002E3303 /* Networking.framework */ = {
+		1B0EC5AD281EE542007FF79F /* Networking.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = Networking.framework;
-			remoteRef = 1B4712C9281ECBA3002E3303 /* PBXContainerItemProxy */;
+			remoteRef = 1B0EC5AC281EE542007FF79F /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		1B4712CC281ECBA3002E3303 /* NetworkingTests.xctest */ = {
+		1B0EC5AF281EE542007FF79F /* NetworkingTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = NetworkingTests.xctest;
-			remoteRef = 1B4712CB281ECBA3002E3303 /* PBXContainerItemProxy */;
+			remoteRef = 1B0EC5AE281EE542007FF79F /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -340,10 +338,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		1B47130C281ECF27002E3303 /* PBXTargetDependency */ = {
+		1B0EC5ED281EE6D1007FF79F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Networking;
-			targetProxy = 1B47130B281ECF27002E3303 /* PBXContainerItemProxy */;
+			targetProxy = 1B0EC5EC281EE6D1007FF79F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
