@@ -2,7 +2,7 @@
 //  AuthorizationRouter.swift
 //  workntour
 //
-//  Created by Petimezas, Chris, Vodafone on 1/5/22.
+//  Created by Petimezas, Chris, Vodafone on 2/5/22.
 //
 
 import Foundation
@@ -18,31 +18,31 @@ enum MockTarget {
 }
 
 extension MockTarget: NetworkTarget {
-    var baseURL: URL {
+    public var baseURL: URL {
         URL(string: "https://api.publicapis.org")!
     }
 
-    var path: String {
+    public var path: String {
         "/entries"
     }
 
-    var methodType: MethodType {
+    public var methodType: MethodType {
         .get
     }
 
-    var workType: WorkType {
+    public var workType: WorkType {
         .requestPlain
     }
 
-    var providerType: AuthProviderType {
-        .none
-    }
-    
-    var contentType: ContentType? {
+    public var providerType: AuthProviderType {
         .none
     }
 
-    var headers: [String : String]? {
+    public var contentType: ContentType? {
+        .none
+    }
+
+    public var headers: [String : String]? {
         nil
     }
 }

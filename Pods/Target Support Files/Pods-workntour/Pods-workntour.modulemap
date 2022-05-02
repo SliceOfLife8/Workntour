@@ -1,0 +1,6 @@
+framework module Pods_workntour {
+  umbrella header "Pods-workntour-umbrella.h"
+
+  export *
+  module * { export * }
+}
