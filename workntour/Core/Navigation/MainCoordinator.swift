@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SharedKit
 
 // MARK: - MainCoordinator
 final class MainCoordinator: NavigationCoordinator {

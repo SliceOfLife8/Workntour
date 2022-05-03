@@ -1,4 +1,4 @@
-# ``Networking``
+# ``Networking`` :rocket:
 
 Network layer which uses Apple's new framework Combine and provides async network calls with different kind of request functions.
 

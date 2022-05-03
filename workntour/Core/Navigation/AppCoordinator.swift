@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SharedKit
 
 /** The application's root `Coordinator`. */
 

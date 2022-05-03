@@ -8,6 +8,12 @@
       location = "group:Networking/Networking.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:SharedKit/SharedKit.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:CommonUI/CommonUI.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>

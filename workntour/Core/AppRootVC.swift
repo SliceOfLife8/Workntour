@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SharedKit
 
 /** The app's root controller - a `UIViewController` which simply holds a child `UIViewController`. */
 
