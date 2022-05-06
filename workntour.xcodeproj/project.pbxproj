@@ -8,9 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		1B5279E72820471100FDAF5D /* AuthorizationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5279E62820471100FDAF5D /* AuthorizationRouter.swift */; };
-		1B527A1B2820509B00FDAF5D /* SharedKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B527A1A2820509B00FDAF5D /* SharedKit.framework */; };
 		1B527A1E282051A000FDAF5D /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B5279DE281FDA6D00FDAF5D /* Networking.framework */; };
 		1B527A38282059CB00FDAF5D /* CommonUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B527A37282059CB00FDAF5D /* CommonUI.framework */; };
+		1B527A4428216B5000FDAF5D /* AuthorizationDataRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B527A4328216B5000FDAF5D /* AuthorizationDataRequests.swift */; };
+		1B527A4628218CB800FDAF5D /* SharedKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B527A4528218CB800FDAF5D /* SharedKit.framework */; };
 		1B7315F1281E7DD0001F2E6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7315F0281E7DD0001F2E6A /* AppDelegate.swift */; };
 		1B7315F3281E7DD0001F2E6A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7315F2281E7DD0001F2E6A /* SceneDelegate.swift */; };
 		1B7315F5281E7DD0001F2E6A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7315F4281E7DD0001F2E6A /* ViewController.swift */; };
@@ -30,6 +31,8 @@
 		1B5279E62820471100FDAF5D /* AuthorizationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationRouter.swift; sourceTree = "<group>"; };
 		1B527A1A2820509B00FDAF5D /* SharedKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SharedKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B527A37282059CB00FDAF5D /* CommonUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CommonUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B527A4328216B5000FDAF5D /* AuthorizationDataRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationDataRequests.swift; sourceTree = "<group>"; };
+		1B527A4528218CB800FDAF5D /* SharedKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SharedKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B7315ED281E7DCF001F2E6A /* workntour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = workntour.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B7315F0281E7DD0001F2E6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1B7315F2281E7DD0001F2E6A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +40,7 @@
 		1B7315F9281E7DD5001F2E6A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1B7315FC281E7DD5001F2E6A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1B7315FE281E7DD5001F2E6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1B8DA75D282596170032E20B /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		1BA2DEEE281E840900DB128D /* DeepLinkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkManager.swift; sourceTree = "<group>"; };
 		1BA2DEF6281E8AB600DB128D /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		1BA2DEF8281E8AE800DB128D /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
@@ -55,7 +59,7 @@
 			files = (
 				4FAAAE532C11A11EE29B52E7 /* Pods_workntour.framework in Frameworks */,
 				1B527A38282059CB00FDAF5D /* CommonUI.framework in Frameworks */,
-				1B527A1B2820509B00FDAF5D /* SharedKit.framework in Frameworks */,
+				1B527A4628218CB800FDAF5D /* SharedKit.framework in Frameworks */,
 				1B527A1E282051A000FDAF5D /* Networking.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -67,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				1B5279E62820471100FDAF5D /* AuthorizationRouter.swift */,
+				1B527A4328216B5000FDAF5D /* AuthorizationDataRequests.swift */,
 			);
 			path = NetworkLayer;
 			sourceTree = "<group>";
@@ -74,6 +79,7 @@
 		1B7315E4281E7DCF001F2E6A = {
 			isa = PBXGroup;
 			children = (
+				1B8DA75D282596170032E20B /* .swiftlint.yml */,
 				1B7315EF281E7DD0001F2E6A /* workntour */,
 				1B7315EE281E7DCF001F2E6A /* Products */,
 				1BA2DF3A281E971100DB128D /* Frameworks */,
@@ -152,6 +158,7 @@
 		1BA2DF3A281E971100DB128D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1B527A4528218CB800FDAF5D /* SharedKit.framework */,
 				1B527A37282059CB00FDAF5D /* CommonUI.framework */,
 				1B527A1A2820509B00FDAF5D /* SharedKit.framework */,
 				1B5279DE281FDA6D00FDAF5D /* Networking.framework */,
@@ -177,9 +184,11 @@
 			buildConfigurationList = 1B731601281E7DD5001F2E6A /* Build configuration list for PBXNativeTarget "workntour" */;
 			buildPhases = (
 				261D169A6CF070780178756C /* [CP] Check Pods Manifest.lock */,
+				1B8DA75B282594230032E20B /* SwiftLint */,
 				1B7315E9281E7DCF001F2E6A /* Sources */,
 				1B7315EA281E7DCF001F2E6A /* Frameworks */,
 				1B7315EB281E7DCF001F2E6A /* Resources */,
+				D4560570AC468097C44A4EBA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -236,6 +245,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1B8DA75B282594230032E20B /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\" --path \"workntour\" --config .swiftlint.yml --quiet\n";
+		};
 		261D169A6CF070780178756C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -258,6 +285,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D4560570AC468097C44A4EBA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-workntour/Pods-workntour-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-workntour/Pods-workntour-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-workntour/Pods-workntour-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -268,6 +312,7 @@
 				1B7315F5281E7DD0001F2E6A /* ViewController.swift in Sources */,
 				1BA2DF02281E8C7300DB128D /* BaseVC.swift in Sources */,
 				1BA2DEF9281E8AE800DB128D /* MainCoordinator.swift in Sources */,
+				1B527A4428216B5000FDAF5D /* AuthorizationDataRequests.swift in Sources */,
 				1BA2DF08281E8D7700DB128D /* OnboardingCoordinator.swift in Sources */,
 				1B7315F1281E7DD0001F2E6A /* AppDelegate.swift in Sources */,
 				1BA2DEFE281E8C1800DB128D /* AppRootVC.swift in Sources */,

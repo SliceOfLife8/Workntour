@@ -32,17 +32,17 @@ enum DeepLinkRoute {
 
 }
 
-class DeepLinkingUserInfo : NSObject {
-    var deepLinkUrl : URL?
-    var notificationUserInfo : [String : Any]?
+class DeepLinkingUserInfo: NSObject {
+    var deepLinkUrl: URL?
+    var notificationUserInfo: [String: Any]?
 
-    init(deepLinkUrl : URL? = nil, pushInfo : [String : Any]? = nil) {
+    init(deepLinkUrl: URL? = nil, pushInfo: [String: Any]? = nil) {
         self.notificationUserInfo = pushInfo
         self.deepLinkUrl = deepLinkUrl
     }
 }
 
-protocol DeepLinkManagerDelegate : AnyObject {
+protocol DeepLinkManagerDelegate: AnyObject {
     func redirect(to route: DeepLinkRoute)
 }
 
@@ -51,7 +51,7 @@ class DeepLinkManager {
     var operationQueue = OperationQueue()
     weak var delegate: DeepLinkManagerDelegate?
 
-    var isSuspended : Bool {
+    var isSuspended: Bool {
         get { return self.operationQueue.isSuspended }
         set {
             self.operationQueue.isSuspended = newValue
@@ -79,7 +79,7 @@ class DeepLinkManager {
     }
 
     @discardableResult
-    func registerCalledURL(url : URL) -> Bool {
+    func registerCalledURL(url: URL) -> Bool {
         return self.registerRoute(route: DeepLinkRoute(url: url))
     }
 

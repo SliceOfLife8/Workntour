@@ -17,6 +17,8 @@
 		1B527A1828204FA500FDAF5D /* XCTestCase+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B527A1628204F6000FDAF5D /* XCTestCase+Extensions.swift */; };
 		1B527A3E2820F4E400FDAF5D /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B527A3C2820F4E400FDAF5D /* Coordinator.swift */; };
 		1B527A3F2820F4E400FDAF5D /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B527A3D2820F4E400FDAF5D /* Navigator.swift */; };
+		1B8DA7582825217C0032E20B /* CombineTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8DA7572825217C0032E20B /* CombineTableViewDataSource.swift */; };
+		1B8DA75A282521C30032E20B /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8DA759282521C30032E20B /* UITableView+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +43,8 @@
 		1B527A1628204F6000FDAF5D /* XCTestCase+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Extensions.swift"; sourceTree = "<group>"; };
 		1B527A3C2820F4E400FDAF5D /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		1B527A3D2820F4E400FDAF5D /* Navigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
+		1B8DA7572825217C0032E20B /* CombineTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineTableViewDataSource.swift; sourceTree = "<group>"; };
+		1B8DA759282521C30032E20B /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +110,7 @@
 			children = (
 				1B527A0F28204E5700FDAF5D /* UIView+Extensions.swift */,
 				1B527A0E28204E5700FDAF5D /* Date+Extensions.swift */,
+				1B8DA759282521C30032E20B /* UITableView+Extensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -114,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				1B527A1228204E6800FDAF5D /* LocalStorageManager.swift */,
+				1B8DA7572825217C0032E20B /* CombineTableViewDataSource.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -247,8 +253,10 @@
 				1B527A1128204E5700FDAF5D /* UIView+Extensions.swift in Sources */,
 				1B5279F728204D6800FDAF5D /* SharedKit.docc in Sources */,
 				1B527A3E2820F4E400FDAF5D /* Coordinator.swift in Sources */,
+				1B8DA75A282521C30032E20B /* UITableView+Extensions.swift in Sources */,
 				1B527A1028204E5700FDAF5D /* Date+Extensions.swift in Sources */,
 				1B527A1328204E6800FDAF5D /* LocalStorageManager.swift in Sources */,
+				1B8DA7582825217C0032E20B /* CombineTableViewDataSource.swift in Sources */,
 				1B527A3F2820F4E400FDAF5D /* Navigator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

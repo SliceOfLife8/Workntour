@@ -1,0 +1,51 @@
+vertical_whitespace:
+  severity: error
+comma: error
+legacy_constructor: error
+empty_enum_arguments: error
+statement_position:
+  severity: error
+for_where: error
+switch_case_alignment:
+  severity: error
+multiple_closures_with_trailing_closure : error
+
+opt_in_rules:
+- unavailable_function
+- anyobject_protocol
+- explicit_init
+- discouraged_assert
+
+line_length: 220
+force_cast: warning # implicitly
+identifier_name:
+    min_length: 1
+    validates_start_with_lowercase: false
+    allowed_symbols: ["_"]
+type_name:
+    min_length: 3
+    validates_start_with_lowercase: false
+    allowed_symbols: ["_"]
+file_length:
+    warning: 400
+    error: 2000
+cyclomatic_complexity:
+    warning: 10
+    error: 40
+function_body_length:
+    warning: 60
+    error: 200
+type_body_length:
+    warning: 200
+    error: 1000
+shorthand_operator: warning
+function_parameter_count:
+    warning: 5
+    error: 20
+nesting:
+    type_level: 3
+large_tuple:
+    warning: 3
+
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+- Pods

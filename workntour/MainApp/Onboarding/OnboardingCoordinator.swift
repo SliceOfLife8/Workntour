@@ -24,11 +24,11 @@ final class OnboardingCoordinator: NavigationCoordinator {
     var navigator: NavigatorType
     var rootViewController: UINavigationController
 
-    //private let onboardingViewModel: OnboardingViewModel
+    // private let onboardingViewModel: OnboardingViewModel
 
     init() {
-        //onboardingViewModel = OnboardingViewModel()
-        //let onboardingVC = OnboardingVC(onboardingViewModel)
+        // onboardingViewModel = OnboardingViewModel()
+        // let onboardingVC = OnboardingVC(onboardingViewModel)
 
         let navigationController = UINavigationController(rootViewController: UIViewController())
         navigationController.navigationBar.isHidden = true
@@ -37,7 +37,7 @@ final class OnboardingCoordinator: NavigationCoordinator {
     }
 
     func start() {
-        //onboardingViewModel.delegate = self
+        // onboardingViewModel.delegate = self
     }
 
 }

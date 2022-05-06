@@ -7,7 +7,6 @@
 
 import UIKit
 import Combine
-import Networking
 
 class BaseVC: UIViewController {
 
@@ -17,12 +16,7 @@ class BaseVC: UIViewController {
         super.viewDidLoad()
 
         print("something else !")
-        let networking = Networking()
-        // networking.preference.isDebuggingEnabled = true
-        let publisher = networking.request(
-            with: MockTarget.test,
-            scheduler: DispatchQueue.main,
-            class: Welcome.self)
+        let publisher = AuthorizationDataRequests.shared.userRegistration()
 
         publisher.sink(receiveCompletion: { print ("completion: \($0)") },
                         receiveValue: { print ("value: \($0)") })

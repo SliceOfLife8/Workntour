@@ -8,22 +8,24 @@
 import Foundation
 import Networking
 
-/*
- Create a generic class Router to provide required properties for this type of classes.
- Only this layer should know about networking!
- */
+enum AuthorizationRouter: NetworkTarget {
+    case registration
+    case resendOtp
+    case login
 
-enum MockTarget {
-    case test
-}
-
-extension MockTarget: NetworkTarget {
     public var baseURL: URL {
         URL(string: "https://api.publicapis.org")!
     }
 
     public var path: String {
-        "/entries"
+        switch self {
+        case .registration:
+            return "/entries"
+        case .resendOtp:
+            return "/api/resendOtp"
+        case .login:
+            return "/api/login"
+        }
     }
 
     public var methodType: MethodType {
@@ -42,7 +44,7 @@ extension MockTarget: NetworkTarget {
         .none
     }
 
-    public var headers: [String : String]? {
+    public var headers: [String: String]? {
         nil
     }
 }

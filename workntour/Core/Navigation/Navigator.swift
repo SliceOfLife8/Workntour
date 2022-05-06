@@ -112,11 +112,13 @@ extension Navigator {
 extension Navigator: UINavigationControllerDelegate {
 
     // Runs completion handler when a user swipes-to-go-back or taps the back button in the navigation bar.
-    func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
+    func navigationController(_ navigationController: UINavigationController,
+                              didShow viewController: UIViewController,
+                              animated: Bool) {
         guard let poppingViewController = navigationController.transitionCoordinator?.viewController(forKey: .from),    // ensure the view controller is popping
-            !navigationController.viewControllers.contains(poppingViewController) else {
-                return
-        }
+              !navigationController.viewControllers.contains(poppingViewController) else {
+                  return
+              }
 
         runCompletion(for: poppingViewController)
     }
