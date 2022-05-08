@@ -14,35 +14,24 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1B5279F128204D6800FDAF5D"
-               BuildableName = "SharedKit.framework"
-               BlueprintName = "SharedKit"
-               ReferencedContainer = "container:SharedKit.xcodeproj">
+               BlueprintIdentifier = "1B7315EC281E7DCF001F2E6A"
+               BuildableName = "workntour.app"
+               BlueprintName = "workntour"
+               ReferencedContainer = "container:workntour.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
-      buildConfiguration = "Dev Debug"
+      buildConfiguration = "Prod Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      codeCoverageEnabled = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1B5279FB28204D6800FDAF5D"
-               BuildableName = "SharedKitTests.xctest"
-               BlueprintName = "SharedKitTests"
-               ReferencedContainer = "container:SharedKit.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
-      buildConfiguration = "Dev Debug"
+      buildConfiguration = "Prod Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
@@ -51,28 +40,39 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "1B7315EC281E7DCF001F2E6A"
+            BuildableName = "workntour.app"
+            BlueprintName = "workntour"
+            ReferencedContainer = "container:workntour.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
-      buildConfiguration = "Dev Release"
+      buildConfiguration = "Prod Release"
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1B5279F128204D6800FDAF5D"
-            BuildableName = "SharedKit.framework"
-            BlueprintName = "SharedKit"
-            ReferencedContainer = "container:SharedKit.xcodeproj">
+            BlueprintIdentifier = "1B7315EC281E7DCF001F2E6A"
+            BuildableName = "workntour.app"
+            BlueprintName = "workntour"
+            ReferencedContainer = "container:workntour.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
-      buildConfiguration = "Dev Debug">
+      buildConfiguration = "Prod Debug">
    </AnalyzeAction>
    <ArchiveAction
-      buildConfiguration = "Dev Release"
+      buildConfiguration = "Prod Release"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>
