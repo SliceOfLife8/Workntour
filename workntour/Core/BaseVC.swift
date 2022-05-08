@@ -15,6 +15,8 @@ class BaseVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        view.backgroundColor = .systemPink
+
         print("something else !")
         let publisher = AuthorizationDataRequests.shared.userRegistration()
 

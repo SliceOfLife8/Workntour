@@ -195,8 +195,10 @@
 				1B8DA75B282594230032E20B /* SwiftLint */,
 				1B7315E9281E7DCF001F2E6A /* Sources */,
 				1B7315EA281E7DCF001F2E6A /* Frameworks */,
+				1B9A3D10282803E1003E0C34 /* [APP ICON] Include build information */,
 				1B7315EB281E7DCF001F2E6A /* Resources */,
 				55A3343EB1C18DE3720239C5 /* [CP] Embed Pods Frameworks */,
+				1B9A3D1328281F77003E0C34 /* [APP ICON] Revert changes */,
 			);
 			buildRules = (
 			);
@@ -270,6 +272,42 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\" --path \"workntour\" --config .swiftlint.yml --quiet\n";
+		};
+		1B9A3D10282803E1003E0C34 /* [APP ICON] Include build information */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "[APP ICON] Include build information";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#\n# Helpers\n#\nfunction installImageMagick() {\n    brew install imagemagick ghostscript\n}\n\n#\n# Preflight: Check if tools are installed\n#\n\nif hash identify 2>/dev/null && hash convert 2>/dev/null; then\n    echo \"----------------------------------    \"\n    echo \"ImageMagick already installed ✅        \"\n    echo \"----------------------------------    \"\nelse\n    echo \"-------------------------------    \"\n    echo \"ImageMagick is not installed💥     \"\n    echo \"-------------------------------    \"\n\n    installImageMagick\nfi\n\n# Modify only for Staging & Dev environment.\nif [[ ${CONFIGURATION} == *\"Prod\"* ]]\nthen\n    exit 0\nfi\n\n#\n# Access AppIcon\n#\nIFS=$'\\n'\nBASE_ICONS_DIR=$(find ${SRCROOT}/workntour/SupportingFiles -name \"AppIcon.appiconset\")\nIFS=$' '\nCONTENTS_JSON=\"${BASE_ICONS_DIR}/Contents.json\"\n\n#\n# Read Read configuration, version and build number\n#\nversion=\"${MARKETING_VERSION}\"\nbuildNumber=\"${CURRENT_PROJECT_VERSION}\"\nconfiguration=( $CONFIGURATION )\n\ncaption=\"${configuration[0]}\\n${version} ($buildNumber)\"\n\n#\n# Generate icons\n#\nfunction generateIcons() {\nICON_PATH=$1\n\nwidth=`identify -format %w ${ICON_PATH}`\n[ $? -eq 0 ] || exit 1\n\nheight=$((width * 30 / 100))\n\nwidth=`identify -format %w ${ICON_PATH}`\nheight=`identify -format %h ${ICON_PATH}`\nband_height=$((($height * 50) / 100))\nband_position=$(($height - $band_height))\ntext_position=$(($band_position - 1))\npoint_size=$(((18 * $width) / 100))\n\n#\n# Band color\n#\nband_color='rgba(0,0,0,0.8)'\n\n#\n# Blur band and text\n#\nconvert ${ICON_PATH} -blur 10x8 /tmp/blurred.png\nconvert /tmp/blurred.png -gamma 0 -fill white -draw \"rectangle 0,$band_position,$width,$height\" /tmp/mask.png\nconvert -size ${width}x${band_height} xc:none -fill $band_color -draw \"rectangle 0,0,$width,$band_height\" /tmp/labels-base.png\nconvert -background none -size ${width}x${band_height} -pointsize $point_size -fill white -gravity center -gravity South -font ArialNarrowB caption:\"$caption\" /tmp/labels.png\n\nconvert ${ICON_PATH} /tmp/blurred.png /tmp/mask.png -composite /tmp/temp.png\n\nrm /tmp/blurred.png\nrm /tmp/mask.png\n\n#\n# Compose final image\n#\nconvert /tmp/temp.png /tmp/labels-base.png -geometry +0+$band_position -composite /tmp/labels.png -geometry +0+$text_position -geometry +${w}-${h} -composite \"${ICON_PATH}\"\n\n#\n# Clean up\n#\nrm /tmp/temp.png\nrm /tmp/labels-base.png\nrm /tmp/labels.png\n}\n\nICONS=(`grep 'filename' \"${CONTENTS_JSON}\" | cut -f2 -d: | tr -d ',' | tr -d '\\n' | tr -d '\"'`)\n\nICONS_COUNT=${#ICONS[*]}\n\nIFS=$'\\n'\n\nfor (( i=0; i<ICONS_COUNT; i++ )); do\ngenerateIcons \"$BASE_ICONS_DIR/${ICONS[$i]}\"\ndone\n";
+		};
+		1B9A3D1328281F77003E0C34 /* [APP ICON] Revert changes */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "[APP ICON] Revert changes";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ \"${CONFIGURATION}\" != *\"Prod\"* ]; then\nIFS=$'\\n'\ngit checkout -- `find \"${SRCROOT}/workntour/SupportingFiles\" -name AppIcon.appiconset -type d`\nfi\n";
 		};
 		49E787FE40DE98540E805AC5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -498,7 +536,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.workntour.workntour;
+				PRODUCT_BUNDLE_IDENTIFIER = com.workntour.workntour.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -544,7 +582,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.workntour.workntour;
+				PRODUCT_BUNDLE_IDENTIFIER = com.workntour.workntour.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -759,7 +797,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.workntour.workntour;
+				PRODUCT_BUNDLE_IDENTIFIER = com.workntour.workntour.staging;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -860,7 +898,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.workntour.workntour;
+				PRODUCT_BUNDLE_IDENTIFIER = com.workntour.workntour.staging;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
