@@ -17,6 +17,7 @@
 		1B7315FA281E7DD5001F2E6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B7315F9281E7DD5001F2E6A /* Assets.xcassets */; };
 		1B7315FD281E7DD5001F2E6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B7315FB281E7DD5001F2E6A /* LaunchScreen.storyboard */; };
 		1B9A3CED2827FC04003E0C34 /* SharedKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B9A3CEC2827FC04003E0C34 /* SharedKit.framework */; };
+		1B9A3D1728282710003E0C34 /* GoogleService-Info.Dev.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1B9A3D1628282710003E0C34 /* GoogleService-Info.Dev.plist */; };
 		1BA2DEEF281E840900DB128D /* DeepLinkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA2DEEE281E840900DB128D /* DeepLinkManager.swift */; };
 		1BA2DEF7281E8AB600DB128D /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA2DEF6281E8AB600DB128D /* AppCoordinator.swift */; };
 		1BA2DEF9281E8AE800DB128D /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA2DEF8281E8AE800DB128D /* MainCoordinator.swift */; };
@@ -41,6 +42,7 @@
 		1B7315FE281E7DD5001F2E6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1B8DA75D282596170032E20B /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		1B9A3CEC2827FC04003E0C34 /* SharedKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SharedKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B9A3D1628282710003E0C34 /* GoogleService-Info.Dev.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.Dev.plist"; sourceTree = "<group>"; };
 		1BA2DEEE281E840900DB128D /* DeepLinkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkManager.swift; sourceTree = "<group>"; };
 		1BA2DEF6281E8AB600DB128D /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		1BA2DEF8281E8AE800DB128D /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
@@ -111,6 +113,14 @@
 			path = workntour;
 			sourceTree = "<group>";
 		};
+		1B9A3D15282826F6003E0C34 /* GoogleService */ = {
+			isa = PBXGroup;
+			children = (
+				1B9A3D1628282710003E0C34 /* GoogleService-Info.Dev.plist */,
+			);
+			path = GoogleService;
+			sourceTree = "<group>";
+		};
 		1BA2DEEC281E832200DB128D /* Core */ = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +146,7 @@
 		1BA2DEFC281E8BEC00DB128D /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				1B9A3D15282826F6003E0C34 /* GoogleService */,
 				1B7315F9281E7DD5001F2E6A /* Assets.xcassets */,
 				1B7315FB281E7DD5001F2E6A /* LaunchScreen.storyboard */,
 				1B7315FE281E7DD5001F2E6A /* Info.plist */,
@@ -199,6 +210,8 @@
 				1B7315EB281E7DCF001F2E6A /* Resources */,
 				55A3343EB1C18DE3720239C5 /* [CP] Embed Pods Frameworks */,
 				1B9A3D1328281F77003E0C34 /* [APP ICON] Revert changes */,
+				1B9A3D1A28282DE6003E0C34 /* Copy Google Info Plist file */,
+				1B9A3D1428282517003E0C34 /* Firebase dSYMs */,
 			);
 			buildRules = (
 			);
@@ -248,6 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B7315FD281E7DD5001F2E6A /* LaunchScreen.storyboard in Resources */,
+				1B9A3D1728282710003E0C34 /* GoogleService-Info.Dev.plist in Resources */,
 				1B7315FA281E7DD5001F2E6A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -308,6 +322,44 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if [ \"${CONFIGURATION}\" != *\"Prod\"* ]; then\nIFS=$'\\n'\ngit checkout -- `find \"${SRCROOT}/workntour/SupportingFiles\" -name AppIcon.appiconset -type d`\nfi\n";
+		};
+		1B9A3D1428282517003E0C34 /* Firebase dSYMs */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+			);
+			name = "Firebase dSYMs";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
+		};
+		1B9A3D1A28282DE6003E0C34 /* Copy Google Info Plist file */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Google Info Plist file";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "GOOGLE_SERVICE_INFO_PLIST_FROM=\"${PROJECT_DIR}/workntour/SupportingFiles/GoogleService/${GOOGLE_SERVICE_PROPERTY}\"\nBUILD_APP_DIR=\"${BUILT_PRODUCTS_DIR}/${FULL_PRODUCT_NAME}\"\nGOOGLE_SERVICE_INFO_PLIST_TO=\"${BUILD_APP_DIR}/GoogleService-Info.plist\"\ncp \"${GOOGLE_SERVICE_INFO_PLIST_FROM}\" \"${GOOGLE_SERVICE_INFO_PLIST_TO}\" \n";
 		};
 		49E787FE40DE98540E805AC5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -417,7 +469,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -507,6 +559,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 8QYX9VGMBQ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -526,6 +579,7 @@
 					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/GoogleAppMeasurement/WithoutAdIdSupport\"",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
+				GOOGLE_SERVICE_PROPERTY = "GoogleService-Info.Dev.plist";
 				INFOPLIST_FILE = workntour/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -572,6 +626,7 @@
 					"$(PROJECT_DIR)",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
+				GOOGLE_SERVICE_PROPERTY = "GoogleService-Info.Dev.plist";
 				INFOPLIST_FILE = workntour/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -625,7 +680,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -660,6 +715,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 8QYX9VGMBQ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -680,6 +736,7 @@
 					"$(PROJECT_DIR)",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
+				GOOGLE_SERVICE_PROPERTY = "GoogleService-Info.plist";
 				INFOPLIST_FILE = workntour/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -732,7 +789,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -767,6 +824,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 8QYX9VGMBQ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -787,6 +845,7 @@
 					"$(PROJECT_DIR)",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
+				GOOGLE_SERVICE_PROPERTY = "GoogleService-Info.Staging.plist";
 				INFOPLIST_FILE = workntour/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -888,6 +947,7 @@
 					"$(PROJECT_DIR)",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
+				GOOGLE_SERVICE_PROPERTY = "GoogleService-Info.Staging.plist";
 				INFOPLIST_FILE = workntour/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -989,6 +1049,7 @@
 					"$(PROJECT_DIR)",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
+				GOOGLE_SERVICE_PROPERTY = "GoogleService-Info.plist";
 				INFOPLIST_FILE = workntour/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;

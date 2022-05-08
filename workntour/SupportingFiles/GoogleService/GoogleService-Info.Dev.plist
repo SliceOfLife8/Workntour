@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>192188677390-l9jcnihjeoihfbhfrdf452j3spnbmd3f.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.192188677390-l9jcnihjeoihfbhfrdf452j3spnbmd3f</string>
+	<key>API_KEY</key>
+	<string>AIzaSyD558vl9MASo_Pr8ZqrO4a1BI9Q70Ul32k</string>
+	<key>GCM_SENDER_ID</key>
+	<string>192188677390</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.workntour.workntour.dev</string>
+	<key>PROJECT_ID</key>
+	<string>workntour-test</string>
+	<key>STORAGE_BUCKET</key>
+	<string>workntour-test.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:192188677390:ios:3e0260124c4c14765eab5f</string>
+</dict>
+</plist>
