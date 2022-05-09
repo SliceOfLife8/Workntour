@@ -6,17 +6,13 @@
 //
 
 import UIKit
-import FirebaseCore
-import Keys
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        let options = FirebaseOptions(contentsOfFile: Bundle.main.path(forResource: "GoogleService-Info.Dev", ofType: ".plist")!)
-        options?.apiKey = WorkntourKeys().googleServiceDevApiKey
-        FirebaseApp.configure(options: options!)
+        AppConfig.setupFB()
         return true
     }
 
