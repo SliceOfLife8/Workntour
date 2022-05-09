@@ -1,3 +1,11 @@
+# Securing sensitive data using Cocoapods-Keys
+plugin 'cocoapods-keys', {
+    :project => "workntour",
+    :target => "workntour",
+    :keys => [
+        "GoogleServiceDevApiKey"
+    ]
+}
 # Uncomment the next line to define a global platform for your project
 platform :ios, '14.0'
 
