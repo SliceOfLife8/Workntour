@@ -8,16 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		1B5279E72820471100FDAF5D /* AuthorizationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5279E62820471100FDAF5D /* AuthorizationRouter.swift */; };
-		1B527A1E282051A000FDAF5D /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B5279DE281FDA6D00FDAF5D /* Networking.framework */; };
-		1B527A38282059CB00FDAF5D /* CommonUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B527A37282059CB00FDAF5D /* CommonUI.framework */; };
 		1B527A4428216B5000FDAF5D /* AuthorizationDataRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B527A4328216B5000FDAF5D /* AuthorizationDataRequests.swift */; };
 		1B7315F1281E7DD0001F2E6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7315F0281E7DD0001F2E6A /* AppDelegate.swift */; };
 		1B7315F3281E7DD0001F2E6A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7315F2281E7DD0001F2E6A /* SceneDelegate.swift */; };
 		1B7315F5281E7DD0001F2E6A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7315F4281E7DD0001F2E6A /* ViewController.swift */; };
 		1B7315FA281E7DD5001F2E6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B7315F9281E7DD5001F2E6A /* Assets.xcassets */; };
 		1B7315FD281E7DD5001F2E6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B7315FB281E7DD5001F2E6A /* LaunchScreen.storyboard */; };
-		1B9A3CED2827FC04003E0C34 /* SharedKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B9A3CEC2827FC04003E0C34 /* SharedKit.framework */; };
 		1B9A3D1728282710003E0C34 /* GoogleService-Info.Dev.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1B9A3D1628282710003E0C34 /* GoogleService-Info.Dev.plist */; };
+		1B9A3D222828EA99003E0C34 /* CommonUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B527A37282059CB00FDAF5D /* CommonUI.framework */; };
+		1B9A3D232828EA99003E0C34 /* CommonUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1B527A37282059CB00FDAF5D /* CommonUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1B9A3D252828EA9B003E0C34 /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B5279DE281FDA6D00FDAF5D /* Networking.framework */; };
+		1B9A3D262828EA9B003E0C34 /* Networking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1B5279DE281FDA6D00FDAF5D /* Networking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1B9A3D272828EA9E003E0C34 /* SharedKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B9A3CEC2827FC04003E0C34 /* SharedKit.framework */; };
+		1B9A3D282828EA9E003E0C34 /* SharedKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1B9A3CEC2827FC04003E0C34 /* SharedKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1BA2DEEF281E840900DB128D /* DeepLinkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA2DEEE281E840900DB128D /* DeepLinkManager.swift */; };
 		1BA2DEF7281E8AB600DB128D /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA2DEF6281E8AB600DB128D /* AppCoordinator.swift */; };
 		1BA2DEF9281E8AE800DB128D /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA2DEF8281E8AE800DB128D /* MainCoordinator.swift */; };
@@ -26,6 +29,22 @@
 		1BA2DF08281E8D7700DB128D /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA2DF07281E8D7700DB128D /* OnboardingCoordinator.swift */; };
 		D0B6B143D19C47CD0E62CED2 /* Pods_workntour.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69FE5744FAF58C83B7380180 /* Pods_workntour.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1B9A3D242828EA99003E0C34 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1B9A3D262828EA9B003E0C34 /* Networking.framework in Embed Frameworks */,
+				1B9A3D232828EA99003E0C34 /* CommonUI.framework in Embed Frameworks */,
+				1B9A3D282828EA9E003E0C34 /* SharedKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1B5279DE281FDA6D00FDAF5D /* Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Networking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,9 +82,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B527A38282059CB00FDAF5D /* CommonUI.framework in Frameworks */,
-				1B527A1E282051A000FDAF5D /* Networking.framework in Frameworks */,
-				1B9A3CED2827FC04003E0C34 /* SharedKit.framework in Frameworks */,
+				1B9A3D252828EA9B003E0C34 /* Networking.framework in Frameworks */,
+				1B9A3D222828EA99003E0C34 /* CommonUI.framework in Frameworks */,
+				1B9A3D272828EA9E003E0C34 /* SharedKit.framework in Frameworks */,
 				D0B6B143D19C47CD0E62CED2 /* Pods_workntour.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -212,6 +231,7 @@
 				1B9A3D1328281F77003E0C34 /* [APP ICON] Revert changes */,
 				1B9A3D1A28282DE6003E0C34 /* Copy Google Info Plist file */,
 				1B9A3D1428282517003E0C34 /* Firebase dSYMs */,
+				1B9A3D242828EA99003E0C34 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
