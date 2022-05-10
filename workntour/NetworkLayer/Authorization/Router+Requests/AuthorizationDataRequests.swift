@@ -14,7 +14,7 @@ class AuthorizationDataRequests {
     private(set) var networking: Networking
 
     init(networking: Networking = Networking(),
-         debugEnabled: Bool = false) {
+         debugEnabled: Bool = true) {
         self.networking = networking
         self.networking.preference.isDebuggingEnabled = debugEnabled
     }

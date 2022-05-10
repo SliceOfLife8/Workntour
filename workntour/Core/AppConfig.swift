@@ -8,11 +8,12 @@
 import Foundation
 import FirebaseCore
 import Keys
+import SwiftyBeaver
 
-enum Environment {
-    case DEV
-    case STAGING
-    case PROD
+enum Environment: String {
+    case DEV = "dev"
+    case STAGING = "staging"
+    case PROD = "prod"
 
     var googleService: String {
         switch self {
@@ -23,6 +24,18 @@ enum Environment {
         case .PROD:
             return "GoogleService-Info.Prod"
         }
+    }
+}
+
+extension Environment {
+    static var current: Environment {
+        #if DEV
+        return .DEV
+        #elseif STAGING
+        return .STAGING
+        #else
+        return .PROD
+        #endif
     }
 }
 
@@ -38,9 +51,16 @@ struct AppConfig {
                   assertionFailure("Could not configure Firebase! Please check again the API Key.")
                   return
               }
-        
+
         options.apiKey = WorkntourKeys().googleServiceDevApiKey
         FirebaseApp.configure(options: options)
+    }
+
+    static func setupLogger() {
+        let consoleDestination = ConsoleDestination()
+        consoleDestination.format = "$DHH:mm:ss$d $C$L$c $M"
+        SwiftyBeaver.addDestination(consoleDestination)
+        SwiftyBeaver.verbose("Running on \(Environment.current.rawValue) configuration")
     }
 
     static private func path(_ keys: String...) -> String {

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftyBeaver
 
 public enum NetworkingDebugger {
 
@@ -13,31 +14,22 @@ public enum NetworkingDebugger {
         guard Preference.shared.isDebuggingEnabled else {
             return
         }
-        print("\n--------------- OUTGOING ---------------\n")
+        SwiftyBeaver.info("------------------ OUTGOING ------------------")
 
-        defer { print("\n--------------- END ---------------\n") }
+        defer { SwiftyBeaver.info("------------------ END ------------------") }
         let urlAsString = urlRequest.url?.absoluteString ?? ""
-        let urlComponents = NSURLComponents(string: urlAsString)
-        let method = urlRequest.httpMethod != nil ? "\(urlRequest.httpMethod ?? "")" : ""
-        let path = "\(urlComponents?.path ?? "")"
-        let query = "\(urlComponents?.query ?? "")"
-        let host = "\(urlComponents?.host ?? "")"
-        var debugString: String = """
-      \(urlAsString) \n\n
-      \(method) \(path)?\(query)
-      HOST: \(host)\n
-    """
+        let method = urlRequest.httpMethod ?? ""
+
+        SwiftyBeaver.verbose("URL -> \(urlAsString), METHOD -> \(method)")
+
         urlRequest.allHTTPHeaderFields?.forEach {
-            debugString += "\($0): \($1) \n"
+            SwiftyBeaver.verbose("HEADERS -> \($0): \($1)")
         }
 
         guard let err = error else {
-            debugString += "  STATUS: SUCCESS \n"
-            print(debugString)
+            SwiftyBeaver.verbose("STATUS: SUCCESS")
             return
         }
-        debugString += "STATUS: FAILED \n"
-        debugString += "ERROR: \(err.localizedDescription)\n"
-        print(debugString)
+        SwiftyBeaver.error("STATUS: FAILED.\nERROR: \(err.localizedDescription)")
     }
 }

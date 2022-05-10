@@ -101,12 +101,14 @@ PODS:
   - nanopb/encode (2.30908.0)
   - PromisesObjC (2.1.0)
   - SwiftLint (0.47.1)
+  - SwiftyBeaver (1.9.6)
 
 DEPENDENCIES:
   - Firebase/Core
   - Firebase/Crashlytics
   - Keys (from `Pods/CocoaPodsKeys`)
   - SwiftLint
+  - SwiftyBeaver
 
 SPEC REPOS:
   trunk:
@@ -123,6 +125,7 @@ SPEC REPOS:
     - nanopb
     - PromisesObjC
     - SwiftLint
+    - SwiftyBeaver
 
 EXTERNAL SOURCES:
   Keys:
@@ -143,7 +146,8 @@ SPEC CHECKSUMS:
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 99b6f43f9e1044bd87a95a60beff28c2c44ddb72
   SwiftLint: f80f1be7fa96d30e0aa68e58d45d4ea1ccaac519
+  SwiftyBeaver: c8241b4745aa269a78ca5a022532c6915e948536
 
-PODFILE CHECKSUM: f8b6c5fa2bfb783d5306d9df28c154a653e572ef
+PODFILE CHECKSUM: cac24cf23187140e64e423d45e1925c77e8dc3e8
 
 COCOAPODS: 1.11.3

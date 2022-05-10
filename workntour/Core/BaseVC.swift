@@ -17,17 +17,16 @@ class BaseVC: UIViewController {
 
         view.backgroundColor = .systemPink
 
-        print("something else !")
         let publisher = AuthorizationDataRequests.shared.userRegistration()
 
-        publisher.sink(receiveCompletion: { print ("completion: \($0)") },
-                        receiveValue: { print ("value: \($0)") })
+        publisher.sink(receiveCompletion: { print("completion: \($0)") },
+                        receiveValue: { print("value: \($0)") })
             .store(in: &self.storage)
     }
 
     deinit {
         NotificationCenter.default.removeObserver(self)
-        print("\(String(describing: type(of: self))) deinitialized")
+        print("☠️ \(String(describing: type(of: self))) deinitialized")
     }
 
 }

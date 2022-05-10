@@ -48,28 +48,3 @@ enum AuthorizationRouter: NetworkTarget {
         nil
     }
 }
-
-// MARK: - Welcome
-struct Welcome: Codable {
-    let count: Int
-    let entries: [Entry]
-}
-
-// MARK: - Entry
-struct Entry: Codable {
-    let api, entryDescription, auth: String
-    let https: Bool
-    let cors: String
-    let link: String
-    let category: String
-
-    enum CodingKeys: String, CodingKey {
-        case api = "API"
-        case entryDescription = "Description"
-        case auth = "Auth"
-        case https = "HTTPS"
-        case cors = "Cors"
-        case link = "Link"
-        case category = "Category"
-    }
-}
