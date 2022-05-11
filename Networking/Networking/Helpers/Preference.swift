@@ -11,4 +11,5 @@ public class Preference {
     static let shared = Preference()
 
     public var isDebuggingEnabled: Bool = false
+    var requestExecutionStarted: Date = Date()
 }

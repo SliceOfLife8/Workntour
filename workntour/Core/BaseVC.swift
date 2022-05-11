@@ -15,13 +15,18 @@ class BaseVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .systemPink
+        view.backgroundColor = UIColor.appColor(.primary)
+    }
 
-        let publisher = AuthorizationDataRequests.shared.userRegistration()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            let publisher = AuthorizationDataRequests.shared.userRegistration()
 
-        publisher.sink(receiveCompletion: { print("completion: \($0)") },
-                        receiveValue: { print("value: \($0)") })
-            .store(in: &self.storage)
+            publisher.sink(receiveCompletion: { print("completion: \($0)") },
+                           receiveValue: { print("value: \($0)") })
+                .store(in: &self.storage)
+        }
     }
 
     deinit {

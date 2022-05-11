@@ -9,22 +9,12 @@ import Foundation
 import FirebaseCore
 import Keys
 import SwiftyBeaver
+import Networking
 
 enum Environment: String {
     case DEV = "dev"
     case STAGING = "staging"
     case PROD = "prod"
-
-    var googleService: String {
-        switch self {
-        case .DEV:
-            return "GoogleService-Info.Dev"
-        case .STAGING:
-            return "GoogleService-Info.Staging"
-        case .PROD:
-            return "GoogleService-Info.Prod"
-        }
-    }
 }
 
 extension Environment {
@@ -81,4 +71,41 @@ struct AppConfig {
         return ""
     }
 
+}
+
+// MARK: - API
+extension Environment {
+    var apiBaseURL: URL {
+        var urlAsString: String
+
+        switch self {
+        case .DEV:
+            urlAsString = "https://api.publicapis.org"
+        case .STAGING:
+            urlAsString = "not implemented yet!"
+        case .PROD:
+            urlAsString = "not implemented yet!"
+        }
+
+        guard let url = URL(string: urlAsString) else {
+            assertionFailure("Api Base URL is not valid! Please verify it and try again.")
+            return URL(string: urlAsString)!
+        }
+
+        return url
+    }
+}
+
+// MARK: - Firebase
+extension Environment {
+    var googleService: String {
+        switch self {
+        case .DEV:
+            return "GoogleService-Info.Dev"
+        case .STAGING:
+            return "GoogleService-Info.Staging"
+        case .PROD:
+            return "GoogleService-Info.Prod"
+        }
+    }
 }

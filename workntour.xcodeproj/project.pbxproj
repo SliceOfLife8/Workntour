@@ -23,6 +23,7 @@
 		1B9A3D32282A3CE9003E0C34 /* Traveler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9A3D31282A3CE9003E0C34 /* Traveler.swift */; };
 		1B9A3D7F282AB849003E0C34 /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B5279DE281FDA6D00FDAF5D /* Networking.framework */; };
 		1B9A3D80282AB849003E0C34 /* Networking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1B5279DE281FDA6D00FDAF5D /* Networking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1B9A3D85282B9096003E0C34 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B9A3D84282B9096003E0C34 /* Colors.xcassets */; };
 		1BA2DEEF281E840900DB128D /* DeepLinkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA2DEEE281E840900DB128D /* DeepLinkManager.swift */; };
 		1BA2DEF7281E8AB600DB128D /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA2DEF6281E8AB600DB128D /* AppCoordinator.swift */; };
 		1BA2DEF9281E8AE800DB128D /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA2DEF8281E8AE800DB128D /* MainCoordinator.swift */; };
@@ -69,6 +70,7 @@
 		1B9A3D33282A416F003E0C34 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		1B9A3D7C282AB594003E0C34 /* NetworkingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = NetworkingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B9A3D81282AB976003E0C34 /* SwiftyBeaver.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyBeaver.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B9A3D84282B9096003E0C34 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		1BA2DEEE281E840900DB128D /* DeepLinkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkManager.swift; sourceTree = "<group>"; };
 		1BA2DEF6281E8AB600DB128D /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		1BA2DEF8281E8AE800DB128D /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 			children = (
 				1B9A3D15282826F6003E0C34 /* GoogleService */,
 				1B7315F9281E7DD5001F2E6A /* Assets.xcassets */,
+				1B9A3D84282B9096003E0C34 /* Colors.xcassets */,
 				1B7315FB281E7DD5001F2E6A /* LaunchScreen.storyboard */,
 				1B7315FE281E7DD5001F2E6A /* Info.plist */,
 			);
@@ -317,6 +320,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B7315FD281E7DD5001F2E6A /* LaunchScreen.storyboard in Resources */,
+				1B9A3D85282B9096003E0C34 /* Colors.xcassets in Resources */,
 				1B9A3D1728282710003E0C34 /* GoogleService-Info.Dev.plist in Resources */,
 				1B7315FA281E7DD5001F2E6A /* Assets.xcassets in Resources */,
 			);

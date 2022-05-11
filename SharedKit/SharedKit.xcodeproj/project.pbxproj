@@ -24,6 +24,7 @@
 		1B9A3D74282A84FE003E0C34 /* ControlSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9A3D73282A84FE003E0C34 /* ControlSubscription.swift */; };
 		1B9A3D76282A853C003E0C34 /* Combine+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9A3D75282A853C003E0C34 /* Combine+Extensions.swift */; };
 		1B9A3D78282A8A0D003E0C34 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9A3D77282A8A0D003E0C34 /* String+Extensions.swift */; };
+		1B9A3D87282B91CE003E0C34 /* AssetColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9A3D86282B91CE003E0C34 /* AssetColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		1B9A3D73282A84FE003E0C34 /* ControlSubscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlSubscription.swift; sourceTree = "<group>"; };
 		1B9A3D75282A853C003E0C34 /* Combine+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Combine+Extensions.swift"; sourceTree = "<group>"; };
 		1B9A3D77282A8A0D003E0C34 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		1B9A3D86282B91CE003E0C34 /* AssetColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 			children = (
 				1B9A3D6D282A846A003E0C34 /* Combine */,
 				1B527A1228204E6800FDAF5D /* LocalStorageManager.swift */,
+				1B9A3D86282B91CE003E0C34 /* AssetColor.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				1B527A1328204E6800FDAF5D /* LocalStorageManager.swift in Sources */,
 				1B9A3D76282A853C003E0C34 /* Combine+Extensions.swift in Sources */,
 				1B9A3D70282A8485003E0C34 /* ControlEvent.swift in Sources */,
+				1B9A3D87282B91CE003E0C34 /* AssetColor.swift in Sources */,
 				1B8DA7582825217C0032E20B /* CombineTableViewDataSource.swift in Sources */,
 				1B527A3F2820F4E400FDAF5D /* Navigator.swift in Sources */,
 				1B9A3D74282A84FE003E0C34 /* ControlSubscription.swift in Sources */,

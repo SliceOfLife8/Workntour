@@ -14,7 +14,7 @@ enum AuthorizationRouter: NetworkTarget {
     case login
 
     public var baseURL: URL {
-        URL(string: "https://api.publicapis.org")!
+        Environment.current.apiBaseURL
     }
 
     public var path: String {

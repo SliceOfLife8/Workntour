@@ -15,7 +15,7 @@ extension String {
         return NSPredicate(format: "SELF MATCHES %@", regex)
     }
 
-    func isEmailValid() -> Bool {
+    public func isEmailValid() -> Bool {
         return emailPredicate.evaluate(with: self)
     }
 }

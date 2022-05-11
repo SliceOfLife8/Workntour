@@ -499,6 +499,7 @@ extension Networking: NetworkingProtocol {
 private extension Networking {
 
     func constructURL(with target: NetworkTarget) -> URLRequest {
+        NetworkingDebugger.notifyStartExecution()
         switch target.methodType {
         case .get:
             return prepareGetRequest(with: target)
