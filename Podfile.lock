@@ -1,4 +1,5 @@
 PODS:
+  - CombineDataSources (0.2.5)
   - Firebase/Core (9.0.0):
     - Firebase/CoreOnly
     - FirebaseAnalytics (~> 9.0.0)
@@ -105,6 +106,7 @@ PODS:
   - SwiftyBeaver (1.9.6)
 
 DEPENDENCIES:
+  - CombineDataSources
   - Firebase/Core
   - Firebase/Crashlytics
   - Hero
@@ -114,6 +116,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - CombineDataSources
     - Firebase
     - FirebaseAnalytics
     - FirebaseCore
@@ -135,6 +138,7 @@ EXTERNAL SOURCES:
     :path: Pods/CocoaPodsKeys
 
 SPEC CHECKSUMS:
+  CombineDataSources: dcbc3b06a038ffdf620b3b4533d3ecaf76ca6a2e
   Firebase: a876fadc5ea653a377693376fd4f885c62704512
   FirebaseAnalytics: ea4f6f4b604a20b4de4d3c7f7a2cb51d9a989040
   FirebaseCore: e4c0b5d9727eaee0b43f9ed00baff7500c188d7b
@@ -152,6 +156,6 @@ SPEC CHECKSUMS:
   SwiftLint: f80f1be7fa96d30e0aa68e58d45d4ea1ccaac519
   SwiftyBeaver: c8241b4745aa269a78ca5a022532c6915e948536
 
-PODFILE CHECKSUM: 21f9d5da15cc4dbdfb7626d9e44804bbf7a91526
+PODFILE CHECKSUM: c10492e7737d496671d9c21adaa71d279a055c1f
 
 COCOAPODS: 1.11.3

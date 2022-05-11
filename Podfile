@@ -22,6 +22,7 @@ end
 def common
   pod 'SwiftLint'
   pod 'Hero'
+  pod 'CombineDataSources'
 end
 
 def logging

@@ -15,14 +15,13 @@ final class MainCoordinator: NavigationCoordinator {
     var navigator: NavigatorType
     var rootViewController: UINavigationController
 
-    // private let examplesViewController: SideMenuController
+    private let entryViewController: UIViewController
 
     init() {
-        // Add tabbar coordinator
-        // let examplesViewController = SideMenuController(contentViewController: HomePageVC(), menuViewController: SideMenuVC())
-        // self.examplesViewController = examplesViewController
+        let viewModel = SplashViewModel()
+        self.entryViewController = SplashVC(viewModel)
 
-        let navigationController = UINavigationController(rootViewController: UIViewController())
+        let navigationController = UINavigationController(rootViewController: entryViewController)
         self.navigator = Navigator(navigationController: navigationController)
         self.rootViewController = navigationController
     }

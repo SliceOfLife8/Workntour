@@ -1,15 +1,17 @@
 //
-//  AuthorizationDataRequests.swift
+//  DataManager.swift
 //  workntour
 //
-//  Created by Petimezas, Chris, Vodafone on 3/5/22.
+//  Created by Petimezas, Chris, Vodafone on 11/5/22.
 //
 
 import Combine
 import Networking
 
-class AuthorizationDataRequests {
-    static let shared = AuthorizationDataRequests()
+/// Data Manager acts as a middle layer (abstraction) between the service(s) and our application.
+/// ViewModels are responsible to communite with this layer and pass the data back to Views.
+class DataManager {
+    static let shared = DataManager()
 
     private(set) var networking: Networking
 
@@ -18,13 +20,16 @@ class AuthorizationDataRequests {
         self.networking = networking
         self.networking.preference.isDebuggingEnabled = debugEnabled
     }
+}
 
-    func userRegistration() -> AnyPublisher<Entry, ProviderError> {
+extension DataManager: AuthorizationService {
+
+    func userRegistration() -> AnyPublisher<[Entry], ProviderError> {
         return networking.request(
             with: AuthorizationRouter.registration,
             scheduler: DispatchQueue.main,
             class: Welcome.self)
-            .compactMap { $0.entries.first }
+            .compactMap { $0.entries }
             .eraseToAnyPublisher()
     }
 

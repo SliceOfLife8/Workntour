@@ -26,7 +26,7 @@ final class AppCoordinator: PresentationCoordinator {
         if hasUserSeenOnboardingFlow == true {
             // Navigate him to the next screen
         } else {
-            self.route(isFirstTimeUser: true)
+            self.route(isFirstTimeUser: false)
         }
     }
 
@@ -42,10 +42,10 @@ private extension AppCoordinator {
             onboardingCoordinator.rootViewController.isModalInPresentation = true
             presentCoordinator(onboardingCoordinator, animated: false)
         } else {
-            let examplesCoordinator = MainCoordinator()
-            addChildCoordinator(examplesCoordinator)
-            examplesCoordinator.start()
-            rootViewController.set(childViewController: examplesCoordinator.rootViewController)
+            let mainCoordinator = MainCoordinator()
+            addChildCoordinator(mainCoordinator)
+            mainCoordinator.start()
+            rootViewController.set(childViewController: mainCoordinator.rootViewController)
         }
     }
 

@@ -8,30 +8,30 @@
 import UIKit
 import Combine
 
+typealias DisposeBag = Set<AnyCancellable>
+
 class BaseVC: UIViewController {
 
-    var storage: Set<AnyCancellable> = []
+    var storage: DisposeBag = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = UIColor.appColor(.primary)
+        bindViews()
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            let publisher = AuthorizationDataRequests.shared.userRegistration()
-
-            publisher.sink(receiveCompletion: { print("completion: \($0)") },
-                           receiveValue: { print("value: \($0)") })
-                .store(in: &self.storage)
-        }
-    }
+    func bindViews() {}
 
     deinit {
         NotificationCenter.default.removeObserver(self)
+        storage.cancelAll()
         print("☠️ \(String(describing: type(of: self))) deinitialized")
     }
+}
 
+private extension DisposeBag {
+    mutating func cancelAll() {
+        forEach { $0.cancel() }
+        removeAll()
+    }
 }

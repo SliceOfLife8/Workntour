@@ -17,8 +17,6 @@
 		1B527A1828204FA500FDAF5D /* XCTestCase+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B527A1628204F6000FDAF5D /* XCTestCase+Extensions.swift */; };
 		1B527A3E2820F4E400FDAF5D /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B527A3C2820F4E400FDAF5D /* Coordinator.swift */; };
 		1B527A3F2820F4E400FDAF5D /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B527A3D2820F4E400FDAF5D /* Navigator.swift */; };
-		1B8DA7582825217C0032E20B /* CombineTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8DA7572825217C0032E20B /* CombineTableViewDataSource.swift */; };
-		1B8DA75A282521C30032E20B /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8DA759282521C30032E20B /* UITableView+Extensions.swift */; };
 		1B9A3D70282A8485003E0C34 /* ControlEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9A3D6F282A8485003E0C34 /* ControlEvent.swift */; };
 		1B9A3D72282A84E2003E0C34 /* ControlPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9A3D71282A84E2003E0C34 /* ControlPublisher.swift */; };
 		1B9A3D74282A84FE003E0C34 /* ControlSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9A3D73282A84FE003E0C34 /* ControlSubscription.swift */; };
@@ -49,8 +47,6 @@
 		1B527A1628204F6000FDAF5D /* XCTestCase+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Extensions.swift"; sourceTree = "<group>"; };
 		1B527A3C2820F4E400FDAF5D /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		1B527A3D2820F4E400FDAF5D /* Navigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
-		1B8DA7572825217C0032E20B /* CombineTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineTableViewDataSource.swift; sourceTree = "<group>"; };
-		1B8DA759282521C30032E20B /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		1B9A3D6F282A8485003E0C34 /* ControlEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlEvent.swift; sourceTree = "<group>"; };
 		1B9A3D71282A84E2003E0C34 /* ControlPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlPublisher.swift; sourceTree = "<group>"; };
 		1B9A3D73282A84FE003E0C34 /* ControlSubscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlSubscription.swift; sourceTree = "<group>"; };
@@ -122,7 +118,6 @@
 			children = (
 				1B527A0F28204E5700FDAF5D /* UIView+Extensions.swift */,
 				1B527A0E28204E5700FDAF5D /* Date+Extensions.swift */,
-				1B8DA759282521C30032E20B /* UITableView+Extensions.swift */,
 				1B9A3D75282A853C003E0C34 /* Combine+Extensions.swift */,
 				1B9A3D77282A8A0D003E0C34 /* String+Extensions.swift */,
 			);
@@ -160,7 +155,6 @@
 			isa = PBXGroup;
 			children = (
 				1B9A3D6E282A847B003E0C34 /* Control */,
-				1B8DA7572825217C0032E20B /* CombineTableViewDataSource.swift */,
 			);
 			path = Combine;
 			sourceTree = "<group>";
@@ -288,14 +282,12 @@
 				1B9A3D78282A8A0D003E0C34 /* String+Extensions.swift in Sources */,
 				1B5279F728204D6800FDAF5D /* SharedKit.docc in Sources */,
 				1B527A3E2820F4E400FDAF5D /* Coordinator.swift in Sources */,
-				1B8DA75A282521C30032E20B /* UITableView+Extensions.swift in Sources */,
 				1B9A3D72282A84E2003E0C34 /* ControlPublisher.swift in Sources */,
 				1B527A1028204E5700FDAF5D /* Date+Extensions.swift in Sources */,
 				1B527A1328204E6800FDAF5D /* LocalStorageManager.swift in Sources */,
 				1B9A3D76282A853C003E0C34 /* Combine+Extensions.swift in Sources */,
 				1B9A3D70282A8485003E0C34 /* ControlEvent.swift in Sources */,
 				1B9A3D87282B91CE003E0C34 /* AssetColor.swift in Sources */,
-				1B8DA7582825217C0032E20B /* CombineTableViewDataSource.swift in Sources */,
 				1B527A3F2820F4E400FDAF5D /* Navigator.swift in Sources */,
 				1B9A3D74282A84FE003E0C34 /* ControlSubscription.swift in Sources */,
 			);
