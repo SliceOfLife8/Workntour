@@ -93,6 +93,7 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (7.7.0):
     - GoogleUtilities/Logger
+  - Hero (1.6.1)
   - Keys (1.0.1)
   - nanopb (2.30908.0):
     - nanopb/decode (= 2.30908.0)
@@ -106,6 +107,7 @@ PODS:
 DEPENDENCIES:
   - Firebase/Core
   - Firebase/Crashlytics
+  - Hero
   - Keys (from `Pods/CocoaPodsKeys`)
   - SwiftLint
   - SwiftyBeaver
@@ -122,6 +124,7 @@ SPEC REPOS:
     - GoogleAppMeasurement
     - GoogleDataTransport
     - GoogleUtilities
+    - Hero
     - nanopb
     - PromisesObjC
     - SwiftLint
@@ -142,12 +145,13 @@ SPEC CHECKSUMS:
   GoogleAppMeasurement: 2c2792d43ebdea0524adbc90cba9139721f3039b
   GoogleDataTransport: f6eab2486453329104995371bc08d4cafbe3da1f
   GoogleUtilities: e0913149f6b0625b553d70dae12b49fc62914fd1
+  Hero: 215865ba3ae41dd9bb08cd6c60a645529c6fc94b
   Keys: a576f4c9c1c641ca913a959a9c62ed3f215a8de9
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 99b6f43f9e1044bd87a95a60beff28c2c44ddb72
   SwiftLint: f80f1be7fa96d30e0aa68e58d45d4ea1ccaac519
   SwiftyBeaver: c8241b4745aa269a78ca5a022532c6915e948536
 
-PODFILE CHECKSUM: cac24cf23187140e64e423d45e1925c77e8dc3e8
+PODFILE CHECKSUM: 21f9d5da15cc4dbdfb7626d9e44804bbf7a91526
 
 COCOAPODS: 1.11.3

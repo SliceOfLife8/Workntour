@@ -21,6 +21,7 @@ end
 
 def common
   pod 'SwiftLint'
+  pod 'Hero'
 end
 
 def logging
