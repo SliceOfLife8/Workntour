@@ -64,7 +64,7 @@ extension AppCoordinator: OnboardingCoordinatorDelegate {
 
             dismissCoordinator(coordinator, modalStyle: .flipHorizontal, animated: true)
         } else {
-            // something else 
+            // something else
         }
     }
 

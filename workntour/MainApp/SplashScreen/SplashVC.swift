@@ -50,10 +50,6 @@ class SplashVC: BaseVC<SplashViewModel, MainCoordinator> {
         super.viewDidAppear(animated)
 
         // coordinator?.navigate(to: .registerPoint)
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.coordinator?.something()
-        }
     }
 
 }
