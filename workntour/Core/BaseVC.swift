@@ -7,10 +7,19 @@
 
 import UIKit
 import Combine
+import SharedKit
+
+/*
+ 1. Localization of app (Greek & English) and change texts live.
+ 2. Observe networking status
+ */
 
 typealias DisposeBag = Set<AnyCancellable>
 
-class BaseVC: UIViewController {
+class BaseVC<VM: BaseViewModel, C: Coordinator>: UIViewController {
+    /// Setup your own classes.
+    var viewModel: VM?
+    var coordinator: C?
 
     var storage: DisposeBag = []
 
@@ -18,9 +27,15 @@ class BaseVC: UIViewController {
         super.viewDidLoad()
 
         bindViews()
+        trackScreen()
     }
 
     func bindViews() {}
+
+    private func trackScreen() {
+        let currentVC = String(describing: type(of: self))
+        FirebaseManager.sharedInstance.trackScreen(currentVC)
+    }
 
     deinit {
         NotificationCenter.default.removeObserver(self)
@@ -35,3 +50,5 @@ private extension DisposeBag {
         removeAll()
     }
 }
+
+class BaseViewModel { }

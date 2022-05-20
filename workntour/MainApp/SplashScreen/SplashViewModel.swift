@@ -17,7 +17,7 @@ import Combine
  Published.Publisher (which is the type you get for an @Published property) publishes the current value of the property immediately.
  */
 
-class SplashViewModel {
+class SplashViewModel: BaseViewModel {
     // Service
     weak private var service: AuthorizationService?
     // Inputs
@@ -31,7 +31,8 @@ class SplashViewModel {
         self.entries = []
         self.input = PassthroughSubject<Void, Never>()
 
-        bindReloadToFetchConverter()
+        super.init()
+        self.bindReloadToFetchConverter()
     }
 
     func bindReloadToFetchConverter() {

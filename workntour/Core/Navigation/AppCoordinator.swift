@@ -42,7 +42,7 @@ private extension AppCoordinator {
             onboardingCoordinator.rootViewController.isModalInPresentation = true
             presentCoordinator(onboardingCoordinator, animated: false)
         } else {
-            let mainCoordinator = MainCoordinator()
+            let mainCoordinator = MainCoordinator(parent: self)
             addChildCoordinator(mainCoordinator)
             mainCoordinator.start()
             rootViewController.set(childViewController: mainCoordinator.rootViewController)

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B16837B2837C07B0067F2DB /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B16837A2837C07B0067F2DB /* FirebaseManager.swift */; };
 		1B5279E72820471100FDAF5D /* AuthorizationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5279E62820471100FDAF5D /* AuthorizationRouter.swift */; };
 		1B7315F1281E7DD0001F2E6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7315F0281E7DD0001F2E6A /* AppDelegate.swift */; };
 		1B7315F3281E7DD0001F2E6A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7315F2281E7DD0001F2E6A /* SceneDelegate.swift */; };
@@ -26,6 +27,7 @@
 		1B9A3D8C282C060A003E0C34 /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9A3D8B282C060A003E0C34 /* SplashViewModel.swift */; };
 		1B9A3D8E282C0B31003E0C34 /* AuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9A3D8D282C0B31003E0C34 /* AuthorizationService.swift */; };
 		1B9A3D90282C0BAF003E0C34 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9A3D8F282C0BAF003E0C34 /* DataManager.swift */; };
+		1B9A3DCB282D731C003E0C34 /* HeroHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9A3DCA282D731C003E0C34 /* HeroHelper.swift */; };
 		1BA2DEEF281E840900DB128D /* DeepLinkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA2DEEE281E840900DB128D /* DeepLinkManager.swift */; };
 		1BA2DEF7281E8AB600DB128D /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA2DEF6281E8AB600DB128D /* AppCoordinator.swift */; };
 		1BA2DEF9281E8AE800DB128D /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA2DEF8281E8AE800DB128D /* MainCoordinator.swift */; };
@@ -52,6 +54,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1B16837A2837C07B0067F2DB /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		1B5279DE281FDA6D00FDAF5D /* Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Networking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B5279E62820471100FDAF5D /* AuthorizationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationRouter.swift; sourceTree = "<group>"; };
 		1B527A1A2820509B00FDAF5D /* SharedKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SharedKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,7 +68,7 @@
 		1B8DA75D282596170032E20B /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		1B9A3CEC2827FC04003E0C34 /* SharedKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SharedKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B9A3D1628282710003E0C34 /* GoogleService-Info.Dev.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.Dev.plist"; sourceTree = "<group>"; };
-		1B9A3D2C28295F6E003E0C34 /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
+		1B9A3D2C28295F6E003E0C34 /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppConfig.swift; path = "../New Group/AppConfig.swift"; sourceTree = "<group>"; };
 		1B9A3D31282A3CE9003E0C34 /* Traveler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Traveler.swift; sourceTree = "<group>"; };
 		1B9A3D33282A416F003E0C34 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		1B9A3D7C282AB594003E0C34 /* NetworkingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = NetworkingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,6 +78,7 @@
 		1B9A3D8B282C060A003E0C34 /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
 		1B9A3D8D282C0B31003E0C34 /* AuthorizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationService.swift; sourceTree = "<group>"; };
 		1B9A3D8F282C0BAF003E0C34 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		1B9A3DCA282D731C003E0C34 /* HeroHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroHelper.swift; sourceTree = "<group>"; };
 		1BA2DEEE281E840900DB128D /* DeepLinkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkManager.swift; sourceTree = "<group>"; };
 		1BA2DEF6281E8AB600DB128D /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		1BA2DEF8281E8AE800DB128D /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
@@ -105,6 +109,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B1683792837C0480067F2DB /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				1B9A3D2C28295F6E003E0C34 /* AppConfig.swift */,
+				1B16837A2837C07B0067F2DB /* FirebaseManager.swift */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
 		1B5279E52820469100FDAF5D /* NetworkLayer */ = {
 			isa = PBXGroup;
 			children = (
@@ -192,11 +205,11 @@
 			isa = PBXGroup;
 			children = (
 				1BA2DEED281E83F700DB128D /* Navigation */,
+				1B1683792837C0480067F2DB /* Config */,
 				1B7315F0281E7DD0001F2E6A /* AppDelegate.swift */,
 				1B7315F2281E7DD0001F2E6A /* SceneDelegate.swift */,
 				1BA2DEFD281E8C1800DB128D /* AppRootVC.swift */,
 				1BA2DF01281E8C7300DB128D /* BaseVC.swift */,
-				1B9A3D2C28295F6E003E0C34 /* AppConfig.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -204,6 +217,7 @@
 		1BA2DEED281E83F700DB128D /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				1B9A3DCA282D731C003E0C34 /* HeroHelper.swift */,
 				1BA2DEEE281E840900DB128D /* DeepLinkManager.swift */,
 				1BA2DEF6281E8AB600DB128D /* AppCoordinator.swift */,
 				1BA2DEF8281E8AE800DB128D /* MainCoordinator.swift */,
@@ -490,12 +504,14 @@
 				1B9A3D8E282C0B31003E0C34 /* AuthorizationService.swift in Sources */,
 				1BA2DEFE281E8C1800DB128D /* AppRootVC.swift in Sources */,
 				1B9A3D32282A3CE9003E0C34 /* Traveler.swift in Sources */,
+				1B9A3DCB282D731C003E0C34 /* HeroHelper.swift in Sources */,
 				1B7315F3281E7DD0001F2E6A /* SceneDelegate.swift in Sources */,
 				1BA2DEEF281E840900DB128D /* DeepLinkManager.swift in Sources */,
 				1B9A3D2D28295F6F003E0C34 /* AppConfig.swift in Sources */,
 				1BA2DEF7281E8AB600DB128D /* AppCoordinator.swift in Sources */,
 				1B5279E72820471100FDAF5D /* AuthorizationRouter.swift in Sources */,
 				1B9A3D8A282C05F6003E0C34 /* SplashVC.swift in Sources */,
+				1B16837B2837C07B0067F2DB /* FirebaseManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

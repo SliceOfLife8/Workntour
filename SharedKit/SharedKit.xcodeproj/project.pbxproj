@@ -23,6 +23,7 @@
 		1B9A3D76282A853C003E0C34 /* Combine+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9A3D75282A853C003E0C34 /* Combine+Extensions.swift */; };
 		1B9A3D78282A8A0D003E0C34 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9A3D77282A8A0D003E0C34 /* String+Extensions.swift */; };
 		1B9A3D87282B91CE003E0C34 /* AssetColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9A3D86282B91CE003E0C34 /* AssetColor.swift */; };
+		1B9A3DCD282D737E003E0C34 /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9A3DCC282D737E003E0C34 /* Step.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		1B9A3D75282A853C003E0C34 /* Combine+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Combine+Extensions.swift"; sourceTree = "<group>"; };
 		1B9A3D77282A8A0D003E0C34 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		1B9A3D86282B91CE003E0C34 /* AssetColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetColor.swift; sourceTree = "<group>"; };
+		1B9A3DCC282D737E003E0C34 /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 			children = (
 				1B527A3C2820F4E400FDAF5D /* Coordinator.swift */,
 				1B527A3D2820F4E400FDAF5D /* Navigator.swift */,
+				1B9A3DCC282D737E003E0C34 /* Step.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 				1B9A3D70282A8485003E0C34 /* ControlEvent.swift in Sources */,
 				1B9A3D87282B91CE003E0C34 /* AssetColor.swift in Sources */,
 				1B527A3F2820F4E400FDAF5D /* Navigator.swift in Sources */,
+				1B9A3DCD282D737E003E0C34 /* Step.swift in Sources */,
 				1B9A3D74282A84FE003E0C34 /* ControlSubscription.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

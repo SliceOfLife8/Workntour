@@ -36,7 +36,7 @@ struct AppConfig {
     }
 
     static func setupFB() {
-        guard let file = Bundle.main.path(forResource: Environment.DEV.googleService, ofType: ".plist"),
+        guard let file = Bundle.main.path(forResource: Environment.current.googleService, ofType: ".plist"),
               let options = FirebaseOptions(contentsOfFile: file) else {
                   assertionFailure("Could not configure Firebase! Please check again the API Key.")
                   return
