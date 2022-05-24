@@ -80,7 +80,7 @@ extension Environment {
 
         switch self {
         case .DEV:
-            urlAsString = "https://api.publicapis.org"
+            urlAsString = "http://localhost:8080"
         case .STAGING:
             urlAsString = "not implemented yet!"
         case .PROD:

@@ -10,12 +10,12 @@ import Foundation
 public struct Environment {
     public init(
         jsonSerializationData: @escaping (Any, JSONSerialization.WritingOptions) throws -> Data = JSONSerialization.data(withJSONObject:options:),
-        printDebugDescriptionIfNeeded: @escaping (URLRequest, Error?, Int?) -> Void = NetworkingDebugger.printDebugDescriptionIfNeeded(from:error:statusCode:))
+        printDebugDescriptionIfNeeded: @escaping (URLRequest, ProviderError?, Int?) -> Void = NetworkingDebugger.printDebugDescriptionIfNeeded(from:error:statusCode:))
     {
         self.jsonSerializationData = jsonSerializationData
         self.printDebugDescriptionIfNeeded = printDebugDescriptionIfNeeded
     }
 
     public var jsonSerializationData: (Any, JSONSerialization.WritingOptions) throws -> Data
-    public var printDebugDescriptionIfNeeded: (URLRequest, Error?, Int?) -> Void
+    public var printDebugDescriptionIfNeeded: (URLRequest, ProviderError?, Int?) -> Void
 }

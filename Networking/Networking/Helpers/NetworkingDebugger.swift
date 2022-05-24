@@ -21,7 +21,7 @@ public enum NetworkingDebugger {
     }
 
     public static func printDebugDescriptionIfNeeded(from urlRequest: URLRequest,
-                                                     error: Error?,
+                                                     error: ProviderError?,
                                                      statusCode: Int?) {
         guard Preference.shared.isDebuggingEnabled else {
             return
@@ -41,7 +41,7 @@ public enum NetworkingDebugger {
             return
         }
 
-        SwiftyBeaver.error("STATUS: FAILED (\(code)).\nERROR: \(err.localizedDescription)\n")
+        SwiftyBeaver.error("STATUS: FAILED (\(code)).\nERROR: \(err.errorDescription)\n")
     }
 }
 

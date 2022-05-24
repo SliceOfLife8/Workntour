@@ -14,8 +14,8 @@ struct Traveler: Codable {
     let email, password: String
     let memberID, countryCode, mobile, nationality: String?
     let sex: UserSex?
-    let birthday: Date?
-    let createdAt: Date?
+    let birthday: String?
+    let createdAt: String?
 
     enum CodingKeys: String, CodingKey {
         case memberID = "memberId"
@@ -28,7 +28,7 @@ struct Traveler: Codable {
 
     init(name: String, surname: String, role: UserRole, email: String, password: String, memberID: String? = nil,
          countryCode: String? = nil, mobile: String? = nil, nationatility: String? = nil, sex: UserSex? = nil,
-         birthday: Date? = nil, createdAt: Date? = nil) {
+         birthday: String? = nil, createdAt: String? = nil) {
         self.name = name
         self.surname = surname
         self.role = role
@@ -44,16 +44,14 @@ struct Traveler: Codable {
     }
 }
 
-enum UserRole: Codable {
+enum UserRole: String, Codable {
     case TRAVELER
     case INDIVIDUAL_HOST
     case COMPANY_HOST
 }
 
-enum UserSex: Codable {
+enum UserSex: String, Codable {
     case MALE
     case FEMALE
     case OTHER
 }
-
-struct NoReply: Decodable {}

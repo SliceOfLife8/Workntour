@@ -34,13 +34,13 @@ class SplashVC: BaseVC<SplashViewModel, MainCoordinator> {
     }
 
     override func bindViews() {
-//        viewModel?.$entries
-//            .compactMap { $0.first }
-//            .sink(receiveCompletion: { print("completion: \($0)") },
-//                  receiveValue: {
-//                self.bottomText.text = $0.entryDescription
-//            })
-//            .store(in: &storage)
+        viewModel?.$hole
+            .dropFirst()
+            .sink(receiveCompletion: { print("completion: \($0)") },
+                  receiveValue: {
+                self.bottomText.text = "Network call succedded!!"
+            })
+            .store(in: &storage)
 
         viewModel?.$errorMessage
             .dropFirst()
