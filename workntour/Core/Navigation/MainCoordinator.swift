@@ -9,7 +9,7 @@ import UIKit
 import SharedKit
 
 enum MainStep: Step {
-   case registerPoint
+    case registerPoint
 }
 
 // MARK: - MainCoordinator
@@ -20,35 +20,32 @@ final class MainCoordinator: NavigationCoordinator {
     var navigator: NavigatorType
     var rootViewController: UINavigationController
 
-    private let entryViewController: UIViewController
-
     init(parent: AppCoordinator) {
         self.parent = parent
 
-        let splashViewModel = SplashViewModel()
-        let splashVC = SplashVC()
-        splashVC.viewModel = splashViewModel
-
-        self.entryViewController = splashVC
-
-        let navigationController = UINavigationController(rootViewController: entryViewController)
+        let navigationController = UINavigationController()
         self.navigator = Navigator(navigationController: navigationController)
         self.rootViewController = navigationController
-        splashVC.coordinator = self
     }
 
     func start() {
-        // rootViewController.delegate = self
-    }
+        let splashViewModel = SplashViewModel()
+        let splashVC = SplashVC()
 
-    func something() {
-        parent.dismissCoordinator(self, animated: true)
+        splashVC.viewModel = splashViewModel
+        splashVC.coordinator = self
+
+        self.rootViewController.pushViewController(splashVC, animated: true)
     }
 
     func navigate(to step: MainStep) {
         switch step {
         case .registerPoint:
-            print("register point!!!")
+            let registrationVC = RegistrationVC()
+            registrationVC.viewModel = RegistrationViewModel()
+            registrationVC.coordinator = self
+
+            self.rootViewController.pushViewController(registrationVC, animated: true)
         }
     }
 }

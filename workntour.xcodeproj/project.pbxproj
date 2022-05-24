@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1B16837B2837C07B0067F2DB /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B16837A2837C07B0067F2DB /* FirebaseManager.swift */; };
+		1B16837E283A58F00067F2DB /* RegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B16837D283A58F00067F2DB /* RegistrationVC.swift */; };
+		1B168380283A590B0067F2DB /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B16837F283A590B0067F2DB /* RegistrationViewModel.swift */; };
 		1B5279E72820471100FDAF5D /* AuthorizationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5279E62820471100FDAF5D /* AuthorizationRouter.swift */; };
 		1B7315F1281E7DD0001F2E6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7315F0281E7DD0001F2E6A /* AppDelegate.swift */; };
 		1B7315F3281E7DD0001F2E6A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7315F2281E7DD0001F2E6A /* SceneDelegate.swift */; };
@@ -55,6 +57,8 @@
 
 /* Begin PBXFileReference section */
 		1B16837A2837C07B0067F2DB /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
+		1B16837D283A58F00067F2DB /* RegistrationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationVC.swift; sourceTree = "<group>"; };
+		1B16837F283A590B0067F2DB /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		1B5279DE281FDA6D00FDAF5D /* Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Networking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B5279E62820471100FDAF5D /* AuthorizationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationRouter.swift; sourceTree = "<group>"; };
 		1B527A1A2820509B00FDAF5D /* SharedKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SharedKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -116,6 +120,15 @@
 				1B16837A2837C07B0067F2DB /* FirebaseManager.swift */,
 			);
 			path = Config;
+			sourceTree = "<group>";
+		};
+		1B16837C283A58CB0067F2DB /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				1B16837D283A58F00067F2DB /* RegistrationVC.swift */,
+				1B16837F283A590B0067F2DB /* RegistrationViewModel.swift */,
+			);
+			path = Registration;
 			sourceTree = "<group>";
 		};
 		1B5279E52820469100FDAF5D /* NetworkLayer */ = {
@@ -242,6 +255,7 @@
 			children = (
 				1BA2DF06281E8D6A00DB128D /* Onboarding */,
 				1B9A3D88282C05D5003E0C34 /* SplashScreen */,
+				1B16837C283A58CB0067F2DB /* Registration */,
 			);
 			path = MainApp;
 			sourceTree = "<group>";
@@ -498,6 +512,7 @@
 				1B9A3D8C282C060A003E0C34 /* SplashViewModel.swift in Sources */,
 				1B9A3D90282C0BAF003E0C34 /* DataManager.swift in Sources */,
 				1BA2DF02281E8C7300DB128D /* BaseVC.swift in Sources */,
+				1B168380283A590B0067F2DB /* RegistrationViewModel.swift in Sources */,
 				1BA2DEF9281E8AE800DB128D /* MainCoordinator.swift in Sources */,
 				1BA2DF08281E8D7700DB128D /* OnboardingCoordinator.swift in Sources */,
 				1B7315F1281E7DD0001F2E6A /* AppDelegate.swift in Sources */,
@@ -508,6 +523,7 @@
 				1B7315F3281E7DD0001F2E6A /* SceneDelegate.swift in Sources */,
 				1BA2DEEF281E840900DB128D /* DeepLinkManager.swift in Sources */,
 				1B9A3D2D28295F6F003E0C34 /* AppConfig.swift in Sources */,
+				1B16837E283A58F00067F2DB /* RegistrationVC.swift in Sources */,
 				1BA2DEF7281E8AB600DB128D /* AppCoordinator.swift in Sources */,
 				1B5279E72820471100FDAF5D /* AuthorizationRouter.swift in Sources */,
 				1B9A3D8A282C05F6003E0C34 /* SplashVC.swift in Sources */,

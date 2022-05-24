@@ -9,9 +9,9 @@ import Foundation
 import Networking
 
 enum AuthorizationRouter: NetworkTarget {
-    case registration
-    case resendOtp
-    case login
+    case registerTraveler(_ traveler: Traveler)
+    case registerHostIndividual
+    case registerHostCompany
 
     public var baseURL: URL {
         Environment.current.apiBaseURL
@@ -19,21 +19,30 @@ enum AuthorizationRouter: NetworkTarget {
 
     public var path: String {
         switch self {
-        case .registration:
-            return "/entries"
-        case .resendOtp:
-            return "/api/resendOtp"
-        case .login:
-            return "/api/login"
+        case .registerTraveler:
+            return "/registration/traveler"
+        case .registerHostIndividual:
+            return "/registration/host/individual"
+        case .registerHostCompany:
+            return "registration/host/company"
         }
     }
 
     public var methodType: MethodType {
-        .get
+        .post
     }
 
     public var workType: WorkType {
-        .requestPlain
+        let jsonEncoder = JSONEncoder()
+
+        switch self {
+        case .registerTraveler(let model):
+            // swiftlint:disable force_try
+            let jsonData = try! jsonEncoder.encode(model)
+            return .requestData(data: jsonData)
+        default:
+            return .requestPlain
+        }
     }
 
     public var providerType: AuthProviderType {
@@ -41,10 +50,10 @@ enum AuthorizationRouter: NetworkTarget {
     }
 
     public var contentType: ContentType? {
-        .none
+        .applicationJson
     }
 
     public var headers: [String: String]? {
-        nil
+        return ["accept": "*/*"]
     }
 }

@@ -7,27 +7,53 @@
 
 import Foundation
 
-// MARK: - Welcome
-struct Welcome: Codable {
-    let count: Int
-    let entries: [Entry]
-}
-
-// MARK: - Entry
-struct Entry: Codable, Equatable {
-    let api, entryDescription, auth: String
-    let https: Bool
-    let cors: String
-    let link: String
-    let category: String
+// MARK: - Traveler
+struct Traveler: Codable {
+    let name, surname: String
+    let role: UserRole
+    let email, password: String
+    let memberID, countryCode, mobile, nationality: String?
+    let sex: UserSex?
+    let birthday: Date?
+    let createdAt: Date?
 
     enum CodingKeys: String, CodingKey {
-        case api = "API"
-        case entryDescription = "Description"
-        case auth = "Auth"
-        case https = "HTTPS"
-        case cors = "Cors"
-        case link = "Link"
-        case category = "Category"
+        case memberID = "memberId"
+        case countryCode = "countryCodeMobileNum"
+        case mobile = "mobileNum"
+        case name, surname, role, email, password
+        case nationality, sex
+        case birthday, createdAt
+    }
+
+    init(name: String, surname: String, role: UserRole, email: String, password: String, memberID: String? = nil,
+         countryCode: String? = nil, mobile: String? = nil, nationatility: String? = nil, sex: UserSex? = nil,
+         birthday: Date? = nil, createdAt: Date? = nil) {
+        self.name = name
+        self.surname = surname
+        self.role = role
+        self.email = email
+        self.password = password
+        self.memberID = memberID
+        self.countryCode = countryCode
+        self.mobile = mobile
+        self.nationality = nationatility
+        self.sex = sex
+        self.birthday = birthday
+        self.createdAt = createdAt
     }
 }
+
+enum UserRole: Codable {
+    case TRAVELER
+    case INDIVIDUAL_HOST
+    case COMPANY_HOST
+}
+
+enum UserSex: Codable {
+    case MALE
+    case FEMALE
+    case OTHER
+}
+
+struct NoReply: Decodable {}

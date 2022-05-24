@@ -14,6 +14,9 @@ class SplashVC: BaseVC<SplashViewModel, MainCoordinator> {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: "HelveticaNeue-Bold", size: 20)
         label.textColor = .black
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
         return label
     }()
 
@@ -26,17 +29,18 @@ class SplashVC: BaseVC<SplashViewModel, MainCoordinator> {
 
         view.addSubview(bottomText)
         bottomText.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -32).isActive = true
-        bottomText.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        bottomText.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32).isActive = true
+        bottomText.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32).isActive = true
     }
 
     override func bindViews() {
-        viewModel?.$entries
-            .dropFirst()
-            .sink(receiveCompletion: { print("completion: \($0)") },
-                  receiveValue: {
-                self.bottomText.text = $0.first?.entryDescription
-            })
-            .store(in: &storage)
+//        viewModel?.$entries
+//            .compactMap { $0.first }
+//            .sink(receiveCompletion: { print("completion: \($0)") },
+//                  receiveValue: {
+//                self.bottomText.text = $0.entryDescription
+//            })
+//            .store(in: &storage)
 
         viewModel?.$errorMessage
             .dropFirst()
@@ -44,12 +48,6 @@ class SplashVC: BaseVC<SplashViewModel, MainCoordinator> {
                 self?.bottomText.text = message
             }
             .store(in: &storage)
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-        // coordinator?.navigate(to: .registerPoint)
     }
 
 }

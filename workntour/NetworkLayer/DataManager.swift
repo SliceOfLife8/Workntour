@@ -24,12 +24,12 @@ class DataManager {
 
 extension DataManager: AuthorizationService {
 
-    func userRegistration() -> AnyPublisher<[Entry], ProviderError> {
+    func userRegistration(traveler: Traveler) -> AnyPublisher<NoReply, ProviderError> {
         return networking.request(
-            with: AuthorizationRouter.registration,
+            with: AuthorizationRouter.registerTraveler(traveler),
             scheduler: DispatchQueue.main,
-            class: Welcome.self)
-            .compactMap { $0.entries }
+            class: NoReply.self)
+            .map { $0 }
             .eraseToAnyPublisher()
     }
 

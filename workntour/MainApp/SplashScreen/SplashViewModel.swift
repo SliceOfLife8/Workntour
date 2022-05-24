@@ -24,29 +24,41 @@ class SplashViewModel: BaseViewModel {
     // Inputs
     let input: PassthroughSubject<Void, Never>
     // Outputs
-    @Published private(set) var entries: [Entry]
+    // @Published private(set) var entries: [Entry]
+    @Published private(set) var voiddd: NoReply?
     @Published private(set) var errorMessage: String?
 
     init(service: AuthorizationService = DataManager.shared) {
         self.service = service
-        self.entries = []
+        // self.entries = []
         self.input = PassthroughSubject<Void, Never>()
 
         super.init()
-        self.bindReloadToFetchConverter()
+        self.registerTest()
     }
 
-    func bindReloadToFetchConverter() {
-        input.compactMap { [weak self] _ in
-            self?.service?.userRegistration()
-        }
-        .switchToLatest()
-        .subscribe(on: RunLoop.main)
-        .catch({ [weak self] error -> Just<[Entry]> in
-            print("Error", error)
-            self?.errorMessage = error.localizedDescription
-            return Just([Entry]())
-        })
-                .assign(to: &$entries)
+    private func registerTest() {
+        let traveler = Traveler(name: "Chris", surname: "Petimezas", role: UserRole.TRAVELER, email: "chris.petimezas@gmail.com", password: "123456")
+
+        self.service?.userRegistration(traveler: traveler)
+            .sink(receiveCompletion: { completion in
+                print("completion: \(completion)")
+            }, receiveValue: { [weak self] data in
+                print("data: \(data)")
+            })
     }
+
+    //    func bindReloadToFetchConverter() {
+    //        input.compactMap { [weak self] _ in
+    //            self?.service?.userRegistration()
+    //        }
+    //        .switchToLatest()
+    //        .subscribe(on: RunLoop.main)
+    //        .catch({ [weak self] error -> Just<[Entry]> in
+    //            print("Errorrr: ", error)
+    //            self?.errorMessage = error.errorDescription
+    //            return Just([Entry]())
+    //        })
+    //                .assign(to: &$entries)
+    //    }
 }
