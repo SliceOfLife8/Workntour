@@ -13,7 +13,9 @@ import UIKit
  */
 
 public enum AssetsColor: String {
-    case primary // #af7eff
+    case primary // #FAF8FE
+    case lavender // #8870F9
+    case purple // #7E6FD8
 }
 
 extension UIColor {

@@ -8,6 +8,7 @@
 import Foundation
 
 extension String {
+    // MARK: - Email validation
     private var emailPredicate: NSPredicate {
         let userid = "[A-Z0-9a-z._%+-]{1,}"
         let domain = "([A-Z0-9a-z._%+-]{1,}\\.){1,}"
@@ -17,5 +18,12 @@ extension String {
 
     public func isEmailValid() -> Bool {
         return emailPredicate.evaluate(with: self)
+    }
+
+    // MARK: - Countries
+    public func countryFlag() -> String {
+        return String(String.UnicodeScalarView(
+            self.unicodeScalars.compactMap(
+                { UnicodeScalar(127397 + $0.value) })))
     }
 }
