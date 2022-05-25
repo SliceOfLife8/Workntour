@@ -10,8 +10,8 @@ import Networking
 
 enum AuthorizationRouter: NetworkTarget {
     case registerTraveler(_ traveler: Traveler)
-    case registerHostIndividual
-    case registerHostCompany
+    case registerHostIndividual(_ individual: IndividualHost)
+    case registerHostCompany(_ company: CompanyHost)
 
     public var baseURL: URL {
         Environment.current.apiBaseURL
@@ -32,16 +32,20 @@ enum AuthorizationRouter: NetworkTarget {
         .post
     }
 
+    // swiftlint:disable force_try
     public var workType: WorkType {
-        let jsonEncoder = JSONEncoder()
+        let jsonEncoder: JSONEncoder = .init()
 
         switch self {
-        case .registerTraveler(let model):
-            // swiftlint:disable force_try
-            let jsonData = try! jsonEncoder.encode(model)
+        case .registerTraveler(let traveler):
+            let jsonData = try! jsonEncoder.encode(traveler)
             return .requestData(data: jsonData)
-        default:
-            return .requestPlain
+        case .registerHostIndividual(let individual):
+            let jsonData = try! jsonEncoder.encode(individual)
+            return .requestData(data: jsonData)
+        case .registerHostCompany(let company):
+            let jsonData = try! jsonEncoder.encode(company)
+            return .requestData(data: jsonData)
         }
     }
 

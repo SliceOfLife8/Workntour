@@ -26,7 +26,7 @@ class SplashViewModel: BaseViewModel {
     // Outputs
     @Published private(set) var hole: Void
     @Published private(set) var errorMessage: String?
-    
+
     init(service: AuthorizationService = DataManager.shared) {
         self.service = service
         self.hole = ()
@@ -40,7 +40,7 @@ class SplashViewModel: BaseViewModel {
         let traveler = Traveler(name: "Chris", surname: "Petimezas", role: UserRole.TRAVELER, email: "chris.petimezas@gmail.com", password: "123456")
 
         input.compactMap { [weak self] _ in
-            self?.service?.userRegistration(traveler: traveler)
+            self?.service?.travelerRegistration(model: traveler)
         }
         .switchToLatest()
         .subscribe(on: RunLoop.main)

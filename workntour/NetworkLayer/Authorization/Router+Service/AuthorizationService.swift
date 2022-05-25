@@ -10,6 +10,10 @@ import Networking
 
 protocol AuthorizationService: AnyObject {
 
-    func userRegistration(traveler: Traveler) -> AnyPublisher<Void, ProviderError>
+    func travelerRegistration(model: Traveler) -> AnyPublisher<Void, ProviderError>
+
+    func individualHostRegistration(model: IndividualHost) -> AnyPublisher<Void, ProviderError>
+
+    func companyHostRegistration(model: CompanyHost) -> AnyPublisher<Void, ProviderError>
 
 }

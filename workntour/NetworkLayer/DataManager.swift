@@ -22,13 +22,32 @@ class DataManager {
     }
 }
 
+// MARK: - AuthorizationService
 extension DataManager: AuthorizationService {
 
-    func userRegistration(traveler: Traveler) -> AnyPublisher<Void, ProviderError> {
+    func travelerRegistration(model: Traveler) -> AnyPublisher<Void, ProviderError> {
         return networking.request(
-            with: AuthorizationRouter.registerTraveler(traveler),
+            with: AuthorizationRouter.registerTraveler(model),
             scheduler: DispatchQueue.main,
             class: GenericResponse<Traveler>.self)
+            .map { _ in () }
+            .eraseToAnyPublisher()
+    }
+
+    func individualHostRegistration(model: IndividualHost) -> AnyPublisher<Void, ProviderError> {
+        return networking.request(
+            with: AuthorizationRouter.registerHostIndividual(model),
+            scheduler: DispatchQueue.main,
+            class: GenericResponse<IndividualHost>.self)
+            .map { _ in () }
+            .eraseToAnyPublisher()
+    }
+
+    func companyHostRegistration(model: CompanyHost) -> AnyPublisher<Void, ProviderError> {
+        return networking.request(
+            with: AuthorizationRouter.registerHostCompany(model),
+            scheduler: DispatchQueue.main,
+            class: GenericResponse<CompanyHost>.self)
             .map { _ in () }
             .eraseToAnyPublisher()
     }

@@ -70,12 +70,12 @@ private extension URLRequest {
         var data: String = ""
 
         if let httpHeaders = self.allHTTPHeaderFields, httpHeaders.keys.count > 0 {
-            for (key,value) in httpHeaders {
+            for (key, value) in httpHeaders {
                 header += (pretty ? "--header " : "-H ") + "\'\(key): \(value)\' \(newLine)"
             }
         }
 
-        if let bodyData = self.httpBody, let bodyString = String(data: bodyData, encoding: .utf8),  !bodyString.isEmpty {
+        if let bodyData = self.httpBody, let bodyString = String(data: bodyData, encoding: .utf8), !bodyString.isEmpty {
             data = "--data '\(bodyString)'"
         }
 
