@@ -7,39 +7,14 @@
 
 import UIKit
 import SharedKit
+import CommonUI
 
 class SplashVC: BaseVC<SplashViewModel, MainCoordinator> {
 
-//    private lazy var logoIcon: UIImageView = {
-//        let imageView = UIImageView()
-//        imageView.image = .init(named: "logo")
-//        imageView.contentMode = .scaleAspectFit
-//        return imageView
-//    }()
-
-    private lazy var illustration: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = .init(named: "splash_illustration")
-        imageView.contentMode = .scaleAspectFill
-        return imageView
-    }()
-
-    // MARK: - Inits
-    init() {
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    @available(*, unavailable)
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        //logoIcon.addExclusiveConstraints(superview: view, top: (view.safeAreaLayoutGuide.topAnchor, 75), width: 45, height: 45, centerX: (view.centerXAnchor, 0))
-        //illustration.addExclusiveConstraints(superview: view, top: (logoIcon.bottomAnchor, 18), left: (view.leadingAnchor, 0), right: (view.trailingAnchor, 0), height: 300)
-    }
+    // MARK: - Outlets
+    @IBOutlet weak var loginBtn: PrimaryButton!
+    @IBOutlet weak var loginAsGuestBtn: SecondaryButton!
+    @IBOutlet weak var registrationPoint: LinkableLabel!
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -51,4 +26,29 @@ class SplashVC: BaseVC<SplashViewModel, MainCoordinator> {
         showNavigationBar(animated)
     }
 
+    override func setupTexts() {
+        super.setupTexts()
+        loginBtn.setTitle("Log in", for: .normal)
+        loginAsGuestBtn.setTitle("Log in as a guest", for: .normal)
+
+        registrationPoint.text = "Not a member? Register here"
+        let actionPart = "Register here"
+        registrationPoint.changeFont(ofText: actionPart, with: UIFont.scriptFont(.bold, size: 14))
+        registrationPoint.changeTextColor(ofText: actionPart, with: UIColor.appColor(.mint))
+
+        registrationPoint.onCharacterTapped = { label, index in
+            if label.text?.wordExistsOnTappableArea(word: actionPart, index: index) == true {
+                self.coordinator?.navigate(to: .registrationPoint)
+            }
+        }
+    }
+
+    // MARK: - Actions
+    @IBAction func loginBtnTapped(_ sender: Any) {
+        self.coordinator?.navigate(to: .login)
+    }
+
+    @IBAction func loginAsGuestBtnTapped(_ sender: Any) {
+        self.coordinator?.navigate(to: .loginAsGuest)
+    }
 }

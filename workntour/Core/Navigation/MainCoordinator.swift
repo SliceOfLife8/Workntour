@@ -9,7 +9,9 @@ import UIKit
 import SharedKit
 
 enum MainStep: Step {
-    case registerPoint
+    case registrationPoint
+    case login
+    case loginAsGuest
 }
 
 // MARK: - MainCoordinator
@@ -40,12 +42,16 @@ final class MainCoordinator: NavigationCoordinator {
 
     func navigate(to step: MainStep) {
         switch step {
-        case .registerPoint:
+        case .registrationPoint:
             let registrationVC = RegistrationVC()
             registrationVC.viewModel = RegistrationViewModel()
             registrationVC.coordinator = self
-
+            
             self.rootViewController.pushViewController(registrationVC, animated: true)
+        case .login:
+            debugPrint("Login flow!")
+        case .loginAsGuest:
+            debugPrint("Login as a guest!")
         }
     }
 }

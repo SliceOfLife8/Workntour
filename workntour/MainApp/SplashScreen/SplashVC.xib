@@ -8,9 +8,17 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Lato-Medium.ttf">
+            <string>Lato-Medium</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BaseVC" customModule="workntour" customModuleProvider="target">
             <connections>
+                <outlet property="loginAsGuestBtn" destination="01O-bm-Mdm" id="1D1-P6-hOG"/>
+                <outlet property="loginBtn" destination="IIS-6j-vnX" id="4UO-MA-ipc"/>
+                <outlet property="registrationPoint" destination="SJF-gj-RQP" id="RHI-Ea-baF"/>
                 <outlet property="view" destination="iN0-l3-epB" id="yzO-yR-maf"/>
             </connections>
         </placeholder>
@@ -39,13 +47,12 @@
                             <rect key="frame" x="0.0" y="178" width="414" height="397"/>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IIS-6j-vnX" customClass="PrimaryButton" customModule="CommonUI">
-                            <rect key="frame" x="24" y="653" width="366" height="48"/>
+                            <rect key="frame" x="24" y="670" width="366" height="48"/>
                             <color key="backgroundColor" name="lavender"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="48" id="wf9-rx-7ce"/>
                             </constraints>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                            <state key="normal" title="Log in"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="radius">
                                     <real key="value" value="6"/>
@@ -57,16 +64,18 @@
                                     <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="loginBtnTapped:" destination="-1" eventType="touchUpInside" id="qlZ-bD-cnf"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="01O-bm-Mdm" userLabel="Guest" customClass="SecondaryButton" customModule="CommonUI">
-                            <rect key="frame" x="24" y="717" width="366" height="48"/>
+                            <rect key="frame" x="24" y="734" width="366" height="48"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="48" id="r9t-DP-agJ"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="0.0"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                            <state key="normal" title="Log in as a guest"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="radius">
                                     <real key="value" value="6"/>
@@ -75,11 +84,14 @@
                                     <color key="value" name="purple"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="loginAsGuestBtnTapped:" destination="-1" eventType="touchUpInside" id="dKp-L2-Akw"/>
+                            </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Not a member? Register here" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SJF-gj-RQP" userLabel="registration">
-                            <rect key="frame" x="24" y="797" width="366" height="17"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <nil key="textColor"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="751" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SJF-gj-RQP" userLabel="registration" customClass="LinkableLabel" customModule="CommonUI">
+                            <rect key="frame" x="207" y="814" width="0.0" height="0.0"/>
+                            <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
+                            <color key="textColor" red="0.086274509803921567" green="0.086274509803921567" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
@@ -90,15 +102,14 @@
                         <constraint firstItem="FNm-Dp-Ggr" firstAttribute="top" secondItem="cdZ-YQ-FN5" secondAttribute="bottom" constant="18" id="B5f-L9-W25"/>
                         <constraint firstItem="IIS-6j-vnX" firstAttribute="leading" secondItem="1wc-gd-Pfg" secondAttribute="leading" constant="24" id="EHs-eC-gsY"/>
                         <constraint firstItem="M61-Wh-W1x" firstAttribute="top" secondItem="FNm-Dp-Ggr" secondAttribute="bottom" constant="14" id="IGL-He-hHf"/>
+                        <constraint firstItem="SJF-gj-RQP" firstAttribute="centerX" secondItem="01O-bm-Mdm" secondAttribute="centerX" id="P00-S2-hJj"/>
                         <constraint firstItem="cdZ-YQ-FN5" firstAttribute="top" secondItem="1wc-gd-Pfg" secondAttribute="top" constant="48" id="Plu-iF-Har"/>
                         <constraint firstAttribute="trailing" secondItem="M61-Wh-W1x" secondAttribute="trailing" id="RNw-M5-tuY"/>
                         <constraint firstItem="cdZ-YQ-FN5" firstAttribute="centerX" secondItem="1wc-gd-Pfg" secondAttribute="centerX" id="Rgg-wM-ERD"/>
                         <constraint firstItem="M61-Wh-W1x" firstAttribute="leading" secondItem="1wc-gd-Pfg" secondAttribute="leading" id="aiR-bG-zeV"/>
                         <constraint firstItem="FNm-Dp-Ggr" firstAttribute="centerX" secondItem="cdZ-YQ-FN5" secondAttribute="centerX" id="cXr-s4-rRJ"/>
-                        <constraint firstItem="SJF-gj-RQP" firstAttribute="trailing" secondItem="01O-bm-Mdm" secondAttribute="trailing" id="cY4-kr-ckE"/>
                         <constraint firstItem="01O-bm-Mdm" firstAttribute="leading" secondItem="IIS-6j-vnX" secondAttribute="leading" id="g2b-6h-RN2"/>
                         <constraint firstAttribute="trailing" secondItem="IIS-6j-vnX" secondAttribute="trailing" constant="24" id="nWP-0d-gyR"/>
-                        <constraint firstItem="SJF-gj-RQP" firstAttribute="leading" secondItem="01O-bm-Mdm" secondAttribute="leading" id="p5l-7X-HKH"/>
                         <constraint firstAttribute="bottom" secondItem="SJF-gj-RQP" secondAttribute="bottom" constant="48" id="pmH-TY-ttV"/>
                         <constraint firstItem="SJF-gj-RQP" firstAttribute="top" secondItem="01O-bm-Mdm" secondAttribute="bottom" constant="32" id="ptx-F3-8U2"/>
                         <constraint firstItem="01O-bm-Mdm" firstAttribute="top" secondItem="IIS-6j-vnX" secondAttribute="bottom" constant="16" id="y28-HI-9IG"/>

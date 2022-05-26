@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1B4AE400283E57BA00FA6420 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4AE3FF283E57BA00FA6420 /* UIViewController+Extensions.swift */; };
+		1B4AE43A283F5F5900FA6420 /* ChangableFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4AE439283F5F5900FA6420 /* ChangableFont.swift */; };
+		1B4AE43C283F5F8A00FA6420 /* ChangableFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4AE43B283F5F8A00FA6420 /* ChangableFont+Extensions.swift */; };
+		1B4AE43E283F621500FA6420 /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4AE43D283F621500FA6420 /* UIFont+Extensions.swift */; };
 		1B5279F728204D6800FDAF5D /* SharedKit.docc in Sources */ = {isa = PBXBuildFile; fileRef = 1B5279F628204D6800FDAF5D /* SharedKit.docc */; };
 		1B5279FD28204D6800FDAF5D /* SharedKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B5279F228204D6800FDAF5D /* SharedKit.framework */; };
 		1B527A0328204D6800FDAF5D /* SharedKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 1B5279F528204D6800FDAF5D /* SharedKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -39,6 +42,9 @@
 
 /* Begin PBXFileReference section */
 		1B4AE3FF283E57BA00FA6420 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		1B4AE439283F5F5900FA6420 /* ChangableFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangableFont.swift; sourceTree = "<group>"; };
+		1B4AE43B283F5F8A00FA6420 /* ChangableFont+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChangableFont+Extensions.swift"; sourceTree = "<group>"; };
+		1B4AE43D283F621500FA6420 /* UIFont+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
 		1B5279F228204D6800FDAF5D /* SharedKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SharedKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B5279F528204D6800FDAF5D /* SharedKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedKit.h; sourceTree = "<group>"; };
 		1B5279F628204D6800FDAF5D /* SharedKit.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = SharedKit.docc; sourceTree = "<group>"; };
@@ -78,6 +84,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B4AE438283F5F4800FA6420 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				1B4AE439283F5F5900FA6420 /* ChangableFont.swift */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		1B5279E828204D6800FDAF5D = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +139,8 @@
 				1B9A3D75282A853C003E0C34 /* Combine+Extensions.swift */,
 				1B9A3D77282A8A0D003E0C34 /* String+Extensions.swift */,
 				1B4AE3FF283E57BA00FA6420 /* UIViewController+Extensions.swift */,
+				1B4AE43B283F5F8A00FA6420 /* ChangableFont+Extensions.swift */,
+				1B4AE43D283F621500FA6420 /* UIFont+Extensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -132,6 +148,7 @@
 		1B527A0D28204E3800FDAF5D /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				1B4AE438283F5F4800FA6420 /* Fonts */,
 				1B9A3D6D282A846A003E0C34 /* Combine */,
 				1B527A1228204E6800FDAF5D /* LocalStorageManager.swift */,
 				1B9A3D86282B91CE003E0C34 /* AssetColor.swift */,
@@ -284,6 +301,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B4AE43C283F5F8A00FA6420 /* ChangableFont+Extensions.swift in Sources */,
+				1B4AE43A283F5F5900FA6420 /* ChangableFont.swift in Sources */,
 				1B527A1128204E5700FDAF5D /* UIView+Extensions.swift in Sources */,
 				1B9A3D78282A8A0D003E0C34 /* String+Extensions.swift in Sources */,
 				1B5279F728204D6800FDAF5D /* SharedKit.docc in Sources */,
@@ -296,6 +315,7 @@
 				1B9A3D87282B91CE003E0C34 /* AssetColor.swift in Sources */,
 				1B4AE400283E57BA00FA6420 /* UIViewController+Extensions.swift in Sources */,
 				1B527A3F2820F4E400FDAF5D /* Navigator.swift in Sources */,
+				1B4AE43E283F621500FA6420 /* UIFont+Extensions.swift in Sources */,
 				1B9A3DCD282D737E003E0C34 /* Step.swift in Sources */,
 				1B9A3D74282A84FE003E0C34 /* ControlSubscription.swift in Sources */,
 			);

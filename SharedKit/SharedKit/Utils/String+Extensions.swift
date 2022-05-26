@@ -26,4 +26,23 @@ extension String {
             self.unicodeScalars.compactMap(
                 { UnicodeScalar(127397 + $0.value) })))
     }
+
+    func range(ofText text: String) -> NSRange {
+        let fullText = self
+        let range = (fullText as NSString).range(of: text)
+        return range
+    }
+
+    public func wordExistsOnTappableArea(word: String, index: Int) -> Bool {
+        if let range = self.range(of: word) {
+            let startPos = self.distance(from: self.startIndex, to: range.lowerBound)
+            let endPos = self.distance(from: self.startIndex, to: range.upperBound)
+
+            if startPos...endPos ~= index {
+                return true
+            }
+        }
+
+        return false
+    }
 }

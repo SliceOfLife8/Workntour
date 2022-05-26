@@ -16,6 +16,7 @@ public enum AssetsColor: String {
     case primary // #FAF8FE
     case lavender // #8870F9
     case purple // #7E6FD8
+    case mint // #0EE5D0
 }
 
 extension UIColor {
