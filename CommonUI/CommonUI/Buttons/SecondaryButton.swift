@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SharedKit
 
 public class SecondaryButton: UIButton {
     // MARK: - Customize your view
@@ -45,7 +46,7 @@ public class SecondaryButton: UIButton {
 
         setTitleColor(mainColor, for: .normal)
         titleLabel?.textColor = mainColor
-        titleLabel?.font = UIFont(name: "Inter", size: 16)
+        titleLabel?.font = UIFont.scriptFont(.semibold, size: 16)
     }
 
     public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

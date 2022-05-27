@@ -11,6 +11,7 @@
 		1B4AE40D283E6FDC00FA6420 /* UIImpactFeedbackGenerator+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4AE40C283E6FDC00FA6420 /* UIImpactFeedbackGenerator+Extension.swift */; };
 		1B4AE411283E845C00FA6420 /* SecondaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4AE410283E845C00FA6420 /* SecondaryButton.swift */; };
 		1B4AE445283F708F00FA6420 /* LinkableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4AE444283F708F00FA6420 /* LinkableLabel.swift */; };
+		1B4AE44C2840AEFC00FA6420 /* Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4AE44B2840AEFC00FA6420 /* Checkbox.swift */; };
 		1B527A30282059A600FDAF5D /* CommonUI.docc in Sources */ = {isa = PBXBuildFile; fileRef = 1B527A2F282059A600FDAF5D /* CommonUI.docc */; };
 		1B527A31282059A600FDAF5D /* CommonUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 1B527A2E282059A600FDAF5D /* CommonUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
@@ -20,6 +21,7 @@
 		1B4AE40C283E6FDC00FA6420 /* UIImpactFeedbackGenerator+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImpactFeedbackGenerator+Extension.swift"; sourceTree = "<group>"; };
 		1B4AE410283E845C00FA6420 /* SecondaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryButton.swift; sourceTree = "<group>"; };
 		1B4AE444283F708F00FA6420 /* LinkableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkableLabel.swift; sourceTree = "<group>"; };
+		1B4AE44B2840AEFC00FA6420 /* Checkbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkbox.swift; sourceTree = "<group>"; };
 		1B527A2B282059A600FDAF5D /* CommonUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CommonUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B527A2E282059A600FDAF5D /* CommonUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonUI.h; sourceTree = "<group>"; };
 		1B527A2F282059A600FDAF5D /* CommonUI.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = CommonUI.docc; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				1B4AE444283F708F00FA6420 /* LinkableLabel.swift */,
+				1B4AE44B2840AEFC00FA6420 /* Checkbox.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -170,6 +173,7 @@
 			files = (
 				1B4AE411283E845C00FA6420 /* SecondaryButton.swift in Sources */,
 				1B4AE445283F708F00FA6420 /* LinkableLabel.swift in Sources */,
+				1B4AE44C2840AEFC00FA6420 /* Checkbox.swift in Sources */,
 				1B4AE40D283E6FDC00FA6420 /* UIImpactFeedbackGenerator+Extension.swift in Sources */,
 				1B4AE40A283E691D00FA6420 /* PrimaryButton.swift in Sources */,
 				1B527A30282059A600FDAF5D /* CommonUI.docc in Sources */,

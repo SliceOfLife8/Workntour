@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SharedKit
 
 public class PrimaryButton: UIButton {
     // MARK: - Customize your view
@@ -80,13 +81,13 @@ public class PrimaryButton: UIButton {
     func setEnabledState() {
         backgroundColor = enabledStateColor
         setTitleColor(enabledStateTitleColor, for: .normal)
-        titleLabel?.font = UIFont(name: "Inter", size: 16)
+        titleLabel?.font = UIFont.scriptFont(.semibold, size: 16)
     }
 
     func setDisableState() {
         backgroundColor = disabledStateColor
         setTitleColor(disabledStateColor, for: .disabled)
-        titleLabel?.font = UIFont(name: "Inter", size: 16)
+        titleLabel?.font = UIFont.scriptFont(.semibold, size: 16)
     }
 
     public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

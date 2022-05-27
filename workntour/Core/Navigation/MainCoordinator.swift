@@ -43,15 +43,24 @@ final class MainCoordinator: NavigationCoordinator {
     func navigate(to step: MainStep) {
         switch step {
         case .registrationPoint:
-            let registrationVC = RegistrationVC()
-            registrationVC.viewModel = RegistrationViewModel()
-            registrationVC.coordinator = self
-            
-            self.rootViewController.pushViewController(registrationVC, animated: true)
+            showAlert()
         case .login:
             debugPrint("Login flow!")
         case .loginAsGuest:
             debugPrint("Login as a guest!")
         }
+    }
+
+    func showAlert() {
+        AlertHelper.showAlertWithTwoActions(rootViewController, title: "Sign Up as a", leftButtonTitle: "Traveler", rightButtonTitle: "Host", leftAction: {
+            self.startRegistrationFlow(forType: .TRAVELER)
+        }, rightAction: {
+            self.startRegistrationFlow(forType: .INDIVIDUAL_HOST)
+        })
+    }
+
+    private func startRegistrationFlow(forType type: UserRole) {
+        let registrationCoordinator = RegistrationCoordinator(parent: self, role: type)
+        presentCoordinator(registrationCoordinator, modalStyle: .overFullScreen, animated: true)
     }
 }
