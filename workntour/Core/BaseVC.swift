@@ -19,7 +19,7 @@ typealias DisposeBag = Set<AnyCancellable>
 class BaseVC<VM: BaseViewModel, C: Coordinator>: UIViewController {
     /// Setup your own classes.
     var viewModel: VM?
-    var coordinator: C?
+    weak var coordinator: C?
 
     var storage: DisposeBag = []
 

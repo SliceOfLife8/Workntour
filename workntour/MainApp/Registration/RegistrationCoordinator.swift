@@ -17,14 +17,14 @@ enum RegistrationStep: Step {
 
 final class RegistrationCoordinator: NavigationCoordinator {
 
-    var parent: Coordinator
+    var parent: MainCoordinator
     var childCoordinators: [Coordinator] = []
     var navigator: NavigatorType
     var rootViewController: UINavigationController
 
     private var userRole: UserRole
 
-    init(parent: Coordinator, role: UserRole) {
+    init(parent: MainCoordinator, role: UserRole) {
         self.parent = parent
         self.userRole = role
 
@@ -35,16 +35,12 @@ final class RegistrationCoordinator: NavigationCoordinator {
 
     func start() {
         let registrationViewModel = RegistrationViewModel()
-        let registrationVC = RegistrationVC()
+        let registrationVC = RegistrationVC(type: userRole)
 
         registrationVC.viewModel = registrationViewModel
         registrationVC.coordinator = self
 
         rootViewController.pushViewController(registrationVC, animated: true)
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
-           // self.navigate(to: .close)
-        })
     }
 
     func navigate(to step: RegistrationStep) {
@@ -52,7 +48,7 @@ final class RegistrationCoordinator: NavigationCoordinator {
         case .emailVerification:
             debugPrint("Open verification!")
         case .close:
-            dismissCoordinator(self, modalStyle: .coverVertical, animated: true, completion: nil)
+            parent.dismissCoordinator(self, modalStyle: .coverVertical, animated: true, completion: nil)
         }
     }
 

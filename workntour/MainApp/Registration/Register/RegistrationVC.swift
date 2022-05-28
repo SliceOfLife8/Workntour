@@ -10,8 +10,21 @@ import SharedKit
 
 class RegistrationVC: BaseVC<RegistrationViewModel, RegistrationCoordinator> {
 
+    private(set) var role: UserRole
+
     private var localIdentifier: String {
         Locale.current.collatorIdentifier ?? Locale.current.identifier
+    }
+
+    // MARK: - Init
+    init(type: UserRole) {
+        self.role = type
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    @available(*, unavailable)
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     override func viewDidLoad() {
