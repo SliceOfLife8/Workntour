@@ -7,14 +7,16 @@
 
 import UIKit
 import SharedKit
+import CommonUI
+import CombineDataSources
 
 class RegistrationVC: BaseVC<RegistrationViewModel, RegistrationCoordinator> {
 
+    // MARK: - Vars
     private(set) var role: UserRole
 
-    private var localIdentifier: String {
-        Locale.current.collatorIdentifier ?? Locale.current.identifier
-    }
+    // MARK: - Outlets
+    @IBOutlet weak var tableView: UITableView!
 
     // MARK: - Init
     init(type: UserRole) {
@@ -29,37 +31,78 @@ class RegistrationVC: BaseVC<RegistrationViewModel, RegistrationCoordinator> {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.appColor(.primary)
+        setupNavBar()
+        setupTableView()
+        registerNotifications()
+
+        self.viewModel?.input.send(())
+
+        self.viewModel?.fetchModels()
+    }
+
+    private func setupNavBar() {
         self.setupNavigationBar(mainTitle: "Sign up")
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(closeBtnTapped))
+    }
 
-        // self.viewModel?.input.send(())
+    private func registerNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
 
-        NSLocale.isoCountryCodes.forEach { code in
-            if let name = Locale(identifier: localIdentifier).localizedString(forRegionCode: code) {
-               // print("name: \(name), code: \(code)")
-            }
-        }
+    private func setupTableView() {
+        tableView.register(UINib(nibName: RegistrationCell.identifier, bundle: Bundle(for: RegistrationCell.self)), forCellReuseIdentifier: RegistrationCell.identifier)
+        tableView.keyboardDismissMode = .interactive
     }
 
     override func bindViews() {
-        viewModel?.$hole
-            .dropFirst()
-            .sink(receiveCompletion: { print("completion: \($0)") },
-                  receiveValue: {
-            })
-            .store(in: &storage)
+        viewModel?.data
+            .bind(subscriber:
+                    tableView.rowsSubscriber(cellIdentifier:
+                                                RegistrationCell.identifier,
+                                             cellType: RegistrationCell.self,
+                                             cellConfig: { cell, _, model in
+                cell.setupCell(title: model.title,
+                               isOptional: model.isOptional,
+                               placeholder: model.placeholder,
+                               keyboardType: model.textFieldKeyboardType,
+                               rightIcon: model.textFieldRightIcon,
+                               countryFlag: model.countryEmoji,
+                               description: model.description)
 
-        viewModel?.$errorMessage
-            .dropFirst()
-            .sink { [weak self] message in
-            }
+                DispatchQueue.main.async {
+                    cell.roundCorners()
+                }
+                cell.delegate = self
+            }))
             .store(in: &storage)
     }
 
-    @objc
-    private func closeBtnTapped() {
+    @objc private func closeBtnTapped() {
         self.coordinator?.navigate(to: .close)
     }
 
+}
+
+// MARK: - RegistrationCellDelegate
+extension RegistrationVC: RegistrationCellDelegate {
+    func textFieldDidBeginEditing(cell: RegistrationCell) {
+        guard let indexPath = tableView.indexPath(for: cell) else {
+            return
+        }
+
+        tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+    }
+}
+
+// MARK: - Keyboard Notifications
+extension RegistrationVC {
+    @objc private func keyboardWillShow(notification: Notification) {
+        guard let keyboardFrame = notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+        tableView.contentInset.bottom = view.convert(keyboardFrame.cgRectValue, from: nil).size.height + 16
+    }
+
+    @objc private func keyboardWillHide(notification: Notification) {
+        tableView.contentInset.bottom = 0
+    }
 }

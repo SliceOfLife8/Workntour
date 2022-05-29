@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Lato-Medium.ttf">
+            <string>Lato-Medium</string>
+        </array>
+        <array key="Lato-Regular.ttf">
+            <string>Lato-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="RegistrationCell" customModule="CommonUI" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="XUM-fQ-pfE" userLabel="Top Stack View">
+                        <rect key="frame" x="24" y="16" width="272" height="20"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tYp-3b-nPL">
+                                <rect key="frame" x="0.0" y="0.0" width="136" height="20"/>
+                                <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
+                                <color key="textColor" red="0.2627450980392157" green="0.094117647058823528" blue="0.47450980392156861" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="optional" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1dE-BJ-sPC">
+                                <rect key="frame" x="136" y="0.0" width="136" height="20"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="13"/>
+                                <color key="textColor" name="placeholder"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="Kd7-b3-GT5"/>
+                        </constraints>
+                    </stackView>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZYr-TG-sf5" customClass="GradientTextField" customModule="CommonUI" customModuleProvider="target">
+                        <rect key="frame" x="24" y="42" width="272" height="35"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" priority="750" constant="44" id="vg2-dD-nfU"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Yue-4Z-uMH" userLabel="Bottom Stack View">
+                        <rect key="frame" x="24" y="83" width="272" height="17"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FMg-dA-oiD" userLabel="description">
+                                <rect key="frame" x="0.0" y="0.0" width="272" height="17"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                                <color key="textColor" red="0.40000000000000002" green="0.4392156862745098" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="ZYr-TG-sf5" firstAttribute="top" secondItem="XUM-fQ-pfE" secondAttribute="bottom" constant="6" id="1xs-hj-04j"/>
+                    <constraint firstItem="XUM-fQ-pfE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="5Hm-Jo-1F5"/>
+                    <constraint firstItem="XUM-fQ-pfE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="DYw-Tx-hoU"/>
+                    <constraint firstItem="Yue-4Z-uMH" firstAttribute="top" secondItem="ZYr-TG-sf5" secondAttribute="bottom" constant="6" id="GWh-OZ-IG5"/>
+                    <constraint firstItem="Yue-4Z-uMH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="Ghg-b2-xbs"/>
+                    <constraint firstAttribute="trailing" secondItem="XUM-fQ-pfE" secondAttribute="trailing" constant="24" id="Ka3-eZ-0b7"/>
+                    <constraint firstAttribute="trailing" secondItem="ZYr-TG-sf5" secondAttribute="trailing" constant="24" id="NuF-GL-b6s"/>
+                    <constraint firstItem="ZYr-TG-sf5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="Yfq-Sr-Msa"/>
+                    <constraint firstAttribute="bottom" secondItem="Yue-4Z-uMH" secondAttribute="bottom" id="fwP-ey-fgz"/>
+                    <constraint firstAttribute="trailing" secondItem="Yue-4Z-uMH" secondAttribute="trailing" constant="24" id="r8i-a3-c5x"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="descriptionLabel" destination="FMg-dA-oiD" id="ZDf-2W-bsk"/>
+                <outlet property="gradientTextField" destination="ZYr-TG-sf5" id="JYn-r8-YwY"/>
+                <outlet property="optionalLabel" destination="1dE-BJ-sPC" id="Sfg-fp-j6w"/>
+                <outlet property="titleLabel" destination="tYp-3b-nPL" id="vU5-Fa-SmB"/>
+            </connections>
+            <point key="canvasLocation" x="135" y="132"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="placeholder">
+            <color red="0.56862745098039214" green="0.55294117647058827" blue="0.66274509803921566" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

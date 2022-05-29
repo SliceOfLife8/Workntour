@@ -19,6 +19,8 @@ public class UITextFieldPadding: UITextField {
     override open func placeholderRect(forBounds bounds: CGRect) -> CGRect {
         if let extraPadding = leftView?.bounds.width { // Add extra padding when leftView has been added
             padding.left = extraPadding + 8
+        } else { // Reset
+            padding.left = 14
         }
         return bounds.inset(by: padding)
     }
@@ -26,6 +28,8 @@ public class UITextFieldPadding: UITextField {
     override open func editingRect(forBounds bounds: CGRect) -> CGRect {
         if let extraPadding = rightView?.bounds.width { // Add extra padding when rightView has been added
             padding.right = extraPadding
+        } else { // Rest
+            padding.right = 14
         }
         return bounds.inset(by: padding)
     }

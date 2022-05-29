@@ -11,6 +11,8 @@
 		1B308A4928414D9000797F32 /* UITextFieldPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B308A4828414D8F00797F32 /* UITextFieldPadding.swift */; };
 		1B308A4B28414E2100797F32 /* TextFieldRightIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B308A4A28414E2100797F32 /* TextFieldRightIcon.swift */; };
 		1B308A4D28415FB000797F32 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B308A4C28415FB000797F32 /* UIImageView+Extensions.swift */; };
+		1B308A522842452600797F32 /* RegistrationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B308A502842452600797F32 /* RegistrationCell.swift */; };
+		1B308A532842452600797F32 /* RegistrationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B308A512842452600797F32 /* RegistrationCell.xib */; };
 		1B4AE40A283E691D00FA6420 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4AE409283E691D00FA6420 /* PrimaryButton.swift */; };
 		1B4AE40D283E6FDC00FA6420 /* UIImpactFeedbackGenerator+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4AE40C283E6FDC00FA6420 /* UIImpactFeedbackGenerator+Extension.swift */; };
 		1B4AE411283E845C00FA6420 /* SecondaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4AE410283E845C00FA6420 /* SecondaryButton.swift */; };
@@ -26,6 +28,8 @@
 		1B308A4828414D8F00797F32 /* UITextFieldPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldPadding.swift; sourceTree = "<group>"; };
 		1B308A4A28414E2100797F32 /* TextFieldRightIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldRightIcon.swift; sourceTree = "<group>"; };
 		1B308A4C28415FB000797F32 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
+		1B308A502842452600797F32 /* RegistrationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationCell.swift; sourceTree = "<group>"; };
+		1B308A512842452600797F32 /* RegistrationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegistrationCell.xib; sourceTree = "<group>"; };
 		1B4AE409283E691D00FA6420 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		1B4AE40C283E6FDC00FA6420 /* UIImpactFeedbackGenerator+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImpactFeedbackGenerator+Extension.swift"; sourceTree = "<group>"; };
 		1B4AE410283E845C00FA6420 /* SecondaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryButton.swift; sourceTree = "<group>"; };
@@ -57,6 +61,23 @@
 				1B308A4A28414E2100797F32 /* TextFieldRightIcon.swift */,
 			);
 			path = GradientTextField;
+			sourceTree = "<group>";
+		};
+		1B308A4E284244D000797F32 /* TableViews */ = {
+			isa = PBXGroup;
+			children = (
+				1B308A4F284244D800797F32 /* Registration */,
+			);
+			path = TableViews;
+			sourceTree = "<group>";
+		};
+		1B308A4F284244D800797F32 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				1B308A502842452600797F32 /* RegistrationCell.swift */,
+				1B308A512842452600797F32 /* RegistrationCell.xib */,
+			);
+			path = Registration;
 			sourceTree = "<group>";
 		};
 		1B4AE408283E691000FA6420 /* Buttons */ = {
@@ -107,6 +128,7 @@
 		1B527A2D282059A600FDAF5D /* CommonUI */ = {
 			isa = PBXGroup;
 			children = (
+				1B308A4E284244D000797F32 /* TableViews */,
 				1B4AE443283F708100FA6420 /* CustomViews */,
 				1B4AE408283E691000FA6420 /* Buttons */,
 				1B4AE40B283E692000FA6420 /* Utils */,
@@ -193,6 +215,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B308A532842452600797F32 /* RegistrationCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,6 +229,7 @@
 				1B308A4D28415FB000797F32 /* UIImageView+Extensions.swift in Sources */,
 				1B308A4B28414E2100797F32 /* TextFieldRightIcon.swift in Sources */,
 				1B4AE411283E845C00FA6420 /* SecondaryButton.swift in Sources */,
+				1B308A522842452600797F32 /* RegistrationCell.swift in Sources */,
 				1B308A4928414D9000797F32 /* UITextFieldPadding.swift in Sources */,
 				1B4AE445283F708F00FA6420 /* LinkableLabel.swift in Sources */,
 				1B308A42284125C300797F32 /* GradientTextField.swift in Sources */,

@@ -9,7 +9,8 @@ import UIKit
 import SharedKit
 
 protocol GradientTFDelegate: AnyObject {
-    func didTextFieldTapped()
+    func didStartEditing()
+    func didArrowTapped()
     func didCountryFlagTapped()
 }
 
@@ -49,7 +50,8 @@ public class GradientTextField: UITextFieldPadding {
     func commonInit() {
         tintColor = UIColor.appColor(.purple)
         delegate = self
-        configure(placeHolder: "Enter your name", countryFlag: UIImage(named: "splash_illustration"))
+        clipsToBounds = true
+        layer.cornerRadius = 8
     }
 
     public override func layoutSubviews() {
@@ -82,10 +84,11 @@ public class GradientTextField: UITextFieldPadding {
         gradient.mask = shape
 
         layer.addSublayer(gradient)
+        layer.masksToBounds = true
     }
 
     /// This method is about to remove previous gradientLayers before starting to draw again.
-    private func removeGradientLayers(_ newWidth: CGFloat = 1) {
+    func removeGradientLayers(_ newWidth: CGFloat = 1) {
         borderWidth = newWidth
         layer.sublayers?
             .filter { $0 is CAGradientLayer }
@@ -97,12 +100,13 @@ public class GradientTextField: UITextFieldPadding {
     ///   - placeHolder: The placeholder of textField
     ///   - keyboardType: User can specify the type of keyboard. f.e. he could define it as .emailAddress for email purposes.
     ///   - rightIcon: The rightView of textField. Add your icon inside 'TextFieldRightIcon' enum
-    ///   - countryFlag: Specify the country flag as an image.
+    ///   - countryFlag: Specify the country flag as an emoji.
     public func configure(placeHolder: String,
-                          keyboardType: UIKeyboardType = .default,
-                          rightIcon: TextFieldRightIcon? = .none,
-                          countryFlag: UIImage? = nil) {
+                          keyboardType: UIKeyboardType,
+                          rightIcon: TextFieldRightIcon?,
+                          countryFlag: String?) {
 
+        resetView()
         attributedPlaceholder = NSAttributedString(string: placeHolder,
                                                    attributes: [
                                                     .foregroundColor: UIColor.appColor(.placeholder),
@@ -120,12 +124,17 @@ public class GradientTextField: UITextFieldPadding {
         self.errorOccured = false
     }
 
+    private func resetView() {
+        rightView = nil
+        leftView = nil
+    }
+
 }
 
 // MARK: - TextFieldDelegate
 extension GradientTextField: UITextFieldDelegate {
     public func textFieldDidBeginEditing(_ textField: UITextField) {
-        print("start editing!")
+        self.gradientDelegate?.didStartEditing()
         errorOccured = false
         removeGradientLayers(3)
     }
@@ -141,8 +150,9 @@ extension GradientTextField: UITextFieldDelegate {
     }
 
     public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        /// Prevent keyboard appearing & stop editing when rightIcon has been set
-        if rightIcon != nil {
+        /// Prevent keyboard appearing & stop editing when rightIcon has been set as an arrow.
+        if rightIcon?.oneOf(other: .upArrow, .downArrow) == true {
+            arrowTapped()
             return false
         }
         return true
@@ -160,14 +170,15 @@ extension GradientTextField {
         imageContainerView.addSubview(imageView)
         rightView = imageContainerView
         rightViewMode = .always
-        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(rightViewTapped)))
+
+        if icon.oneOf(other: .upArrow, .downArrow) == true {
+            imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(arrowTapped)))
+        }
     }
 
-    private func setupCountryIcon(_ image: UIImage) {
-        let countryFlag = UIImageView(frame: CGRect(x: 13, y: 10, width: 24, height: 24))
-        countryFlag.image = image
-        countryFlag.setRounded()
-        countryFlag.contentMode = .center
+    private func setupCountryIcon(_ emoji: String) {
+        let countryFlag = UILabel(frame: CGRect(x: 13, y: 10, width: 24, height: 24))
+        countryFlag.text = emoji
 
         let arrow = UIImageView(frame: CGRect(x: 43, y: 20, width: 9.5, height: 6))
         arrow.image = UIImage(named: "down_arrow")
@@ -184,8 +195,15 @@ extension GradientTextField {
         containerView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(countryViewTapped)))
     }
 
-    @objc private func rightViewTapped() {
-        self.gradientDelegate?.didTextFieldTapped()
+    @objc private func arrowTapped() {
+        self.gradientDelegate?.didArrowTapped()
+
+        /// We should rotate arrow when it's available
+        if rightView?.transform == .identity {
+            rightView?.transform = CGAffineTransform(rotationAngle: .pi) // 180˚
+        } else {
+            rightView?.transform = .identity
+        }
     }
 
     @objc private func countryViewTapped() {
