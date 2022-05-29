@@ -21,13 +21,15 @@ class RegistrationViewModel: BaseViewModel {
     let input: PassthroughSubject<Void, Never>
     // Outputs
     var data = PassthroughSubject<[RegistrationModel], Never>()
-    var countries = PassthroughSubject<[String: String], Never>()
+    var countries: [String: String]
+    var currentCountryFlag: String?
 
     @Published private(set) var hole: Void
     @Published private(set) var errorMessage: String?
 
     init(service: AuthorizationService = DataManager.shared) {
         self.service = service
+        self.countries = [:]
         self.hole = ()
         self.input = PassthroughSubject<Void, Never>()
 
@@ -35,39 +37,30 @@ class RegistrationViewModel: BaseViewModel {
     }
 
     func fetchModels() {
-        var dict: [String: String] = [:]
-        var flag: String?
-        NSLocale.isoCountryCodes.forEach { code in
-            if let name = Locale(identifier: localIdentifier).localizedString(forRegionCode: code) {
-                dict[code] = name
-
-                if code == regionCode {
-                    flag = code.countryFlag()
-                }
-            }
-        }
-
         let models: [RegistrationModel] = [
             RegistrationModel(title: "Fullname", placeholder: "Enter your fullname"),
             RegistrationModel(title: "Email", placeholder: "Enter your email", textFieldKeyboardType: .emailAddress),
             RegistrationModel(title: "Password", placeholder: "Enter your password", description: "You must use at least 8 characters."),
             RegistrationModel(title: "Confirm password", placeholder: "Confirm your password"),
-            RegistrationModel(title: "Age", isOptional: true, placeholder: "Select your Birthday Date", rightIcon: .upArrow),
-            RegistrationModel(title: "Phone Number", isOptional: true, placeholder: "+30 694 435 8945", textFieldKeyboardType: .numberPad, countryEmoji: flag)
+            RegistrationModel(title: "Age", isRequired: false, optionalTextVisible: true, placeholder: "Select your Birthday Date", rightIcon: .downArrow),
+            RegistrationModel(title: "Phone Number", isRequired: false, optionalTextVisible: true, placeholder: "+30 694 435 8945", textFieldKeyboardType: .numberPad, countryEmoji: currentCountryFlag),
+            RegistrationModel(title: "Nationality", isRequired: false, optionalTextVisible: true, placeholder: "Select your Nationality", rightIcon: .downArrow),
+            RegistrationModel(title: "Sex", isRequired: false, optionalTextVisible: true, placeholder: "Select your Sex", rightIcon: .downArrow)
         ]
 
         data.send(models)
     }
 
     func fetchCountryCodes() {
-        var dict: [String: String] = [:]
         NSLocale.isoCountryCodes.forEach { code in
             if let name = Locale(identifier: localIdentifier).localizedString(forRegionCode: code) {
-                dict[code] = name
+                countries[code] = name
+
+                if code == regionCode {
+                    currentCountryFlag = code.countryFlag()
+                }
             }
         }
-
-        countries.send(dict)
     }
 
     private func registerTest() {

@@ -10,6 +10,7 @@ import SharedKit
 
 protocol GradientTFDelegate: AnyObject {
     func didStartEditing()
+    func shouldReturn()
     func didArrowTapped()
     func didCountryFlagTapped()
 }
@@ -129,6 +130,30 @@ public class GradientTextField: UITextFieldPadding {
         leftView = nil
     }
 
+
+    // Masked number typing
+    /// mask example: `+X (XXX) XXX-XXXX`
+    private func format(with mask: String, phone: String) -> String {
+        let numbers = phone.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
+        var result = ""
+        var index = numbers.startIndex // numbers iterator
+
+        // iterate over the mask characters until the iterator of numbers ends
+        for ch in mask where index < numbers.endIndex {
+            if ch == "X" || ch == "Y" {
+                // mask requires a number in this place, so take the next one
+                result.append(numbers[index])
+
+                // move numbers iterator to the next index
+                index = numbers.index(after: index)
+
+            } else {
+                result.append(ch) // just append a mask character
+            }
+        }
+        return result
+    }
+
 }
 
 // MARK: - TextFieldDelegate
@@ -145,8 +170,8 @@ extension GradientTextField: UITextFieldDelegate {
     }
 
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
+        self.gradientDelegate?.shouldReturn()
+        return false
     }
 
     public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
@@ -157,6 +182,13 @@ extension GradientTextField: UITextFieldDelegate {
         }
         return true
     }
+
+//    public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//        guard let text = textField.text else { return false }
+//        let newString = (text as NSString).replacingCharacters(in: range, with: string)
+//        textField.text = format(with: "+X (XXX) XXX-XXXX", phone: newString)
+//        return false
+//    }
 }
 
 // MARK: - Add icons
@@ -198,12 +230,10 @@ extension GradientTextField {
     @objc private func arrowTapped() {
         self.gradientDelegate?.didArrowTapped()
 
-        /// We should rotate arrow when it's available
-        if rightView?.transform == .identity {
-            rightView?.transform = CGAffineTransform(rotationAngle: .pi) // 180˚
-        } else {
-            rightView?.transform = .identity
-        }
+        /// We should rotate arrow 180˚ when it's available
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: [], animations: {
+            self.rightView?.transform = (self.rightView?.transform == .identity) ? CGAffineTransform(rotationAngle: .pi) : .identity
+        })
     }
 
     @objc private func countryViewTapped() {

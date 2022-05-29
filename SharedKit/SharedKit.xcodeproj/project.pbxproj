@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1B308A582842755400797F32 /* Equatable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B308A572842755400797F32 /* Equatable+Extensions.swift */; };
+		1B308A5D2843D6C700797F32 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B308A5C2843D6C700797F32 /* UITableView+Extensions.swift */; };
 		1B4AE400283E57BA00FA6420 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4AE3FF283E57BA00FA6420 /* UIViewController+Extensions.swift */; };
 		1B4AE43A283F5F5900FA6420 /* ChangableFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4AE439283F5F5900FA6420 /* ChangableFont.swift */; };
 		1B4AE43C283F5F8A00FA6420 /* ChangableFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4AE43B283F5F8A00FA6420 /* ChangableFont+Extensions.swift */; };
@@ -45,6 +46,7 @@
 
 /* Begin PBXFileReference section */
 		1B308A572842755400797F32 /* Equatable+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Equatable+Extensions.swift"; sourceTree = "<group>"; };
+		1B308A5C2843D6C700797F32 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		1B4AE3FF283E57BA00FA6420 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		1B4AE439283F5F5900FA6420 /* ChangableFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangableFont.swift; sourceTree = "<group>"; };
 		1B4AE43B283F5F8A00FA6420 /* ChangableFont+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChangableFont+Extensions.swift"; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				1B4AE43D283F621500FA6420 /* UIFont+Extensions.swift */,
 				1B4AE4482840A68B00FA6420 /* UIImage+Extensions.swift */,
 				1B308A572842755400797F32 /* Equatable+Extensions.swift */,
+				1B308A5C2843D6C700797F32 /* UITableView+Extensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				1B9A3D70282A8485003E0C34 /* ControlEvent.swift in Sources */,
 				1B9A3D87282B91CE003E0C34 /* AssetColor.swift in Sources */,
 				1B4AE400283E57BA00FA6420 /* UIViewController+Extensions.swift in Sources */,
+				1B308A5D2843D6C700797F32 /* UITableView+Extensions.swift in Sources */,
 				1B527A3F2820F4E400FDAF5D /* Navigator.swift in Sources */,
 				1B4AE43E283F621500FA6420 /* UIFont+Extensions.swift in Sources */,
 				1B4AE4492840A68B00FA6420 /* UIImage+Extensions.swift in Sources */,

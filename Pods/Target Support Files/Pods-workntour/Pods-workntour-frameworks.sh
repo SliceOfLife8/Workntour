@@ -177,6 +177,7 @@ code_sign_if_enabled() {
 
 if [[ "$CONFIGURATION" == "Dev Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/CombineDataSources/CombineDataSources.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FirebaseCore/FirebaseCore.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FirebaseCoreDiagnostics/FirebaseCoreDiagnostics.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FirebaseCoreInternal/FirebaseCoreInternal.framework"
@@ -192,6 +193,7 @@ if [[ "$CONFIGURATION" == "Dev Debug" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Dev Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/CombineDataSources/CombineDataSources.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FirebaseCore/FirebaseCore.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FirebaseCoreDiagnostics/FirebaseCoreDiagnostics.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FirebaseCoreInternal/FirebaseCoreInternal.framework"
@@ -207,6 +209,7 @@ if [[ "$CONFIGURATION" == "Dev Release" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Prod Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/CombineDataSources/CombineDataSources.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FirebaseCore/FirebaseCore.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FirebaseCoreDiagnostics/FirebaseCoreDiagnostics.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FirebaseCoreInternal/FirebaseCoreInternal.framework"
@@ -222,6 +225,7 @@ if [[ "$CONFIGURATION" == "Prod Debug" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Prod Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/CombineDataSources/CombineDataSources.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FirebaseCore/FirebaseCore.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FirebaseCoreDiagnostics/FirebaseCoreDiagnostics.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FirebaseCoreInternal/FirebaseCoreInternal.framework"
@@ -237,6 +241,7 @@ if [[ "$CONFIGURATION" == "Prod Release" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Staging Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/CombineDataSources/CombineDataSources.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FirebaseCore/FirebaseCore.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FirebaseCoreDiagnostics/FirebaseCoreDiagnostics.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FirebaseCoreInternal/FirebaseCoreInternal.framework"
@@ -252,6 +257,7 @@ if [[ "$CONFIGURATION" == "Staging Debug" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Staging Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/CombineDataSources/CombineDataSources.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FirebaseCore/FirebaseCore.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FirebaseCoreDiagnostics/FirebaseCoreDiagnostics.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FirebaseCoreInternal/FirebaseCoreInternal.framework"

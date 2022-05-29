@@ -9,6 +9,7 @@ import UIKit
 
 public protocol RegistrationCellDelegate: AnyObject {
     func textFieldDidBeginEditing(cell: RegistrationCell)
+    func textFieldShouldReturn(cell: RegistrationCell)
 }
 
 public class RegistrationCell: UITableViewCell {
@@ -19,18 +20,19 @@ public class RegistrationCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var optionalLabel: UILabel!
-    @IBOutlet weak var gradientTextField: GradientTextField!
+    @IBOutlet public weak var gradientTextField: GradientTextField!
     @IBOutlet weak var descriptionLabel: UILabel!
     
     public func setupCell(title: String,
-                          isOptional: Bool,
+                          isRequired: Bool,
+                          isOptionalLabelVisible: Bool,
                           placeholder: String,
                           keyboardType: UIKeyboardType,
                           rightIcon: TextFieldRightIcon?,
                           countryFlag: String?,
                           description: String?) {
-        titleLabel.text = isOptional ? title : "\(title)*"
-        optionalLabel.isHidden = !isOptional
+        titleLabel.text = isRequired ? "\(title)*" : title
+        optionalLabel.isHidden = !isOptionalLabelVisible
         descriptionLabel.text = description
 
         gradientTextField.configure(placeHolder: placeholder, keyboardType: keyboardType, rightIcon: rightIcon, countryFlag: countryFlag)
@@ -49,9 +51,14 @@ extension RegistrationCell: GradientTFDelegate {
     }
 
     func didCountryFlagTapped() {
+        print("show menu!!!")
     }
 
     func didStartEditing() {
         self.delegate?.textFieldDidBeginEditing(cell: self)
+    }
+
+    func shouldReturn() {
+        self.delegate?.textFieldShouldReturn(cell: self)
     }
 }

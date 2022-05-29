@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import DropDown
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         AppConfig.setupFB()
         AppConfig.setupLogger()
+        DropDown.startListeningToKeyboard()
         return true
     }
 
