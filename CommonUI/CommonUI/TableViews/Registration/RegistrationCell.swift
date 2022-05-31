@@ -10,14 +10,16 @@ import UIKit
 public protocol RegistrationCellDelegate: AnyObject {
     func textFieldDidBeginEditing(cell: RegistrationCell)
     func textFieldShouldReturn(cell: RegistrationCell)
+    func showCountryFlags(cell: RegistrationCell)
+    func showDropdownList(cell: RegistrationCell)
 }
 
 public class RegistrationCell: UITableViewCell {
-
+    
     public weak var delegate: RegistrationCellDelegate?
-
+    
     public static let identifier = String(describing: RegistrationCell.self)
-
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var optionalLabel: UILabel!
     @IBOutlet public weak var gradientTextField: GradientTextField!
@@ -27,18 +29,18 @@ public class RegistrationCell: UITableViewCell {
                           isRequired: Bool,
                           isOptionalLabelVisible: Bool,
                           placeholder: String,
-                          keyboardType: UIKeyboardType,
-                          rightIcon: TextFieldRightIcon?,
+                          type: RegistrationModelType,
                           countryFlag: String?,
+                          regionCode: String?,
                           description: String?) {
         titleLabel.text = isRequired ? "\(title)*" : title
         optionalLabel.isHidden = !isOptionalLabelVisible
         descriptionLabel.text = description
-
-        gradientTextField.configure(placeHolder: placeholder, keyboardType: keyboardType, rightIcon: rightIcon, countryFlag: countryFlag)
+        
+        gradientTextField.configure(placeHolder: placeholder, countryFlag: countryFlag, regionCode: regionCode, type: type)
         gradientTextField.gradientDelegate = self
     }
-
+    
     /// We should remove old GradientLayer & draw a new one as there is a problem of drawing correct rounded corners.
     public func roundCorners() {
         gradientTextField.removeGradientLayers()
@@ -46,18 +48,20 @@ public class RegistrationCell: UITableViewCell {
     
 }
 
+
 extension RegistrationCell: GradientTFDelegate {
-    func didArrowTapped() {
+    func notEditableTextFieldTriggered() {
+        self.delegate?.showDropdownList(cell: self)
     }
-
+    
     func didCountryFlagTapped() {
-        print("show menu!!!")
+        self.delegate?.showCountryFlags(cell: self)
     }
-
+    
     func didStartEditing() {
         self.delegate?.textFieldDidBeginEditing(cell: self)
     }
-
+    
     func shouldReturn() {
         self.delegate?.textFieldShouldReturn(cell: self)
     }

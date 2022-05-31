@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		1B16837B2837C07B0067F2DB /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B16837A2837C07B0067F2DB /* FirebaseManager.swift */; };
-		1B16837E283A58F00067F2DB /* RegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B16837D283A58F00067F2DB /* RegistrationVC.swift */; };
+		1B16837E283A58F00067F2DB /* RegistrationTravelerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B16837D283A58F00067F2DB /* RegistrationTravelerVC.swift */; };
 		1B168380283A590B0067F2DB /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B16837F283A590B0067F2DB /* RegistrationViewModel.swift */; };
 		1B1683A6283D1F6E0067F2DB /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1683A5283D1F6D0067F2DB /* ErrorResponse.swift */; };
 		1B1683A8283D20180067F2DB /* Pagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1683A7283D20180067F2DB /* Pagination.swift */; };
 		1B1683AA283D20E20067F2DB /* GenericResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1683A9283D20E20067F2DB /* GenericResponse.swift */; };
-		1B308A462841271100797F32 /* RegistrationVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B308A452841271100797F32 /* RegistrationVC.xib */; };
+		1B308A462841271100797F32 /* RegistrationTravelerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B308A452841271100797F32 /* RegistrationTravelerVC.xib */; };
 		1B308A5528424FBE00797F32 /* RegistrationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B308A5428424FBE00797F32 /* RegistrationModel.swift */; };
 		1B4AE3F8283E04BB00FA6420 /* IndividualHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4AE3F7283E04BB00FA6420 /* IndividualHost.swift */; };
 		1B4AE3FA283E04C400FA6420 /* CompanyHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4AE3F9283E04C400FA6420 /* CompanyHost.swift */; };
@@ -39,6 +39,8 @@
 		1B4AE436283F58FB00FA6420 /* Lato-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1B4AE41C283F4F4900FA6420 /* Lato-Thin.ttf */; };
 		1B4AE437283F58FB00FA6420 /* Lato-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1B4AE41B283F4F4800FA6420 /* Lato-ThinItalic.ttf */; };
 		1B5279E72820471100FDAF5D /* AuthorizationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5279E62820471100FDAF5D /* AuthorizationRouter.swift */; };
+		1B563B6D2845358200B851C1 /* CountriesDropDownCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B563B6B2845358100B851C1 /* CountriesDropDownCell.xib */; };
+		1B563B6E2845358200B851C1 /* CountriesDropDownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B563B6C2845358200B851C1 /* CountriesDropDownCell.swift */; };
 		1B714B582840DBB5000D85D0 /* RegistrationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B714B572840DBB5000D85D0 /* RegistrationCoordinator.swift */; };
 		1B7315F1281E7DD0001F2E6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7315F0281E7DD0001F2E6A /* AppDelegate.swift */; };
 		1B7315F3281E7DD0001F2E6A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7315F2281E7DD0001F2E6A /* SceneDelegate.swift */; };
@@ -65,7 +67,7 @@
 		1BA2DEFE281E8C1800DB128D /* AppRootVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA2DEFD281E8C1800DB128D /* AppRootVC.swift */; };
 		1BA2DF02281E8C7300DB128D /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA2DF01281E8C7300DB128D /* BaseVC.swift */; };
 		1BA2DF08281E8D7700DB128D /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA2DF07281E8D7700DB128D /* OnboardingCoordinator.swift */; };
-		3670EDA5163B0091EF098576 /* Pods_workntour.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C4B08A33DE42602BB00CD51 /* Pods_workntour.framework */; };
+		2707FF96C7CBD64F6B2EA3B7 /* Pods_workntour.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5701F516D91D3C90DD51441 /* Pods_workntour.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -86,12 +88,12 @@
 
 /* Begin PBXFileReference section */
 		1B16837A2837C07B0067F2DB /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
-		1B16837D283A58F00067F2DB /* RegistrationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationVC.swift; sourceTree = "<group>"; };
+		1B16837D283A58F00067F2DB /* RegistrationTravelerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationTravelerVC.swift; sourceTree = "<group>"; };
 		1B16837F283A590B0067F2DB /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		1B1683A5283D1F6D0067F2DB /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 		1B1683A7283D20180067F2DB /* Pagination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pagination.swift; sourceTree = "<group>"; };
 		1B1683A9283D20E20067F2DB /* GenericResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericResponse.swift; sourceTree = "<group>"; };
-		1B308A452841271100797F32 /* RegistrationVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegistrationVC.xib; sourceTree = "<group>"; };
+		1B308A452841271100797F32 /* RegistrationTravelerVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegistrationTravelerVC.xib; sourceTree = "<group>"; };
 		1B308A5428424FBE00797F32 /* RegistrationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationModel.swift; sourceTree = "<group>"; };
 		1B4AE3F7283E04BB00FA6420 /* IndividualHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualHost.swift; sourceTree = "<group>"; };
 		1B4AE3F9283E04C400FA6420 /* CompanyHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyHost.swift; sourceTree = "<group>"; };
@@ -120,6 +122,8 @@
 		1B5279E62820471100FDAF5D /* AuthorizationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationRouter.swift; sourceTree = "<group>"; };
 		1B527A1A2820509B00FDAF5D /* SharedKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SharedKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B527A37282059CB00FDAF5D /* CommonUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CommonUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B563B6B2845358100B851C1 /* CountriesDropDownCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CountriesDropDownCell.xib; sourceTree = "<group>"; };
+		1B563B6C2845358200B851C1 /* CountriesDropDownCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountriesDropDownCell.swift; sourceTree = "<group>"; };
 		1B714B572840DBB5000D85D0 /* RegistrationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationCoordinator.swift; sourceTree = "<group>"; };
 		1B7315ED281E7DCF001F2E6A /* workntour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = workntour.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B7315F0281E7DD0001F2E6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -147,13 +151,13 @@
 		1BA2DEFD281E8C1800DB128D /* AppRootVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootVC.swift; sourceTree = "<group>"; };
 		1BA2DF01281E8C7300DB128D /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
 		1BA2DF07281E8D7700DB128D /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
-		2C4B08A33DE42602BB00CD51 /* Pods_workntour.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_workntour.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4698C23A684014F7BAD27D39 /* Pods-workntour.dev release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-workntour.dev release.xcconfig"; path = "Target Support Files/Pods-workntour/Pods-workntour.dev release.xcconfig"; sourceTree = "<group>"; };
-		81B15B9757B25BC4BBB43593 /* Pods-workntour.staging release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-workntour.staging release.xcconfig"; path = "Target Support Files/Pods-workntour/Pods-workntour.staging release.xcconfig"; sourceTree = "<group>"; };
-		82AEE2BB4CF7287894DF320F /* Pods-workntour.staging debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-workntour.staging debug.xcconfig"; path = "Target Support Files/Pods-workntour/Pods-workntour.staging debug.xcconfig"; sourceTree = "<group>"; };
-		B347CD4BD0BC909838B7206E /* Pods-workntour.dev debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-workntour.dev debug.xcconfig"; path = "Target Support Files/Pods-workntour/Pods-workntour.dev debug.xcconfig"; sourceTree = "<group>"; };
-		BE0A91CF2A38AF3EDBCFB408 /* Pods-workntour.prod release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-workntour.prod release.xcconfig"; path = "Target Support Files/Pods-workntour/Pods-workntour.prod release.xcconfig"; sourceTree = "<group>"; };
-		F8CAFC90337DD36ECC691862 /* Pods-workntour.prod debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-workntour.prod debug.xcconfig"; path = "Target Support Files/Pods-workntour/Pods-workntour.prod debug.xcconfig"; sourceTree = "<group>"; };
+		2544630698253F96E0BC47D6 /* Pods-workntour.dev debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-workntour.dev debug.xcconfig"; path = "Target Support Files/Pods-workntour/Pods-workntour.dev debug.xcconfig"; sourceTree = "<group>"; };
+		437B52C06849CB14B21AF948 /* Pods-workntour.dev release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-workntour.dev release.xcconfig"; path = "Target Support Files/Pods-workntour/Pods-workntour.dev release.xcconfig"; sourceTree = "<group>"; };
+		A9A28C3C30B3A10BAB51F50A /* Pods-workntour.prod release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-workntour.prod release.xcconfig"; path = "Target Support Files/Pods-workntour/Pods-workntour.prod release.xcconfig"; sourceTree = "<group>"; };
+		AA61DB065AE3B9EE59633469 /* Pods-workntour.staging debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-workntour.staging debug.xcconfig"; path = "Target Support Files/Pods-workntour/Pods-workntour.staging debug.xcconfig"; sourceTree = "<group>"; };
+		B0657D0C965FCA5EF3E62D12 /* Pods-workntour.staging release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-workntour.staging release.xcconfig"; path = "Target Support Files/Pods-workntour/Pods-workntour.staging release.xcconfig"; sourceTree = "<group>"; };
+		D1C830038FC1866654646544 /* Pods-workntour.prod debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-workntour.prod debug.xcconfig"; path = "Target Support Files/Pods-workntour/Pods-workntour.prod debug.xcconfig"; sourceTree = "<group>"; };
+		F5701F516D91D3C90DD51441 /* Pods_workntour.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_workntour.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,7 +168,7 @@
 				1B9A3D7F282AB849003E0C34 /* Networking.framework in Frameworks */,
 				1B9A3D222828EA99003E0C34 /* CommonUI.framework in Frameworks */,
 				1B9A3D272828EA9E003E0C34 /* SharedKit.framework in Frameworks */,
-				3670EDA5163B0091EF098576 /* Pods_workntour.framework in Frameworks */,
+				2707FF96C7CBD64F6B2EA3B7 /* Pods_workntour.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,10 +214,9 @@
 		1B308A44284126D100797F32 /* Register */ = {
 			isa = PBXGroup;
 			children = (
-				1B16837D283A58F00067F2DB /* RegistrationVC.swift */,
-				1B308A452841271100797F32 /* RegistrationVC.xib */,
-				1B308A5428424FBE00797F32 /* RegistrationModel.swift */,
-				1B16837F283A590B0067F2DB /* RegistrationViewModel.swift */,
+				1B563B6F284651C700B851C1 /* Traveler */,
+				1B563B702846525100B851C1 /* Models */,
+				1B563B6A2845357200B851C1 /* DropDownView */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -261,6 +264,33 @@
 				1B9A3D2E282A3B6D003E0C34 /* Authorization */,
 			);
 			path = NetworkLayer;
+			sourceTree = "<group>";
+		};
+		1B563B6A2845357200B851C1 /* DropDownView */ = {
+			isa = PBXGroup;
+			children = (
+				1B563B6C2845358200B851C1 /* CountriesDropDownCell.swift */,
+				1B563B6B2845358100B851C1 /* CountriesDropDownCell.xib */,
+			);
+			path = DropDownView;
+			sourceTree = "<group>";
+		};
+		1B563B6F284651C700B851C1 /* Traveler */ = {
+			isa = PBXGroup;
+			children = (
+				1B16837D283A58F00067F2DB /* RegistrationTravelerVC.swift */,
+				1B308A452841271100797F32 /* RegistrationTravelerVC.xib */,
+				1B16837F283A590B0067F2DB /* RegistrationViewModel.swift */,
+			);
+			path = Traveler;
+			sourceTree = "<group>";
+		};
+		1B563B702846525100B851C1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1B308A5428424FBE00797F32 /* RegistrationModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		1B7315E4281E7DCF001F2E6A = {
@@ -404,7 +434,7 @@
 				1B527A37282059CB00FDAF5D /* CommonUI.framework */,
 				1B527A1A2820509B00FDAF5D /* SharedKit.framework */,
 				1B5279DE281FDA6D00FDAF5D /* Networking.framework */,
-				2C4B08A33DE42602BB00CD51 /* Pods_workntour.framework */,
+				F5701F516D91D3C90DD51441 /* Pods_workntour.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -412,12 +442,12 @@
 		4FCCF42523D2AF3614D7C2A8 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				B347CD4BD0BC909838B7206E /* Pods-workntour.dev debug.xcconfig */,
-				82AEE2BB4CF7287894DF320F /* Pods-workntour.staging debug.xcconfig */,
-				F8CAFC90337DD36ECC691862 /* Pods-workntour.prod debug.xcconfig */,
-				4698C23A684014F7BAD27D39 /* Pods-workntour.dev release.xcconfig */,
-				81B15B9757B25BC4BBB43593 /* Pods-workntour.staging release.xcconfig */,
-				BE0A91CF2A38AF3EDBCFB408 /* Pods-workntour.prod release.xcconfig */,
+				2544630698253F96E0BC47D6 /* Pods-workntour.dev debug.xcconfig */,
+				AA61DB065AE3B9EE59633469 /* Pods-workntour.staging debug.xcconfig */,
+				D1C830038FC1866654646544 /* Pods-workntour.prod debug.xcconfig */,
+				437B52C06849CB14B21AF948 /* Pods-workntour.dev release.xcconfig */,
+				B0657D0C965FCA5EF3E62D12 /* Pods-workntour.staging release.xcconfig */,
+				A9A28C3C30B3A10BAB51F50A /* Pods-workntour.prod release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -429,7 +459,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1B731601281E7DD5001F2E6A /* Build configuration list for PBXNativeTarget "workntour" */;
 			buildPhases = (
-				3500FFC5B66EB1E20E61C045 /* [CP] Check Pods Manifest.lock */,
+				8ED960121FA4D4DB5DE001A2 /* [CP] Check Pods Manifest.lock */,
 				1B8DA75B282594230032E20B /* SwiftLint */,
 				1B7315E9281E7DCF001F2E6A /* Sources */,
 				1B7315EA281E7DCF001F2E6A /* Frameworks */,
@@ -439,7 +469,7 @@
 				1B9A3D1A28282DE6003E0C34 /* Copy Google Info Plist file */,
 				1B9A3D1428282517003E0C34 /* Firebase dSYMs */,
 				1B9A3D242828EA99003E0C34 /* Embed Frameworks */,
-				980DFD6D64349B1715E56C4E /* [CP] Embed Pods Frameworks */,
+				029E61A064FD8B2C9505B978 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -491,6 +521,7 @@
 				1B4AE426283F58FB00FA6420 /* Lato-Black.ttf in Resources */,
 				1B4AE427283F58FB00FA6420 /* Lato-BlackItalic.ttf in Resources */,
 				1B4AE428283F58FB00FA6420 /* Lato-Bold.ttf in Resources */,
+				1B563B6D2845358200B851C1 /* CountriesDropDownCell.xib in Resources */,
 				1B4AE429283F58FB00FA6420 /* Lato-BoldItalic.ttf in Resources */,
 				1B4AE42A283F58FB00FA6420 /* Lato-Hairline.ttf in Resources */,
 				1B4AE42B283F58FB00FA6420 /* Lato-HairlineItalic.ttf in Resources */,
@@ -507,7 +538,7 @@
 				1B4AE436283F58FB00FA6420 /* Lato-Thin.ttf in Resources */,
 				1B4AE437283F58FB00FA6420 /* Lato-ThinItalic.ttf in Resources */,
 				1B7315FD281E7DD5001F2E6A /* LaunchScreen.storyboard in Resources */,
-				1B308A462841271100797F32 /* RegistrationVC.xib in Resources */,
+				1B308A462841271100797F32 /* RegistrationTravelerVC.xib in Resources */,
 				1B9A3D85282B9096003E0C34 /* Colors.xcassets in Resources */,
 				1B4AE406283E61CE00FA6420 /* SplashVC.xib in Resources */,
 				1B4AE3FE283E4B4D00FA6420 /* logo.png in Resources */,
@@ -520,6 +551,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		029E61A064FD8B2C9505B978 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-workntour/Pods-workntour-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-workntour/Pods-workntour-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-workntour/Pods-workntour-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		1B8DA75B282594230032E20B /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -612,7 +660,7 @@
 			shellPath = /bin/sh;
 			shellScript = "GOOGLE_SERVICE_INFO_PLIST_FROM=\"${PROJECT_DIR}/workntour/SupportingFiles/GoogleService/${GOOGLE_SERVICE_PROPERTY}\"\nBUILD_APP_DIR=\"${BUILT_PRODUCTS_DIR}/${FULL_PRODUCT_NAME}\"\nGOOGLE_SERVICE_INFO_PLIST_TO=\"${BUILD_APP_DIR}/GoogleService-Info.plist\"\ncp \"${GOOGLE_SERVICE_INFO_PLIST_FROM}\" \"${GOOGLE_SERVICE_INFO_PLIST_TO}\" \n";
 		};
-		3500FFC5B66EB1E20E61C045 /* [CP] Check Pods Manifest.lock */ = {
+		8ED960121FA4D4DB5DE001A2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -632,23 +680,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		980DFD6D64349B1715E56C4E /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-workntour/Pods-workntour-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-workntour/Pods-workntour-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-workntour/Pods-workntour-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -675,10 +706,11 @@
 				1B7315F3281E7DD0001F2E6A /* SceneDelegate.swift in Sources */,
 				1BA2DEEF281E840900DB128D /* DeepLinkManager.swift in Sources */,
 				1B308A5528424FBE00797F32 /* RegistrationModel.swift in Sources */,
+				1B563B6E2845358200B851C1 /* CountriesDropDownCell.swift in Sources */,
 				1B4AE3F8283E04BB00FA6420 /* IndividualHost.swift in Sources */,
 				1B1683AA283D20E20067F2DB /* GenericResponse.swift in Sources */,
 				1B9A3D2D28295F6F003E0C34 /* AppConfig.swift in Sources */,
-				1B16837E283A58F00067F2DB /* RegistrationVC.swift in Sources */,
+				1B16837E283A58F00067F2DB /* RegistrationTravelerVC.swift in Sources */,
 				1B1683A6283D1F6E0067F2DB /* ErrorResponse.swift in Sources */,
 				1BA2DEF7281E8AB600DB128D /* AppCoordinator.swift in Sources */,
 				1B5279E72820471100FDAF5D /* AuthorizationRouter.swift in Sources */,
@@ -820,7 +852,7 @@
 		};
 		1B731602281E7DD5001F2E6A /* Dev Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B347CD4BD0BC909838B7206E /* Pods-workntour.dev debug.xcconfig */;
+			baseConfigurationReference = 2544630698253F96E0BC47D6 /* Pods-workntour.dev debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -868,7 +900,7 @@
 		};
 		1B731603281E7DD5001F2E6A /* Dev Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4698C23A684014F7BAD27D39 /* Pods-workntour.dev release.xcconfig */;
+			baseConfigurationReference = 437B52C06849CB14B21AF948 /* Pods-workntour.dev release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -978,7 +1010,7 @@
 		};
 		1B9A3CE52827B2D1003E0C34 /* Prod Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F8CAFC90337DD36ECC691862 /* Pods-workntour.prod debug.xcconfig */;
+			baseConfigurationReference = D1C830038FC1866654646544 /* Pods-workntour.prod debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1088,7 +1120,7 @@
 		};
 		1B9A3CE72827B2E6003E0C34 /* Staging Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 82AEE2BB4CF7287894DF320F /* Pods-workntour.staging debug.xcconfig */;
+			baseConfigurationReference = AA61DB065AE3B9EE59633469 /* Pods-workntour.staging debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1193,7 +1225,7 @@
 		};
 		1B9A3CE92827B303003E0C34 /* Staging Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 81B15B9757B25BC4BBB43593 /* Pods-workntour.staging release.xcconfig */;
+			baseConfigurationReference = B0657D0C965FCA5EF3E62D12 /* Pods-workntour.staging release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1297,7 +1329,7 @@
 		};
 		1B9A3CEB2827B305003E0C34 /* Prod Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BE0A91CF2A38AF3EDBCFB408 /* Pods-workntour.prod release.xcconfig */;
+			baseConfigurationReference = A9A28C3C30B3A10BAB51F50A /* Pods-workntour.prod release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

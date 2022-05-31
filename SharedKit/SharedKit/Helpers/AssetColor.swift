@@ -24,6 +24,7 @@ public enum AssetsColor: String {
     case placeholder // #918DA9
     case basicText // #29282D
     case lightGray // #F6F6F6
+    case deepPurple // #431879
 }
 
 extension UIColor {

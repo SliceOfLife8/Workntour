@@ -34,8 +34,8 @@ final class RegistrationCoordinator: NavigationCoordinator {
     }
 
     func start() {
-        let registrationViewModel = RegistrationViewModel()
-        let registrationVC = RegistrationVC(type: userRole)
+        let registrationViewModel = RegistrationTravelerViewModel()
+        let registrationVC = RegistrationTravelerVC()
 
         registrationVC.viewModel = registrationViewModel
         registrationVC.coordinator = self

@@ -19,7 +19,7 @@ class SplashVC: BaseVC<SplashViewModel, MainCoordinator> {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         hideNavigationBar(animated)
-        // self.coordinator?.navigate(to: .registrationPoint)
+        self.coordinator?.navigate(to: .registrationPoint)
     }
 
     override func viewWillDisappear(_ animated: Bool) {

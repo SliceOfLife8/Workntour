@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BaseVC" customModule="workntour" customModuleProvider="target">
+            <connections>
+                <outlet property="tableView" destination="c61-FZ-W6c" id="WAe-Sv-NMn"/>
+                <outlet property="view" destination="iN0-l3-epB" id="d4C-qb-Atc"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jJE-KP-zrV">
+                    <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                    <subviews>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="c61-FZ-W6c">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="852"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </tableView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="c61-FZ-W6c" firstAttribute="leading" secondItem="jJE-KP-zrV" secondAttribute="leading" id="01u-0d-ekv"/>
+                        <constraint firstAttribute="bottom" secondItem="c61-FZ-W6c" secondAttribute="bottom" id="41T-en-gg3"/>
+                        <constraint firstItem="c61-FZ-W6c" firstAttribute="top" secondItem="jJE-KP-zrV" secondAttribute="top" id="GIK-rn-q5N"/>
+                        <constraint firstAttribute="trailing" secondItem="c61-FZ-W6c" secondAttribute="trailing" id="XIN-7q-QWc"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" name="primary"/>
+            <constraints>
+                <constraint firstItem="jJE-KP-zrV" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="ERy-uF-AKM"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="jJE-KP-zrV" secondAttribute="trailing" id="FFV-yX-s5C"/>
+                <constraint firstAttribute="bottom" secondItem="jJE-KP-zrV" secondAttribute="bottom" id="itR-fp-ECG"/>
+                <constraint firstItem="jJE-KP-zrV" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="jMw-Of-gXo"/>
+            </constraints>
+            <point key="canvasLocation" x="139" y="135"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="primary">
+            <color red="0.98039215686274506" green="0.97254901960784312" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

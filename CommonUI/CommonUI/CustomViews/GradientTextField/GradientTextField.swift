@@ -11,7 +11,7 @@ import SharedKit
 protocol GradientTFDelegate: AnyObject {
     func didStartEditing()
     func shouldReturn()
-    func didArrowTapped()
+    func notEditableTextFieldTriggered()
     func didCountryFlagTapped()
 }
 
@@ -19,8 +19,18 @@ public class GradientTextField: UITextFieldPadding {
     // MARK: - Vars
     weak var gradientDelegate: GradientTFDelegate?
 
+    private var datePicker: UIDatePicker = {
+        let picker = UIDatePicker()
+        picker.datePickerMode = .date
+        picker.preferredDatePickerStyle = .wheels
+        return picker
+    }()
+
     private var borderWidth: CGFloat = 1
     private var rightIcon: TextFieldRightIcon? = .none
+    private var phoneNumberCode: String?
+    private var isEditable: Bool = true
+    public var selectedDate: Date?
     /// When are error is occured we should update right icon view. Moreover, it should be revertable, so we need
     public var errorOccured: Bool = false {
         didSet {
@@ -99,13 +109,13 @@ public class GradientTextField: UITextFieldPadding {
     /// This method is about configure this custom textField
     /// - Parameters:
     ///   - placeHolder: The placeholder of textField
-    ///   - keyboardType: User can specify the type of keyboard. f.e. he could define it as .emailAddress for email purposes.
-    ///   - rightIcon: The rightView of textField. Add your icon inside 'TextFieldRightIcon' enum
     ///   - countryFlag: Specify the country flag as an emoji.
+    ///   - regionCode: Region code of user's country. f.e. for Greece is +30
+    ///   - type: Custom business model for textFields setup.
     public func configure(placeHolder: String,
-                          keyboardType: UIKeyboardType,
-                          rightIcon: TextFieldRightIcon?,
-                          countryFlag: String?) {
+                          countryFlag: String?,
+                          regionCode: String?,
+                          type: RegistrationModelType) {
 
         resetView()
         attributedPlaceholder = NSAttributedString(string: placeHolder,
@@ -116,20 +126,53 @@ public class GradientTextField: UITextFieldPadding {
         textColor = UIColor.appColor(.basicText)
         font = UIFont.scriptFont(.regular, size: 16)
 
-        self.keyboardType = keyboardType
-        self.rightIcon = rightIcon
-
+        self.phoneNumberCode = regionCode
         if let flag = countryFlag {
             setupCountryIcon(flag)
         }
+
+        switch type {
+        case .email:
+            self.keyboardType = .emailAddress
+        case .password, .verifyPassword:
+            self.isSecureTextEntry = true
+        case .phone:
+            self.keyboardType = .numberPad
+        case .nationality, .sex:
+            self.isEditable = false
+            self.rightIcon = .downArrow
+        case .age:
+            self.rightIcon = .downArrow
+            createDatePicker()
+        default:
+            break
+        }
+
         self.errorOccured = false
     }
 
     private func resetView() {
+        isEditable = true
+        rightIcon = nil
+        isSecureTextEntry = false
+        keyboardType = .default
         rightView = nil
         leftView = nil
+        inputView = nil
+        inputAccessoryView = nil
     }
 
+    private func createDatePicker() {
+        let toolbar = UIToolbar(frame: CGRect(origin: .zero, size: CGSize(width: bounds.width, height: 44.0)))
+        toolbar.sizeToFit()
+
+        let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(doneTapped))
+        toolbar.setItems([doneBtn], animated: true)
+        /// Assign toolbar
+        self.inputAccessoryView = toolbar
+        /// Assign date picker to textField
+        self.inputView = datePicker
+    }
 
     // Masked number typing
     /// mask example: `+X (XXX) XXX-XXXX`
@@ -154,6 +197,17 @@ public class GradientTextField: UITextFieldPadding {
         return result
     }
 
+    @objc private func doneTapped() {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
+
+        selectedDate = datePicker.date
+
+        text = formatter.string(from: datePicker.date)
+        resignFirstResponder()
+    }
+
 }
 
 // MARK: - TextFieldDelegate
@@ -165,8 +219,8 @@ extension GradientTextField: UITextFieldDelegate {
     }
 
     public func textFieldDidEndEditing(_ textField: UITextField) {
-        print("end editing!")
         removeGradientLayers(1)
+        arrowTapped()
     }
 
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -175,20 +229,32 @@ extension GradientTextField: UITextFieldDelegate {
     }
 
     public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        /// Prevent keyboard appearing & stop editing when rightIcon has been set as an arrow.
-        if rightIcon?.oneOf(other: .upArrow, .downArrow) == true {
-            arrowTapped()
-            return false
+        /// Prevent keyboard appearing & stop editing when isEditable has been set as false.
+        DispatchQueue.main.async {
+            self.arrowTapped()
         }
-        return true
+        /// Delegate info in order to present drop-down list.
+        if !isEditable {
+            self.gradientDelegate?.notEditableTextFieldTriggered()
+        }
+
+        return isEditable
     }
 
-//    public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-//        guard let text = textField.text else { return false }
-//        let newString = (text as NSString).replacingCharacters(in: range, with: string)
-//        textField.text = format(with: "+X (XXX) XXX-XXXX", phone: newString)
-//        return false
-//    }
+    public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else { return false }
+
+        if let code = phoneNumberCode {
+            let newString = (text as NSString).replacingCharacters(in: range, with: string).replacingOccurrences(of: code, with: "")
+            let formattedNum = format(with: "(XXX) XXX-XXXX", phone: newString)
+
+            textField.text = formattedNum.isEmpty ? String() : "+\(code) \(formattedNum)"
+
+            return false
+        }
+
+        return true
+    }
 }
 
 // MARK: - Add icons
@@ -215,7 +281,7 @@ extension GradientTextField {
         let arrow = UIImageView(frame: CGRect(x: 43, y: 20, width: 9.5, height: 6))
         arrow.image = UIImage(named: "down_arrow")
 
-        let containerView = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 58, height: bounds.height)))
+        let containerView = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 58, height: 42)))
         containerView.isUserInteractionEnabled = true
         containerView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
         containerView.backgroundColor = UIColor.appColor(.lightGray)
@@ -227,9 +293,7 @@ extension GradientTextField {
         containerView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(countryViewTapped)))
     }
 
-    @objc private func arrowTapped() {
-        self.gradientDelegate?.didArrowTapped()
-
+    @objc public func arrowTapped() {
         /// We should rotate arrow 180˚ when it's available
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: [], animations: {
             self.rightView?.transform = (self.rightView?.transform == .identity) ? CGAffineTransform(rotationAngle: .pi) : .identity

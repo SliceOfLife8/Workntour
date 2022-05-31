@@ -23,3 +23,16 @@ public enum TextFieldRightIcon {
         }
     }
 }
+
+public enum RegistrationModelType {
+    case name
+    case email
+    case password
+    case verifyPassword
+    case age
+    case phone
+    case nationality
+    case sex
+    case vatNumber
+    case apd
+}
