@@ -21,6 +21,16 @@ public class SecondaryButton: UIButton {
         }
     }
 
+    public override var isEnabled: Bool {
+        didSet {
+            if !isEnabled {
+                mainColor = UIColor(hexString: "#ADADAD")
+            } else {
+                mainColor = UIColor.appColor(.purple)
+            }
+        }
+    }
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUp()

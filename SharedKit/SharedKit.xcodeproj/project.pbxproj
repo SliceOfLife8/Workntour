@@ -26,6 +26,7 @@
 		1B527A3E2820F4E400FDAF5D /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B527A3C2820F4E400FDAF5D /* Coordinator.swift */; };
 		1B527A3F2820F4E400FDAF5D /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B527A3D2820F4E400FDAF5D /* Navigator.swift */; };
 		1B563B652844999100B851C1 /* Countries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B563B642844999100B851C1 /* Countries.swift */; };
+		1B563B822848FB9B00B851C1 /* Dictionary+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B563B812848FB9B00B851C1 /* Dictionary+Extensions.swift */; };
 		1B9A3D70282A8485003E0C34 /* ControlEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9A3D6F282A8485003E0C34 /* ControlEvent.swift */; };
 		1B9A3D72282A84E2003E0C34 /* ControlPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9A3D71282A84E2003E0C34 /* ControlPublisher.swift */; };
 		1B9A3D74282A84FE003E0C34 /* ControlSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9A3D73282A84FE003E0C34 /* ControlSubscription.swift */; };
@@ -66,6 +67,7 @@
 		1B527A3C2820F4E400FDAF5D /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		1B527A3D2820F4E400FDAF5D /* Navigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 		1B563B642844999100B851C1 /* Countries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Countries.swift; sourceTree = "<group>"; };
+		1B563B812848FB9B00B851C1 /* Dictionary+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extensions.swift"; sourceTree = "<group>"; };
 		1B9A3D6F282A8485003E0C34 /* ControlEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlEvent.swift; sourceTree = "<group>"; };
 		1B9A3D71282A84E2003E0C34 /* ControlPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlPublisher.swift; sourceTree = "<group>"; };
 		1B9A3D73282A84FE003E0C34 /* ControlSubscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlSubscription.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				1B4AE4482840A68B00FA6420 /* UIImage+Extensions.swift */,
 				1B308A572842755400797F32 /* Equatable+Extensions.swift */,
 				1B308A5C2843D6C700797F32 /* UITableView+Extensions.swift */,
+				1B563B812848FB9B00B851C1 /* Dictionary+Extensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 				1B9A3D70282A8485003E0C34 /* ControlEvent.swift in Sources */,
 				1B9A3D87282B91CE003E0C34 /* AssetColor.swift in Sources */,
 				1B4AE400283E57BA00FA6420 /* UIViewController+Extensions.swift in Sources */,
+				1B563B822848FB9B00B851C1 /* Dictionary+Extensions.swift in Sources */,
 				1B308A5D2843D6C700797F32 /* UITableView+Extensions.swift in Sources */,
 				1B527A3F2820F4E400FDAF5D /* Navigator.swift in Sources */,
 				1B4AE43E283F621500FA6420 /* UIFont+Extensions.swift in Sources */,

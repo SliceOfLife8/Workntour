@@ -20,6 +20,18 @@ extension String {
         return emailPredicate.evaluate(with: self)
     }
 
+    // MARK: - Password validation
+    private var passwordPredicate: NSPredicate {
+        // least 1 uppercase, 1 digit, 1 lowercase, 1 symbol
+        //  min 8 characters total
+        let passwordRegex = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&<>*~:`-]).{8,}$"
+        return NSPredicate(format: "SELF MATCHES %@", passwordRegex)
+    }
+
+    public func isPasswordValid() -> Bool {
+        return passwordPredicate.evaluate(with: self.trimmingCharacters(in: .whitespaces))
+    }
+
     // MARK: - Countries
     public func countryFlag() -> String {
         return String(String.UnicodeScalarView(

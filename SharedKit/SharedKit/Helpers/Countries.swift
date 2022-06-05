@@ -17,11 +17,12 @@ public class Countries {
 
     // MARK: - Vars
     private var localIdentifier = Locale.current.collatorIdentifier ?? Locale.current.identifier
+    // MARK: - Vars about countries
     private var regionCode = Locale.current.regionCode ?? "GR"
     public var countries: [String: String] = [:]
     public var currentCountryFlag: String?
     public var selectedCountryPrefix: String?
-    public var selectedIndex: Int?
+    public var countrySelectedIndex: Int?
 
     public var models: [CountriesModel] = []
 
@@ -44,7 +45,7 @@ public class Countries {
                 if element == regionCode {
                     currentCountryFlag = flag
                     selectedCountryPrefix = phoneExtension
-                    selectedIndex = index
+                    countrySelectedIndex = index
                 }
             }
         }

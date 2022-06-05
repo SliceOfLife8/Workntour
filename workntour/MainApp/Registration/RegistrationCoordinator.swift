@@ -34,13 +34,11 @@ final class RegistrationCoordinator: NavigationCoordinator {
     }
 
     func start() {
-        let registrationViewModel = RegistrationTravelerViewModel()
-        let registrationVC = RegistrationTravelerVC()
-
-        registrationVC.viewModel = registrationViewModel
-        registrationVC.coordinator = self
-
-        rootViewController.pushViewController(registrationVC, animated: true)
+        if userRole == .TRAVELER {
+            travelerRegistration()
+        } else {
+            hostRegistration()
+        }
     }
 
     func navigate(to step: RegistrationStep) {
@@ -50,6 +48,20 @@ final class RegistrationCoordinator: NavigationCoordinator {
         case .close:
             parent.dismissCoordinator(self, modalStyle: .coverVertical, animated: true, completion: nil)
         }
+    }
+
+    private func travelerRegistration() {
+        let registrationViewModel = RegistrationTravelerViewModel()
+        let registrationVC = RegistrationTravelerVC()
+
+        registrationVC.viewModel = registrationViewModel
+        registrationVC.coordinator = self
+
+        rootViewController.pushViewController(registrationVC, animated: true)
+    }
+
+    private func hostRegistration() {
+        print("to be done!")
     }
 
 }

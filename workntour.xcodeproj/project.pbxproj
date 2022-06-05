@@ -41,6 +41,7 @@
 		1B5279E72820471100FDAF5D /* AuthorizationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5279E62820471100FDAF5D /* AuthorizationRouter.swift */; };
 		1B563B6D2845358200B851C1 /* CountriesDropDownCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B563B6B2845358100B851C1 /* CountriesDropDownCell.xib */; };
 		1B563B6E2845358200B851C1 /* CountriesDropDownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B563B6C2845358200B851C1 /* CountriesDropDownCell.swift */; };
+		1B563B722847DD0B00B851C1 /* RegistrationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B563B712847DD0B00B851C1 /* RegistrationError.swift */; };
 		1B714B582840DBB5000D85D0 /* RegistrationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B714B572840DBB5000D85D0 /* RegistrationCoordinator.swift */; };
 		1B7315F1281E7DD0001F2E6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7315F0281E7DD0001F2E6A /* AppDelegate.swift */; };
 		1B7315F3281E7DD0001F2E6A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7315F2281E7DD0001F2E6A /* SceneDelegate.swift */; };
@@ -124,6 +125,7 @@
 		1B527A37282059CB00FDAF5D /* CommonUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CommonUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B563B6B2845358100B851C1 /* CountriesDropDownCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CountriesDropDownCell.xib; sourceTree = "<group>"; };
 		1B563B6C2845358200B851C1 /* CountriesDropDownCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountriesDropDownCell.swift; sourceTree = "<group>"; };
+		1B563B712847DD0B00B851C1 /* RegistrationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationError.swift; sourceTree = "<group>"; };
 		1B714B572840DBB5000D85D0 /* RegistrationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationCoordinator.swift; sourceTree = "<group>"; };
 		1B7315ED281E7DCF001F2E6A /* workntour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = workntour.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B7315F0281E7DD0001F2E6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -289,6 +291,7 @@
 			isa = PBXGroup;
 			children = (
 				1B308A5428424FBE00797F32 /* RegistrationModel.swift */,
+				1B563B712847DD0B00B851C1 /* RegistrationError.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -658,6 +661,7 @@
 				1B1683A8283D20180067F2DB /* Pagination.swift in Sources */,
 				1B168380283A590B0067F2DB /* RegistrationViewModel.swift in Sources */,
 				1BA2DEF9281E8AE800DB128D /* MainCoordinator.swift in Sources */,
+				1B563B722847DD0B00B851C1 /* RegistrationError.swift in Sources */,
 				1BA2DF08281E8D7700DB128D /* OnboardingCoordinator.swift in Sources */,
 				1B714B582840DBB5000D85D0 /* RegistrationCoordinator.swift in Sources */,
 				1B7315F1281E7DD0001F2E6A /* AppDelegate.swift in Sources */,

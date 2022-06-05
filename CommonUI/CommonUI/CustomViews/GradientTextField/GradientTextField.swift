@@ -11,6 +11,7 @@ import SharedKit
 protocol GradientTFDelegate: AnyObject {
     func didStartEditing()
     func shouldReturn()
+    func didChange(_ text: String?)
     func notEditableTextFieldTriggered()
     func didCountryFlagTapped()
 }
@@ -31,6 +32,7 @@ public class GradientTextField: UITextFieldPadding {
     private var phoneNumberCode: String?
     private var isEditable: Bool = true
     public var selectedDate: Date?
+    public var type: RegistrationModelType?
     /// When are error is occured we should update right icon view. Moreover, it should be revertable, so we need
     public var errorOccured: Bool = false {
         didSet {
@@ -38,6 +40,8 @@ public class GradientTextField: UITextFieldPadding {
                 setupRightImage(icon: .alert)
             } else if let icon = rightIcon {
                 setupRightImage(icon: icon)
+            } else {
+                rightView = nil
             }
         }
     }
@@ -99,7 +103,7 @@ public class GradientTextField: UITextFieldPadding {
     }
 
     /// This method is about to remove previous gradientLayers before starting to draw again.
-    func removeGradientLayers(_ newWidth: CGFloat = 1) {
+    public func removeGradientLayers(_ newWidth: CGFloat = 1) {
         borderWidth = newWidth
         layer.sublayers?
             .filter { $0 is CAGradientLayer }
@@ -109,27 +113,29 @@ public class GradientTextField: UITextFieldPadding {
     /// This method is about configure this custom textField
     /// - Parameters:
     ///   - placeHolder: The placeholder of textField
+    ///   - text: The placeholder of textField
     ///   - countryFlag: Specify the country flag as an emoji.
     ///   - regionCode: Region code of user's country. f.e. for Greece is +30
     ///   - type: Custom business model for textFields setup.
+    ///   - error: Generic error about text of textField
     public func configure(placeHolder: String,
+                          text: String?,
                           countryFlag: String?,
                           regionCode: String?,
-                          type: RegistrationModelType) {
+                          type: RegistrationModelType,
+                          error: Bool) {
 
-        resetView()
         attributedPlaceholder = NSAttributedString(string: placeHolder,
                                                    attributes: [
                                                     .foregroundColor: UIColor.appColor(.placeholder),
                                                     .font: UIFont.scriptFont(.regular, size: 16)])
 
+        self.text = text
         textColor = UIColor.appColor(.basicText)
         font = UIFont.scriptFont(.regular, size: 16)
 
-        self.phoneNumberCode = regionCode
-        if let flag = countryFlag {
-            setupCountryIcon(flag)
-        }
+        self.type = type
+        changeFlag(countryFlag: countryFlag, regionCode: regionCode)
 
         switch type {
         case .email:
@@ -148,18 +154,26 @@ public class GradientTextField: UITextFieldPadding {
             break
         }
 
-        self.errorOccured = false
+        self.errorOccured = error
     }
 
-    private func resetView() {
+    public func resetView() {
         isEditable = true
         rightIcon = nil
+        type = nil
         isSecureTextEntry = false
         keyboardType = .default
         rightView = nil
         leftView = nil
         inputView = nil
         inputAccessoryView = nil
+    }
+
+    public func changeFlag(countryFlag: String?, regionCode: String?) {
+        self.phoneNumberCode = regionCode
+        if let flag = countryFlag {
+            setupCountryIcon(flag)
+        }
     }
 
     private func createDatePicker() {
@@ -218,9 +232,19 @@ extension GradientTextField: UITextFieldDelegate {
         removeGradientLayers(3)
     }
 
+    public func textFieldDidChangeSelection(_ textField: UITextField) {
+        var newString = textField.text
+        if let code = phoneNumberCode {
+            newString = newString?.replacingOccurrences(of: code, with: "").replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
+        }
+
+        self.gradientDelegate?.didChange(newString)
+    }
+
     public func textFieldDidEndEditing(_ textField: UITextField) {
         removeGradientLayers(1)
         arrowTapped()
+        self.gradientDelegate?.didChange(textField.text)
     }
 
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Lato-Medium.ttf">
+            <string>Lato-Medium</string>
+        </array>
+        <array key="Lato-Regular.ttf">
+            <string>Lato-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegistrationView" customModule="CommonUI" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="Jta-yG-BK0" id="L6J-nm-wa4"/>
+                <outlet property="descriptionLabel" destination="1j3-Ki-4eI" id="kQ9-0D-1xV"/>
+                <outlet property="gradientTextField" destination="03L-PB-Izm" id="clL-0N-akD"/>
+                <outlet property="optionalLabel" destination="QOO-y3-bnu" id="qep-0l-v86"/>
+                <outlet property="titleLabel" destination="QzG-wm-YIB" id="OFZ-Vz-7mr"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="mpQ-7q-uwE">
+            <rect key="frame" x="0.0" y="0.0" width="295" height="104"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jta-yG-BK0" userLabel="Content View">
+                    <rect key="frame" x="0.0" y="0.0" width="295" height="104"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Dpc-sl-zzl" userLabel="Top Stack View">
+                            <rect key="frame" x="24" y="16" width="247" height="20"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QzG-wm-YIB">
+                                    <rect key="frame" x="0.0" y="0.0" width="123.5" height="20"/>
+                                    <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
+                                    <color key="textColor" red="0.26274509800000001" green="0.094117647060000004" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="optional" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QOO-y3-bnu">
+                                    <rect key="frame" x="123.5" y="0.0" width="123.5" height="20"/>
+                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="13"/>
+                                    <color key="textColor" name="placeholder"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="FHm-1Z-HX6"/>
+                            </constraints>
+                        </stackView>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="03L-PB-Izm" customClass="GradientTextField" customModule="CommonUI" customModuleProvider="target">
+                            <rect key="frame" x="24" y="42" width="247" height="39"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" priority="750" constant="44" id="ebV-ys-YTV"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="DBs-RH-IOr" userLabel="Bottom Stack View">
+                            <rect key="frame" x="24" y="87" width="247" height="17"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1j3-Ki-4eI" userLabel="description">
+                                    <rect key="frame" x="0.0" y="0.0" width="247" height="17"/>
+                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                                    <color key="textColor" red="0.40000000000000002" green="0.43921568630000002" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="DBs-RH-IOr" firstAttribute="top" secondItem="03L-PB-Izm" secondAttribute="bottom" constant="6" id="0D7-3m-6gs"/>
+                        <constraint firstAttribute="trailing" secondItem="Dpc-sl-zzl" secondAttribute="trailing" constant="24" id="1CP-6K-o7p"/>
+                        <constraint firstAttribute="trailing" secondItem="03L-PB-Izm" secondAttribute="trailing" constant="24" id="4hf-uF-cAD"/>
+                        <constraint firstAttribute="trailing" secondItem="DBs-RH-IOr" secondAttribute="trailing" constant="24" id="8gU-I3-oSt"/>
+                        <constraint firstAttribute="bottom" secondItem="DBs-RH-IOr" secondAttribute="bottom" id="ISK-jz-APt"/>
+                        <constraint firstItem="Dpc-sl-zzl" firstAttribute="leading" secondItem="Jta-yG-BK0" secondAttribute="leading" constant="24" id="ITq-Jj-OO4"/>
+                        <constraint firstItem="Dpc-sl-zzl" firstAttribute="top" secondItem="Jta-yG-BK0" secondAttribute="top" constant="16" id="P5l-Q7-JmS"/>
+                        <constraint firstItem="03L-PB-Izm" firstAttribute="top" secondItem="Dpc-sl-zzl" secondAttribute="bottom" constant="6" id="djO-sx-crL"/>
+                        <constraint firstItem="03L-PB-Izm" firstAttribute="leading" secondItem="Jta-yG-BK0" secondAttribute="leading" constant="24" id="ef0-tx-Vel"/>
+                        <constraint firstItem="DBs-RH-IOr" firstAttribute="leading" secondItem="Jta-yG-BK0" secondAttribute="leading" constant="24" id="xpl-aw-pn6"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="cgD-Jv-2RD"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Jta-yG-BK0" secondAttribute="trailing" id="3vh-DX-Qil"/>
+                <constraint firstAttribute="bottom" secondItem="Jta-yG-BK0" secondAttribute="bottom" id="cij-r9-uAS"/>
+                <constraint firstItem="Jta-yG-BK0" firstAttribute="top" secondItem="mpQ-7q-uwE" secondAttribute="top" id="oll-GX-MyM"/>
+                <constraint firstItem="Jta-yG-BK0" firstAttribute="leading" secondItem="cgD-Jv-2RD" secondAttribute="leading" id="y6I-A4-9sf"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-138" y="-840"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="placeholder">
+            <color red="0.56862745098039214" green="0.55294117647058827" blue="0.66274509803921566" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

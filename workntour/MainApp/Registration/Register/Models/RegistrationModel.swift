@@ -17,10 +17,12 @@ struct RegistrationModel: Hashable {
     let countryEmoji: String?
     let countryPrefixCode: String?
     let description: String?
+    let errorMessage: String?
+    let error: String?
 
     init(title: String, isRequired: Bool = true, optionalTextVisible: Bool = false,
          placeholder: String, type: RegistrationModelType, countryEmoji: String? = nil,
-         prefixCode: String? = nil, description: String? = nil) {
+         prefixCode: String? = nil, description: String? = nil, errorMessage: String? = nil, error: String? = nil) {
         self.title = title
         self.isRequired = isRequired
         self.optionalTextVisible = optionalTextVisible
@@ -29,5 +31,7 @@ struct RegistrationModel: Hashable {
         self.countryEmoji = countryEmoji
         self.countryPrefixCode = prefixCode
         self.description = description
+        self.errorMessage = errorMessage
+        self.error = error
     }
 }

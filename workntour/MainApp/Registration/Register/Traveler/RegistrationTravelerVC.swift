@@ -35,13 +35,40 @@ class RegistrationTravelerVC: BaseVC<RegistrationTravelerViewModel, Registration
             cell.configure(flag: model?.flag, name: model?.name, prefix: model?.regionCode)
         }
 
+        dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
+            guard let model = self.viewModel?.countries.models.filter({ $0.flag == item }).first else {
+                return
+            }
+
+            self.viewModel?.updateSelectedCountry(model: model, index: index)
+
+            let cell = allCells[.phone]
+            cell?.gradientTextField.changeFlag(countryFlag: model.flag, regionCode: model.regionCode)
+
+            cell?.gradientTextField.placeholder = "+\(model.regionCode) xxxxxxxxxx"
+        }
+
+        return dropDown
+    }()
+
+    private lazy var nationalitiesDropDown: DropDown = {
+        let dropDown = DropDown()
+        dropDown.dataSource = ["American", "British", "Greek"]
+        dropDown.dismissMode = .onTap
+
+        dropDown.customCellConfiguration = { (_, item: String, cell: DropDownCell) -> Void in
+            cell.optionLabel.text = item
+        }
+
         dropDown.selectionAction = { [unowned self] (_, item: String) in
-            let model = self.viewModel?.countries.models.filter { $0.flag == item }.first
+            let nationalitiesCell = allCells[.nationality]
+            nationalitiesCell?.gradientTextField.text = item
+            nationalitiesCell?.gradientTextField.arrowTapped()
+        }
 
-            self.viewModel?.countries.selectedCountryPrefix = model?.regionCode
-            self.viewModel?.countries.currentCountryFlag = model?.flag
-
-            self.viewModel?.fetchModels()
+        dropDown.cancelAction = { [unowned self] in
+            let nationalitiesCell = allCells[.nationality]
+            nationalitiesCell?.gradientTextField.arrowTapped()
         }
 
         return dropDown
@@ -57,20 +84,20 @@ class RegistrationTravelerVC: BaseVC<RegistrationTravelerViewModel, Registration
         }
 
         dropDown.selectionAction = { [unowned self] (_, item: String) in
-            if let cell = self.tableView.cellForRow(at: self.tableView.lastIndexpath()) as? RegistrationCell {
-                cell.gradientTextField.text = item
-                cell.gradientTextField.arrowTapped()
-            }
+            let sexCell = allCells[.sex]
+            sexCell?.gradientTextField.text = item
+            sexCell?.gradientTextField.arrowTapped()
         }
 
         dropDown.cancelAction = { [unowned self] in
-            if let cell = self.tableView.cellForRow(at: self.tableView.lastIndexpath()) as? RegistrationCell {
-                cell.gradientTextField.arrowTapped()
-            }
+            let sexCell = allCells[.sex]
+            sexCell?.gradientTextField.arrowTapped()
         }
 
         return dropDown
     }()
+
+    private var allCells: [RegistrationModelType: RegistrationCell] = [:]
 
     // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
@@ -82,8 +109,6 @@ class RegistrationTravelerVC: BaseVC<RegistrationTravelerViewModel, Registration
         registerNotifications()
         customizeDropDown()
 
-        // self.viewModel?.input.send(())
-
         self.viewModel?.fetchModels()
     }
 
@@ -93,36 +118,57 @@ class RegistrationTravelerVC: BaseVC<RegistrationTravelerViewModel, Registration
     }
 
     override func bindViews() {
-        viewModel?.data
+        super.bindViews()
+        viewModel?.$data
             .bind(subscriber:
                     tableView.rowsSubscriber(cellIdentifier:
                                                 RegistrationCell.identifier,
                                              cellType: RegistrationCell.self,
-                                             cellConfig: { cell, _, model in
+                                             cellConfig: { [weak self] (cell, _, model) in
+                guard let strongSelf = self else { return }
                 cell.setupCell(title: model.title,
                                isRequired: model.isRequired,
                                isOptionalLabelVisible: model.optionalTextVisible,
                                placeholder: model.placeholder,
+                               text: self?.viewModel?.cellsValues[model.type].flatMap { $0 },
                                type: model.type,
                                countryFlag: model.countryEmoji,
                                regionCode: model.countryPrefixCode,
-                               description: model.description)
+                               description: model.description,
+                               error: self?.viewModel?.pullOfErrors[model.type]?.flatMap { $0 }?.description)
 
                 DispatchQueue.main.async {
                     cell.roundCorners()
                 }
                 cell.delegate = self
+                // Store all cells
+                if !strongSelf.allCells.values.contains(cell) {
+                    strongSelf.allCells[model.type] = cell
+                }
             }))
             .store(in: &storage)
     }
 
+    // MARK: - Actions
     @objc private func closeBtnTapped() {
         self.coordinator?.navigate(to: .close)
     }
 
     @objc private func signUpTapped() {
-        print("talk to viewmodel!")
-        /// Gather all textFields values and send them to viewModel for verification!
+        let hasErrors = viewModel?.verifyRequiredFields()
+
+        if hasErrors == true {
+            for (index, element) in viewModel!.pullOfErrors {
+                let cell = allCells[index]
+                cell?.gradientTextField.errorOccured = true
+                cell?.showError(element?.description)
+                tableView.beginUpdates()
+                tableView.endUpdates()
+                cell?.gradientTextField.removeGradientLayers()
+            }
+        } else {
+            viewModel?.registerTraveler()
+        }
     }
 
 }
@@ -165,7 +211,7 @@ private extension RegistrationTravelerVC {
 
         appearance.selectionBackgroundColor = UIColor.appColor(.lavender).withAlphaComponent(0.2)
         appearance.textFont = UIFont.scriptFont(.regular, size: 16)
-        appearance.textColor = UIColor.appColor(.deepPurple)
+        appearance.textColor = UIColor.appColor(.floatingLabel)
         appearance.cornerRadius = 8
         appearance.shadowColor = UIColor(white: 0.6, alpha: 1)
         appearance.shadowOpacity = 0.9
@@ -177,9 +223,12 @@ private extension RegistrationTravelerVC {
 // MARK: - RegistrationCellDelegate
 extension RegistrationTravelerVC: RegistrationCellDelegate {
     func textFieldDidBeginEditing(cell: RegistrationCell) {
-        guard let indexPath = tableView.indexPath(for: cell) else {
+        guard let indexPath = tableView.indexPath(for: cell),
+              let type = allCells.key(from: cell) else {
             return
         }
+
+        viewModel?.pullOfErrors[type] = nil
 
         tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
     }
@@ -204,22 +253,37 @@ extension RegistrationTravelerVC: RegistrationCellDelegate {
         }
     }
 
+    func textFieldDidChange(cell: RegistrationCell, newText: String?) {
+        guard let type = allCells.key(from: cell) else {
+            return
+        }
+        // Update new value of text
+        viewModel?.cellsValues[type] = newText
+        // Restore errorView
+        let cell = allCells[type]
+        cell?.gradientTextField.errorOccured = false
+        cell?.showError(nil)
+        tableView.beginUpdates() // Update height of cells
+        tableView.endUpdates()
+        cell?.gradientTextField.removeGradientLayers()
+    }
+
     func showCountryFlags(cell: RegistrationCell) {
         countriesDropDown.anchorView = cell
-        if let index = viewModel?.countries.selectedIndex {
+        if let index = viewModel?.countries.countrySelectedIndex {
             countriesDropDown.selectRow(index)
         }
         countriesDropDown.show()
     }
 
     func showDropdownList(cell: RegistrationCell) {
-        if tableView.visibleCells.last == cell {
+        if allCells[.sex] == cell {
             sexDropDown.anchorView = cell
             sexDropDown.show()
         } else {
-            print("show nationality list!")
+            nationalitiesDropDown.anchorView = cell
+            nationalitiesDropDown.show()
         }
-
     }
 }
 

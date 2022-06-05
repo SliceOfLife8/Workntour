@@ -20,7 +20,7 @@ public class PrimaryButton: UIButton {
             setUp()
         }
     }
-    @IBInspectable public var disabledStateColor: UIColor = .black {
+    @IBInspectable public var disabledStateColor: UIColor = UIColor(hexString: "#E5E5E5") {
         didSet {
             setUp()
         }
@@ -30,7 +30,7 @@ public class PrimaryButton: UIButton {
             setUp()
         }
     }
-    @IBInspectable public var disabledStateTitleColor: UIColor = .white {
+    @IBInspectable public var disabledStateTitleColor: UIColor = UIColor(hexString: "#ADADAD") {
         didSet {
             setUp()
         }
@@ -86,7 +86,7 @@ public class PrimaryButton: UIButton {
 
     func setDisableState() {
         backgroundColor = disabledStateColor
-        setTitleColor(disabledStateColor, for: .disabled)
+        setTitleColor(disabledStateTitleColor, for: .disabled)
         titleLabel?.font = UIFont.scriptFont(.semibold, size: 16)
     }
 
