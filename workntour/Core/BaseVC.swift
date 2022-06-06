@@ -8,6 +8,7 @@
 import UIKit
 import Combine
 import SharedKit
+import NVActivityIndicatorView
 
 /*
  1. Localization of app (Greek & English) and change texts live.
@@ -21,7 +22,8 @@ class BaseVC<VM: BaseViewModel, C: Coordinator>: UIViewController {
     var viewModel: VM?
     weak var coordinator: C?
 
-    var storage: DisposeBag = []
+    var storage = Set<AnyCancellable>()
+    private let loaderTag = 1938123987
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,3 +58,26 @@ private extension DisposeBag {
 }
 
 class BaseViewModel { }
+
+// MARK: - Loader
+extension BaseVC {
+    func showLoader(_ type: NVActivityIndicatorType = .ballRotateChase) {
+        var spinner = view.viewWithTag(loaderTag) as? NVActivityIndicatorView
+        if spinner == nil {
+            spinner = NVActivityIndicatorView(frame: .zero, type: type, color: UIColor.appColor(.lavender), padding: 8)
+        }
+
+        spinner?.translatesAutoresizingMaskIntoConstraints = false
+        spinner?.startAnimating()
+        spinner?.tag = loaderTag
+        view.isUserInteractionEnabled = false
+        spinner?.addExclusiveConstraints(superview: view, width: 80, height: 80, centerX: (view.centerXAnchor, 0), centerY: (view.centerYAnchor, 0))
+    }
+
+    func stopLoader() {
+        let spinner = view.viewWithTag(loaderTag) as? NVActivityIndicatorView
+        spinner?.stopAnimating()
+        spinner?.removeFromSuperview()
+        view.isUserInteractionEnabled = true
+    }
+}

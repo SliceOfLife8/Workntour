@@ -25,13 +25,13 @@ class DataManager {
 // MARK: - AuthorizationService
 extension DataManager: AuthorizationService {
 
-    func travelerRegistration(model: Traveler) -> AnyPublisher<Void, ProviderError> {
+    func travelerRegistration(model: Traveler) -> AnyPublisher<Bool, ProviderError> {
         return networking.request(
             with: AuthorizationRouter.registerTraveler(model),
             scheduler: DispatchQueue.main,
             class: GenericResponse<Traveler>.self)
-            .map { _ in () }
-            .eraseToAnyPublisher()
+        .map { $0.data != nil }
+        .eraseToAnyPublisher()
     }
 
     func individualHostRegistration(model: IndividualHost) -> AnyPublisher<Void, ProviderError> {
@@ -39,8 +39,8 @@ extension DataManager: AuthorizationService {
             with: AuthorizationRouter.registerHostIndividual(model),
             scheduler: DispatchQueue.main,
             class: GenericResponse<IndividualHost>.self)
-            .map { _ in () }
-            .eraseToAnyPublisher()
+        .map { _ in () }
+        .eraseToAnyPublisher()
     }
 
     func companyHostRegistration(model: CompanyHost) -> AnyPublisher<Void, ProviderError> {
@@ -48,8 +48,8 @@ extension DataManager: AuthorizationService {
             with: AuthorizationRouter.registerHostCompany(model),
             scheduler: DispatchQueue.main,
             class: GenericResponse<CompanyHost>.self)
-            .map { _ in () }
-            .eraseToAnyPublisher()
+        .map { _ in () }
+        .eraseToAnyPublisher()
     }
 
 }

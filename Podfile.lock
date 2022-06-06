@@ -101,6 +101,9 @@ PODS:
     - nanopb/encode (= 2.30909.0)
   - nanopb/decode (2.30909.0)
   - nanopb/encode (2.30909.0)
+  - NVActivityIndicatorView (5.1.1):
+    - NVActivityIndicatorView/Base (= 5.1.1)
+  - NVActivityIndicatorView/Base (5.1.1)
   - PromisesObjC (2.1.0)
   - SwiftLint (0.47.1)
   - SwiftyBeaver (1.9.6)
@@ -112,6 +115,7 @@ DEPENDENCIES:
   - Firebase/Crashlytics
   - Hero
   - Keys (from `Pods/CocoaPodsKeys`)
+  - NVActivityIndicatorView
   - SwiftLint
   - SwiftyBeaver
 
@@ -131,6 +135,7 @@ SPEC REPOS:
     - GoogleUtilities
     - Hero
     - nanopb
+    - NVActivityIndicatorView
     - PromisesObjC
     - SwiftLint
     - SwiftyBeaver
@@ -155,10 +160,11 @@ SPEC CHECKSUMS:
   Hero: 215865ba3ae41dd9bb08cd6c60a645529c6fc94b
   Keys: a576f4c9c1c641ca913a959a9c62ed3f215a8de9
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
+  NVActivityIndicatorView: 1f6c5687f1171810aa27a3296814dc2d7dec3667
   PromisesObjC: 99b6f43f9e1044bd87a95a60beff28c2c44ddb72
   SwiftLint: f80f1be7fa96d30e0aa68e58d45d4ea1ccaac519
   SwiftyBeaver: c8241b4745aa269a78ca5a022532c6915e948536
 
-PODFILE CHECKSUM: f5b0776d5225fe15d23845fb6fc5517109c8de65
+PODFILE CHECKSUM: 085197bb994deca52a230d44a25905cd59b4fa2c
 
 COCOAPODS: 1.11.3

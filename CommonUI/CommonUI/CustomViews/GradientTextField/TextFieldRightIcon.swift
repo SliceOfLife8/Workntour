@@ -26,6 +26,7 @@ public enum TextFieldRightIcon {
 
 public enum RegistrationModelType {
     case name
+    case surname
     case email
     case password
     case verifyPassword

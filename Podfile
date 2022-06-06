@@ -16,6 +16,7 @@ def common
   pod 'Hero'
   pod 'CombineDataSources'
   pod 'DropDown'
+  pod 'NVActivityIndicatorView'
 end
 
 def logging

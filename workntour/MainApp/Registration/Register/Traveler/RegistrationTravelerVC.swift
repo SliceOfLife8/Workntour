@@ -10,6 +10,7 @@ import SharedKit
 import CommonUI
 import CombineDataSources
 import DropDown
+import NVActivityIndicatorView
 
 class RegistrationTravelerVC: BaseVC<RegistrationTravelerViewModel, RegistrationCoordinator> {
     // MARK: - Vars
@@ -42,10 +43,11 @@ class RegistrationTravelerVC: BaseVC<RegistrationTravelerViewModel, Registration
 
             self.viewModel?.updateSelectedCountry(model: model, index: index)
 
-            let cell = allCells[.phone]
+            let cell = tableView.cellForRow(at: IndexPath(row: 6, section: 0)) as? RegistrationCell
             cell?.gradientTextField.changeFlag(countryFlag: model.flag, regionCode: model.regionCode)
 
             cell?.gradientTextField.placeholder = "+\(model.regionCode) xxxxxxxxxx"
+            cell?.gradientTextField.text?.removeAll()
         }
 
         return dropDown
@@ -61,13 +63,14 @@ class RegistrationTravelerVC: BaseVC<RegistrationTravelerViewModel, Registration
         }
 
         dropDown.selectionAction = { [unowned self] (_, item: String) in
-            let nationalitiesCell = allCells[.nationality]
+            let nationalitiesCell = tableView.visibleCells.suffix(2).first as? RegistrationCell
             nationalitiesCell?.gradientTextField.text = item
+            self.viewModel?.cellsValues[.nationality] = item
             nationalitiesCell?.gradientTextField.arrowTapped()
         }
 
         dropDown.cancelAction = { [unowned self] in
-            let nationalitiesCell = allCells[.nationality]
+            let nationalitiesCell = tableView.visibleCells.suffix(2).first as? RegistrationCell
             nationalitiesCell?.gradientTextField.arrowTapped()
         }
 
@@ -76,7 +79,7 @@ class RegistrationTravelerVC: BaseVC<RegistrationTravelerViewModel, Registration
 
     private lazy var sexDropDown: DropDown = {
         let dropDown = DropDown()
-        dropDown.dataSource = ["Male", "Female", "Other"]
+        dropDown.dataSource = UserSex.allCases.map { $0.rawValue }
         dropDown.dismissMode = .onTap
 
         dropDown.customCellConfiguration = { (_, item: String, cell: DropDownCell) -> Void in
@@ -84,13 +87,14 @@ class RegistrationTravelerVC: BaseVC<RegistrationTravelerViewModel, Registration
         }
 
         dropDown.selectionAction = { [unowned self] (_, item: String) in
-            let sexCell = allCells[.sex]
+            let sexCell = tableView.visibleCells.last as? RegistrationCell
             sexCell?.gradientTextField.text = item
+            self.viewModel?.cellsValues[.sex] = item
             sexCell?.gradientTextField.arrowTapped()
         }
 
         dropDown.cancelAction = { [unowned self] in
-            let sexCell = allCells[.sex]
+            let sexCell = tableView.visibleCells.last as? RegistrationCell
             sexCell?.gradientTextField.arrowTapped()
         }
 
@@ -147,6 +151,34 @@ class RegistrationTravelerVC: BaseVC<RegistrationTravelerViewModel, Registration
                 }
             }))
             .store(in: &storage)
+
+        viewModel?.$loaderVisibility
+            .sink { [weak self] status in
+                if status {
+                    self?.showLoader()
+                } else {
+                    self?.stopLoader()
+                }
+            }
+            .store(in: &storage)
+
+        viewModel?.$errorMessage
+            .dropFirst()
+            .sink(receiveValue: { [weak self] error in
+                if let errorDescription = error {
+                    self?.coordinator?.navigate(to: .errorDialog(description: errorDescription))
+                }
+            })
+            .store(in: &storage)
+
+        viewModel?.$signUpCompleted
+            .dropFirst()
+            .sink(receiveValue: { [weak self] status in
+                if status {
+                    self?.coordinator?.navigate(to: .emailVerification)
+                }
+            })
+            .store(in: &storage)
     }
 
     // MARK: - Actions
@@ -155,6 +187,7 @@ class RegistrationTravelerVC: BaseVC<RegistrationTravelerViewModel, Registration
     }
 
     @objc private func signUpTapped() {
+        self.view.endEditing(true) // Important step!
         let hasErrors = viewModel?.verifyRequiredFields()
 
         if hasErrors == true {
@@ -224,7 +257,7 @@ private extension RegistrationTravelerVC {
 extension RegistrationTravelerVC: RegistrationCellDelegate {
     func textFieldDidBeginEditing(cell: RegistrationCell) {
         guard let indexPath = tableView.indexPath(for: cell),
-              let type = allCells.key(from: cell) else {
+              let type = cell.gradientTextField.type else {
             return
         }
 
@@ -253,19 +286,18 @@ extension RegistrationTravelerVC: RegistrationCellDelegate {
         }
     }
 
-    func textFieldDidChange(cell: RegistrationCell, newText: String?) {
-        guard let type = allCells.key(from: cell) else {
+    func textFieldDidChange(cell: RegistrationCell) {
+        guard let type = cell.gradientTextField.type else {
             return
         }
         // Update new value of text
-        viewModel?.cellsValues[type] = newText
+        viewModel?.cellsValues[type] = cell.gradientTextField.text?.trimmingCharacters(in: .whitespaces)
         // Restore errorView
-        let cell = allCells[type]
-        cell?.gradientTextField.errorOccured = false
-        cell?.showError(nil)
+        cell.gradientTextField.errorOccured = false
+        cell.showError(nil)
         tableView.beginUpdates() // Update height of cells
         tableView.endUpdates()
-        cell?.gradientTextField.removeGradientLayers()
+        cell.gradientTextField.removeGradientLayers()
     }
 
     func showCountryFlags(cell: RegistrationCell) {
@@ -277,7 +309,7 @@ extension RegistrationTravelerVC: RegistrationCellDelegate {
     }
 
     func showDropdownList(cell: RegistrationCell) {
-        if allCells[.sex] == cell {
+        if tableView.visibleCells.last == cell {
             sexDropDown.anchorView = cell
             sexDropDown.show()
         } else {

@@ -10,7 +10,7 @@ import UIKit
 public protocol RegistrationCellDelegate: AnyObject {
     func textFieldDidBeginEditing(cell: RegistrationCell)
     func textFieldShouldReturn(cell: RegistrationCell)
-    func textFieldDidChange(cell: RegistrationCell, newText: String?)
+    func textFieldDidChange(cell: RegistrationCell)
     func showCountryFlags(cell: RegistrationCell)
     func showDropdownList(cell: RegistrationCell)
 }
@@ -20,6 +20,8 @@ public class RegistrationCell: UITableViewCell {
     public weak var delegate: RegistrationCellDelegate?
     
     public static let identifier = String(describing: RegistrationCell.self)
+
+    private var descriptionText: String?
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var optionalLabel: UILabel!
@@ -44,6 +46,7 @@ public class RegistrationCell: UITableViewCell {
         titleLabel.text = isRequired ? "\(title)*" : title
         optionalLabel.isHidden = !isOptionalLabelVisible
         let hasError = error != nil
+        self.descriptionText = description
         showError(error, descriptionText: description)
         
         gradientTextField.configure(placeHolder: placeholder, text: text, countryFlag: countryFlag, regionCode: regionCode, type: type, error: hasError)
@@ -51,9 +54,13 @@ public class RegistrationCell: UITableViewCell {
     }
 
     public func showError(_ text: String?, descriptionText: String? = nil) {
-        let hasError = text != nil
-        descriptionLabel.text = hasError ? text : descriptionText
-        descriptionLabel.textColor = hasError ? .red : UIColor.appColor(.gray)
+        if text != nil { // hasError
+            descriptionLabel.text = text
+            descriptionLabel.textColor = .red
+        } else {
+            descriptionLabel.text = descriptionText ?? self.descriptionText
+            descriptionLabel.textColor = UIColor.appColor(.gray)
+        }
     }
     
     /// We should remove old GradientLayer & draw a new one as there is a problem of drawing correct rounded corners.
@@ -65,8 +72,8 @@ public class RegistrationCell: UITableViewCell {
 
 
 extension RegistrationCell: GradientTFDelegate {
-    func didChange(_ text: String?) {
-        self.delegate?.textFieldDidChange(cell: self, newText: text)
+    func didChange() {
+        self.delegate?.textFieldDidChange(cell: self)
     }
 
     func notEditableTextFieldTriggered() {

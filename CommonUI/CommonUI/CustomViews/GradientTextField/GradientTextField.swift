@@ -11,7 +11,7 @@ import SharedKit
 protocol GradientTFDelegate: AnyObject {
     func didStartEditing()
     func shouldReturn()
-    func didChange(_ text: String?)
+    func didChange()
     func notEditableTextFieldTriggered()
     func didCountryFlagTapped()
 }
@@ -233,18 +233,13 @@ extension GradientTextField: UITextFieldDelegate {
     }
 
     public func textFieldDidChangeSelection(_ textField: UITextField) {
-        var newString = textField.text
-        if let code = phoneNumberCode {
-            newString = newString?.replacingOccurrences(of: code, with: "").replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
-        }
-
-        self.gradientDelegate?.didChange(newString)
+        // self.gradientDelegate?.didChange()
     }
 
     public func textFieldDidEndEditing(_ textField: UITextField) {
         removeGradientLayers(1)
         arrowTapped()
-        self.gradientDelegate?.didChange(textField.text)
+        self.gradientDelegate?.didChange()
     }
 
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {

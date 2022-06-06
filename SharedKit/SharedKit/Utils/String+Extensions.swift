@@ -58,3 +58,34 @@ extension String {
         return false
     }
 }
+
+//MARK: - Dates
+extension String {
+    public func stringToDate() -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+        dateFormatter.timeZone = TimeZone(abbreviation: "GMT+00:00")
+
+        return dateFormatter.date(from: self)
+    }
+
+    public func changeDateFormat() -> String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        guard let date = stringToDate() else {
+            assertionFailure()
+            return nil
+        }
+
+        return dateFormatter.string(from: date)
+    }
+
+    public func userAgeEligibility() -> Bool {
+        guard let birthdayDate = self.stringToDate(),
+              let minimumRequiredDate = Calendar.current.date(byAdding: .year, value: -18, to: Date()) else {
+            return false
+        }
+
+        return birthdayDate < minimumRequiredDate
+    }
+}

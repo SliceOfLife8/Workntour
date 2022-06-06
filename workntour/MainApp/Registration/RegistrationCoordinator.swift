@@ -7,9 +7,11 @@
 
 import UIKit
 import SharedKit
+import Combine
 
 enum RegistrationStep: Step {
     case emailVerification
+    case errorDialog(description: String)
     case close
 }
 
@@ -47,6 +49,8 @@ final class RegistrationCoordinator: NavigationCoordinator {
             debugPrint("Open verification!")
         case .close:
             parent.dismissCoordinator(self, modalStyle: .coverVertical, animated: true, completion: nil)
+        case .errorDialog(let description):
+            AlertHelper.showDefaultAlert(rootViewController, title: "Error message", message: description)
         }
     }
 

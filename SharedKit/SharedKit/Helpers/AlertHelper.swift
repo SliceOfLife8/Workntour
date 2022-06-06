@@ -32,4 +32,20 @@ public class AlertHelper {
         controller.present(dialog, animated: true, completion: nil)
     }
 
+    public static func showDefaultAlert(_ controller: UIViewController, title: String, message: String? = nil) {
+        let attributedString = NSAttributedString(string: title, attributes: [
+            NSAttributedString.Key.font: UIFont.scriptFont(.bold, size: 17),
+            NSAttributedString.Key.foregroundColor: UIColor.appColor(.lavender)
+        ])
+
+        let dialog = UIAlertController(title: "", message: message, preferredStyle: .alert)
+        dialog.setValue(attributedString, forKey: "attributedTitle")
+
+        dialog.addAction(UIAlertAction(title: "OK", style: .default))
+        
+        dialog.view.tintColor = UIColor.appColor(.lavender2)
+
+        controller.present(dialog, animated: true, completion: nil)
+    }
+
 }

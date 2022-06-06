@@ -50,7 +50,7 @@ enum UserRole: String, Codable {
     case COMPANY_HOST
 }
 
-enum UserSex: String, Codable {
+enum UserSex: String, Codable, CaseIterable {
     case MALE
     case FEMALE
     case OTHER

@@ -9,6 +9,6 @@ import Foundation
 
 public extension Dictionary where Value: Equatable {
     func key(from value: Value) -> Key? {
-        return self.first(where: { $0.value == value })?.key
+        return self.filter { $1 == value }.map { $0.0 }.first
     }
 }

@@ -8,7 +8,8 @@
 import Foundation
 
 enum RegistrationError {
-    case fullname
+    case name
+    case surname
     case email
     case password
     case confirmPassword
@@ -17,7 +18,9 @@ enum RegistrationError {
 
     var description: String {
         switch self {
-        case .fullname:
+        case .name:
+            return "It seems that this field is empty!"
+        case .surname:
             return "It seems that this field is empty!"
         case .email:
             return "Email format is wrong!"
