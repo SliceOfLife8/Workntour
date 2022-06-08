@@ -1,5 +1,5 @@
 //
-//  RegistrationViewModel.swift
+//  RegistrationTravelerViewModel.swift
 //  workntour
 //
 //  Created by Petimezas, Chris, Vodafone on 22/5/22.
@@ -19,7 +19,7 @@ class RegistrationTravelerViewModel: BaseViewModel {
     var cellsValues: [RegistrationModelType: String?] = Dictionary(uniqueKeysWithValues: [.name, .surname, .email, .password, .verifyPassword, .age, .phone, .nationality, .sex].map {($0, nil)})
     /// Outputs
     @Published var loaderVisibility: Bool = false
-    @Published private(set) var signUpCompleted: Bool
+    @Published var signUpCompleted: String?
     @Published var errorMessage: String?
 
     var countries: Countries
@@ -27,7 +27,6 @@ class RegistrationTravelerViewModel: BaseViewModel {
 
     init(service: AuthorizationService = DataManager.shared) {
         self.service = service
-        self.signUpCompleted = false
         self.countries = Countries()
 
         super.init()
@@ -127,7 +126,8 @@ class RegistrationTravelerViewModel: BaseViewModel {
                     pullOfErrors[.age] = .age
                 }
             case .phone:
-                if trimmingPhoneNumber(text).count != 10 {
+                let digits = trimmingPhoneNumber(text).count
+                if digits > 0 && digits != 10 {
                     pullOfErrors[.phone] = .phoneNumber
                 }
             default: break
@@ -181,9 +181,9 @@ class RegistrationTravelerViewModel: BaseViewModel {
         service
             .travelerRegistration(model: traveler)
             .subscribe(on: RunLoop.main)
-            .catch({ [weak self] error -> Just<Bool> in
+            .catch({ [weak self] error -> Just<String?> in
                 self?.errorMessage = error.errorDescription
-                return Just(false)
+                return Just(nil)
             })
                 .handleEvents(receiveCompletion: { _ in
                     self.loaderVisibility = false

@@ -14,8 +14,8 @@ protocol CheckBoxDelegate: AnyObject {
 public class Checkbox: UIButton {
 
     // MARK: - Vars
-    let checkedImage = UIImage(named: "check_box_filled")
-    let uncheckedImage = UIImage(named: "Unselected")
+    let checkedImage = UIImage(named: "checkbox_on")
+    let uncheckedImage = UIImage(named: "checkbox_off")
     weak var delegate: CheckBoxDelegate?
 
     public var isChecked: Bool = false {

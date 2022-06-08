@@ -9,12 +9,17 @@
 /* Begin PBXBuildFile section */
 		1B16837B2837C07B0067F2DB /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B16837A2837C07B0067F2DB /* FirebaseManager.swift */; };
 		1B16837E283A58F00067F2DB /* RegistrationTravelerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B16837D283A58F00067F2DB /* RegistrationTravelerVC.swift */; };
-		1B168380283A590B0067F2DB /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B16837F283A590B0067F2DB /* RegistrationViewModel.swift */; };
+		1B168380283A590B0067F2DB /* RegistrationTravelerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B16837F283A590B0067F2DB /* RegistrationTravelerViewModel.swift */; };
 		1B1683A6283D1F6E0067F2DB /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1683A5283D1F6D0067F2DB /* ErrorResponse.swift */; };
 		1B1683A8283D20180067F2DB /* Pagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1683A7283D20180067F2DB /* Pagination.swift */; };
 		1B1683AA283D20E20067F2DB /* GenericResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1683A9283D20E20067F2DB /* GenericResponse.swift */; };
 		1B308A462841271100797F32 /* RegistrationTravelerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B308A452841271100797F32 /* RegistrationTravelerVC.xib */; };
 		1B308A5528424FBE00797F32 /* RegistrationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B308A5428424FBE00797F32 /* RegistrationModel.swift */; };
+		1B3C382F28507823000EEADF /* EmailVerificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3C382E28507823000EEADF /* EmailVerificationVC.swift */; };
+		1B3C38312850782F000EEADF /* EmailVerificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3C38302850782F000EEADF /* EmailVerificationViewModel.swift */; };
+		1B3C383628508B79000EEADF /* RegistrationHostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3C383528508B79000EEADF /* RegistrationHostVC.swift */; };
+		1B3C383828508B83000EEADF /* RegistrationHostVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B3C383728508B83000EEADF /* RegistrationHostVC.xib */; };
+		1B3C383A28508BA9000EEADF /* RegistrationHostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3C383928508BA9000EEADF /* RegistrationHostViewModel.swift */; };
 		1B4AE3F8283E04BB00FA6420 /* IndividualHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4AE3F7283E04BB00FA6420 /* IndividualHost.swift */; };
 		1B4AE3FA283E04C400FA6420 /* CompanyHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4AE3F9283E04C400FA6420 /* CompanyHost.swift */; };
 		1B4AE3FD283E4B4D00FA6420 /* logo_title.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B4AE3FB283E4B4C00FA6420 /* logo_title.png */; };
@@ -90,12 +95,17 @@
 /* Begin PBXFileReference section */
 		1B16837A2837C07B0067F2DB /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		1B16837D283A58F00067F2DB /* RegistrationTravelerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationTravelerVC.swift; sourceTree = "<group>"; };
-		1B16837F283A590B0067F2DB /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
+		1B16837F283A590B0067F2DB /* RegistrationTravelerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationTravelerViewModel.swift; sourceTree = "<group>"; };
 		1B1683A5283D1F6D0067F2DB /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 		1B1683A7283D20180067F2DB /* Pagination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pagination.swift; sourceTree = "<group>"; };
 		1B1683A9283D20E20067F2DB /* GenericResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericResponse.swift; sourceTree = "<group>"; };
 		1B308A452841271100797F32 /* RegistrationTravelerVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegistrationTravelerVC.xib; sourceTree = "<group>"; };
 		1B308A5428424FBE00797F32 /* RegistrationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationModel.swift; sourceTree = "<group>"; };
+		1B3C382E28507823000EEADF /* EmailVerificationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerificationVC.swift; sourceTree = "<group>"; };
+		1B3C38302850782F000EEADF /* EmailVerificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerificationViewModel.swift; sourceTree = "<group>"; };
+		1B3C383528508B79000EEADF /* RegistrationHostVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationHostVC.swift; sourceTree = "<group>"; };
+		1B3C383728508B83000EEADF /* RegistrationHostVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegistrationHostVC.xib; sourceTree = "<group>"; };
+		1B3C383928508BA9000EEADF /* RegistrationHostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationHostViewModel.swift; sourceTree = "<group>"; };
 		1B4AE3F7283E04BB00FA6420 /* IndividualHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualHost.swift; sourceTree = "<group>"; };
 		1B4AE3F9283E04C400FA6420 /* CompanyHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyHost.swift; sourceTree = "<group>"; };
 		1B4AE3FB283E4B4C00FA6420 /* logo_title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_title.png; sourceTree = "<group>"; };
@@ -209,6 +219,8 @@
 		1B308A432841268500797F32 /* EmailVerification */ = {
 			isa = PBXGroup;
 			children = (
+				1B3C382E28507823000EEADF /* EmailVerificationVC.swift */,
+				1B3C38302850782F000EEADF /* EmailVerificationViewModel.swift */,
 			);
 			path = EmailVerification;
 			sourceTree = "<group>";
@@ -217,10 +229,21 @@
 			isa = PBXGroup;
 			children = (
 				1B563B6F284651C700B851C1 /* Traveler */,
+				1B3C383428508B56000EEADF /* Host */,
 				1B563B702846525100B851C1 /* Models */,
 				1B563B6A2845357200B851C1 /* DropDownView */,
 			);
 			path = Register;
+			sourceTree = "<group>";
+		};
+		1B3C383428508B56000EEADF /* Host */ = {
+			isa = PBXGroup;
+			children = (
+				1B3C383528508B79000EEADF /* RegistrationHostVC.swift */,
+				1B3C383728508B83000EEADF /* RegistrationHostVC.xib */,
+				1B3C383928508BA9000EEADF /* RegistrationHostViewModel.swift */,
+			);
+			path = Host;
 			sourceTree = "<group>";
 		};
 		1B4AE3F6283E04A500FA6420 /* Users */ = {
@@ -282,7 +305,7 @@
 			children = (
 				1B16837D283A58F00067F2DB /* RegistrationTravelerVC.swift */,
 				1B308A452841271100797F32 /* RegistrationTravelerVC.xib */,
-				1B16837F283A590B0067F2DB /* RegistrationViewModel.swift */,
+				1B16837F283A590B0067F2DB /* RegistrationTravelerViewModel.swift */,
 			);
 			path = Traveler;
 			sourceTree = "<group>";
@@ -536,6 +559,7 @@
 				1B4AE433283F58FB00FA6420 /* Lato-Regular.ttf in Resources */,
 				1B4AE434283F58FB00FA6420 /* Lato-Semibold.ttf in Resources */,
 				1B4AE435283F58FB00FA6420 /* Lato-SemiboldItalic.ttf in Resources */,
+				1B3C383828508B83000EEADF /* RegistrationHostVC.xib in Resources */,
 				1B4AE436283F58FB00FA6420 /* Lato-Thin.ttf in Resources */,
 				1B4AE437283F58FB00FA6420 /* Lato-ThinItalic.ttf in Resources */,
 				1B7315FD281E7DD5001F2E6A /* LaunchScreen.storyboard in Resources */,
@@ -659,19 +683,22 @@
 				1B9A3D90282C0BAF003E0C34 /* DataManager.swift in Sources */,
 				1BA2DF02281E8C7300DB128D /* BaseVC.swift in Sources */,
 				1B1683A8283D20180067F2DB /* Pagination.swift in Sources */,
-				1B168380283A590B0067F2DB /* RegistrationViewModel.swift in Sources */,
+				1B168380283A590B0067F2DB /* RegistrationTravelerViewModel.swift in Sources */,
 				1BA2DEF9281E8AE800DB128D /* MainCoordinator.swift in Sources */,
 				1B563B722847DD0B00B851C1 /* RegistrationError.swift in Sources */,
 				1BA2DF08281E8D7700DB128D /* OnboardingCoordinator.swift in Sources */,
 				1B714B582840DBB5000D85D0 /* RegistrationCoordinator.swift in Sources */,
+				1B3C38312850782F000EEADF /* EmailVerificationViewModel.swift in Sources */,
 				1B7315F1281E7DD0001F2E6A /* AppDelegate.swift in Sources */,
 				1B9A3D8E282C0B31003E0C34 /* AuthorizationService.swift in Sources */,
 				1BA2DEFE281E8C1800DB128D /* AppRootVC.swift in Sources */,
 				1B9A3D32282A3CE9003E0C34 /* Traveler.swift in Sources */,
+				1B3C383628508B79000EEADF /* RegistrationHostVC.swift in Sources */,
 				1B9A3DCB282D731C003E0C34 /* HeroHelper.swift in Sources */,
 				1B7315F3281E7DD0001F2E6A /* SceneDelegate.swift in Sources */,
 				1BA2DEEF281E840900DB128D /* DeepLinkManager.swift in Sources */,
 				1B308A5528424FBE00797F32 /* RegistrationModel.swift in Sources */,
+				1B3C382F28507823000EEADF /* EmailVerificationVC.swift in Sources */,
 				1B563B6E2845358200B851C1 /* CountriesDropDownCell.swift in Sources */,
 				1B4AE3F8283E04BB00FA6420 /* IndividualHost.swift in Sources */,
 				1B1683AA283D20E20067F2DB /* GenericResponse.swift in Sources */,
@@ -682,6 +709,7 @@
 				1B5279E72820471100FDAF5D /* AuthorizationRouter.swift in Sources */,
 				1B9A3D8A282C05F6003E0C34 /* SplashVC.swift in Sources */,
 				1B16837B2837C07B0067F2DB /* FirebaseManager.swift in Sources */,
+				1B3C383A28508BA9000EEADF /* RegistrationHostViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

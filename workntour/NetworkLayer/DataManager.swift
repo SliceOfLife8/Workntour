@@ -25,12 +25,12 @@ class DataManager {
 // MARK: - AuthorizationService
 extension DataManager: AuthorizationService {
 
-    func travelerRegistration(model: Traveler) -> AnyPublisher<Bool, ProviderError> {
+    func travelerRegistration(model: Traveler) -> AnyPublisher<String?, ProviderError> {
         return networking.request(
             with: AuthorizationRouter.registerTraveler(model),
             scheduler: DispatchQueue.main,
             class: GenericResponse<Traveler>.self)
-        .map { $0.data != nil }
+        .map { $0.data?.email }
         .eraseToAnyPublisher()
     }
 

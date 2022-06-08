@@ -101,8 +101,6 @@ class RegistrationTravelerVC: BaseVC<RegistrationTravelerViewModel, Registration
         return dropDown
     }()
 
-    private var allCells: [RegistrationModelType: RegistrationCell] = [:]
-
     // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
 
@@ -129,7 +127,6 @@ class RegistrationTravelerVC: BaseVC<RegistrationTravelerViewModel, Registration
                                                 RegistrationCell.identifier,
                                              cellType: RegistrationCell.self,
                                              cellConfig: { [weak self] (cell, _, model) in
-                guard let strongSelf = self else { return }
                 cell.setupCell(title: model.title,
                                isRequired: model.isRequired,
                                isOptionalLabelVisible: model.optionalTextVisible,
@@ -145,10 +142,6 @@ class RegistrationTravelerVC: BaseVC<RegistrationTravelerViewModel, Registration
                     cell.roundCorners()
                 }
                 cell.delegate = self
-                // Store all cells
-                if !strongSelf.allCells.values.contains(cell) {
-                    strongSelf.allCells[model.type] = cell
-                }
             }))
             .store(in: &storage)
 
@@ -172,10 +165,9 @@ class RegistrationTravelerVC: BaseVC<RegistrationTravelerViewModel, Registration
             .store(in: &storage)
 
         viewModel?.$signUpCompleted
-            .dropFirst()
-            .sink(receiveValue: { [weak self] status in
-                if status {
-                    self?.coordinator?.navigate(to: .emailVerification)
+            .sink(receiveValue: { [weak self] value in
+                if let email = value {
+                    self?.coordinator?.navigate(to: .emailVerification(email: email))
                 }
             })
             .store(in: &storage)
@@ -192,7 +184,26 @@ class RegistrationTravelerVC: BaseVC<RegistrationTravelerViewModel, Registration
 
         if hasErrors == true {
             for (index, element) in viewModel!.pullOfErrors {
-                let cell = allCells[index]
+                var cell: RegistrationCell?
+
+                switch index {
+                case .name:
+                    cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? RegistrationCell
+                case .surname:
+                    cell = tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? RegistrationCell
+                case .email:
+                    cell = tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as? RegistrationCell
+                case .password:
+                    cell = tableView.cellForRow(at: IndexPath(row: 3, section: 0)) as? RegistrationCell
+                case .verifyPassword:
+                    cell = tableView.cellForRow(at: IndexPath(row: 4, section: 0)) as? RegistrationCell
+                case .age:
+                    cell = tableView.cellForRow(at: IndexPath(row: 5, section: 0)) as? RegistrationCell
+                case .phone:
+                    cell = tableView.cellForRow(at: IndexPath(row: 6, section: 0)) as? RegistrationCell
+                default: break
+                }
+
                 cell?.gradientTextField.errorOccured = true
                 cell?.showError(element?.description)
                 tableView.beginUpdates()

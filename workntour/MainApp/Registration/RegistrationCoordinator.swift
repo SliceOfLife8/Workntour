@@ -10,7 +10,7 @@ import SharedKit
 import Combine
 
 enum RegistrationStep: Step {
-    case emailVerification
+    case emailVerification(email: String)
     case errorDialog(description: String)
     case close
 }
@@ -45,8 +45,8 @@ final class RegistrationCoordinator: NavigationCoordinator {
 
     func navigate(to step: RegistrationStep) {
         switch step {
-        case .emailVerification:
-            debugPrint("Open verification!")
+        case .emailVerification(let email):
+            openEmailVerification(email)
         case .close:
             parent.dismissCoordinator(self, modalStyle: .coverVertical, animated: true, completion: nil)
         case .errorDialog(let description):
@@ -64,8 +64,24 @@ final class RegistrationCoordinator: NavigationCoordinator {
         rootViewController.pushViewController(registrationVC, animated: true)
     }
 
+    private func openEmailVerification(_ email: String) {
+        let verificationViewModel = EmailVerificationViewModel()
+        let emailVerificationVC = EmailVerificationVC(email)
+
+        emailVerificationVC.viewModel = verificationViewModel
+        emailVerificationVC.coordinator = self
+
+        rootViewController.pushViewController(emailVerificationVC, animated: true)
+    }
+
     private func hostRegistration() {
-        print("to be done!")
+        let registrationViewModel = RegistrationHostViewModel()
+        let hostVC = RegistrationHostVC()
+
+        hostVC.viewModel = registrationViewModel
+        hostVC.coordinator = self
+
+        rootViewController.pushViewController(hostVC, animated: true)
     }
 
 }

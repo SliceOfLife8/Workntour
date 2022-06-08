@@ -29,11 +29,14 @@ class BaseVC<VM: BaseViewModel, C: Coordinator>: UIViewController {
         super.viewDidLoad()
 
         bindViews()
+        setupUI()
         setupTexts()
         trackScreen()
     }
 
     func bindViews() {}
+
+    func setupUI() {}
 
     /// #Override this method in order to receive language real-time changes.
     func setupTexts() {}
