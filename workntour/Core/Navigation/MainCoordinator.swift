@@ -37,7 +37,7 @@ final class MainCoordinator: NavigationCoordinator {
         splashVC.viewModel = splashViewModel
         splashVC.coordinator = self
 
-        self.rootViewController.pushViewController(splashVC, animated: true)
+        navigator.push(splashVC, animated: true)
     }
 
     func navigate(to step: MainStep) {
@@ -45,7 +45,7 @@ final class MainCoordinator: NavigationCoordinator {
         case .registrationPoint:
             showAlert()
         case .login:
-            debugPrint("Login flow!")
+            startLoginFlow()
         case .loginAsGuest:
             debugPrint("Login as a guest!")
         }
@@ -62,5 +62,10 @@ final class MainCoordinator: NavigationCoordinator {
     private func startRegistrationFlow(forType type: UserRole) {
         let registrationCoordinator = RegistrationCoordinator(parent: self, role: type)
         presentCoordinator(registrationCoordinator, modalStyle: .overFullScreen, animated: true)
+    }
+
+    private func startLoginFlow() {
+        let loginCoordinator = LoginCoordinator(parent: self)
+        pushCoordinator(loginCoordinator, animated: true)
     }
 }

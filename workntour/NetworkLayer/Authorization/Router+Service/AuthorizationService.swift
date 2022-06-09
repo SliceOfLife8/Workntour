@@ -16,4 +16,6 @@ protocol AuthorizationService: AnyObject {
 
     func companyHostRegistration(model: CompanyHost) -> AnyPublisher<String?, ProviderError>
 
+    func login(email: String, password: String) -> AnyPublisher<LoginModel, ProviderError>
+
 }

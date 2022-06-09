@@ -19,14 +19,14 @@ enum RegistrationStep: Step {
 
 final class RegistrationCoordinator: NavigationCoordinator {
 
-    var parent: MainCoordinator
+    var parent: Coordinator
     var childCoordinators: [Coordinator] = []
     var navigator: NavigatorType
     var rootViewController: UINavigationController
 
     private var userRole: UserRole
 
-    init(parent: MainCoordinator, role: UserRole) {
+    init(parent: Coordinator, role: UserRole) {
         self.parent = parent
         self.userRole = role
 
@@ -48,7 +48,13 @@ final class RegistrationCoordinator: NavigationCoordinator {
         case .emailVerification(let email):
             openEmailVerification(email)
         case .close:
-            parent.dismissCoordinator(self, modalStyle: .coverVertical, animated: true, completion: nil)
+            /* TODO: This is a temporary solution!
+             Please find a proper one... */
+            if let _parent = parent as? MainCoordinator {
+                _parent.dismissCoordinator(self, modalStyle: .coverVertical, animated: true, completion: nil)
+            } else if let _parent = parent as? LoginCoordinator {
+                _parent.dismissCoordinator(self, modalStyle: .coverVertical, animated: true, completion: nil)
+            }
         case .errorDialog(let description):
             AlertHelper.showDefaultAlert(rootViewController, title: "Error message", message: description)
         }
@@ -61,7 +67,7 @@ final class RegistrationCoordinator: NavigationCoordinator {
         registrationVC.viewModel = registrationViewModel
         registrationVC.coordinator = self
 
-        rootViewController.pushViewController(registrationVC, animated: true)
+        navigator.push(registrationVC, animated: true)
     }
 
     private func openEmailVerification(_ email: String) {
@@ -71,7 +77,7 @@ final class RegistrationCoordinator: NavigationCoordinator {
         emailVerificationVC.viewModel = verificationViewModel
         emailVerificationVC.coordinator = self
 
-        rootViewController.pushViewController(emailVerificationVC, animated: true)
+        navigator.push(emailVerificationVC, animated: true)
     }
 
     private func hostRegistration() {
@@ -81,7 +87,7 @@ final class RegistrationCoordinator: NavigationCoordinator {
         hostVC.viewModel = registrationViewModel
         hostVC.coordinator = self
 
-        rootViewController.pushViewController(hostVC, animated: true)
+        navigator.push(hostVC, animated: true)
     }
 
 }

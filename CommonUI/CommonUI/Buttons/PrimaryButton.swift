@@ -81,7 +81,7 @@ public class PrimaryButton: UIButton {
     func setEnabledState() {
         backgroundColor = enabledStateColor
         setTitleColor(enabledStateTitleColor, for: .normal)
-        titleLabel?.font = UIFont.scriptFont(.semibold, size: 16)
+        titleLabel?.font = UIFont.scriptFont(.bold, size: 16)
     }
 
     func setDisableState() {

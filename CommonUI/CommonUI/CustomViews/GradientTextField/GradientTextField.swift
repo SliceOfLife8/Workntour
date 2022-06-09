@@ -98,11 +98,11 @@ public class GradientTextField: UITextFieldPadding {
     ///   - type: Custom business model for textFields setup.
     ///   - error: Generic error about text of textField
     public func configure(placeHolder: String,
-                          text: String?,
-                          countryFlag: String?,
-                          regionCode: String?,
+                          text: String? = nil,
+                          countryFlag: String? = nil,
+                          regionCode: String? = nil,
                           type: RegistrationModelType,
-                          error: Bool) {
+                          error: Bool = false) {
 
         attributedPlaceholder = NSAttributedString(string: placeHolder,
                                                    attributes: [

@@ -20,6 +20,11 @@
 		1B3C383628508B79000EEADF /* RegistrationHostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3C383528508B79000EEADF /* RegistrationHostVC.swift */; };
 		1B3C383828508B83000EEADF /* RegistrationHostVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B3C383728508B83000EEADF /* RegistrationHostVC.xib */; };
 		1B3C383A28508BA9000EEADF /* RegistrationHostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3C383928508BA9000EEADF /* RegistrationHostViewModel.swift */; };
+		1B3C384028520853000EEADF /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3C383F28520853000EEADF /* LoginModel.swift */; };
+		1B3C384328520E06000EEADF /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3C384228520E06000EEADF /* LoginVC.swift */; };
+		1B3C384528520E11000EEADF /* LoginVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B3C384428520E11000EEADF /* LoginVC.xib */; };
+		1B3C384728520E1C000EEADF /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3C384628520E1C000EEADF /* LoginViewModel.swift */; };
+		1B3C384928520E5C000EEADF /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3C384828520E5C000EEADF /* LoginCoordinator.swift */; };
 		1B4AE3F8283E04BB00FA6420 /* IndividualHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4AE3F7283E04BB00FA6420 /* IndividualHost.swift */; };
 		1B4AE3FA283E04C400FA6420 /* CompanyHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4AE3F9283E04C400FA6420 /* CompanyHost.swift */; };
 		1B4AE3FD283E4B4D00FA6420 /* logo_title.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B4AE3FB283E4B4C00FA6420 /* logo_title.png */; };
@@ -106,6 +111,11 @@
 		1B3C383528508B79000EEADF /* RegistrationHostVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationHostVC.swift; sourceTree = "<group>"; };
 		1B3C383728508B83000EEADF /* RegistrationHostVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegistrationHostVC.xib; sourceTree = "<group>"; };
 		1B3C383928508BA9000EEADF /* RegistrationHostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationHostViewModel.swift; sourceTree = "<group>"; };
+		1B3C383F28520853000EEADF /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		1B3C384228520E06000EEADF /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		1B3C384428520E11000EEADF /* LoginVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginVC.xib; sourceTree = "<group>"; };
+		1B3C384628520E1C000EEADF /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		1B3C384828520E5C000EEADF /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		1B4AE3F7283E04BB00FA6420 /* IndividualHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualHost.swift; sourceTree = "<group>"; };
 		1B4AE3F9283E04C400FA6420 /* CompanyHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyHost.swift; sourceTree = "<group>"; };
 		1B4AE3FB283E4B4C00FA6420 /* logo_title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_title.png; sourceTree = "<group>"; };
@@ -246,12 +256,32 @@
 			path = Host;
 			sourceTree = "<group>";
 		};
+		1B3C384128520DE9000EEADF /* LoginFlow */ = {
+			isa = PBXGroup;
+			children = (
+				1B3C384828520E5C000EEADF /* LoginCoordinator.swift */,
+				1B3C384A28520E60000EEADF /* Login */,
+			);
+			path = LoginFlow;
+			sourceTree = "<group>";
+		};
+		1B3C384A28520E60000EEADF /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				1B3C384228520E06000EEADF /* LoginVC.swift */,
+				1B3C384428520E11000EEADF /* LoginVC.xib */,
+				1B3C384628520E1C000EEADF /* LoginViewModel.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		1B4AE3F6283E04A500FA6420 /* Users */ = {
 			isa = PBXGroup;
 			children = (
 				1B9A3D31282A3CE9003E0C34 /* Traveler.swift */,
 				1B4AE3F7283E04BB00FA6420 /* IndividualHost.swift */,
 				1B4AE3F9283E04C400FA6420 /* CompanyHost.swift */,
+				1B3C383F28520853000EEADF /* LoginModel.swift */,
 			);
 			path = Users;
 			sourceTree = "<group>";
@@ -439,6 +469,7 @@
 				1BA2DF06281E8D6A00DB128D /* Onboarding */,
 				1B9A3D88282C05D5003E0C34 /* SplashScreen */,
 				1B16837C283A58CB0067F2DB /* Registration */,
+				1B3C384128520DE9000EEADF /* LoginFlow */,
 			);
 			path = MainApp;
 			sourceTree = "<group>";
@@ -543,6 +574,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B4AE426283F58FB00FA6420 /* Lato-Black.ttf in Resources */,
+				1B3C384528520E11000EEADF /* LoginVC.xib in Resources */,
 				1B4AE427283F58FB00FA6420 /* Lato-BlackItalic.ttf in Resources */,
 				1B4AE428283F58FB00FA6420 /* Lato-Bold.ttf in Resources */,
 				1B563B6D2845358200B851C1 /* CountriesDropDownCell.xib in Resources */,
@@ -682,7 +714,9 @@
 				1B4AE3FA283E04C400FA6420 /* CompanyHost.swift in Sources */,
 				1B9A3D90282C0BAF003E0C34 /* DataManager.swift in Sources */,
 				1BA2DF02281E8C7300DB128D /* BaseVC.swift in Sources */,
+				1B3C384328520E06000EEADF /* LoginVC.swift in Sources */,
 				1B1683A8283D20180067F2DB /* Pagination.swift in Sources */,
+				1B3C384928520E5C000EEADF /* LoginCoordinator.swift in Sources */,
 				1B168380283A590B0067F2DB /* RegistrationTravelerViewModel.swift in Sources */,
 				1BA2DEF9281E8AE800DB128D /* MainCoordinator.swift in Sources */,
 				1B563B722847DD0B00B851C1 /* RegistrationError.swift in Sources */,
@@ -690,6 +724,7 @@
 				1B714B582840DBB5000D85D0 /* RegistrationCoordinator.swift in Sources */,
 				1B3C38312850782F000EEADF /* EmailVerificationViewModel.swift in Sources */,
 				1B7315F1281E7DD0001F2E6A /* AppDelegate.swift in Sources */,
+				1B3C384728520E1C000EEADF /* LoginViewModel.swift in Sources */,
 				1B9A3D8E282C0B31003E0C34 /* AuthorizationService.swift in Sources */,
 				1BA2DEFE281E8C1800DB128D /* AppRootVC.swift in Sources */,
 				1B9A3D32282A3CE9003E0C34 /* Traveler.swift in Sources */,
@@ -703,6 +738,7 @@
 				1B4AE3F8283E04BB00FA6420 /* IndividualHost.swift in Sources */,
 				1B1683AA283D20E20067F2DB /* GenericResponse.swift in Sources */,
 				1B9A3D2D28295F6F003E0C34 /* AppConfig.swift in Sources */,
+				1B3C384028520853000EEADF /* LoginModel.swift in Sources */,
 				1B16837E283A58F00067F2DB /* RegistrationTravelerVC.swift in Sources */,
 				1B1683A6283D1F6E0067F2DB /* ErrorResponse.swift in Sources */,
 				1BA2DEF7281E8AB600DB128D /* AppCoordinator.swift in Sources */,

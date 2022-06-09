@@ -52,4 +52,13 @@ extension DataManager: AuthorizationService {
         .eraseToAnyPublisher()
     }
 
+    func login(email: String, password: String) -> AnyPublisher<LoginModel, ProviderError> {
+        return networking.request(
+            with: AuthorizationRouter.login(email: email, password: password),
+            scheduler: DispatchQueue.main,
+            class: GenericResponse<LoginModel>.self)
+        .compactMap { $0.data }
+        .eraseToAnyPublisher()
+    }
+
 }

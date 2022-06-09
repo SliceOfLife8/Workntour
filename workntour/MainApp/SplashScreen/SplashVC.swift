@@ -36,9 +36,9 @@ class SplashVC: BaseVC<SplashViewModel, MainCoordinator> {
         registrationPoint.changeFont(ofText: actionPart, with: UIFont.scriptFont(.bold, size: 14))
         registrationPoint.changeTextColor(ofText: actionPart, with: UIColor.appColor(.mint))
 
-        registrationPoint.onCharacterTapped = { label, index in
+        registrationPoint.onCharacterTapped = { [weak self] label, index in
             if label.text?.wordExistsOnTappableArea(word: actionPart, index: index) == true {
-                self.coordinator?.navigate(to: .registrationPoint)
+                self?.coordinator?.navigate(to: .registrationPoint)
             }
         }
     }

@@ -12,6 +12,7 @@ enum AuthorizationRouter: NetworkTarget {
     case registerTraveler(_ traveler: Traveler)
     case registerHostIndividual(_ individual: IndividualHost)
     case registerHostCompany(_ company: CompanyHost)
+    case login(email: String, password: String)
 
     public var baseURL: URL {
         Environment.current.apiBaseURL
@@ -25,6 +26,8 @@ enum AuthorizationRouter: NetworkTarget {
             return "/registration/host/individual"
         case .registerHostCompany:
             return "registration/host/company"
+        case .login:
+            return "/login"
         }
     }
 
@@ -46,6 +49,8 @@ enum AuthorizationRouter: NetworkTarget {
         case .registerHostCompany(let company):
             let jsonData = try! jsonEncoder.encode(company)
             return .requestData(data: jsonData)
+        default:
+            return .requestPlain
         }
     }
 
@@ -58,6 +63,15 @@ enum AuthorizationRouter: NetworkTarget {
     }
 
     public var headers: [String: String]? {
-        return ["accept": "*/*"]
+        switch self {
+        case .login(let email, let password):
+            return [
+                "accept": "*/*",
+                "email": email,
+                "password": password
+            ]
+        default:
+            return ["accept": "*/*"]
+        }
     }
 }
