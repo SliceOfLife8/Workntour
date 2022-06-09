@@ -15,6 +15,11 @@ public protocol RegistrationCellDelegate: AnyObject {
     func showDropdownList(cell: RegistrationCell)
 }
 
+/// Optionals
+public extension RegistrationCellDelegate {
+    func showDropdownList(cell: RegistrationCell) {}
+}
+
 public class RegistrationCell: UITableViewCell {
     
     public weak var delegate: RegistrationCellDelegate?
@@ -27,10 +32,27 @@ public class RegistrationCell: UITableViewCell {
     @IBOutlet weak var optionalLabel: UILabel!
     @IBOutlet public weak var gradientTextField: GradientTextField!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var apdView: UIView!
+    @IBOutlet weak var apdDocIcon: UIImageView!
+
+    public override func awakeFromNib() {
+        super.awakeFromNib()
+        apdView.layer.cornerRadius = 8
+        apdDocIcon.image = UIImage(named: "upload_doc", in: Bundle.main, compatibleWith: nil)
+    }
+
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        apdView.removeGradientLayers()
+        apdView.setGradientLayer(borderWidth: 1)
+    }
 
     public override func prepareForReuse() {
         super.prepareForReuse()
         gradientTextField.resetView()
+        apdView.removeGradientLayers()
+        gradientTextField.isHidden = false
+        apdView.isHidden = true
     }
     
     public func setupCell(title: String,
@@ -45,10 +67,15 @@ public class RegistrationCell: UITableViewCell {
                           error: String?) {
         titleLabel.text = isRequired ? "\(title)*" : title
         optionalLabel.isHidden = !isOptionalLabelVisible
+        if type == .apd {
+            apdView.isHidden = false
+            gradientTextField.isHidden = true
+        }
+        // Errors
         let hasError = error != nil
         self.descriptionText = description
         showError(error, descriptionText: description)
-        
+        // Gradient Text Field
         gradientTextField.configure(placeHolder: placeholder, text: text, countryFlag: countryFlag, regionCode: regionCode, type: type, error: hasError)
         gradientTextField.gradientDelegate = self
     }

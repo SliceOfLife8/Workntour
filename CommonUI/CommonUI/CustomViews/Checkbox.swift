@@ -7,8 +7,8 @@
 
 import UIKit
 
-protocol CheckBoxDelegate: AnyObject {
-    func didChange(isChecked: Bool)
+public protocol CheckBoxDelegate: AnyObject {
+    func didChange(isChecked: Bool, box: Checkbox)
 }
 
 public class Checkbox: UIButton {
@@ -16,11 +16,11 @@ public class Checkbox: UIButton {
     // MARK: - Vars
     let checkedImage = UIImage(named: "checkbox_on")
     let uncheckedImage = UIImage(named: "checkbox_off")
-    weak var delegate: CheckBoxDelegate?
+    public weak var delegate: CheckBoxDelegate?
 
+    @IBInspectable
     public var isChecked: Bool = false {
         didSet {
-            delegate?.didChange(isChecked: isChecked)
             if isChecked == true {
                 self.setImage(checkedImage, for: .normal)
             } else {
@@ -31,7 +31,6 @@ public class Checkbox: UIButton {
 
     public override func awakeFromNib() {
         self.addTarget(self, action: #selector(buttonClicked(sender:)), for: .touchUpInside)
-        self.isChecked = false
         self.adjustsImageWhenHighlighted = false
     }
 
@@ -40,7 +39,8 @@ public class Checkbox: UIButton {
         if sender == self {
             UIImpactFeedbackGenerator.impact(.light)
             sender.checkboxAnimation {
-                self.isChecked = sender.isSelected
+                self.isChecked.toggle()
+                self.delegate?.didChange(isChecked: self.isChecked, box: self)
             }
         }
     }

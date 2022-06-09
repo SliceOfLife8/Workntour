@@ -14,6 +14,7 @@
 		1B308A4D28415FB000797F32 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B308A4C28415FB000797F32 /* UIImageView+Extensions.swift */; };
 		1B308A522842452600797F32 /* RegistrationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B308A502842452600797F32 /* RegistrationCell.swift */; };
 		1B308A532842452600797F32 /* RegistrationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B308A512842452600797F32 /* RegistrationCell.xib */; };
+		1B3C383C28510D9E000EEADF /* UIView+Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3C383B28510D9E000EEADF /* UIView+Gradient.swift */; };
 		1B4AE40A283E691D00FA6420 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4AE409283E691D00FA6420 /* PrimaryButton.swift */; };
 		1B4AE40D283E6FDC00FA6420 /* UIImpactFeedbackGenerator+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4AE40C283E6FDC00FA6420 /* UIImpactFeedbackGenerator+Extension.swift */; };
 		1B4AE411283E845C00FA6420 /* SecondaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4AE410283E845C00FA6420 /* SecondaryButton.swift */; };
@@ -33,6 +34,7 @@
 		1B308A4C28415FB000797F32 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
 		1B308A502842452600797F32 /* RegistrationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationCell.swift; sourceTree = "<group>"; };
 		1B308A512842452600797F32 /* RegistrationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegistrationCell.xib; sourceTree = "<group>"; };
+		1B3C383B28510D9E000EEADF /* UIView+Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Gradient.swift"; sourceTree = "<group>"; };
 		1B4AE409283E691D00FA6420 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		1B4AE40C283E6FDC00FA6420 /* UIImpactFeedbackGenerator+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImpactFeedbackGenerator+Extension.swift"; sourceTree = "<group>"; };
 		1B4AE410283E845C00FA6420 /* SecondaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryButton.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				1B4AE40C283E6FDC00FA6420 /* UIImpactFeedbackGenerator+Extension.swift */,
 				1B308A4C28415FB000797F32 /* UIImageView+Extensions.swift */,
 				1B0588D5284CB36B00B1F78D /* UIButton+Extensions.swift */,
+				1B3C383B28510D9E000EEADF /* UIView+Gradient.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B3C383C28510D9E000EEADF /* UIView+Gradient.swift in Sources */,
 				1B308A4D28415FB000797F32 /* UIImageView+Extensions.swift in Sources */,
 				1B308A4B28414E2100797F32 /* TextFieldRightIcon.swift in Sources */,
 				1B4AE411283E845C00FA6420 /* SecondaryButton.swift in Sources */,

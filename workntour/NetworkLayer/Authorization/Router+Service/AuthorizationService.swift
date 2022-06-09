@@ -12,8 +12,8 @@ protocol AuthorizationService: AnyObject {
 
     func travelerRegistration(model: Traveler) -> AnyPublisher<String?, ProviderError>
 
-    func individualHostRegistration(model: IndividualHost) -> AnyPublisher<Void, ProviderError>
+    func individualHostRegistration(model: IndividualHost) -> AnyPublisher<String?, ProviderError>
 
-    func companyHostRegistration(model: CompanyHost) -> AnyPublisher<Void, ProviderError>
+    func companyHostRegistration(model: CompanyHost) -> AnyPublisher<String?, ProviderError>
 
 }

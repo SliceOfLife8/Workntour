@@ -4,28 +4,123 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Lato-Regular.ttf">
+            <string>Lato-Regular</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BaseVC" customModule="workntour" customModuleProvider="target">
             <connections>
-                <outlet property="view" destination="iN0-l3-epB" id="gLg-cK-UQu"/>
+                <outlet property="companyBtn" destination="cUM-4Q-HKV" id="dMo-Ck-UIY"/>
+                <outlet property="individualBtn" destination="ubk-Vq-yY1" id="l7P-f6-4Lu"/>
+                <outlet property="tableView" destination="m9S-KU-4s4" id="atf-tF-OEv"/>
+                <outlet property="view" destination="MBy-YK-UtA" id="BSb-aE-ZNJ"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
+        <view contentMode="scaleToFill" id="MBy-YK-UtA">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-            <point key="canvasLocation" x="139" y="71"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="emd-z6-mGJ">
+                    <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="JFm-kt-IzT">
+                            <rect key="frame" x="70" y="32" width="274" height="20"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QCH-EQ-0tJ" userLabel="Individual">
+                                    <rect key="frame" x="0.0" y="0.0" width="125" height="20"/>
+                                    <subviews>
+                                        <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ubk-Vq-yY1" customClass="Checkbox" customModule="CommonUI">
+                                            <rect key="frame" x="0.0" y="0.0" width="125" height="20"/>
+                                            <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
+                                            <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                            <state key="normal" title="Individual">
+                                                <color key="titleColor" name="softBlack"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isChecked" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="ubk-Vq-yY1" secondAttribute="bottom" id="2ZC-Jy-3YF"/>
+                                        <constraint firstAttribute="trailing" secondItem="ubk-Vq-yY1" secondAttribute="trailing" id="L6O-VQ-ek6"/>
+                                        <constraint firstItem="ubk-Vq-yY1" firstAttribute="leading" secondItem="QCH-EQ-0tJ" secondAttribute="leading" id="RZP-TW-QUp"/>
+                                        <constraint firstItem="ubk-Vq-yY1" firstAttribute="top" secondItem="QCH-EQ-0tJ" secondAttribute="top" id="WDS-hR-py5"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="poO-Ez-3JI" userLabel="Host">
+                                    <rect key="frame" x="149" y="0.0" width="125" height="20"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cUM-4Q-HKV" customClass="Checkbox" customModule="CommonUI">
+                                            <rect key="frame" x="0.0" y="0.0" width="125" height="20"/>
+                                            <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
+                                            <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                            <state key="normal" title="Company">
+                                                <color key="titleColor" name="softBlack"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isChecked" value="NO"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="cUM-4Q-HKV" secondAttribute="bottom" id="VUT-FK-9ei"/>
+                                        <constraint firstAttribute="trailing" secondItem="cUM-4Q-HKV" secondAttribute="trailing" id="keo-2u-7Yc"/>
+                                        <constraint firstItem="cUM-4Q-HKV" firstAttribute="leading" secondItem="poO-Ez-3JI" secondAttribute="leading" id="vvM-7s-Gqe"/>
+                                        <constraint firstItem="cUM-4Q-HKV" firstAttribute="top" secondItem="poO-Ez-3JI" secondAttribute="top" id="zfD-c0-aoB"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="VCa-JI-BQe"/>
+                            </constraints>
+                        </stackView>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="m9S-KU-4s4">
+                            <rect key="frame" x="0.0" y="68" width="414" height="784"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </tableView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="JFm-kt-IzT" firstAttribute="top" secondItem="emd-z6-mGJ" secondAttribute="top" constant="32" id="7YG-Un-jkr"/>
+                        <constraint firstItem="m9S-KU-4s4" firstAttribute="top" secondItem="JFm-kt-IzT" secondAttribute="bottom" constant="16" id="FkM-Fg-x5F"/>
+                        <constraint firstAttribute="trailing" secondItem="JFm-kt-IzT" secondAttribute="trailing" constant="70" id="TEz-0f-JBc"/>
+                        <constraint firstAttribute="bottom" secondItem="m9S-KU-4s4" secondAttribute="bottom" id="iCY-P7-nIl"/>
+                        <constraint firstItem="JFm-kt-IzT" firstAttribute="leading" secondItem="emd-z6-mGJ" secondAttribute="leading" constant="70" id="leP-H3-wM7"/>
+                        <constraint firstItem="m9S-KU-4s4" firstAttribute="leading" secondItem="emd-z6-mGJ" secondAttribute="leading" id="w2I-6V-MFm"/>
+                        <constraint firstAttribute="trailing" secondItem="m9S-KU-4s4" secondAttribute="trailing" id="yob-OA-p8Z"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="9zR-gG-nka"/>
+            <color key="backgroundColor" name="primary"/>
+            <constraints>
+                <constraint firstItem="emd-z6-mGJ" firstAttribute="leading" secondItem="9zR-gG-nka" secondAttribute="leading" id="7Vc-7d-Pc4"/>
+                <constraint firstAttribute="bottom" secondItem="emd-z6-mGJ" secondAttribute="bottom" id="ApD-S0-wLu"/>
+                <constraint firstItem="9zR-gG-nka" firstAttribute="trailing" secondItem="emd-z6-mGJ" secondAttribute="trailing" id="hQ9-0H-mYW"/>
+                <constraint firstItem="emd-z6-mGJ" firstAttribute="top" secondItem="9zR-gG-nka" secondAttribute="top" id="nt0-Q9-Xun"/>
+            </constraints>
+            <point key="canvasLocation" x="139" y="135"/>
         </view>
     </objects>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <namedColor name="primary">
+            <color red="0.98039215686274506" green="0.97254901960784312" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="softBlack">
+            <color red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

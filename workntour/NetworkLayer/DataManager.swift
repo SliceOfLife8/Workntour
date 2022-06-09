@@ -34,21 +34,21 @@ extension DataManager: AuthorizationService {
         .eraseToAnyPublisher()
     }
 
-    func individualHostRegistration(model: IndividualHost) -> AnyPublisher<Void, ProviderError> {
+    func individualHostRegistration(model: IndividualHost) -> AnyPublisher<String?, ProviderError> {
         return networking.request(
             with: AuthorizationRouter.registerHostIndividual(model),
             scheduler: DispatchQueue.main,
             class: GenericResponse<IndividualHost>.self)
-        .map { _ in () }
+        .map { $0.data?.email }
         .eraseToAnyPublisher()
     }
 
-    func companyHostRegistration(model: CompanyHost) -> AnyPublisher<Void, ProviderError> {
+    func companyHostRegistration(model: CompanyHost) -> AnyPublisher<String?, ProviderError> {
         return networking.request(
             with: AuthorizationRouter.registerHostCompany(model),
             scheduler: DispatchQueue.main,
             class: GenericResponse<CompanyHost>.self)
-        .map { _ in () }
+        .map { $0.data?.email }
         .eraseToAnyPublisher()
     }
 

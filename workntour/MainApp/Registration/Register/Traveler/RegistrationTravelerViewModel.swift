@@ -126,7 +126,7 @@ class RegistrationTravelerViewModel: BaseViewModel {
                     pullOfErrors[.age] = .age
                 }
             case .phone:
-                let digits = trimmingPhoneNumber(text).count
+                let digits = text.trimmingPhoneNumber().count
                 if digits > 0 && digits != 10 {
                     pullOfErrors[.phone] = .phoneNumber
                 }
@@ -137,40 +137,15 @@ class RegistrationTravelerViewModel: BaseViewModel {
         return pullOfErrors.count > 0
     }
 
-    private func trimmingPhoneNumber(_ text: String) -> String {
-        var phone: String = ""
-
-        text.components(separatedBy: " ")
-            .dropFirst() // remove region code
-            .map { $0.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression) }
-            .forEach { component in
-                phone.append(component)
-            }
-
-        return phone
-    }
-
-    private func getPhoneDetails(_ text: String?) -> [String] {
-        var details: [String] = []
-
-        text?.components(separatedBy: " ")
-            .map { $0.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression) }
-            .forEach { component in
-                details.append(component)
-            }
-
-        return details
-    }
-
     func registerTraveler() {
         /// Gather all properties
         let name = cellsValues[.name]?.flatMap { $0 } ?? ""
         let surname = cellsValues[.surname]?.flatMap { $0 } ?? ""
         let email = cellsValues[.email]?.flatMap { $0 } ?? ""
         let password = cellsValues[.password]?.flatMap { $0 } ?? ""
-        let phoneNumDetails = getPhoneDetails(cellsValues[.phone]?.flatMap { $0 })
-        let countryCode = phoneNumDetails.first
-        let mobile = phoneNumDetails.dropFirst().joined(separator: "")
+        let phoneNumDetails = cellsValues[.phone]?.flatMap { $0 }?.getPhoneDetails()
+        let countryCode = phoneNumDetails?.first
+        let mobile = phoneNumDetails?.dropFirst().joined(separator: "")
         let age = cellsValues[.age]?.flatMap { $0 }?.changeDateFormat()
         let nationality = cellsValues[.nationality]?.flatMap { $0 }
         let sex = UserSex(rawValue: cellsValues[.sex]?.flatMap { $0 } ?? "")

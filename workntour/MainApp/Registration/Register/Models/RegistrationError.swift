@@ -15,6 +15,7 @@ enum RegistrationError {
     case confirmPassword
     case age
     case phoneNumber
+    case vat
 
     var description: String {
         switch self {
@@ -31,7 +32,9 @@ enum RegistrationError {
         case .age:
             return "Age should be greater than 18 years old."
         case .phoneNumber:
-            return "Phone number should contains exactly 10 digits"
+            return "Phone number should contains exactly 10 digits!"
+        case .vat:
+            return "VAT Number should be exactly 9 digits!"
         }
     }
 }

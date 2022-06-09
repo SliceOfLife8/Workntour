@@ -59,7 +59,7 @@ extension String {
     }
 }
 
-//MARK: - Dates
+// MARK: - Dates
 extension String {
     public func stringToDate() -> Date? {
         let dateFormatter = DateFormatter()
@@ -87,5 +87,33 @@ extension String {
         }
 
         return birthdayDate < minimumRequiredDate
+    }
+}
+
+// MARK: - Registration Flow
+extension String {
+    public func trimmingPhoneNumber() -> String {
+        var phone: String = ""
+
+        self.components(separatedBy: " ")
+            .dropFirst() // remove region code
+            .map { $0.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression) }
+            .forEach { component in
+                phone.append(component)
+            }
+
+        return phone
+    }
+    
+    public func getPhoneDetails() -> [String] {
+        var details: [String] = []
+
+        self.components(separatedBy: " ")
+            .map { $0.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression) }
+            .forEach { component in
+                details.append(component)
+            }
+
+        return details
     }
 }
