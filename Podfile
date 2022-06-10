@@ -17,6 +17,7 @@ def common
   pod 'CombineDataSources'
   pod 'DropDown'
   pod 'NVActivityIndicatorView'
+  pod 'EasyTipView'
 end
 
 def logging

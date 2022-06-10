@@ -1,6 +1,7 @@
 PODS:
   - CombineDataSources (0.2.5)
   - DropDown (2.3.13)
+  - EasyTipView (2.1.0)
   - Firebase/Core (9.1.0):
     - Firebase/CoreOnly
     - FirebaseAnalytics (~> 9.1.0)
@@ -111,6 +112,7 @@ PODS:
 DEPENDENCIES:
   - CombineDataSources
   - DropDown
+  - EasyTipView
   - Firebase/Core
   - Firebase/Crashlytics
   - Hero
@@ -123,6 +125,7 @@ SPEC REPOS:
   trunk:
     - CombineDataSources
     - DropDown
+    - EasyTipView
     - Firebase
     - FirebaseAnalytics
     - FirebaseCore
@@ -147,6 +150,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   CombineDataSources: dcbc3b06a038ffdf620b3b4533d3ecaf76ca6a2e
   DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
+  EasyTipView: a92b6edc377b81c5ac18e9fd35d5ee78e9409488
   Firebase: 91c243d75573ac6e7c9735ec859b72bffb61347d
   FirebaseAnalytics: bf11064790ac96804df1df9ddc0ae45af950d9fc
   FirebaseCore: b7bfc258e996eada23b3666bd6b9a22ca092acb8
@@ -165,6 +169,6 @@ SPEC CHECKSUMS:
   SwiftLint: f80f1be7fa96d30e0aa68e58d45d4ea1ccaac519
   SwiftyBeaver: c8241b4745aa269a78ca5a022532c6915e948536
 
-PODFILE CHECKSUM: 085197bb994deca52a230d44a25905cd59b4fa2c
+PODFILE CHECKSUM: 41165dadc4e771de717e869212eaafd519db66b0
 
 COCOAPODS: 1.11.3
