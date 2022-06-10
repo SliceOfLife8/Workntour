@@ -15,6 +15,7 @@ enum LoginStep: Step {
     case close
     case register
     case forgotPassword
+    case errorDialog(description: String)
 }
 
 /** A Coordinator which takes a user through the login flow. */
@@ -50,6 +51,8 @@ final class LoginCoordinator: PresentationCoordinator {
             showAlert()
         case .forgotPassword:
             print("Not for MVP!")
+        case .errorDialog(let description):
+            AlertHelper.showDefaultAlert(rootViewController, title: "Error message", message: description)
         }
     }
 

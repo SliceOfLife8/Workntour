@@ -206,6 +206,8 @@ class RegistrationHostVC: BaseVC<RegistrationHostViewModel, RegistrationCoordina
                     cell = tableView.cellForRow(at: IndexPath(row: 3, section: 0)) as? RegistrationCell
                 case .vatNumber:
                     cell = tableView.cellForRow(at: IndexPath(row: 4, section: 0)) as? RegistrationCell
+                case .fixedNumber:
+                    cell = tableView.cellForRow(at: IndexPath(row: 5, section: 0)) as? RegistrationCell
                 default: break
                 }
 

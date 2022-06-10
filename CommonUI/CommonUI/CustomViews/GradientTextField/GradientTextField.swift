@@ -119,8 +119,10 @@ public class GradientTextField: UITextFieldPadding {
         switch type {
         case .email:
             self.keyboardType = .emailAddress
+            self.autocorrectionType = .no
         case .password, .verifyPassword:
             self.isSecureTextEntry = true
+            self.rightIcon = .hidePassword
         case .phone, .vatNumber:
             self.keyboardType = .numberPad
         case .nationality, .sex:
@@ -263,17 +265,19 @@ extension GradientTextField: UITextFieldDelegate {
 // MARK: - Add icons
 extension GradientTextField {
     private func setupRightImage(icon: TextFieldRightIcon) {
-        let imageView = UIImageView(frame: CGRect(x: 12, y: 12, width: 16, height: 16))
+        let imageView = UIImageView(frame: CGRect(x: 14, y: 14, width: 24, height: 24))
         imageView.isUserInteractionEnabled = true
         imageView.image = UIImage(named: icon.imageName)
         imageView.contentMode = .center
-        let imageContainerView = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 40, height: 40)))
+        let imageContainerView = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 52, height: 52)))
         imageContainerView.addSubview(imageView)
         rightView = imageContainerView
         rightViewMode = .always
 
         if icon.oneOf(other: .upArrow, .downArrow) == true {
             imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(arrowTapped)))
+        } else if icon.oneOf(other: .showPassword, .hidePassword) == true {
+            imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(revealPasswordTapped)))
         }
     }
 
@@ -298,6 +302,10 @@ extension GradientTextField {
 
     @objc public func arrowTapped() {
         /// We should rotate arrow 180˚ when it's available
+        guard rightIcon?.oneOf(other: .upArrow, .downArrow) == true else {
+            return
+        }
+
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: [], animations: {
             self.rightView?.transform = (self.rightView?.transform == .identity) ? CGAffineTransform(rotationAngle: .pi) : .identity
         })
@@ -305,5 +313,15 @@ extension GradientTextField {
 
     @objc private func countryViewTapped() {
         self.gradientDelegate?.didCountryFlagTapped()
+    }
+
+    @objc private func revealPasswordTapped() {
+        rightView = nil
+        if isSecureTextEntry {
+            setupRightImage(icon: .showPassword)
+        } else {
+            setupRightImage(icon: .hidePassword)
+        }
+        isSecureTextEntry.toggle()
     }
 }

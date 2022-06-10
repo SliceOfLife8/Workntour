@@ -157,7 +157,12 @@ class RegistrationTravelerViewModel: BaseViewModel {
             .travelerRegistration(model: traveler)
             .subscribe(on: RunLoop.main)
             .catch({ [weak self] error -> Just<String?> in
-                self?.errorMessage = error.errorDescription
+                if case .invalidServerResponseWithStatusCode(let code) = error, code == 409 {
+                    self?.errorMessage = "This email address is already being used!"
+                } else {
+                    self?.errorMessage = error.errorDescription
+                }
+
                 return Just(nil)
             })
                 .handleEvents(receiveCompletion: { _ in

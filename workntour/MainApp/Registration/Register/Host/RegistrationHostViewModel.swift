@@ -45,7 +45,8 @@ class RegistrationHostViewModel: BaseViewModel {
             .age: nil,
             .phone: nil,
             .vatNumber: nil,
-            .apd: nil
+            .apd: nil,
+            .fixedNumber: nil
         ]
     }
 
@@ -113,6 +114,11 @@ class RegistrationHostViewModel: BaseViewModel {
             RegistrationModel(title: "Company VAT Number",
                               placeholder: "Enter your company ID",
                               type: .vatNumber),
+            RegistrationModel(title: "Fixed Number",
+                              isRequired: false,
+                              optionalTextVisible: true,
+                              placeholder: "Enter your fixed number",
+                              type: .fixedNumber),
             RegistrationModel(title: "Authorized Person Document",
                               isRequired: false,
                               optionalTextVisible: true,
@@ -201,6 +207,10 @@ class RegistrationHostViewModel: BaseViewModel {
                 if text != cellsValues[.password] {
                     pullOfErrors[.verifyPassword] = .confirmPassword
                 }
+            case .fixedNumber:
+                if text.count > 0 && text.count != 10 {
+                    pullOfErrors[.fixedNumber] = .fixedNumber
+                }
             case .vatNumber:
                 if text.count != 9 {
                     pullOfErrors[.vatNumber] = .vat
@@ -250,15 +260,21 @@ class RegistrationHostViewModel: BaseViewModel {
         let email = cellsValues[.email]?.flatMap { $0 } ?? ""
         let password = cellsValues[.password]?.flatMap { $0 } ?? ""
         let vatNum = cellsValues[.vatNumber]?.flatMap { $0 }
+        let fixedNumber = cellsValues[.fixedNumber]?.flatMap { $0 }
 
-        let model = CompanyHost(name: companyName, role: .COMPANY_HOST, email: email, password: password, id: vatNum)
+        let model = CompanyHost(name: companyName, role: .COMPANY_HOST, email: email, password: password, id: vatNum, tel: fixedNumber)
 
         loaderVisibility = true
         service
             .companyHostRegistration(model: model)
             .subscribe(on: RunLoop.main)
             .catch({ [weak self] error -> Just<String?> in
-                self?.errorMessage = error.errorDescription
+                if case .invalidServerResponseWithStatusCode(let code) = error, code == 409 {
+                    self?.errorMessage = "This email address is already being used!"
+                } else {
+                    self?.errorMessage = error.errorDescription
+                }
+
                 return Just(nil)
             })
                 .handleEvents(receiveCompletion: { _ in

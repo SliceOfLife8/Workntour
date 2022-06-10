@@ -46,6 +46,10 @@ class BaseVC<VM: BaseViewModel, C: Coordinator>: UIViewController {
         FirebaseManager.sharedInstance.trackScreen(currentVC)
     }
 
+    @objc private func dismissKeyboardView() {
+        view.endEditing(true)
+    }
+
     deinit {
         NotificationCenter.default.removeObserver(self)
         storage.cancelAll()
@@ -82,5 +86,14 @@ extension BaseVC {
         spinner?.stopAnimating()
         spinner?.removeFromSuperview()
         view.isUserInteractionEnabled = true
+    }
+}
+
+// MARK: - Keyboard extensions
+extension BaseVC {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboardView))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
     }
 }

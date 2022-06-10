@@ -11,6 +11,8 @@ public enum TextFieldRightIcon {
     case alert
     case upArrow
     case downArrow
+    case showPassword
+    case hidePassword
 
     var imageName: String {
         switch self {
@@ -20,6 +22,10 @@ public enum TextFieldRightIcon {
             return "chevron-up"
         case .downArrow:
             return "chevron-down"
+        case .showPassword:
+            return "password_reveal"
+        case .hidePassword:
+            return "password_hide"
         }
     }
 }
@@ -36,4 +42,5 @@ public enum RegistrationModelType {
     case sex
     case vatNumber
     case apd
+    case fixedNumber
 }

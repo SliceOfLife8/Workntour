@@ -23,12 +23,7 @@ class LoginVC: BaseVC<LoginViewModel, LoginCoordinator> {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        loginBtn.isEnabled = true
-        credentialsStackView.setCustomSpacing(16, after: emailTextField)
-        forgotPasswordBtn.underline()
-        setupNavigationBar(mainTitle: "Log in")
-        emailTextField.configure(placeHolder: "Enter your email", type: .email)
-        passwordTextField.configure(placeHolder: "Enter your password", type: .password)
+        hideKeyboardWhenTappedAround()
     }
 
     override func setupTexts() {
@@ -47,12 +42,88 @@ class LoginVC: BaseVC<LoginViewModel, LoginCoordinator> {
         }
     }
 
+    override func setupUI() {
+        super.setupUI()
+
+        credentialsStackView.setCustomSpacing(16, after: emailTextField)
+        forgotPasswordBtn.underline()
+        setupNavigationBar(mainTitle: "Log in")
+        emailTextField.configure(placeHolder: "Enter your email", text: viewModel?.email, type: .email)
+        passwordTextField.configure(placeHolder: "Enter your password", text: viewModel?.password, type: .password)
+
+        emailTextField.addTarget(self, action: #selector(emailDidChange), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(passwordDidChange), for: .editingChanged)
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+    }
+
+    override func bindViews() {
+        super.bindViews()
+
+        viewModel?.validatedCredentials
+            .map { $0 != nil }
+            .receive(on: RunLoop.main)
+            .assign(to: \.isEnabled, on: loginBtn)
+            .store(in: &storage)
+
+        viewModel?.$loaderVisibility
+            .sink { [weak self] status in
+                if status {
+                    self?.showLoader()
+                } else {
+                    self?.stopLoader()
+                }
+            }
+            .store(in: &storage)
+
+        viewModel?.$errorMessage
+            .dropFirst()
+            .sink(receiveValue: { [weak self] error in
+                if let errorDescription = error {
+                    self?.coordinator?.navigate(to: .errorDialog(description: errorDescription))
+                }
+            })
+            .store(in: &storage)
+
+        viewModel?.$userIsEligible
+            .sink(receiveValue: { [weak self] status in
+                if status {
+                    let autoSave = self?.rememberMeBtn.isChecked ?? false
+                    self?.viewModel?.handleCredentials(store: autoSave)
+
+                    self?.coordinator?.navigate(to: .successfulLogin)
+                }
+            })
+            .store(in: &storage)
+    }
+
     // MARK: - Actions
     @IBAction func forgotPasswordTapped(_ sender: Any) {
         self.coordinator?.navigate(to: .forgotPassword)
     }
 
     @IBAction func loginBtnTapped(_ sender: Any) {
-        self.coordinator?.navigate(to: .successfulLogin)
+        viewModel?.loginUser()
+    }
+
+    @objc private func emailDidChange() {
+        viewModel?.email = emailTextField.text ?? ""
+    }
+
+    @objc private func passwordDidChange() {
+        viewModel?.password = passwordTextField.text ?? ""
+    }
+
+}
+
+extension LoginVC: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == emailTextField {
+            passwordTextField.becomeFirstResponder()
+        } else {
+            passwordTextField.resignFirstResponder()
+        }
+
+        return true
     }
 }

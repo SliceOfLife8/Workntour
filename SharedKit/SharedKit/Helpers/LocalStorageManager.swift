@@ -9,6 +9,8 @@ import Foundation
 
 public enum LocalDataKey: String, CaseIterable {
     case onboarding
+    case email
+    case password
 }
 
 public enum DataPersistenceMethod {
@@ -213,7 +215,7 @@ extension LocalStorageManager {
             removeFileItem(key.rawValue)
         }
 
-    func eraseAll() {
+    public func eraseAll() {
         LocalDataKey.allCases.forEach { dataKey in
             let expirationKey = "keyExpiresIn - \(dataKey.rawValue)"
 
@@ -221,7 +223,7 @@ extension LocalStorageManager {
         }
     }
 
-    func removeKey(_ key: LocalDataKey) {
+    public func removeKey(_ key: LocalDataKey) {
         let expirationKey = "keyExpiresIn - \(key.rawValue)"
 
         clearPersistentStorage(forKey: key, expirationKey: expirationKey)
