@@ -99,23 +99,23 @@ public class RegistrationCell: UITableViewCell {
 
 
 extension RegistrationCell: GradientTFDelegate {
-    func didChange() {
+    public func didChange() {
         self.delegate?.textFieldDidChange(cell: self)
     }
 
-    func notEditableTextFieldTriggered() {
+    public func notEditableTextFieldTriggered() {
         self.delegate?.showDropdownList(cell: self)
     }
     
-    func didCountryFlagTapped() {
+    public func didCountryFlagTapped() {
         self.delegate?.showCountryFlags(cell: self)
     }
     
-    func didStartEditing() {
+    public func didStartEditing() {
         self.delegate?.textFieldDidBeginEditing(cell: self)
     }
     
-    func shouldReturn() {
+    public func shouldReturn(_ textField: UITextField) {
         self.delegate?.textFieldShouldReturn(cell: self)
     }
 }

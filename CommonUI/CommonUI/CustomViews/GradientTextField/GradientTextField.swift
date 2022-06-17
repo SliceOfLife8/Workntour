@@ -8,17 +8,24 @@
 import UIKit
 import SharedKit
 
-protocol GradientTFDelegate: AnyObject {
+public protocol GradientTFDelegate: AnyObject {
     func didStartEditing()
-    func shouldReturn()
+    func shouldReturn(_ textField: UITextField)
     func didChange()
     func notEditableTextFieldTriggered()
     func didCountryFlagTapped()
 }
 
+public extension GradientTFDelegate {
+    func didStartEditing() {}
+    func didChange() {}
+    func notEditableTextFieldTriggered() {}
+    func didCountryFlagTapped() {}
+}
+
 public class GradientTextField: UITextFieldPadding {
     // MARK: - Vars
-    weak var gradientDelegate: GradientTFDelegate?
+    public weak var gradientDelegate: GradientTFDelegate?
 
     private var datePicker: UIDatePicker = {
         let picker = UIDatePicker()
@@ -28,10 +35,10 @@ public class GradientTextField: UITextFieldPadding {
     }()
 
     private var borderWidth: CGFloat = 1
-    private var rightIcon: TextFieldRightIcon? = .none
     private var phoneNumberCode: String?
     private var isEditable: Bool = true
     public var selectedDate: Date?
+    public var rightIcon: TextFieldRightIcon? = .none
     public var type: RegistrationModelType?
     /// When are error is occured we should update right icon view. Moreover, it should be revertable, so we need
     public var errorOccured: Bool = false {
@@ -213,10 +220,6 @@ extension GradientTextField: UITextFieldDelegate {
         removeGradientLayers(3)
     }
 
-    public func textFieldDidChangeSelection(_ textField: UITextField) {
-        // self.gradientDelegate?.didChange()
-    }
-
     public func textFieldDidEndEditing(_ textField: UITextField) {
         removeGradientLayers(1)
         arrowTapped()
@@ -224,7 +227,7 @@ extension GradientTextField: UITextFieldDelegate {
     }
 
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.gradientDelegate?.shouldReturn()
+        self.gradientDelegate?.shouldReturn(textField)
         return false
     }
 

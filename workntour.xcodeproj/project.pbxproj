@@ -78,6 +78,24 @@
 		1BA2DEFE281E8C1800DB128D /* AppRootVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA2DEFD281E8C1800DB128D /* AppRootVC.swift */; };
 		1BA2DF02281E8C7300DB128D /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA2DF01281E8C7300DB128D /* BaseVC.swift */; };
 		1BA2DF08281E8D7700DB128D /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA2DF07281E8D7700DB128D /* OnboardingCoordinator.swift */; };
+		1BC1909E285A0DB200585533 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC1909D285A0DB200585533 /* TabBarCoordinator.swift */; };
+		1BC190A2285A0E8200585533 /* TravelerProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC190A1285A0E8200585533 /* TravelerProfileVC.swift */; };
+		1BC190A4285A0EC500585533 /* OpportunitiesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC190A3285A0EC500585533 /* OpportunitiesVC.swift */; };
+		1BC190A6285B15A000585533 /* OpportunitiesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC190A5285B15A000585533 /* OpportunitiesCoordinator.swift */; };
+		1BC190AB285C5C4900585533 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC190AA285C5C4900585533 /* HomeCoordinator.swift */; };
+		1BC190AD285C5C5B00585533 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC190AC285C5C5B00585533 /* HomeVC.swift */; };
+		1BC190AF285C5C6300585533 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC190AE285C5C6300585533 /* HomeViewModel.swift */; };
+		1BC190B2285C5C8600585533 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC190B1285C5C8600585533 /* ProfileCoordinator.swift */; };
+		1BC190B4285C5C9300585533 /* TravelerProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC190B3285C5C9300585533 /* TravelerProfileViewModel.swift */; };
+		1BC190B6285C5CA400585533 /* OpportunitiesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC190B5285C5CA400585533 /* OpportunitiesViewModel.swift */; };
+		1BC190B8285C5CB400585533 /* NotificationsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC190B7285C5CB400585533 /* NotificationsCoordinator.swift */; };
+		1BC190BA285C5CBD00585533 /* NotificationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC190B9285C5CBD00585533 /* NotificationsVC.swift */; };
+		1BC190BC285C5CC500585533 /* NotificationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC190BB285C5CC500585533 /* NotificationsViewModel.swift */; };
+		1BC190BE285C5CD200585533 /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC190BD285C5CD200585533 /* SettingsCoordinator.swift */; };
+		1BC190C0285C5CD900585533 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC190BF285C5CD900585533 /* SettingsVC.swift */; };
+		1BC190C2285C5CE200585533 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC190C1285C5CE200585533 /* SettingsViewModel.swift */; };
+		1BC190C4285C60A800585533 /* TabBarPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC190C3285C60A800585533 /* TabBarPage.swift */; };
+		1BC190C6285CA91000585533 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC190C5285CA90F00585533 /* TabBarViewController.swift */; };
 		2707FF96C7CBD64F6B2EA3B7 /* Pods_workntour.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5701F516D91D3C90DD51441 /* Pods_workntour.framework */; };
 /* End PBXBuildFile section */
 
@@ -173,6 +191,24 @@
 		1BA2DEFD281E8C1800DB128D /* AppRootVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootVC.swift; sourceTree = "<group>"; };
 		1BA2DF01281E8C7300DB128D /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
 		1BA2DF07281E8D7700DB128D /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
+		1BC1909D285A0DB200585533 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
+		1BC190A1285A0E8200585533 /* TravelerProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelerProfileVC.swift; sourceTree = "<group>"; };
+		1BC190A3285A0EC500585533 /* OpportunitiesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunitiesVC.swift; sourceTree = "<group>"; };
+		1BC190A5285B15A000585533 /* OpportunitiesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunitiesCoordinator.swift; sourceTree = "<group>"; };
+		1BC190AA285C5C4900585533 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		1BC190AC285C5C5B00585533 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		1BC190AE285C5C6300585533 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		1BC190B1285C5C8600585533 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
+		1BC190B3285C5C9300585533 /* TravelerProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelerProfileViewModel.swift; sourceTree = "<group>"; };
+		1BC190B5285C5CA400585533 /* OpportunitiesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunitiesViewModel.swift; sourceTree = "<group>"; };
+		1BC190B7285C5CB400585533 /* NotificationsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsCoordinator.swift; sourceTree = "<group>"; };
+		1BC190B9285C5CBD00585533 /* NotificationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsVC.swift; sourceTree = "<group>"; };
+		1BC190BB285C5CC500585533 /* NotificationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewModel.swift; sourceTree = "<group>"; };
+		1BC190BD285C5CD200585533 /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
+		1BC190BF285C5CD900585533 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
+		1BC190C1285C5CE200585533 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		1BC190C3285C60A800585533 /* TabBarPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarPage.swift; sourceTree = "<group>"; };
+		1BC190C5285CA90F00585533 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		2544630698253F96E0BC47D6 /* Pods-workntour.dev debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-workntour.dev debug.xcconfig"; path = "Target Support Files/Pods-workntour/Pods-workntour.dev debug.xcconfig"; sourceTree = "<group>"; };
 		437B52C06849CB14B21AF948 /* Pods-workntour.dev release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-workntour.dev release.xcconfig"; path = "Target Support Files/Pods-workntour/Pods-workntour.dev release.xcconfig"; sourceTree = "<group>"; };
 		A9A28C3C30B3A10BAB51F50A /* Pods-workntour.prod release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-workntour.prod release.xcconfig"; path = "Target Support Files/Pods-workntour/Pods-workntour.prod release.xcconfig"; sourceTree = "<group>"; };
@@ -444,6 +480,9 @@
 				1BA2DEEE281E840900DB128D /* DeepLinkManager.swift */,
 				1BA2DEF6281E8AB600DB128D /* AppCoordinator.swift */,
 				1BA2DEF8281E8AE800DB128D /* MainCoordinator.swift */,
+				1BC1909D285A0DB200585533 /* TabBarCoordinator.swift */,
+				1BC190C3285C60A800585533 /* TabBarPage.swift */,
+				1BC190C5285CA90F00585533 /* TabBarViewController.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -470,6 +509,11 @@
 				1B9A3D88282C05D5003E0C34 /* SplashScreen */,
 				1B16837C283A58CB0067F2DB /* Registration */,
 				1B3C384128520DE9000EEADF /* LoginFlow */,
+				1BC190A7285C5BB400585533 /* HomePage */,
+				1BC190A0285A0E5E00585533 /* Profile */,
+				1BC1909F285A0E4F00585533 /* Opportunities */,
+				1BC190A9285C5BFD00585533 /* Notifications */,
+				1BC190A8285C5BBE00585533 /* Settings */,
 			);
 			path = MainApp;
 			sourceTree = "<group>";
@@ -494,6 +538,64 @@
 				F5701F516D91D3C90DD51441 /* Pods_workntour.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1BC1909F285A0E4F00585533 /* Opportunities */ = {
+			isa = PBXGroup;
+			children = (
+				1BC190A5285B15A000585533 /* OpportunitiesCoordinator.swift */,
+				1BC190A3285A0EC500585533 /* OpportunitiesVC.swift */,
+				1BC190B5285C5CA400585533 /* OpportunitiesViewModel.swift */,
+			);
+			path = Opportunities;
+			sourceTree = "<group>";
+		};
+		1BC190A0285A0E5E00585533 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				1BC190B1285C5C8600585533 /* ProfileCoordinator.swift */,
+				1BC190B0285C5C7000585533 /* Traveler */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		1BC190A7285C5BB400585533 /* HomePage */ = {
+			isa = PBXGroup;
+			children = (
+				1BC190AA285C5C4900585533 /* HomeCoordinator.swift */,
+				1BC190AC285C5C5B00585533 /* HomeVC.swift */,
+				1BC190AE285C5C6300585533 /* HomeViewModel.swift */,
+			);
+			path = HomePage;
+			sourceTree = "<group>";
+		};
+		1BC190A8285C5BBE00585533 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				1BC190BD285C5CD200585533 /* SettingsCoordinator.swift */,
+				1BC190BF285C5CD900585533 /* SettingsVC.swift */,
+				1BC190C1285C5CE200585533 /* SettingsViewModel.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		1BC190A9285C5BFD00585533 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				1BC190B7285C5CB400585533 /* NotificationsCoordinator.swift */,
+				1BC190B9285C5CBD00585533 /* NotificationsVC.swift */,
+				1BC190BB285C5CC500585533 /* NotificationsViewModel.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
+		1BC190B0285C5C7000585533 /* Traveler */ = {
+			isa = PBXGroup;
+			children = (
+				1BC190A1285A0E8200585533 /* TravelerProfileVC.swift */,
+				1BC190B3285C5C9300585533 /* TravelerProfileViewModel.swift */,
+			);
+			path = Traveler;
 			sourceTree = "<group>";
 		};
 		4FCCF42523D2AF3614D7C2A8 /* Pods */ = {
@@ -710,22 +812,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BC190B2285C5C8600585533 /* ProfileCoordinator.swift in Sources */,
 				1B9A3D8C282C060A003E0C34 /* SplashViewModel.swift in Sources */,
 				1B4AE3FA283E04C400FA6420 /* CompanyHost.swift in Sources */,
+				1BC1909E285A0DB200585533 /* TabBarCoordinator.swift in Sources */,
+				1BC190C6285CA91000585533 /* TabBarViewController.swift in Sources */,
+				1BC190B8285C5CB400585533 /* NotificationsCoordinator.swift in Sources */,
+				1BC190B6285C5CA400585533 /* OpportunitiesViewModel.swift in Sources */,
+				1BC190AF285C5C6300585533 /* HomeViewModel.swift in Sources */,
 				1B9A3D90282C0BAF003E0C34 /* DataManager.swift in Sources */,
 				1BA2DF02281E8C7300DB128D /* BaseVC.swift in Sources */,
 				1B3C384328520E06000EEADF /* LoginVC.swift in Sources */,
 				1B1683A8283D20180067F2DB /* Pagination.swift in Sources */,
 				1B3C384928520E5C000EEADF /* LoginCoordinator.swift in Sources */,
+				1BC190A4285A0EC500585533 /* OpportunitiesVC.swift in Sources */,
 				1B168380283A590B0067F2DB /* RegistrationTravelerViewModel.swift in Sources */,
+				1BC190C4285C60A800585533 /* TabBarPage.swift in Sources */,
 				1BA2DEF9281E8AE800DB128D /* MainCoordinator.swift in Sources */,
 				1B563B722847DD0B00B851C1 /* RegistrationError.swift in Sources */,
 				1BA2DF08281E8D7700DB128D /* OnboardingCoordinator.swift in Sources */,
+				1BC190C0285C5CD900585533 /* SettingsVC.swift in Sources */,
 				1B714B582840DBB5000D85D0 /* RegistrationCoordinator.swift in Sources */,
 				1B3C38312850782F000EEADF /* EmailVerificationViewModel.swift in Sources */,
+				1BC190BA285C5CBD00585533 /* NotificationsVC.swift in Sources */,
+				1BC190AD285C5C5B00585533 /* HomeVC.swift in Sources */,
 				1B7315F1281E7DD0001F2E6A /* AppDelegate.swift in Sources */,
 				1B3C384728520E1C000EEADF /* LoginViewModel.swift in Sources */,
 				1B9A3D8E282C0B31003E0C34 /* AuthorizationService.swift in Sources */,
+				1BC190A6285B15A000585533 /* OpportunitiesCoordinator.swift in Sources */,
+				1BC190BE285C5CD200585533 /* SettingsCoordinator.swift in Sources */,
 				1BA2DEFE281E8C1800DB128D /* AppRootVC.swift in Sources */,
 				1B9A3D32282A3CE9003E0C34 /* Traveler.swift in Sources */,
 				1B3C383628508B79000EEADF /* RegistrationHostVC.swift in Sources */,
@@ -737,13 +852,18 @@
 				1B563B6E2845358200B851C1 /* CountriesDropDownCell.swift in Sources */,
 				1B4AE3F8283E04BB00FA6420 /* IndividualHost.swift in Sources */,
 				1B1683AA283D20E20067F2DB /* GenericResponse.swift in Sources */,
+				1BC190B4285C5C9300585533 /* TravelerProfileViewModel.swift in Sources */,
 				1B9A3D2D28295F6F003E0C34 /* AppConfig.swift in Sources */,
 				1B3C384028520853000EEADF /* LoginModel.swift in Sources */,
 				1B16837E283A58F00067F2DB /* RegistrationTravelerVC.swift in Sources */,
 				1B1683A6283D1F6E0067F2DB /* ErrorResponse.swift in Sources */,
 				1BA2DEF7281E8AB600DB128D /* AppCoordinator.swift in Sources */,
+				1BC190BC285C5CC500585533 /* NotificationsViewModel.swift in Sources */,
 				1B5279E72820471100FDAF5D /* AuthorizationRouter.swift in Sources */,
 				1B9A3D8A282C05F6003E0C34 /* SplashVC.swift in Sources */,
+				1BC190C2285C5CE200585533 /* SettingsViewModel.swift in Sources */,
+				1BC190AB285C5C4900585533 /* HomeCoordinator.swift in Sources */,
+				1BC190A2285A0E8200585533 /* TravelerProfileVC.swift in Sources */,
 				1B16837B2837C07B0067F2DB /* FirebaseManager.swift in Sources */,
 				1B3C383A28508BA9000EEADF /* RegistrationHostViewModel.swift in Sources */,
 			);

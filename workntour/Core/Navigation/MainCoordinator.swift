@@ -37,7 +37,7 @@ final class MainCoordinator: NavigationCoordinator {
         splashVC.viewModel = splashViewModel
         splashVC.coordinator = self
 
-        navigator.push(splashVC, animated: true)
+        navigator.push(splashVC, animated: false)
     }
 
     func navigate(to step: MainStep) {
@@ -47,7 +47,7 @@ final class MainCoordinator: NavigationCoordinator {
         case .login:
             startLoginFlow()
         case .loginAsGuest:
-            debugPrint("Login as a guest!")
+            showMainFlow()
         }
     }
 
@@ -67,5 +67,12 @@ final class MainCoordinator: NavigationCoordinator {
     private func startLoginFlow() {
         let loginCoordinator = LoginCoordinator(parent: self)
         pushCoordinator(loginCoordinator, animated: true)
+    }
+
+    /// Create TabBarCoordinator & set it as rootViewController of our main NavigationController
+    private func showMainFlow() {
+        let tabCoordinator = TabBarCoordinator(parent: self, rootViewController)
+        pushCoordinator(tabCoordinator, animated: false)
+        navigator.setRootViewController(tabCoordinator.rootViewController, animated: false)
     }
 }

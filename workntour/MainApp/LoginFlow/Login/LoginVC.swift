@@ -53,8 +53,8 @@ class LoginVC: BaseVC<LoginViewModel, LoginCoordinator> {
 
         emailTextField.addTarget(self, action: #selector(emailDidChange), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(passwordDidChange), for: .editingChanged)
-        emailTextField.delegate = self
-        passwordTextField.delegate = self
+        emailTextField.gradientDelegate = self
+        passwordTextField.gradientDelegate = self
     }
 
     override func bindViews() {
@@ -116,14 +116,12 @@ class LoginVC: BaseVC<LoginViewModel, LoginCoordinator> {
 
 }
 
-extension LoginVC: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+extension LoginVC: GradientTFDelegate {
+    func shouldReturn(_ textField: UITextField) {
         if textField == emailTextField {
             passwordTextField.becomeFirstResponder()
         } else {
             passwordTextField.resignFirstResponder()
         }
-
-        return true
     }
 }

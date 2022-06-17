@@ -310,8 +310,8 @@ extension RegistrationHostVC: RegistrationCellDelegate {
         /// Check if next indexPath exists
         if tableView.hasRowAtIndexPath(indexPath: nextIndexPath) {
             let nextCell = tableView.cellForRow(at: nextIndexPath) as? RegistrationCell
-            /// Remove the keyboard when next textField has a rightView (f.e. up_arrow)
-            if nextCell?.gradientTextField.rightView != nil {
+            /// Remove the keyboard when next textField has an arrow as rightView (f.e. up_arrow)
+            if nextCell?.gradientTextField.rightIcon?.oneOf(other: .upArrow, .downArrow) == true {
                 cell.gradientTextField.resignFirstResponder()
             } else { /// Set the keyboard
                 nextCell?.gradientTextField.becomeFirstResponder()
