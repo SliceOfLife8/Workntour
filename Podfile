@@ -18,6 +18,7 @@ def common
   pod 'DropDown'
   pod 'NVActivityIndicatorView'
   pod 'EasyTipView'
+  pod 'KDCircularProgress'
 end
 
 def logging

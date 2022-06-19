@@ -17,19 +17,31 @@ final class ProfileCoordinator: NavigationCoordinator {
     var navigator: NavigatorType
     var rootViewController: UINavigationController
 
+    private var userRole: UserRole?
+
     init(_ parent: TabBarCoordinator) {
         self.parent = parent
+        self.userRole = UserDataManager.shared.role
 
-        let opportunitiesVC = TravelerProfileVC()
-        opportunitiesVC.viewModel = TravelerProfileViewModel()
-
-        let navigationController = UINavigationController(rootViewController: opportunitiesVC)
-
+        let navigationController = UINavigationController()
         self.navigator = Navigator(navigationController: navigationController)
         self.rootViewController = navigationController
-        opportunitiesVC.coordinator = self
     }
 
-    func start() {}
+    func start() {
+        if userRole == .TRAVELER {
+            let travelerVC = TravelerProfileVC()
+            travelerVC.viewModel = TravelerProfileViewModel()
+            travelerVC.coordinator = self
+
+            navigator.push(travelerVC, animated: true)
+        } else {
+            let hostVC = HostProfileVC(userRole == .COMPANY_HOST)
+            hostVC.viewModel = HostProfileViewModel()
+            hostVC.coordinator = self
+
+            navigator.push(hostVC, animated: true)
+        }
+    }
 
 }

@@ -43,8 +43,11 @@ final class LoginCoordinator: PresentationCoordinator {
     func navigate(to step: LoginStep) {
         switch step {
         case .successfulLogin:
-            print("You can enter the app!")
-            // parent.navigator.push(rootViewController, animated: true)
+            parent.dismissCoordinator(self, modalStyle: .coverVertical, animated: true, completion: {
+                DispatchQueue.main.async {
+                    self.parent.showMainFlow()
+                }
+            })
         case .close:
             parent.dismissCoordinator(self, modalStyle: .coverVertical, animated: true, completion: nil)
         case .register:

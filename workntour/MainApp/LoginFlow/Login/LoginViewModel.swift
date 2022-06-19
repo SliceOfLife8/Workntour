@@ -64,7 +64,7 @@ class LoginViewModel: BaseViewModel {
         loaderVisibility = true
         service.login(email: email, password: password)
             .compactMap {
-                print("store user's data info")
+                UserDataManager.shared.updateUser($0)
                 return !$0.memberId.isEmpty
             }
             .subscribe(on: RunLoop.main)

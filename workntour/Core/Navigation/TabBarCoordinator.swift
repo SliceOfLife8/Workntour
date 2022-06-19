@@ -25,6 +25,8 @@ final class TabBarCoordinator: NSObject, NavigationCoordinator {
     var navigator: NavigatorType
     var rootViewController: TabBarViewController
 
+    private var userRole: UserRole?
+
     /// `Main Coordinators of our application`
     lazy var homeCoordinator: HomeCoordinator = {
         return HomeCoordinator(self)
@@ -51,11 +53,22 @@ final class TabBarCoordinator: NSObject, NavigationCoordinator {
 
         self.navigator = Navigator(navigationController: navigationController)
         self.rootViewController = .init()
+        self.userRole = UserDataManager.shared.role
     }
 
     func start() {
         // Let's define which pages do we want to add into tab bar
-        let pages: [TabBarPage] = TabBarPage.allCases.sorted(by: { $0.pageOrderNumber() < $1.pageOrderNumber() })
+        var allPages: [TabBarPage]
+        switch userRole {
+        case .TRAVELER:
+            allPages = [.homepage, .profile, .notifications, .settings]
+        case .COMPANY_HOST, .INDIVIDUAL_HOST:
+            allPages = [.profile, .opportunities, .notifications, .settings]
+        case .none: // guest mode
+            allPages = [.homepage, .notifications, .settings]
+        }
+
+        let pages: [TabBarPage] = allPages.sorted(by: { $0.pageOrderNumber() < $1.pageOrderNumber() })
 
         let controllers: [UINavigationController] = pages.map({ getTabController($0) })
 
@@ -93,14 +106,19 @@ final class TabBarCoordinator: NSObject, NavigationCoordinator {
         switch page {
         case .homepage:
             navigationViewController = homeCoordinator.rootViewController
+            homeCoordinator.start()
         case .profile:
             navigationViewController = profileCoordinator.rootViewController
+            profileCoordinator.start()
         case .opportunities:
             navigationViewController = opportunitiesCoordinator.rootViewController
+            opportunitiesCoordinator.start()
         case .notifications:
             navigationViewController = notificationsCoordinator.rootViewController
+            notificationsCoordinator.start()
         case .settings:
             navigationViewController = settingsCoordinator.rootViewController
+            settingsCoordinator.start()
         }
 
         navigationViewController.tabBarItem = UITabBarItem(title: page.pageTitleValue, image: page.tabIcon?.withRenderingMode(.alwaysOriginal), selectedImage: page.tabSelectedIcon)

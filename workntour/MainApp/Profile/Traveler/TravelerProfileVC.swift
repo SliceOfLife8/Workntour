@@ -17,4 +17,5 @@ class TravelerProfileVC: BaseVC<TravelerProfileViewModel, ProfileCoordinator> {
         navigationController?.navigationBar.prefersLargeTitles = true
         title = "Profile"
     }
+
 }

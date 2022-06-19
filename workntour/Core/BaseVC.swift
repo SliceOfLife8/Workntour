@@ -34,6 +34,22 @@ class BaseVC<VM: BaseViewModel, C: Coordinator>: UIViewController {
         trackScreen()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        if self is SplashVC || self is HostProfileVC {
+            hideNavigationBar(animated)
+        }
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        if self is SplashVC || self is HostProfileVC {
+            showNavigationBar(animated)
+        }
+    }
+
     func bindViews() {}
 
     func setupUI() {}

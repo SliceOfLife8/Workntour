@@ -24,6 +24,7 @@
 		1B527A31282059A600FDAF5D /* CommonUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 1B527A2E282059A600FDAF5D /* CommonUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1B563B802848C47A00B851C1 /* CustomViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B563B7F2848C47A00B851C1 /* CustomViewProtocol.swift */; };
 		1B714B6828411772000D85D0 /* SharedKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B714B6728411772000D85D0 /* SharedKit.framework */; };
+		1BC190D3285F3B0500585533 /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC190D2285F3B0500585533 /* GradientButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		1B527A2F282059A600FDAF5D /* CommonUI.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = CommonUI.docc; sourceTree = "<group>"; };
 		1B563B7F2848C47A00B851C1 /* CustomViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewProtocol.swift; sourceTree = "<group>"; };
 		1B714B6728411772000D85D0 /* SharedKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SharedKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1BC190D2285F3B0500585533 /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 			children = (
 				1B4AE409283E691D00FA6420 /* PrimaryButton.swift */,
 				1B4AE410283E845C00FA6420 /* SecondaryButton.swift */,
+				1BC190D2285F3B0500585533 /* GradientButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 				1B308A42284125C300797F32 /* GradientTextField.swift in Sources */,
 				1B563B802848C47A00B851C1 /* CustomViewProtocol.swift in Sources */,
 				1B4AE44C2840AEFC00FA6420 /* Checkbox.swift in Sources */,
+				1BC190D3285F3B0500585533 /* GradientButton.swift in Sources */,
 				1B4AE40D283E6FDC00FA6420 /* UIImpactFeedbackGenerator+Extension.swift in Sources */,
 				1B4AE40A283E691D00FA6420 /* PrimaryButton.swift in Sources */,
 				1B527A30282059A600FDAF5D /* CommonUI.docc in Sources */,

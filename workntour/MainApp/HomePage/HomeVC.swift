@@ -17,4 +17,5 @@ class HomeVC: BaseVC<HomeViewModel, HomeCoordinator> {
         navigationController?.navigationBar.prefersLargeTitles = true
         title = "Home"
     }
+
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum TabBarPage: CaseIterable {
+enum TabBarPage {
     case homepage
     case profile
     case opportunities

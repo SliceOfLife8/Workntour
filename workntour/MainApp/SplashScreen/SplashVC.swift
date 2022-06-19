@@ -11,25 +11,10 @@ import CommonUI
 
 class SplashVC: BaseVC<SplashViewModel, MainCoordinator> {
 
-    private var loginAction: Bool = false
-
     // MARK: - Outlets
     @IBOutlet weak var loginBtn: PrimaryButton!
     @IBOutlet weak var loginAsGuestBtn: SecondaryButton!
     @IBOutlet weak var registrationPoint: LinkableLabel!
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        loginAction = false
-        hideNavigationBar(animated)
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        if loginAction {
-            showNavigationBar(animated)
-        }
-    }
 
     override func setupTexts() {
         super.setupTexts()
@@ -50,7 +35,6 @@ class SplashVC: BaseVC<SplashViewModel, MainCoordinator> {
 
     // MARK: - Actions
     @IBAction func loginBtnTapped(_ sender: Any) {
-        loginAction = true
         self.coordinator?.navigate(to: .login)
     }
 
