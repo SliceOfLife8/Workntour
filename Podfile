@@ -18,6 +18,7 @@ def common
   pod 'NVActivityIndicatorView'
   pod 'EasyTipView'
   pod 'KDCircularProgress'
+  pod 'HorizonCalendar'
 end
 
 def logging
