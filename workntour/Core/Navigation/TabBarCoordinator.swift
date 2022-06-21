@@ -96,7 +96,7 @@ final class TabBarCoordinator: NSObject, NavigationCoordinator {
 
     func removeCoordinator() {
         self.parent.dismissCoordinator(self, animated: true)
-        self.parent.rootViewController.setNavigationBarHidden(false, animated: false)
+        self.parent.rootViewController.showNavigationBar(false)
         self.parent.start()
     }
 

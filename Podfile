@@ -13,7 +13,6 @@ end
 
 def common
   pod 'SwiftLint'
-  pod 'Hero'
   pod 'CombineDataSources'
   pod 'DropDown'
   pod 'NVActivityIndicatorView'

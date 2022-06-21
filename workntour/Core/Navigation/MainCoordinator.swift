@@ -71,7 +71,7 @@ final class MainCoordinator: NavigationCoordinator {
 
     /// Create TabBarCoordinator & set it as rootViewController of our main NavigationController
     func showMainFlow() {
-        rootViewController.setNavigationBarHidden(true, animated: false)
+        rootViewController.hideNavigationBar(false)
         let tabCoordinator = TabBarCoordinator(parent: self, rootViewController)
         pushCoordinator(tabCoordinator, animated: false)
         navigator.setRootViewController(tabCoordinator.rootViewController, animated: false)

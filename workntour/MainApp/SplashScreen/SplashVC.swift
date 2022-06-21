@@ -39,6 +39,7 @@ class SplashVC: BaseVC<SplashViewModel, MainCoordinator> {
     }
 
     @IBAction func loginAsGuestBtnTapped(_ sender: Any) {
+        self.preventNavBarFromAppearing = true
         self.coordinator?.navigate(to: .loginAsGuest)
     }
 }

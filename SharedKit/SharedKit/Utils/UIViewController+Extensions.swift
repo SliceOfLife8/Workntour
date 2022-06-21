@@ -17,20 +17,34 @@ extension UIViewController {
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 
-    public func setupNavigationBar(mainTitle: String) {
+    public func setupNavigationBar(mainTitle: String?) {
         self.navigationController?.navigationBar.tintColor = UIColor.appColor(.lavender)
         self.navigationController?.navigationBar.topItem?.title = ""
-        self.navigationItem.title = mainTitle
 
-        let appearance = UINavigationBarAppearance()
-        appearance.titleTextAttributes = [
+        self.navigationController?.navigationBar.barTintColor = UIColor.appColor(.lightGray)
+        self.navigationController?.navigationBar.titleTextAttributes = [
             .foregroundColor: UIColor.appColor(.softBlack),
             .font: UIFont.scriptFont(.bold, size: 17)
         ]
-        appearance.backgroundColor = UIColor.appColor(.extraLightGray)
+
+        self.navigationItem.title = mainTitle
+
+        let appearance = UINavigationBarAppearance()
         appearance.shadowImage = UIImage.pixelImageWithColor(color: UIColor.appColor(.separator))
         UINavigationBar.appearance().standardAppearance = appearance
         UINavigationBar.appearance().scrollEdgeAppearance = appearance
+
+    }
+
+    public func setupNavigationBar(withLargeTitle: String?) {
+        self.navigationController?.navigationBar.topItem?.title = ""
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+
+        self.navigationController?.navigationBar.titleTextAttributes = [
+            .font: UIFont.scriptFont(.bold, size: 17)
+        ]
+
+        self.navigationItem.title = withLargeTitle
     }
 
 }

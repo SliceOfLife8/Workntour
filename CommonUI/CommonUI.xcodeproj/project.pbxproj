@@ -25,6 +25,7 @@
 		1B563B802848C47A00B851C1 /* CustomViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B563B7F2848C47A00B851C1 /* CustomViewProtocol.swift */; };
 		1B714B6828411772000D85D0 /* SharedKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B714B6728411772000D85D0 /* SharedKit.framework */; };
 		1BC190D3285F3B0500585533 /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC190D2285F3B0500585533 /* GradientButton.swift */; };
+		1BC190D92860A57B00585533 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC190D82860A57B00585533 /* SettingsCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		1B563B7F2848C47A00B851C1 /* CustomViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewProtocol.swift; sourceTree = "<group>"; };
 		1B714B6728411772000D85D0 /* SharedKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SharedKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BC190D2285F3B0500585533 /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
+		1BC190D82860A57B00585533 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				1B308A4F284244D800797F32 /* Registration */,
+				1BC190D72860A56800585533 /* Settings */,
 			);
 			path = TableViews;
 			sourceTree = "<group>";
@@ -156,6 +159,14 @@
 				1B714B6728411772000D85D0 /* SharedKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1BC190D72860A56800585533 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				1BC190D82860A57B00585533 /* SettingsCell.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -252,6 +263,7 @@
 				1B4AE40D283E6FDC00FA6420 /* UIImpactFeedbackGenerator+Extension.swift in Sources */,
 				1B4AE40A283E691D00FA6420 /* PrimaryButton.swift in Sources */,
 				1B527A30282059A600FDAF5D /* CommonUI.docc in Sources */,
+				1BC190D92860A57B00585533 /* SettingsCell.swift in Sources */,
 				1B0588D6284CB36B00B1F78D /* UIButton+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

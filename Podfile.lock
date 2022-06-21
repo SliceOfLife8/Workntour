@@ -95,7 +95,6 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (7.7.0):
     - GoogleUtilities/Logger
-  - Hero (1.6.1)
   - KDCircularProgress (1.5.4)
   - Keys (1.0.1)
   - nanopb (2.30909.0):
@@ -116,7 +115,6 @@ DEPENDENCIES:
   - EasyTipView
   - Firebase/Core
   - Firebase/Crashlytics
-  - Hero
   - KDCircularProgress
   - Keys (from `Pods/CocoaPodsKeys`)
   - NVActivityIndicatorView
@@ -138,7 +136,6 @@ SPEC REPOS:
     - GoogleAppMeasurement
     - GoogleDataTransport
     - GoogleUtilities
-    - Hero
     - KDCircularProgress
     - nanopb
     - NVActivityIndicatorView
@@ -164,7 +161,6 @@ SPEC CHECKSUMS:
   GoogleAppMeasurement: 8ecc717f2abe3f9ee95a5d38db08827852894acc
   GoogleDataTransport: 5fffe35792f8b96ec8d6775f5eccd83c998d5a3b
   GoogleUtilities: e0913149f6b0625b553d70dae12b49fc62914fd1
-  Hero: 215865ba3ae41dd9bb08cd6c60a645529c6fc94b
   KDCircularProgress: 98200c6b8e85d22bc04eb644721d3b1e12b0686b
   Keys: a576f4c9c1c641ca913a959a9c62ed3f215a8de9
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
@@ -173,6 +169,6 @@ SPEC CHECKSUMS:
   SwiftLint: f80f1be7fa96d30e0aa68e58d45d4ea1ccaac519
   SwiftyBeaver: c8241b4745aa269a78ca5a022532c6915e948536
 
-PODFILE CHECKSUM: efd12ceb32d6b80b8d552d7f6e52dd585e6a9063
+PODFILE CHECKSUM: 79d9533a97c0c90e729b934e87d4545db0cff421
 
 COCOAPODS: 1.11.3

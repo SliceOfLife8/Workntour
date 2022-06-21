@@ -10,11 +10,6 @@ import Combine
 import SharedKit
 import NVActivityIndicatorView
 
-/*
- 1. Localization of app (Greek & English) and change texts live.
- 2. Observe networking status
- */
-
 typealias DisposeBag = Set<AnyCancellable>
 
 class BaseVC<VM: BaseViewModel, C: Coordinator>: UIViewController {
@@ -24,6 +19,7 @@ class BaseVC<VM: BaseViewModel, C: Coordinator>: UIViewController {
 
     var storage = Set<AnyCancellable>()
     private let loaderTag = 1938123987
+    var preventNavBarFromAppearing: Bool = false /// This variable is used from prevent navigationBar from appearing. This is basically used when we want two behaviours for the same ViewController.
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,9 +41,10 @@ class BaseVC<VM: BaseViewModel, C: Coordinator>: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
-        if self is SplashVC || self is HostProfileVC {
+        if (self is SplashVC || self is HostProfileVC) && !preventNavBarFromAppearing {
             showNavigationBar(animated)
         }
+        preventNavBarFromAppearing = false
     }
 
     func bindViews() {}
