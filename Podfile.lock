@@ -52,6 +52,7 @@ PODS:
     - GoogleUtilities/Environment (~> 7.7)
     - GoogleUtilities/UserDefaults (~> 7.7)
     - PromisesObjC (~> 2.1)
+  - FloatingPanel (2.5.3)
   - GoogleAppMeasurement (9.1.0):
     - GoogleAppMeasurement/AdIdSupport (= 9.1.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.7)
@@ -116,6 +117,7 @@ DEPENDENCIES:
   - EasyTipView
   - Firebase/Core
   - Firebase/Crashlytics
+  - FloatingPanel
   - HorizonCalendar
   - KDCircularProgress
   - Keys (from `Pods/CocoaPodsKeys`)
@@ -135,6 +137,7 @@ SPEC REPOS:
     - FirebaseCoreInternal
     - FirebaseCrashlytics
     - FirebaseInstallations
+    - FloatingPanel
     - GoogleAppMeasurement
     - GoogleDataTransport
     - GoogleUtilities
@@ -161,6 +164,7 @@ SPEC CHECKSUMS:
   FirebaseCoreInternal: f3c838ae0b41cd840bbf34f90debfede78d352e5
   FirebaseCrashlytics: 8e21736dcf15d814b79229eb7e79ba3a5eec5f30
   FirebaseInstallations: a91c74276b544524ce144c8315d8cdbce2dbe30b
+  FloatingPanel: 3cee815e9ded75b632543fa73ab655a1ef941452
   GoogleAppMeasurement: 8ecc717f2abe3f9ee95a5d38db08827852894acc
   GoogleDataTransport: 5fffe35792f8b96ec8d6775f5eccd83c998d5a3b
   GoogleUtilities: e0913149f6b0625b553d70dae12b49fc62914fd1
@@ -173,6 +177,6 @@ SPEC CHECKSUMS:
   SwiftLint: f80f1be7fa96d30e0aa68e58d45d4ea1ccaac519
   SwiftyBeaver: c8241b4745aa269a78ca5a022532c6915e948536
 
-PODFILE CHECKSUM: 23d370d73eb8fa23f0551436096b14336f9c0036
+PODFILE CHECKSUM: 7c4e190762201bd748651f6b4bf2b9c882b8fa07
 
 COCOAPODS: 1.11.3

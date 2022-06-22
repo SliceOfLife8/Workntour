@@ -16,6 +16,12 @@ class SplashVC: BaseVC<SplashViewModel, MainCoordinator> {
     @IBOutlet weak var loginAsGuestBtn: SecondaryButton!
     @IBOutlet weak var registrationPoint: LinkableLabel!
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Don't remove this line. Ask me!
+        setupNavigationBar(mainTitle: nil)
+    }
+
     override func setupTexts() {
         super.setupTexts()
         loginBtn.setTitle("Log in", for: .normal)

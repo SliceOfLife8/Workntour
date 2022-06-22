@@ -19,6 +19,7 @@ def common
   pod 'EasyTipView'
   pod 'KDCircularProgress'
   pod 'HorizonCalendar'
+  pod 'FloatingPanel'
 end
 
 def logging

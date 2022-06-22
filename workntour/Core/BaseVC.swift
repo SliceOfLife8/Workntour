@@ -79,6 +79,8 @@ private extension DisposeBag {
 
 class BaseViewModel { }
 
+class EmptyViewModel: BaseViewModel {}
+
 // MARK: - Loader
 extension BaseVC {
     func showLoader(_ type: NVActivityIndicatorType = .ballRotateChase) {

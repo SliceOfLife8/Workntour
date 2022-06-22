@@ -8,6 +8,13 @@
 import UIKit
 import SharedKit
 
+/*
+ 1. Create a list of opportunities. Basically it's a collectionView. https://github.com/appssemble/appstore-card-transition
+ 2. Create an opportunity. We need to integrate the AirBnb's calendar https://github.com/airbnb/HorizonCalendar.
+ 3. Details View.
+ 4. Delete option on detailsView.
+ */
+
 class OpportunitiesVC: BaseVC<OpportunitiesViewModel, OpportunitiesCoordinator> {
 
     override func viewDidLoad() {
@@ -17,4 +24,5 @@ class OpportunitiesVC: BaseVC<OpportunitiesViewModel, OpportunitiesCoordinator> 
         navigationController?.navigationBar.prefersLargeTitles = true
         title = "Opportunities"
     }
+
 }

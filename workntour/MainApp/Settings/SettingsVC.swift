@@ -15,7 +15,7 @@ class SettingsVC: BaseVC<SettingsViewModel, SettingsCoordinator> {
     let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         // tableView.backgroundColor = UIColor.appColor(.primary)
-        tableView.backgroundColor = .systemBackground
+        tableView.backgroundColor = UIColor.appColor(.lightGray)
         tableView.register(SettingsCell.self, forCellReuseIdentifier: SettingsCell.identifier)
         return tableView
     }()

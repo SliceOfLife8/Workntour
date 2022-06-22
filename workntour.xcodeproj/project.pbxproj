@@ -100,6 +100,12 @@
 		1BC190CF285F253C00585533 /* HostProfileVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BC190CE285F253C00585533 /* HostProfileVC.xib */; };
 		1BC190D1285F255500585533 /* HostProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC190D0285F255500585533 /* HostProfileViewModel.swift */; };
 		1BC190D62860A53000585533 /* SettingsOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC190D52860A53000585533 /* SettingsOption.swift */; };
+		1BC190DB28620B9300585533 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC190DA28620B9300585533 /* LocationManager.swift */; };
+		1BC190DE28620C7300585533 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC190DD28620C7300585533 /* MapViewController.swift */; };
+		1BC190E028620D0400585533 /* SearchLocationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC190DF28620D0400585533 /* SearchLocationsVC.swift */; };
+		1BC190E32862207D00585533 /* Opportunity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC190E22862207D00585533 /* Opportunity.swift */; };
+		1BC190E62862E83900585533 /* MyAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC190E52862E83900585533 /* MyAnnotation.swift */; };
+		1BC190E82862E91F00585533 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BC190E72862E91F00585533 /* MapViewController.xib */; };
 		2707FF96C7CBD64F6B2EA3B7 /* Pods_workntour.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5701F516D91D3C90DD51441 /* Pods_workntour.framework */; };
 /* End PBXBuildFile section */
 
@@ -217,6 +223,12 @@
 		1BC190CE285F253C00585533 /* HostProfileVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HostProfileVC.xib; sourceTree = "<group>"; };
 		1BC190D0285F255500585533 /* HostProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostProfileViewModel.swift; sourceTree = "<group>"; };
 		1BC190D52860A53000585533 /* SettingsOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsOption.swift; sourceTree = "<group>"; };
+		1BC190DA28620B9300585533 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		1BC190DD28620C7300585533 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		1BC190DF28620D0400585533 /* SearchLocationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationsVC.swift; sourceTree = "<group>"; };
+		1BC190E22862207D00585533 /* Opportunity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Opportunity.swift; sourceTree = "<group>"; };
+		1BC190E52862E83900585533 /* MyAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAnnotation.swift; sourceTree = "<group>"; };
+		1BC190E72862E91F00585533 /* MapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
 		2544630698253F96E0BC47D6 /* Pods-workntour.dev debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-workntour.dev debug.xcconfig"; path = "Target Support Files/Pods-workntour/Pods-workntour.dev debug.xcconfig"; sourceTree = "<group>"; };
 		437B52C06849CB14B21AF948 /* Pods-workntour.dev release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-workntour.dev release.xcconfig"; path = "Target Support Files/Pods-workntour/Pods-workntour.dev release.xcconfig"; sourceTree = "<group>"; };
 		A9A28C3C30B3A10BAB51F50A /* Pods-workntour.prod release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-workntour.prod release.xcconfig"; path = "Target Support Files/Pods-workntour/Pods-workntour.prod release.xcconfig"; sourceTree = "<group>"; };
@@ -551,6 +563,8 @@
 		1BC1909F285A0E4F00585533 /* Opportunities */ = {
 			isa = PBXGroup;
 			children = (
+				1BC190E12862205200585533 /* Models */,
+				1BC190DC28620C4C00585533 /* Map */,
 				1BC190A5285B15A000585533 /* OpportunitiesCoordinator.swift */,
 				1BC190A3285A0EC500585533 /* OpportunitiesVC.swift */,
 				1BC190B5285C5CA400585533 /* OpportunitiesViewModel.swift */,
@@ -612,6 +626,7 @@
 			isa = PBXGroup;
 			children = (
 				1BC190C8285F1C0700585533 /* UserDataManager.swift */,
+				1BC190DA28620B9300585533 /* LocationManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -630,6 +645,25 @@
 			isa = PBXGroup;
 			children = (
 				1BC190D52860A53000585533 /* SettingsOption.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1BC190DC28620C4C00585533 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				1BC190DD28620C7300585533 /* MapViewController.swift */,
+				1BC190E72862E91F00585533 /* MapViewController.xib */,
+				1BC190DF28620D0400585533 /* SearchLocationsVC.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		1BC190E12862205200585533 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1BC190E22862207D00585533 /* Opportunity.swift */,
+				1BC190E52862E83900585533 /* MyAnnotation.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -718,6 +752,7 @@
 				1B563B6D2845358200B851C1 /* CountriesDropDownCell.xib in Resources */,
 				1B4AE429283F58FB00FA6420 /* Lato-BoldItalic.ttf in Resources */,
 				1B4AE42A283F58FB00FA6420 /* Lato-Hairline.ttf in Resources */,
+				1BC190E82862E91F00585533 /* MapViewController.xib in Resources */,
 				1B4AE42B283F58FB00FA6420 /* Lato-HairlineItalic.ttf in Resources */,
 				1B4AE42C283F58FB00FA6420 /* Lato-Heavy.ttf in Resources */,
 				1B4AE42D283F58FB00FA6420 /* Lato-HeavyItalic.ttf in Resources */,
@@ -854,13 +889,16 @@
 				1B4AE3FA283E04C400FA6420 /* CompanyHost.swift in Sources */,
 				1BC1909E285A0DB200585533 /* TabBarCoordinator.swift in Sources */,
 				1BC190C6285CA91000585533 /* TabBarViewController.swift in Sources */,
+				1BC190E028620D0400585533 /* SearchLocationsVC.swift in Sources */,
 				1BC190B8285C5CB400585533 /* NotificationsCoordinator.swift in Sources */,
+				1BC190DB28620B9300585533 /* LocationManager.swift in Sources */,
 				1BC190B6285C5CA400585533 /* OpportunitiesViewModel.swift in Sources */,
 				1BC190AF285C5C6300585533 /* HomeViewModel.swift in Sources */,
 				1B9A3D90282C0BAF003E0C34 /* DataManager.swift in Sources */,
 				1BA2DF02281E8C7300DB128D /* BaseVC.swift in Sources */,
 				1BC190D1285F255500585533 /* HostProfileViewModel.swift in Sources */,
 				1B3C384328520E06000EEADF /* LoginVC.swift in Sources */,
+				1BC190E32862207D00585533 /* Opportunity.swift in Sources */,
 				1B1683A8283D20180067F2DB /* Pagination.swift in Sources */,
 				1B3C384928520E5C000EEADF /* LoginCoordinator.swift in Sources */,
 				1BC190A4285A0EC500585533 /* OpportunitiesVC.swift in Sources */,
@@ -872,6 +910,7 @@
 				1BC190C0285C5CD900585533 /* SettingsVC.swift in Sources */,
 				1B714B582840DBB5000D85D0 /* RegistrationCoordinator.swift in Sources */,
 				1B3C38312850782F000EEADF /* EmailVerificationViewModel.swift in Sources */,
+				1BC190E62862E83900585533 /* MyAnnotation.swift in Sources */,
 				1BC190BA285C5CBD00585533 /* NotificationsVC.swift in Sources */,
 				1BC190AD285C5C5B00585533 /* HomeVC.swift in Sources */,
 				1B7315F1281E7DD0001F2E6A /* AppDelegate.swift in Sources */,
@@ -886,6 +925,7 @@
 				1B7315F3281E7DD0001F2E6A /* SceneDelegate.swift in Sources */,
 				1BA2DEEF281E840900DB128D /* DeepLinkManager.swift in Sources */,
 				1B308A5528424FBE00797F32 /* RegistrationModel.swift in Sources */,
+				1BC190DE28620C7300585533 /* MapViewController.swift in Sources */,
 				1B3C382F28507823000EEADF /* EmailVerificationVC.swift in Sources */,
 				1B563B6E2845358200B851C1 /* CountriesDropDownCell.swift in Sources */,
 				1B4AE3F8283E04BB00FA6420 /* IndividualHost.swift in Sources */,
