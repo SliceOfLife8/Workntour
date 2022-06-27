@@ -50,4 +50,10 @@ extension UIView {
         }
     }
 
+    public func makeCorner(withRadius radius: CGFloat) {
+        self.layer.cornerRadius = radius
+        self.layer.masksToBounds = true
+        self.layer.isOpaque = false
+    }
+
 }

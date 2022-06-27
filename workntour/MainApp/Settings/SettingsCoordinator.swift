@@ -45,6 +45,7 @@ final class SettingsCoordinator: NavigationCoordinator {
 
     private func logoutAlert() {
         AlertHelper.showAlertWithTwoActions(rootViewController, title: "Are you sure you want to logout?", message: nil, leftButtonTitle: "Yes", rightButtonTitle: "No", leftAction: {
+            UserDataManager.shared.clearCache()
             self.parent.removeCoordinator()
         }, rightAction: {
             let settingsTableView = self.rootViewController.visibleViewController?.view.subviews.filter { $0 is UITableView }.first as? UITableView

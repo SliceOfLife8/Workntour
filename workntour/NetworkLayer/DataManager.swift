@@ -62,3 +62,50 @@ extension DataManager: AuthorizationService {
     }
 
 }
+
+// MARK: - ProfileService
+extension DataManager: ProfileService {
+
+    func getTravelerProfile(memberId: String) -> AnyPublisher<Bool, ProviderError> {
+        return networking.request(
+            with: ProfileRouter.getTraveler(memberId),
+            scheduler: DispatchQueue.main,
+            class: GenericResponse<TravelerProfile>.self)
+        .compactMap {
+            UserDataManager.shared.save($0.data,
+                                        memberId: $0.data?.memberID,
+                                        role: $0.data?.role)
+            return $0.data != nil
+        }
+        .eraseToAnyPublisher()
+    }
+
+    func getIndividualHostProfile(memberId: String) -> AnyPublisher<Bool, ProviderError> {
+        return networking.request(
+            with: ProfileRouter.getIndividualHost(memberId),
+            scheduler: DispatchQueue.main,
+            class: GenericResponse<IndividualHostProfile>.self)
+        .compactMap {
+            UserDataManager.shared.save($0.data,
+                                        memberId: $0.data?.memberID,
+                                        role: $0.data?.role)
+            return $0.data != nil
+        }
+        .eraseToAnyPublisher()
+    }
+
+    func getCompanyHostProfile(memberId: String) -> AnyPublisher<Bool, ProviderError> {
+        return networking.request(
+            with: ProfileRouter.getCompanyHost(memberId),
+            scheduler: DispatchQueue.main,
+            class: GenericResponse<CompanyHostProfile>.self)
+        .compactMap {
+            UserDataManager.shared.save($0.data,
+                                        memberId: $0.data?.memberID,
+                                        role: $0.data?.role)
+            return $0.data != nil
+        }
+        .eraseToAnyPublisher()
+    }
+
+}

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Lato-Black.ttf">
+            <string>Lato-Black</string>
+        </array>
+        <array key="Lato-HeavyItalic.ttf">
+            <string>Lato-HeavyItalic</string>
+        </array>
+        <array key="Lato-SemiboldItalic.ttf">
+            <string>Lato-SemiboldItalic</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="MyOpportunityCell" customModule="CommonUI" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gkL-w0-8Oi" userLabel="Content View">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="afc-Pd-xsu">
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="220"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="220" id="bfQ-JA-ITX"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Job title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ls8-er-iDN">
+                                <rect key="frame" x="16" y="195.5" width="268" height="14.5"/>
+                                <fontDescription key="fontDescription" name="Lato-HeavyItalic" family="Lato" pointSize="12"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="R2d-Ku-oT3">
+                                <rect key="frame" x="0.0" y="232" width="300" height="60"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Crete, Greece" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pai-Wx-7nt" userLabel="Location">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="17"/>
+                                        <fontDescription key="fontDescription" name="Lato-HeavyItalic" family="Lato" pointSize="14"/>
+                                        <color key="textColor" name="purpleBlack"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hotel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="omw-Bp-zQ0" userLabel="Category">
+                                        <rect key="frame" x="0.0" y="21" width="300" height="18"/>
+                                        <fontDescription key="fontDescription" name="Lato-Black" family="Lato" pointSize="15"/>
+                                        <color key="textColor" name="placeholder"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1-20 July" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RC4-OV-cnL" userLabel="Dates">
+                                        <rect key="frame" x="0.0" y="43" width="300" height="17"/>
+                                        <fontDescription key="fontDescription" name="Lato-SemiboldItalic" family="Lato" pointSize="14"/>
+                                        <color key="textColor" name="placeholder"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="R2d-Ku-oT3" firstAttribute="leading" secondItem="afc-Pd-xsu" secondAttribute="leading" id="6Re-hR-22D"/>
+                            <constraint firstItem="afc-Pd-xsu" firstAttribute="leading" secondItem="gkL-w0-8Oi" secondAttribute="leading" id="7Ie-PH-zEj"/>
+                            <constraint firstItem="R2d-Ku-oT3" firstAttribute="trailing" secondItem="afc-Pd-xsu" secondAttribute="trailing" id="Br2-Jd-jCD"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="R2d-Ku-oT3" secondAttribute="bottom" constant="8" id="Uam-a2-cg1"/>
+                            <constraint firstItem="Ls8-er-iDN" firstAttribute="leading" secondItem="afc-Pd-xsu" secondAttribute="leading" constant="16" id="XUn-hx-MBl"/>
+                            <constraint firstAttribute="trailing" secondItem="afc-Pd-xsu" secondAttribute="trailing" id="keS-ge-GDg"/>
+                            <constraint firstItem="afc-Pd-xsu" firstAttribute="trailing" secondItem="Ls8-er-iDN" secondAttribute="trailing" constant="16" id="mR3-7z-nZl"/>
+                            <constraint firstItem="Ls8-er-iDN" firstAttribute="bottom" secondItem="afc-Pd-xsu" secondAttribute="bottom" constant="-10" id="pUD-PQ-5wq"/>
+                            <constraint firstItem="R2d-Ku-oT3" firstAttribute="top" secondItem="afc-Pd-xsu" secondAttribute="bottom" constant="12" id="pb9-9U-nXG"/>
+                            <constraint firstItem="afc-Pd-xsu" firstAttribute="top" secondItem="gkL-w0-8Oi" secondAttribute="top" id="s1m-6g-v39"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="gkL-w0-8Oi" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="BFG-A7-aTY"/>
+                <constraint firstItem="gkL-w0-8Oi" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Gui-yj-3jr"/>
+                <constraint firstAttribute="bottom" secondItem="gkL-w0-8Oi" secondAttribute="bottom" id="w9L-zm-mMa"/>
+                <constraint firstAttribute="trailing" secondItem="gkL-w0-8Oi" secondAttribute="trailing" id="xI0-JT-IlH"/>
+            </constraints>
+            <connections>
+                <outlet property="categoryLabel" destination="omw-Bp-zQ0" id="pqt-mm-Y6P"/>
+                <outlet property="datesLabel" destination="RC4-OV-cnL" id="z6H-I7-oVD"/>
+                <outlet property="imageView" destination="afc-Pd-xsu" id="qBv-9Z-Sq3"/>
+                <outlet property="jobTitleLabel" destination="Ls8-er-iDN" id="rt7-mR-vrX"/>
+                <outlet property="locationLabel" destination="Pai-Wx-7nt" id="dIl-dr-8q3"/>
+            </connections>
+            <point key="canvasLocation" x="139" y="140"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <namedColor name="placeholder">
+            <color red="0.56862745098039214" green="0.55294117647058827" blue="0.66274509803921566" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="purpleBlack">
+            <color red="0.2196078431372549" green="0.20000000000000001" blue="0.31372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

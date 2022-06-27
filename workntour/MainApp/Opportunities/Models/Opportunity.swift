@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct Opportunity {
+struct Opportunity: Hashable {
     let category: OpportunityCategory
-    let images: [Data] // min 3, max 7
-    let jobTitle: String
-    let jobDescription: String?
+    let images: [URL] // min 3, max 7
+    let jobTitle: String // Required
+    let jobDescription: String? // Optional
     let typeOfHelpNeeded: [TypeOfHelp]
     let location: OpportunityLocation // TBD
     let dates: [OpportunityDates]
@@ -23,7 +23,7 @@ struct Opportunity {
     let languagesSpoken: [Language]?
     let accommondationProvided: Accommodation
     let meals: [Meal]
-    let additionalOfferings: [String]
+    let additionalOfferings: [String]?
     let learningOpportunities: [LearningOpportunities]
     let adventuresOffered: String?
     let wifi: Bool
@@ -31,23 +31,23 @@ struct Opportunity {
     let petsAllowed: Bool
 }
 
-enum OpportunityCategory {
-    case hostel
-    case hotel
-    case guestHouse
-    case farm
-    case ecoVillage
-    case skiCenter
-    case camping
-    case ngo
-    case localCommunity
-    case animalShelter
-    case surfClub
-    case winery
-    case boat
-    case homeStay
-    case individual
-    case privateProject
+enum OpportunityCategory: String {
+    case hostel = "Hostel"
+    case hotel = "Hotel"
+    case guestHouse = "Guest House"
+    case farm = "Farm"
+    case ecoVillage = "Eco Village"
+    case skiCenter = "Ski Center"
+    case camping = "Camping"
+    case ngo = "NGO"
+    case localCommunity = "Local Community"
+    case animalShelter = "Animal Shelter"
+    case surfClub = "Surf Club"
+    case winery = "Winery"
+    case boat = "Boat"
+    case homeStay = "Home Stay"
+    case individual = "Individual"
+    case privateProject = "Private project"
 }
 
 enum TypeOfHelp {
@@ -75,12 +75,12 @@ enum TypeOfHelp {
     case service
 }
 
-struct OpportunityDates {
+struct OpportunityDates: Hashable {
     let start: Date
     let end: Date
 }
 
-struct OpportunityLocation {
+struct OpportunityLocation: Hashable {
     let title: String
     let latitude: Double
     let longitude: Double

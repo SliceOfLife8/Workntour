@@ -11,6 +11,10 @@ def firebase
   pod 'Firebase/Core'
 end
 
+def kingfisher
+  pod 'Kingfisher'
+end
+
 def common
   pod 'SwiftLint'
   pod 'CombineDataSources'
@@ -32,7 +36,7 @@ target 'workntour' do
   logging
   common
   firebase
-
+  kingfisher
 end
 
 target 'Networking' do
@@ -40,6 +44,14 @@ target 'Networking' do
   logging
 
   target 'NetworkingTests' do
+  end
+end
+
+target 'CommonUI' do
+  project 'CommonUI/CommonUI.xcodeproj'
+  kingfisher
+
+  target 'CommonUITests' do
   end
 end
 

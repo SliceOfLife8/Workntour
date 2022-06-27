@@ -35,9 +35,11 @@ class MapViewController: BaseVC<EmptyViewModel, OpportunitiesCoordinator> {
         super.viewDidLoad()
 
         mapView.delegate = self
+        mapView.showsCompass = false
         searchVC.delegate = self
         panel.set(contentViewController: searchVC)
         panel.addPanel(toParent: self)
+        panel.surfaceView.appearance.cornerRadius = 12
         panel.delegate = self
         mapView.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(mapViewLongPress(_:))))
         easyTipView = EasyTipView(text: "You can either search for a location or select a new one by holding your finger to the map.", preferences: preferences)
@@ -61,7 +63,7 @@ class MapViewController: BaseVC<EmptyViewModel, OpportunitiesCoordinator> {
         super.setupUI()
 
         // Add blur effect on status bar
-        let blurEffect = UIBlurEffect(style: .extraLight)
+        let blurEffect = UIBlurEffect(style: .systemUltraThinMaterial)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.addExclusiveConstraints(superview: view, top: (view.topAnchor, 0), bottom: (view.safeAreaLayoutGuide.topAnchor, 0), left: (view.leadingAnchor, 0), right: (view.trailingAnchor, 0))
     }
@@ -112,6 +114,10 @@ extension MapViewController: SearchLocationsDelegate, FloatingPanelControllerDel
         addPin(coordinates: coordinates, area: area)
 
         mapView.setRegion(MKCoordinateRegion(center: coordinates, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)), animated: true)
+    }
+
+    func didStartEditing() {
+        panel.move(to: .full, animated: true)
     }
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {

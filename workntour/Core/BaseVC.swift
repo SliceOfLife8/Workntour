@@ -43,6 +43,8 @@ class BaseVC<VM: BaseViewModel, C: Coordinator>: UIViewController {
 
         if (self is SplashVC || self is HostProfileVC) && !preventNavBarFromAppearing {
             showNavigationBar(animated)
+        } else if self is LoginVC {
+            hideNavigationBar(animated)
         }
         preventNavBarFromAppearing = false
     }

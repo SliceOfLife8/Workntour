@@ -85,6 +85,14 @@ class LoginVC: BaseVC<LoginViewModel, LoginCoordinator> {
             })
             .store(in: &storage)
 
+        viewModel?.$userLoggedIn
+            .sink(receiveValue: { [weak self] model in
+                if let _model = model {
+                    self?.viewModel?.retrieveProfile(_model)
+                }
+            })
+            .store(in: &storage)
+
         viewModel?.$userIsEligible
             .sink(receiveValue: { [weak self] status in
                 if status {

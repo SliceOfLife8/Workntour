@@ -80,7 +80,7 @@ extension Environment {
 
         switch self {
         case .DEV:
-            urlAsString = "http://localhost:8080"
+            urlAsString = "https://work-n-tour.herokuapp.com"
         case .STAGING:
             urlAsString = "not implemented yet!"
         case .PROD:

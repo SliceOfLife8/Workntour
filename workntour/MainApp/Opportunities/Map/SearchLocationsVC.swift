@@ -10,6 +10,7 @@ import SharedKit
 import CoreLocation
 
 protocol SearchLocationsDelegate: AnyObject {
+    func didStartEditing()
     func findLocation(didSelectLocationWith coordinates: CLLocationCoordinate2D?, area: String?)
 }
 
@@ -48,6 +49,7 @@ class SearchLocationsVC: UIViewController {
         super.viewDidLoad()
 
         view.backgroundColor = .secondarySystemBackground
+        view.makeCorner(withRadius: 8)
         mainTitle.addExclusiveConstraints(superview: view, top: (view.topAnchor, 12), left: (view.leadingAnchor, 24))
         searchBar.addExclusiveConstraints(superview: view, top: (mainTitle.bottomAnchor, 8), left: (mainTitle.leadingAnchor, 0), right: (view.trailingAnchor, 16))
         tableView.addExclusiveConstraints(superview: view, top: (searchBar.bottomAnchor, 16), bottom: (view.bottomAnchor, 16), left: (view.leadingAnchor, 16), right: (view.trailingAnchor, 16))
@@ -96,5 +98,10 @@ extension SearchLocationsVC: UISearchBarDelegate {
                 }
             }
         }
+    }
+
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        delegate?.didStartEditing()
+        return true
     }
 }

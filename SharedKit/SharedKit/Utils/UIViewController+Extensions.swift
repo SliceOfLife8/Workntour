@@ -17,10 +17,10 @@ extension UIViewController {
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 
-    public func setupNavigationBar(mainTitle: String?) {
+    public func setupNavigationBar(mainTitle: String?, largeTitle: Bool = false) {
         self.navigationController?.navigationBar.tintColor = UIColor.appColor(.lavender)
         self.navigationController?.navigationBar.topItem?.title = ""
-
+        self.navigationController?.navigationBar.prefersLargeTitles = largeTitle
         self.navigationItem.title = mainTitle
 
         let appearance = UINavigationBarAppearance()
@@ -31,17 +31,11 @@ extension UIViewController {
             .font: UIFont.scriptFont(.bold, size: 17)
         ]
         appearance.largeTitleTextAttributes = [
-            .foregroundColor: UIColor.appColor(.softBlack)
+            .foregroundColor: UIColor.appColor(.purpleBlack),
+            .font : UIFont.scriptFont(.bold, size: 30)
         ]
         UINavigationBar.appearance().standardAppearance = appearance
         UINavigationBar.appearance().scrollEdgeAppearance = appearance
-    }
-
-    public func setupNavigationBar(withLargeTitle: String?) {
-        self.navigationController?.navigationBar.topItem?.title = ""
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-
-        self.navigationItem.title = withLargeTitle
     }
 
     public func setupBlurNavigationBar() {

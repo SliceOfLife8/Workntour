@@ -11,18 +11,22 @@ import Foundation
 import SharedKit
 
 class LoginViewModel: BaseViewModel {
-
-    private var service: AuthorizationService
+    // Services
+    private var authorizationService: AuthorizationService
+    private var profileService: ProfileService
 
     // Outputs
     @Published var email = LocalStorageManager.shared.retrieve(forKey: .email, type: String.self) ?? ""
     @Published var password = LocalStorageManager.shared.retrieve(forKey: .password, type: String.self) ?? ""
     @Published var loaderVisibility: Bool = false
+    @Published var userLoggedIn: LoginModel?
     @Published var userIsEligible: Bool = false
     @Published var errorMessage: String?
 
-    init(service: AuthorizationService = DataManager.shared) {
-        self.service = service
+    init(authorizationService: AuthorizationService = DataManager.shared,
+         profileService: ProfileService = DataManager.shared) {
+        self.authorizationService = authorizationService
+        self.profileService = profileService
 
         super.init()
     }
@@ -62,18 +66,39 @@ class LoginViewModel: BaseViewModel {
     /// Login user api call.
     func loginUser() {
         loaderVisibility = true
-        service.login(email: email, password: password)
-            .compactMap {
-                UserDataManager.shared.updateUser($0)
-                return !$0.memberId.isEmpty
-            }
+        authorizationService.login(email: email, password: password)
+            .compactMap { $0 }
             .subscribe(on: RunLoop.main)
-            .catch({ [weak self] error -> Just<Bool> in
+            .catch({ [weak self] error -> Just<LoginModel?> in
                 if case .invalidServerResponseWithStatusCode(let code) = error, code == 404 {
                     self?.errorMessage = "You have entered an invalid username or password"
                 } else {
                     self?.errorMessage = error.errorDescription
                 }
+
+                self?.handleCredentials(store: false)
+                self?.loaderVisibility = false
+                return Just(nil)
+            })
+                .assign(to: &$userLoggedIn)
+    }
+
+    func retrieveProfile(_ model: LoginModel) {
+        let profilePublisher: AnyPublisher<Bool, ProviderError>
+
+        switch model.role {
+        case .TRAVELER:
+            profilePublisher = profileService.getTravelerProfile(memberId: model.memberId)
+        case .INDIVIDUAL_HOST:
+            profilePublisher = profileService.getIndividualHostProfile(memberId: model.memberId)
+        case .COMPANY_HOST:
+            profilePublisher = profileService.getCompanyHostProfile(memberId: model.memberId)
+        }
+
+        profilePublisher
+            .subscribe(on: RunLoop.main)
+            .catch({ [weak self] error -> Just<Bool> in
+                self?.errorMessage = error.errorDescription
 
                 self?.handleCredentials(store: false)
                 return Just(false)

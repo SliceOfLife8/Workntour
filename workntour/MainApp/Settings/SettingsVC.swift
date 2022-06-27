@@ -33,7 +33,7 @@ class SettingsVC: BaseVC<SettingsViewModel, SettingsCoordinator> {
     override func setupUI() {
         super.setupUI()
 
-        setupNavigationBar(withLargeTitle: tabBarController?.tabBar.selectedItem?.title)
+        setupNavigationBar(mainTitle: tabBarController?.tabBar.selectedItem?.title, largeTitle: true)
     }
 
     override func viewWillLayoutSubviews() {

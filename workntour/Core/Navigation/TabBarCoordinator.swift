@@ -78,6 +78,7 @@ final class TabBarCoordinator: NSObject, NavigationCoordinator {
             updateTabBarAppearance()
         }
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont.scriptFont(.medium, size: 10)], for: .normal)
+        UITabBar.appearance().barTintColor = UIColor.white
         rootViewController.tabBar.clipsToBounds = true // Remove top line
         rootViewController.tabBar.isTranslucent = false
         rootViewController.tabBar.tintColor = UIColor.appColor(.lavender)
@@ -90,6 +91,7 @@ final class TabBarCoordinator: NSObject, NavigationCoordinator {
     private func updateTabBarAppearance() {
         let appearance = UITabBarAppearance()
         appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = UIColor.white
         UITabBar.appearance().standardAppearance = appearance
         UITabBar.appearance().scrollEdgeAppearance = appearance
     }
