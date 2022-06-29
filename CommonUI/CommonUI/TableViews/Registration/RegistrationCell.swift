@@ -60,7 +60,7 @@ public class RegistrationCell: UITableViewCell {
                           isOptionalLabelVisible: Bool,
                           placeholder: String,
                           text: String?,
-                          type: RegistrationModelType,
+                          type: GradientTextFieldType,
                           countryFlag: String?,
                           regionCode: String?,
                           description: String?,
@@ -103,7 +103,7 @@ extension RegistrationCell: GradientTFDelegate {
         self.delegate?.textFieldDidChange(cell: self)
     }
 
-    public func notEditableTextFieldTriggered() {
+    public func notEditableTextFieldTriggered(_ textField: UITextField) {
         self.delegate?.showDropdownList(cell: self)
     }
     

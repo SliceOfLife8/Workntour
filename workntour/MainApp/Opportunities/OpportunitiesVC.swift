@@ -25,15 +25,24 @@ class OpportunitiesVC: BaseVC<OpportunitiesViewModel, OpportunitiesCoordinator> 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupNavigationBar(mainTitle: "Opportunities", largeTitle: true)
-        let map = UIBarButtonItem(title: "Map", style: .plain, target: self, action: #selector(mapTapped))
-        navigationItem.rightBarButtonItems = [map]
-        collectionView.register(UINib(nibName: MyOpportunityCell.identifier, bundle: Bundle(for: MyOpportunityCell.self)), forCellWithReuseIdentifier: MyOpportunityCell.identifier)
-        collectionView.delegate = self
-
         DispatchQueue.main.async {
             self.viewModel?.fetchModels()
         }
+    }
+
+    override func setupUI() {
+        super.setupUI()
+
+        collectionView.register(UINib(nibName: MyOpportunityCell.identifier, bundle: Bundle(for: MyOpportunityCell.self)), forCellWithReuseIdentifier: MyOpportunityCell.identifier)
+        collectionView.delegate = self
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        setupNavigationBar(mainTitle: "Opportunities", largeTitle: true)
+        let plusIcon = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(createNewOpportunityAction))
+        navigationItem.rightBarButtonItems = [plusIcon]
     }
 
     override func bindViews() {
@@ -43,20 +52,19 @@ class OpportunitiesVC: BaseVC<OpportunitiesViewModel, OpportunitiesCoordinator> 
             .bind(subscriber: collectionView.itemsSubscriber(cellIdentifier:
                                                                 MyOpportunityCell.identifier,
                                                              cellType: MyOpportunityCell.self,
-                                                             cellConfig: { (cell, _, model) in
+                                                                cellConfig: { (cell, _, model) in
                 cell.configure(
                     model.images.first,
                     jobTitle: model.jobTitle,
                     location: model.location.title,
                     category: model.category.rawValue,
                     dates: model.dates.map { ($0.start, $0.end) })
-
             }))
             .store(in: &storage)
     }
 
-    @objc func mapTapped() {
-        self.coordinator?.navigate(to: .showMap)
+    @objc func createNewOpportunityAction() {
+        self.coordinator?.navigate(to: .createOpportunity)
     }
 
 }

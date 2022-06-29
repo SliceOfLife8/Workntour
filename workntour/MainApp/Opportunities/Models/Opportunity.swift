@@ -31,7 +31,7 @@ struct Opportunity: Hashable {
     let petsAllowed: Bool
 }
 
-enum OpportunityCategory: String {
+enum OpportunityCategory: String, CaseIterable {
     case hostel = "Hostel"
     case hotel = "Hotel"
     case guestHouse = "Guest House"
@@ -50,34 +50,34 @@ enum OpportunityCategory: String {
     case privateProject = "Private project"
 }
 
-enum TypeOfHelp {
-    case reception
-    case cleaning
-    case houseKeeping
-    case administrativeTasks
-    case tourGuide
-    case babysitter
-    case vet
-    case animalCare
-    case languages
-    case sportsTeacher
-    case surfing
-    case personalTrainer
-    case farming
-    case painting
-    case handyman
-    case socialMedia
-    case photography
-    case videography
-    case webDevelopment
-    case cooking
-    case bartending
-    case service
+enum TypeOfHelp: String, CaseIterable {
+    case reception = "Reception"
+    case cleaning = "Cleaning"
+    case houseKeeping = "House Keeping"
+    case administrativeTasks = "Administrative tasks"
+    case tourGuide = "Tour guide"
+    case babysitter = "Babysitter"
+    case vet = "Vet"
+    case animalCare = "Animal care"
+    case languages = "Languages"
+    case sportsTeacher = "Sports teacher"
+    case surfing = "Surfing"
+    case personalTrainer = "Personal Trainer"
+    case farming = "Farming"
+    case painting = "Painting"
+    case handyman = "Handyman"
+    case socialMedia = "Social media"
+    case photography = "Photography"
+    case videography = "Videography"
+    case webDevelopment = "Web development"
+    case cooking = "Cooking"
+    case bartending = "Bartending"
+    case service = "Service"
 }
 
 struct OpportunityDates: Hashable {
-    let start: Date
-    let end: Date
+    let start: String
+    let end: String
 }
 
 struct OpportunityLocation: Hashable {

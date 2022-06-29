@@ -66,12 +66,11 @@ enum AuthorizationRouter: NetworkTarget {
         switch self {
         case .login(let email, let password):
             return [
-                "accept": "*/*",
                 "email": email,
                 "password": password
             ]
         default:
-            return ["accept": "*/*"]
+            return nil
         }
     }
 }

@@ -13,7 +13,7 @@ struct RegistrationModel: Hashable {
     let isRequired: Bool
     let optionalTextVisible: Bool
     let placeholder: String
-    let type: RegistrationModelType
+    let type: GradientTextFieldType
     let countryEmoji: String?
     let countryPrefixCode: String?
     let description: String?
@@ -21,7 +21,7 @@ struct RegistrationModel: Hashable {
     let error: String?
 
     init(title: String, isRequired: Bool = true, optionalTextVisible: Bool = false,
-         placeholder: String, type: RegistrationModelType, countryEmoji: String? = nil,
+         placeholder: String, type: GradientTextFieldType, countryEmoji: String? = nil,
          prefixCode: String? = nil, description: String? = nil, errorMessage: String? = nil, error: String? = nil) {
         self.title = title
         self.isRequired = isRequired

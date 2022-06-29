@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Lato-Bold.ttf">
+            <string>Lato-Bold</string>
+        </array>
+        <array key="Lato-Medium.ttf">
+            <string>Lato-Medium</string>
+        </array>
+        <array key="Lato-Regular.ttf">
+            <string>Lato-Regular</string>
+        </array>
+        <array key="Lato-Semibold.ttf">
+            <string>Lato-Semibold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BaseVC" customModule="workntour" customModuleProvider="target">
+            <connections>
+                <outlet property="addressLabel" destination="sxI-zi-RI3" id="ah6-m9-dvK"/>
+                <outlet property="categoryTextField" destination="lOa-Jk-e9Y" id="SUn-Bx-2z9"/>
+                <outlet property="datesLabel" destination="yJL-gZ-jO3" id="MNK-UH-Ewq"/>
+                <outlet property="imagesCollectionView" destination="Amo-pj-KsG" id="kRP-B4-KB8"/>
+                <outlet property="jobTitleTextView" destination="lEb-6y-Vc3" id="lMT-NU-pke"/>
+                <outlet property="secondaryStackView" destination="Nf1-EU-i9s" id="tJA-6l-D7v"/>
+                <outlet property="typeOfHelpTextField" destination="RWB-7N-pHd" id="hBv-xi-BeR"/>
+                <outlet property="view" destination="AuG-GP-bGP" id="j2F-g3-99g"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="AuG-GP-bGP">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="eIl-sn-pvo">
+                    <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o4m-vc-JIw" userLabel="Content View">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="852"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="tig-iq-ogK">
+                                    <rect key="frame" x="16" y="24" width="382" height="265"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Category*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DtZ-sg-cGJ">
+                                            <rect key="frame" x="0.0" y="0.0" width="382" height="17"/>
+                                            <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
+                                            <color key="textColor" red="0.2627450980392157" green="0.094117647058823528" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lOa-Jk-e9Y" customClass="GradientTextField" customModule="CommonUI">
+                                            <rect key="frame" x="0.0" y="25" width="382" height="18.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2. Job Title*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DDm-Fd-1bG">
+                                            <rect key="frame" x="0.0" y="51.5" width="382" height="17"/>
+                                            <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
+                                            <color key="textColor" red="0.2627450980392157" green="0.094117647058823528" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lEb-6y-Vc3">
+                                            <rect key="frame" x="0.0" y="76.5" width="382" height="65"/>
+                                            <color key="backgroundColor" red="0.8784313725490196" green="0.86274509803921573" blue="1" alpha="0.70293724615842301" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="tintColor" systemColor="systemOrangeColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="65" id="uSF-EO-EdE"/>
+                                            </constraints>
+                                            <color key="textColor" name="basicText"/>
+                                            <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="placeholder">
+                                                    <string key="value">Write an appealing title that will make travelers interested in applying for the experience you are offering. ex. Help us at our hotel and experience the Greek Lifestyle in the island of Kos.</string>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </textView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NwW-wO-P04" userLabel="Images description">
+                                            <rect key="frame" x="0.0" y="149.5" width="382" height="115.5"/>
+                                            <string key="text">3. The images you upload should be in high resolution. Like that your travelers will be willing to approach you! It is important to include photos of your property, the accommodation that you will be providing to travelers and anything else that will make your opportunity attractive to travelers.
+Please do not include pictures that show the name of your Business or Property, as they will be removed.
+</string>
+                                            <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="12"/>
+                                            <color key="textColor" red="0.26274509800000001" green="0.094117647060000004" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </stackView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VDq-Sd-z0t" userLabel="openGallery">
+                                    <rect key="frame" x="16" y="333" width="48" height="48"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="48" id="WuV-6c-h6A"/>
+                                        <constraint firstAttribute="height" constant="48" id="f28-Xu-mDq"/>
+                                    </constraints>
+                                    <color key="tintColor" red="0.53725490200000003" green="0.43921568630000002" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" image="plus.square.fill" catalog="system"/>
+                                    <connections>
+                                        <action selector="openGalleryAction:" destination="-1" eventType="touchUpInside" id="4D6-mk-GVK"/>
+                                    </connections>
+                                </button>
+                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Amo-pj-KsG">
+                                    <rect key="frame" x="80" y="297" width="318" height="120"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="120" id="NCe-6t-AQ9"/>
+                                    </constraints>
+                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="y6a-Ir-gHz">
+                                        <size key="itemSize" width="120" height="120"/>
+                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    </collectionViewFlowLayout>
+                                </collectionView>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Nf1-EU-i9s">
+                                    <rect key="frame" x="16" y="433" width="382" height="168"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4. Type of help*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gI1-hA-YLV">
+                                            <rect key="frame" x="0.0" y="0.0" width="382" height="17"/>
+                                            <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
+                                            <color key="textColor" red="0.26274509800000001" green="0.094117647060000004" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RWB-7N-pHd" customClass="GradientTextField" customModule="CommonUI">
+                                            <rect key="frame" x="0.0" y="25" width="382" height="18.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IEL-Eb-rYR">
+                                            <rect key="frame" x="0.0" y="51.5" width="382" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="tintColor" name="purple"/>
+                                            <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                            <state key="normal" title="5. Select location*" image="house.fill" catalog="system">
+                                                <color key="titleColor" name="purple"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="openMapActionTapped:" destination="-1" eventType="touchUpInside" id="EK6-PJ-l45"/>
+                                            </connections>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sxI-zi-RI3" userLabel="address">
+                                            <rect key="frame" x="0.0" y="80" width="382" height="0.0"/>
+                                            <fontDescription key="fontDescription" name="Lato-Semibold" family="Lato" pointSize="14"/>
+                                            <color key="textColor" name="basicText"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="Lxa-Wu-QQw">
+                                            <rect key="frame" x="0.0" y="88" width="382" height="22"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6. Available Dates*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jtB-Xk-HcW" userLabel="Dates">
+                                                    <rect key="frame" x="0.0" y="0.0" width="115.5" height="22"/>
+                                                    <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
+                                                    <color key="textColor" red="0.26274509800000001" green="0.094117647060000004" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lEv-2Z-Itz" userLabel="calendar">
+                                                    <rect key="frame" x="359.5" y="0.0" width="22.5" height="22"/>
+                                                    <color key="tintColor" name="purple"/>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                    <state key="normal" image="calendar.badge.plus" catalog="system"/>
+                                                    <connections>
+                                                        <action selector="openCalendarAction:" destination="-1" eventType="touchUpInside" id="fBI-0d-0cZ"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </stackView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yJL-gZ-jO3" userLabel="dates">
+                                            <rect key="frame" x="0.0" y="118" width="382" height="50"/>
+                                            <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="17"/>
+                                            <color key="textColor" name="lavenderTint1"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="tig-iq-ogK" firstAttribute="top" secondItem="o4m-vc-JIw" secondAttribute="top" constant="24" id="1yf-B5-KaM"/>
+                                <constraint firstItem="Nf1-EU-i9s" firstAttribute="top" secondItem="Amo-pj-KsG" secondAttribute="bottom" constant="16" id="75b-l7-xMs"/>
+                                <constraint firstAttribute="trailing" secondItem="tig-iq-ogK" secondAttribute="trailing" constant="16" id="8LV-Ui-rg9"/>
+                                <constraint firstItem="VDq-Sd-z0t" firstAttribute="centerY" secondItem="Amo-pj-KsG" secondAttribute="centerY" id="8cZ-1X-Ux6"/>
+                                <constraint firstItem="VDq-Sd-z0t" firstAttribute="leading" secondItem="tig-iq-ogK" secondAttribute="leading" id="AyH-OG-qbl"/>
+                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Nf1-EU-i9s" secondAttribute="bottom" constant="100" id="Mbs-Dl-MS1"/>
+                                <constraint firstItem="Amo-pj-KsG" firstAttribute="top" secondItem="tig-iq-ogK" secondAttribute="bottom" constant="8" symbolic="YES" id="X1F-ah-qC4"/>
+                                <constraint firstAttribute="trailing" secondItem="Nf1-EU-i9s" secondAttribute="trailing" constant="16" id="bFD-oe-1S9"/>
+                                <constraint firstItem="Amo-pj-KsG" firstAttribute="trailing" secondItem="tig-iq-ogK" secondAttribute="trailing" id="bef-V7-afC"/>
+                                <constraint firstItem="Nf1-EU-i9s" firstAttribute="leading" secondItem="o4m-vc-JIw" secondAttribute="leading" constant="16" id="cyu-xv-6ad"/>
+                                <constraint firstItem="tig-iq-ogK" firstAttribute="leading" secondItem="o4m-vc-JIw" secondAttribute="leading" constant="16" id="uXP-BY-phd"/>
+                                <constraint firstItem="Amo-pj-KsG" firstAttribute="leading" secondItem="VDq-Sd-z0t" secondAttribute="trailing" constant="16" id="yQ5-HQ-Jwj"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="o4m-vc-JIw" secondAttribute="trailing" id="9WF-9e-RYj"/>
+                        <constraint firstAttribute="bottom" secondItem="o4m-vc-JIw" secondAttribute="bottom" id="K5O-XO-3Nb"/>
+                        <constraint firstItem="o4m-vc-JIw" firstAttribute="leading" secondItem="eIl-sn-pvo" secondAttribute="leading" id="lFH-2Z-Lb7"/>
+                        <constraint firstItem="o4m-vc-JIw" firstAttribute="top" secondItem="eIl-sn-pvo" secondAttribute="top" id="p3x-E5-abY"/>
+                        <constraint firstItem="o4m-vc-JIw" firstAttribute="width" secondItem="eIl-sn-pvo" secondAttribute="width" id="tsU-7j-vdL"/>
+                        <constraint firstItem="o4m-vc-JIw" firstAttribute="height" secondItem="eIl-sn-pvo" secondAttribute="height" priority="250" id="ufM-vT-WSQ"/>
+                    </constraints>
+                </scrollView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="JgF-Av-j92"/>
+            <color key="backgroundColor" name="primary"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="eIl-sn-pvo" secondAttribute="bottom" id="LEf-ug-91E"/>
+                <constraint firstItem="eIl-sn-pvo" firstAttribute="top" secondItem="JgF-Av-j92" secondAttribute="top" id="MRc-H0-Ukp"/>
+                <constraint firstItem="eIl-sn-pvo" firstAttribute="trailing" secondItem="JgF-Av-j92" secondAttribute="trailing" id="eRv-1K-0Ve"/>
+                <constraint firstItem="eIl-sn-pvo" firstAttribute="leading" secondItem="JgF-Av-j92" secondAttribute="leading" id="hnY-Gj-xyZ"/>
+            </constraints>
+            <point key="canvasLocation" x="139" y="140"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="calendar.badge.plus" catalog="system" width="128" height="108"/>
+        <image name="house.fill" catalog="system" width="128" height="106"/>
+        <image name="plus.square.fill" catalog="system" width="128" height="114"/>
+        <namedColor name="basicText">
+            <color red="0.16099999845027924" green="0.15700000524520874" blue="0.17599999904632568" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="lavenderTint1">
+            <color red="0.61176470588235299" green="0.5607843137254902" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="primary">
+            <color red="0.98039215686274506" green="0.97254901960784312" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="purple">
+            <color red="0.49411764705882355" green="0.43529411764705883" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

@@ -27,6 +27,9 @@
 		1B714B6828411772000D85D0 /* SharedKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B714B6728411772000D85D0 /* SharedKit.framework */; };
 		1B7753B9286989AD00D81526 /* CommonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7753B8286989AD00D81526 /* CommonUITests.swift */; };
 		1B7753BA286989AD00D81526 /* CommonUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B527A2B282059A600FDAF5D /* CommonUI.framework */; };
+		1B7753D1286B2CF200D81526 /* OpportunityImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7753CF286B2CF200D81526 /* OpportunityImageCell.swift */; };
+		1B7753D2286B2CF200D81526 /* OpportunityImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B7753D0286B2CF200D81526 /* OpportunityImageCell.xib */; };
+		1B7753DF286C7EB800D81526 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7753DE286C7EB800D81526 /* String+Extensions.swift */; };
 		1BC190D3285F3B0500585533 /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC190D2285F3B0500585533 /* GradientButton.swift */; };
 		1BC190D92860A57B00585533 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC190D82860A57B00585533 /* SettingsCell.swift */; };
 		1BE6EA962868B23D009CBE6D /* MyOpportunityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE6EA942868B23D009CBE6D /* MyOpportunityCell.swift */; };
@@ -68,6 +71,9 @@
 		1B714B6728411772000D85D0 /* SharedKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SharedKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B7753B6286989AD00D81526 /* CommonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CommonUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B7753B8286989AD00D81526 /* CommonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonUITests.swift; sourceTree = "<group>"; };
+		1B7753CF286B2CF200D81526 /* OpportunityImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunityImageCell.swift; sourceTree = "<group>"; };
+		1B7753D0286B2CF200D81526 /* OpportunityImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OpportunityImageCell.xib; sourceTree = "<group>"; };
+		1B7753DE286C7EB800D81526 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		1BC190D2285F3B0500585533 /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
 		1BC190D82860A57B00585533 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		1BE6EA942868B23D009CBE6D /* MyOpportunityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOpportunityCell.swift; sourceTree = "<group>"; };
@@ -152,6 +158,7 @@
 				1B308A4C28415FB000797F32 /* UIImageView+Extensions.swift */,
 				1B0588D5284CB36B00B1F78D /* UIButton+Extensions.swift */,
 				1B3C383B28510D9E000EEADF /* UIView+Gradient.swift */,
+				1B7753DE286C7EB800D81526 /* String+Extensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -240,6 +247,8 @@
 			children = (
 				1BE6EA942868B23D009CBE6D /* MyOpportunityCell.swift */,
 				1BE6EA952868B23D009CBE6D /* MyOpportunityCell.xib */,
+				1B7753CF286B2CF200D81526 /* OpportunityImageCell.swift */,
+				1B7753D0286B2CF200D81526 /* OpportunityImageCell.xib */,
 			);
 			path = Opportunities;
 			sourceTree = "<group>";
@@ -359,6 +368,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B7753D2286B2CF200D81526 /* OpportunityImageCell.xib in Resources */,
 				1B308A532842452600797F32 /* RegistrationCell.xib in Resources */,
 				1BE6EA972868B23D009CBE6D /* MyOpportunityCell.xib in Resources */,
 			);
@@ -451,9 +461,11 @@
 				1B308A4928414D9000797F32 /* UITextFieldPadding.swift in Sources */,
 				1B4AE445283F708F00FA6420 /* LinkableLabel.swift in Sources */,
 				1B308A42284125C300797F32 /* GradientTextField.swift in Sources */,
+				1B7753D1286B2CF200D81526 /* OpportunityImageCell.swift in Sources */,
 				1B563B802848C47A00B851C1 /* CustomViewProtocol.swift in Sources */,
 				1B4AE44C2840AEFC00FA6420 /* Checkbox.swift in Sources */,
 				1BC190D3285F3B0500585533 /* GradientButton.swift in Sources */,
+				1B7753DF286C7EB800D81526 /* String+Extensions.swift in Sources */,
 				1B4AE40D283E6FDC00FA6420 /* UIImpactFeedbackGenerator+Extension.swift in Sources */,
 				1B4AE40A283E691D00FA6420 /* PrimaryButton.swift in Sources */,
 				1B527A30282059A600FDAF5D /* CommonUI.docc in Sources */,

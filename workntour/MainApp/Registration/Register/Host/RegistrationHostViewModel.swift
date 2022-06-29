@@ -14,7 +14,7 @@ class RegistrationHostViewModel: BaseViewModel {
     /// Service
     private var service: AuthorizationService
     private(set) var userRole: UserRole
-    var cellsValues: [RegistrationModelType: String?] = [:]
+    var cellsValues: [GradientTextFieldType: String?] = [:]
 
     /// Inputs
     @Published var data: [RegistrationModel] = []
@@ -25,7 +25,7 @@ class RegistrationHostViewModel: BaseViewModel {
     @Published var errorMessage: String?
 
     var countries: Countries
-    var pullOfErrors: [RegistrationModelType: RegistrationError?] = [:]
+    var pullOfErrors: [GradientTextFieldType: RegistrationError?] = [:]
 
     init(service: AuthorizationService = DataManager.shared, userRole: UserRole = .INDIVIDUAL_HOST) {
         self.service = service

@@ -12,14 +12,14 @@ public protocol GradientTFDelegate: AnyObject {
     func didStartEditing()
     func shouldReturn(_ textField: UITextField)
     func didChange()
-    func notEditableTextFieldTriggered()
+    func notEditableTextFieldTriggered(_ textField: UITextField)
     func didCountryFlagTapped()
 }
 
 public extension GradientTFDelegate {
     func didStartEditing() {}
     func didChange() {}
-    func notEditableTextFieldTriggered() {}
+    func notEditableTextFieldTriggered(_ textField: UITextField) {}
     func didCountryFlagTapped() {}
 }
 
@@ -39,7 +39,7 @@ public class GradientTextField: UITextFieldPadding {
     private var isEditable: Bool = true
     public var selectedDate: Date?
     public var rightIcon: TextFieldRightIcon? = .none
-    public var type: RegistrationModelType?
+    public var type: GradientTextFieldType?
     /// When are error is occured we should update right icon view. Moreover, it should be revertable, so we need
     public var errorOccured: Bool = false {
         didSet {
@@ -108,17 +108,18 @@ public class GradientTextField: UITextFieldPadding {
                           text: String? = nil,
                           countryFlag: String? = nil,
                           regionCode: String? = nil,
-                          type: RegistrationModelType,
+                          type: GradientTextFieldType,
                           error: Bool = false) {
 
+        let fontSize: CGFloat = (type == .typeOfHelp) ? 12 : 16
         attributedPlaceholder = NSAttributedString(string: placeHolder,
                                                    attributes: [
                                                     .foregroundColor: UIColor.appColor(.placeholder),
-                                                    .font: UIFont.scriptFont(.regular, size: 16)])
+                                                    .font: UIFont.scriptFont(.regular, size: fontSize)])
 
         self.text = text
         textColor = UIColor.appColor(.basicText)
-        font = UIFont.scriptFont(.regular, size: 16)
+        font = UIFont.scriptFont(.regular, size: fontSize)
 
         self.type = type
         changeFlag(countryFlag: countryFlag, regionCode: regionCode)
@@ -132,7 +133,7 @@ public class GradientTextField: UITextFieldPadding {
             self.rightIcon = .hidePassword
         case .phone, .vatNumber:
             self.keyboardType = .numberPad
-        case .nationality, .sex:
+        case .nationality, .sex, .opportunityCategory, .typeOfHelp:
             self.isEditable = false
             self.rightIcon = .downArrow
         case .age:
@@ -238,7 +239,7 @@ extension GradientTextField: UITextFieldDelegate {
         }
         /// Delegate info in order to present drop-down list.
         if !isEditable {
-            self.gradientDelegate?.notEditableTextFieldTriggered()
+            self.gradientDelegate?.notEditableTextFieldTriggered(self)
         }
 
         return isEditable

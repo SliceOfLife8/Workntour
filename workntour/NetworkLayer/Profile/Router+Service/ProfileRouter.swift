@@ -48,17 +48,14 @@ enum ProfileRouter: NetworkTarget {
         switch self {
         case .getTraveler(let id):
             return [
-                "accept": "*/*",
                 "memberId": id
             ]
         case .getIndividualHost(let id):
             return [
-                "accept": "*/*",
                 "memberId": id
             ]
         case .getCompanyHost(let id):
             return [
-                "accept": "*/*",
                 "memberId": id
             ]
         }

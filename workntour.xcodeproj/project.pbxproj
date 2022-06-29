@@ -57,6 +57,12 @@
 		1B7315F3281E7DD0001F2E6A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7315F2281E7DD0001F2E6A /* SceneDelegate.swift */; };
 		1B7315FA281E7DD5001F2E6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B7315F9281E7DD5001F2E6A /* Assets.xcassets */; };
 		1B7315FD281E7DD5001F2E6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B7315FB281E7DD5001F2E6A /* LaunchScreen.storyboard */; };
+		1B7753C6286A274B00D81526 /* CreateOpportunityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7753C5286A274B00D81526 /* CreateOpportunityVC.swift */; };
+		1B7753C8286A275300D81526 /* CreateOpportunityVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B7753C7286A275300D81526 /* CreateOpportunityVC.xib */; };
+		1B7753CA286A276000D81526 /* CreateOpportunityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7753C9286A276000D81526 /* CreateOpportunityViewModel.swift */; };
+		1B7753D4286B371C00D81526 /* CreateOpportunityVC+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7753D3286B371C00D81526 /* CreateOpportunityVC+Extensions.swift */; };
+		1B7753D8286C26B600D81526 /* DayRangeIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7753D7286C26B600D81526 /* DayRangeIndicatorView.swift */; };
+		1B7753DB286C2F6200D81526 /* SelectDateRangesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7753DA286C2F6200D81526 /* SelectDateRangesVC.swift */; };
 		1B9A3D1728282710003E0C34 /* GoogleService-Info.Dev.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1B9A3D1628282710003E0C34 /* GoogleService-Info.Dev.plist */; };
 		1B9A3D222828EA99003E0C34 /* CommonUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B527A37282059CB00FDAF5D /* CommonUI.framework */; };
 		1B9A3D232828EA99003E0C34 /* CommonUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1B527A37282059CB00FDAF5D /* CommonUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -187,6 +193,12 @@
 		1B7315F9281E7DD5001F2E6A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1B7315FC281E7DD5001F2E6A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1B7315FE281E7DD5001F2E6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1B7753C5286A274B00D81526 /* CreateOpportunityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOpportunityVC.swift; sourceTree = "<group>"; };
+		1B7753C7286A275300D81526 /* CreateOpportunityVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateOpportunityVC.xib; sourceTree = "<group>"; };
+		1B7753C9286A276000D81526 /* CreateOpportunityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOpportunityViewModel.swift; sourceTree = "<group>"; };
+		1B7753D3286B371C00D81526 /* CreateOpportunityVC+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateOpportunityVC+Extensions.swift"; sourceTree = "<group>"; };
+		1B7753D7286C26B600D81526 /* DayRangeIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRangeIndicatorView.swift; sourceTree = "<group>"; };
+		1B7753DA286C2F6200D81526 /* SelectDateRangesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDateRangesVC.swift; sourceTree = "<group>"; };
 		1B8DA75D282596170032E20B /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		1B9A3CEC2827FC04003E0C34 /* SharedKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SharedKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B9A3D1628282710003E0C34 /* GoogleService-Info.Dev.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.Dev.plist"; sourceTree = "<group>"; };
@@ -448,6 +460,25 @@
 			path = workntour;
 			sourceTree = "<group>";
 		};
+		1B7753C4286A271C00D81526 /* CreateOpportunity */ = {
+			isa = PBXGroup;
+			children = (
+				1B7753C5286A274B00D81526 /* CreateOpportunityVC.swift */,
+				1B7753C7286A275300D81526 /* CreateOpportunityVC.xib */,
+				1B7753C9286A276000D81526 /* CreateOpportunityViewModel.swift */,
+				1B7753D3286B371C00D81526 /* CreateOpportunityVC+Extensions.swift */,
+			);
+			path = CreateOpportunity;
+			sourceTree = "<group>";
+		};
+		1B7753D9286C2F4000D81526 /* SelectDates */ = {
+			isa = PBXGroup;
+			children = (
+				1B7753DA286C2F6200D81526 /* SelectDateRangesVC.swift */,
+			);
+			path = SelectDates;
+			sourceTree = "<group>";
+		};
 		1B9A3D15282826F6003E0C34 /* GoogleService */ = {
 			isa = PBXGroup;
 			children = (
@@ -576,9 +607,11 @@
 		1BC1909F285A0E4F00585533 /* Opportunities */ = {
 			isa = PBXGroup;
 			children = (
+				1BC190A5285B15A000585533 /* OpportunitiesCoordinator.swift */,
 				1BC190E12862205200585533 /* Models */,
 				1BC190DC28620C4C00585533 /* Map */,
-				1BC190A5285B15A000585533 /* OpportunitiesCoordinator.swift */,
+				1B7753D9286C2F4000D81526 /* SelectDates */,
+				1B7753C4286A271C00D81526 /* CreateOpportunity */,
 				1BC190A3285A0EC500585533 /* OpportunitiesVC.swift */,
 				1BE6EA982868BFB8009CBE6D /* OpportunitiesVC.xib */,
 				1BC190B5285C5CA400585533 /* OpportunitiesViewModel.swift */,
@@ -678,6 +711,7 @@
 			children = (
 				1BC190E22862207D00585533 /* Opportunity.swift */,
 				1BC190E52862E83900585533 /* MyAnnotation.swift */,
+				1B7753D7286C26B600D81526 /* DayRangeIndicatorView.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -801,6 +835,7 @@
 				1B4AE42D283F58FB00FA6420 /* Lato-HeavyItalic.ttf in Resources */,
 				1B4AE42E283F58FB00FA6420 /* Lato-Italic.ttf in Resources */,
 				1B4AE42F283F58FB00FA6420 /* Lato-Light.ttf in Resources */,
+				1B7753C8286A275300D81526 /* CreateOpportunityVC.xib in Resources */,
 				1B4AE430283F58FB00FA6420 /* Lato-LightItalic.ttf in Resources */,
 				1B4AE431283F58FB00FA6420 /* Lato-Medium.ttf in Resources */,
 				1B4AE432283F58FB00FA6420 /* Lato-MediumItalic.ttf in Resources */,
@@ -933,6 +968,7 @@
 				1BC1909E285A0DB200585533 /* TabBarCoordinator.swift in Sources */,
 				1BC190C6285CA91000585533 /* TabBarViewController.swift in Sources */,
 				1BC190E028620D0400585533 /* SearchLocationsVC.swift in Sources */,
+				1B7753CA286A276000D81526 /* CreateOpportunityViewModel.swift in Sources */,
 				1BC190B8285C5CB400585533 /* NotificationsCoordinator.swift in Sources */,
 				1BC190DB28620B9300585533 /* LocationManager.swift in Sources */,
 				1BC190B6285C5CA400585533 /* OpportunitiesViewModel.swift in Sources */,
@@ -946,11 +982,13 @@
 				1B1683A8283D20180067F2DB /* Pagination.swift in Sources */,
 				1B3C384928520E5C000EEADF /* LoginCoordinator.swift in Sources */,
 				1BC190EF2863394B00585533 /* ProfileService.swift in Sources */,
+				1B7753DB286C2F6200D81526 /* SelectDateRangesVC.swift in Sources */,
 				1BC190A4285A0EC500585533 /* OpportunitiesVC.swift in Sources */,
 				1B168380283A590B0067F2DB /* RegistrationTravelerViewModel.swift in Sources */,
 				1BC190C4285C60A800585533 /* TabBarPage.swift in Sources */,
 				1BA2DEF9281E8AE800DB128D /* MainCoordinator.swift in Sources */,
 				1B563B722847DD0B00B851C1 /* RegistrationError.swift in Sources */,
+				1B7753D8286C26B600D81526 /* DayRangeIndicatorView.swift in Sources */,
 				1BA2DF08281E8D7700DB128D /* OnboardingCoordinator.swift in Sources */,
 				1BC190C0285C5CD900585533 /* SettingsVC.swift in Sources */,
 				1B714B582840DBB5000D85D0 /* RegistrationCoordinator.swift in Sources */,
@@ -973,6 +1011,7 @@
 				1B308A5528424FBE00797F32 /* RegistrationModel.swift in Sources */,
 				1BC190DE28620C7300585533 /* MapViewController.swift in Sources */,
 				1B3C382F28507823000EEADF /* EmailVerificationVC.swift in Sources */,
+				1B7753C6286A274B00D81526 /* CreateOpportunityVC.swift in Sources */,
 				1B563B6E2845358200B851C1 /* CountriesDropDownCell.swift in Sources */,
 				1B4AE3F8283E04BB00FA6420 /* IndividualHost.swift in Sources */,
 				1B1683AA283D20E20067F2DB /* GenericResponse.swift in Sources */,
@@ -991,6 +1030,7 @@
 				1BC190AB285C5C4900585533 /* HomeCoordinator.swift in Sources */,
 				1BC190A2285A0E8200585533 /* TravelerProfileVC.swift in Sources */,
 				1BC190F5286339DD00585533 /* IndividualHostProfile.swift in Sources */,
+				1B7753D4286B371C00D81526 /* CreateOpportunityVC+Extensions.swift in Sources */,
 				1B16837B2837C07B0067F2DB /* FirebaseManager.swift in Sources */,
 				1BC190CD285F251800585533 /* HostProfileVC.swift in Sources */,
 				1B3C383A28508BA9000EEADF /* RegistrationHostViewModel.swift in Sources */,
@@ -1135,7 +1175,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 8QYX9VGMBQ;
 				ENABLE_BITCODE = NO;
@@ -1183,7 +1223,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 8QYX9VGMBQ;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1293,7 +1333,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 8QYX9VGMBQ;
 				ENABLE_BITCODE = NO;
@@ -1403,7 +1443,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 8QYX9VGMBQ;
 				ENABLE_BITCODE = NO;
@@ -1508,7 +1548,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 8QYX9VGMBQ;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1612,7 +1652,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 8QYX9VGMBQ;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (

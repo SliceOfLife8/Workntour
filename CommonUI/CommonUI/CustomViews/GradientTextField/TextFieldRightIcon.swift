@@ -30,7 +30,7 @@ public enum TextFieldRightIcon {
     }
 }
 
-public enum RegistrationModelType {
+public enum GradientTextFieldType {
     case name
     case surname
     case email
@@ -43,4 +43,6 @@ public enum RegistrationModelType {
     case vatNumber
     case apd
     case fixedNumber
+    case opportunityCategory
+    case typeOfHelp
 }

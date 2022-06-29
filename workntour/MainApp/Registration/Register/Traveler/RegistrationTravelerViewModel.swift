@@ -16,14 +16,14 @@ class RegistrationTravelerViewModel: BaseViewModel {
 
     /// Inputs
     @Published var data: [RegistrationModel] = []
-    var cellsValues: [RegistrationModelType: String?] = Dictionary(uniqueKeysWithValues: [.name, .surname, .email, .password, .verifyPassword, .age, .phone, .nationality, .sex].map {($0, nil)})
+    var cellsValues: [GradientTextFieldType: String?] = Dictionary(uniqueKeysWithValues: [.name, .surname, .email, .password, .verifyPassword, .age, .phone, .nationality, .sex].map {($0, nil)})
     /// Outputs
     @Published var loaderVisibility: Bool = false
     @Published var signUpCompleted: String?
     @Published var errorMessage: String?
 
     var countries: Countries
-    var pullOfErrors: [RegistrationModelType: RegistrationError?] = [:]
+    var pullOfErrors: [GradientTextFieldType: RegistrationError?] = [:]
 
     init(service: AuthorizationService = DataManager.shared) {
         self.service = service

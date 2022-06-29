@@ -18,7 +18,6 @@ class BaseVC<VM: BaseViewModel, C: Coordinator>: UIViewController {
     weak var coordinator: C?
 
     var storage = Set<AnyCancellable>()
-    private let loaderTag = 1938123987
     var preventNavBarFromAppearing: Bool = false /// This variable is used from prevent navigationBar from appearing. This is basically used when we want two behaviours for the same ViewController.
 
     override func viewDidLoad() {
@@ -86,23 +85,24 @@ class EmptyViewModel: BaseViewModel {}
 // MARK: - Loader
 extension BaseVC {
     func showLoader(_ type: NVActivityIndicatorType = .ballRotateChase) {
-        var spinner = view.viewWithTag(loaderTag) as? NVActivityIndicatorView
-        if spinner == nil {
-            spinner = NVActivityIndicatorView(frame: .zero, type: type, color: UIColor.appColor(.lavender), padding: 8)
+        if view.subviews.filter({ $0 is UIVisualEffectView }).first != nil {
+            return
         }
+        let blurEffect = UIBlurEffect(style: .systemUltraThinMaterialDark)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.alpha = 0.95
+        blurEffectView.frame = self.view.bounds
+        self.view.insertSubview(blurEffectView, at: 0)
+        self.view.bringSubviewToFront(blurEffectView)
 
-        spinner?.translatesAutoresizingMaskIntoConstraints = false
-        spinner?.startAnimating()
-        spinner?.tag = loaderTag
-        view.isUserInteractionEnabled = false
-        spinner?.addExclusiveConstraints(superview: view, width: 80, height: 80, centerX: (view.centerXAnchor, 0), centerY: (view.centerYAnchor, 0))
+        let spinner = NVActivityIndicatorView(frame: .zero, type: type, color: UIColor.appColor(.lavender), padding: 8)
+        spinner.startAnimating()
+        spinner.addExclusiveConstraints(superview: blurEffectView.contentView, width: 80, height: 80, centerX: (view.centerXAnchor, 0), centerY: (view.centerYAnchor, 0))
     }
 
     func stopLoader() {
-        let spinner = view.viewWithTag(loaderTag) as? NVActivityIndicatorView
-        spinner?.stopAnimating()
-        spinner?.removeFromSuperview()
-        view.isUserInteractionEnabled = true
+        let blurEffectView = view.subviews.filter { $0 is UIVisualEffectView }.first
+        blurEffectView?.removeFromSuperview()
     }
 }
 
