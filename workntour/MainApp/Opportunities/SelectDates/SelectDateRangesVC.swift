@@ -44,10 +44,8 @@ class SelectDateRangesVC: BaseVC<EmptyViewModel, OpportunitiesCoordinator> {
 
             self.calendarView.setContent(self.makeContent())
 
-            if
-                UIAccessibility.isVoiceOverRunning,
-                let selectedDate = Calendar.current.date(from: day.components)
-            {
+            if UIAccessibility.isVoiceOverRunning,
+               let selectedDate = Calendar.current.date(from: day.components) {
                 self.calendarView.layoutIfNeeded()
                 let accessibilityElementToFocus = self.calendarView.accessibilityElementForVisibleDate(
                     selectedDate)
@@ -114,7 +112,7 @@ class SelectDateRangesVC: BaseVC<EmptyViewModel, OpportunitiesCoordinator> {
             }
 
             if isSelectedStyle {
-                invariantViewProperties.backgroundShapeDrawingConfig.borderColor = .blue
+                invariantViewProperties.backgroundShapeDrawingConfig.fillColor = UIColor.appColor(.lavender)
             }
 
             return CalendarItemModel<DayView>(

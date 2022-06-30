@@ -10,7 +10,15 @@ import UIKit
 
 public class AlertHelper {
 
-    public static func showAlertWithTwoActions(_ controller: UIViewController, title: String, message: String? = nil, leftButtonTitle: String, rightButtonTitle: String, leftAction: @escaping ()-> Void, rightAction: @escaping ()-> Void) {
+    public static func showAlertWithTwoActions(_ controller: UIViewController,
+                                               title: String,
+                                               message: String? = nil,
+                                               leftButtonTitle: String,
+                                               leftButtonStyle: UIAlertAction.Style = .default,
+                                               rightButtonTitle: String,
+                                               rightButtonStyle: UIAlertAction.Style = .default,
+                                               leftAction: @escaping ()-> Void,
+                                               rightAction: @escaping ()-> Void) {
 
         let attributedString = NSAttributedString(string: title, attributes: [
             NSAttributedString.Key.font: UIFont.scriptFont(.bold, size: 17),
@@ -20,10 +28,10 @@ public class AlertHelper {
         let dialog = UIAlertController(title: "", message: message, preferredStyle: .alert)
         dialog.setValue(attributedString, forKey: "attributedTitle")
 
-        dialog.addAction(UIAlertAction(title: leftButtonTitle, style: .default, handler: { _ in
+        dialog.addAction(UIAlertAction(title: leftButtonTitle, style: leftButtonStyle, handler: { _ in
             leftAction()
         }))
-        dialog.addAction(UIAlertAction(title: rightButtonTitle, style: .default, handler: { _ in
+        dialog.addAction(UIAlertAction(title: rightButtonTitle, style: rightButtonStyle, handler: { _ in
             rightAction()
         }))
 

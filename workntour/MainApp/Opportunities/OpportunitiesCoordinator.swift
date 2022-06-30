@@ -17,6 +17,7 @@ enum OpportunitiesStep: Step {
     case saveLocation(name: String?, latitude: Double, longitude: Double)
     case openCalendar
     case saveDataRangeSelection(from: String, to: String)
+    case back
 }
 
 /** A Coordinator which takes a `Host` through the opportunities flow. */
@@ -45,6 +46,8 @@ final class OpportunitiesCoordinator: NavigationCoordinator {
 
     func navigate(to step: OpportunitiesStep) {
         switch step {
+        case .back:
+            navigator.popViewController(animated: true)
         case .showMap:
             let mapVC = MapViewController()
             mapVC.coordinator = self

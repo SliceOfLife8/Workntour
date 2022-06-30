@@ -24,6 +24,7 @@ class LoginVC: BaseVC<LoginViewModel, LoginCoordinator> {
         super.viewDidLoad()
 
         hideKeyboardWhenTappedAround()
+        rememberMeBtn.isChecked = true
     }
 
     override func setupTexts() {

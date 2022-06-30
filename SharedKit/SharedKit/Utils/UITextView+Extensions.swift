@@ -35,7 +35,7 @@ public extension UITextView {
             let placeholderLabel = self.placeholderLabel
             placeholderLabel.text = newValue
             placeholderLabel.numberOfLines = 0
-            let width = frame.width - textContainer.lineFragmentPadding * 2 - 16
+            let width = frame.width - textContainer.lineFragmentPadding * 2 - 50
             let size = placeholderLabel.sizeThatFits(CGSize(width: width, height: .greatestFiniteMagnitude))
             placeholderLabel.frame.size.height = size.height
             placeholderLabel.frame.size.width = width

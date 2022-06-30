@@ -36,6 +36,7 @@ public enum AssetsColor: String {
     case basicText // #29282D
     case lightGray // #F6F6F6
     case gray // #667085
+    case calendar // #F9F5FF
 }
 
 extension UIColor {

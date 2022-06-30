@@ -18,7 +18,7 @@ struct Opportunity: Hashable {
     let minimumDays: Int
     let maximumDays: Int
     let totalWorkingHours: Int // per week max 32
-    let daysOff: Int // Per week from 1-5
+    let daysOff: Int? // Per week from 1-5
     let languagesRequired: [Language]
     let languagesSpoken: [Language]?
     let accommondationProvided: Accommodation
@@ -86,19 +86,19 @@ struct OpportunityLocation: Hashable {
     let longitude: Double
 }
 
-enum Language {
-    case greek
-    case english
-    case spanish
-    case italian
-    case german
+enum Language: String, CaseIterable {
+    case greek = "Greek"
+    case english = "English"
+    case spanish = "Spanish"
+    case italian = "Italian"
+    case german = "German"
 }
 
-enum Accommodation {
-    case privateRoom
-    case sharedRoom
-    case dorm
-    case tent
+enum Accommodation: String, CaseIterable {
+    case privateRoom = "Private room"
+    case sharedRoom = "Shared room"
+    case dorm = "Dorm"
+    case tent = "Tent"
 }
 
 enum Meal {
@@ -108,39 +108,39 @@ enum Meal {
     case useSharedKitchen
 }
 
-enum LearningOpportunities {
-    case hospitality
-    case languages
-    case animalWelfare
-    case volunteering
-    case cultureExchange
-    case charityWork
-    case farming
-    case photography
-    case videography
-    case technology
-    case non_profit
-    case art
-    case watersports
-    case nature
-    case writing
-    case yoga
-    case fitness
-    case dancing
-    case gardening
-    case cycling
-    case books
-    case babysitting
-    case cooking
-    case computers
-    case programming
-    case self_development
-    case sustainability
-    case hitchhiking
-    case sailing
-    case music
-    case movies
-    case fashion
-    case history
-    case architecture
+enum LearningOpportunities: String, CaseIterable {
+    case hospitality = "Hospitality"
+    case languages = "Languages"
+    case animalWelfare = "Animal welfare"
+    case volunteering = "Volunteering"
+    case cultureExchange = "Culture exchange"
+    case charityWork = "Charity work"
+    case farming = "Farming"
+    case photography = "Photography"
+    case videography = "Videography"
+    case technology = "Technology"
+    case non_profit = "Non profit"
+    case art = "Art"
+    case watersports = "Watersports"
+    case nature = "Nature"
+    case writing = "Writing"
+    case yoga = "Yoga"
+    case fitness = "Fitness"
+    case dancing = "Dancing"
+    case gardening = "Gardening"
+    case cycling = "Cycling"
+    case books = "Books"
+    case babysitting = "Babysitting"
+    case cooking = "Cooking"
+    case computers = "Computers"
+    case programming = "Programming"
+    case self_development = "Self development"
+    case sustainability = "Sustainability"
+    case hitchhiking = "Hitchhikig"
+    case sailing = "Sailing"
+    case music = "Music"
+    case movies = "Movies"
+    case fashion = "Fashion"
+    case history = "History"
+    case architecture = "Architecture"
 }

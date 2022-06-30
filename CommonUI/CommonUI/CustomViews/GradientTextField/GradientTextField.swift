@@ -109,9 +109,9 @@ public class GradientTextField: UITextFieldPadding {
                           countryFlag: String? = nil,
                           regionCode: String? = nil,
                           type: GradientTextFieldType,
+                          fontSize: CGFloat = 16,
                           error: Bool = false) {
 
-        let fontSize: CGFloat = (type == .typeOfHelp) ? 12 : 16
         attributedPlaceholder = NSAttributedString(string: placeHolder,
                                                    attributes: [
                                                     .foregroundColor: UIColor.appColor(.placeholder),
@@ -133,7 +133,7 @@ public class GradientTextField: UITextFieldPadding {
             self.rightIcon = .hidePassword
         case .phone, .vatNumber:
             self.keyboardType = .numberPad
-        case .nationality, .sex, .opportunityCategory, .typeOfHelp:
+        case .nationality, .sex, .opportunityCategory, .typeOfHelp, .languagesRequired, .languagesSpoken, .accommodation, .learningOpportunities:
             self.isEditable = false
             self.rightIcon = .downArrow
         case .age:

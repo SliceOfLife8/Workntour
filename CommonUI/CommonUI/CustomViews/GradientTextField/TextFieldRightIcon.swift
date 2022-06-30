@@ -45,4 +45,8 @@ public enum GradientTextFieldType {
     case fixedNumber
     case opportunityCategory
     case typeOfHelp
+    case languagesRequired
+    case languagesSpoken
+    case accommodation
+    case learningOpportunities
 }
