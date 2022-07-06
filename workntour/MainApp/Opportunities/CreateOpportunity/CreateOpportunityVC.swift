@@ -29,11 +29,12 @@ class CreateOpportunityVC: BaseVC<CreateOpportunityViewModel, OpportunitiesCoord
         return preferences
     }()
 
-    private var easyTipView: EasyTipView?
+    var easyTipView: EasyTipView?
+    var imagesInfoTipView: EasyTipView?
 
     lazy var categoriesDropDown: DropDown = {
         let dropDown = DropDown()
-        dropDown.dataSource = OpportunityCategory.allCases.map { $0.rawValue }
+        dropDown.dataSource = OpportunityCategory.allCases.map { $0.value }
         dropDown.dismissMode = .onTap
 
         dropDown.customCellConfiguration = { (_, item: String, cell: DropDownCell) -> Void in
@@ -43,7 +44,7 @@ class CreateOpportunityVC: BaseVC<CreateOpportunityViewModel, OpportunitiesCoord
         dropDown.selectionAction = { [unowned self] (_, item: String) in
             categoryTextField.arrowTapped()
             categoryTextField.text = item
-            viewModel?.category = OpportunityCategory(rawValue: item)
+            viewModel?.category = OpportunityCategory(caseName: item)
         }
 
         dropDown.cancelAction = { [unowned self] in
@@ -55,7 +56,7 @@ class CreateOpportunityVC: BaseVC<CreateOpportunityViewModel, OpportunitiesCoord
 
     lazy var typeOfHelpDropDown: DropDown = {
         let dropDown = DropDown()
-        dropDown.dataSource = TypeOfHelp.allCases.map { $0.rawValue }
+        dropDown.dataSource = TypeOfHelp.allCases.map { $0.value }
 
         dropDown.customCellConfiguration = { (_, item: String, cell: DropDownCell) -> Void in
             cell.optionLabel.text = item
@@ -63,7 +64,7 @@ class CreateOpportunityVC: BaseVC<CreateOpportunityViewModel, OpportunitiesCoord
 
         dropDown.multiSelectionAction = { [unowned self] (_, items: [String]) in
             typeOfHelpTextField.text = items.map { $0 }.joined(separator: ",")
-            viewModel?.typeOfHelp = items.compactMap { TypeOfHelp(rawValue: $0) }
+            viewModel?.typeOfHelp = items.compactMap { TypeOfHelp(caseName: $0) }
         }
 
         dropDown.cancelAction = { [unowned self] in
@@ -75,7 +76,7 @@ class CreateOpportunityVC: BaseVC<CreateOpportunityViewModel, OpportunitiesCoord
 
     lazy var languagesRequiredDropDown: DropDown = {
         let dropDown = DropDown()
-        dropDown.dataSource = Language.allCases.map { $0.rawValue }
+        dropDown.dataSource = Language.allCases.map { $0.value }
 
         dropDown.customCellConfiguration = { (_, item: String, cell: DropDownCell) -> Void in
             cell.optionLabel.text = item
@@ -83,7 +84,7 @@ class CreateOpportunityVC: BaseVC<CreateOpportunityViewModel, OpportunitiesCoord
 
         dropDown.multiSelectionAction = { [unowned self] (_, items: [String]) in
             languagesRequiredTextField.text = items.map { $0 }.joined(separator: ",")
-            viewModel?.languagesRequired = items.compactMap { Language(rawValue: $0) }
+            viewModel?.languagesRequired = items.compactMap { Language(caseName: $0) }
         }
 
         dropDown.cancelAction = { [unowned self] in
@@ -95,7 +96,7 @@ class CreateOpportunityVC: BaseVC<CreateOpportunityViewModel, OpportunitiesCoord
 
     lazy var languagesSpokenDropDown: DropDown = {
         let dropDown = DropDown()
-        dropDown.dataSource = Language.allCases.map { $0.rawValue }
+        dropDown.dataSource = Language.allCases.map { $0.value }
 
         dropDown.customCellConfiguration = { (_, item: String, cell: DropDownCell) -> Void in
             cell.optionLabel.text = item
@@ -103,7 +104,7 @@ class CreateOpportunityVC: BaseVC<CreateOpportunityViewModel, OpportunitiesCoord
 
         dropDown.multiSelectionAction = { [unowned self] (_, items: [String]) in
             languagesSpokenTextField.text = items.map { $0 }.joined(separator: ",")
-            viewModel?.languagesSpoken = items.compactMap { Language(rawValue: $0) }
+            viewModel?.languagesSpoken = items.compactMap { Language(caseName: $0) }
         }
 
         dropDown.cancelAction = { [unowned self] in
@@ -115,7 +116,7 @@ class CreateOpportunityVC: BaseVC<CreateOpportunityViewModel, OpportunitiesCoord
 
     lazy var accommodationsDropDown: DropDown = {
         let dropDown = DropDown()
-        dropDown.dataSource = Accommodation.allCases.map { $0.rawValue }
+        dropDown.dataSource = Accommodation.allCases.map { $0.value }
         dropDown.dismissMode = .onTap
 
         dropDown.customCellConfiguration = { (_, item: String, cell: DropDownCell) -> Void in
@@ -125,7 +126,7 @@ class CreateOpportunityVC: BaseVC<CreateOpportunityViewModel, OpportunitiesCoord
         dropDown.selectionAction = { [unowned self] (_, item: String) in
             accommodationsTextField.arrowTapped()
             accommodationsTextField.text = item
-            viewModel?.accommodation = Accommodation(rawValue: item)
+            viewModel?.accommodation = Accommodation(caseName: item)
         }
 
         dropDown.cancelAction = { [unowned self] in
@@ -137,7 +138,7 @@ class CreateOpportunityVC: BaseVC<CreateOpportunityViewModel, OpportunitiesCoord
 
     lazy var learningOpportunitiesDropDown: DropDown = {
         let dropDown = DropDown()
-        dropDown.dataSource = LearningOpportunities.allCases.map { $0.rawValue }
+        dropDown.dataSource = LearningOpportunities.allCases.map { $0.value }
         dropDown.dismissMode = .onTap
 
         dropDown.customCellConfiguration = { (_, item: String, cell: DropDownCell) -> Void in
@@ -146,7 +147,7 @@ class CreateOpportunityVC: BaseVC<CreateOpportunityViewModel, OpportunitiesCoord
 
         dropDown.multiSelectionAction = { [unowned self] (_, items: [String]) in
             learningOpportunitesTextField.text = items.map { $0 }.joined(separator: ",")
-            viewModel?.learningOpportunities = items.compactMap { LearningOpportunities(rawValue: $0) }
+            viewModel?.learningOpportunities = items.compactMap { LearningOpportunities(caseName: $0) }
         }
 
         dropDown.cancelAction = { [unowned self] in
@@ -174,6 +175,7 @@ class CreateOpportunityVC: BaseVC<CreateOpportunityViewModel, OpportunitiesCoord
     @IBOutlet weak var thirdStackView: UIStackView!
     @IBOutlet weak var learningOpportunitesLabel: UILabel!
     @IBOutlet weak var learningOpportunitesTextField: GradientTextField!
+    @IBOutlet weak var infoBtn: UIButton!
     @IBOutlet weak var breakfastBtn: Checkbox!
     @IBOutlet weak var lunchBtn: Checkbox!
     @IBOutlet weak var dinnerBtn: Checkbox!
@@ -185,6 +187,7 @@ class CreateOpportunityVC: BaseVC<CreateOpportunityViewModel, OpportunitiesCoord
         setupCollectionView()
         customizeDropDown()
         hideKeyboardWhenTappedAround()
+        scrollView.delegate = self
         jobTitleTextView.delegate = self
         jobDescriptionTextView.delegate = self
         breakfastBtn.delegate = self
@@ -197,12 +200,6 @@ class CreateOpportunityVC: BaseVC<CreateOpportunityViewModel, OpportunitiesCoord
         languagesSpokenTextField.gradientDelegate = self
         accommodationsTextField.gradientDelegate = self
         learningOpportunitesTextField.gradientDelegate = self
-
-        easyTipView = EasyTipView(text: "Please fill in all 13 required fields in order to activate Create button", preferences: preferences)
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            self.easyTipView?.dismiss()
-        }
     }
 
     override func setupUI() {
@@ -219,6 +216,11 @@ class CreateOpportunityVC: BaseVC<CreateOpportunityViewModel, OpportunitiesCoord
         accommodationsTextField.configure(placeHolder: "Select accommodation type", type: .accommodation)
         learningOpportunitesTextField.configure(placeHolder: "Select learning opportunities", type: .learningOpportunities, fontSize: 12)
 
+        easyTipView = EasyTipView(text: "Please fill in all 13 required fields in order to activate Create button", preferences: preferences)
+        // swiftlint:disable line_length
+        let imagesInfoAttributedText = addBoldText(fullString: "The images you upload should be in high resolution. Like that your travelers will be willing to approach you! It is important to include photos of your property, the accommodation that you will be providing to travelers and anything else that will make your opportunity attractive to travelers. Please do not include pictures that show the name of your Business or Property, as they will be removed.", boldPartsOfString: ["Please do not include pictures that show the name of your Business or Property, as they will be removed."], font: UIFont.scriptFont(.regular, size: 16), boldFont: UIFont.scriptFont(.bold, size: 16))
+        imagesInfoTipView = EasyTipView(text: imagesInfoAttributedText, preferences: preferences)
+
         secondaryStackView.setCustomSpacing(32, after: typeOfHelpTextField)
         secondaryStackView.setCustomSpacing(32, after: addressLabel)
         secondaryStackView.setCustomSpacing(32, after: datesLabel)
@@ -228,7 +230,16 @@ class CreateOpportunityVC: BaseVC<CreateOpportunityViewModel, OpportunitiesCoord
         thirdStackView.setCustomSpacing(24, after: learningOpportunitesLabel)
 
         if let navigationBar = navigationController?.navigationBar {
-            progressBar.addExclusiveConstraints(superview: navigationBar, bottom: (navigationBar.bottomAnchor, 1), left: (navigationBar.leadingAnchor, 0), right: (navigationBar.trailingAnchor, 0))
+            navigationBar.addSubview(progressBar)
+            progressBar.snp.makeConstraints {
+                $0.bottom.equalToSuperview().offset(-1)
+                $0.left.equalToSuperview()
+                $0.right.equalToSuperview()
+            }
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.easyTipView?.dismiss()
         }
     }
 
@@ -257,6 +268,7 @@ class CreateOpportunityVC: BaseVC<CreateOpportunityViewModel, OpportunitiesCoord
 
         progressBar.isHidden = true
         easyTipView?.dismiss()
+        imagesInfoTipView?.dismiss()
         easyTipView = nil
     }
 
@@ -291,14 +303,41 @@ class CreateOpportunityVC: BaseVC<CreateOpportunityViewModel, OpportunitiesCoord
                 if valid {
                     self?.showActionAlertAfterValidation()
                 } else {
-                    self?.showActionAfterWrongValidation()
+                    self?.coordinator?.navigate(to: .showAlert(title: "Your input data seems to be invalid!", subtitle: "Please check them again"))
+                }
+            })
+            .store(in: &storage)
+
+        viewModel?.$opportunityIsCreated
+            .dropFirst()
+            .sink(receiveValue: { [weak self] status in
+                if status {
+                    self?.coordinator?.navigate(to: .opportunityWasCreated)
+                } else {
+                    self?.coordinator?.navigate(to: .showAlert(title: "Something went wrong!", subtitle: "Please try again"))
                 }
             })
             .store(in: &storage)
     }
 
+    private func addBoldText(fullString: NSString,
+                             boldPartsOfString: [NSString],
+                             font: UIFont,
+                             boldFont: UIFont) -> NSAttributedString {
+        let nonBoldFontAttribute = [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: UIColor.appColor(.extraLightGray)]
+        let boldFontAttribute = [NSAttributedString.Key.font: boldFont, NSAttributedString.Key.foregroundColor: UIColor.appColor(.lightGray)]
+        let boldString = NSMutableAttributedString(string: fullString as String, attributes: nonBoldFontAttribute)
+
+        boldPartsOfString.forEach { part in
+            boldString.addAttributes(boldFontAttribute,
+                                     range: fullString.range(of: part as String))
+        }
+
+        return boldString
+    }
+
     func setupAddress(location: OpportunityLocation) {
-        addressLabel.text = location.title
+        addressLabel.text = location.placemark?.formattedName()
         viewModel?.location = location
     }
 
@@ -317,19 +356,17 @@ class CreateOpportunityVC: BaseVC<CreateOpportunityViewModel, OpportunitiesCoord
                                             leftAction: {
             self.coordinator?.navigate(to: .back)
         }, rightAction: {
-            self.showLoader()
+            self.viewModel?.createOpportunity()
         })
-    }
-
-    private func showActionAfterWrongValidation() {
-        AlertHelper.showDefaultAlert(self,
-                                     title: "Your input data seems to be invalid!",
-                                     message: "Please check them again")
     }
 
     // MARK: - Actions
     @objc private func createActionTapped() {
         self.viewModel?.validateData()
+    }
+
+    @IBAction func imagesInfoAction(_ sender: Any) {
+        self.imagesInfoTipView?.show(forView: infoBtn)
     }
 
     @IBAction func openGalleryAction(_ sender: Any) {

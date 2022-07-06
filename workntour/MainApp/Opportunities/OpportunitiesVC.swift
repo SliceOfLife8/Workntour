@@ -12,7 +12,6 @@ import CombineDataSources
 
 /*
  1. Create a list of opportunities. Basically it's a collectionView. https://github.com/appssemble/appstore-card-transition
- 2. Create an opportunity. We need to integrate the AirBnb's calendar https://github.com/airbnb/HorizonCalendar.
  3. Details View.
  4. Delete option on detailsView.
  */
@@ -25,9 +24,7 @@ class OpportunitiesVC: BaseVC<OpportunitiesViewModel, OpportunitiesCoordinator> 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        DispatchQueue.main.async {
-            self.viewModel?.fetchModels()
-        }
+        self.viewModel?.fetchModels()
     }
 
     override func setupUI() {
@@ -54,10 +51,10 @@ class OpportunitiesVC: BaseVC<OpportunitiesViewModel, OpportunitiesCoordinator> 
                                                              cellType: MyOpportunityCell.self,
                                                                 cellConfig: { (cell, _, model) in
                 cell.configure(
-                    model.images.first,
-                    jobTitle: model.jobTitle,
-                    location: model.location.title,
-                    category: model.category.rawValue,
+                    URL(string: model.imageUrls.first!),
+                    jobTitle: model.title,
+                    location: model.location.placemark?.formattedName(),
+                    category: model.category.value,
                     dates: model.dates.map { ($0.start, $0.end) })
             }))
             .store(in: &storage)
@@ -72,5 +69,10 @@ class OpportunitiesVC: BaseVC<OpportunitiesViewModel, OpportunitiesCoordinator> 
 extension OpportunitiesVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: UIScreen.main.bounds.size.width - 48, height: 300)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("did selectAt \(indexPath.row)")
+        self.coordinator?.navigate(to: .showDetailsView)
     }
 }

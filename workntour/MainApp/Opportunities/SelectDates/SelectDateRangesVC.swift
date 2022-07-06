@@ -60,7 +60,10 @@ class SelectDateRangesVC: BaseVC<EmptyViewModel, OpportunitiesCoordinator> {
         let addIcon = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addDatesAction))
         navigationItem.rightBarButtonItems = [addIcon]
         navigationItem.rightBarButtonItem?.isEnabled = false
-        calendarView.addExclusiveConstraints(superview: view, top: (view.safeAreaLayoutGuide.topAnchor, 0), bottom: (view.bottomAnchor, 0), left: (view.leadingAnchor, 0), right: (view.trailingAnchor, 0))
+        view.addSubview(calendarView)
+        calendarView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {

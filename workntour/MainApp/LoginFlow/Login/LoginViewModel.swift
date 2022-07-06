@@ -18,7 +18,6 @@ class LoginViewModel: BaseViewModel {
     // Outputs
     @Published var email = LocalStorageManager.shared.retrieve(forKey: .email, type: String.self) ?? ""
     @Published var password = LocalStorageManager.shared.retrieve(forKey: .password, type: String.self) ?? ""
-    @Published var loaderVisibility: Bool = false
     @Published var userLoggedIn: LoginModel?
     @Published var userIsEligible: Bool = false
     @Published var errorMessage: String?

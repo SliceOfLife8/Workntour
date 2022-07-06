@@ -8,14 +8,30 @@
 import CoreLocation
 import MapKit
 
+struct PlacemarkAttributes: Hashable, Codable {
+    let name: String?
+    let country: String?
+    let area: String?
+    let locality: String?
+    let postalCode: String?
+
+    func formattedName() -> String {
+        let attributes = [name, area, locality, country, postalCode]
+
+        return attributes.compactMap({ $0 }).map({ String($0) }).joined(separator: ", ")
+    }
+}
+
 class MyAnnotation: NSObject, MKAnnotation {
     let title: String?
     let subtitle: String?
+    let location: OpportunityLocation
     let coordinate: CLLocationCoordinate2D
 
-    init(title: String?, subtitle: String?, coordinate: CLLocationCoordinate2D) {
+    init(title: String?, subtitle: String?, location: OpportunityLocation) {
         self.title = title
         self.subtitle = subtitle
-        self.coordinate = coordinate
+        self.location = location
+        self.coordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
     }
 }

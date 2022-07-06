@@ -20,7 +20,6 @@ class RegistrationHostViewModel: BaseViewModel {
     @Published var data: [RegistrationModel] = []
     /// Outputs
     @Published var individualSelected: Bool = true
-    @Published var loaderVisibility: Bool = false
     @Published var signUpCompleted: String?
     @Published var errorMessage: String?
 

@@ -65,7 +65,13 @@ class MapViewController: BaseVC<EmptyViewModel, OpportunitiesCoordinator> {
         // Add blur effect on status bar
         let blurEffect = UIBlurEffect(style: .systemUltraThinMaterial)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.addExclusiveConstraints(superview: view, top: (view.topAnchor, 0), bottom: (view.safeAreaLayoutGuide.topAnchor, 0), left: (view.leadingAnchor, 0), right: (view.trailingAnchor, 0))
+        view.addSubview(blurEffectView)
+        blurEffectView.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.top)
+            $0.left.equalToSuperview()
+            $0.right.equalToSuperview()
+        }
     }
 
     // MARK: - Actions
@@ -74,12 +80,12 @@ class MapViewController: BaseVC<EmptyViewModel, OpportunitiesCoordinator> {
     }
 
     @IBAction func saveBtnTapped(_ sender: Any) {
-        guard let annotation = mapView.annotations.filter({ $0 is MyAnnotation }).first else {
+        guard let annotation = mapView.annotations.filter({ $0 is MyAnnotation }).first as? MyAnnotation else {
             assertionFailure("This button should be enabled only when an annotation is being presented!")
             return
         }
 
-        self.coordinator?.navigate(to: .saveLocation(name: annotation.subtitle.flatMap { $0 },
+        self.coordinator?.navigate(to: .saveLocation(attribute: annotation.location.placemark,
                                                      latitude: annotation.coordinate.latitude,
                                                      longitude: annotation.coordinate.longitude))
     }
@@ -93,13 +99,21 @@ class MapViewController: BaseVC<EmptyViewModel, OpportunitiesCoordinator> {
         let wayCoords = mapView.convert(touchPoint, toCoordinateFrom: mapView)
         let location = CLLocation(latitude: wayCoords.latitude, longitude: wayCoords.longitude)
 
-        LocationManager.shared.fetchPlacemarks(location: location) { placemarkTitle in
-            self.addPin(coordinates: location.coordinate, area: placemarkTitle)
+        LocationManager.shared.fetchPlacemarks(location: location) { attributes in
+            self.addPin(coordinates: location.coordinate, attributes: attributes)
         }
     }
 
-    private func addPin(coordinates: CLLocationCoordinate2D, area: String?) {
-        let pin = MyAnnotation(title: "My Opportunity", subtitle: area, coordinate: coordinates)
+    private func addPin(coordinates: CLLocationCoordinate2D, attributes: PlacemarkAttributes?) {
+        let attributes = PlacemarkAttributes(name: attributes?.name,
+                                             country: attributes?.country,
+                                             area: attributes?.area,
+                                             locality: attributes?.locality,
+                                             postalCode: attributes?.postalCode)
+        let location = OpportunityLocation(placemark: attributes,
+                                           latitude: coordinates.latitude,
+                                           longitude: coordinates.longitude)
+        let pin = MyAnnotation(title: "My Opportunity", subtitle: attributes.formattedName(), location: location)
         mapView.removeAnnotations(mapView.annotations)
         mapView.addAnnotation(pin)
         saveBtn.isEnabled = true
@@ -107,11 +121,11 @@ class MapViewController: BaseVC<EmptyViewModel, OpportunitiesCoordinator> {
 }
 
 extension MapViewController: SearchLocationsDelegate, FloatingPanelControllerDelegate, MKMapViewDelegate {
-    func findLocation(didSelectLocationWith coordinates: CLLocationCoordinate2D?, area: String?) {
+    func findLocation(didSelectLocationWith coordinates: CLLocationCoordinate2D?, area: PlacemarkAttributes?) {
         guard let coordinates = coordinates else { return }
         // Minimize panel & show pin
         panel.move(to: .tip, animated: true)
-        addPin(coordinates: coordinates, area: area)
+        addPin(coordinates: coordinates, attributes: area)
 
         mapView.setRegion(MKCoordinateRegion(center: coordinates, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)), animated: true)
     }

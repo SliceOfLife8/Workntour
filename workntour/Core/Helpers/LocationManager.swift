@@ -9,7 +9,7 @@ import Foundation
 import CoreLocation
 
 struct Location {
-    let title: String?
+    let placemark: PlacemarkAttributes?
     let coordinates: CLLocationCoordinate2D?
 }
 
@@ -29,14 +29,14 @@ class LocationManager: NSObject {
 
             let models: [Location] = places.compactMap({ place in
 
-                return Location(title: self.locationFormattedName(place), coordinates: place.location?.coordinate)
+                return Location(placemark: self.locationFormattedName(place), coordinates: place.location?.coordinate)
             })
 
             completion(models)
         }
     }
 
-    public func fetchPlacemarks(location: CLLocation, completion: @escaping ((String?) -> Void)) {
+    public func fetchPlacemarks(location: CLLocation, completion: @escaping ((PlacemarkAttributes?) -> Void)) {
 
         geoCoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, error) -> Void in
             guard let placemark = placemarks?.first, error == nil else {
@@ -48,28 +48,9 @@ class LocationManager: NSObject {
         })
     }
 
-    private func locationFormattedName(_ placemark: CLPlacemark) -> String {
-        var name = ""
-        if let locationName = placemark.name {
-            name += locationName
-        }
+    private func locationFormattedName(_ placemark: CLPlacemark) -> PlacemarkAttributes {
+        let attributes = PlacemarkAttributes(name: placemark.name, country: placemark.country, area: placemark.administrativeArea, locality: placemark.locality, postalCode: placemark.postalCode)
 
-        if let adminRegion = placemark.administrativeArea {
-            name += ", \(adminRegion)"
-        }
-
-        if let locality = placemark.locality {
-            name += ", \(locality)"
-        }
-
-        if let country = placemark.country {
-            name += ", \(country)"
-        }
-
-        if let postalCode = placemark.postalCode {
-            name += ", \(postalCode)"
-        }
-
-        return name
+        return attributes
     }
 }

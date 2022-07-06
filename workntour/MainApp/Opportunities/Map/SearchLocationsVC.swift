@@ -8,10 +8,11 @@
 import UIKit
 import SharedKit
 import CoreLocation
+import SnapKit
 
 protocol SearchLocationsDelegate: AnyObject {
     func didStartEditing()
-    func findLocation(didSelectLocationWith coordinates: CLLocationCoordinate2D?, area: String?)
+    func findLocation(didSelectLocationWith coordinates: CLLocationCoordinate2D?, area: PlacemarkAttributes?)
 }
 
 class SearchLocationsVC: UIViewController {
@@ -50,12 +51,34 @@ class SearchLocationsVC: UIViewController {
 
         view.backgroundColor = .secondarySystemBackground
         view.makeCorner(withRadius: 8)
-        mainTitle.addExclusiveConstraints(superview: view, top: (view.topAnchor, 12), left: (view.leadingAnchor, 24))
-        searchBar.addExclusiveConstraints(superview: view, top: (mainTitle.bottomAnchor, 8), left: (mainTitle.leadingAnchor, 0), right: (view.trailingAnchor, 16))
-        tableView.addExclusiveConstraints(superview: view, top: (searchBar.bottomAnchor, 16), bottom: (view.bottomAnchor, 16), left: (view.leadingAnchor, 16), right: (view.trailingAnchor, 16))
+        setupUI()
         tableView.delegate = self
         tableView.dataSource = self
         searchBar.delegate = self
+    }
+
+    private func setupUI() {
+        [mainTitle, searchBar, tableView].forEach {
+            view.addSubview($0)
+        }
+
+        mainTitle.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(12)
+            $0.left.equalToSuperview().offset(24)
+        }
+
+        searchBar.snp.makeConstraints {
+            $0.top.equalTo(mainTitle.snp.bottom).offset(8)
+            $0.left.equalTo(mainTitle.snp.left)
+            $0.right.equalToSuperview().offset(-16)
+        }
+
+        tableView.snp.makeConstraints {
+            $0.top.equalTo(searchBar.snp.bottom).offset(16)
+            $0.bottom.equalToSuperview().offset(-16)
+            $0.left.equalToSuperview().offset(16)
+            $0.right.equalToSuperview().offset(-16)
+        }
     }
 
 }
@@ -69,7 +92,7 @@ extension SearchLocationsVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
 
-        cell.textLabel?.text = locations[indexPath.row].title
+        cell.textLabel?.text = locations[indexPath.row].placemark?.formattedName()
         cell.textLabel?.numberOfLines = 0
         cell.contentView.backgroundColor = .secondarySystemBackground
         return cell
@@ -80,7 +103,7 @@ extension SearchLocationsVC: UITableViewDelegate, UITableViewDataSource {
         // Notify map controller to show pin at selected place
         let location = locations[indexPath.row]
         searchBar.resignFirstResponder()
-        delegate?.findLocation(didSelectLocationWith: location.coordinates, area: location.title)
+        delegate?.findLocation(didSelectLocationWith: location.coordinates, area: location.placemark)
     }
 }
 

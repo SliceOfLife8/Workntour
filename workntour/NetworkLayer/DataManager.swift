@@ -109,3 +109,26 @@ extension DataManager: ProfileService {
     }
 
 }
+
+// MARK: - ProfileService
+extension DataManager: OpportunityService {
+
+    func createOpportunity(_ model: OpportunityDto) -> AnyPublisher<Bool, ProviderError> {
+        return networking.request(
+            with: OpportunityRouter.createOpportunity(model),
+            scheduler: DispatchQueue.main,
+            class: GenericResponse<OpportunityDto>.self)
+        .compactMap { $0.data != nil }
+        .eraseToAnyPublisher()
+    }
+
+    func getOpportunities(id: String) -> AnyPublisher<[OpportunityDto], ProviderError> {
+        return networking.request(
+            with: OpportunityRouter.getOpportunities(id: id),
+            scheduler: DispatchQueue.main,
+            class: GenericResponse<[OpportunityDto]>.self)
+        .compactMap { $0.data }
+        .eraseToAnyPublisher()
+    }
+
+}

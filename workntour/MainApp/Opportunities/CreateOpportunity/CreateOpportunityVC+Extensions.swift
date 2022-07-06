@@ -104,6 +104,7 @@ extension CreateOpportunityVC: UICollectionViewDataSource, OpportunityImageCellD
     }
 }
 
+// MARK: - CheckBox Delegate
 extension CreateOpportunityVC: CheckBoxDelegate {
     /// Update meals object
     func didChange(isChecked: Bool, box: Checkbox) {
@@ -134,5 +135,13 @@ extension CreateOpportunityVC: CheckBoxDelegate {
                 _viewModel.meals = _viewModel.meals.filter { $0 != .useSharedKitchen }
             }
         }
+    }
+}
+
+// MARK: - UIScrollViewDelegate
+extension CreateOpportunityVC: UIScrollViewDelegate {
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        easyTipView?.dismiss()
+        imagesInfoTipView?.dismiss()
     }
 }

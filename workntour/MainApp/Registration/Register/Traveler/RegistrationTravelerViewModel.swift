@@ -18,7 +18,6 @@ class RegistrationTravelerViewModel: BaseViewModel {
     @Published var data: [RegistrationModel] = []
     var cellsValues: [GradientTextFieldType: String?] = Dictionary(uniqueKeysWithValues: [.name, .surname, .email, .password, .verifyPassword, .age, .phone, .nationality, .sex].map {($0, nil)})
     /// Outputs
-    @Published var loaderVisibility: Bool = false
     @Published var signUpCompleted: String?
     @Published var errorMessage: String?
 

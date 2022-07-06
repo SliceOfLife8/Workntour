@@ -67,18 +67,27 @@ class EmailVerificationVC: BaseVC<EmailVerificationViewModel, RegistrationCoordi
     override func setupUI() {
         super.setupUI()
 
-        titleLabel.addExclusiveConstraints(superview: view,
-                                           top: (view.safeAreaLayoutGuide.topAnchor, 32),
-                                           left: (view.leadingAnchor, 24),
-                                           right: (view.trailingAnchor, 24))
-        descriptionLabel.addExclusiveConstraints(superview: view,
-                                                 top: (titleLabel.bottomAnchor, 8),
-                                                 left: (titleLabel.leadingAnchor, 0),
-                                                 right: (titleLabel.trailingAnchor, 0))
-        mainIcon.addExclusiveConstraints(superview: view,
-                                         top: (descriptionLabel.bottomAnchor, 32),
-                                         left: (descriptionLabel.leadingAnchor, 0),
-                                         right: (descriptionLabel.trailingAnchor, 0))
+        [titleLabel, descriptionLabel, mainIcon].forEach {
+            view.addSubview($0)
+        }
+
+        titleLabel.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(32)
+            $0.left.equalToSuperview().offset(24)
+            $0.right.equalToSuperview().offset(-24)
+        }
+
+        descriptionLabel.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom).offset(8)
+            $0.left.equalTo(titleLabel.snp.left)
+            $0.right.equalTo(titleLabel.snp.right)
+        }
+
+        mainIcon.snp.makeConstraints {
+            $0.top.equalTo(descriptionLabel.snp.bottom).offset(32)
+            $0.left.equalTo(descriptionLabel.snp.left)
+            $0.right.equalTo(descriptionLabel.snp.right)
+        }
     }
 
     @objc private func closeBtnTapped() {

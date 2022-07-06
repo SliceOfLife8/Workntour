@@ -51,9 +51,9 @@ enum TabBarPage {
         switch self {
         case .homepage:
             return 0
-        case .profile:
-            return 1
         case .opportunities:
+            return 1
+        case .profile:
             return 2
         case .notifications:
             return 3

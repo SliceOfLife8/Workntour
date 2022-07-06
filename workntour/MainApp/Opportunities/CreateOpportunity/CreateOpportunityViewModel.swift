@@ -7,8 +7,11 @@
 
 import Foundation
 import UIKit
+import Combine
 
 class CreateOpportunityViewModel: BaseViewModel {
+    // Services
+    private var service: OpportunityService
 
     /// Inputs
     var category: OpportunityCategory? {
@@ -78,6 +81,15 @@ class CreateOpportunityViewModel: BaseViewModel {
     /// Outputs
     @Published var progress: Float = 0
     @Published var validData: Bool?
+    @Published var opportunityIsCreated: Bool = false
+
+    var opportunityModel: OpportunityDto?
+
+    init(service: OpportunityService = DataManager.shared) {
+        self.service = service
+
+        super.init()
+    }
 
     // swiftlint:disable cyclomatic_complexity
     /// 13 Required fields in order to activate `Create` button
@@ -91,7 +103,7 @@ class CreateOpportunityViewModel: BaseViewModel {
         if location != nil { percent += 1/13 }
         if dates.count > 0 { percent += 1/13 }
         if minDays > 0 { percent += 1/13 }
-        if maxDays > 0 { percent += 1/13 }
+        if maxDays > 0 && maxDays >= minDays { percent += 1/13 }
         if (1...32).contains(totalHours) { percent += 1/13 }
         if languagesRequired.count > 0 { percent += 1/13 }
         if accommodation != nil { percent += 1/13 }
@@ -111,8 +123,39 @@ class CreateOpportunityViewModel: BaseViewModel {
             return
         }
 
-        let data = images.compactMap { $0.pngData() }
-        print("data: \(_category) \(_location) \(_accommodation) \(data)")
+        opportunityModel = OpportunityDto(memberId: UserDataManager.shared.memberId,
+                                          category: _category,
+                                          images: images.compactMap { $0.pngData() },
+                                          title: jobTitle,
+                                          description: jobDescription,
+                                          typeOfHelp: typeOfHelp,
+                                          location: _location,
+                                          dates: dates,
+                                          minDays: minDays,
+                                          maxDays: maxDays,
+                                          workingHours: totalHours,
+                                          languagesRequired: languagesRequired,
+                                          languagesSpoken: languagesSpoken,
+                                          accommodation: _accommodation,
+                                          meals: meals,
+                                          learningOpportunities: learningOpportunities)
         validData = true
+    }
+
+    func createOpportunity() {
+        guard let model = opportunityModel else {
+            return
+        }
+
+        loaderVisibility = true
+        service.createOpportunity(model)
+            .subscribe(on: RunLoop.main)
+            .catch({ _ -> Just<Bool> in
+                return Just(false)
+            })
+                .handleEvents(receiveCompletion: { _ in
+                    self.loaderVisibility = false
+                })
+                    .assign(to: &$opportunityIsCreated)
     }
 }

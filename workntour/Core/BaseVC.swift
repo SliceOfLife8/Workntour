@@ -8,6 +8,7 @@
 import UIKit
 import Combine
 import SharedKit
+import SnapKit
 import NVActivityIndicatorView
 
 typealias DisposeBag = Set<AnyCancellable>
@@ -32,7 +33,7 @@ class BaseVC<VM: BaseViewModel, C: Coordinator>: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        if self is SplashVC || self is HostProfileVC {
+        if self is SplashVC || self is HostProfileVC || self is OpportunityDetailsVC {
             hideNavigationBar(animated)
         }
     }
@@ -40,7 +41,7 @@ class BaseVC<VM: BaseViewModel, C: Coordinator>: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
-        if (self is SplashVC || self is HostProfileVC) && !preventNavBarFromAppearing {
+        if (self is SplashVC || self is HostProfileVC || self is OpportunityDetailsVC) && !preventNavBarFromAppearing {
             showNavigationBar(animated)
         } else if self is LoginVC {
             hideNavigationBar(animated)
@@ -48,7 +49,17 @@ class BaseVC<VM: BaseViewModel, C: Coordinator>: UIViewController {
         preventNavBarFromAppearing = false
     }
 
-    func bindViews() {}
+    func bindViews() {
+        viewModel?.$loaderVisibility
+            .sink { [weak self] status in
+                if status {
+                    self?.showLoader()
+                } else {
+                    self?.stopLoader()
+                }
+            }
+            .store(in: &storage)
+    }
 
     func setupUI() {}
 
@@ -78,7 +89,10 @@ private extension DisposeBag {
     }
 }
 
-class BaseViewModel { }
+class BaseViewModel {
+    /// Outputs
+    @Published var loaderVisibility: Bool = false
+}
 
 class EmptyViewModel: BaseViewModel {}
 
@@ -97,7 +111,13 @@ extension BaseVC {
 
         let spinner = NVActivityIndicatorView(frame: .zero, type: type, color: UIColor.appColor(.lavender), padding: 8)
         spinner.startAnimating()
-        spinner.addExclusiveConstraints(superview: blurEffectView.contentView, width: 80, height: 80, centerX: (view.centerXAnchor, 0), centerY: (view.centerYAnchor, 0))
+        blurEffectView.contentView.addSubview(spinner)
+        spinner.snp.makeConstraints {
+            $0.centerX.equalTo(view.snp.centerX)
+            $0.centerY.equalTo(view.snp.centerY)
+            $0.width.equalTo(80)
+            $0.height.equalTo(80)
+        }
     }
 
     func stopLoader() {

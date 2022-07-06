@@ -145,16 +145,6 @@ class RegistrationTravelerVC: BaseVC<RegistrationTravelerViewModel, Registration
             }))
             .store(in: &storage)
 
-        viewModel?.$loaderVisibility
-            .sink { [weak self] status in
-                if status {
-                    self?.showLoader()
-                } else {
-                    self?.stopLoader()
-                }
-            }
-            .store(in: &storage)
-
         viewModel?.$errorMessage
             .dropFirst()
             .sink(receiveValue: { [weak self] error in
@@ -237,12 +227,10 @@ private extension RegistrationTravelerVC {
     private func setupTableViewFooter() {
         let footerView = UIView(frame: CGRect(origin: .zero,
                                               size: CGSize(width: tableView.frame.size.width, height: 96)))
-        signUpButton.addExclusiveConstraints(superview: footerView,
-                                             top: (footerView.topAnchor, 24),
-                                             bottom: (footerView.bottomAnchor, 24),
-                                             left: (footerView.leadingAnchor, 24),
-                                             right: (footerView.trailingAnchor, 24),
-                                             height: 48)
+        footerView.addSubview(signUpButton)
+        signUpButton.snp.makeConstraints {
+            $0.edges.equalToSuperview().inset(24)
+        }
         signUpButton.addTarget(self,
                                action: #selector(signUpTapped),
                                for: .touchUpInside)

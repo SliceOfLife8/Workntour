@@ -15,6 +15,11 @@ def kingfisher
   pod 'Kingfisher'
 end
 
+def snapkit
+  pod 'FlexiblePageControl'
+  pod 'SnapKit'
+end
+
 def common
   pod 'SwiftLint'
   pod 'CombineDataSources'
@@ -37,6 +42,7 @@ target 'workntour' do
   common
   firebase
   kingfisher
+  snapkit
 end
 
 target 'Networking' do
@@ -50,6 +56,7 @@ end
 target 'CommonUI' do
   project 'CommonUI/CommonUI.xcodeproj'
   kingfisher
+  snapkit
 
   target 'CommonUITests' do
   end

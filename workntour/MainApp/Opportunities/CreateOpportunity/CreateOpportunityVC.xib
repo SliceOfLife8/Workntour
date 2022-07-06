@@ -37,6 +37,7 @@
                 <outlet property="datesLabel" destination="yJL-gZ-jO3" id="MNK-UH-Ewq"/>
                 <outlet property="dinnerBtn" destination="Eld-xS-JWh" id="wX8-J7-VSf"/>
                 <outlet property="imagesCollectionView" destination="Amo-pj-KsG" id="kRP-B4-KB8"/>
+                <outlet property="infoBtn" destination="sq9-Ft-Vpz" id="VtY-vC-cbb"/>
                 <outlet property="jobDescriptionTextView" destination="boX-la-8qU" id="5GJ-yq-ZPa"/>
                 <outlet property="jobTitleTextView" destination="lEb-6y-Vc3" id="lMT-NU-pke"/>
                 <outlet property="languagesRequiredTextField" destination="9eO-1O-AWv" id="ZVi-ZI-nye"/>
@@ -62,10 +63,10 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o4m-vc-JIw" userLabel="Content View">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="1177.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="1084"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="tig-iq-ogK">
-                                    <rect key="frame" x="16" y="24" width="382" height="378"/>
+                                    <rect key="frame" x="16" y="24" width="382" height="284.5"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Category*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DtZ-sg-cGJ">
                                             <rect key="frame" x="0.0" y="0.0" width="382" height="17"/>
@@ -122,19 +123,30 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </textView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NwW-wO-P04" userLabel="Images description">
-                                            <rect key="frame" x="0.0" y="262.5" width="382" height="115.5"/>
-                                            <string key="text">3. The images you upload should be in high resolution. Like that your travelers will be willing to approach you! It is important to include photos of your property, the accommodation that you will be providing to travelers and anything else that will make your opportunity attractive to travelers.
-Please do not include pictures that show the name of your Business or Property, as they will be removed.
-</string>
-                                            <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="12"/>
-                                            <color key="textColor" red="0.26274509800000001" green="0.094117647060000004" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="929-e9-sEY">
+                                            <rect key="frame" x="0.0" y="262.5" width="382" height="22"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3. Images*" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NwW-wO-P04" userLabel="Images description">
+                                                    <rect key="frame" x="0.0" y="0.0" width="64" height="22"/>
+                                                    <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
+                                                    <color key="textColor" red="0.26274509800000001" green="0.094117647060000004" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sq9-Ft-Vpz" userLabel="Images info">
+                                                    <rect key="frame" x="362" y="0.0" width="20" height="22"/>
+                                                    <color key="tintColor" name="purple"/>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                    <state key="normal" image="info.circle" catalog="system"/>
+                                                    <connections>
+                                                        <action selector="imagesInfoAction:" destination="-1" eventType="touchUpInside" id="cvp-pL-Gjt"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </stackView>
                                     </subviews>
                                 </stackView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VDq-Sd-z0t" userLabel="openGallery">
-                                    <rect key="frame" x="16" y="446" width="48" height="48"/>
+                                    <rect key="frame" x="16" y="352.5" width="48" height="48"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="48" id="WuV-6c-h6A"/>
                                         <constraint firstAttribute="height" constant="48" id="f28-Xu-mDq"/>
@@ -147,7 +159,7 @@ Please do not include pictures that show the name of your Business or Property, 
                                     </connections>
                                 </button>
                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Amo-pj-KsG">
-                                    <rect key="frame" x="80" y="410" width="318" height="120"/>
+                                    <rect key="frame" x="80" y="316.5" width="318" height="120"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="120" id="NCe-6t-AQ9"/>
@@ -160,13 +172,13 @@ Please do not include pictures that show the name of your Business or Property, 
                                     </collectionViewFlowLayout>
                                 </collectionView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select your images here" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sUk-ii-PKQ" userLabel="Collection View description">
-                                    <rect key="frame" x="88" y="458" width="318" height="24"/>
+                                    <rect key="frame" x="88" y="364.5" width="318" height="24"/>
                                     <fontDescription key="fontDescription" name="Lato-Heavy" family="Lato" pointSize="20"/>
                                     <color key="textColor" name="purpleBlack"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Nf1-EU-i9s">
-                                    <rect key="frame" x="16" y="546" width="382" height="382"/>
+                                    <rect key="frame" x="16" y="452.5" width="382" height="382"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4. Type of help*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gI1-hA-YLV">
                                             <rect key="frame" x="0.0" y="0.0" width="382" height="17"/>
@@ -298,7 +310,7 @@ Please do not include pictures that show the name of your Business or Property, 
                                     </subviews>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="lz9-rw-DSt">
-                                    <rect key="frame" x="16" y="952" width="382" height="193.5"/>
+                                    <rect key="frame" x="16" y="858.5" width="382" height="193.5"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12. Meals provided*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3dT-69-2Qr">
                                             <rect key="frame" x="0.0" y="0.0" width="382" height="17"/>
@@ -425,6 +437,7 @@ Please do not include pictures that show the name of your Business or Property, 
     <resources>
         <image name="calendar.badge.plus" catalog="system" width="128" height="108"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
+        <image name="info.circle" catalog="system" width="128" height="121"/>
         <image name="plus.square.fill" catalog="system" width="128" height="114"/>
         <namedColor name="basicText">
             <color red="0.16099999845027924" green="0.15700000524520874" blue="0.17599999904632568" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

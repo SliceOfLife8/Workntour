@@ -52,6 +52,7 @@ PODS:
     - GoogleUtilities/Environment (~> 7.7)
     - GoogleUtilities/UserDefaults (~> 7.7)
     - PromisesObjC (~> 2.1)
+  - FlexiblePageControl (1.0.8)
   - FloatingPanel (2.5.3)
   - GoogleAppMeasurement (9.1.0):
     - GoogleAppMeasurement/AdIdSupport (= 9.1.0)
@@ -109,6 +110,7 @@ PODS:
     - NVActivityIndicatorView/Base (= 5.1.1)
   - NVActivityIndicatorView/Base (5.1.1)
   - PromisesObjC (2.1.0)
+  - SnapKit (5.6.0)
   - SwiftLint (0.47.1)
   - SwiftyBeaver (1.9.6)
 
@@ -118,12 +120,14 @@ DEPENDENCIES:
   - EasyTipView
   - Firebase/Core
   - Firebase/Crashlytics
+  - FlexiblePageControl
   - FloatingPanel
   - HorizonCalendar
   - KDCircularProgress
   - Keys (from `Pods/CocoaPodsKeys`)
   - Kingfisher
   - NVActivityIndicatorView
+  - SnapKit
   - SwiftLint
   - SwiftyBeaver
 
@@ -139,6 +143,7 @@ SPEC REPOS:
     - FirebaseCoreInternal
     - FirebaseCrashlytics
     - FirebaseInstallations
+    - FlexiblePageControl
     - FloatingPanel
     - GoogleAppMeasurement
     - GoogleDataTransport
@@ -149,6 +154,7 @@ SPEC REPOS:
     - nanopb
     - NVActivityIndicatorView
     - PromisesObjC
+    - SnapKit
     - SwiftLint
     - SwiftyBeaver
 
@@ -167,6 +173,7 @@ SPEC CHECKSUMS:
   FirebaseCoreInternal: f3c838ae0b41cd840bbf34f90debfede78d352e5
   FirebaseCrashlytics: 8e21736dcf15d814b79229eb7e79ba3a5eec5f30
   FirebaseInstallations: a91c74276b544524ce144c8315d8cdbce2dbe30b
+  FlexiblePageControl: 07f7765054f16b3f0bc3f14dfd95ab5f45817ea4
   FloatingPanel: 3cee815e9ded75b632543fa73ab655a1ef941452
   GoogleAppMeasurement: 8ecc717f2abe3f9ee95a5d38db08827852894acc
   GoogleDataTransport: 5fffe35792f8b96ec8d6775f5eccd83c998d5a3b
@@ -178,9 +185,10 @@ SPEC CHECKSUMS:
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
   NVActivityIndicatorView: 1f6c5687f1171810aa27a3296814dc2d7dec3667
   PromisesObjC: 99b6f43f9e1044bd87a95a60beff28c2c44ddb72
+  SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   SwiftLint: f80f1be7fa96d30e0aa68e58d45d4ea1ccaac519
   SwiftyBeaver: c8241b4745aa269a78ca5a022532c6915e948536
 
-PODFILE CHECKSUM: dbf94cada53ec1644a4c6ab6cfac1cf911ec8715
+PODFILE CHECKSUM: dd9570a5173930460d20cc0e81f1a27978db6cf7
 
 COCOAPODS: 1.11.3

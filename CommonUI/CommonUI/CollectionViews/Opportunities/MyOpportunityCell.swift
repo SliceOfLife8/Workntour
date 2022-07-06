@@ -33,7 +33,7 @@ public class MyOpportunityCell: UICollectionViewCell {
 
     public func configure(_ imageUrl: URL?,
                           jobTitle: String,
-                          location: String,
+                          location: String?,
                           category: String,
                           dates: [(start: String, end: String)]) {
         imageView.kf.setImage(with: imageUrl)

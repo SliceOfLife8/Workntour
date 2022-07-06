@@ -67,16 +67,6 @@ class LoginVC: BaseVC<LoginViewModel, LoginCoordinator> {
             .assign(to: \.isEnabled, on: loginBtn)
             .store(in: &storage)
 
-        viewModel?.$loaderVisibility
-            .sink { [weak self] status in
-                if status {
-                    self?.showLoader()
-                } else {
-                    self?.stopLoader()
-                }
-            }
-            .store(in: &storage)
-
         viewModel?.$errorMessage
             .dropFirst()
             .sink(receiveValue: { [weak self] error in

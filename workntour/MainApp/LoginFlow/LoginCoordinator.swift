@@ -44,7 +44,9 @@ final class LoginCoordinator: PresentationCoordinator {
         switch step {
         case .successfulLogin:
             parent.dismissCoordinator(self, modalStyle: .coverVertical, animated: true, completion: {
-                self.parent.showMainFlow()
+                DispatchQueue.main.async {
+                    self.parent.showMainFlow()
+                }
             })
         case .close:
             parent.dismissCoordinator(self, modalStyle: .coverVertical, animated: true, completion: nil)
