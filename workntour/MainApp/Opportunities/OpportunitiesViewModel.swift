@@ -25,6 +25,7 @@ class OpportunitiesViewModel: BaseViewModel {
     func fetchModels() {
         loaderVisibility = true
         service.getOpportunities(id: UserDataManager.shared.memberId ?? "")
+            .subscribe(on: RunLoop.main)
             .catch({ [weak self] error -> Just<[OpportunityDto]> in
                 self?.errorMessage = error.errorDescription
 

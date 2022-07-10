@@ -124,10 +124,28 @@ extension DataManager: OpportunityService {
 
     func getOpportunities(id: String) -> AnyPublisher<[OpportunityDto], ProviderError> {
         return networking.request(
-            with: OpportunityRouter.getOpportunities(id: id),
+            with: OpportunityRouter.getOpportunities(memberId: id),
             scheduler: DispatchQueue.main,
             class: GenericResponse<[OpportunityDto]>.self)
         .compactMap { $0.data }
+        .eraseToAnyPublisher()
+    }
+
+    func getOpportunity(byId opportunityId: String) -> AnyPublisher<OpportunityDto, ProviderError> {
+        return networking.request(
+            with: OpportunityRouter.retrieveOpportunity(id: opportunityId),
+            scheduler: DispatchQueue.main,
+            class: GenericResponse<OpportunityDto>.self)
+        .compactMap { $0.data }
+        .eraseToAnyPublisher()
+    }
+
+    func deleteOpportunity(byId opportunityId: String) -> AnyPublisher<Bool, ProviderError> {
+        return networking.request(
+            with: OpportunityRouter.deleteOpportunity(id: opportunityId),
+            scheduler: DispatchQueue.main,
+            class: GenericResponse<OpportunityDto>.self)
+        .compactMap { $0.data != nil }
         .eraseToAnyPublisher()
     }
 

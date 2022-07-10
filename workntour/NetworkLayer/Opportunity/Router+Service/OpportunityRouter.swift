@@ -10,7 +10,9 @@ import Networking
 
 enum OpportunityRouter: NetworkTarget {
     case createOpportunity(_ model: OpportunityDto)
-    case getOpportunities(id: String)
+    case getOpportunities(memberId: String)
+    case retrieveOpportunity(id: String)
+    case deleteOpportunity(id: String)
 
     public var baseURL: URL {
         Environment.current.apiBaseURL
@@ -22,6 +24,10 @@ enum OpportunityRouter: NetworkTarget {
             return "/createNewOpportunity"
         case .getOpportunities:
             return "/retrieveAllOpportunityByMemberId"
+        case .retrieveOpportunity(let id):
+            return "/retrieveOpportunityBy/\(id)"
+        case .deleteOpportunity(let id):
+            return "/deleteOpportunityBy/\(id)"
         }
     }
 
@@ -29,8 +35,10 @@ enum OpportunityRouter: NetworkTarget {
         switch self {
         case .createOpportunity:
             return .post
-        case .getOpportunities:
+        case .getOpportunities, .retrieveOpportunity:
             return .get
+        case .deleteOpportunity:
+            return .delete
         }
     }
 
@@ -42,7 +50,7 @@ enum OpportunityRouter: NetworkTarget {
         case .createOpportunity(let opportunity):
             let jsonData = try! jsonEncoder.encode(opportunity)
             return .requestData(data: jsonData)
-        case .getOpportunities:
+        case .getOpportunities, .retrieveOpportunity, .deleteOpportunity:
             return .requestPlain
         }
     }
@@ -57,10 +65,10 @@ enum OpportunityRouter: NetworkTarget {
 
     public var headers: [String: String]? {
         switch self {
-        case .createOpportunity:
+        case .createOpportunity, .retrieveOpportunity, .deleteOpportunity:
             return nil
-        case .getOpportunities(let id):
-            return ["memberId": id]
+        case .getOpportunities(let memberId):
+            return ["memberId": memberId]
         }
     }
 }

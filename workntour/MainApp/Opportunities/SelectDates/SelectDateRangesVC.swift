@@ -69,7 +69,7 @@ class SelectDateRangesVC: BaseVC<EmptyViewModel, OpportunitiesCoordinator> {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        setupNavigationBar(mainTitle: "Select Dates")
+        navigationItem.title = "Select Dates"
     }
 
     private func makeContent() -> CalendarViewContent {

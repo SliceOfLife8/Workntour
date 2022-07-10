@@ -6,53 +6,78 @@
 //
 
 import Foundation
+import Combine
 
 /*
- 1. Title, location and category
- 2. Type of help
- 3. Description Optional
- 4. Availability Dates
  5. Map
- 6. Accommodation provided
- 7. Meals provided
- 8. Stay at least, stay up to
- 9. Languages Required
- 10. Languages Spoken
- 11. Learning opportunites
  12. Do workntour (for travellers only!)
-
  */
 
 class OpportunitesDetailsViewModel: BaseViewModel {
+    /// Service
+    private var service: OpportunityService
 
     /// Outputs
-    @Published var images: [URL?] = []
+    @Published var images: [URL] = []
     var headerModel: OpportunityDetailsHeaderModel?
-    var data: [OpportunityDetailsModel] = []
+    @Published var data: [OpportunityDetailsModel] = []
+    @Published var errorMessage: String?
+    @Published var opportunityWasDeleted: Bool = false
 
-    func fetchData() {
-        let imageURLs = [
-            URL(string: "https://images.unsplash.com/photo-1560493676-04071c5f467b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8d2luZXJ5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"),
-            URL(string: "https://images.unsplash.com/photo-1593535388526-a6b8556c5351?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8d2luZXJ5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"),
-            URL(string: "https://images.unsplash.com/photo-1504279577054-acfeccf8fc52?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8d2luZXJ5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"),
-            URL(string: "https://images.unsplash.com/photo-1598306442928-4d90f32c6866?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8d2luZXJ5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"),
-            URL(string: "https://images.unsplash.com/photo-1519092796169-bb9cc75a4b68?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fHdpbmVyeXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"),
-            URL(string: "https://images.unsplash.com/photo-1470158499416-75be9aa0c4db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTl8fHdpbmVyeXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60")
-        ]
+    init(service: OpportunityService = DataManager.shared) {
+        self.service = service
 
-        self.images = imageURLs
-        self.headerModel = OpportunityDetailsHeaderModel(title: "Help us at our hotel and experience the Greek Lifestyle in the island of Crete.", area: "Crete, Greece", category: .hotel)
-        let location = OpportunityLocation(placemark: PlacemarkAttributes(name: "name1", country: "name2", area: "name3", locality: "name4", postalCode: "name5"), latitude: 38.0156839333148, longitude: 23.751797095407333)
-        self.data = [
-            OpportunityDetailsModel(title: "Type of help needed", description: "Reception, Bartending"),
-            OpportunityDetailsModel(title: "Accomondation provided", description: "Private room"),
-            OpportunityDetailsModel(title: "Meals provided", description: "Breakfast, Lunch"),
-            OpportunityDetailsModel(title: "10", description: "30", dates: true),
-            OpportunityDetailsModel(location: location)
-        ]
+        super.init()
     }
 
-    func deleteOpportunity() {
-        print("delete")
+    func fetchModels(opportunityId: String) {
+        loaderVisibility = true
+        service.getOpportunity(byId: opportunityId)
+            .subscribe(on: RunLoop.main)
+            .map({ output in
+                self.images = output.imageUrls.compactMap { URL(string: $0) }
+                // Show address depending on user role
+                self.headerModel = OpportunityDetailsHeaderModel(title: output.title, area: output.location.placemark?.formattedName(), category: output.category)
+
+                var models = [
+                    OpportunityDetailsModel(title: "Type of help needed", description: output.typeOfHelp.map { $0.value }.joined(separator: ", ")),
+                    OpportunityDetailsModel(title: "Accomondation provided", description: output.accommodation.value),
+                    OpportunityDetailsModel(title: "Meals provided", description: output.meals.map { $0.value }.joined(separator: ", ")),
+                    OpportunityDetailsModel(title: String(output.minDays), description: String(output.maxDays), showDays: true),
+                    OpportunityDetailsModel(location: output.location),
+                    OpportunityDetailsModel(title: "Languages required", description: output.languagesRequired.map { $0.value }.joined(separator: ", ")),
+                    OpportunityDetailsModel(title: "Languages spoken", description: output.languagesSpoken?.compactMap { $0.value }.joined(separator: ", ")),
+                    OpportunityDetailsModel(title: "Learning Opportunities", description: output.learningOpportunities.map { $0.value }.joined(separator: ", ")),
+                    OpportunityDetailsModel(title: output.dates.first?.start, description: output.dates.first?.end, dates: true)
+                ]
+
+                if let description = output.description {
+                    models.append(OpportunityDetailsModel(title: "Description", description: description))
+                }
+
+                return models
+            })
+            .catch({ [weak self] error -> Just<[OpportunityDetailsModel]> in
+                self?.errorMessage = error.errorDescription
+
+                return Just([])
+            })
+                .handleEvents(receiveCompletion: { _ in
+                    self.loaderVisibility = false
+                })
+                    .assign(to: &$data)
+    }
+
+    func deleteOpportunity(opportunityId: String) {
+        loaderVisibility = true
+        service.deleteOpportunity(byId: opportunityId)
+            .subscribe(on: RunLoop.main)
+            .catch({ _ -> Just<Bool> in
+                return Just(false)
+            })
+                .handleEvents(receiveCompletion: { _ in
+                    self.loaderVisibility = false
+                })
+                    .assign(to: &$opportunityWasDeleted)
     }
 }

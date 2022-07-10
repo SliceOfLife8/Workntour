@@ -12,6 +12,19 @@ enum Meal: String, CaseIterable, Codable {
     case lunch
     case dinner
     case useSharedKitchen
+
+    var value: String {
+        switch self {
+        case .breakfast:
+            return "Breakfast"
+        case .lunch:
+            return "Lunch"
+        case .dinner:
+            return "Dinner"
+        case .useSharedKitchen:
+            return "Use shared kitchen"
+        }
+    }
 }
 
 enum Language: String, CaseIterable, Codable {

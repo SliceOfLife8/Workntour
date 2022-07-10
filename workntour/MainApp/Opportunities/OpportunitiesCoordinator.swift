@@ -13,14 +13,14 @@ enum OpportunitiesStep: Step {
     case showMap
     case closeMap
     case createOpportunity
-    case showDetailsView
+    case showDetailsView(id: String)
     case openGalleryPicker
     case saveLocation(attribute: PlacemarkAttributes?, latitude: Double, longitude: Double)
     case openCalendar
     case saveDataRangeSelection(from: String, to: String)
     case back
     case showAlert(title: String, subtitle: String?)
-    case opportunityWasCreated
+    case updateOpportunitiesOnLanding
     case deleteOpportunity
 }
 
@@ -79,12 +79,10 @@ final class OpportunitiesCoordinator: NavigationCoordinator {
             AlertHelper.showDefaultAlert(rootViewController,
                                          title: title,
                                          message: subtitle)
-        case .opportunityWasCreated:
-            let previousVC = rootViewController.previousViewController as? OpportunitiesVC
-            previousVC?.viewModel?.fetchModels()
-            navigator.popViewController(animated: true)
-        case .showDetailsView:
-            openOpportunityDetailsMode()
+        case .updateOpportunitiesOnLanding:
+            updateOpportunities()
+        case .showDetailsView(let id):
+            openOpportunityDetailsMode(opportunityId: id)
         case .deleteOpportunity:
             deleteOpportunityAlert()
         }
@@ -115,8 +113,8 @@ final class OpportunitiesCoordinator: NavigationCoordinator {
         navigator.push(selectDates, animated: true)
     }
 
-    private func openOpportunityDetailsMode() {
-        let vc = OpportunityDetailsVC()
+    private func openOpportunityDetailsMode(opportunityId: String) {
+        let vc = OpportunityDetailsVC(opportunityId)
         vc.viewModel = OpportunitesDetailsViewModel()
         vc.coordinator = self
         vc.hidesBottomBarWhenPushed = true
@@ -126,8 +124,15 @@ final class OpportunitiesCoordinator: NavigationCoordinator {
     private func deleteOpportunityAlert() {
         AlertHelper.showAlertWithTwoActions(rootViewController, title: "Delete this opportunity", leftButtonTitle: "Cancel", leftButtonStyle: .cancel, rightButtonTitle: "OK", leftAction: {}, rightAction: {
             let detailsVC = self.rootViewController.topViewController as? OpportunityDetailsVC
-            detailsVC?.viewModel?.deleteOpportunity()
+            detailsVC?.deleteOpportunity()
         })
+    }
+
+    /// This func is been called when we are returning to opportunities & we have to update `UI`
+    private func updateOpportunities() {
+        let previousVC = rootViewController.previousViewController as? OpportunitiesVC
+        previousVC?.viewModel?.fetchModels()
+        navigator.popViewController(animated: true)
     }
 
 }

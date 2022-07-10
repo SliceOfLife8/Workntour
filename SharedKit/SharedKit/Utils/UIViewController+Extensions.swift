@@ -19,11 +19,14 @@ extension UIViewController {
 
     public func setupNavigationBar(mainTitle: String?, largeTitle: Bool = false) {
         self.navigationController?.navigationBar.tintColor = UIColor.appColor(.lavender)
-        self.navigationController?.navigationBar.topItem?.title = ""
         self.navigationController?.navigationBar.prefersLargeTitles = largeTitle
         self.navigationItem.title = mainTitle
 
+        let backButtonAppearance = UIBarButtonItemAppearance(style: .plain)
+        backButtonAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.clear]
+
         let appearance = UINavigationBarAppearance()
+        appearance.backButtonAppearance = backButtonAppearance
         appearance.shadowColor = UIColor.appColor(.separator)
         appearance.backgroundColor = UIColor.appColor(.lightGray)
         appearance.titleTextAttributes = [

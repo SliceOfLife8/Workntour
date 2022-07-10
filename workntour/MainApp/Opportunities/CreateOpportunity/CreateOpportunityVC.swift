@@ -175,6 +175,9 @@ class CreateOpportunityVC: BaseVC<CreateOpportunityViewModel, OpportunitiesCoord
     @IBOutlet weak var thirdStackView: UIStackView!
     @IBOutlet weak var learningOpportunitesLabel: UILabel!
     @IBOutlet weak var learningOpportunitesTextField: GradientTextField!
+    @IBOutlet weak var minDays: UITextField!
+    @IBOutlet weak var maxDays: UITextField!
+    @IBOutlet weak var workingHours: UITextField!
     @IBOutlet weak var infoBtn: UIButton!
     @IBOutlet weak var breakfastBtn: Checkbox!
     @IBOutlet weak var lunchBtn: Checkbox!
@@ -202,24 +205,20 @@ class CreateOpportunityVC: BaseVC<CreateOpportunityViewModel, OpportunitiesCoord
         learningOpportunitesTextField.gradientDelegate = self
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        minDays.setGradientLayer(borderWidth: 1)
+        maxDays.setGradientLayer(borderWidth: 1)
+        workingHours.setGradientLayer(borderWidth: 1)
+    }
+
     override func setupUI() {
         super.setupUI()
 
         let createIcon = UIBarButtonItem(title: "Create", style: .plain, target: self, action: #selector(createActionTapped))
         navigationItem.rightBarButtonItems = [createIcon]
         navigationItem.rightBarButtonItem?.isEnabled = false
-
-        categoryTextField.configure(placeHolder: "Select your category", type: .opportunityCategory)
-        typeOfHelpTextField.configure(placeHolder: "Select your preferences for a perfect traveler", type: .typeOfHelp, fontSize: 12)
-        languagesRequiredTextField.configure(placeHolder: "Add required languages needed", type: .languagesRequired, fontSize: 14)
-        languagesSpokenTextField.configure(placeHolder: "Add languages spoken on your accommodation", type: .languagesSpoken, fontSize: 14)
-        accommodationsTextField.configure(placeHolder: "Select accommodation type", type: .accommodation)
-        learningOpportunitesTextField.configure(placeHolder: "Select learning opportunities", type: .learningOpportunities, fontSize: 12)
-
-        easyTipView = EasyTipView(text: "Please fill in all 13 required fields in order to activate Create button", preferences: preferences)
-        // swiftlint:disable line_length
-        let imagesInfoAttributedText = addBoldText(fullString: "The images you upload should be in high resolution. Like that your travelers will be willing to approach you! It is important to include photos of your property, the accommodation that you will be providing to travelers and anything else that will make your opportunity attractive to travelers. Please do not include pictures that show the name of your Business or Property, as they will be removed.", boldPartsOfString: ["Please do not include pictures that show the name of your Business or Property, as they will be removed."], font: UIFont.scriptFont(.regular, size: 16), boldFont: UIFont.scriptFont(.bold, size: 16))
-        imagesInfoTipView = EasyTipView(text: imagesInfoAttributedText, preferences: preferences)
 
         secondaryStackView.setCustomSpacing(32, after: typeOfHelpTextField)
         secondaryStackView.setCustomSpacing(32, after: addressLabel)
@@ -243,6 +242,25 @@ class CreateOpportunityVC: BaseVC<CreateOpportunityViewModel, OpportunitiesCoord
         }
     }
 
+    override func setupTexts() {
+        super.setupTexts()
+
+        categoryTextField.configure(placeHolder: "Select your category", type: .opportunityCategory)
+        typeOfHelpTextField.configure(placeHolder: "Select your preferences for a perfect traveler", type: .typeOfHelp, fontSize: 12)
+        languagesRequiredTextField.configure(placeHolder: "Add required languages needed", type: .languagesRequired, fontSize: 14)
+        languagesSpokenTextField.configure(placeHolder: "Add languages spoken on your accommodation", type: .languagesSpoken, fontSize: 14)
+        accommodationsTextField.configure(placeHolder: "Select accommodation type", type: .accommodation)
+        learningOpportunitesTextField.configure(placeHolder: "Select learning opportunities", type: .learningOpportunities, fontSize: 12)
+        minDays.attributedPlaceholder = NSAttributedString(string: "7. Min Days", attributes: [NSAttributedString.Key.foregroundColor: UIColor.appColor(.placeholder)])
+        maxDays.attributedPlaceholder = NSAttributedString(string: "8. Max Days", attributes: [NSAttributedString.Key.foregroundColor: UIColor.appColor(.placeholder)])
+        workingHours.attributedPlaceholder = NSAttributedString(string: "9. Total Hours", attributes: [NSAttributedString.Key.foregroundColor: UIColor.appColor(.placeholder)])
+
+        easyTipView = EasyTipView(text: "Please fill in all 13 required fields in order to activate Create button", preferences: preferences)
+        // swiftlint:disable line_length
+        let imagesInfoAttributedText = addBoldText(fullString: "The images you upload should be in high resolution. Like that your travelers will be willing to approach you! It is important to include photos of your property, the accommodation that you will be providing to travelers and anything else that will make your opportunity attractive to travelers. Please do not include pictures that show the name of your Business or Property, as they will be removed.", boldPartsOfString: ["Please do not include pictures that show the name of your Business or Property, as they will be removed."], font: UIFont.scriptFont(.regular, size: 16), boldFont: UIFont.scriptFont(.bold, size: 16))
+        imagesInfoTipView = EasyTipView(text: imagesInfoAttributedText, preferences: preferences)
+    }
+
     private func customizeDropDown() {
         let appearance = DropDown.appearance()
 
@@ -259,7 +277,8 @@ class CreateOpportunityVC: BaseVC<CreateOpportunityViewModel, OpportunitiesCoord
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        setupNavigationBar(mainTitle: "New opportunity")
+        navigationItem.title = "New Opportunity"
+        navigationItem.largeTitleDisplayMode = .never
         progressBar.isHidden = false
     }
 
@@ -312,7 +331,7 @@ class CreateOpportunityVC: BaseVC<CreateOpportunityViewModel, OpportunitiesCoord
             .dropFirst()
             .sink(receiveValue: { [weak self] status in
                 if status {
-                    self?.coordinator?.navigate(to: .opportunityWasCreated)
+                    self?.coordinator?.navigate(to: .updateOpportunitiesOnLanding)
                 } else {
                     self?.coordinator?.navigate(to: .showAlert(title: "Something went wrong!", subtitle: "Please try again"))
                 }

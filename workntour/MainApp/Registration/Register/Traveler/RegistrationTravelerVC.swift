@@ -211,6 +211,7 @@ class RegistrationTravelerVC: BaseVC<RegistrationTravelerViewModel, Registration
 private extension RegistrationTravelerVC {
     private func setupNavBar() {
         self.setupNavigationBar(mainTitle: "Sign up")
+        navigationItem.title = "Sign up"
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(closeBtnTapped))
     }
 

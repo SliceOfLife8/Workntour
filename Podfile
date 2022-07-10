@@ -29,6 +29,7 @@ def common
   pod 'KDCircularProgress'
   pod 'HorizonCalendar'
   pod 'FloatingPanel'
+  pod 'GooglePlaces'
 end
 
 def logging

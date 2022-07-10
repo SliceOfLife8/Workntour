@@ -15,7 +15,7 @@ class ImageViewController: UIViewController {
     lazy var imageView: UIImageView = {
         let view = UIImageView()
         view.contentMode = .scaleAspectFill
-        view.kf.setImage(with: imageURL)
+        view.kf.setImage(with: imageURL, placeholder: UIImage(named: "placeholder"))
         view.clipsToBounds = true
 
         return view

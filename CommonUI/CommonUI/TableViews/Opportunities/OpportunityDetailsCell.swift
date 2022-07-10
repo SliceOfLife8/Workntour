@@ -14,23 +14,18 @@ public class OpportunityDetailsCell: UITableViewCell {
     // MARK: - Outlets
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var mainStackView: UIStackView!
-    @IBOutlet weak var datesStackView: UIStackView!
-    @IBOutlet weak var minimumDays: UILabel!
-    @IBOutlet weak var maximumDays: UILabel!
+
+    public override func prepareForReuse() {
+        super.prepareForReuse()
+
+        titleLabel.text?.removeAll()
+        descriptionLabel.text?.removeAll()
+    }
 
     public func setup(title: String?,
-                      value: String?,
-                      showDays: Bool) {
+                      value: String?) {
         titleLabel.text = title
-        descriptionLabel.text = value
-
-        if let minDays = title, let maxDays = value, showDays {
-            datesStackView.isHidden = false
-            mainStackView.isHidden = true
-            minimumDays.text = "\(minDays) days"
-            maximumDays.text = "\(maxDays) days"
-        }
+        descriptionLabel.text = (value?.isEmpty == true) ? "Not provided" : value
     }
     
 }

@@ -24,6 +24,8 @@
 		1B39AA392872FF4B009377A7 /* OpportunitesDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B39AA382872FF4B009377A7 /* OpportunitesDetailsViewModel.swift */; };
 		1B39AA4728744791009377A7 /* OpportunityDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B39AA4628744791009377A7 /* OpportunityDetailsModel.swift */; };
 		1B39AA5128749A7C009377A7 /* OpportunityEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B39AA5028749A7C009377A7 /* OpportunityEnums.swift */; };
+		1B39AA5A28784BF2009377A7 /* OpportunitiesResultsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B39AA5928784BF2009377A7 /* OpportunitiesResultsVC.swift */; };
+		1B39AA5C2878533B009377A7 /* GooglePlacesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B39AA5B2878533B009377A7 /* GooglePlacesManager.swift */; };
 		1B3C382F28507823000EEADF /* EmailVerificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3C382E28507823000EEADF /* EmailVerificationVC.swift */; };
 		1B3C38312850782F000EEADF /* EmailVerificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3C38302850782F000EEADF /* EmailVerificationViewModel.swift */; };
 		1B3C383628508B79000EEADF /* RegistrationHostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3C383528508B79000EEADF /* RegistrationHostVC.swift */; };
@@ -163,6 +165,8 @@
 		1B39AA382872FF4B009377A7 /* OpportunitesDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunitesDetailsViewModel.swift; sourceTree = "<group>"; };
 		1B39AA4628744791009377A7 /* OpportunityDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunityDetailsModel.swift; sourceTree = "<group>"; };
 		1B39AA5028749A7C009377A7 /* OpportunityEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunityEnums.swift; sourceTree = "<group>"; };
+		1B39AA5928784BF2009377A7 /* OpportunitiesResultsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunitiesResultsVC.swift; sourceTree = "<group>"; };
+		1B39AA5B2878533B009377A7 /* GooglePlacesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooglePlacesManager.swift; sourceTree = "<group>"; };
 		1B3C382E28507823000EEADF /* EmailVerificationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerificationVC.swift; sourceTree = "<group>"; };
 		1B3C38302850782F000EEADF /* EmailVerificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerificationViewModel.swift; sourceTree = "<group>"; };
 		1B3C383528508B79000EEADF /* RegistrationHostVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationHostVC.swift; sourceTree = "<group>"; };
@@ -395,6 +399,14 @@
 				1B39AA4628744791009377A7 /* OpportunityDetailsModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		1B39AA5828784BDE009377A7 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				1B39AA5928784BF2009377A7 /* OpportunitiesResultsVC.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		1B3C383428508B56000EEADF /* Host */ = {
@@ -705,6 +717,7 @@
 		1BC190A7285C5BB400585533 /* HomePage */ = {
 			isa = PBXGroup;
 			children = (
+				1B39AA5828784BDE009377A7 /* Search */,
 				1BC190AA285C5C4900585533 /* HomeCoordinator.swift */,
 				1BC190AC285C5C5B00585533 /* HomeVC.swift */,
 				1BC190AE285C5C6300585533 /* HomeViewModel.swift */,
@@ -747,6 +760,7 @@
 			children = (
 				1BC190C8285F1C0700585533 /* UserDataManager.swift */,
 				1BC190DA28620B9300585533 /* LocationManager.swift */,
+				1B39AA5B2878533B009377A7 /* GooglePlacesManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -845,6 +859,7 @@
 				1B9A3D1428282517003E0C34 /* Firebase dSYMs */,
 				1B9A3D242828EA99003E0C34 /* Embed Frameworks */,
 				029E61A064FD8B2C9505B978 /* [CP] Embed Pods Frameworks */,
+				A274B466399F6AB7490B2340 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1027,6 +1042,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		A274B466399F6AB7490B2340 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-workntour/Pods-workntour-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-workntour/Pods-workntour-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-workntour/Pods-workntour-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1040,6 +1072,7 @@
 				1BC1909E285A0DB200585533 /* TabBarCoordinator.swift in Sources */,
 				1BC190C6285CA91000585533 /* TabBarViewController.swift in Sources */,
 				1BC190E028620D0400585533 /* SearchLocationsVC.swift in Sources */,
+				1B39AA5C2878533B009377A7 /* GooglePlacesManager.swift in Sources */,
 				1B7753CA286A276000D81526 /* CreateOpportunityViewModel.swift in Sources */,
 				1BC190B8285C5CB400585533 /* NotificationsCoordinator.swift in Sources */,
 				1BC190DB28620B9300585533 /* LocationManager.swift in Sources */,
@@ -1101,6 +1134,7 @@
 				1B3C384028520853000EEADF /* LoginModel.swift in Sources */,
 				1B16837E283A58F00067F2DB /* RegistrationTravelerVC.swift in Sources */,
 				1B1683A6283D1F6E0067F2DB /* ErrorResponse.swift in Sources */,
+				1B39AA5A28784BF2009377A7 /* OpportunitiesResultsVC.swift in Sources */,
 				1BA2DEF7281E8AB600DB128D /* AppCoordinator.swift in Sources */,
 				1BC190BC285C5CC500585533 /* NotificationsViewModel.swift in Sources */,
 				1BC190D62860A53000585533 /* SettingsOption.swift in Sources */,

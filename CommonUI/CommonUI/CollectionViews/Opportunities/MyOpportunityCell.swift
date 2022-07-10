@@ -36,7 +36,7 @@ public class MyOpportunityCell: UICollectionViewCell {
                           location: String?,
                           category: String,
                           dates: [(start: String, end: String)]) {
-        imageView.kf.setImage(with: imageUrl)
+        imageView.kf.setImage(with: imageUrl, placeholder: UIImage(named: "placeholder"))
         jobTitleLabel.text = jobTitle
         locationLabel.text = location
         categoryLabel.text = category

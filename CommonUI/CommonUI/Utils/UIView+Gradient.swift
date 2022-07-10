@@ -10,6 +10,7 @@ import UIKit
 public extension UIView {
 
     func setGradientLayer(borderWidth: CGFloat, hasError: Bool = false) {
+        removeGradientLayers()
         let lineWidth: CGFloat = borderWidth
         let rect = bounds.insetBy(dx: lineWidth / 2, dy: lineWidth / 2)
 

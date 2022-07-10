@@ -9,6 +9,7 @@ import Foundation
 
 struct OpportunityDto: Hashable, Codable {
     let memberId: String?
+    let opportunityId: String?
     let category: OpportunityCategory
     let images: [Data]
     let imageUrls: [String]
@@ -33,7 +34,7 @@ struct OpportunityDto: Hashable, Codable {
     var pets: Bool?
 
     enum CodingKeys: String, CodingKey {
-        case memberId
+        case memberId, opportunityId
         case category = "opportunityCategory"
         case images, imageUrls
         case dates = "opportunityDates"
@@ -52,11 +53,12 @@ struct OpportunityDto: Hashable, Codable {
         case pets = "petsAllowed"
     }
 
-    init(memberId: String?, category: OpportunityCategory, images: [Data], title: String, description: String?, typeOfHelp: [TypeOfHelp],
+    init(memberId: String?, opportunityId: String? = nil, category: OpportunityCategory, images: [Data], title: String, description: String?, typeOfHelp: [TypeOfHelp],
          location: OpportunityLocation, dates: [OpportunityDates], minDays: Int, maxDays: Int, workingHours: Int,
          languagesRequired: [Language], languagesSpoken: [Language]?, accommodation: Accommodation, meals: [Meal],
          learningOpportunities: [LearningOpportunities]) {
         self.memberId = memberId
+        self.opportunityId = opportunityId
         self.category = category
         self.images = images
         self.imageUrls = []

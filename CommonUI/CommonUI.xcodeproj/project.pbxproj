@@ -22,6 +22,8 @@
 		1B39AA4B28744A8C009377A7 /* OpportunityDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B39AA4928744A8C009377A7 /* OpportunityDetailsCell.xib */; };
 		1B39AA4E28746AEB009377A7 /* OpportunityDetailsMapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B39AA4C28746AEB009377A7 /* OpportunityDetailsMapCell.swift */; };
 		1B39AA4F28746AEB009377A7 /* OpportunityDetailsMapCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B39AA4D28746AEB009377A7 /* OpportunityDetailsMapCell.xib */; };
+		1B39AA562875B40F009377A7 /* OpportunityDetailsDatesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B39AA542875B40F009377A7 /* OpportunityDetailsDatesCell.swift */; };
+		1B39AA572875B40F009377A7 /* OpportunityDetailsDatesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B39AA552875B40F009377A7 /* OpportunityDetailsDatesCell.xib */; };
 		1B3C383C28510D9E000EEADF /* UIView+Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3C383B28510D9E000EEADF /* UIView+Gradient.swift */; };
 		1B4AE40A283E691D00FA6420 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4AE409283E691D00FA6420 /* PrimaryButton.swift */; };
 		1B4AE40D283E6FDC00FA6420 /* UIImpactFeedbackGenerator+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4AE40C283E6FDC00FA6420 /* UIImpactFeedbackGenerator+Extension.swift */; };
@@ -72,6 +74,8 @@
 		1B39AA4928744A8C009377A7 /* OpportunityDetailsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OpportunityDetailsCell.xib; sourceTree = "<group>"; };
 		1B39AA4C28746AEB009377A7 /* OpportunityDetailsMapCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunityDetailsMapCell.swift; sourceTree = "<group>"; };
 		1B39AA4D28746AEB009377A7 /* OpportunityDetailsMapCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OpportunityDetailsMapCell.xib; sourceTree = "<group>"; };
+		1B39AA542875B40F009377A7 /* OpportunityDetailsDatesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunityDetailsDatesCell.swift; sourceTree = "<group>"; };
+		1B39AA552875B40F009377A7 /* OpportunityDetailsDatesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OpportunityDetailsDatesCell.xib; sourceTree = "<group>"; };
 		1B3C383B28510D9E000EEADF /* UIView+Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Gradient.swift"; sourceTree = "<group>"; };
 		1B4AE409283E691D00FA6420 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		1B4AE40C283E6FDC00FA6420 /* UIImpactFeedbackGenerator+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImpactFeedbackGenerator+Extension.swift"; sourceTree = "<group>"; };
@@ -165,6 +169,8 @@
 				1B39AA4928744A8C009377A7 /* OpportunityDetailsCell.xib */,
 				1B39AA4C28746AEB009377A7 /* OpportunityDetailsMapCell.swift */,
 				1B39AA4D28746AEB009377A7 /* OpportunityDetailsMapCell.xib */,
+				1B39AA542875B40F009377A7 /* OpportunityDetailsDatesCell.swift */,
+				1B39AA552875B40F009377A7 /* OpportunityDetailsDatesCell.xib */,
 			);
 			path = Opportunities;
 			sourceTree = "<group>";
@@ -400,6 +406,7 @@
 				1B39AA4528743B86009377A7 /* OpportunityDetailsHeaderView.xib in Resources */,
 				1B39AA4F28746AEB009377A7 /* OpportunityDetailsMapCell.xib in Resources */,
 				1B7753D2286B2CF200D81526 /* OpportunityImageCell.xib in Resources */,
+				1B39AA572875B40F009377A7 /* OpportunityDetailsDatesCell.xib in Resources */,
 				1B308A532842452600797F32 /* RegistrationCell.xib in Resources */,
 				1BE6EA972868B23D009CBE6D /* MyOpportunityCell.xib in Resources */,
 				1B39AA4B28744A8C009377A7 /* OpportunityDetailsCell.xib in Resources */,
@@ -500,6 +507,7 @@
 				1B39AA372872FE2A009377A7 /* PageControl.swift in Sources */,
 				1B563B802848C47A00B851C1 /* CustomViewProtocol.swift in Sources */,
 				1B4AE44C2840AEFC00FA6420 /* Checkbox.swift in Sources */,
+				1B39AA562875B40F009377A7 /* OpportunityDetailsDatesCell.swift in Sources */,
 				1BC190D3285F3B0500585533 /* GradientButton.swift in Sources */,
 				1B7753DF286C7EB800D81526 /* String+Extensions.swift in Sources */,
 				1B4AE40D283E6FDC00FA6420 /* UIImpactFeedbackGenerator+Extension.swift in Sources */,

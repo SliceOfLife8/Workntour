@@ -45,12 +45,15 @@
                 <outlet property="learningOpportunitesLabel" destination="1vM-hi-9el" id="Vqf-hI-zjC"/>
                 <outlet property="learningOpportunitesTextField" destination="0jS-Iu-Z7f" id="MVd-VU-E9i"/>
                 <outlet property="lunchBtn" destination="mHy-Mx-dk7" id="6tw-u2-iNr"/>
+                <outlet property="maxDays" destination="sza-rt-8Vs" id="Lr7-QN-FKW"/>
+                <outlet property="minDays" destination="Ezr-Jd-lF0" id="hF1-pq-zFF"/>
                 <outlet property="scrollView" destination="eIl-sn-pvo" id="LHZ-91-q4w"/>
                 <outlet property="secondaryStackView" destination="Nf1-EU-i9s" id="tJA-6l-D7v"/>
                 <outlet property="thirdStackView" destination="lz9-rw-DSt" id="T2b-L5-YxX"/>
                 <outlet property="typeOfHelpTextField" destination="RWB-7N-pHd" id="hBv-xi-BeR"/>
                 <outlet property="useSharedKitchenBtn" destination="FEe-Nw-SXK" id="sW0-nh-91S"/>
                 <outlet property="view" destination="AuG-GP-bGP" id="j2F-g3-99g"/>
+                <outlet property="workingHours" destination="RRP-rx-lz1" id="iAB-iR-v9g"/>
                 <outlet property="workingsDayStackView" destination="Rxf-CW-Zbi" id="a4a-U5-Imy"/>
             </connections>
         </placeholder>
@@ -63,7 +66,7 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o4m-vc-JIw" userLabel="Content View">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="1084"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="1081.5"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="tig-iq-ogK">
                                     <rect key="frame" x="16" y="24" width="382" height="284.5"/>
@@ -178,7 +181,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Nf1-EU-i9s">
-                                    <rect key="frame" x="16" y="452.5" width="382" height="382"/>
+                                    <rect key="frame" x="16" y="452.5" width="382" height="379.5"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4. Type of help*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gI1-hA-YLV">
                                             <rect key="frame" x="0.0" y="0.0" width="382" height="17"/>
@@ -243,10 +246,10 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Rxf-CW-Zbi">
-                                            <rect key="frame" x="0.0" y="201" width="382" height="26.5"/>
+                                            <rect key="frame" x="0.0" y="201" width="382" height="24"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="7. Min Days" textAlignment="center" minimumFontSize="12" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Ezr-Jd-lF0">
-                                                    <rect key="frame" x="0.0" y="0.0" width="122" height="26.5"/>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="7. Min Days" textAlignment="center" minimumFontSize="12" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Ezr-Jd-lF0">
+                                                    <rect key="frame" x="0.0" y="0.0" width="122" height="24"/>
                                                     <color key="textColor" name="basicText"/>
                                                     <fontDescription key="fontDescription" name="Lato-Heavy" family="Lato" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -254,8 +257,8 @@
                                                         <action selector="minDaysTextFieldChanged:" destination="-1" eventType="editingChanged" id="oaM-tX-AOd"/>
                                                     </connections>
                                                 </textField>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="8. Max Days" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="sza-rt-8Vs">
-                                                    <rect key="frame" x="130" y="0.0" width="122" height="26.5"/>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="8. Max Days" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="sza-rt-8Vs">
+                                                    <rect key="frame" x="130" y="0.0" width="122" height="24"/>
                                                     <color key="textColor" name="basicText"/>
                                                     <fontDescription key="fontDescription" name="Lato-Heavy" family="Lato" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -263,8 +266,8 @@
                                                         <action selector="maxDaysTextFieldChanged:" destination="-1" eventType="editingChanged" id="0Lb-3a-5wL"/>
                                                     </connections>
                                                 </textField>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="9. Total hours" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="RRP-rx-lz1">
-                                                    <rect key="frame" x="260" y="0.0" width="122" height="26.5"/>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="9. Total hours" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="RRP-rx-lz1">
+                                                    <rect key="frame" x="260" y="0.0" width="122" height="24"/>
                                                     <color key="textColor" name="basicText"/>
                                                     <fontDescription key="fontDescription" name="Lato-Heavy" family="Lato" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -273,44 +276,47 @@
                                                     </connections>
                                                 </textField>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="24" id="eoB-sT-aA4"/>
+                                            </constraints>
                                         </stackView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10. Languages required*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h60-xb-67o">
-                                            <rect key="frame" x="0.0" y="235.5" width="382" height="17"/>
+                                            <rect key="frame" x="0.0" y="233" width="382" height="17"/>
                                             <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
                                             <color key="textColor" red="0.26274509800000001" green="0.094117647060000004" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9eO-1O-AWv" customClass="GradientTextField" customModule="CommonUI">
-                                            <rect key="frame" x="0.0" y="260.5" width="382" height="18.5"/>
+                                            <rect key="frame" x="0.0" y="258" width="382" height="18.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Languages spoken" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vgt-Ky-8Dt">
-                                            <rect key="frame" x="0.0" y="287" width="382" height="17"/>
+                                            <rect key="frame" x="0.0" y="284.5" width="382" height="17"/>
                                             <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
                                             <color key="textColor" red="0.26274509800000001" green="0.094117647060000004" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pnz-Yx-bys" customClass="GradientTextField" customModule="CommonUI">
-                                            <rect key="frame" x="0.0" y="312" width="382" height="18.5"/>
+                                            <rect key="frame" x="0.0" y="309.5" width="382" height="18.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11. Accommodation provided*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ya6-Te-oN8">
-                                            <rect key="frame" x="0.0" y="338.5" width="382" height="17"/>
+                                            <rect key="frame" x="0.0" y="336" width="382" height="17"/>
                                             <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
                                             <color key="textColor" red="0.26274509800000001" green="0.094117647060000004" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6xn-Nz-FOy" customClass="GradientTextField" customModule="CommonUI">
-                                            <rect key="frame" x="0.0" y="363.5" width="382" height="18.5"/>
+                                            <rect key="frame" x="0.0" y="361" width="382" height="18.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                     </subviews>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="lz9-rw-DSt">
-                                    <rect key="frame" x="16" y="858.5" width="382" height="193.5"/>
+                                    <rect key="frame" x="16" y="856" width="382" height="193.5"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12. Meals provided*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3dT-69-2Qr">
                                             <rect key="frame" x="0.0" y="0.0" width="382" height="17"/>

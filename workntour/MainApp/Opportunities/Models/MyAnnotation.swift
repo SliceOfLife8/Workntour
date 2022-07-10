@@ -16,9 +16,17 @@ struct PlacemarkAttributes: Hashable, Codable {
     let postalCode: String?
 
     func formattedName() -> String {
-        let attributes = [name, area, locality, country, postalCode]
+        var attributes = [name, area, locality, country, postalCode]
+
+        if name == postalCode {
+            attributes.removeFirst()
+        }
 
         return attributes.compactMap({ $0 }).map({ String($0) }).joined(separator: ", ")
+    }
+
+    func simpleFormat() -> String {
+        return [area, country].compactMap({ $0 }).map({ String($0) }).joined(separator: ", ")
     }
 }
 

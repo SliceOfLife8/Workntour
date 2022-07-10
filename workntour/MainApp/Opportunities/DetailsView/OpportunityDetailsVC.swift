@@ -10,7 +10,9 @@ import SharedKit
 import CommonUI
 
 class OpportunityDetailsVC: BaseVC<OpportunitesDetailsViewModel, OpportunitiesCoordinator> {
-    open var headerInitialHeight: CGFloat = 300
+    private(set) var opporunityId: String
+    private var headerInitialHeight: CGFloat = 300
+    private var rowItems: [OpportunityDetailsModel] = []
 
     private lazy var tableView: UITableView = {
         let view = UITableView(frame: .zero, style: .grouped)
@@ -26,6 +28,7 @@ class OpportunityDetailsVC: BaseVC<OpportunitesDetailsViewModel, OpportunitiesCo
         view.register(UINib(nibName: OpportunityDetailsHeaderView.identifier, bundle: Bundle(for: OpportunityDetailsHeaderView.self)), forHeaderFooterViewReuseIdentifier: OpportunityDetailsHeaderView.identifier)
         view.register(UINib(nibName: OpportunityDetailsMapCell.identifier, bundle: Bundle(for: OpportunityDetailsMapCell.self)), forCellReuseIdentifier: OpportunityDetailsMapCell.identifier)
         view.register(UINib(nibName: OpportunityDetailsCell.identifier, bundle: Bundle(for: OpportunityDetailsCell.self)), forCellReuseIdentifier: OpportunityDetailsCell.identifier)
+        view.register(UINib(nibName: OpportunityDetailsDatesCell.identifier, bundle: Bundle(for: OpportunityDetailsDatesCell.self)), forCellReuseIdentifier: OpportunityDetailsDatesCell.identifier)
 
         return view
     }()
@@ -47,6 +50,7 @@ class OpportunityDetailsVC: BaseVC<OpportunitesDetailsViewModel, OpportunitiesCo
         button.contentVerticalAlignment = .fill
         button.contentHorizontalAlignment = .fill
         button.addTarget(self, action: #selector(deleteButtonTapped), for: .touchUpInside)
+        button.isHidden = true
         return button
     }()
 
@@ -56,22 +60,33 @@ class OpportunityDetailsVC: BaseVC<OpportunitesDetailsViewModel, OpportunitiesCo
         return vc
     }()
 
+    // MARK: - Inits
+    init(_ id: String) {
+        self.opporunityId = id
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        viewModel?.fetchData()
+        viewModel?.fetchModels(opportunityId: opporunityId)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        tableView.setContentOffset(CGPoint(x: 0, y: -headerInitialHeight), animated: true)
+        // tableView.setContentOffset(CGPoint(x: 0, y: -headerInitialHeight), animated: true)
     }
 
     override func setupUI() {
         super.setupUI()
 
-        view.backgroundColor = .clear
+        view.backgroundColor = .white
         view.addSubview(tableView)
         view.addSubview(backButton)
         view.addSubview(deleteButton)
@@ -113,6 +128,30 @@ class OpportunityDetailsVC: BaseVC<OpportunitesDetailsViewModel, OpportunitiesCo
                 self?.pageController.reloadData(withImages: images)
             })
             .store(in: &storage)
+
+        viewModel?.$data
+            .filter { $0.count > 0 }
+            .sink(receiveValue: { [weak self] data in
+                self?.rowItems = data
+                self?.deleteButton.isHidden = false
+                self?.tableView.reloadData()
+            })
+            .store(in: &storage)
+
+        viewModel?.$opportunityWasDeleted
+            .sink(receiveValue: { [weak self] status in
+                if status {
+                    self?.coordinator?.navigate(to: .updateOpportunitiesOnLanding)
+                }
+            })
+            .store(in: &storage)
+
+        viewModel?.$errorMessage
+            .compactMap { $0 }
+            .sink(receiveValue: { [weak self] _ in
+                self?.coordinator?.navigate(to: .showAlert(title: "Something went wrong", subtitle: "Please try again."))
+            })
+            .store(in: &storage)
     }
 
     // MARK: - Actions
@@ -123,6 +162,10 @@ class OpportunityDetailsVC: BaseVC<OpportunitesDetailsViewModel, OpportunitiesCo
 
     @objc private func deleteButtonTapped() {
         self.coordinator?.navigate(to: .deleteOpportunity)
+    }
+
+    func deleteOpportunity() {
+        self.viewModel?.deleteOpportunity(opportunityId: opporunityId)
     }
 
 }
@@ -138,27 +181,34 @@ extension OpportunityDetailsVC: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?.data.count ?? 0
+        return rowItems.count
     }
-
+    // swiftlint:disable force_cast
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let model = viewModel?.data[indexPath.row],
-              let cell = tableView.dequeueReusableCell(withIdentifier: OpportunityDetailsCell.identifier, for: indexPath) as? OpportunityDetailsCell,
-              let mapCell = tableView.dequeueReusableCell(withIdentifier: OpportunityDetailsMapCell.identifier) as? OpportunityDetailsMapCell
-        else {
+        guard let model = rowItems[safe: indexPath.row] else {
             assertionFailure()
             return UITableViewCell()
         }
 
         if let location = model.location {
+            let mapCell = tableView.dequeueReusableCell(withIdentifier: OpportunityDetailsMapCell.identifier, for: indexPath) as! OpportunityDetailsMapCell
             mapCell.setupArea(latitude: location.latitude,
                               longitude: location.longitude)
 
             return mapCell
+        } else if model.showDays || model.showDates {
+            let dateCell = tableView.dequeueReusableCell(withIdentifier: OpportunityDetailsDatesCell.identifier) as! OpportunityDetailsDatesCell
+            dateCell.setup(leftHeader: model.showDays ? "Stay at least" : "Starts",
+                           rightHeader: model.showDays ? "Stay up to" : "Ends",
+                           title: model.title,
+                           value: model.description,
+                           showDays: model.showDays)
+
+            return dateCell
         } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: OpportunityDetailsCell.identifier, for: indexPath) as! OpportunityDetailsCell
             cell.setup(title: model.title,
-                       value: model.description,
-                       showDays: model.showDates)
+                       value: model.description)
 
             return cell
         }
@@ -178,6 +228,11 @@ extension OpportunityDetailsVC: UITableViewDelegate, UITableViewDataSource {
 
             self.pageController.view.snp.updateConstraints {
                 $0.height.equalTo(offset)
+            }
+            // Update tableview top padding distance when images are out of screen.
+            self.tableView.snp.updateConstraints {
+                let topPadding = (offset < 0) ? view.safeAreaInsets.top : .zero
+                $0.top.equalTo(topPadding)
             }
         }
     }

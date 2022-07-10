@@ -14,4 +14,8 @@ protocol OpportunityService: AnyObject {
 
     func getOpportunities(id: String) -> AnyPublisher<[OpportunityDto], ProviderError>
 
+    func getOpportunity(byId opportunityId: String) -> AnyPublisher<OpportunityDto, ProviderError>
+
+    func deleteOpportunity(byId opportunityId: String) -> AnyPublisher<Bool, ProviderError>
+
 }

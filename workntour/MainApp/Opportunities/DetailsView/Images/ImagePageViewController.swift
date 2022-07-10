@@ -47,7 +47,7 @@ class ImagePageViewController: UIViewController {
     public func reloadData(withImages imageURLs: [URL?]) {
         viewControllers = imageURLs.map { ImageViewController(imageURL: $0) }
         pageControl.numberOfPages = imageURLs.count
-        pageControl.isHidden = false
+        pageControl.isHidden = imageURLs.count > 1 ? false : true
 
         if let vc = viewControllers.first {
             pageController.setViewControllers([vc],

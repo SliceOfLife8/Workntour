@@ -15,9 +15,6 @@
         <array key="Lato-Regular.ttf">
             <string>Lato-Regular</string>
         </array>
-        <array key="Lato-Semibold.ttf">
-            <string>Lato-Semibold</string>
-        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -46,45 +43,6 @@
                             </label>
                         </subviews>
                     </stackView>
-                    <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="iq8-72-8JF" userLabel="Dates ">
-                        <rect key="frame" x="24" y="16" width="272" height="117"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="sJC-qE-ZQQ">
-                                <rect key="frame" x="0.0" y="0.0" width="272" height="17"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stay at least" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aeq-3c-pU7">
-                                        <rect key="frame" x="0.0" y="0.0" width="136" height="17"/>
-                                        <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="14"/>
-                                        <color key="textColor" name="lavender"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Stay up to" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="74g-RM-IFF">
-                                        <rect key="frame" x="136" y="0.0" width="136" height="17"/>
-                                        <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="14"/>
-                                        <color key="textColor" name="lavender"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="fDu-2E-7Iw">
-                                <rect key="frame" x="0.0" y="29" width="272" height="88"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mSS-aJ-Q2X" userLabel="minimum">
-                                        <rect key="frame" x="0.0" y="0.0" width="136" height="88"/>
-                                        <fontDescription key="fontDescription" name="Lato-Semibold" family="Lato" pointSize="24"/>
-                                        <color key="textColor" name="purpleBlack"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q0n-ua-Ux5" userLabel="maximum">
-                                        <rect key="frame" x="136" y="0.0" width="136" height="88"/>
-                                        <fontDescription key="fontDescription" name="Lato-Semibold" family="Lato" pointSize="24"/>
-                                        <color key="textColor" name="purpleBlack"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
-                        </subviews>
-                    </stackView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XQc-Si-crb" userLabel="Separator View">
                         <rect key="frame" x="16" y="149" width="288" height="1"/>
                         <color key="backgroundColor" red="0.89411764709999997" green="0.89411764709999997" blue="0.89411764709999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -94,15 +52,14 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="iq8-72-8JF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="1Dg-tC-oKm"/>
                     <constraint firstAttribute="trailing" secondItem="XQc-Si-crb" secondAttribute="trailing" constant="16" id="9z3-EJ-6sq"/>
+                    <constraint firstAttribute="trailing" secondItem="XQc-Si-crb" secondAttribute="trailing" constant="16" id="ADc-mB-PSV"/>
                     <constraint firstAttribute="trailing" secondItem="McH-YP-Ffs" secondAttribute="trailing" constant="24" id="FV8-ys-NdN"/>
                     <constraint firstAttribute="bottom" secondItem="XQc-Si-crb" secondAttribute="bottom" id="J42-TC-s5v"/>
-                    <constraint firstItem="iq8-72-8JF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="LEG-RG-WlE"/>
                     <constraint firstItem="XQc-Si-crb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="NUZ-H0-6Lk"/>
-                    <constraint firstAttribute="trailing" secondItem="iq8-72-8JF" secondAttribute="trailing" constant="24" id="VMy-lA-gbA"/>
+                    <constraint firstAttribute="bottom" secondItem="XQc-Si-crb" secondAttribute="bottom" id="cXc-dI-r2x"/>
                     <constraint firstItem="McH-YP-Ffs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="f4S-Uq-OqF"/>
-                    <constraint firstItem="XQc-Si-crb" firstAttribute="top" secondItem="iq8-72-8JF" secondAttribute="bottom" priority="999" constant="16" id="fx9-SW-Cs0"/>
+                    <constraint firstItem="XQc-Si-crb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="fz3-DT-xbc"/>
                     <constraint firstItem="McH-YP-Ffs" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="lTg-Rk-KcT"/>
                     <constraint firstItem="XQc-Si-crb" firstAttribute="top" secondItem="McH-YP-Ffs" secondAttribute="bottom" priority="999" constant="16" id="wNv-33-xma"/>
                 </constraints>
@@ -110,11 +67,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
-                <outlet property="datesStackView" destination="iq8-72-8JF" id="uFk-kD-04J"/>
                 <outlet property="descriptionLabel" destination="Dmc-i5-ffR" id="E4J-X0-VNJ"/>
-                <outlet property="mainStackView" destination="McH-YP-Ffs" id="5lt-Jq-bkJ"/>
-                <outlet property="maximumDays" destination="q0n-ua-Ux5" id="KcR-hu-JT9"/>
-                <outlet property="minimumDays" destination="mSS-aJ-Q2X" id="rGZ-E7-Hb9"/>
                 <outlet property="titleLabel" destination="2cs-uc-a1L" id="uNB-xA-6Hz"/>
             </connections>
             <point key="canvasLocation" x="139" y="154"/>
@@ -123,9 +76,6 @@
     <resources>
         <namedColor name="lavender">
             <color red="0.53333333333333333" green="0.4392156862745098" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="purpleBlack">
-            <color red="0.2196078431372549" green="0.20000000000000001" blue="0.31372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

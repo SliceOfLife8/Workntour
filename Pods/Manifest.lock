@@ -78,6 +78,7 @@ PODS:
     - GoogleUtilities/Environment (~> 7.7)
     - nanopb (< 2.30910.0, >= 2.30908.0)
     - PromisesObjC (< 3.0, >= 1.2)
+  - GooglePlaces (7.0.0)
   - GoogleUtilities/AppDelegateSwizzler (7.7.0):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
@@ -122,6 +123,7 @@ DEPENDENCIES:
   - Firebase/Crashlytics
   - FlexiblePageControl
   - FloatingPanel
+  - GooglePlaces
   - HorizonCalendar
   - KDCircularProgress
   - Keys (from `Pods/CocoaPodsKeys`)
@@ -147,6 +149,7 @@ SPEC REPOS:
     - FloatingPanel
     - GoogleAppMeasurement
     - GoogleDataTransport
+    - GooglePlaces
     - GoogleUtilities
     - HorizonCalendar
     - KDCircularProgress
@@ -177,6 +180,7 @@ SPEC CHECKSUMS:
   FloatingPanel: 3cee815e9ded75b632543fa73ab655a1ef941452
   GoogleAppMeasurement: 8ecc717f2abe3f9ee95a5d38db08827852894acc
   GoogleDataTransport: 5fffe35792f8b96ec8d6775f5eccd83c998d5a3b
+  GooglePlaces: 8dba710bed6160a2e4b85e84aaafdbcc0b4010d8
   GoogleUtilities: e0913149f6b0625b553d70dae12b49fc62914fd1
   HorizonCalendar: 3e5cc89c30bb0207663581d2c798378dd6400406
   KDCircularProgress: 98200c6b8e85d22bc04eb644721d3b1e12b0686b
@@ -189,6 +193,6 @@ SPEC CHECKSUMS:
   SwiftLint: f80f1be7fa96d30e0aa68e58d45d4ea1ccaac519
   SwiftyBeaver: c8241b4745aa269a78ca5a022532c6915e948536
 
-PODFILE CHECKSUM: dd9570a5173930460d20cc0e81f1a27978db6cf7
+PODFILE CHECKSUM: 0a41dff33e632ab0d76a3ae2afdd0cac830c8aff
 
 COCOAPODS: 1.11.3

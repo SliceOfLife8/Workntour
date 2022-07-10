@@ -10,6 +10,7 @@ import FirebaseCore
 import Keys
 import SwiftyBeaver
 import Networking
+import GooglePlaces
 
 enum Environment: String {
     case DEV = "dev"
@@ -44,6 +45,10 @@ struct AppConfig {
 
         options.apiKey = WorkntourKeys().googleServiceDevApiKey
         FirebaseApp.configure(options: options)
+    }
+
+    static func setupGooglePlaces() {
+        GMSPlacesClient.provideAPIKey("AIzaSyB6loP2yYIkJeQX477L_Tj16tDFKaQ4ar0")
     }
 
     static func setupLogger() {
