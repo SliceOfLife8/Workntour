@@ -26,6 +26,7 @@
 		1B39AA5128749A7C009377A7 /* OpportunityEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B39AA5028749A7C009377A7 /* OpportunityEnums.swift */; };
 		1B39AA5A28784BF2009377A7 /* OpportunitiesResultsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B39AA5928784BF2009377A7 /* OpportunitiesResultsVC.swift */; };
 		1B39AA5C2878533B009377A7 /* GooglePlacesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B39AA5B2878533B009377A7 /* GooglePlacesManager.swift */; };
+		1B39AA5F287C2930009377A7 /* HomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B39AA5E287C2930009377A7 /* HomeVC.xib */; };
 		1B3C382F28507823000EEADF /* EmailVerificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3C382E28507823000EEADF /* EmailVerificationVC.swift */; };
 		1B3C38312850782F000EEADF /* EmailVerificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3C38302850782F000EEADF /* EmailVerificationViewModel.swift */; };
 		1B3C383628508B79000EEADF /* RegistrationHostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3C383528508B79000EEADF /* RegistrationHostVC.swift */; };
@@ -167,6 +168,7 @@
 		1B39AA5028749A7C009377A7 /* OpportunityEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunityEnums.swift; sourceTree = "<group>"; };
 		1B39AA5928784BF2009377A7 /* OpportunitiesResultsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunitiesResultsVC.swift; sourceTree = "<group>"; };
 		1B39AA5B2878533B009377A7 /* GooglePlacesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooglePlacesManager.swift; sourceTree = "<group>"; };
+		1B39AA5E287C2930009377A7 /* HomeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeVC.xib; sourceTree = "<group>"; };
 		1B3C382E28507823000EEADF /* EmailVerificationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerificationVC.swift; sourceTree = "<group>"; };
 		1B3C38302850782F000EEADF /* EmailVerificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerificationViewModel.swift; sourceTree = "<group>"; };
 		1B3C383528508B79000EEADF /* RegistrationHostVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationHostVC.swift; sourceTree = "<group>"; };
@@ -409,6 +411,16 @@
 			path = Search;
 			sourceTree = "<group>";
 		};
+		1B39AA5D287C2910009377A7 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				1BC190AC285C5C5B00585533 /* HomeVC.swift */,
+				1B39AA5E287C2930009377A7 /* HomeVC.xib */,
+				1BC190AE285C5C6300585533 /* HomeViewModel.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		1B3C383428508B56000EEADF /* Host */ = {
 			isa = PBXGroup;
 			children = (
@@ -436,6 +448,13 @@
 				1B3C384628520E1C000EEADF /* LoginViewModel.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		1B442FE3287EA2AB002145BC /* Filters */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Filters;
 			sourceTree = "<group>";
 		};
 		1B4AE3F6283E04A500FA6420 /* Users */ = {
@@ -717,10 +736,10 @@
 		1BC190A7285C5BB400585533 /* HomePage */ = {
 			isa = PBXGroup;
 			children = (
-				1B39AA5828784BDE009377A7 /* Search */,
 				1BC190AA285C5C4900585533 /* HomeCoordinator.swift */,
-				1BC190AC285C5C5B00585533 /* HomeVC.swift */,
-				1BC190AE285C5C6300585533 /* HomeViewModel.swift */,
+				1B39AA5828784BDE009377A7 /* Search */,
+				1B442FE3287EA2AB002145BC /* Filters */,
+				1B39AA5D287C2910009377A7 /* Home */,
 			);
 			path = HomePage;
 			sourceTree = "<group>";
@@ -913,6 +932,7 @@
 				1BE6EA992868BFB8009CBE6D /* OpportunitiesVC.xib in Resources */,
 				1B4AE427283F58FB00FA6420 /* Lato-BlackItalic.ttf in Resources */,
 				1B4AE428283F58FB00FA6420 /* Lato-Bold.ttf in Resources */,
+				1B39AA5F287C2930009377A7 /* HomeVC.xib in Resources */,
 				1B563B6D2845358200B851C1 /* CountriesDropDownCell.xib in Resources */,
 				1B4AE429283F58FB00FA6420 /* Lato-BoldItalic.ttf in Resources */,
 				1B4AE42A283F58FB00FA6420 /* Lato-Hairline.ttf in Resources */,

@@ -122,12 +122,12 @@ extension DataManager: OpportunityService {
         .eraseToAnyPublisher()
     }
 
-    func getOpportunities(id: String) -> AnyPublisher<[OpportunityDto], ProviderError> {
+    func getOpportunities(id: String) -> AnyPublisher<[OpportunityDto]?, ProviderError> {
         return networking.request(
             with: OpportunityRouter.getOpportunities(memberId: id),
             scheduler: DispatchQueue.main,
             class: GenericResponse<[OpportunityDto]>.self)
-        .compactMap { $0.data }
+        .map { $0.data }
         .eraseToAnyPublisher()
     }
 

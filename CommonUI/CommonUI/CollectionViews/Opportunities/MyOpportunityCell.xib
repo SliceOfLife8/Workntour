@@ -36,9 +36,12 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="220" id="bfQ-JA-ITX"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Job title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ls8-er-iDN">
-                                <rect key="frame" x="16" y="195.5" width="268" height="14.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ls8-er-iDN">
+                                <rect key="frame" x="16" y="210" width="268" height="0.0"/>
                                 <fontDescription key="fontDescription" name="Lato-HeavyItalic" family="Lato" pointSize="12"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -51,20 +54,32 @@
                                         <fontDescription key="fontDescription" name="Lato-HeavyItalic" family="Lato" pointSize="14"/>
                                         <color key="textColor" name="purpleBlack"/>
                                         <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hotel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="omw-Bp-zQ0" userLabel="Category">
                                         <rect key="frame" x="0.0" y="21" width="300" height="18"/>
                                         <fontDescription key="fontDescription" name="Lato-Black" family="Lato" pointSize="15"/>
                                         <color key="textColor" name="placeholder"/>
                                         <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1-20 July" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RC4-OV-cnL" userLabel="Dates">
                                         <rect key="frame" x="0.0" y="43" width="300" height="17"/>
                                         <fontDescription key="fontDescription" name="Lato-SemiboldItalic" family="Lato" pointSize="14"/>
                                         <color key="textColor" name="placeholder"/>
                                         <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                     </label>
                                 </subviews>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -80,6 +95,9 @@
                             <constraint firstItem="R2d-Ku-oT3" firstAttribute="top" secondItem="afc-Pd-xsu" secondAttribute="bottom" constant="12" id="pb9-9U-nXG"/>
                             <constraint firstItem="afc-Pd-xsu" firstAttribute="top" secondItem="gkL-w0-8Oi" secondAttribute="top" id="s1m-6g-v39"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
             </view>
@@ -89,6 +107,9 @@
                 <constraint firstAttribute="bottom" secondItem="gkL-w0-8Oi" secondAttribute="bottom" id="w9L-zm-mMa"/>
                 <constraint firstAttribute="trailing" secondItem="gkL-w0-8Oi" secondAttribute="trailing" id="xI0-JT-IlH"/>
             </constraints>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="categoryLabel" destination="omw-Bp-zQ0" id="pqt-mm-Y6P"/>
                 <outlet property="datesLabel" destination="RC4-OV-cnL" id="z6H-I7-oVD"/>

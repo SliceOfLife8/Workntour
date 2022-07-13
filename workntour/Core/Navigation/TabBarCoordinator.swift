@@ -26,6 +26,7 @@ final class TabBarCoordinator: NSObject, NavigationCoordinator {
     var rootViewController: TabBarViewController
 
     private var userRole: UserRole?
+    private var homePageIsVisible: Bool = false
 
     /// `Main Coordinators of our application`
     lazy var homeCoordinator: HomeCoordinator = {
@@ -145,6 +146,14 @@ final class TabBarCoordinator: NSObject, NavigationCoordinator {
 extension TabBarCoordinator: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController,
                           didSelect viewController: UIViewController) {
-        // Some implementation
+
+        /// `ScrollToTop` on homePage only when homeVC is presented and contentOffSet of collectionView is greater than .zero
+        if let homePage = (viewController as? UINavigationController)?.visibleViewController as? HomeVC, homePageIsVisible, homePage.collectionView.contentOffset.y > 0 {
+            let navigationBarHeight = homePage.navigationController?.navigationBar.bounds.height ?? 0
+            let topOffset = CGPoint(x: 0, y: -navigationBarHeight-16)
+            homePage.collectionView.setContentOffset(topOffset, animated: true)
+        }
+
+        homePageIsVisible = currentPage() == .homepage
     }
 }

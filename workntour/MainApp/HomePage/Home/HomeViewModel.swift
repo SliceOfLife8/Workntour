@@ -7,4 +7,8 @@
 
 import Foundation
 
-class HomeViewModel: BaseViewModel {}
+class HomeViewModel: BaseViewModel {
+
+    /// Outputs
+    @Published var data: [OpportunityDto]?
+}

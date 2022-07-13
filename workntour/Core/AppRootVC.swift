@@ -12,6 +12,10 @@ import SharedKit
 
 final class AppRootVC: UIViewController {
 
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .darkContent
+    }
+
     func set(childViewController controller: UIViewController) {
         addChild(controller)
         controller.didMove(toParent: self)

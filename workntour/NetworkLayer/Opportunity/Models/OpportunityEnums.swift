@@ -247,9 +247,9 @@ enum LearningOpportunities: String, CaseIterable, Codable {
     case photography
     case videography
     case technology
-    case non_profit
+    case nonProfit
     case art
-    case watersports
+    case waterSports
     case nature
     case writing
     case yoga
@@ -262,7 +262,7 @@ enum LearningOpportunities: String, CaseIterable, Codable {
     case cooking
     case computers
     case programming
-    case self_development
+    case selfDevelopment
     case sustainability
     case hitchhiking
     case sailing
@@ -294,11 +294,11 @@ enum LearningOpportunities: String, CaseIterable, Codable {
             return "Videography"
         case .technology:
             return "Technology"
-        case .non_profit:
+        case .nonProfit:
             return "Non profit"
         case .art:
             return "Art"
-        case .watersports:
+        case .waterSports:
             return "Watersports"
         case .nature:
             return "Nature"
@@ -324,7 +324,7 @@ enum LearningOpportunities: String, CaseIterable, Codable {
             return "Computers"
         case .programming:
             return "Programming"
-        case .self_development:
+        case .selfDevelopment:
             return "Self development"
         case .sustainability:
             return "Sustainability"

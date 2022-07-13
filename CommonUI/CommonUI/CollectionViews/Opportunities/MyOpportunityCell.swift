@@ -37,7 +37,7 @@ public class MyOpportunityCell: UICollectionViewCell {
                           category: String,
                           dates: [(start: String, end: String)]) {
         imageView.kf.setImage(with: imageUrl, placeholder: UIImage(named: "placeholder"))
-        jobTitleLabel.text = jobTitle
+        jobTitleLabel.attributedText = NSMutableAttributedString(string: jobTitle, attributes: [.backgroundColor: UIColor.black.withAlphaComponent(0.3)])
         locationLabel.text = location
         categoryLabel.text = category
         // Setup Dates

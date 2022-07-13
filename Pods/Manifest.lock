@@ -111,6 +111,7 @@ PODS:
     - NVActivityIndicatorView/Base (= 5.1.1)
   - NVActivityIndicatorView/Base (5.1.1)
   - PromisesObjC (2.1.0)
+  - SkeletonView (1.29.2)
   - SnapKit (5.6.0)
   - SwiftLint (0.47.1)
   - SwiftyBeaver (1.9.6)
@@ -129,6 +130,7 @@ DEPENDENCIES:
   - Keys (from `Pods/CocoaPodsKeys`)
   - Kingfisher
   - NVActivityIndicatorView
+  - SkeletonView
   - SnapKit
   - SwiftLint
   - SwiftyBeaver
@@ -157,6 +159,7 @@ SPEC REPOS:
     - nanopb
     - NVActivityIndicatorView
     - PromisesObjC
+    - SkeletonView
     - SnapKit
     - SwiftLint
     - SwiftyBeaver
@@ -189,10 +192,11 @@ SPEC CHECKSUMS:
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
   NVActivityIndicatorView: 1f6c5687f1171810aa27a3296814dc2d7dec3667
   PromisesObjC: 99b6f43f9e1044bd87a95a60beff28c2c44ddb72
+  SkeletonView: 915a80ecc2b6421ab7ac0f0212321c0cc1406472
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   SwiftLint: f80f1be7fa96d30e0aa68e58d45d4ea1ccaac519
   SwiftyBeaver: c8241b4745aa269a78ca5a022532c6915e948536
 
-PODFILE CHECKSUM: 0a41dff33e632ab0d76a3ae2afdd0cac830c8aff
+PODFILE CHECKSUM: 5769ab42f3b87dbad72a2547662612202eb11dc5
 
 COCOAPODS: 1.11.3

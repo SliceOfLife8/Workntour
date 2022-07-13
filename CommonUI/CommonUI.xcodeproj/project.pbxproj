@@ -24,6 +24,7 @@
 		1B39AA4F28746AEB009377A7 /* OpportunityDetailsMapCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B39AA4D28746AEB009377A7 /* OpportunityDetailsMapCell.xib */; };
 		1B39AA562875B40F009377A7 /* OpportunityDetailsDatesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B39AA542875B40F009377A7 /* OpportunityDetailsDatesCell.swift */; };
 		1B39AA572875B40F009377A7 /* OpportunityDetailsDatesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B39AA552875B40F009377A7 /* OpportunityDetailsDatesCell.xib */; };
+		1B39AA61287C2EA6009377A7 /* TransparentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B39AA60287C2EA6009377A7 /* TransparentButton.swift */; };
 		1B3C383C28510D9E000EEADF /* UIView+Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3C383B28510D9E000EEADF /* UIView+Gradient.swift */; };
 		1B4AE40A283E691D00FA6420 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4AE409283E691D00FA6420 /* PrimaryButton.swift */; };
 		1B4AE40D283E6FDC00FA6420 /* UIImpactFeedbackGenerator+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4AE40C283E6FDC00FA6420 /* UIImpactFeedbackGenerator+Extension.swift */; };
@@ -76,6 +77,7 @@
 		1B39AA4D28746AEB009377A7 /* OpportunityDetailsMapCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OpportunityDetailsMapCell.xib; sourceTree = "<group>"; };
 		1B39AA542875B40F009377A7 /* OpportunityDetailsDatesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunityDetailsDatesCell.swift; sourceTree = "<group>"; };
 		1B39AA552875B40F009377A7 /* OpportunityDetailsDatesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OpportunityDetailsDatesCell.xib; sourceTree = "<group>"; };
+		1B39AA60287C2EA6009377A7 /* TransparentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransparentButton.swift; sourceTree = "<group>"; };
 		1B3C383B28510D9E000EEADF /* UIView+Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Gradient.swift"; sourceTree = "<group>"; };
 		1B4AE409283E691D00FA6420 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		1B4AE40C283E6FDC00FA6420 /* UIImpactFeedbackGenerator+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImpactFeedbackGenerator+Extension.swift"; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				1B4AE409283E691D00FA6420 /* PrimaryButton.swift */,
 				1B4AE410283E845C00FA6420 /* SecondaryButton.swift */,
 				1BC190D2285F3B0500585533 /* GradientButton.swift */,
+				1B39AA60287C2EA6009377A7 /* TransparentButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -496,6 +499,7 @@
 				1BE6EA962868B23D009CBE6D /* MyOpportunityCell.swift in Sources */,
 				1B308A4B28414E2100797F32 /* TextFieldRightIcon.swift in Sources */,
 				1B39AA3F287436FD009377A7 /* OpportunityDetailsHeaderView.swift in Sources */,
+				1B39AA61287C2EA6009377A7 /* TransparentButton.swift in Sources */,
 				1B4AE411283E845C00FA6420 /* SecondaryButton.swift in Sources */,
 				1B39AA4A28744A8C009377A7 /* OpportunityDetailsCell.swift in Sources */,
 				1B308A522842452600797F32 /* RegistrationCell.swift in Sources */,

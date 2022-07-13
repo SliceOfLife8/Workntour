@@ -30,6 +30,7 @@ def common
   pod 'HorizonCalendar'
   pod 'FloatingPanel'
   pod 'GooglePlaces'
+  pod 'SkeletonView'
 end
 
 def logging

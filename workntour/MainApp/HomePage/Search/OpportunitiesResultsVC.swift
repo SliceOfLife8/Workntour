@@ -20,6 +20,7 @@ class OpportunitiesResultsVC: UIViewController {
         let table = UITableView()
         table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         table.separatorStyle = .none
+        table.backgroundColor = .clear
         return table
     }()
 

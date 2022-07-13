@@ -376,6 +376,7 @@ class CreateOpportunityVC: BaseVC<CreateOpportunityViewModel, OpportunitiesCoord
             self.coordinator?.navigate(to: .back)
         }, rightAction: {
             self.viewModel?.createOpportunity()
+            self.navigationItem.rightBarButtonItem?.isEnabled = false
         })
     }
 

@@ -12,7 +12,7 @@ protocol OpportunityService: AnyObject {
 
     func createOpportunity(_ model: OpportunityDto) -> AnyPublisher<Bool, ProviderError>
 
-    func getOpportunities(id: String) -> AnyPublisher<[OpportunityDto], ProviderError>
+    func getOpportunities(id: String) -> AnyPublisher<[OpportunityDto]?, ProviderError>
 
     func getOpportunity(byId opportunityId: String) -> AnyPublisher<OpportunityDto, ProviderError>
 

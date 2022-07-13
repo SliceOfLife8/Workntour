@@ -13,7 +13,7 @@ class OpportunitiesViewModel: BaseViewModel {
     private var service: OpportunityService
 
     /// Outputs
-    @Published var data: [OpportunityDto] = []
+    @Published var data: [OpportunityDto]?
     @Published var errorMessage: String?
 
     init(service: OpportunityService = DataManager.shared) {
@@ -23,17 +23,13 @@ class OpportunitiesViewModel: BaseViewModel {
     }
 
     func fetchModels() {
-        loaderVisibility = true
         service.getOpportunities(id: UserDataManager.shared.memberId ?? "")
             .subscribe(on: RunLoop.main)
-            .catch({ [weak self] error -> Just<[OpportunityDto]> in
+            .catch({ [weak self] error -> Just<[OpportunityDto]?> in
                 self?.errorMessage = error.errorDescription
 
-                return Just([])
+                return Just(nil)
             })
-                .handleEvents(receiveCompletion: { _ in
-                    self.loaderVisibility = false
-                })
-                    .assign(to: &$data)
+                .assign(to: &$data)
     }
 }

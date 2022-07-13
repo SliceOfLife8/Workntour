@@ -11,7 +11,7 @@ struct OpportunityDto: Hashable, Codable {
     let memberId: String?
     let opportunityId: String?
     let category: OpportunityCategory
-    let images: [Data]
+    let images: [Data]?
     let imageUrls: [String]
     let title: String
     var description: String?
