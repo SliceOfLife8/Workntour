@@ -150,3 +150,25 @@ extension DataManager: OpportunityService {
     }
 
 }
+
+// MARK: - HomeService
+extension DataManager: HomeService {
+
+    func getAllOpportunities(start: Int, offset: Int, filters: OpportunityFilterDto?) -> AnyPublisher<(opportunities: [OpportunityDto], totalNumber: Int, hasNext: Bool), ProviderError> {
+        return networking.request(
+            with: HomeRouter.getAllOpportunities(start: String(start),
+                                                 offset: String(offset),
+                                                 body: filters),
+            scheduler: DispatchQueue.main,
+            class: GenericResponse<[OpportunityDto]>.self)
+        .map {
+            let data = $0.data ?? []
+            let hasNext = $0.pagination?.next ?? 0 > 0
+            let total = $0.pagination?.total ?? 0
+
+            return (data, total, hasNext)
+        }
+        .eraseToAnyPublisher()
+    }
+
+}

@@ -37,6 +37,12 @@
 		1B3C384528520E11000EEADF /* LoginVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B3C384428520E11000EEADF /* LoginVC.xib */; };
 		1B3C384728520E1C000EEADF /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3C384628520E1C000EEADF /* LoginViewModel.swift */; };
 		1B3C384928520E5C000EEADF /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3C384828520E5C000EEADF /* LoginCoordinator.swift */; };
+		1B442FE5287ED6A3002145BC /* OpportunitiesFiltersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B442FE4287ED6A3002145BC /* OpportunitiesFiltersVC.swift */; };
+		1B442FE7287ED6AB002145BC /* OpportunitiesFiltersVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B442FE6287ED6AB002145BC /* OpportunitiesFiltersVC.xib */; };
+		1B442FE9287ED6B7002145BC /* OpportunitiesFiltersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B442FE8287ED6B7002145BC /* OpportunitiesFiltersViewModel.swift */; };
+		1B442FEC287EE348002145BC /* OpportunityFilterDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B442FEB287EE348002145BC /* OpportunityFilterDto.swift */; };
+		1B442FF1287FE159002145BC /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B442FF0287FE159002145BC /* HomeRouter.swift */; };
+		1B442FF3287FE161002145BC /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B442FF2287FE161002145BC /* HomeService.swift */; };
 		1B4AE3F8283E04BB00FA6420 /* IndividualHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4AE3F7283E04BB00FA6420 /* IndividualHost.swift */; };
 		1B4AE3FA283E04C400FA6420 /* CompanyHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4AE3F9283E04C400FA6420 /* CompanyHost.swift */; };
 		1B4AE3FD283E4B4D00FA6420 /* logo_title.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B4AE3FB283E4B4C00FA6420 /* logo_title.png */; };
@@ -179,6 +185,12 @@
 		1B3C384428520E11000EEADF /* LoginVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginVC.xib; sourceTree = "<group>"; };
 		1B3C384628520E1C000EEADF /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		1B3C384828520E5C000EEADF /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
+		1B442FE4287ED6A3002145BC /* OpportunitiesFiltersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunitiesFiltersVC.swift; sourceTree = "<group>"; };
+		1B442FE6287ED6AB002145BC /* OpportunitiesFiltersVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OpportunitiesFiltersVC.xib; sourceTree = "<group>"; };
+		1B442FE8287ED6B7002145BC /* OpportunitiesFiltersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunitiesFiltersViewModel.swift; sourceTree = "<group>"; };
+		1B442FEB287EE348002145BC /* OpportunityFilterDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunityFilterDto.swift; sourceTree = "<group>"; };
+		1B442FF0287FE159002145BC /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
+		1B442FF2287FE161002145BC /* HomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
 		1B4AE3F7283E04BB00FA6420 /* IndividualHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualHost.swift; sourceTree = "<group>"; };
 		1B4AE3F9283E04C400FA6420 /* CompanyHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyHost.swift; sourceTree = "<group>"; };
 		1B4AE3FB283E4B4C00FA6420 /* logo_title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_title.png; sourceTree = "<group>"; };
@@ -453,8 +465,37 @@
 		1B442FE3287EA2AB002145BC /* Filters */ = {
 			isa = PBXGroup;
 			children = (
+				1B442FE4287ED6A3002145BC /* OpportunitiesFiltersVC.swift */,
+				1B442FE6287ED6AB002145BC /* OpportunitiesFiltersVC.xib */,
+				1B442FE8287ED6B7002145BC /* OpportunitiesFiltersViewModel.swift */,
 			);
 			path = Filters;
+			sourceTree = "<group>";
+		};
+		1B442FED287FE121002145BC /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				1B442FEF287FE13D002145BC /* Router+Service */,
+				1B442FEE287FE130002145BC /* Models */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		1B442FEE287FE130002145BC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1B442FEB287EE348002145BC /* OpportunityFilterDto.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1B442FEF287FE13D002145BC /* Router+Service */ = {
+			isa = PBXGroup;
+			children = (
+				1B442FF0287FE159002145BC /* HomeRouter.swift */,
+				1B442FF2287FE161002145BC /* HomeService.swift */,
+			);
+			path = "Router+Service";
 			sourceTree = "<group>";
 		};
 		1B4AE3F6283E04A500FA6420 /* Users */ = {
@@ -501,6 +542,7 @@
 				1B9A3D2E282A3B6D003E0C34 /* Authorization */,
 				1BC190E92863391600585533 /* Profile */,
 				1B39AA2328702BF6009377A7 /* Opportunity */,
+				1B442FED287FE121002145BC /* Home */,
 			);
 			path = NetworkLayer;
 			sourceTree = "<group>";
@@ -950,6 +992,7 @@
 				1B4AE434283F58FB00FA6420 /* Lato-Semibold.ttf in Resources */,
 				1B4AE435283F58FB00FA6420 /* Lato-SemiboldItalic.ttf in Resources */,
 				1B3C383828508B83000EEADF /* RegistrationHostVC.xib in Resources */,
+				1B442FE7287ED6AB002145BC /* OpportunitiesFiltersVC.xib in Resources */,
 				1B4AE436283F58FB00FA6420 /* Lato-Thin.ttf in Resources */,
 				1B4AE437283F58FB00FA6420 /* Lato-ThinItalic.ttf in Resources */,
 				1B7315FD281E7DD5001F2E6A /* LaunchScreen.storyboard in Resources */,
@@ -1086,6 +1129,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B442FE5287ED6A3002145BC /* OpportunitiesFiltersVC.swift in Sources */,
 				1BC190B2285C5C8600585533 /* ProfileCoordinator.swift in Sources */,
 				1B9A3D8C282C060A003E0C34 /* SplashViewModel.swift in Sources */,
 				1B4AE3FA283E04C400FA6420 /* CompanyHost.swift in Sources */,
@@ -1097,6 +1141,7 @@
 				1BC190B8285C5CB400585533 /* NotificationsCoordinator.swift in Sources */,
 				1BC190DB28620B9300585533 /* LocationManager.swift in Sources */,
 				1BC190B6285C5CA400585533 /* OpportunitiesViewModel.swift in Sources */,
+				1B442FF3287FE161002145BC /* HomeService.swift in Sources */,
 				1BC190F32863399E00585533 /* CompanyHostProfile.swift in Sources */,
 				1BC190AF285C5C6300585533 /* HomeViewModel.swift in Sources */,
 				1B39AA4728744791009377A7 /* OpportunityDetailsModel.swift in Sources */,
@@ -1121,6 +1166,7 @@
 				1B39AA2C2872F0A1009377A7 /* OpportunityDetailsVC.swift in Sources */,
 				1B7753D8286C26B600D81526 /* DayRangeIndicatorView.swift in Sources */,
 				1BA2DF08281E8D7700DB128D /* OnboardingCoordinator.swift in Sources */,
+				1B442FE9287ED6B7002145BC /* OpportunitiesFiltersViewModel.swift in Sources */,
 				1BC190C0285C5CD900585533 /* SettingsVC.swift in Sources */,
 				1B714B582840DBB5000D85D0 /* RegistrationCoordinator.swift in Sources */,
 				1B3C38312850782F000EEADF /* EmailVerificationViewModel.swift in Sources */,
@@ -1159,9 +1205,11 @@
 				1BC190BC285C5CC500585533 /* NotificationsViewModel.swift in Sources */,
 				1BC190D62860A53000585533 /* SettingsOption.swift in Sources */,
 				1B5279E72820471100FDAF5D /* AuthorizationRouter.swift in Sources */,
+				1B442FEC287EE348002145BC /* OpportunityFilterDto.swift in Sources */,
 				1B9A3D8A282C05F6003E0C34 /* SplashVC.swift in Sources */,
 				1BC190C2285C5CE200585533 /* SettingsViewModel.swift in Sources */,
 				1BC190AB285C5C4900585533 /* HomeCoordinator.swift in Sources */,
+				1B442FF1287FE159002145BC /* HomeRouter.swift in Sources */,
 				1BC190A2285A0E8200585533 /* TravelerProfileVC.swift in Sources */,
 				1BC190F5286339DD00585533 /* IndividualHostProfile.swift in Sources */,
 				1B7753D4286B371C00D81526 /* CreateOpportunityVC+Extensions.swift in Sources */,
@@ -1309,7 +1357,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 8QYX9VGMBQ;
 				ENABLE_BITCODE = NO;
@@ -1357,7 +1405,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 8QYX9VGMBQ;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1467,7 +1515,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 8QYX9VGMBQ;
 				ENABLE_BITCODE = NO;
@@ -1577,7 +1625,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 8QYX9VGMBQ;
 				ENABLE_BITCODE = NO;
@@ -1682,7 +1730,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 8QYX9VGMBQ;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1786,7 +1834,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 8QYX9VGMBQ;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (

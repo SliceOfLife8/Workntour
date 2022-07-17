@@ -11,13 +11,12 @@ import CommonUI
 import SkeletonView
 
 /*
- 1. Create list of opportunities
  3. Add filters
  4. Add map
  */
 
 class HomeVC: BaseVC<HomeViewModel, HomeCoordinator> {
-
+    // MARK: - Vars
     private lazy var resultsVC: OpportunitiesResultsVC = {
         let results = OpportunitiesResultsVC()
         results.delegate = self
@@ -29,6 +28,10 @@ class HomeVC: BaseVC<HomeViewModel, HomeCoordinator> {
         return search
     }()
 
+    private lazy var searchBarHeight: CGFloat = {
+        return -searchController.searchBar.frame.height
+    }()
+
     // MARK: - Outlets
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var mapButton: UIButton!
@@ -37,16 +40,26 @@ class HomeVC: BaseVC<HomeViewModel, HomeCoordinator> {
         super.viewDidLoad()
 
         setupNavigationBar()
+        viewModel?.getOpportunities()
+        // SearchBar on navigationController does not appear at some devices. A workaround is the following one.
+        collectionView.setContentOffset(CGPoint(x: 0, y: searchBarHeight), animated: false)
     }
 
     override func setupUI() {
         super.setupUI()
 
         mapButton.layer.cornerRadius = 16
-        mapButton.isHidden = false
         collectionView.register(UINib(nibName: MyOpportunityCell.identifier, bundle: Bundle(for: MyOpportunityCell.self)), forCellWithReuseIdentifier: MyOpportunityCell.identifier)
+        collectionView.register(
+            UINib(nibName: OpportunitiesFooterView.identifier, bundle: Bundle(for: OpportunitiesFooterView.self)),
+            forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
+            withReuseIdentifier: OpportunitiesFooterView.identifier)
         collectionView.delegate = self
         collectionView.dataSource = self
+        let refreshControl = UIRefreshControl()
+        refreshControl.tintColor = UIColor.appColor(.purple)
+        refreshControl.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
+        collectionView.refreshControl = refreshControl
     }
 
     private func setupNavigationBar() {
@@ -67,17 +80,34 @@ class HomeVC: BaseVC<HomeViewModel, HomeCoordinator> {
         viewModel?.$data
             .compactMap { $0 }
             .sink(receiveValue: { [weak self] _ in
+                self?.viewModel?.collectionViewIsUpdating = false
                 self?.collectionView.reloadData()
+            })
+            .store(in: &storage)
+
+        viewModel?.$filters
+            .dropFirst()
+            .sink(receiveValue: { [weak self] value in
+                let filters = value.isEmpty ? nil : value // Send filters object when it has values
+                self?.viewModel?.getOpportunities(resetPagination: true, withFilters: filters)
             })
             .store(in: &storage)
     }
 
+    // MARK: - Actions
     @objc func filtersTapped() {
-        print("open filters modal!")
+        self.coordinator?.navigate(to: .showFilters)
+    }
+
+    @objc func pullToRefresh() {
+        collectionView.refreshControl?.endRefreshing()
+        viewModel?.resetPagination()
+        #warning("check pullToRefresh when filters are ready!")
+        // call api be careful with scrollViewWillEndDragging
     }
 
     @IBAction func mapButtonTapped(_ sender: Any) {
-        self.coordinator?.navigate(to: .showMap)
+        // self.coordinator?.navigate(to: .showMap)
     }
 }
 
@@ -102,15 +132,23 @@ extension HomeVC: UISearchResultsUpdating, UISearchControllerDelegate, Opportuni
         }
     }
 
+    func willPresentSearchController(_ searchController: UISearchController) {
+        collectionView.isScrollEnabled = false
+    }
+
+    /// If searchBar text is empty & user has already select an area, then update filters
     func didDismissSearchController(_ searchController: UISearchController) {
-        // Check that current searchBar text is empty & home page has already a selected place
-        print("call api without coordinates when it's necessary! \(searchController.searchBar.text)")
+        collectionView.isScrollEnabled = true
+        if searchController.searchBar.text?.isEmpty == true && viewModel?.filters.areaIsFilled == true {
+            self.viewModel?.filters.resetArea()
+        }
     }
 
     func didSelectPlace(_ name: String, latitude: Double, longitude: Double) {
-        print("Place: \(name), \(latitude) - \(longitude)")
         searchController.searchBar.text = name
         searchController.dismiss(animated: true)
+
+        viewModel?.filters.addArea(longitude: longitude, latitude: latitude)
     }
 }
 
@@ -121,7 +159,7 @@ extension HomeVC: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, 
         // swiftlint:disable:next force_cast
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyOpportunityCell.identifier, for: indexPath) as! MyOpportunityCell
 
-        if let model = viewModel?.data?[safe: indexPath.row] {
+        if let model = viewModel?.data[safe: indexPath.row] {
             cell.hideSkeleton()
             cell.configure(
                 URL(string: model.imageUrls.first ?? ""),
@@ -136,7 +174,10 @@ extension HomeVC: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, 
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel?.data?.count ?? 3
+        if let opportunitiesCurrentNum = viewModel?.data.count, opportunitiesCurrentNum > 0 {
+            return opportunitiesCurrentNum
+        }
+        return  2
     }
 
     func collectionSkeletonView(_ skeletonView: UICollectionView, cellIdentifierForItemAt indexPath: IndexPath) -> ReusableCellIdentifier {
@@ -148,13 +189,46 @@ extension HomeVC: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, 
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let opportunityId = viewModel?.data?[safe: indexPath.row]?.opportunityId else {
+        guard let opportunityId = viewModel?.data[safe: indexPath.row]?.opportunityId else {
             return
         }
         print("select opportunity with id: \(opportunityId)")
+        // self.coordinator?.navigate(to: .showDetails(opportunityId))
     }
 
     func scrollViewShouldScrollToTop(_ scrollView: UIScrollView) -> Bool {
         return false
     }
+
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        guard viewModel?.collectionViewIsUpdating == false,
+              viewModel?.noMoreOpportunities == false,
+              viewModel?.errorMessage == nil else {
+            return
+        }
+
+        if targetContentOffset.pointee.y >= (collectionView.contentSize.height - collectionView.frame.size.height) - 1000 {
+
+            viewModel?.getOpportunities()
+        }
+    }
+
+    func collectionView(_ collectionView: UICollectionView,
+                        viewForSupplementaryElementOfKind kind: String,
+                        at indexPath: IndexPath) -> UICollectionReusableView {
+
+        switch kind {
+        case UICollectionView.elementKindSectionFooter:
+            let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: OpportunitiesFooterView.identifier, for: indexPath)
+
+            return footerView
+        default:
+            fatalError("Unexpected element kind")
+        }
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        return (viewModel?.noMoreOpportunities == false) ? CGSize(width: 48.0, height: 48.0) : .zero
+    }
+
 }

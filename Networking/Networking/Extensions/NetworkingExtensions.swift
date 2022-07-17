@@ -30,11 +30,13 @@ internal extension URLRequest {
     
     private var headerField: String { "Authorization" }
     private var contentTypeHeader: String { "Content-Type" }
+    private var acceptHeader: String { "accept" }
     
     mutating func prepareRequest(with target: NetworkTarget) {
         let contentTypeHeaderName = contentTypeHeader
         allHTTPHeaderFields = target.headers
         setValue(target.contentType?.rawValue, forHTTPHeaderField: contentTypeHeaderName)
+        setValue(ContentType.applicationJson.rawValue, forHTTPHeaderField: acceptHeader)
         prepareAuthorization(with: target.providerType)
         httpMethod = target.methodType.methodName
     }

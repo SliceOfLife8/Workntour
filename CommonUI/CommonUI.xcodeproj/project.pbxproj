@@ -26,6 +26,12 @@
 		1B39AA572875B40F009377A7 /* OpportunityDetailsDatesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B39AA552875B40F009377A7 /* OpportunityDetailsDatesCell.xib */; };
 		1B39AA61287C2EA6009377A7 /* TransparentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B39AA60287C2EA6009377A7 /* TransparentButton.swift */; };
 		1B3C383C28510D9E000EEADF /* UIView+Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3C383B28510D9E000EEADF /* UIView+Gradient.swift */; };
+		1B442FF7288081ED002145BC /* OpportunitiesFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B442FF5288081ED002145BC /* OpportunitiesFooterView.swift */; };
+		1B442FF8288081ED002145BC /* OpportunitiesFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B442FF6288081ED002145BC /* OpportunitiesFooterView.xib */; };
+		1B44301428814A32002145BC /* DynamicHeightCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B44301328814A32002145BC /* DynamicHeightCollectionView.swift */; };
+		1B4430202884724A002145BC /* RangeSeekSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B44301F2884724A002145BC /* RangeSeekSlider.swift */; };
+		1B44302228847297002145BC /* RangeSeekSliderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B44302128847297002145BC /* RangeSeekSliderDelegate.swift */; };
+		1B443024288472B2002145BC /* TapticEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B443023288472B2002145BC /* TapticEngine.swift */; };
 		1B4AE40A283E691D00FA6420 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4AE409283E691D00FA6420 /* PrimaryButton.swift */; };
 		1B4AE40D283E6FDC00FA6420 /* UIImpactFeedbackGenerator+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4AE40C283E6FDC00FA6420 /* UIImpactFeedbackGenerator+Extension.swift */; };
 		1B4AE411283E845C00FA6420 /* SecondaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4AE410283E845C00FA6420 /* SecondaryButton.swift */; };
@@ -79,6 +85,12 @@
 		1B39AA552875B40F009377A7 /* OpportunityDetailsDatesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OpportunityDetailsDatesCell.xib; sourceTree = "<group>"; };
 		1B39AA60287C2EA6009377A7 /* TransparentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransparentButton.swift; sourceTree = "<group>"; };
 		1B3C383B28510D9E000EEADF /* UIView+Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Gradient.swift"; sourceTree = "<group>"; };
+		1B442FF5288081ED002145BC /* OpportunitiesFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunitiesFooterView.swift; sourceTree = "<group>"; };
+		1B442FF6288081ED002145BC /* OpportunitiesFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OpportunitiesFooterView.xib; sourceTree = "<group>"; };
+		1B44301328814A32002145BC /* DynamicHeightCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightCollectionView.swift; sourceTree = "<group>"; };
+		1B44301F2884724A002145BC /* RangeSeekSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeSeekSlider.swift; sourceTree = "<group>"; };
+		1B44302128847297002145BC /* RangeSeekSliderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeSeekSliderDelegate.swift; sourceTree = "<group>"; };
+		1B443023288472B2002145BC /* TapticEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapticEngine.swift; sourceTree = "<group>"; };
 		1B4AE409283E691D00FA6420 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		1B4AE40C283E6FDC00FA6420 /* UIImpactFeedbackGenerator+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImpactFeedbackGenerator+Extension.swift"; sourceTree = "<group>"; };
 		1B4AE410283E845C00FA6420 /* SecondaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryButton.swift; sourceTree = "<group>"; };
@@ -177,6 +189,25 @@
 			path = Opportunities;
 			sourceTree = "<group>";
 		};
+		1B442FF4288081B6002145BC /* HomePage */ = {
+			isa = PBXGroup;
+			children = (
+				1B442FF5288081ED002145BC /* OpportunitiesFooterView.swift */,
+				1B442FF6288081ED002145BC /* OpportunitiesFooterView.xib */,
+			);
+			path = HomePage;
+			sourceTree = "<group>";
+		};
+		1B44301E2884720F002145BC /* Slider */ = {
+			isa = PBXGroup;
+			children = (
+				1B44301F2884724A002145BC /* RangeSeekSlider.swift */,
+				1B44302128847297002145BC /* RangeSeekSliderDelegate.swift */,
+				1B443023288472B2002145BC /* TapticEngine.swift */,
+			);
+			path = Slider;
+			sourceTree = "<group>";
+		};
 		1B4AE408283E691000FA6420 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
@@ -203,6 +234,7 @@
 		1B4AE443283F708100FA6420 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				1B44301E2884720F002145BC /* Slider */,
 				1B308A4728414D6800797F32 /* GradientTextField */,
 				1B4AE444283F708F00FA6420 /* LinkableLabel.swift */,
 				1B4AE44B2840AEFC00FA6420 /* Checkbox.swift */,
@@ -275,6 +307,8 @@
 		1BE6EA922868B1F0009CBE6D /* CollectionViews */ = {
 			isa = PBXGroup;
 			children = (
+				1B44301328814A32002145BC /* DynamicHeightCollectionView.swift */,
+				1B442FF4288081B6002145BC /* HomePage */,
 				1BE6EA932868B1FC009CBE6D /* Opportunities */,
 			);
 			path = CollectionViews;
@@ -409,6 +443,7 @@
 				1B39AA4528743B86009377A7 /* OpportunityDetailsHeaderView.xib in Resources */,
 				1B39AA4F28746AEB009377A7 /* OpportunityDetailsMapCell.xib in Resources */,
 				1B7753D2286B2CF200D81526 /* OpportunityImageCell.xib in Resources */,
+				1B442FF8288081ED002145BC /* OpportunitiesFooterView.xib in Resources */,
 				1B39AA572875B40F009377A7 /* OpportunityDetailsDatesCell.xib in Resources */,
 				1B308A532842452600797F32 /* RegistrationCell.xib in Resources */,
 				1BE6EA972868B23D009CBE6D /* MyOpportunityCell.xib in Resources */,
@@ -499,12 +534,14 @@
 				1BE6EA962868B23D009CBE6D /* MyOpportunityCell.swift in Sources */,
 				1B308A4B28414E2100797F32 /* TextFieldRightIcon.swift in Sources */,
 				1B39AA3F287436FD009377A7 /* OpportunityDetailsHeaderView.swift in Sources */,
+				1B442FF7288081ED002145BC /* OpportunitiesFooterView.swift in Sources */,
 				1B39AA61287C2EA6009377A7 /* TransparentButton.swift in Sources */,
 				1B4AE411283E845C00FA6420 /* SecondaryButton.swift in Sources */,
 				1B39AA4A28744A8C009377A7 /* OpportunityDetailsCell.swift in Sources */,
 				1B308A522842452600797F32 /* RegistrationCell.swift in Sources */,
 				1B308A4928414D9000797F32 /* UITextFieldPadding.swift in Sources */,
 				1B4AE445283F708F00FA6420 /* LinkableLabel.swift in Sources */,
+				1B4430202884724A002145BC /* RangeSeekSlider.swift in Sources */,
 				1B308A42284125C300797F32 /* GradientTextField.swift in Sources */,
 				1B7753D1286B2CF200D81526 /* OpportunityImageCell.swift in Sources */,
 				1B39AA4E28746AEB009377A7 /* OpportunityDetailsMapCell.swift in Sources */,
@@ -513,11 +550,14 @@
 				1B4AE44C2840AEFC00FA6420 /* Checkbox.swift in Sources */,
 				1B39AA562875B40F009377A7 /* OpportunityDetailsDatesCell.swift in Sources */,
 				1BC190D3285F3B0500585533 /* GradientButton.swift in Sources */,
+				1B44301428814A32002145BC /* DynamicHeightCollectionView.swift in Sources */,
+				1B443024288472B2002145BC /* TapticEngine.swift in Sources */,
 				1B7753DF286C7EB800D81526 /* String+Extensions.swift in Sources */,
 				1B4AE40D283E6FDC00FA6420 /* UIImpactFeedbackGenerator+Extension.swift in Sources */,
 				1B4AE40A283E691D00FA6420 /* PrimaryButton.swift in Sources */,
 				1B527A30282059A600FDAF5D /* CommonUI.docc in Sources */,
 				1BC190D92860A57B00585533 /* SettingsCell.swift in Sources */,
+				1B44302228847297002145BC /* RangeSeekSliderDelegate.swift in Sources */,
 				1B0588D6284CB36B00B1F78D /* UIButton+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

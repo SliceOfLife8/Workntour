@@ -31,6 +31,12 @@ public class MyOpportunityCell: UICollectionViewCell {
         imageView.clipsToBounds = true
     }
 
+    public override func prepareForReuse() {
+        super.prepareForReuse()
+
+        jobTitleLabel.text?.removeAll()
+    }
+
     public func configure(_ imageUrl: URL?,
                           jobTitle: String,
                           location: String?,

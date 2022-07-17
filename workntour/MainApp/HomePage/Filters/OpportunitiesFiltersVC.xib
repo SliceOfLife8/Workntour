@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Lato-Bold.ttf">
+            <string>Lato-Bold</string>
+        </array>
+        <array key="Lato-Regular.ttf">
+            <string>Lato-Regular</string>
+        </array>
+        <array key="Lato-Semibold.ttf">
+            <string>Lato-Semibold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BaseVC" customModule="workntour" customModuleProvider="target">
+            <connections>
+                <outlet property="accommodationCollectionView" destination="7ET-N5-hf8" id="omj-zO-etr"/>
+                <outlet property="categoriesCollectionView" destination="5Gv-Ho-j4V" id="nmg-vW-Hlb"/>
+                <outlet property="clearAllButton" destination="2yI-2H-JsD" id="roN-Ot-J73"/>
+                <outlet property="daysSlider" destination="cUY-UT-0E6" id="6Ii-nR-29g"/>
+                <outlet property="languagesCollectionView" destination="ugV-Fv-Emo" id="NgE-Mo-cb1"/>
+                <outlet property="mealsCollectionView" destination="2ag-8m-g41" id="eRV-LV-TOA"/>
+                <outlet property="showResults" destination="WvV-TU-AAi" id="lYJ-JW-kks"/>
+                <outlet property="typeOfHelpCollectionView" destination="vtp-DR-lkC" id="TxJ-U1-OFZ"/>
+                <outlet property="view" destination="2nm-hp-oVQ" id="w3b-NB-yiC"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="2nm-hp-oVQ">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T2g-KM-lwi">
+                    <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rjK-k0-aVW" userLabel="Content View">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="852"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="0nW-Nc-u0T">
+                                    <rect key="frame" x="8" y="16" width="398" height="485.5"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ipb-Hq-ogP">
+                                            <rect key="frame" x="0.0" y="0.0" width="398" height="20.5"/>
+                                            <fontDescription key="fontDescription" name="Lato-Semibold" family="Lato" pointSize="16"/>
+                                            <color key="tintColor" name="purple"/>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="16" maxY="0.0"/>
+                                            <state key="normal" title="Select Dates" image="calendar.badge.plus" catalog="system">
+                                                <color key="titleColor" name="purpleBlack"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="selectDatesBtnTapped:" destination="-1" eventType="touchUpInside" id="i0r-ST-tUv"/>
+                                            </connections>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZHh-yX-RCB" userLabel="dates">
+                                            <rect key="frame" x="0.0" y="36.5" width="398" height="50"/>
+                                            <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="17"/>
+                                            <color key="textColor" name="lavenderTint1"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RZc-FN-wld">
+                                            <rect key="frame" x="0.0" y="102.5" width="398" height="19.5"/>
+                                            <fontDescription key="fontDescription" name="Lato-Semibold" family="Lato" pointSize="16"/>
+                                            <color key="textColor" name="purpleBlack"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="5Gv-Ho-j4V" userLabel="Categories" customClass="DynamicHeightCollectionView" customModule="CommonUI">
+                                            <rect key="frame" x="0.0" y="138" width="398" height="10"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="10" placeholder="YES" id="hTq-Ju-bTf"/>
+                                            </constraints>
+                                            <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="UCG-44-LDd" customClass="MDCChipCollectionViewFlowLayout">
+                                                <size key="itemSize" width="128" height="128"/>
+                                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                            </collectionViewFlowLayout>
+                                        </collectionView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Setup minimum &amp; maximum days" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YBQ-aE-99v">
+                                            <rect key="frame" x="0.0" y="164" width="398" height="19.5"/>
+                                            <fontDescription key="fontDescription" name="Lato-Semibold" family="Lato" pointSize="16"/>
+                                            <color key="textColor" name="purpleBlack"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cUY-UT-0E6" customClass="RangeSeekSlider" customModule="CommonUI">
+                                            <rect key="frame" x="0.0" y="199.5" width="398" height="40"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="tintColor" name="purple"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="40" id="Wnh-Ui-dKG"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="minValue">
+                                                    <real key="value" value="1"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
+                                                    <real key="value" value="100"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="minLabelColor">
+                                                    <color key="value" name="basicText"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="maxLabelColor">
+                                                    <color key="value" name="basicText"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="colorBetweenHandles">
+                                                    <color key="value" name="lavender2"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="initialColor">
+                                                    <color key="value" name="lavenderTint3"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="step">
+                                                    <real key="value" value="1"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="enableStep" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="lineHeight">
+                                                    <real key="value" value="4"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type of help" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rid-Dt-vix">
+                                            <rect key="frame" x="0.0" y="255.5" width="398" height="19.5"/>
+                                            <fontDescription key="fontDescription" name="Lato-Semibold" family="Lato" pointSize="16"/>
+                                            <color key="textColor" name="purpleBlack"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="vtp-DR-lkC" userLabel="Type of help" customClass="DynamicHeightCollectionView" customModule="CommonUI">
+                                            <rect key="frame" x="0.0" y="291" width="398" height="10"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="10" placeholder="YES" id="qwI-ri-cht"/>
+                                            </constraints>
+                                            <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="MYt-qV-eZq" customClass="MDCChipCollectionViewFlowLayout">
+                                                <size key="itemSize" width="128" height="128"/>
+                                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                            </collectionViewFlowLayout>
+                                        </collectionView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Accommodation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FCc-p2-6ZM">
+                                            <rect key="frame" x="0.0" y="317" width="398" height="19.5"/>
+                                            <fontDescription key="fontDescription" name="Lato-Semibold" family="Lato" pointSize="16"/>
+                                            <color key="textColor" name="purpleBlack"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="7ET-N5-hf8" userLabel="Accommodation " customClass="DynamicHeightCollectionView" customModule="CommonUI">
+                                            <rect key="frame" x="0.0" y="352.5" width="398" height="10"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="10" placeholder="YES" id="VT1-Jz-RWF"/>
+                                            </constraints>
+                                            <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="FLy-8h-LlE" customClass="MDCChipCollectionViewFlowLayout">
+                                                <size key="itemSize" width="128" height="128"/>
+                                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                            </collectionViewFlowLayout>
+                                        </collectionView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meals" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Xc-YH-qnh">
+                                            <rect key="frame" x="0.0" y="378.5" width="398" height="19.5"/>
+                                            <fontDescription key="fontDescription" name="Lato-Semibold" family="Lato" pointSize="16"/>
+                                            <color key="textColor" name="purpleBlack"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="2ag-8m-g41" userLabel="Meals" customClass="DynamicHeightCollectionView" customModule="CommonUI">
+                                            <rect key="frame" x="0.0" y="414" width="398" height="10"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="10" placeholder="YES" id="pBb-oT-9zG"/>
+                                            </constraints>
+                                            <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="RHe-pk-ZX0" customClass="MDCChipCollectionViewFlowLayout">
+                                                <size key="itemSize" width="128" height="128"/>
+                                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                            </collectionViewFlowLayout>
+                                        </collectionView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Required languages" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IJv-eb-nqi" userLabel="Languages">
+                                            <rect key="frame" x="0.0" y="440" width="398" height="19.5"/>
+                                            <fontDescription key="fontDescription" name="Lato-Semibold" family="Lato" pointSize="16"/>
+                                            <color key="textColor" name="purpleBlack"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="ugV-Fv-Emo" userLabel="Languages" customClass="DynamicHeightCollectionView" customModule="CommonUI">
+                                            <rect key="frame" x="0.0" y="475.5" width="398" height="10"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="10" placeholder="YES" id="n29-e4-ghK"/>
+                                            </constraints>
+                                            <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="zMC-Lt-pO5" customClass="MDCChipCollectionViewFlowLayout">
+                                                <size key="itemSize" width="128" height="128"/>
+                                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                            </collectionViewFlowLayout>
+                                        </collectionView>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="0nW-Nc-u0T" secondAttribute="trailing" constant="8" id="Ncw-DN-Aqe"/>
+                                <constraint firstItem="0nW-Nc-u0T" firstAttribute="leading" secondItem="rjK-k0-aVW" secondAttribute="leading" constant="8" id="TF0-sk-XTo"/>
+                                <constraint firstItem="0nW-Nc-u0T" firstAttribute="top" secondItem="rjK-k0-aVW" secondAttribute="top" constant="16" id="cBJ-rk-kW8"/>
+                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="0nW-Nc-u0T" secondAttribute="bottom" constant="72" id="jEd-zZ-aLV"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="rjK-k0-aVW" firstAttribute="top" secondItem="T2g-KM-lwi" secondAttribute="top" id="5eN-oW-xgO"/>
+                        <constraint firstAttribute="bottom" secondItem="rjK-k0-aVW" secondAttribute="bottom" id="FsL-hE-fEH"/>
+                        <constraint firstItem="rjK-k0-aVW" firstAttribute="width" secondItem="T2g-KM-lwi" secondAttribute="width" id="WfT-l1-lhH"/>
+                        <constraint firstItem="rjK-k0-aVW" firstAttribute="leading" secondItem="T2g-KM-lwi" secondAttribute="leading" id="jZE-YG-dTQ"/>
+                        <constraint firstAttribute="trailing" secondItem="rjK-k0-aVW" secondAttribute="trailing" id="lej-5m-S8n"/>
+                        <constraint firstItem="rjK-k0-aVW" firstAttribute="height" secondItem="T2g-KM-lwi" secondAttribute="height" priority="250" id="s9D-mv-BVc"/>
+                    </constraints>
+                </scrollView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pQn-yF-xjj" userLabel="BottomView">
+                    <rect key="frame" x="0.0" y="816" width="414" height="80"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="bpq-RW-NWR">
+                            <rect key="frame" x="16" y="8" width="382" height="48"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2yI-2H-JsD">
+                                    <rect key="frame" x="0.0" y="0.0" width="76.5" height="48"/>
+                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="Clear all">
+                                        <color key="titleColor" name="placeholder"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="clearAllBtnTapped:" destination="-1" eventType="touchUpInside" id="ZWp-LG-8ch"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WvV-TU-AAi" customClass="PrimaryButton" customModule="CommonUI">
+                                    <rect key="frame" x="92.5" y="0.0" width="289.5" height="48"/>
+                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="18"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="Show 80 opportunities"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="radius">
+                                            <real key="value" value="8"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="showResultsBtnTapped:" destination="-1" eventType="touchUpInside" id="yFo-AS-XjX"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" name="primary"/>
+                    <constraints>
+                        <constraint firstItem="bpq-RW-NWR" firstAttribute="leading" secondItem="pQn-yF-xjj" secondAttribute="leading" constant="16" id="18n-xl-4hx"/>
+                        <constraint firstAttribute="trailing" secondItem="bpq-RW-NWR" secondAttribute="trailing" constant="16" id="4Ch-fj-Ffl"/>
+                        <constraint firstAttribute="bottom" secondItem="bpq-RW-NWR" secondAttribute="bottom" constant="24" id="KlR-Kg-C1O"/>
+                        <constraint firstItem="bpq-RW-NWR" firstAttribute="top" secondItem="pQn-yF-xjj" secondAttribute="top" constant="8" id="PGV-FS-doR"/>
+                        <constraint firstAttribute="height" constant="80" id="i43-bh-bJg"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="enh-qx-cmu"/>
+            <color key="backgroundColor" name="primary"/>
+            <constraints>
+                <constraint firstItem="pQn-yF-xjj" firstAttribute="bottom" secondItem="2nm-hp-oVQ" secondAttribute="bottom" id="1fZ-2D-hqz"/>
+                <constraint firstItem="T2g-KM-lwi" firstAttribute="top" secondItem="enh-qx-cmu" secondAttribute="top" id="4QX-vh-g8C"/>
+                <constraint firstItem="T2g-KM-lwi" firstAttribute="trailing" secondItem="enh-qx-cmu" secondAttribute="trailing" id="CEW-QT-dvL"/>
+                <constraint firstItem="enh-qx-cmu" firstAttribute="leading" secondItem="pQn-yF-xjj" secondAttribute="leading" id="DNg-W1-tHz"/>
+                <constraint firstItem="pQn-yF-xjj" firstAttribute="trailing" secondItem="enh-qx-cmu" secondAttribute="trailing" id="H3X-pJ-Ok0"/>
+                <constraint firstItem="T2g-KM-lwi" firstAttribute="leading" secondItem="enh-qx-cmu" secondAttribute="leading" id="oWg-m0-7Zy"/>
+                <constraint firstAttribute="bottom" secondItem="T2g-KM-lwi" secondAttribute="bottom" id="ySN-mc-KK2"/>
+            </constraints>
+            <point key="canvasLocation" x="139" y="140"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="calendar.badge.plus" catalog="system" width="128" height="108"/>
+        <namedColor name="basicText">
+            <color red="0.16099999845027924" green="0.15700000524520874" blue="0.17599999904632568" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="lavender2">
+            <color red="0.25882352941176473" green="0.25882352941176473" blue="0.64313725490196083" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="lavenderTint1">
+            <color red="0.61176470588235299" green="0.5607843137254902" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="lavenderTint3">
+            <color red="0.78823529411764703" green="0.76078431372549016" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="placeholder">
+            <color red="0.56862745098039214" green="0.55294117647058827" blue="0.66274509803921566" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="primary">
+            <color red="0.98039215686274506" green="0.97254901960784312" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="purple">
+            <color red="0.49411764705882355" green="0.43529411764705883" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="purpleBlack">
+            <color red="0.2196078431372549" green="0.20000000000000001" blue="0.31372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

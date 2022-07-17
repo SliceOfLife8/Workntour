@@ -20,6 +20,10 @@ def snapkit
   pod 'SnapKit'
 end
 
+def material_components
+  pod 'MaterialComponents/Chips'
+end
+
 def common
   pod 'SwiftLint'
   pod 'CombineDataSources'
@@ -44,6 +48,7 @@ target 'workntour' do
   common
   firebase
   kingfisher
+  material_components
   snapkit
 end
 
@@ -59,6 +64,7 @@ target 'CommonUI' do
   project 'CommonUI/CommonUI.xcodeproj'
   kingfisher
   snapkit
+  pod 'NVActivityIndicatorView'
 
   target 'CommonUITests' do
   end

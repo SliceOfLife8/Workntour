@@ -29,7 +29,7 @@ class OpportunitiesResultsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .clear
+        view.backgroundColor = UIColor.appColor(.primary)
         view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self

@@ -375,7 +375,7 @@ extension Networking: NetworkingProtocol {
             let (data, urlResponse) = try await urlSession
                 .data(
                     for: urlRequest,
-                       delegate: delegate
+                    delegate: delegate
                 )
             guard let httpResponse = urlResponse as? HTTPURLResponse else {
                 let error = ProviderError.invalidServerResponse
@@ -409,7 +409,7 @@ extension Networking: NetworkingProtocol {
             let (_, urlResponse) = try await urlSession
                 .data(
                     for: urlRequest,
-                       delegate: delegate
+                    delegate: delegate
                 )
             guard let httpResponse = urlResponse as? HTTPURLResponse else {
                 let error = ProviderError.invalidServerResponse
@@ -441,8 +441,8 @@ extension Networking: NetworkingProtocol {
             let (_, urlResponse) = try await urlSession
                 .upload(
                     for: urlRequest,
-                       from: data,
-                       delegate: delegate
+                    from: data,
+                    delegate: delegate
                 )
             guard let httpResponse = urlResponse as? HTTPURLResponse else {
                 let error = ProviderError.invalidServerResponse
@@ -473,7 +473,7 @@ extension Networking: NetworkingProtocol {
             let (localURL, urlResponse) = try await urlSession
                 .download(
                     for: urlRequest,
-                       delegate: delegate
+                    delegate: delegate
                 )
             guard let httpResponse = urlResponse as? HTTPURLResponse else {
                 let error = ProviderError.invalidServerResponse
@@ -520,11 +520,11 @@ private extension Networking {
         case .requestParameters(let parameters, _):
             guard let contentType = target.contentType,
                   contentType == .urlFormEncoded else {
-                      let url = url.generateUrlWithQuery(with: parameters)
-                      var request = URLRequest(url: url)
-                      request.prepareRequest(with: target)
-                      return request
-                  }
+                let url = url.generateUrlWithQuery(with: parameters)
+                var request = URLRequest(url: url)
+                request.prepareRequest(with: target)
+                return request
+            }
             var request = URLRequest(url: url)
             request.httpBody = contentType.prepareContentBody(parameters: parameters)
             return request
@@ -548,6 +548,12 @@ private extension Networking {
             return request
         case .requestWithEncodable(let encodable):
             request.httpBody = try? environment.jsonSerializationData(encodable, .prettyPrinted)
+            return request
+        case .requestParametersWithBody(let parameters, let data):
+            let url = url.generateUrlWithQuery(with: parameters)
+            var request = URLRequest(url: url)
+            request.prepareRequest(with: target)
+            request.httpBody = data
             return request
         default:
             return request
