@@ -138,7 +138,11 @@ class SelectDateRangesVC: BaseVC<EmptyViewModel, OpportunitiesCoordinator> {
         if case let .dayRange(days) = calendarSelection {
             let startDate = days.lowerBound.description
             let endDate = days.upperBound.description
-            self.coordinator?.navigate(to: .saveDataRangeSelection(from: startDate, to: endDate))
+
+            self.coordinator?.navigate(to: .saveDateRangeSelection(from: startDate, to: endDate))
+            if let homeCoordinator = otherCoordinator as? HomeCoordinator {
+                homeCoordinator.navigate(to: .saveDateRangeSelection(from: startDate, to: endDate))
+            }
         } else {
             assertionFailure()
         }

@@ -8,9 +8,12 @@
 import UIKit
 import SharedKit
 import CommonUI
+import MaterialComponents.MaterialChips
 
 class OpportunityDetailsVC: BaseVC<OpportunitesDetailsViewModel, OpportunitiesCoordinator> {
     private(set) var opporunityId: String
+    private(set) var userRole: UserRole?
+
     private var headerInitialHeight: CGFloat = 300
     private var rowItems: [OpportunityDetailsModel] = []
 
@@ -54,6 +57,17 @@ class OpportunityDetailsVC: BaseVC<OpportunitesDetailsViewModel, OpportunitiesCo
         return button
     }()
 
+    private lazy var bookButton: MDCChipView = {
+        let chipView = MDCChipView()
+        chipView.titleLabel.text = "Book"
+        chipView.titleFont = UIFont.scriptFont(.bold, size: 16)
+        chipView.setBackgroundColor(UIColor.appColor(.lavender), for: .normal)
+        chipView.setTitleColor(UIColor.appColor(.badgeBg), for: .normal)
+        chipView.isHidden = true
+        chipView.addTarget(self, action: #selector(bookTapped), for: .touchUpInside)
+        return chipView
+    }()
+
     lazy var pageController: ImagePageViewController = {
         let vc = ImagePageViewController()
 
@@ -63,6 +77,7 @@ class OpportunityDetailsVC: BaseVC<OpportunitesDetailsViewModel, OpportunitiesCo
     // MARK: - Inits
     init(_ id: String) {
         self.opporunityId = id
+        self.userRole = UserDataManager.shared.role
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -77,12 +92,6 @@ class OpportunityDetailsVC: BaseVC<OpportunitesDetailsViewModel, OpportunitiesCo
         viewModel?.fetchModels(opportunityId: opporunityId)
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        // tableView.setContentOffset(CGPoint(x: 0, y: -headerInitialHeight), animated: true)
-    }
-
     override func setupUI() {
         super.setupUI()
 
@@ -90,6 +99,7 @@ class OpportunityDetailsVC: BaseVC<OpportunitesDetailsViewModel, OpportunitiesCo
         view.addSubview(tableView)
         view.addSubview(backButton)
         view.addSubview(deleteButton)
+        view.addSubview(bookButton)
         addChild(pageController)
         tableView.addSubview(pageController.view)
         pageController.didMove(toParent: self)
@@ -118,6 +128,13 @@ class OpportunityDetailsVC: BaseVC<OpportunitesDetailsViewModel, OpportunitiesCo
             $0.width.equalTo(32)
             $0.height.equalTo(32)
         }
+
+        bookButton.snp.makeConstraints {
+            $0.right.equalToSuperview().offset(-24)
+            $0.bottom.equalTo(view.snp.bottom).offset(-16)
+            $0.width.equalTo(64)
+            $0.height.equalTo(64)
+        }
     }
 
     override func bindViews() {
@@ -133,7 +150,9 @@ class OpportunityDetailsVC: BaseVC<OpportunitesDetailsViewModel, OpportunitiesCo
             .filter { $0.count > 0 }
             .sink(receiveValue: { [weak self] data in
                 self?.rowItems = data
-                self?.deleteButton.isHidden = false
+                let isHost = self?.userRole?.oneOf(other: .COMPANY_HOST, .INDIVIDUAL_HOST) == true
+                self?.deleteButton.isHidden = isHost ? false : true
+                self?.bookButton.isHidden = (self?.userRole == .TRAVELER) ? false : true
                 self?.tableView.reloadData()
             })
             .store(in: &storage)
@@ -149,7 +168,11 @@ class OpportunityDetailsVC: BaseVC<OpportunitesDetailsViewModel, OpportunitiesCo
         viewModel?.$errorMessage
             .compactMap { $0 }
             .sink(receiveValue: { [weak self] _ in
-                self?.coordinator?.navigate(to: .showAlert(title: "Something went wrong", subtitle: "Please try again."))
+                let showAlertAction = DefaultStep.showAlert(title: "Something went wrong", subtitle: "Please try again.")
+                self?.coordinator?.navigate(to: .state(showAlertAction))
+                if let homeCoordinator = self?.otherCoordinator as? HomeCoordinator {
+                    homeCoordinator.navigate(to: .state(showAlertAction))
+                }
             })
             .store(in: &storage)
     }
@@ -157,11 +180,19 @@ class OpportunityDetailsVC: BaseVC<OpportunitesDetailsViewModel, OpportunitiesCo
     // MARK: - Actions
     @objc private func backButtonTapped() {
         UIImpactFeedbackGenerator(style: .light).impactOccurred()
-        self.coordinator?.navigate(to: .back)
+        self.coordinator?.navigate(to: .state(.back))
+
+        if let homeCoordinator = otherCoordinator as? HomeCoordinator {
+            homeCoordinator.navigate(to: .state(.back))
+        }
     }
 
     @objc private func deleteButtonTapped() {
         self.coordinator?.navigate(to: .deleteOpportunity)
+    }
+
+    @objc private func bookTapped() {
+        print("book tapped!")
     }
 
     func deleteOpportunity() {

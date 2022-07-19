@@ -25,6 +25,15 @@ enum Meal: String, CaseIterable, Codable {
             return "Use shared kitchen"
         }
     }
+
+    init?(caseName: String) {
+        for key in Meal.allCases where "\(key.value)" == caseName {
+            self = key
+            return
+        }
+
+        return nil
+    }
 }
 
 enum Language: String, CaseIterable, Codable {

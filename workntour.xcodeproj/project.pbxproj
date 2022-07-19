@@ -43,6 +43,7 @@
 		1B442FEC287EE348002145BC /* OpportunityFilterDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B442FEB287EE348002145BC /* OpportunityFilterDto.swift */; };
 		1B442FF1287FE159002145BC /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B442FF0287FE159002145BC /* HomeRouter.swift */; };
 		1B442FF3287FE161002145BC /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B442FF2287FE161002145BC /* HomeService.swift */; };
+		1B4430282885C93F002145BC /* Filters+CollectionViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4430272885C93E002145BC /* Filters+CollectionViews.swift */; };
 		1B4AE3F8283E04BB00FA6420 /* IndividualHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4AE3F7283E04BB00FA6420 /* IndividualHost.swift */; };
 		1B4AE3FA283E04C400FA6420 /* CompanyHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4AE3F9283E04C400FA6420 /* CompanyHost.swift */; };
 		1B4AE3FD283E4B4D00FA6420 /* logo_title.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B4AE3FB283E4B4C00FA6420 /* logo_title.png */; };
@@ -191,6 +192,7 @@
 		1B442FEB287EE348002145BC /* OpportunityFilterDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunityFilterDto.swift; sourceTree = "<group>"; };
 		1B442FF0287FE159002145BC /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
 		1B442FF2287FE161002145BC /* HomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
+		1B4430272885C93E002145BC /* Filters+CollectionViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Filters+CollectionViews.swift"; sourceTree = "<group>"; };
 		1B4AE3F7283E04BB00FA6420 /* IndividualHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualHost.swift; sourceTree = "<group>"; };
 		1B4AE3F9283E04C400FA6420 /* CompanyHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyHost.swift; sourceTree = "<group>"; };
 		1B4AE3FB283E4B4C00FA6420 /* logo_title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_title.png; sourceTree = "<group>"; };
@@ -468,6 +470,7 @@
 				1B442FE4287ED6A3002145BC /* OpportunitiesFiltersVC.swift */,
 				1B442FE6287ED6AB002145BC /* OpportunitiesFiltersVC.xib */,
 				1B442FE8287ED6B7002145BC /* OpportunitiesFiltersViewModel.swift */,
+				1B4430272885C93E002145BC /* Filters+CollectionViews.swift */,
 			);
 			path = Filters;
 			sourceTree = "<group>";
@@ -1175,6 +1178,7 @@
 				1BC190AD285C5C5B00585533 /* HomeVC.swift in Sources */,
 				1B7315F1281E7DD0001F2E6A /* AppDelegate.swift in Sources */,
 				1B3C384728520E1C000EEADF /* LoginViewModel.swift in Sources */,
+				1B4430282885C93F002145BC /* Filters+CollectionViews.swift in Sources */,
 				1B9A3D8E282C0B31003E0C34 /* AuthorizationService.swift in Sources */,
 				1BC190C9285F1C0700585533 /* UserDataManager.swift in Sources */,
 				1BC190F12863397F00585533 /* TravelerProfile.swift in Sources */,

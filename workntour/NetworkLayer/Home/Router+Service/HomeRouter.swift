@@ -10,6 +10,7 @@ import Networking
 
 enum HomeRouter: NetworkTarget {
     case getAllOpportunities(start: String, offset: String, body: OpportunityFilterDto?)
+    case filtersNumOfResults(body: OpportunityFilterDto)
 
     public var baseURL: URL {
         Environment.current.apiBaseURL
@@ -19,12 +20,14 @@ enum HomeRouter: NetworkTarget {
         switch self {
         case .getAllOpportunities:
             return "/homePage/filters"
+        case .filtersNumOfResults:
+            return "homePage/filters/numOfResults"
         }
     }
 
     public var methodType: MethodType {
         switch self {
-        case .getAllOpportunities:
+        case .getAllOpportunities, .filtersNumOfResults:
             return .post
         }
     }
@@ -42,6 +45,10 @@ enum HomeRouter: NetworkTarget {
             ]
 
             return .requestParametersWithBody(parameters: params, data: jsonData)
+        case .filtersNumOfResults(let filters):
+            let jsonData = try! jsonEncoder.encode(filters)
+
+            return .requestData(data: jsonData)
         }
     }
 

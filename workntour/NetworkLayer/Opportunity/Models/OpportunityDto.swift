@@ -79,8 +79,8 @@ struct OpportunityDto: Hashable, Codable {
 }
 
 struct OpportunityDates: Hashable, Codable {
-    let start: String
-    let end: String
+    let start: String?
+    let end: String?
 
     enum CodingKeys: String, CodingKey {
         case start = "startDate"

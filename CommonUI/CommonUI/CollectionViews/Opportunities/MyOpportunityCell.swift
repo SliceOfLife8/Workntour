@@ -41,7 +41,7 @@ public class MyOpportunityCell: UICollectionViewCell {
                           jobTitle: String,
                           location: String?,
                           category: String,
-                          dates: [(start: String, end: String)]) {
+                          dates: [(start: String?, end: String?)]) {
         imageView.kf.setImage(with: imageUrl, placeholder: UIImage(named: "placeholder"))
         jobTitleLabel.attributedText = NSMutableAttributedString(string: jobTitle, attributes: [.backgroundColor: UIColor.black.withAlphaComponent(0.3)])
         locationLabel.text = location
@@ -51,8 +51,8 @@ public class MyOpportunityCell: UICollectionViewCell {
         let remainingDates = dates.dropFirst(2).count
 
         for (index, element) in dates.prefix(2).enumerated() {
-            let startDate = element.start.opportunityDateFormat()
-            let endDate = element.end.opportunityDateFormat()
+            let startDate = element.start?.opportunityDateFormat() ?? ""
+            let endDate = element.end?.opportunityDateFormat() ?? ""
 
             datesText += (index == 0) ? "\(startDate) - \(endDate)" : ", \(startDate) - \(endDate)"
         }

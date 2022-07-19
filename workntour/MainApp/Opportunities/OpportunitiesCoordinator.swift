@@ -10,6 +10,7 @@ import SharedKit
 import PhotosUI
 
 enum OpportunitiesStep: Step {
+    case state(_ default: DefaultStep)
     case showMap
     case closeMap
     case createOpportunity
@@ -17,9 +18,7 @@ enum OpportunitiesStep: Step {
     case openGalleryPicker
     case saveLocation(attribute: PlacemarkAttributes?, latitude: Double, longitude: Double)
     case openCalendar
-    case saveDataRangeSelection(from: String, to: String)
-    case back
-    case showAlert(title: String, subtitle: String?)
+    case saveDateRangeSelection(from: String, to: String)
     case updateOpportunitiesOnLanding
     case deleteOpportunity
 }
@@ -51,7 +50,7 @@ final class OpportunitiesCoordinator: NavigationCoordinator {
     // swiftlint:disable cyclomatic_complexity
     func navigate(to step: OpportunitiesStep) {
         switch step {
-        case .back:
+        case .state(.back):
             navigator.popViewController(animated: true)
         case .showMap:
             let mapVC = MapViewController()
@@ -71,11 +70,11 @@ final class OpportunitiesCoordinator: NavigationCoordinator {
             openPhotoPicker()
         case .openCalendar:
             openHorizonCalendar()
-        case .saveDataRangeSelection(let start, let end):
+        case .saveDateRangeSelection(let start, let end):
             let previousVC = rootViewController.previousViewController as? CreateOpportunityVC
             previousVC?.setupAvailableDates(from: start, to: end)
             navigator.popViewController(animated: true)
-        case .showAlert(let title, let subtitle):
+        case .state(.showAlert(let title, let subtitle)):
             AlertHelper.showDefaultAlert(rootViewController,
                                          title: title,
                                          message: subtitle)

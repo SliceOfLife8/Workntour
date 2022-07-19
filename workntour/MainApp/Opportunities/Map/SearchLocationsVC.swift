@@ -92,7 +92,7 @@ extension SearchLocationsVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
 
-        cell.textLabel?.text = locations[indexPath.row].placemark?.formattedName()
+        cell.textLabel?.text = locations[indexPath.row].placemark?.formattedName(userIsHost: true)
         cell.textLabel?.numberOfLines = 0
         cell.contentView.backgroundColor = .secondarySystemBackground
         return cell

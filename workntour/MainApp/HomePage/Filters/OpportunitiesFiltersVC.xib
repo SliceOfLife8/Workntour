@@ -25,6 +25,7 @@
                 <outlet property="accommodationCollectionView" destination="7ET-N5-hf8" id="omj-zO-etr"/>
                 <outlet property="categoriesCollectionView" destination="5Gv-Ho-j4V" id="nmg-vW-Hlb"/>
                 <outlet property="clearAllButton" destination="2yI-2H-JsD" id="roN-Ot-J73"/>
+                <outlet property="datesLabel" destination="ZHh-yX-RCB" id="fJh-Oq-qft"/>
                 <outlet property="daysSlider" destination="cUY-UT-0E6" id="6Ii-nR-29g"/>
                 <outlet property="languagesCollectionView" destination="ugV-Fv-Emo" id="NgE-Mo-cb1"/>
                 <outlet property="mealsCollectionView" destination="2ag-8m-g41" id="eRV-LV-TOA"/>
@@ -209,7 +210,7 @@
                                 <constraint firstAttribute="trailing" secondItem="0nW-Nc-u0T" secondAttribute="trailing" constant="8" id="Ncw-DN-Aqe"/>
                                 <constraint firstItem="0nW-Nc-u0T" firstAttribute="leading" secondItem="rjK-k0-aVW" secondAttribute="leading" constant="8" id="TF0-sk-XTo"/>
                                 <constraint firstItem="0nW-Nc-u0T" firstAttribute="top" secondItem="rjK-k0-aVW" secondAttribute="top" constant="16" id="cBJ-rk-kW8"/>
-                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="0nW-Nc-u0T" secondAttribute="bottom" constant="72" id="jEd-zZ-aLV"/>
+                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="0nW-Nc-u0T" secondAttribute="bottom" constant="80" id="jEd-zZ-aLV"/>
                             </constraints>
                         </view>
                     </subviews>

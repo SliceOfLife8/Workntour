@@ -15,10 +15,15 @@ struct PlacemarkAttributes: Hashable, Codable {
     let locality: String?
     let postalCode: String?
 
-    func formattedName() -> String {
+    func formattedName(userIsHost: Bool?) -> String {
         var attributes = [name, area, locality, country, postalCode]
+        let sensitiveDataIndicies: Set = [0, 4]
 
-        if name == postalCode {
+        if userIsHost == false { // Remove name & postalCode attribute
+            attributes = attributes.enumerated()
+                .filter { !sensitiveDataIndicies.contains($0.offset) }
+                .map { $0.element }
+        } else if name == postalCode {
             attributes.removeFirst()
         }
 

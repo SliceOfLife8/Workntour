@@ -113,7 +113,7 @@ class MapViewController: BaseVC<EmptyViewModel, OpportunitiesCoordinator> {
         let location = OpportunityLocation(placemark: attributes,
                                            latitude: coordinates.latitude,
                                            longitude: coordinates.longitude)
-        let pin = MyAnnotation(title: "My Opportunity", subtitle: attributes.formattedName(), location: location)
+        let pin = MyAnnotation(title: "My Opportunity", subtitle: attributes.formattedName(userIsHost: true), location: location)
         mapView.removeAnnotations(mapView.annotations)
         mapView.addAnnotation(pin)
         saveBtn.isEnabled = true

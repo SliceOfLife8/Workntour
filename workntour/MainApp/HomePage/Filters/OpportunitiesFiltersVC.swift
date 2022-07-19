@@ -8,17 +8,16 @@
 import UIKit
 import CommonUI
 import SharedKit
-import MaterialComponents.MaterialChips
 
 class OpportunitiesFiltersVC: BaseVC<OpportunitiesFiltersViewModel, HomeCoordinator> {
 
     // MARK: - Outlets
+    @IBOutlet weak var datesLabel: UILabel!
     @IBOutlet weak var daysSlider: RangeSeekSlider!
     @IBOutlet weak var categoriesCollectionView: UICollectionView!
     @IBOutlet weak var typeOfHelpCollectionView: UICollectionView!
     @IBOutlet weak var mealsCollectionView: DynamicHeightCollectionView!
     @IBOutlet weak var accommodationCollectionView: DynamicHeightCollectionView!
-    @IBOutlet weak var mainScrollView: UIScrollView!
     @IBOutlet weak var languagesCollectionView: DynamicHeightCollectionView!
     @IBOutlet weak var showResults: PrimaryButton!
     @IBOutlet weak var clearAllButton: UIButton!
@@ -27,6 +26,7 @@ class OpportunitiesFiltersVC: BaseVC<OpportunitiesFiltersViewModel, HomeCoordina
         super.viewDidLoad()
 
         setupNavBar()
+        daysSlider.delegate = self
     }
 
     private func setupNavBar() {
@@ -39,40 +39,77 @@ class OpportunitiesFiltersVC: BaseVC<OpportunitiesFiltersViewModel, HomeCoordina
 
         daysSlider.minLabelFont = UIFont.scriptFont(.semibold, size: 14)
         daysSlider.maxLabelFont = UIFont.scriptFont(.semibold, size: 14)
-        daysSlider.delegate = self
         clearAllButton.underline()
         setupCollectionViews()
+        selectChips()
+        setupSlider()
+
+        if let dateStart = viewModel?.filters.startDate, let dateEnd = viewModel?.filters.endDate {
+            datesLabel.text = "\(dateStart) - \(dateEnd)"
+        }
     }
 
-    private func setupCollectionViews() {
-        categoriesCollectionView.register(
-            MDCChipCollectionViewCell.self,
-            forCellWithReuseIdentifier: "identifier")
-        categoriesCollectionView.delegate = self
-        categoriesCollectionView.dataSource = self
-        typeOfHelpCollectionView.register(
-            MDCChipCollectionViewCell.self,
-            forCellWithReuseIdentifier: "identifier")
-        typeOfHelpCollectionView.delegate = self
-        typeOfHelpCollectionView.dataSource = self
-        typeOfHelpCollectionView.allowsMultipleSelection = true
-        accommodationCollectionView.register(
-            MDCChipCollectionViewCell.self,
-            forCellWithReuseIdentifier: "identifier")
-        accommodationCollectionView.delegate = self
-        accommodationCollectionView.dataSource = self
-        mealsCollectionView.register(
-            MDCChipCollectionViewCell.self,
-            forCellWithReuseIdentifier: "identifier")
-        mealsCollectionView.delegate = self
-        mealsCollectionView.dataSource = self
-        mealsCollectionView.allowsMultipleSelection = true
-        languagesCollectionView.register(
-            MDCChipCollectionViewCell.self,
-            forCellWithReuseIdentifier: "identifier")
-        languagesCollectionView.delegate = self
-        languagesCollectionView.dataSource = self
-        languagesCollectionView.allowsMultipleSelection = true
+    private func selectChips() {
+        // Categories
+        if let categoryIndex = viewModel?.filters.category?.index {
+            categoriesCollectionView.selectItem(at: IndexPath(row: categoryIndex, section: 0),
+                                                animated: false,
+                                                scrollPosition: .centeredHorizontally)
+        }
+        // Type Of help
+        viewModel?.filters.typeOfHelp.compactMap({ $0.index }).forEach { row in
+            typeOfHelpCollectionView.selectItem(at: IndexPath(row: row, section: 0),
+                                                animated: false,
+                                                scrollPosition: .centeredHorizontally)
+        }
+        // Accommodation
+        if let accommodationIndex = viewModel?.filters.accommodation?.index {
+            accommodationCollectionView.selectItem(at: IndexPath(row: accommodationIndex, section: 0),
+                                                   animated: false,
+                                                   scrollPosition: .centeredHorizontally)
+        }
+        // Meals
+        viewModel?.filters.meals.compactMap({ $0.index }).forEach { row in
+            mealsCollectionView.selectItem(at: IndexPath(row: row, section: 0),
+                                           animated: false,
+                                           scrollPosition: .centeredHorizontally)
+        }
+        // Required languages
+        viewModel?.filters.languagesRequired.compactMap({ $0.index }).forEach { row in
+            languagesCollectionView.selectItem(at: IndexPath(row: row, section: 0),
+                                               animated: false,
+                                               scrollPosition: .centeredHorizontally)
+        }
+    }
+
+    private func setupSlider() {
+        let minValue = viewModel?.filters.minDays ?? 1
+        let maxValue = viewModel?.filters.maxDays ?? 100
+        daysSlider.selectedMinValue = CGFloat(minValue)
+        daysSlider.selectedMaxValue = CGFloat(maxValue)
+        daysSlider.refresh()
+    }
+
+    override func bindViews() {
+        super.bindViews()
+
+        viewModel?.$totalOpportunities
+            .map { $0 > 0 }
+            .receive(on: RunLoop.main)
+            .assign(to: \.isEnabled, on: showResults)
+            .store(in: &storage)
+
+        viewModel?.$totalOpportunities
+            .sink(receiveValue: { [weak self] number in
+                let text = (number > 0) ? "Show \(number) opportunities" : "There are no opportunities"
+                self?.showResults.setTitle(text, for: .normal)
+            })
+            .store(in: &storage)
+    }
+
+    func updateDateLabel(start: String, end: String) {
+        datesLabel.text = "\(start) - \(end)"
+        viewModel?.filters.addDates(start: start, end: end)
     }
 
     // MARK: - Actions
@@ -81,82 +118,52 @@ class OpportunitiesFiltersVC: BaseVC<OpportunitiesFiltersViewModel, HomeCoordina
     }
 
     @IBAction func selectDatesBtnTapped(_ sender: Any) {
-        print("select dates")
+        self.coordinator?.navigate(to: .showDatePicker)
     }
 
+    /// Reset UI + Datasources + Update HomePage filters state
     @IBAction func clearAllBtnTapped(_ sender: Any) {
-        print("clear all")
+        // If filters are already empty, then return immediately
+        guard viewModel?.filters.basicFiltersAreEmpty == false else {
+            return
+        }
+
+        datesLabel.text?.removeAll()
+        categoriesCollectionView.indexPathsForSelectedItems?
+            .forEach { categoriesCollectionView.deselectItem(at: $0, animated: false) }
+        typeOfHelpCollectionView.indexPathsForSelectedItems?
+            .forEach { typeOfHelpCollectionView.deselectItem(at: $0, animated: false) }
+        accommodationCollectionView.indexPathsForSelectedItems?
+            .forEach { accommodationCollectionView.deselectItem(at: $0, animated: false) }
+        mealsCollectionView.indexPathsForSelectedItems?
+            .forEach { mealsCollectionView.deselectItem(at: $0, animated: false) }
+        languagesCollectionView.indexPathsForSelectedItems?
+            .forEach { languagesCollectionView.deselectItem(at: $0, animated: false) }
+
+        viewModel?.filters.resetFilters()
+        setupSlider()
+        // Update homeVC in order to reset filters
+        guard let _viewModel = viewModel else {
+            return
+        }
+
+        self.coordinator?.navigate(to: .updateFilters(_viewModel.filters))
     }
 
     @IBAction func showResultsBtnTapped(_ sender: Any) {
-        print("show results!")
-    }
-}
-
-extension OpportunitiesFiltersVC: UICollectionViewDelegate, UICollectionViewDataSource {
-
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if collectionView == categoriesCollectionView {
-            return OpportunityCategory.allCases.count
-        } else if collectionView == typeOfHelpCollectionView {
-            return TypeOfHelp.allCases.count
-        } else if collectionView == accommodationCollectionView {
-            return Accommodation.allCases.count
-        } else if collectionView == mealsCollectionView {
-            return Meal.allCases.count
-        } else if collectionView == languagesCollectionView {
-            return Language.allCases.count
+        guard let _viewModel = viewModel else {
+            return
         }
 
-        return 0
-    }
-
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        // swiftlint:disable:next force_cast
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "identifier", for: indexPath) as! MDCChipCollectionViewCell
-
-        let chipView = cell.chipView
-        var title: String?
-
-        if collectionView == categoriesCollectionView {
-            title = OpportunityCategory.allCases[safe: indexPath.row]?.value
-        } else if collectionView == typeOfHelpCollectionView {
-            title = TypeOfHelp.allCases[safe: indexPath.row]?.value
-        } else if collectionView == accommodationCollectionView {
-            title = Accommodation.allCases[safe: indexPath.row]?.value
-        } else if collectionView == mealsCollectionView {
-            title = Meal.allCases[safe: indexPath.row]?.value
-        } else if collectionView == languagesCollectionView {
-            title = Language.allCases[safe: indexPath.row]?.value
-        }
-
-        chipView.titleLabel.text = title
-        chipView.titleFont = UIFont.scriptFont(.bold, size: 12)
-        chipView.setBackgroundColor(UIColor.appColor(.badgeBg), for: .normal)
-        chipView.setBackgroundColor(UIColor.appColor(.lavender), for: .selected)
-        chipView.setTitleColor(UIColor.appColor(.lavender2), for: .normal)
-        chipView.setTitleColor(.white, for: .selected)
-
-        return cell
-    }
-
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // For action chips, we never want the chip to stay in selected state.
-        // Other possible apporaches would be relying on theming or Customizing collectionViewCell
-        // selected state.
-        // collectionView.deselectItem(at: indexPath, animated: false)
-        // Trigger the action
+        self.dismiss(animated: true, completion: {
+            self.coordinator?.navigate(to: .updateFilters(_viewModel.filters))
+        })
     }
 }
 
 extension OpportunitiesFiltersVC: RangeSeekSliderDelegate {
-    func rangeSeekSlider(_ slider: RangeSeekSlider, stringForMinValue minValue: CGFloat) -> String? {
-        print("minDays: \(minValue)")
-        return nil
-    }
-
-    func rangeSeekSlider(_ slider: RangeSeekSlider, stringForMaxValue: CGFloat) -> String? {
-        print("maxDays: \(stringForMaxValue)")
-        return nil
+    func didEndTouches(in slider: RangeSeekSlider) {
+        self.viewModel?.filters.addDays(min: Int(slider.selectedMinValue),
+                                        max: Int(slider.selectedMaxValue))
     }
 }

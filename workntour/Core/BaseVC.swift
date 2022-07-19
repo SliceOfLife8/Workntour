@@ -17,6 +17,7 @@ class BaseVC<VM: BaseViewModel, C: Coordinator>: UIViewController {
     /// Setup your own classes.
     var viewModel: VM?
     weak var coordinator: C?
+    weak var otherCoordinator: Coordinator? /// This used if we need to have more coordinators refered to a specific VC
 
     var storage = Set<AnyCancellable>()
     var preventNavBarFromAppearing: Bool = false /// This variable is used from prevent navigationBar from appearing. This is basically used when we want two behaviours for the same ViewController.

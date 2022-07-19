@@ -37,7 +37,9 @@ class OpportunitesDetailsViewModel: BaseViewModel {
             .map({ output in
                 self.images = output.imageUrls.compactMap { URL(string: $0) }
                 // Show address depending on user role
-                self.headerModel = OpportunityDetailsHeaderModel(title: output.title, area: output.location.placemark?.formattedName(), category: output.category)
+                self.headerModel = OpportunityDetailsHeaderModel(title: output.title,
+                                                                 area: output.location.placemark?.formattedName(userIsHost: UserDataManager.shared.role?.oneOf(other: .COMPANY_HOST, .INDIVIDUAL_HOST)),
+                                                                 category: output.category)
 
                 var models = [
                     OpportunityDetailsModel(title: "Type of help needed", description: output.typeOfHelp.map { $0.value }.joined(separator: ", ")),

@@ -322,7 +322,7 @@ class CreateOpportunityVC: BaseVC<CreateOpportunityViewModel, OpportunitiesCoord
                 if valid {
                     self?.showActionAlertAfterValidation()
                 } else {
-                    self?.coordinator?.navigate(to: .showAlert(title: "Your input data seems to be invalid!", subtitle: "Please check them again"))
+                    self?.coordinator?.navigate(to: .state(.showAlert(title: "Your input data seems to be invalid!", subtitle: "Please check them again")))
                 }
             })
             .store(in: &storage)
@@ -333,7 +333,7 @@ class CreateOpportunityVC: BaseVC<CreateOpportunityViewModel, OpportunitiesCoord
                 if status {
                     self?.coordinator?.navigate(to: .updateOpportunitiesOnLanding)
                 } else {
-                    self?.coordinator?.navigate(to: .showAlert(title: "Something went wrong!", subtitle: "Please try again"))
+                    self?.coordinator?.navigate(to: .state(.showAlert(title: "Something went wrong!", subtitle: "Please try again")))
                 }
             })
             .store(in: &storage)
@@ -356,7 +356,7 @@ class CreateOpportunityVC: BaseVC<CreateOpportunityViewModel, OpportunitiesCoord
     }
 
     func setupAddress(location: OpportunityLocation) {
-        addressLabel.text = location.placemark?.formattedName()
+        addressLabel.text = location.placemark?.formattedName(userIsHost: true)
         viewModel?.location = location
     }
 
@@ -373,7 +373,7 @@ class CreateOpportunityVC: BaseVC<CreateOpportunityViewModel, OpportunitiesCoord
                                             leftButtonStyle: .destructive,
                                             rightButtonTitle: "Yes",
                                             leftAction: {
-            self.coordinator?.navigate(to: .back)
+            self.coordinator?.navigate(to: .state(.back))
         }, rightAction: {
             self.viewModel?.createOpportunity()
             self.navigationItem.rightBarButtonItem?.isEnabled = false

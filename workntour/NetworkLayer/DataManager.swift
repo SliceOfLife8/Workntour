@@ -171,4 +171,13 @@ extension DataManager: HomeService {
         .eraseToAnyPublisher()
     }
 
+    func getNumberOfResults(body: OpportunityFilterDto) -> AnyPublisher<Int, ProviderError> {
+        return networking.request(
+            with: HomeRouter.filtersNumOfResults(body: body),
+            scheduler: DispatchQueue.main,
+            class: GenericResponse<Int>.self)
+        .compactMap { $0.data }
+        .eraseToAnyPublisher()
+    }
+
 }

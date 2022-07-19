@@ -10,11 +10,6 @@ import SharedKit
 import CommonUI
 import SkeletonView
 
-/*
- 3. Add filters
- 4. Add map
- */
-
 class HomeVC: BaseVC<HomeViewModel, HomeCoordinator> {
     // MARK: - Vars
     private lazy var resultsVC: OpportunitiesResultsVC = {
@@ -102,8 +97,6 @@ class HomeVC: BaseVC<HomeViewModel, HomeCoordinator> {
     @objc func pullToRefresh() {
         collectionView.refreshControl?.endRefreshing()
         viewModel?.resetPagination()
-        #warning("check pullToRefresh when filters are ready!")
-        // call api be careful with scrollViewWillEndDragging
     }
 
     @IBAction func mapButtonTapped(_ sender: Any) {
@@ -132,13 +125,8 @@ extension HomeVC: UISearchResultsUpdating, UISearchControllerDelegate, Opportuni
         }
     }
 
-    func willPresentSearchController(_ searchController: UISearchController) {
-        collectionView.isScrollEnabled = false
-    }
-
     /// If searchBar text is empty & user has already select an area, then update filters
     func didDismissSearchController(_ searchController: UISearchController) {
-        collectionView.isScrollEnabled = true
         if searchController.searchBar.text?.isEmpty == true && viewModel?.filters.areaIsFilled == true {
             self.viewModel?.filters.resetArea()
         }
@@ -192,8 +180,8 @@ extension HomeVC: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, 
         guard let opportunityId = viewModel?.data[safe: indexPath.row]?.opportunityId else {
             return
         }
-        print("select opportunity with id: \(opportunityId)")
-        // self.coordinator?.navigate(to: .showDetails(opportunityId))
+
+        self.coordinator?.navigate(to: .showDetails(opportunityId))
     }
 
     func scrollViewShouldScrollToTop(_ scrollView: UIScrollView) -> Bool {
@@ -209,7 +197,7 @@ extension HomeVC: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, 
 
         if targetContentOffset.pointee.y >= (collectionView.contentSize.height - collectionView.frame.size.height) - 1000 {
 
-            viewModel?.getOpportunities()
+            viewModel?.getOpportunities(withFilters: viewModel?.filters)
         }
     }
 

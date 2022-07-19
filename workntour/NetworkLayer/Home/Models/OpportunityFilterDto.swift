@@ -52,6 +52,12 @@ struct OpportunityFilterDto: Codable {
         longitude == nil && latitude == nil && startDate == nil && endDate == nil
     }
 
+    var basicFiltersAreEmpty: Bool {
+        return category == nil && typeOfHelp.count == 0 && minDays == nil && maxDays == nil &&
+        languagesRequired.count == 0 && accommodation == nil && meals.count == 0
+        && startDate == nil && endDate == nil
+    }
+
     var areaIsFilled: Bool {
         return longitude != nil && latitude != nil
     }
@@ -59,6 +65,16 @@ struct OpportunityFilterDto: Codable {
     mutating func addArea(longitude: Double, latitude: Double) {
         self.longitude = longitude
         self.latitude = latitude
+    }
+
+    mutating func addDays(min: Int, max: Int) {
+        self.minDays = min
+        self.maxDays = max
+    }
+
+    mutating func addDates(start: String, end: String) {
+        self.startDate = start
+        self.endDate = end
     }
 
     mutating func resetFilters() {
