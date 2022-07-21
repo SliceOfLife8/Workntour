@@ -74,7 +74,8 @@ class HomeVC: BaseVC<HomeViewModel, HomeCoordinator> {
 
         viewModel?.$data
             .compactMap { $0 }
-            .sink(receiveValue: { [weak self] _ in
+            .sink(receiveValue: { [weak self] data in
+                self?.collectionView.isScrollEnabled = data.count > 0
                 self?.viewModel?.collectionViewIsUpdating = false
                 self?.collectionView.reloadData()
             })
@@ -84,7 +85,28 @@ class HomeVC: BaseVC<HomeViewModel, HomeCoordinator> {
             .dropFirst()
             .sink(receiveValue: { [weak self] value in
                 let filters = value.isEmpty ? nil : value // Send filters object when it has values
+                self?.mapButton.isHidden = !value.areaIsFilled
+
                 self?.viewModel?.getOpportunities(resetPagination: true, withFilters: filters)
+            })
+            .store(in: &storage)
+
+        viewModel?.$errorMessage
+            .compactMap { $0 }
+            .sink(receiveValue: { [weak self] message in
+                self?.coordinator?.navigate(to: .state(.showAlert(title: message, subtitle: nil)))
+                self?.mapButton.isHidden = true
+            })
+            .store(in: &storage)
+
+        viewModel?.$opportunitiesCoordinates
+            .dropFirst()
+            .sink(receiveValue: { [weak self] models in
+                if models.count == 0 {
+                    self?.coordinator?.navigate(to: .state(.showAlert(title: "Unable to open map", subtitle: "Something went wrong with our service.\nPlease try again!")))
+                } else {
+                    self?.coordinator?.navigate(to: .showMap(withModels: models))
+                }
             })
             .store(in: &storage)
     }
@@ -96,11 +118,12 @@ class HomeVC: BaseVC<HomeViewModel, HomeCoordinator> {
 
     @objc func pullToRefresh() {
         collectionView.refreshControl?.endRefreshing()
+        mapButton.isHidden = true
         viewModel?.resetPagination()
     }
 
     @IBAction func mapButtonTapped(_ sender: Any) {
-        // self.coordinator?.navigate(to: .showMap)
+        self.viewModel?.getOpportunitiesCoordsByLocation()
     }
 }
 

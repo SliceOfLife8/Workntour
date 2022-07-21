@@ -19,6 +19,7 @@ class HomeViewModel: BaseViewModel {
     /// Outputs
     @Published var data: [OpportunityDto]
     @Published var errorMessage: String?
+    @Published var opportunitiesCoordinates: [OpportunityCoordinateModel]
     /// Pagination vars
     var collectionViewIsUpdating: Bool = false
     var totalNumOfOpportunities: Int = 0
@@ -30,6 +31,7 @@ class HomeViewModel: BaseViewModel {
         self.service = service
         self.data = []
         self.filters = OpportunityFilterDto()
+        self.opportunitiesCoordinates = []
 
         super.init()
     }
@@ -56,12 +58,32 @@ class HomeViewModel: BaseViewModel {
             return self.data + $0.opportunities
         }
         .subscribe(on: RunLoop.main)
-        .catch({ [weak self] error -> Just<[OpportunityDto]> in
-            self?.errorMessage = error.errorDescription
+        .catch({ [weak self] _ -> Just<[OpportunityDto]> in
+            self?.errorMessage = "Opportunities were not found"
 
             return Just([])
         })
             .assign(to: &$data)
+    }
+
+    func getOpportunitiesCoordsByLocation() {
+        guard let long = filters.longitude,
+              let lat = filters.latitude else {
+            assertionFailure()
+            return
+        }
+
+        loaderVisibility = true
+        service.getOpportunitiesCoordinatesByLocation(longitude: long,
+                                                      latitude: lat)
+        .subscribe(on: RunLoop.main)
+        .catch({ _ -> Just<[OpportunityCoordinateModel]> in
+            return Just([])
+        })
+            .handleEvents(receiveCompletion: { _ in
+                self.loaderVisibility = false
+            })
+            .assign(to: &$opportunitiesCoordinates)
     }
 
     func resetPagination() {

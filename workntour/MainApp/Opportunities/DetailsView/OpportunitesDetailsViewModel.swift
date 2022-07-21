@@ -23,6 +23,7 @@ class OpportunitesDetailsViewModel: BaseViewModel {
     @Published var data: [OpportunityDetailsModel] = []
     @Published var errorMessage: String?
     @Published var opportunityWasDeleted: Bool = false
+    var opportunityDates: OpportunityDates?
 
     init(service: OpportunityService = DataManager.shared) {
         self.service = service
@@ -56,6 +57,8 @@ class OpportunitesDetailsViewModel: BaseViewModel {
                 if let description = output.description {
                     models.append(OpportunityDetailsModel(title: "Description", description: description))
                 }
+
+                self.opportunityDates = output.dates.first
 
                 return models
             })

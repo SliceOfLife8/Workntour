@@ -80,6 +80,13 @@ extension String {
         return dateFormatter.string(from: date)
     }
 
+    public func asDate() -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+
+        return dateFormatter.date(from: self)
+    }
+
     public func userAgeEligibility() -> Bool {
         guard let birthdayDate = self.stringToDate(),
               let minimumRequiredDate = Calendar.current.date(byAdding: .year, value: -18, to: Date()) else {

@@ -24,4 +24,11 @@ protocol HomeService: AnyObject {
     /// - returns: The actual number of opportunities.
     func getNumberOfResults(body: OpportunityFilterDto) -> AnyPublisher<Int, ProviderError>
 
+    /// Get an array of location of opportunities which are related to a specific area.
+    /// f.e. retrieve all opportunities of Athens.
+    /// - Parameters
+    ///   - longitude & latitude
+    /// - returns: The array which contains opportunitiesIds & coordinates in order to draw houses at map.
+    func getOpportunitiesCoordinatesByLocation(longitude: Double,
+                                               latitude: Double) -> AnyPublisher<[OpportunityCoordinateModel], ProviderError>
 }

@@ -10,7 +10,7 @@ import SharedKit
 
 enum HomePageStep: Step {
     case state(_ default: DefaultStep)
-    case showMap
+    case showMap(withModels: [OpportunityCoordinateModel])
     case showFilters
     case showDetails(_ opportunityId: String)
     case showDatePicker
@@ -51,8 +51,8 @@ final class HomeCoordinator: NavigationCoordinator {
             AlertHelper.showDefaultAlert(rootViewController,
                                          title: title,
                                          message: subtitle)
-        case .showMap:
-            openMap()
+        case .showMap(let models):
+            openMap(opportunities: models)
         case .showFilters:
             openFilters()
         case .showDetails(let opportunityId):
@@ -100,11 +100,12 @@ final class HomeCoordinator: NavigationCoordinator {
         }
     }
 
-    private func openMap() {
-        let mapVC = MapViewController()
+    private func openMap(opportunities: [OpportunityCoordinateModel]) {
+        print("Map: opportunity models -> \(opportunities)")
+        // let mapVC = MapViewController()
         // mapVC.coordinator = self
-        mapVC.modalPresentationStyle = .popover
-        self.rootViewController.present(mapVC, animated: true)
+        // mapVC.modalPresentationStyle = .popover
+        // self.rootViewController.present(mapVC, animated: true)
     }
 
 }

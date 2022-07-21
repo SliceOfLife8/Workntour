@@ -161,12 +161,18 @@ extension DataManager: HomeService {
                                                  body: filters),
             scheduler: DispatchQueue.main,
             class: GenericResponse<[OpportunityDto]>.self)
-        .map {
-            let data = $0.data ?? []
-            let hasNext = $0.pagination?.next ?? 0 > 0
-            let total = $0.pagination?.total ?? 0
+        .tryMap { response in
+            let hasNext = response.pagination?.next ?? 0 > 0
+            let total = response.pagination?.total ?? 0
+
+            guard let data = response.data, data.count > 0 else {
+                throw ProviderError.missingBodyData
+            }
 
             return (data, total, hasNext)
+        }
+        .mapError { _ -> ProviderError in
+            return .missingBodyData
         }
         .eraseToAnyPublisher()
     }
@@ -180,4 +186,13 @@ extension DataManager: HomeService {
         .eraseToAnyPublisher()
     }
 
+    func getOpportunitiesCoordinatesByLocation(longitude: Double, latitude: Double) -> AnyPublisher<[OpportunityCoordinateModel], ProviderError> {
+        return networking.request(
+            with: HomeRouter.getOpportunitiesByCoordinates(longitude: longitude.description,
+                                                           latitude: latitude.description),
+            scheduler: DispatchQueue.main,
+            class: GenericResponse<[OpportunityCoordinateModel]>.self)
+        .compactMap { $0.data }
+        .eraseToAnyPublisher()
+    }
 }

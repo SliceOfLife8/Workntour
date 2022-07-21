@@ -11,6 +11,7 @@ import Networking
 enum HomeRouter: NetworkTarget {
     case getAllOpportunities(start: String, offset: String, body: OpportunityFilterDto?)
     case filtersNumOfResults(body: OpportunityFilterDto)
+    case getOpportunitiesByCoordinates(longitude: String, latitude: String)
 
     public var baseURL: URL {
         Environment.current.apiBaseURL
@@ -22,6 +23,8 @@ enum HomeRouter: NetworkTarget {
             return "/homePage/filters"
         case .filtersNumOfResults:
             return "homePage/filters/numOfResults"
+        case .getOpportunitiesByCoordinates:
+            return "/homePage/filters/byCoordinates"
         }
     }
 
@@ -29,6 +32,8 @@ enum HomeRouter: NetworkTarget {
         switch self {
         case .getAllOpportunities, .filtersNumOfResults:
             return .post
+        case .getOpportunitiesByCoordinates:
+            return .get
         }
     }
 
@@ -49,6 +54,13 @@ enum HomeRouter: NetworkTarget {
             let jsonData = try! jsonEncoder.encode(filters)
 
             return .requestData(data: jsonData)
+        case .getOpportunitiesByCoordinates(let longitude, let latitude):
+            let params: [String: Any] = [
+                "longitude": longitude,
+                "latitude": latitude
+            ]
+
+            return .requestParameters(parameters: params)
         }
     }
 

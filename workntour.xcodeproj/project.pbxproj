@@ -44,6 +44,8 @@
 		1B442FF1287FE159002145BC /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B442FF0287FE159002145BC /* HomeRouter.swift */; };
 		1B442FF3287FE161002145BC /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B442FF2287FE161002145BC /* HomeService.swift */; };
 		1B4430282885C93F002145BC /* Filters+CollectionViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4430272885C93E002145BC /* Filters+CollectionViews.swift */; };
+		1B44302B2886E057002145BC /* FindAvailableDatesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B44302A2886E057002145BC /* FindAvailableDatesVC.swift */; };
+		1B443033288853BB002145BC /* OpportunityCoordinateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B443032288853BA002145BC /* OpportunityCoordinateModel.swift */; };
 		1B4AE3F8283E04BB00FA6420 /* IndividualHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4AE3F7283E04BB00FA6420 /* IndividualHost.swift */; };
 		1B4AE3FA283E04C400FA6420 /* CompanyHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4AE3F9283E04C400FA6420 /* CompanyHost.swift */; };
 		1B4AE3FD283E4B4D00FA6420 /* logo_title.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B4AE3FB283E4B4C00FA6420 /* logo_title.png */; };
@@ -193,6 +195,8 @@
 		1B442FF0287FE159002145BC /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
 		1B442FF2287FE161002145BC /* HomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
 		1B4430272885C93E002145BC /* Filters+CollectionViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Filters+CollectionViews.swift"; sourceTree = "<group>"; };
+		1B44302A2886E057002145BC /* FindAvailableDatesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindAvailableDatesVC.swift; sourceTree = "<group>"; };
+		1B443032288853BA002145BC /* OpportunityCoordinateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunityCoordinateModel.swift; sourceTree = "<group>"; };
 		1B4AE3F7283E04BB00FA6420 /* IndividualHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualHost.swift; sourceTree = "<group>"; };
 		1B4AE3F9283E04C400FA6420 /* CompanyHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyHost.swift; sourceTree = "<group>"; };
 		1B4AE3FB283E4B4C00FA6420 /* logo_title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_title.png; sourceTree = "<group>"; };
@@ -488,6 +492,7 @@
 			isa = PBXGroup;
 			children = (
 				1B442FEB287EE348002145BC /* OpportunityFilterDto.swift */,
+				1B443032288853BA002145BC /* OpportunityCoordinateModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -499,6 +504,14 @@
 				1B442FF2287FE161002145BC /* HomeService.swift */,
 			);
 			path = "Router+Service";
+			sourceTree = "<group>";
+		};
+		1B4430292886E023002145BC /* Dates */ = {
+			isa = PBXGroup;
+			children = (
+				1B44302A2886E057002145BC /* FindAvailableDatesVC.swift */,
+			);
+			path = Dates;
 			sourceTree = "<group>";
 		};
 		1B4AE3F6283E04A500FA6420 /* Users */ = {
@@ -784,6 +797,7 @@
 				1BC190AA285C5C4900585533 /* HomeCoordinator.swift */,
 				1B39AA5828784BDE009377A7 /* Search */,
 				1B442FE3287EA2AB002145BC /* Filters */,
+				1B4430292886E023002145BC /* Dates */,
 				1B39AA5D287C2910009377A7 /* Home */,
 			);
 			path = HomePage;
@@ -1152,6 +1166,7 @@
 				1BA2DF02281E8C7300DB128D /* BaseVC.swift in Sources */,
 				1BC190D1285F255500585533 /* HostProfileViewModel.swift in Sources */,
 				1B39AA312872F16D009377A7 /* ImagePageViewController.swift in Sources */,
+				1B443033288853BB002145BC /* OpportunityCoordinateModel.swift in Sources */,
 				1B3C384328520E06000EEADF /* LoginVC.swift in Sources */,
 				1B1683A8283D20180067F2DB /* Pagination.swift in Sources */,
 				1B3C384928520E5C000EEADF /* LoginCoordinator.swift in Sources */,
@@ -1163,6 +1178,7 @@
 				1BC190A4285A0EC500585533 /* OpportunitiesVC.swift in Sources */,
 				1B168380283A590B0067F2DB /* RegistrationTravelerViewModel.swift in Sources */,
 				1B39AA2928702C43009377A7 /* OpportunityService.swift in Sources */,
+				1B44302B2886E057002145BC /* FindAvailableDatesVC.swift in Sources */,
 				1BC190C4285C60A800585533 /* TabBarPage.swift in Sources */,
 				1BA2DEF9281E8AE800DB128D /* MainCoordinator.swift in Sources */,
 				1B563B722847DD0B00B851C1 /* RegistrationError.swift in Sources */,

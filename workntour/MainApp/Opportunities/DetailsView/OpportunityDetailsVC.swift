@@ -14,7 +14,7 @@ class OpportunityDetailsVC: BaseVC<OpportunitesDetailsViewModel, OpportunitiesCo
     private(set) var opporunityId: String
     private(set) var userRole: UserRole?
 
-    private var headerInitialHeight: CGFloat = 300
+    private var headerInitialHeight: CGFloat = 350
     private var rowItems: [OpportunityDetailsModel] = []
 
     private lazy var tableView: UITableView = {
@@ -192,7 +192,13 @@ class OpportunityDetailsVC: BaseVC<OpportunitesDetailsViewModel, OpportunitiesCo
     }
 
     @objc private func bookTapped() {
-        print("book tapped!")
+        guard let startDate = viewModel?.opportunityDates?.start?.asDate(),
+              let endDate = viewModel?.opportunityDates?.end?.asDate() else {
+            return
+        }
+
+        let dates = FindAvailableDatesVC(startDate: startDate, endDate: endDate)
+        self.navigationController?.pushViewController(dates, animated: true)
     }
 
     func deleteOpportunity() {

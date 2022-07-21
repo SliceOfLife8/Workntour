@@ -15,12 +15,12 @@ extension HTTPURLResponse {
 
 extension URL {
     func generateUrlWithQuery(with parameters: [String: Any]) -> URL {
-        var quearyItems: [URLQueryItem] = []
+        var queryItems: [URLQueryItem] = []
         for parameter in parameters {
-            quearyItems.append(URLQueryItem(name: parameter.key, value: parameter.value as? String))
+            queryItems.append(URLQueryItem(name: parameter.key, value: parameter.value as? String))
         }
         var urlComponents = URLComponents(url: self, resolvingAgainstBaseURL: true)!
-        urlComponents.queryItems = quearyItems
+        urlComponents.queryItems = queryItems
         guard let url = urlComponents.url else { fatalError("Wrong URL Provided") }
         return url
     }
