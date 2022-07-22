@@ -46,6 +46,9 @@
 		1B4430282885C93F002145BC /* Filters+CollectionViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4430272885C93E002145BC /* Filters+CollectionViews.swift */; };
 		1B44302B2886E057002145BC /* FindAvailableDatesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B44302A2886E057002145BC /* FindAvailableDatesVC.swift */; };
 		1B443033288853BB002145BC /* OpportunityCoordinateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B443032288853BA002145BC /* OpportunityCoordinateModel.swift */; };
+		1B443045288A721C002145BC /* MapOfOpportunitiesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B443044288A721C002145BC /* MapOfOpportunitiesVC.swift */; };
+		1B443047288A722A002145BC /* MapOfOpportunitiesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B443046288A722A002145BC /* MapOfOpportunitiesViewModel.swift */; };
+		1B44304C288A93AB002145BC /* CountClusterAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B44304B288A93AB002145BC /* CountClusterAnnotationView.swift */; };
 		1B4AE3F8283E04BB00FA6420 /* IndividualHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4AE3F7283E04BB00FA6420 /* IndividualHost.swift */; };
 		1B4AE3FA283E04C400FA6420 /* CompanyHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4AE3F9283E04C400FA6420 /* CompanyHost.swift */; };
 		1B4AE3FD283E4B4D00FA6420 /* logo_title.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B4AE3FB283E4B4C00FA6420 /* logo_title.png */; };
@@ -197,6 +200,9 @@
 		1B4430272885C93E002145BC /* Filters+CollectionViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Filters+CollectionViews.swift"; sourceTree = "<group>"; };
 		1B44302A2886E057002145BC /* FindAvailableDatesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindAvailableDatesVC.swift; sourceTree = "<group>"; };
 		1B443032288853BA002145BC /* OpportunityCoordinateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunityCoordinateModel.swift; sourceTree = "<group>"; };
+		1B443044288A721C002145BC /* MapOfOpportunitiesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapOfOpportunitiesVC.swift; sourceTree = "<group>"; };
+		1B443046288A722A002145BC /* MapOfOpportunitiesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapOfOpportunitiesViewModel.swift; sourceTree = "<group>"; };
+		1B44304B288A93AB002145BC /* CountClusterAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountClusterAnnotationView.swift; sourceTree = "<group>"; };
 		1B4AE3F7283E04BB00FA6420 /* IndividualHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualHost.swift; sourceTree = "<group>"; };
 		1B4AE3F9283E04C400FA6420 /* CompanyHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyHost.swift; sourceTree = "<group>"; };
 		1B4AE3FB283E4B4C00FA6420 /* logo_title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_title.png; sourceTree = "<group>"; };
@@ -514,6 +520,16 @@
 			path = Dates;
 			sourceTree = "<group>";
 		};
+		1B443043288A71E8002145BC /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				1B443044288A721C002145BC /* MapOfOpportunitiesVC.swift */,
+				1B443046288A722A002145BC /* MapOfOpportunitiesViewModel.swift */,
+				1B44304B288A93AB002145BC /* CountClusterAnnotationView.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
 		1B4AE3F6283E04A500FA6420 /* Users */ = {
 			isa = PBXGroup;
 			children = (
@@ -796,6 +812,7 @@
 			children = (
 				1BC190AA285C5C4900585533 /* HomeCoordinator.swift */,
 				1B39AA5828784BDE009377A7 /* Search */,
+				1B443043288A71E8002145BC /* Map */,
 				1B442FE3287EA2AB002145BC /* Filters */,
 				1B4430292886E023002145BC /* Dates */,
 				1B39AA5D287C2910009377A7 /* Home */,
@@ -1158,14 +1175,17 @@
 				1BC190B8285C5CB400585533 /* NotificationsCoordinator.swift in Sources */,
 				1BC190DB28620B9300585533 /* LocationManager.swift in Sources */,
 				1BC190B6285C5CA400585533 /* OpportunitiesViewModel.swift in Sources */,
+				1B443047288A722A002145BC /* MapOfOpportunitiesViewModel.swift in Sources */,
 				1B442FF3287FE161002145BC /* HomeService.swift in Sources */,
 				1BC190F32863399E00585533 /* CompanyHostProfile.swift in Sources */,
 				1BC190AF285C5C6300585533 /* HomeViewModel.swift in Sources */,
 				1B39AA4728744791009377A7 /* OpportunityDetailsModel.swift in Sources */,
+				1B44304C288A93AB002145BC /* CountClusterAnnotationView.swift in Sources */,
 				1B9A3D90282C0BAF003E0C34 /* DataManager.swift in Sources */,
 				1BA2DF02281E8C7300DB128D /* BaseVC.swift in Sources */,
 				1BC190D1285F255500585533 /* HostProfileViewModel.swift in Sources */,
 				1B39AA312872F16D009377A7 /* ImagePageViewController.swift in Sources */,
+				1B443045288A721C002145BC /* MapOfOpportunitiesVC.swift in Sources */,
 				1B443033288853BB002145BC /* OpportunityCoordinateModel.swift in Sources */,
 				1B3C384328520E06000EEADF /* LoginVC.swift in Sources */,
 				1B1683A8283D20180067F2DB /* Pagination.swift in Sources */,
@@ -1377,7 +1397,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 8QYX9VGMBQ;
 				ENABLE_BITCODE = NO;
@@ -1425,7 +1445,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 8QYX9VGMBQ;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1535,7 +1555,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 8QYX9VGMBQ;
 				ENABLE_BITCODE = NO;
@@ -1645,7 +1665,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 8QYX9VGMBQ;
 				ENABLE_BITCODE = NO;
@@ -1750,7 +1770,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 8QYX9VGMBQ;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1854,7 +1874,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 8QYX9VGMBQ;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (

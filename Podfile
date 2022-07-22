@@ -35,6 +35,7 @@ def common
   pod 'FloatingPanel'
   pod 'GooglePlaces'
   pod 'SkeletonView'
+  pod 'Cluster'
 end
 
 def logging

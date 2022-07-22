@@ -1,4 +1,5 @@
 PODS:
+  - Cluster (3.0.3)
   - CombineDataSources (0.2.5)
   - DropDown (2.3.13)
   - EasyTipView (2.1.0)
@@ -188,6 +189,7 @@ PODS:
   - SwiftyBeaver (1.9.6)
 
 DEPENDENCIES:
+  - Cluster
   - CombineDataSources
   - DropDown
   - EasyTipView
@@ -209,6 +211,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - Cluster
     - CombineDataSources
     - DropDown
     - EasyTipView
@@ -244,6 +247,7 @@ EXTERNAL SOURCES:
     :path: Pods/CocoaPodsKeys
 
 SPEC CHECKSUMS:
+  Cluster: d72510594f60d901905953aafdc811d1888177ae
   CombineDataSources: dcbc3b06a038ffdf620b3b4533d3ecaf76ca6a2e
   DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
   EasyTipView: a92b6edc377b81c5ac18e9fd35d5ee78e9409488
@@ -275,6 +279,6 @@ SPEC CHECKSUMS:
   SwiftLint: f80f1be7fa96d30e0aa68e58d45d4ea1ccaac519
   SwiftyBeaver: c8241b4745aa269a78ca5a022532c6915e948536
 
-PODFILE CHECKSUM: 4b6273ff72483f9e837b7e6de3ed3abc4673d616
+PODFILE CHECKSUM: 2afe58b1eebd8679efa0a1c595b6d866d7836b0b
 
 COCOAPODS: 1.11.3

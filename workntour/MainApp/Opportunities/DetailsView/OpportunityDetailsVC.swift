@@ -38,7 +38,7 @@ class OpportunityDetailsVC: BaseVC<OpportunitesDetailsViewModel, OpportunitiesCo
 
     private lazy var backButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(systemName: "arrow.backward.circle.fill"), for: .normal)
+        button.setImage(UIImage(systemName: "arrow.backward.square.fill"), for: .normal)
         button.tintColor = UIColor.appColor(.purple)
         button.contentVerticalAlignment = .fill
         button.contentHorizontalAlignment = .fill

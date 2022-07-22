@@ -66,26 +66,6 @@ class HomeViewModel: BaseViewModel {
             .assign(to: &$data)
     }
 
-    func getOpportunitiesCoordsByLocation() {
-        guard let long = filters.longitude,
-              let lat = filters.latitude else {
-            assertionFailure()
-            return
-        }
-
-        loaderVisibility = true
-        service.getOpportunitiesCoordinatesByLocation(longitude: long,
-                                                      latitude: lat)
-        .subscribe(on: RunLoop.main)
-        .catch({ _ -> Just<[OpportunityCoordinateModel]> in
-            return Just([])
-        })
-            .handleEvents(receiveCompletion: { _ in
-                self.loaderVisibility = false
-            })
-            .assign(to: &$opportunitiesCoordinates)
-    }
-
     func resetPagination() {
         data = []
         totalNumOfOpportunities = 0

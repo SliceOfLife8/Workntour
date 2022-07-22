@@ -76,6 +76,10 @@ class HomeVC: BaseVC<HomeViewModel, HomeCoordinator> {
             .compactMap { $0 }
             .sink(receiveValue: { [weak self] data in
                 self?.collectionView.isScrollEnabled = data.count > 0
+                if self?.viewModel?.filters.areaIsFilled == true, data.count > 0 {
+                    self?.mapButton.isHidden = false
+                }
+
                 self?.viewModel?.collectionViewIsUpdating = false
                 self?.collectionView.reloadData()
             })
@@ -85,7 +89,7 @@ class HomeVC: BaseVC<HomeViewModel, HomeCoordinator> {
             .dropFirst()
             .sink(receiveValue: { [weak self] value in
                 let filters = value.isEmpty ? nil : value // Send filters object when it has values
-                self?.mapButton.isHidden = !value.areaIsFilled
+                self?.mapButton.isHidden = true
 
                 self?.viewModel?.getOpportunities(resetPagination: true, withFilters: filters)
             })
@@ -96,17 +100,6 @@ class HomeVC: BaseVC<HomeViewModel, HomeCoordinator> {
             .sink(receiveValue: { [weak self] message in
                 self?.coordinator?.navigate(to: .state(.showAlert(title: message, subtitle: nil)))
                 self?.mapButton.isHidden = true
-            })
-            .store(in: &storage)
-
-        viewModel?.$opportunitiesCoordinates
-            .dropFirst()
-            .sink(receiveValue: { [weak self] models in
-                if models.count == 0 {
-                    self?.coordinator?.navigate(to: .state(.showAlert(title: "Unable to open map", subtitle: "Something went wrong with our service.\nPlease try again!")))
-                } else {
-                    self?.coordinator?.navigate(to: .showMap(withModels: models))
-                }
             })
             .store(in: &storage)
     }
@@ -123,7 +116,13 @@ class HomeVC: BaseVC<HomeViewModel, HomeCoordinator> {
     }
 
     @IBAction func mapButtonTapped(_ sender: Any) {
-        self.viewModel?.getOpportunitiesCoordsByLocation()
+        guard let longitude = viewModel?.filters.longitude,
+              let latitude = viewModel?.filters.latitude else {
+            assertionFailure()
+            return
+        }
+
+        self.coordinator?.navigate(to: .showMap(longitude: longitude, latitude: latitude))
     }
 }
 
@@ -204,7 +203,7 @@ extension HomeVC: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, 
             return
         }
 
-        self.coordinator?.navigate(to: .showDetails(opportunityId))
+        self.coordinator?.navigate(to: .showDetails(opportunityId, animated: true))
     }
 
     func scrollViewShouldScrollToTop(_ scrollView: UIScrollView) -> Bool {

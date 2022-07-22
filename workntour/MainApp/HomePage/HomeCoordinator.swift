@@ -10,9 +10,9 @@ import SharedKit
 
 enum HomePageStep: Step {
     case state(_ default: DefaultStep)
-    case showMap(withModels: [OpportunityCoordinateModel])
+    case showMap(longitude: Double, latitude: Double)
     case showFilters
-    case showDetails(_ opportunityId: String)
+    case showDetails(_ opportunityId: String, animated: Bool)
     case showDatePicker
     case saveDateRangeSelection(from: String, to: String)
     case updateFilters(_ filters: OpportunityFilterDto)
@@ -51,12 +51,12 @@ final class HomeCoordinator: NavigationCoordinator {
             AlertHelper.showDefaultAlert(rootViewController,
                                          title: title,
                                          message: subtitle)
-        case .showMap(let models):
-            openMap(opportunities: models)
+        case .showMap(let long, let lat):
+            openMap(longitude: long, latitude: lat)
         case .showFilters:
             openFilters()
-        case .showDetails(let opportunityId):
-            openDetailsView(id: opportunityId)
+        case .showDetails(let opportunityId, let animated):
+            openDetailsView(id: opportunityId, animated: animated)
         case .showDatePicker:
             openDatePicker()
         case .saveDateRangeSelection(let start, let end):
@@ -83,12 +83,12 @@ final class HomeCoordinator: NavigationCoordinator {
         })
     }
 
-    private func openDetailsView(id: String) {
+    private func openDetailsView(id: String, animated: Bool) {
         let vc = OpportunityDetailsVC(id)
         vc.viewModel = OpportunitesDetailsViewModel()
         vc.otherCoordinator = self
         vc.hidesBottomBarWhenPushed = true
-        navigator.push(vc, animated: true)
+        navigator.push(vc, animated: animated)
     }
 
     private func openDatePicker() {
@@ -100,12 +100,13 @@ final class HomeCoordinator: NavigationCoordinator {
         }
     }
 
-    private func openMap(opportunities: [OpportunityCoordinateModel]) {
-        print("Map: opportunity models -> \(opportunities)")
-        // let mapVC = MapViewController()
-        // mapVC.coordinator = self
-        // mapVC.modalPresentationStyle = .popover
-        // self.rootViewController.present(mapVC, animated: true)
+    private func openMap(longitude: Double, latitude: Double) {
+        let mapVC = MapOfOpportunitiesVC()
+        mapVC.viewModel = MapOfOpportunitiesViewModel(longitude: longitude,
+                                                      latitude: latitude)
+        mapVC.coordinator = self
+        mapVC.hidesBottomBarWhenPushed = true
+        navigator.push(mapVC, animated: true)
     }
 
 }
