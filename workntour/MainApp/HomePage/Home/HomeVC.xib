@@ -27,10 +27,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r6V-7R-dND" userLabel="Content View">
-                    <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <subviews>
-                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="hgs-pN-lMO">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="852"/>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="hgs-pN-lMO">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rIT-8W-mLh">
                                 <size key="itemSize" width="128" height="128"/>
@@ -40,7 +40,7 @@
                             </collectionViewFlowLayout>
                         </collectionView>
                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gim-ZQ-i4i" customClass="TransparentButton" customModule="CommonUI">
-                            <rect key="frame" x="166.5" y="792" width="81.5" height="36"/>
+                            <rect key="frame" x="166.5" y="836" width="81.5" height="36"/>
                             <color key="backgroundColor" name="purpleBlack"/>
                             <fontDescription key="fontDescription" name="Lato-Semibold" family="Lato" pointSize="16"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -69,7 +69,7 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="r6V-7R-dND" secondAttribute="trailing" id="6nk-9c-T6C"/>
                 <constraint firstItem="r6V-7R-dND" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="ct6-5P-2wp"/>
                 <constraint firstAttribute="bottom" secondItem="r6V-7R-dND" secondAttribute="bottom" id="rET-gP-g8C"/>
-                <constraint firstItem="r6V-7R-dND" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="yiO-3g-nN9"/>
+                <constraint firstItem="r6V-7R-dND" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="yiO-3g-nN9"/>
             </constraints>
             <point key="canvasLocation" x="139" y="140"/>
         </view>

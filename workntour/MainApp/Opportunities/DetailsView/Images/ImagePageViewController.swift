@@ -41,6 +41,7 @@ class ImagePageViewController: UIViewController {
 
         pageController.delegate = self
         pageController.dataSource = self
+        view.backgroundColor = UIColor.appColor(.lavender).withAlphaComponent(0.2)
         markup()
     }
 
@@ -61,7 +62,10 @@ class ImagePageViewController: UIViewController {
         view.addSubview(pageControl)
 
         pageController.view.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.top.equalToSuperview()
+            $0.left.equalTo(view.snp.left).offset(-2)
+            $0.right.equalTo(view.snp.right).offset(2)
+            $0.bottom.equalToSuperview()
         }
 
         pageControl.snp.makeConstraints {

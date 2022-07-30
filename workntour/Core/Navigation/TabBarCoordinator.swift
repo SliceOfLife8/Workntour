@@ -149,8 +149,9 @@ extension TabBarCoordinator: UITabBarControllerDelegate {
 
         /// `ScrollToTop` on homePage only when homeVC is presented and contentOffSet of collectionView is greater than .zero
         if let homePage = (viewController as? UINavigationController)?.visibleViewController as? HomeVC, homePageIsVisible, homePage.collectionView.contentOffset.y > 0 {
-            let navigationBarHeight = homePage.navigationController?.navigationBar.bounds.height ?? 0
-            let topOffset = CGPoint(x: 0, y: -navigationBarHeight)
+            let navigationBarInitialHeight: CGFloat = 148
+            let topSafeAreaInset = UIApplication.shared.windows.first?.safeAreaInsets.top ?? 44.0
+            let topOffset = CGPoint(x: 0, y: -navigationBarInitialHeight - topSafeAreaInset)
 
             homePage.collectionView.setContentOffset(topOffset, animated: true)
         }

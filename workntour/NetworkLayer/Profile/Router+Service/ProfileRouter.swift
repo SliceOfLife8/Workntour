@@ -12,6 +12,9 @@ enum ProfileRouter: NetworkTarget {
     case getTraveler(_ memberId: String)
     case getIndividualHost(_ memberId: String)
     case getCompanyHost(_ memberId: String)
+    case updateTraveler(body: TravelerProfile)
+    case updateIndividualHost(body: IndividualHostProfile)
+    case updateCompanyHost(body: CompanyHostProfile)
 
     public var baseURL: URL {
         Environment.current.apiBaseURL
@@ -25,15 +28,41 @@ enum ProfileRouter: NetworkTarget {
             return "/retrieveProfile/individualHost"
         case .getCompanyHost:
             return "retrieveProfile/companyHost"
+        case .updateTraveler:
+            return "/updateProfile/traveler"
+        case .updateIndividualHost:
+            return "/updateProfile/individualHost"
+        case .updateCompanyHost:
+            return "/updateProfile/companyHost"
         }
     }
 
     public var methodType: MethodType {
-        .get
+        switch self {
+        case .getTraveler, .getIndividualHost, .getCompanyHost:
+            return .get
+        case .updateTraveler, .updateIndividualHost, .updateCompanyHost:
+            return .put
+        }
     }
 
+    // swiftlint:disable force_try
     public var workType: WorkType {
-        return .requestPlain
+        let jsonEncoder: JSONEncoder = .init()
+
+        switch self {
+        case .getTraveler, .getIndividualHost, .getCompanyHost:
+            return .requestPlain
+        case .updateTraveler(let body):
+            let jsonData = try! jsonEncoder.encode(body)
+            return .requestData(data: jsonData)
+        case .updateIndividualHost(let body):
+            let jsonData = try! jsonEncoder.encode(body)
+            return .requestData(data: jsonData)
+        case .updateCompanyHost(let body):
+            let jsonData = try! jsonEncoder.encode(body)
+            return .requestData(data: jsonData)
+        }
     }
 
     public var providerType: AuthProviderType {
@@ -58,6 +87,8 @@ enum ProfileRouter: NetworkTarget {
             return [
                 "memberId": id
             ]
+        case .updateTraveler, .updateIndividualHost, .updateCompanyHost:
+            return nil
         }
     }
 

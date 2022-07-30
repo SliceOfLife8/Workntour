@@ -14,7 +14,7 @@ class OpportunityDetailsVC: BaseVC<OpportunitesDetailsViewModel, OpportunitiesCo
     private(set) var opporunityId: String
     private(set) var userRole: UserRole?
 
-    private var headerInitialHeight: CGFloat = 350
+    private var headerInitialHeight: CGFloat = 400
     private var rowItems: [OpportunityDetailsModel] = []
 
     private lazy var tableView: UITableView = {

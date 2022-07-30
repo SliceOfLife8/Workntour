@@ -14,12 +14,18 @@ class HomeViewModel: BaseViewModel {
 
     /// Inputs
     /// Observe changes when this object has been changed
-    @Published var filters: OpportunityFilterDto
+    var filters: OpportunityFilterDto {
+        didSet {
+            getOpportunities(resetPagination: true,
+                             withFilters: filters)
+        }
+    }
 
     /// Outputs
     @Published var data: [OpportunityDto]
     @Published var errorMessage: String?
     @Published var opportunitiesCoordinates: [OpportunityCoordinateModel]
+    @Published var mapIsHidden: Bool = true
     /// Pagination vars
     var collectionViewIsUpdating: Bool = false
     var totalNumOfOpportunities: Int = 0
@@ -60,6 +66,7 @@ class HomeViewModel: BaseViewModel {
         .subscribe(on: RunLoop.main)
         .catch({ [weak self] _ -> Just<[OpportunityDto]> in
             self?.errorMessage = "Opportunities were not found"
+            self?.mapIsHidden = true
 
             return Just([])
         })
@@ -72,6 +79,7 @@ class HomeViewModel: BaseViewModel {
         start = 0
         noMoreOpportunities = false
         errorMessage = nil
+        mapIsHidden = true
     }
 
 }

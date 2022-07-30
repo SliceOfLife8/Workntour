@@ -75,9 +75,8 @@ class HomeVC: BaseVC<HomeViewModel, HomeCoordinator> {
         viewModel?.$data
             .compactMap { $0 }
             .sink(receiveValue: { [weak self] data in
-                self?.collectionView.isScrollEnabled = data.count > 0
                 if self?.viewModel?.filters.areaIsFilled == true, data.count > 0 {
-                    self?.mapButton.isHidden = false
+                    self?.viewModel?.mapIsHidden = false
                 }
 
                 self?.viewModel?.collectionViewIsUpdating = false
@@ -85,21 +84,21 @@ class HomeVC: BaseVC<HomeViewModel, HomeCoordinator> {
             })
             .store(in: &storage)
 
-        viewModel?.$filters
-            .dropFirst()
-            .sink(receiveValue: { [weak self] value in
-                let filters = value.isEmpty ? nil : value // Send filters object when it has values
-                self?.mapButton.isHidden = true
+        viewModel?.$data
+            .map { $0.count > 0 }
+            .receive(on: RunLoop.main)
+            .assign(to: \.isScrollEnabled, on: collectionView)
+            .store(in: &storage)
 
-                self?.viewModel?.getOpportunities(resetPagination: true, withFilters: filters)
-            })
+        viewModel?.$mapIsHidden
+            .receive(on: RunLoop.main)
+            .assign(to: \.isHidden, on: mapButton)
             .store(in: &storage)
 
         viewModel?.$errorMessage
             .compactMap { $0 }
             .sink(receiveValue: { [weak self] message in
                 self?.coordinator?.navigate(to: .state(.showAlert(title: message, subtitle: nil)))
-                self?.mapButton.isHidden = true
             })
             .store(in: &storage)
     }
@@ -111,7 +110,6 @@ class HomeVC: BaseVC<HomeViewModel, HomeCoordinator> {
 
     @objc func pullToRefresh() {
         collectionView.refreshControl?.endRefreshing()
-        mapButton.isHidden = true
         viewModel?.resetPagination()
     }
 
@@ -204,10 +202,6 @@ extension HomeVC: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, 
         }
 
         self.coordinator?.navigate(to: .showDetails(opportunityId, animated: true))
-    }
-
-    func scrollViewShouldScrollToTop(_ scrollView: UIScrollView) -> Bool {
-        return false
     }
 
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {

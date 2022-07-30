@@ -108,9 +108,51 @@ extension DataManager: ProfileService {
         .eraseToAnyPublisher()
     }
 
+    func updateTravelerProfile(model: TravelerProfile) -> AnyPublisher<TravelerProfile?, ProviderError> {
+        return networking.request(
+            with: ProfileRouter.updateTraveler(body: model),
+            scheduler: DispatchQueue.main,
+            class: GenericResponse<TravelerProfile>.self)
+        .compactMap {
+            UserDataManager.shared.save($0.data,
+                                        memberId: $0.data?.memberID,
+                                        role: $0.data?.role)
+            return $0.data
+        }
+        .eraseToAnyPublisher()
+    }
+
+    func updateIndividualHostProfile(model: IndividualHostProfile) -> AnyPublisher<IndividualHostProfile?, ProviderError> {
+        return networking.request(
+            with: ProfileRouter.updateIndividualHost(body: model),
+            scheduler: DispatchQueue.main,
+            class: GenericResponse<IndividualHostProfile>.self)
+        .compactMap {
+            UserDataManager.shared.save($0.data,
+                                        memberId: $0.data?.memberID,
+                                        role: $0.data?.role)
+            return $0.data
+        }
+        .eraseToAnyPublisher()
+    }
+
+    func updateCompanyHostProfile(model: CompanyHostProfile) -> AnyPublisher<CompanyHostProfile?, ProviderError> {
+        return networking.request(
+            with: ProfileRouter.updateCompanyHost(body: model),
+            scheduler: DispatchQueue.main,
+            class: GenericResponse<CompanyHostProfile>.self)
+        .compactMap {
+            UserDataManager.shared.save($0.data,
+                                        memberId: $0.data?.memberID,
+                                        role: $0.data?.role)
+            return $0.data
+        }
+        .eraseToAnyPublisher()
+    }
+
 }
 
-// MARK: - ProfileService
+// MARK: - OpportunityService
 extension DataManager: OpportunityService {
 
     func createOpportunity(_ model: OpportunityDto) -> AnyPublisher<Bool, ProviderError> {

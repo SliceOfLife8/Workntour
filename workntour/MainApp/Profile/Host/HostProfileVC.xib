@@ -23,12 +23,24 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BaseVC" customModule="workntour" customModuleProvider="target">
             <connections>
+                <outlet property="countryTextField" destination="7r7-0c-XhM" id="ss9-7c-Dre"/>
+                <outlet property="emailTextField" destination="Mgi-tb-np2" id="KpJ-Z1-RlD"/>
+                <outlet property="fixedNumTextField" destination="oJk-S5-L4C" id="3jJ-8w-QE9"/>
                 <outlet property="hostIcon" destination="say-dW-DeO" id="39Q-Yp-TAT"/>
                 <outlet property="hostName" destination="u59-bt-nFh" id="FCX-FQ-bFz"/>
                 <outlet property="hostTypeChip" destination="6Jv-Ac-MaM" id="skg-uV-84O"/>
                 <outlet property="introLabel" destination="QNL-vw-wSQ" id="yPD-a3-T9N"/>
+                <outlet property="mainStackView" destination="2Xi-8O-Z6z" id="ppM-ak-eE0"/>
+                <outlet property="mobileTextField" destination="Vf8-ma-2kb" id="bYC-ay-uzR"/>
+                <outlet property="nationalityLabel" destination="tlK-65-wCY" id="a0s-Wc-k4D"/>
+                <outlet property="nationalityTextField" destination="bIO-aO-CZt" id="ePM-72-aEH"/>
                 <outlet property="percentBtn" destination="tnB-az-VwA" id="dHb-gg-oZ2"/>
+                <outlet property="postalAddressTextField" destination="mNc-JJ-SB5" id="4Ik-fa-gRj"/>
                 <outlet property="progressBar" destination="fb0-eL-hZu" id="MgF-2R-c8P"/>
+                <outlet property="scrollView" destination="cIW-Qp-iun" id="GN6-hQ-YgO"/>
+                <outlet property="sexLabel" destination="MRw-Sh-Gc0" id="fV6-In-IkW"/>
+                <outlet property="sexTextField" destination="a4G-Cd-HmS" id="TFf-dR-4pp"/>
+                <outlet property="updateButton" destination="LdF-Bv-ute" id="cm4-Sx-fcf"/>
                 <outlet property="view" destination="iN0-l3-epB" id="eEj-8q-OPw"/>
             </connections>
         </placeholder>
@@ -37,24 +49,27 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cIW-Qp-iun">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="cIW-Qp-iun">
                     <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hyg-0i-X3y" userLabel="Content View">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="852"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fb0-eL-hZu" customClass="KDCircularProgress" customModule="KDCircularProgress">
-                                    <rect key="frame" x="97" y="8" width="220" height="220"/>
+                                    <rect key="frame" x="87" y="8" width="240" height="240"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="host" translatesAutoresizingMaskIntoConstraints="NO" id="say-dW-DeO">
-                                            <rect key="frame" x="30" y="30" width="160" height="160"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="host" translatesAutoresizingMaskIntoConstraints="NO" id="say-dW-DeO">
+                                            <rect key="frame" x="30" y="30" width="180" height="180"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="160" id="1HS-sa-uX3"/>
-                                                <constraint firstAttribute="height" constant="160" id="hfN-Lm-B6g"/>
+                                                <constraint firstAttribute="height" constant="180" id="7tZ-SN-gzn"/>
+                                                <constraint firstAttribute="width" constant="180" id="be8-fe-eTL"/>
                                             </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
                                         </imageView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfz-2n-8WR" userLabel="upload image">
-                                            <rect key="frame" x="158" y="40" width="32" height="32"/>
+                                            <rect key="frame" x="178" y="40" width="32" height="32"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="32" id="Q4K-wP-KbQ"/>
                                                 <constraint firstAttribute="width" constant="32" id="dHA-ll-cCc"/>
@@ -66,7 +81,7 @@
                                             </connections>
                                         </button>
                                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tnB-az-VwA" userLabel="percent" customClass="GradientButton" customModule="CommonUI">
-                                            <rect key="frame" x="98" y="172" width="24" height="32"/>
+                                            <rect key="frame" x="108" y="191" width="24" height="33"/>
                                             <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="12"/>
                                             <inset key="contentEdgeInsets" minX="12" minY="9" maxX="12" maxY="9"/>
                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -88,8 +103,8 @@
                                         <constraint firstItem="tnB-az-VwA" firstAttribute="bottom" secondItem="say-dW-DeO" secondAttribute="bottom" constant="14" id="Xws-HV-0yg"/>
                                         <constraint firstItem="jfz-2n-8WR" firstAttribute="trailing" secondItem="say-dW-DeO" secondAttribute="trailing" id="eB9-le-jqX"/>
                                         <constraint firstItem="jfz-2n-8WR" firstAttribute="top" secondItem="say-dW-DeO" secondAttribute="top" constant="10" id="kCx-Vk-X72"/>
-                                        <constraint firstAttribute="height" constant="220" id="qsf-9n-inF"/>
-                                        <constraint firstAttribute="width" constant="220" id="xFO-bm-g1h"/>
+                                        <constraint firstAttribute="height" constant="240" id="qsf-9n-inF"/>
+                                        <constraint firstAttribute="width" constant="240" id="xFO-bm-g1h"/>
                                     </constraints>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="number" keyPath="angle">
@@ -118,13 +133,13 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u59-bt-nFh" userLabel="name">
-                                    <rect key="frame" x="48" y="236" width="318" height="0.0"/>
+                                    <rect key="frame" x="48" y="256" width="318" height="0.0"/>
                                     <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="36"/>
                                     <color key="textColor" name="lavender"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Jv-Ac-MaM" userLabel="type">
-                                    <rect key="frame" x="195" y="252.5" width="24" height="25"/>
+                                    <rect key="frame" x="195" y="272.5" width="24" height="25"/>
                                     <color key="backgroundColor" name="mint"/>
                                     <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
                                     <inset key="contentEdgeInsets" minX="12" minY="4" maxX="12" maxY="4"/>
@@ -134,25 +149,125 @@
                                     </state>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QNL-vw-wSQ" userLabel="intro">
-                                    <rect key="frame" x="24" y="305.5" width="366" height="0.0"/>
+                                    <rect key="frame" x="24" y="325.5" width="366" height="0.0"/>
                                     <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="2Xi-8O-Z6z">
+                                    <rect key="frame" x="24" y="349.5" width="366" height="231.5"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0tv-Zl-RfS" userLabel="email">
+                                            <rect key="frame" x="0.0" y="0.0" width="366" height="17"/>
+                                            <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
+                                            <color key="textColor" name="floatingLabel"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mgi-tb-np2" userLabel="email TF" customClass="GradientTextField" customModule="CommonUI">
+                                            <rect key="frame" x="0.0" y="23" width="366" height="18.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Postal Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GBL-UX-3mw" userLabel="postal address">
+                                            <rect key="frame" x="0.0" y="47.5" width="366" height="17"/>
+                                            <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
+                                            <color key="textColor" name="floatingLabel"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mNc-JJ-SB5" userLabel="postal address TF" customClass="GradientTextField" customModule="CommonUI">
+                                            <rect key="frame" x="0.0" y="70.5" width="366" height="18.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GM8-I0-e5l" userLabel="country">
+                                            <rect key="frame" x="0.0" y="95" width="366" height="17"/>
+                                            <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
+                                            <color key="textColor" name="floatingLabel"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7r7-0c-XhM" userLabel="country TF" customClass="GradientTextField" customModule="CommonUI">
+                                            <rect key="frame" x="0.0" y="118" width="366" height="18.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                        </textField>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mobile Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ALm-r2-7Ck" userLabel="mobile">
+                                            <rect key="frame" x="0.0" y="142.5" width="366" height="17"/>
+                                            <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
+                                            <color key="textColor" name="floatingLabel"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vf8-ma-2kb" userLabel="mobile TF" customClass="GradientTextField" customModule="CommonUI">
+                                            <rect key="frame" x="0.0" y="165.5" width="366" height="18.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fixed Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bpj-mH-4TO" userLabel="fixed num">
+                                            <rect key="frame" x="0.0" y="190" width="366" height="17"/>
+                                            <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
+                                            <color key="textColor" name="floatingLabel"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oJk-S5-L4C" userLabel="fixed num TF" customClass="GradientTextField" customModule="CommonUI">
+                                            <rect key="frame" x="0.0" y="213" width="366" height="18.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nationality" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tlK-65-wCY" userLabel="nationality">
+                                            <rect key="frame" x="0.0" y="231.5" width="366" height="0.0"/>
+                                            <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
+                                            <color key="textColor" name="floatingLabel"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bIO-aO-CZt" userLabel="nationality" customClass="GradientTextField" customModule="CommonUI">
+                                            <rect key="frame" x="0.0" y="231.5" width="366" height="0.0"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sex" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MRw-Sh-Gc0" userLabel="sex">
+                                            <rect key="frame" x="0.0" y="231.5" width="366" height="0.0"/>
+                                            <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
+                                            <color key="textColor" name="floatingLabel"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a4G-Cd-HmS" userLabel="sex TF" customClass="GradientTextField" customModule="CommonUI">
+                                            <rect key="frame" x="0.0" y="231.5" width="366" height="0.0"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                    </subviews>
+                                </stackView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LdF-Bv-ute">
+                                    <rect key="frame" x="329" y="16" width="69" height="28"/>
+                                    <color key="backgroundColor" name="purple"/>
+                                    <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="16"/>
+                                    <inset key="contentEdgeInsets" minX="8" minY="4" maxX="8" maxY="4"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="Update">
+                                        <color key="titleColor" name="primary"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="updateButtonTapped:" destination="-1" eventType="touchUpInside" id="B5M-xc-uQ4"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="QNL-vw-wSQ" secondAttribute="bottom" constant="40" id="2ch-qD-8mR"/>
+                                <constraint firstItem="LdF-Bv-ute" firstAttribute="top" secondItem="hyg-0i-X3y" secondAttribute="top" constant="16" id="1HP-dL-pPC"/>
+                                <constraint firstAttribute="trailing" secondItem="2Xi-8O-Z6z" secondAttribute="trailing" constant="24" id="CBf-Qu-YX2"/>
                                 <constraint firstAttribute="trailing" secondItem="u59-bt-nFh" secondAttribute="trailing" constant="48" id="ETx-06-ioz"/>
                                 <constraint firstAttribute="trailing" secondItem="QNL-vw-wSQ" secondAttribute="trailing" constant="24" id="GZB-6X-Mbk"/>
                                 <constraint firstItem="fb0-eL-hZu" firstAttribute="top" secondItem="hyg-0i-X3y" secondAttribute="top" constant="8" id="RGd-ki-A4A"/>
+                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="2Xi-8O-Z6z" secondAttribute="bottom" constant="24" id="TjP-9U-qIJ"/>
                                 <constraint firstItem="u59-bt-nFh" firstAttribute="top" secondItem="fb0-eL-hZu" secondAttribute="bottom" constant="8" id="VGM-ty-8vb"/>
                                 <constraint firstItem="QNL-vw-wSQ" firstAttribute="top" secondItem="6Jv-Ac-MaM" secondAttribute="bottom" constant="28" id="YlM-H8-Zrb"/>
                                 <constraint firstItem="6Jv-Ac-MaM" firstAttribute="centerX" secondItem="u59-bt-nFh" secondAttribute="centerX" id="iNX-Mk-YiD"/>
+                                <constraint firstItem="2Xi-8O-Z6z" firstAttribute="top" secondItem="QNL-vw-wSQ" secondAttribute="bottom" constant="24" id="k1u-SL-B1X"/>
                                 <constraint firstItem="u59-bt-nFh" firstAttribute="leading" secondItem="hyg-0i-X3y" secondAttribute="leading" constant="48" id="lHZ-Dv-80p"/>
                                 <constraint firstItem="fb0-eL-hZu" firstAttribute="centerX" secondItem="hyg-0i-X3y" secondAttribute="centerX" id="nXu-2U-q97"/>
                                 <constraint firstItem="6Jv-Ac-MaM" firstAttribute="top" secondItem="u59-bt-nFh" secondAttribute="bottom" constant="16.5" id="rUe-ko-9cL"/>
+                                <constraint firstItem="2Xi-8O-Z6z" firstAttribute="leading" secondItem="hyg-0i-X3y" secondAttribute="leading" constant="24" id="unh-kF-aKi"/>
                                 <constraint firstItem="QNL-vw-wSQ" firstAttribute="leading" secondItem="hyg-0i-X3y" secondAttribute="leading" constant="24" id="vxq-aD-IFh"/>
+                                <constraint firstAttribute="trailing" secondItem="LdF-Bv-ute" secondAttribute="trailing" constant="16" id="zcE-2l-mmH"/>
                             </constraints>
                         </view>
                     </subviews>
@@ -180,12 +295,15 @@
     </objects>
     <designables>
         <designable name="tnB-az-VwA">
-            <size key="intrinsicContentSize" width="24" height="32"/>
+            <size key="intrinsicContentSize" width="24" height="33"/>
         </designable>
     </designables>
     <resources>
         <image name="host" width="160" height="160"/>
         <image name="upload_image" width="33" height="33"/>
+        <namedColor name="floatingLabel">
+            <color red="0.2627450980392157" green="0.094117647058823528" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="lavender">
             <color red="0.53333333333333333" green="0.4392156862745098" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

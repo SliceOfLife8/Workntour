@@ -125,7 +125,7 @@ class CreateOpportunityViewModel: BaseViewModel {
 
         opportunityModel = OpportunityDto(memberId: UserDataManager.shared.memberId,
                                           category: _category,
-                                          images: images.compactMap { $0.jpeg(.low) },
+                                          images: images.compactMap { $0.jpeg(.medium) },
                                           title: jobTitle,
                                           description: jobDescription,
                                           typeOfHelp: typeOfHelp,
