@@ -8,7 +8,6 @@
 import Combine
 import Networking
 import SharedKit
-import UIKit
 
 class HostProfileViewModel: BaseViewModel {
     /// Service
@@ -51,10 +50,11 @@ class HostProfileViewModel: BaseViewModel {
         countries.countrySelectedIndex = index
     }
 
+    /// Update models + api request
     func updateProfile(postalAddress: String?,
                        mobileNum: String?,
                        fixedNumber: String?) {
-        /// Update models + api request
+
         if isCompany {
             if let _postalAddress = postalAddress?.trimmingCharacters(in: .whitespaces) {
                 companyHost?.postalAddress = _postalAddress
@@ -70,14 +70,14 @@ class HostProfileViewModel: BaseViewModel {
             updateCompanyHostProfile()
         } else {
             if let _postalAddress = postalAddress?.trimmingCharacters(in: .whitespaces) {
-                companyHost?.postalAddress = _postalAddress
+                individualHost?.postalAddress = _postalAddress
             }
             if mobileNum?.trimmingPhoneNumber().count == 10 {
-                companyHost?.countryCode = countries.selectedCountryPrefix
-                companyHost?.mobile = mobileNum?.getPhoneDetails().dropFirst().joined(separator: "")
+                individualHost?.countryCode = countries.selectedCountryPrefix
+                individualHost?.mobile = mobileNum?.getPhoneDetails().dropFirst().joined(separator: "")
             }
             if let _fixedNumber = fixedNumber?.trimmingCharacters(in: .whitespaces) {
-                companyHost?.fixedNumber = _fixedNumber
+                individualHost?.fixedNumber = _fixedNumber
             }
 
             updateIndividualHostProfile()
@@ -93,7 +93,7 @@ class HostProfileViewModel: BaseViewModel {
         service.updateCompanyHostProfile(model: companyModel)
             .map {
                 if $0 != nil {
-                    self.companyHost = $0
+                    self.companyHost = $0 // Update current user's model
                 }
 
                 return $0 != nil
@@ -117,7 +117,7 @@ class HostProfileViewModel: BaseViewModel {
         service.updateIndividualHostProfile(model: individualModel)
             .map {
                 if $0 != nil {
-                    self.individualHost = $0
+                    self.individualHost = $0 // Update current user's model
                 }
 
                 return $0 != nil

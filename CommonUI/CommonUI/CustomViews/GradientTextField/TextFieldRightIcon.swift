@@ -49,4 +49,5 @@ public enum GradientTextFieldType {
     case languagesSpoken
     case accommodation
     case learningOpportunities
+    case travelerType
 }

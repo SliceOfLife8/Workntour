@@ -10,6 +10,7 @@ import SharedKit
 import CommonUI
 import DropDown
 import KDCircularProgress
+import MaterialComponents.MaterialChips
 
 class HostProfileVC: BaseVC<HostProfileViewModel, ProfileCoordinator> {
 
@@ -126,13 +127,22 @@ class HostProfileVC: BaseVC<HostProfileViewModel, ProfileCoordinator> {
         return dropDown
     }()
 
+    private lazy var saveButton: MDCChipView = {
+        let chipView = MDCChipView()
+        chipView.titleLabel.text = "Save"
+        chipView.titleFont = UIFont.scriptFont(.bold, size: 16)
+        chipView.setBackgroundColor(UIColor.appColor(.lavender), for: .normal)
+        chipView.setTitleColor(UIColor.appColor(.badgeBg), for: .normal)
+        chipView.addTarget(self, action: #selector(saveActionTapped), for: .touchUpInside)
+        return chipView
+    }()
+
     // MARK: - Outlets
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var progressBar: KDCircularProgress!
     @IBOutlet weak var hostIcon: UIImageView!
     @IBOutlet weak var percentBtn: GradientButton!
     @IBOutlet weak var hostName: UILabel!
-    @IBOutlet weak var updateButton: UIButton!
     @IBOutlet weak var hostTypeChip: UIButton!
     @IBOutlet weak var introLabel: UILabel!
     // MARK: - TextFields
@@ -152,6 +162,7 @@ class HostProfileVC: BaseVC<HostProfileViewModel, ProfileCoordinator> {
 
         registerNotifications()
         hideKeyboardWhenTappedAround()
+        scrollView.delegate = self
         postalAddressTextField.gradientDelegate = self
         countryTextField.gradientDelegate = self
         mobileTextField.gradientDelegate = self
@@ -232,10 +243,18 @@ class HostProfileVC: BaseVC<HostProfileViewModel, ProfileCoordinator> {
     override func setupUI() {
         super.setupUI()
 
+        view.addSubview(saveButton)
         hostTypeChip.layer.cornerRadius = 12
-        updateButton.layer.cornerRadius = 8
         introLabel.setLineHeight(lineHeight: 1.33)
         setupTextFields()
+        viewModel?.newImage = (viewModel?.isCompany == true) ? viewModel?.companyHost?.profileImage : viewModel?.individualHost?.image
+
+        saveButton.snp.makeConstraints {
+            $0.right.equalToSuperview().offset(-16)
+            $0.bottom.equalTo(view.snp.bottom).offset(-16)
+            $0.width.equalTo(64)
+            $0.height.equalTo(64)
+        }
     }
 
     override func bindViews() {
@@ -294,13 +313,15 @@ class HostProfileVC: BaseVC<HostProfileViewModel, ProfileCoordinator> {
         self.coordinator?.navigate(to: .openGalleryPicker)
     }
 
-    @IBAction func updateButtonTapped(_ sender: Any) {
+    @objc private func saveActionTapped() {
         self.viewModel?.updateProfile(postalAddress: postalAddressTextField.text,
                                       mobileNum: mobileTextField.text,
                                       fixedNumber: fixedNumTextField.text)
     }
+
 }
 
+// MARK: - Gradient TF Delegates
 extension HostProfileVC: GradientTFDelegate {
 
     func notEditableTextFieldTriggered(_ textField: UITextField) {
@@ -339,5 +360,20 @@ extension HostProfileVC {
 
     @objc private func keyboardWillHide(notification: Notification) {
         scrollView.contentInset.bottom = 0
+    }
+}
+
+// MARK: - ScrollView Delegates
+extension HostProfileVC: UIScrollViewDelegate {
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        UIView.animate(withDuration: 0.25) {
+            self.saveButton.alpha = 0
+        }
+    }
+
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        UIView.animate(withDuration: 0.25) {
+            self.saveButton.alpha = 1
+        }
     }
 }

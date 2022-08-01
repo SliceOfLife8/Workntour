@@ -34,7 +34,7 @@ class BaseVC<VM: BaseViewModel, C: Coordinator>: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        if self is SplashVC || self is HostProfileVC || self is OpportunityDetailsVC || self is MapOfOpportunitiesVC {
+        if self is SplashVC || self is HostProfileVC || self is OpportunityDetailsVC || self is MapOfOpportunitiesVC || self is TravelerProfileVC {
             hideNavigationBar(animated)
         }
     }
@@ -42,7 +42,7 @@ class BaseVC<VM: BaseViewModel, C: Coordinator>: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
-        if (self is SplashVC || self is HostProfileVC || self is OpportunityDetailsVC || self is MapOfOpportunitiesVC) && !preventNavBarFromAppearing {
+        if (self is SplashVC || self is HostProfileVC || self is OpportunityDetailsVC || self is MapOfOpportunitiesVC || self is TravelerProfileVC) && !preventNavBarFromAppearing {
             showNavigationBar(animated)
         } else if self is LoginVC {
             hideNavigationBar(animated)

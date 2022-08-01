@@ -75,6 +75,7 @@ final class ProfileCoordinator: NavigationCoordinator {
 
 }
 
+// MARK: - PhotoUI Picker
 extension ProfileCoordinator: PHPickerViewControllerDelegate {
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         picker.dismiss(animated: true) // dismiss a picker
@@ -87,8 +88,11 @@ extension ProfileCoordinator: PHPickerViewControllerDelegate {
         imageItem?.loadObject(ofClass: UIImage.self) { image, _ in
             if let image = image as? UIImage {
                 DispatchQueue.main.async {
-                    let profileVC = self.rootViewController.topViewController as? HostProfileVC
-                    profileVC?.viewModel?.updateProfilePic(with: image.jpeg(.medium))
+                    if let hostProfileVC = self.rootViewController.topViewController as? HostProfileVC {
+                        hostProfileVC.viewModel?.updateProfilePic(with: image.jpeg(.medium))
+                    } else if let travelerProfileVC = self.rootViewController.topViewController as? TravelerProfileVC {
+                        travelerProfileVC.viewModel?.newImage = image.jpeg(.medium)
+                    }
                 }
             }
         }
