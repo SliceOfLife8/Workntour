@@ -230,13 +230,6 @@ class HostProfileVC: BaseVC<HostProfileViewModel, ProfileCoordinator> {
                                            text: viewModel?.individualHost?.nationality,
                                            type: .nationality)
             mainStackView.setCustomSpacing(16, after: fixedNumTextField)
-
-            sexLabel.isHidden = false
-            sexTextField.isHidden = false
-            sexTextField.configure(placeHolder: "I am",
-                                   text: viewModel?.individualHost?.sex?.rawValue,
-                                   type: .sex)
-            mainStackView.setCustomSpacing(16, after: fixedNumTextField)
         }
     }
 

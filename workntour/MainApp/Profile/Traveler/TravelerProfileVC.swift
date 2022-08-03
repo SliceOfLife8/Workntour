@@ -36,28 +36,6 @@ class TravelerProfileVC: BaseVC<TravelerProfileViewModel, ProfileCoordinator> {
         return dropDown
     }()
 
-    private lazy var sexDropDown: DropDown = {
-        let dropDown = DropDown()
-        dropDown.dataSource = UserSex.allCases.map { $0.rawValue }
-        dropDown.dismissMode = .onTap
-
-        dropDown.customCellConfiguration = { (_, item: String, cell: DropDownCell) -> Void in
-            cell.optionLabel.text = item
-        }
-
-        dropDown.selectionAction = { [unowned self] (_, item: String) in
-            sexTextField.text = item
-            self.viewModel?.traveler?.sex = UserSex(rawValue: item)
-            sexTextField.arrowTapped()
-        }
-
-        dropDown.cancelAction = { [unowned self] in
-            sexTextField.arrowTapped()
-        }
-
-        return dropDown
-    }()
-
     private lazy var typeOfTravelerDropDown: DropDown = {
         let dropDown = DropDown()
         dropDown.dataSource = TravelerType.allCases.map { $0.value }
@@ -135,7 +113,6 @@ class TravelerProfileVC: BaseVC<TravelerProfileViewModel, ProfileCoordinator> {
     @IBOutlet weak var surnameTextField: GradientTextField!
     @IBOutlet weak var nationalityTextField: GradientTextField!
     @IBOutlet weak var ageTextField: GradientTextField!
-    @IBOutlet weak var sexTextField: GradientTextField!
     @IBOutlet weak var emailTextField: GradientTextField!
     @IBOutlet weak var postalAddressTextField: GradientTextField!
     @IBOutlet weak var mobileNumTextField: GradientTextField!
@@ -149,7 +126,6 @@ class TravelerProfileVC: BaseVC<TravelerProfileViewModel, ProfileCoordinator> {
         scrollView.delegate = self
         nationalityTextField.gradientDelegate = self
         ageTextField.gradientDelegate = self
-        sexTextField.gradientDelegate = self
         postalAddressTextField.gradientDelegate = self
         typeOfTraveler.gradientDelegate = self
         mobileNumTextField.gradientDelegate = self
@@ -186,17 +162,12 @@ class TravelerProfileVC: BaseVC<TravelerProfileViewModel, ProfileCoordinator> {
                                type: .age)
         mainStackView.setCustomSpacing(16, after: ageTextField)
 
-        sexTextField.configure(placeHolder: "I am",
-                               text: viewModel?.traveler?.sex?.rawValue,
-                               type: .sex)
-        mainStackView.setCustomSpacing(16, after: sexTextField)
-
         emailTextField.configure(placeHolder: "Enter your email",
                                  text: viewModel?.traveler?.email,
                                  type: .email)
         mainStackView.setCustomSpacing(16, after: emailTextField)
 
-        let countryPrefix = viewModel?.traveler?.countryCode ?? (viewModel?.countries.selectedCountryPrefix ?? "")
+        let countryPrefix = viewModel?.traveler?.countryCode ?? (viewModel?.countries.selectedCountryPrefix ?? "30")
         let countryFlag = Countries.countryPrefixes.key(from: countryPrefix)?.countryFlag()
 
         mobileNumTextField.configure(placeHolder: "+\(countryPrefix) xxxxxxxxxx",
@@ -290,9 +261,6 @@ extension TravelerProfileVC: GradientTFDelegate {
         if textField == nationalityTextField {
             nationalitiesDropDown.anchorView = textField
             nationalitiesDropDown.show()
-        } else if textField == sexTextField {
-            sexDropDown.anchorView = textField
-            sexDropDown.show()
         } else {
             typeOfTravelerDropDown.anchorView = textField
             typeOfTravelerDropDown.show()
