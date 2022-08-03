@@ -207,7 +207,7 @@ class HostProfileVC: BaseVC<HostProfileViewModel, ProfileCoordinator> {
         let mobileNumValue = (viewModel?.isCompany == true) ? viewModel?.companyHost?.mobile : viewModel?.individualHost?.mobile
         let countryCode = (viewModel?.isCompany == true) ? viewModel?.companyHost?.countryCode : viewModel?.individualHost?.countryCode
 
-        let countryPrefix = countryCode ?? (viewModel?.countries.selectedCountryPrefix ?? "")
+        let countryPrefix = countryCode ?? (viewModel?.countries.selectedCountryPrefix ?? "30")
         let countryFlag = Countries.countryPrefixes.key(from: countryPrefix)?.countryFlag()
 
         mobileTextField.configure(placeHolder: "+\(countryPrefix) xxxxxxxxxx",
