@@ -57,8 +57,11 @@ public final class CalendarView: UIView {
       backgroundColor = .white
     }
 
+    // Must be the first subview so that `UINavigationController` can monitor its scroll position
+    // and make navigation bars opaque on scroll.
+    insertSubview(scrollView, at: 0)
+
     installDoubleLayoutPassSizingLabel()
-    addSubview(scrollView)
 
     setContent(initialContent)
 
@@ -422,7 +425,6 @@ public final class CalendarView: UIView {
 
   private lazy var scrollView: NoContentInsetAdjustmentScrollView = {
     let scrollView = NoContentInsetAdjustmentScrollView()
-    scrollView.scrollsToTop = false
     scrollView.showsVerticalScrollIndicator = false
     scrollView.showsHorizontalScrollIndicator = false
     scrollView.delegate = self
@@ -453,7 +455,11 @@ public final class CalendarView: UIView {
   }
 
   private var scale: CGFloat {
-    window?.screen.scale ?? UIScreen.main.scale
+    let scale = traitCollection.displayScale
+    // The documentation mentions that 0 is a possible value, so we guard against this.
+    // It's unclear whether values between 0 and 1 are possible, otherwise `max(scale, 1)` would
+    // suffice.
+    return scale > 0 ? scale : 1
   }
 
   private var scrollMetricsMutator: ScrollMetricsMutator {
@@ -621,14 +627,14 @@ public final class CalendarView: UIView {
 
     reuseManager.viewsForVisibleItems(
       visibleItems,
-      viewHandler: { view, visibleItem, previousBackingVisibleItem in
-        if view.superview == nil {
-          UIView.performWithoutAnimation {
+      viewHandler: { view, visibleItem, previousBackingVisibleItem, isReusedViewSameAsPreviousView in
+        UIView.conditionallyPerformWithoutAnimation(when: !isReusedViewSameAsPreviousView) {
+          if view.superview == nil {
             scrollView.addSubview(view)
           }
-        }
 
-        configureView(view, with: visibleItem)
+          configureView(view, with: visibleItem)
+        }
 
         visibleViewsForVisibleItems[visibleItem] = view
 
@@ -646,16 +652,13 @@ public final class CalendarView: UIView {
   private func configureView(_ view: ItemView, with visibleItem: VisibleCalendarItem) {
     view.calendarItemModel = visibleItem.calendarItemModel
 
-    // Update the visibility
-    UIView.performWithoutAnimation {
-      view.frame = visibleItem.frame.alignedToPixels(forScreenWithScale: scale)
-      view.layer.zPosition = visibleItem.itemType.zPosition
+    view.frame = visibleItem.frame.alignedToPixels(forScreenWithScale: scale)
+    view.layer.zPosition = visibleItem.itemType.zPosition
 
-      if traitCollection.layoutDirection == .rightToLeft {
-        view.transform = .init(scaleX: -1, y: 1)
-      } else {
-        view.transform = .identity
-      }
+    if traitCollection.layoutDirection == .rightToLeft {
+      view.transform = .init(scaleX: -1, y: 1)
+    } else {
+      view.transform = .identity
     }
 
     view.isUserInteractionEnabled = visibleItem.itemType.isUserInteractionEnabled
@@ -762,7 +765,7 @@ public final class CalendarView: UIView {
     case (.before, .after), (.after, .before):
       finalizeScrollingTowardItem(for: scrollToItemContext)
 
-      // Force layout immdiately to prevent the overshoot from being visible to the user.
+      // Force layout immediately to prevent the overshoot from being visible to the user.
       setNeedsLayout()
       layoutIfNeeded()
 
@@ -988,6 +991,23 @@ extension CalendarView: UIScrollViewDelegate {
         velocity: velocity.x,
         pageSize: pageSize)
     }
+  }
+
+  @available(
+    *,
+    deprecated,
+    message: "Do not invoke this function directly, as it is only intended to be called from the internal implementation of `CalendarView`. This will be removed in a future major release.")
+  public func scrollViewShouldScrollToTop(_ scrollView: UIScrollView) -> Bool {
+    if content.monthsLayout.scrollsToFirstMonthOnStatusBarTap {
+      let firstMonth = content.monthRange.lowerBound
+      let firstDate = calendar.firstDate(of: firstMonth)
+      scroll(
+        toMonthContaining: firstDate,
+        scrollPosition: .firstFullyVisiblePosition(padding: 0),
+        animated: true)
+    }
+
+    return false
   }
 
 }
