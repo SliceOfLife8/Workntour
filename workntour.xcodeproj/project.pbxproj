@@ -144,7 +144,6 @@
 		1BC190F5286339DD00585533 /* IndividualHostProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC190F4286339DD00585533 /* IndividualHostProfile.swift */; };
 		1BE6EA992868BFB8009CBE6D /* OpportunitiesVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BE6EA982868BFB8009CBE6D /* OpportunitiesVC.xib */; };
 		2707FF96C7CBD64F6B2EA3B7 /* Pods_workntour.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5701F516D91D3C90DD51441 /* Pods_workntour.framework */; };
-		CE6AC9962909A6BD00B962A0 /*  Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE6AC9952909A4CD00B962A0 /*  Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -1010,7 +1009,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE6AC9962909A6BD00B962A0 /*  Info.plist in Resources */,
 				1B4AE426283F58FB00FA6420 /* Lato-Black.ttf in Resources */,
 				1B3C384528520E11000EEADF /* LoginVC.xib in Resources */,
 				1BE6EA992868BFB8009CBE6D /* OpportunitiesVC.xib in Resources */,
@@ -1072,6 +1070,7 @@
 		};
 		1B8DA75B282594230032E20B /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -1090,6 +1089,7 @@
 		};
 		1B9A3D1428282517003E0C34 /* Firebase dSYMs */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -1110,6 +1110,7 @@
 		};
 		1B9A3D1A28282DE6003E0C34 /* Copy Google Info Plist file */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
