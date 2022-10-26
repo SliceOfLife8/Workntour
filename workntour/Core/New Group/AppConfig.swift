@@ -7,7 +7,7 @@
 
 import Foundation
 import FirebaseCore
-import Keys
+//import Keys
 import SwiftyBeaver
 import Networking
 import GooglePlaces
@@ -43,7 +43,7 @@ struct AppConfig {
                   return
               }
 
-        options.apiKey = WorkntourKeys().googleServiceDevApiKey
+        options.apiKey = "whatever" // WorkntourKeys().googleServiceDevApiKey
         FirebaseApp.configure(options: options)
     }
 
