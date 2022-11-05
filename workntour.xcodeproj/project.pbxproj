@@ -1085,7 +1085,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\" --path \"workntour\" --config .swiftlint.yml --quiet\n";
+			shellScript = "#\"${PODS_ROOT}/SwiftLint/swiftlint\" --path \"workntour\" --config .swiftlint.yml --quiet\n";
 		};
 		1B9A3D1428282517003E0C34 /* Firebase dSYMs */ = {
 			isa = PBXShellScriptBuildPhase;

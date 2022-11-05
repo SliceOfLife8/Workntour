@@ -25,7 +25,6 @@ def material_components
 end
 
 def common
-  pod 'SwiftLint'
   pod 'CombineDataSources'
   pod 'DropDown'
   pod 'NVActivityIndicatorView'

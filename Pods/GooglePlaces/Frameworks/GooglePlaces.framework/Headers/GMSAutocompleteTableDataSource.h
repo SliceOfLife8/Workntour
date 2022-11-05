@@ -136,7 +136,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property(nonatomic, assign) GMSPlaceField placeFields;
 
-/** Designated initializer */
+/** Initializes a data source. */
 - (instancetype)init NS_DESIGNATED_INITIALIZER;
 
 /**
