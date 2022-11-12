@@ -14,6 +14,8 @@ import PhotosUI
 enum ProfileStep: Step {
     case state(_ default: DefaultStep)
     case openGalleryPicker
+    case selectInterests(preselectedInterests: [LearningOpportunities])
+    case selectSkills(preselectedSkills: [TypeOfHelp])
 }
 
 final class ProfileCoordinator: NavigationCoordinator {
@@ -60,6 +62,10 @@ final class ProfileCoordinator: NavigationCoordinator {
                                          message: subtitle)
         case .openGalleryPicker:
             openPhotoPicker()
+        case .selectInterests(let learningOpportunities):
+            selectInterests(learningOpportunities)
+        case .selectSkills(let skills):
+            selectSkills(skills)
         }
     }
 
@@ -71,6 +77,48 @@ final class ProfileCoordinator: NavigationCoordinator {
         let picker = PHPickerViewController(configuration: configuration)
         picker.delegate = self
         rootViewController.present(picker, animated: true)
+    }
+
+    private func selectInterests(_ preselectedInterests: [LearningOpportunities]) {
+        let attributes = LearningOpportunities.allCases.map {
+            ProfileSelectAttributesViewModel.ProfileAttribute(title: $0.value,
+                                                              isSelected: preselectedInterests.contains($0))
+        }
+
+        let data = ProfileSelectAttributesViewModel.DataModel(
+            navigationBarTitle: "ur_interests".localized(),
+            mode: .interests,
+            headerTitle: "interests".localized(),
+            description: "interests_description".localized(),
+            minItemsToBeSelected: 3,
+            attributes: attributes
+        )
+        let selectAttributesVC = ProfileSelectAttributesVC()
+        selectAttributesVC.viewModel = ProfileSelectAttributesViewModel(data: data)
+        selectAttributesVC.coordinator = self
+
+        navigator.push(selectAttributesVC, animated: true)
+    }
+
+    private func selectSkills(_ preselectedSkills: [TypeOfHelp]) {
+        let attributes = TypeOfHelp.allCases.map {
+            ProfileSelectAttributesViewModel.ProfileAttribute(title: $0.value,
+                                                              isSelected: preselectedSkills.contains($0))
+        }
+
+        let data = ProfileSelectAttributesViewModel.DataModel(
+            navigationBarTitle: "ur_skills".localized(),
+            mode: .skills,
+            headerTitle: "skills".localized(),
+            description: "skills_description".localized(),
+            minItemsToBeSelected: 3,
+            attributes: attributes
+        )
+        let selectAttributesVC = ProfileSelectAttributesVC()
+        selectAttributesVC.viewModel = ProfileSelectAttributesViewModel(data: data)
+        selectAttributesVC.coordinator = self
+
+        navigator.push(selectAttributesVC, animated: true)
     }
 
 }

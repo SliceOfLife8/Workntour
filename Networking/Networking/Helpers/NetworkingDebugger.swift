@@ -21,6 +21,7 @@ public enum NetworkingDebugger {
     }
 
     public static func printDebugDescriptionIfNeeded(from urlRequest: URLRequest,
+                                                     data: Data?,
                                                      error: ProviderError?,
                                                      statusCode: Int?) {
         guard Preference.shared.isDebuggingEnabled else {
@@ -36,12 +37,13 @@ public enum NetworkingDebugger {
 
         SwiftyBeaver.verbose("CURL:\n \(urlRequest.cURL(pretty: true))")
 
-        guard let err = error else {
+        guard let error else {
             SwiftyBeaver.verbose("STATUS: SUCCESS (\(code))")
+            SwiftyBeaver.info("Response: (\(String(describing: data?.prettyString)))")
             return
         }
 
-        SwiftyBeaver.error("STATUS: FAILED (\(code)).\nERROR: \(err.errorDescription)\n")
+        SwiftyBeaver.error("STATUS: FAILED (\(code)).\nERROR: \(error.errorDescription)\n")
     }
 }
 
@@ -82,5 +84,11 @@ private extension URLRequest {
         cURL += method + url + header + data
 
         return cURL
+    }
+}
+
+private extension Data {
+    var prettyString: NSString? {
+        return NSString(data: self, encoding: String.Encoding.utf8.rawValue) ?? nil
     }
 }

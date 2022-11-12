@@ -84,7 +84,7 @@ extension Environment {
 
         switch self {
         case .DEV:
-            urlAsString = "https://work-n-tour.herokuapp.com"
+            urlAsString = "https://workntourbackend.azurewebsites.net"
         case .STAGING:
             urlAsString = "not implemented yet!"
         case .PROD:

@@ -8,6 +8,11 @@
 import Foundation
 
 extension String {
+
+    public func localized() -> String {
+        return NSLocalizedString(self, tableName: "Localizable", bundle: .main, value: self, comment: self)
+    }
+
     // MARK: - Email validation
     private var emailPredicate: NSPredicate {
         let userid = "[A-Z0-9a-z._%+-]{1,}"

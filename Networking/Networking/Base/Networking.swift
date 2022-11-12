@@ -38,7 +38,7 @@ extension Networking: NetworkingProtocol {
             .tryCatch { error -> URLSession.DataTaskPublisher in
                 guard error.networkUnavailableReason == .constrained else {
                     let error = ProviderError.connectionError(error)
-                    printDebugDescriptionIfNeeded(urlRequest, error, nil)
+                    printDebugDescriptionIfNeeded(urlRequest, nil, error, nil)
                     throw error
                 }
                 return urlSession.dataTaskPublisher(for: urlRequest)
@@ -46,23 +46,23 @@ extension Networking: NetworkingProtocol {
             .tryMap { data, response -> Data in
                 guard let httpResponse = response as? HTTPURLResponse else {
                     let error = ProviderError.invalidServerResponse
-                    printDebugDescriptionIfNeeded(urlRequest, error, nil)
+                    printDebugDescriptionIfNeeded(urlRequest, nil, error, nil)
                     throw error
                 }
                 if !httpResponse.isSuccessful {
                     let error = ProviderError.invalidServerResponseWithStatusCode(statusCode: httpResponse.statusCode)
-                    printDebugDescriptionIfNeeded(urlRequest, error, httpResponse.statusCode)
+                    printDebugDescriptionIfNeeded(urlRequest, nil, error, httpResponse.statusCode)
                     throw error
                 }
-                printDebugDescriptionIfNeeded(urlRequest, nil, httpResponse.statusCode)
+                printDebugDescriptionIfNeeded(urlRequest, data, nil, httpResponse.statusCode)
                 return data
             }.decode(type: type.self, decoder: jsonDecoder).mapError { error in
                 if let error = error as? ProviderError {
-                    printDebugDescriptionIfNeeded(urlRequest, error, nil)
+                    printDebugDescriptionIfNeeded(urlRequest, nil, error, nil)
                     return error
                 } else {
                     let err = ProviderError.decodingError(error)
-                    printDebugDescriptionIfNeeded(urlRequest, err, nil)
+                    printDebugDescriptionIfNeeded(urlRequest, nil, err, nil)
                     return err
                 }
             }.eraseToAnyPublisher()
@@ -78,7 +78,7 @@ extension Networking: NetworkingProtocol {
         return urlSession.dataTaskPublisher(for: urlRequest).tryCatch { error -> URLSession.DataTaskPublisher in
             guard error.networkUnavailableReason == .constrained else {
                 let error = ProviderError.connectionError(error)
-                printDebugDescriptionIfNeeded(urlRequest, error, nil)
+                printDebugDescriptionIfNeeded(urlRequest, nil, error, nil)
                 throw error
             }
             return urlSession.dataTaskPublisher(for: urlRequest)
@@ -86,25 +86,25 @@ extension Networking: NetworkingProtocol {
             .tryMap { (data, response) -> Response in
                 guard let httpResponse = response as? HTTPURLResponse else {
                     let error = ProviderError.invalidServerResponse
-                    printDebugDescriptionIfNeeded(urlRequest, error, nil)
+                    printDebugDescriptionIfNeeded(urlRequest, nil, error, nil)
                     throw error
                 }
 
                 guard httpResponse.isSuccessful else {
                     let error = ProviderError.invalidServerResponseWithStatusCode(statusCode: httpResponse.statusCode)
-                    printDebugDescriptionIfNeeded(urlRequest, error, httpResponse.statusCode)
+                    printDebugDescriptionIfNeeded(urlRequest, nil, error, httpResponse.statusCode)
                     throw error
                 }
-                printDebugDescriptionIfNeeded(urlRequest, nil, httpResponse.statusCode)
+                printDebugDescriptionIfNeeded(urlRequest, nil, nil, httpResponse.statusCode)
                 return Response(urlResponse: httpResponse, data: data)
             }
             .mapError {
                 guard let error = $0 as? ProviderError else {
                     let error = ProviderError.underlying($0)
-                    printDebugDescriptionIfNeeded(urlRequest, error, nil)
+                    printDebugDescriptionIfNeeded(urlRequest, nil, error, nil)
                     return error
                 }
-                printDebugDescriptionIfNeeded(urlRequest, error, nil)
+                printDebugDescriptionIfNeeded(urlRequest, nil, error, nil)
                 return error
             }.eraseToAnyPublisher()
     }
@@ -124,7 +124,7 @@ extension Networking: NetworkingProtocol {
             .tryCatch { error -> URLSession.DataTaskPublisher in
                 guard error.networkUnavailableReason == .constrained else {
                     let error = ProviderError.connectionError(error)
-                    printDebugDescriptionIfNeeded(urlRequest, error, nil)
+                    printDebugDescriptionIfNeeded(urlRequest, nil, error, nil)
                     throw error
                 }
                 return urlSession.dataTaskPublisher(for: urlRequest)
@@ -132,24 +132,24 @@ extension Networking: NetworkingProtocol {
             .tryMap { data, response -> Data in
                 guard let httpResponse = response as? HTTPURLResponse else {
                     let error = ProviderError.invalidServerResponse
-                    printDebugDescriptionIfNeeded(urlRequest, error, nil)
+                    printDebugDescriptionIfNeeded(urlRequest, nil, error, nil)
                     throw error
                 }
                 guard httpResponse.isSuccessful else {
                     let error = ProviderError.invalidServerResponseWithStatusCode(statusCode: httpResponse.statusCode)
-                    printDebugDescriptionIfNeeded(urlRequest, error, httpResponse.statusCode)
+                    printDebugDescriptionIfNeeded(urlRequest, nil, error, httpResponse.statusCode)
                     throw error
                 }
-                printDebugDescriptionIfNeeded(urlRequest, nil, httpResponse.statusCode)
+                printDebugDescriptionIfNeeded(urlRequest, data, nil, httpResponse.statusCode)
                 return data
             }.decode(type: type.self, decoder: jsonDecoder)
             .mapError { error -> ProviderError in
                 if let error = error as? ProviderError {
-                    printDebugDescriptionIfNeeded(urlRequest, error, nil)
+                    printDebugDescriptionIfNeeded(urlRequest, nil, error, nil)
                     return error
                 } else {
                     let error = ProviderError.decodingError(error)
-                    printDebugDescriptionIfNeeded(urlRequest, error, nil)
+                    printDebugDescriptionIfNeeded(urlRequest, nil, error, nil)
                     return error
                 }
             }.eraseToAnyPublisher()
@@ -169,7 +169,7 @@ extension Networking: NetworkingProtocol {
             .tryCatch { error -> URLSession.DataTaskPublisher in
                 guard error.networkUnavailableReason == .constrained else {
                     let error = ProviderError.connectionError(error)
-                    printDebugDescriptionIfNeeded(urlRequest, error, nil)
+                    printDebugDescriptionIfNeeded(urlRequest, nil, error, nil)
                     throw error
                 }
                 return urlSession.dataTaskPublisher(for: urlRequest)
@@ -178,22 +178,22 @@ extension Networking: NetworkingProtocol {
             .tryMap { data, response -> Response in
                 guard let httpResponse = response as? HTTPURLResponse else {
                     let error = ProviderError.invalidServerResponse
-                    printDebugDescriptionIfNeeded(urlRequest, error, nil)
+                    printDebugDescriptionIfNeeded(urlRequest, nil, error, nil)
                     throw error
                 }
                 guard httpResponse.isSuccessful else {
                     let error = ProviderError.invalidServerResponseWithStatusCode(statusCode: httpResponse.statusCode)
-                    printDebugDescriptionIfNeeded(urlRequest, error, httpResponse.statusCode)
+                    printDebugDescriptionIfNeeded(urlRequest, nil, error, httpResponse.statusCode)
                     throw error
                 }
-                printDebugDescriptionIfNeeded(urlRequest, nil, httpResponse.statusCode)
+                printDebugDescriptionIfNeeded(urlRequest, nil, nil, httpResponse.statusCode)
                 return Response(urlResponse: httpResponse, data: data)
             }
             .mapError { err -> ProviderError in
                 guard let error = err as? ProviderError else {
                     let error = ProviderError.underlying(err)
 
-                    printDebugDescriptionIfNeeded(urlRequest, error, nil)
+                    printDebugDescriptionIfNeeded(urlRequest, nil, error, nil)
                     return error
 
                 }
@@ -217,31 +217,31 @@ extension Networking: NetworkingProtocol {
         let task = urlSession.dataTask(with: urlRequest) { data, response, error in
             guard error == nil else {
                 let error = ProviderError.connectionError(error!)
-                printDebugDescriptionIfNeeded(urlRequest, error, nil)
+                printDebugDescriptionIfNeeded(urlRequest, nil, error, nil)
                 result(.failure(error))
                 return
             }
             guard let httpResponse = response as? HTTPURLResponse else {
                 let error = ProviderError.invalidServerResponse
-                printDebugDescriptionIfNeeded(urlRequest, error, nil)
+                printDebugDescriptionIfNeeded(urlRequest, nil, error, nil)
                 result(.failure(error))
                 return
             }
             guard httpResponse.isSuccessful else {
                 let error = ProviderError.invalidServerResponseWithStatusCode(statusCode: httpResponse.statusCode)
-                printDebugDescriptionIfNeeded(urlRequest, error, httpResponse.statusCode)
+                printDebugDescriptionIfNeeded(urlRequest, nil, error, httpResponse.statusCode)
                 result(.failure(error))
                 return
             }
             do {
                 guard let data = data else {
                     let error = ProviderError.missingBodyData
-                    printDebugDescriptionIfNeeded(urlRequest, error, nil)
+                    printDebugDescriptionIfNeeded(urlRequest, nil, error, nil)
                     result(.failure(error))
                     return
                 }
                 let decoded = try jsonDecoder.decode(type.self, from: data)
-                printDebugDescriptionIfNeeded(urlRequest, nil, httpResponse.statusCode)
+                printDebugDescriptionIfNeeded(urlRequest, nil, nil, httpResponse.statusCode)
                 result(.success(decoded))
             } catch {
                 result(.failure(.decodingError(error)))
@@ -262,29 +262,29 @@ extension Networking: NetworkingProtocol {
         let task = urlSession.dataTask(with: urlRequest) { data, response, error in
             guard error == nil else {
                 let error = ProviderError.connectionError(error!)
-                printDebugDescriptionIfNeeded(urlRequest, error, nil)
+                printDebugDescriptionIfNeeded(urlRequest, nil, error, nil)
                 result(.failure(error))
                 return
             }
             guard let httpResponse = response as? HTTPURLResponse else {
                 let error = ProviderError.invalidServerResponse
-                printDebugDescriptionIfNeeded(urlRequest, error, nil)
+                printDebugDescriptionIfNeeded(urlRequest, nil, error, nil)
                 result(.failure(error))
                 return
             }
             guard httpResponse.isSuccessful else {
                 let error = ProviderError.invalidServerResponseWithStatusCode(statusCode: httpResponse.statusCode)
-                printDebugDescriptionIfNeeded(urlRequest, error, httpResponse.statusCode)
+                printDebugDescriptionIfNeeded(urlRequest, nil, error, httpResponse.statusCode)
                 result(.failure(error))
                 return
             }
             guard let data = data else {
                 let error = ProviderError.missingBodyData
-                printDebugDescriptionIfNeeded(urlRequest, error, httpResponse.statusCode)
+                printDebugDescriptionIfNeeded(urlRequest, nil, error, httpResponse.statusCode)
                 result(.failure(error))
                 return
             }
-            printDebugDescriptionIfNeeded(urlRequest, nil, httpResponse.statusCode)
+            printDebugDescriptionIfNeeded(urlRequest, nil, nil, httpResponse.statusCode)
             result(.success(Response(urlResponse: httpResponse, data: data)))
         }
         task.resume()
@@ -303,23 +303,23 @@ extension Networking: NetworkingProtocol {
         let task = urlSession.uploadTask(with: urlRequest, from: data) { data, response, error in
             guard error == nil else {
                 let error = ProviderError.underlying(error!)
-                printDebugDescriptionIfNeeded(urlRequest, error, nil)
+                printDebugDescriptionIfNeeded(urlRequest, nil, error, nil)
                 result(.failure(error))
                 return
             }
             guard let httpResponse = response as? HTTPURLResponse else {
                 let error = ProviderError.invalidServerResponse
-                printDebugDescriptionIfNeeded(urlRequest, error, nil)
+                printDebugDescriptionIfNeeded(urlRequest, nil, error, nil)
                 result(.failure(error))
                 return
             }
             guard httpResponse.isSuccessful else {
                 let error = ProviderError.invalidServerResponseWithStatusCode(statusCode: httpResponse.statusCode)
-                printDebugDescriptionIfNeeded(urlRequest, error, httpResponse.statusCode)
+                printDebugDescriptionIfNeeded(urlRequest, nil, error, httpResponse.statusCode)
                 result(.failure(error))
                 return
             }
-            printDebugDescriptionIfNeeded(urlRequest, nil, httpResponse.statusCode)
+            printDebugDescriptionIfNeeded(urlRequest, nil, nil, httpResponse.statusCode)
             result(.success((httpResponse, data)))
         }
         task.resume()
@@ -337,23 +337,23 @@ extension Networking: NetworkingProtocol {
         let task = urlSession.downloadTask(with: urlRequest) { _, response, error in
             guard error == nil else {
                 let error = ProviderError.underlying(error!)
-                printDebugDescriptionIfNeeded(urlRequest, error, nil)
+                printDebugDescriptionIfNeeded(urlRequest, nil, error, nil)
                 result(.failure(error))
                 return
             }
             guard let httpResponse = response as? HTTPURLResponse else {
                 let error = ProviderError.invalidServerResponse
-                printDebugDescriptionIfNeeded(urlRequest, error, nil)
+                printDebugDescriptionIfNeeded(urlRequest, nil, error, nil)
                 result(.failure(error))
                 return
             }
             guard !httpResponse.isSuccessful else {
                 let error = ProviderError.invalidServerResponseWithStatusCode(statusCode: httpResponse.statusCode)
-                printDebugDescriptionIfNeeded(urlRequest, error, httpResponse.statusCode)
+                printDebugDescriptionIfNeeded(urlRequest, nil, error, httpResponse.statusCode)
                 result(.failure(error))
                 return
             }
-            printDebugDescriptionIfNeeded(urlRequest, nil, httpResponse.statusCode)
+            printDebugDescriptionIfNeeded(urlRequest, nil, nil, httpResponse.statusCode)
             result(.success(httpResponse))
         }
         task.resume()
@@ -379,12 +379,12 @@ extension Networking: NetworkingProtocol {
                 )
             guard let httpResponse = urlResponse as? HTTPURLResponse else {
                 let error = ProviderError.invalidServerResponse
-                environment.printDebugDescriptionIfNeeded(urlRequest, error, nil)
+                environment.printDebugDescriptionIfNeeded(urlRequest, nil, error, nil)
                 throw error
             }
             guard httpResponse.isSuccessful else {
                 let error = ProviderError.invalidServerResponseWithStatusCode(statusCode: httpResponse.statusCode)
-                environment.printDebugDescriptionIfNeeded(urlRequest, error, httpResponse.statusCode)
+                environment.printDebugDescriptionIfNeeded(urlRequest, nil, error, httpResponse.statusCode)
                 throw error
             }
             return try jsonDecoder.decode(type, from: data)
@@ -413,12 +413,12 @@ extension Networking: NetworkingProtocol {
                 )
             guard let httpResponse = urlResponse as? HTTPURLResponse else {
                 let error = ProviderError.invalidServerResponse
-                environment.printDebugDescriptionIfNeeded(urlRequest, error, nil)
+                environment.printDebugDescriptionIfNeeded(urlRequest, nil, error, nil)
                 throw error
             }
             guard httpResponse.isSuccessful else {
                 let error = ProviderError.invalidServerResponseWithStatusCode(statusCode: httpResponse.statusCode)
-                environment.printDebugDescriptionIfNeeded(urlRequest, error, httpResponse.statusCode)
+                environment.printDebugDescriptionIfNeeded(urlRequest, nil, error, httpResponse.statusCode)
                 throw error
             }
             return httpResponse
@@ -446,12 +446,12 @@ extension Networking: NetworkingProtocol {
                 )
             guard let httpResponse = urlResponse as? HTTPURLResponse else {
                 let error = ProviderError.invalidServerResponse
-                environment.printDebugDescriptionIfNeeded(urlRequest, error, nil)
+                environment.printDebugDescriptionIfNeeded(urlRequest, nil, error, nil)
                 throw error
             }
             guard httpResponse.isSuccessful else {
                 let error = ProviderError.invalidServerResponseWithStatusCode(statusCode: httpResponse.statusCode)
-                environment.printDebugDescriptionIfNeeded(urlRequest, error, httpResponse.statusCode)
+                environment.printDebugDescriptionIfNeeded(urlRequest, nil, error, httpResponse.statusCode)
                 throw error
             }
             return httpResponse
@@ -477,12 +477,12 @@ extension Networking: NetworkingProtocol {
                 )
             guard let httpResponse = urlResponse as? HTTPURLResponse else {
                 let error = ProviderError.invalidServerResponse
-                environment.printDebugDescriptionIfNeeded(urlRequest, error, nil)
+                environment.printDebugDescriptionIfNeeded(urlRequest, nil, error, nil)
                 throw error
             }
             guard httpResponse.isSuccessful else {
                 let error = ProviderError.invalidServerResponseWithStatusCode(statusCode: httpResponse.statusCode)
-                environment.printDebugDescriptionIfNeeded(urlRequest, error, httpResponse.statusCode)
+                environment.printDebugDescriptionIfNeeded(urlRequest, nil, error, httpResponse.statusCode)
                 throw error
             }
             return localURL

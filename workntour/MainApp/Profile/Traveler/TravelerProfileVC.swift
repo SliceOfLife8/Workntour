@@ -244,7 +244,7 @@ class TravelerProfileVC: BaseVC<TravelerProfileViewModel, ProfileCoordinator> {
 
     // MARK: - Actions
     @IBAction func uploadImageTapped(_ sender: Any) {
-        self.coordinator?.navigate(to: .openGalleryPicker)
+        self.coordinator?.navigate(to: .selectSkills(preselectedSkills: [.bartending]))
     }
 
     @objc private func saveActionTapped() {

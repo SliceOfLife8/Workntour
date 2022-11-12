@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ChipCell" customModule="CommonUI" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="100" height="60"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="100" height="60"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XO0-my-aR9" customClass="ChipButton" customModule="CommonUI" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="100" height="60"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" title="Button"/>
+                    </button>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="XO0-my-aR9" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="9q1-RD-K7y"/>
+                <constraint firstAttribute="trailing" secondItem="XO0-my-aR9" secondAttribute="trailing" id="NJ3-e0-HX8"/>
+                <constraint firstItem="XO0-my-aR9" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="f0Z-vQ-VBf"/>
+                <constraint firstAttribute="bottom" secondItem="XO0-my-aR9" secondAttribute="bottom" id="prC-M4-C4b"/>
+            </constraints>
+            <connections>
+                <outlet property="chipButton" destination="XO0-my-aR9" id="0lF-Ys-7XD"/>
+            </connections>
+            <point key="canvasLocation" x="125" y="21"/>
+        </collectionViewCell>
+    </objects>
+</document>

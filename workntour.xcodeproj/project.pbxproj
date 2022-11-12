@@ -144,6 +144,10 @@
 		1BC190F5286339DD00585533 /* IndividualHostProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC190F4286339DD00585533 /* IndividualHostProfile.swift */; };
 		1BE6EA992868BFB8009CBE6D /* OpportunitiesVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BE6EA982868BFB8009CBE6D /* OpportunitiesVC.xib */; };
 		2707FF96C7CBD64F6B2EA3B7 /* Pods_workntour.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5701F516D91D3C90DD51441 /* Pods_workntour.framework */; };
+		CE3F9E8C291F9D0200480493 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE3F9E8B291F9D0200480493 /* Localizable.strings */; };
+		CE3F9E8F291FA88700480493 /* ProfileSelectAttributesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3F9E8E291FA88700480493 /* ProfileSelectAttributesVC.swift */; };
+		CE3F9E92291FA96100480493 /* ProfileSelectAttributesVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE3F9E91291FA96100480493 /* ProfileSelectAttributesVC.xib */; };
+		CE3F9E94291FAA6800480493 /* ProfileSelectAttributesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3F9E93291FAA6800480493 /* ProfileSelectAttributesViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -307,6 +311,10 @@
 		A9A28C3C30B3A10BAB51F50A /* Pods-workntour.prod release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-workntour.prod release.xcconfig"; path = "Target Support Files/Pods-workntour/Pods-workntour.prod release.xcconfig"; sourceTree = "<group>"; };
 		AA61DB065AE3B9EE59633469 /* Pods-workntour.staging debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-workntour.staging debug.xcconfig"; path = "Target Support Files/Pods-workntour/Pods-workntour.staging debug.xcconfig"; sourceTree = "<group>"; };
 		B0657D0C965FCA5EF3E62D12 /* Pods-workntour.staging release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-workntour.staging release.xcconfig"; path = "Target Support Files/Pods-workntour/Pods-workntour.staging release.xcconfig"; sourceTree = "<group>"; };
+		CE3F9E8B291F9D0200480493 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		CE3F9E8E291FA88700480493 /* ProfileSelectAttributesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSelectAttributesVC.swift; sourceTree = "<group>"; };
+		CE3F9E91291FA96100480493 /* ProfileSelectAttributesVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileSelectAttributesVC.xib; sourceTree = "<group>"; };
+		CE3F9E93291FAA6800480493 /* ProfileSelectAttributesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSelectAttributesViewModel.swift; sourceTree = "<group>"; };
 		CE6AC9952909A4CD00B962A0 /*  Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = " Info.plist"; sourceTree = "<group>"; };
 		D1C830038FC1866654646544 /* Pods-workntour.prod debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-workntour.prod debug.xcconfig"; path = "Target Support Files/Pods-workntour/Pods-workntour.prod debug.xcconfig"; sourceTree = "<group>"; };
 		F5701F516D91D3C90DD51441 /* Pods_workntour.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_workntour.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -743,6 +751,7 @@
 				1B9A3D84282B9096003E0C34 /* Colors.xcassets */,
 				1B7315FB281E7DD5001F2E6A /* LaunchScreen.storyboard */,
 				CE6AC9952909A4CD00B962A0 /*  Info.plist */,
+				CE3F9E8B291F9D0200480493 /* Localizable.strings */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -805,8 +814,9 @@
 			isa = PBXGroup;
 			children = (
 				1BC190B1285C5C8600585533 /* ProfileCoordinator.swift */,
-				1BC190B0285C5C7000585533 /* Traveler */,
 				1BC190CA285F24DF00585533 /* Host */,
+				CE3F9E8D291FA84F00480493 /* SelectAttributes */,
+				1BC190B0285C5C7000585533 /* Traveler */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -944,6 +954,16 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		CE3F9E8D291FA84F00480493 /* SelectAttributes */ = {
+			isa = PBXGroup;
+			children = (
+				CE3F9E8E291FA88700480493 /* ProfileSelectAttributesVC.swift */,
+				CE3F9E91291FA96100480493 /* ProfileSelectAttributesVC.xib */,
+				CE3F9E93291FAA6800480493 /* ProfileSelectAttributesViewModel.swift */,
+			);
+			path = SelectAttributes;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1033,6 +1053,7 @@
 				1B4AE434283F58FB00FA6420 /* Lato-Semibold.ttf in Resources */,
 				1B4AE435283F58FB00FA6420 /* Lato-SemiboldItalic.ttf in Resources */,
 				1B3C383828508B83000EEADF /* RegistrationHostVC.xib in Resources */,
+				CE3F9E8C291F9D0200480493 /* Localizable.strings in Resources */,
 				1B442FE7287ED6AB002145BC /* OpportunitiesFiltersVC.xib in Resources */,
 				1B4AE436283F58FB00FA6420 /* Lato-Thin.ttf in Resources */,
 				1B4AE437283F58FB00FA6420 /* Lato-ThinItalic.ttf in Resources */,
@@ -1045,6 +1066,7 @@
 				1B9A3D1728282710003E0C34 /* GoogleService-Info.Dev.plist in Resources */,
 				1B7315FA281E7DD5001F2E6A /* Assets.xcassets in Resources */,
 				1B4AE3FD283E4B4D00FA6420 /* logo_title.png in Resources */,
+				CE3F9E92291FA96100480493 /* ProfileSelectAttributesVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1178,6 +1200,7 @@
 				1B9A3D8C282C060A003E0C34 /* SplashViewModel.swift in Sources */,
 				1B4AE3FA283E04C400FA6420 /* CompanyHost.swift in Sources */,
 				1BC1909E285A0DB200585533 /* TabBarCoordinator.swift in Sources */,
+				CE3F9E94291FAA6800480493 /* ProfileSelectAttributesViewModel.swift in Sources */,
 				1BC190C6285CA91000585533 /* TabBarViewController.swift in Sources */,
 				1BC190E028620D0400585533 /* SearchLocationsVC.swift in Sources */,
 				1B39AA5C2878533B009377A7 /* GooglePlacesManager.swift in Sources */,
@@ -1186,6 +1209,7 @@
 				1BC190DB28620B9300585533 /* LocationManager.swift in Sources */,
 				1BC190B6285C5CA400585533 /* OpportunitiesViewModel.swift in Sources */,
 				1B443047288A722A002145BC /* MapOfOpportunitiesViewModel.swift in Sources */,
+				CE3F9E8F291FA88700480493 /* ProfileSelectAttributesVC.swift in Sources */,
 				1B442FF3287FE161002145BC /* HomeService.swift in Sources */,
 				1BC190F32863399E00585533 /* CompanyHostProfile.swift in Sources */,
 				1BC190AF285C5C6300585533 /* HomeViewModel.swift in Sources */,
