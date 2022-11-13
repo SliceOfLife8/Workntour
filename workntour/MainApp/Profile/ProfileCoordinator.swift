@@ -16,6 +16,7 @@ enum ProfileStep: Step {
     case openGalleryPicker
     case selectInterests(preselectedInterests: [LearningOpportunities])
     case selectSkills(preselectedSkills: [TypeOfHelp])
+    case openExperience(_ experience: ProfileExperience?)
 }
 
 final class ProfileCoordinator: NavigationCoordinator {
@@ -66,6 +67,12 @@ final class ProfileCoordinator: NavigationCoordinator {
             selectInterests(learningOpportunities)
         case .selectSkills(let skills):
             selectSkills(skills)
+        case .openExperience(let experience):
+            let experienceVC = ProfileExperienceVC()
+            experienceVC.viewModel = ProfileExperienceViewModel(data: .init(experience: experience))
+            experienceVC.coordinator = self
+
+            navigator.push(experienceVC, animated: true)
         }
     }
 

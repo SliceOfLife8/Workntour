@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AppConfig.setupFB()
         AppConfig.setupGooglePlaces()
         AppConfig.setupLogger()
+        ThemeManager.shared.updateStyle()
         DropDown.startListeningToKeyboard()
         return true
     }

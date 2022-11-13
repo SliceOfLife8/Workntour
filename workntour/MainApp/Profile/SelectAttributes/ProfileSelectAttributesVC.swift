@@ -61,7 +61,7 @@ class ProfileSelectAttributesVC: BaseVC<ProfileSelectAttributesViewModel, Profil
 
     // MARK: - Private Methods
 
-    func updateHeaderView() {
+    private func updateHeaderView() {
         guard let data = viewModel?.data else { return }
         let headerView = collectionView.supplementaryView(
             forElementKind: UICollectionView.elementKindSectionHeader,

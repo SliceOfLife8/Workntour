@@ -136,7 +136,7 @@ public class GradientTextField: UITextFieldPadding {
         case .nationality, .sex, .opportunityCategory, .typeOfHelp, .languagesRequired, .languagesSpoken, .accommodation, .learningOpportunities, .travelerType:
             self.isEditable = false
             self.rightIcon = .downArrow
-        case .age:
+        case .age, .date:
             self.rightIcon = .downArrow
             createDatePicker()
         default:

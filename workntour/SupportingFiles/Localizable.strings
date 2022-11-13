@@ -1,8 +1,21 @@
 // Profile
 "save" = "Save";
+"delete" = "Delete";
 "interests" = "Interests";
 "ur_interests" = "Your Interests";
 "interests_description" = "Add your interests so you can match with the perfect host! Choose a minimum of 3.";
 "skills" = "Skills";
 "ur_skills" = "Your Skills";
 "skills_description" = "Add your skills so you can match with the perfect host! Choose a minimum of 3.";
+"experience" = "Experience";
+"company" = "Company";
+"company_placeholder" = "Enter your company";
+"university" = "University/Subject";
+"university_placeholder" = "Enter your university";
+"position" = "Position";
+"position_placeholder" = "Enter your position";
+"start_date" = "Start Date";
+"end_date" = "End Date";
+"select_date" = "Select Date";
+"description" = "Description";
+"experience_footer_desc" = "By adding your background, you will increase your chances of being accepted by a host.";

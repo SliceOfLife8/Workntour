@@ -50,4 +50,7 @@ public enum GradientTextFieldType {
     case accommodation
     case learningOpportunities
     case travelerType
+    // New format -- We should use only these types
+    case plain
+    case date
 }

@@ -148,6 +148,11 @@
 		CE3F9E8F291FA88700480493 /* ProfileSelectAttributesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3F9E8E291FA88700480493 /* ProfileSelectAttributesVC.swift */; };
 		CE3F9E92291FA96100480493 /* ProfileSelectAttributesVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE3F9E91291FA96100480493 /* ProfileSelectAttributesVC.xib */; };
 		CE3F9E94291FAA6800480493 /* ProfileSelectAttributesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3F9E93291FAA6800480493 /* ProfileSelectAttributesViewModel.swift */; };
+		CE8332CE2920EC2600F751FE /* ProfileExperienceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8332CD2920EC2600F751FE /* ProfileExperienceVC.swift */; };
+		CE8332D02920EC2D00F751FE /* ProfileExperienceVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8332CF2920EC2D00F751FE /* ProfileExperienceVC.xib */; };
+		CE8332D22920EC3600F751FE /* ProfileExperienceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8332D12920EC3600F751FE /* ProfileExperienceViewModel.swift */; };
+		CE8332D42920F5A500F751FE /* ProfileExperience.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8332D32920F5A500F751FE /* ProfileExperience.swift */; };
+		CE8332D72921009F00F751FE /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8332D62921009F00F751FE /* ThemeManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -316,6 +321,11 @@
 		CE3F9E91291FA96100480493 /* ProfileSelectAttributesVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileSelectAttributesVC.xib; sourceTree = "<group>"; };
 		CE3F9E93291FAA6800480493 /* ProfileSelectAttributesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSelectAttributesViewModel.swift; sourceTree = "<group>"; };
 		CE6AC9952909A4CD00B962A0 /*  Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = " Info.plist"; sourceTree = "<group>"; };
+		CE8332CD2920EC2600F751FE /* ProfileExperienceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileExperienceVC.swift; sourceTree = "<group>"; };
+		CE8332CF2920EC2D00F751FE /* ProfileExperienceVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileExperienceVC.xib; sourceTree = "<group>"; };
+		CE8332D12920EC3600F751FE /* ProfileExperienceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileExperienceViewModel.swift; sourceTree = "<group>"; };
+		CE8332D32920F5A500F751FE /* ProfileExperience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileExperience.swift; sourceTree = "<group>"; };
+		CE8332D62921009F00F751FE /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		D1C830038FC1866654646544 /* Pods-workntour.prod debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-workntour.prod debug.xcconfig"; path = "Target Support Files/Pods-workntour/Pods-workntour.prod debug.xcconfig"; sourceTree = "<group>"; };
 		F5701F516D91D3C90DD51441 /* Pods_workntour.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_workntour.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -340,6 +350,7 @@
 			children = (
 				1B9A3D2C28295F6E003E0C34 /* AppConfig.swift */,
 				1B16837A2837C07B0067F2DB /* FirebaseManager.swift */,
+				CE8332D62921009F00F751FE /* ThemeManager.swift */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -814,6 +825,7 @@
 			isa = PBXGroup;
 			children = (
 				1BC190B1285C5C8600585533 /* ProfileCoordinator.swift */,
+				CE8332CC2920EB3500F751FE /* Experience */,
 				1BC190CA285F24DF00585533 /* Host */,
 				CE3F9E8D291FA84F00480493 /* SelectAttributes */,
 				1BC190B0285C5C7000585533 /* Traveler */,
@@ -928,6 +940,7 @@
 				1BC190F4286339DD00585533 /* IndividualHostProfile.swift */,
 				1BC190F22863399E00585533 /* CompanyHostProfile.swift */,
 				1B6A8C9D2897A836003A1540 /* TravelerType.swift */,
+				CE8332D32920F5A500F751FE /* ProfileExperience.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -962,6 +975,16 @@
 				CE3F9E93291FAA6800480493 /* ProfileSelectAttributesViewModel.swift */,
 			);
 			path = SelectAttributes;
+			sourceTree = "<group>";
+		};
+		CE8332CC2920EB3500F751FE /* Experience */ = {
+			isa = PBXGroup;
+			children = (
+				CE8332CD2920EC2600F751FE /* ProfileExperienceVC.swift */,
+				CE8332CF2920EC2D00F751FE /* ProfileExperienceVC.xib */,
+				CE8332D12920EC3600F751FE /* ProfileExperienceViewModel.swift */,
+			);
+			path = Experience;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1039,6 +1062,7 @@
 				1B4AE429283F58FB00FA6420 /* Lato-BoldItalic.ttf in Resources */,
 				1B4AE42A283F58FB00FA6420 /* Lato-Hairline.ttf in Resources */,
 				1B6A8C9C2896E612003A1540 /* TravelerProfileVC.xib in Resources */,
+				CE8332D02920EC2D00F751FE /* ProfileExperienceVC.xib in Resources */,
 				1BC190E82862E91F00585533 /* MapViewController.xib in Resources */,
 				1B4AE42B283F58FB00FA6420 /* Lato-HairlineItalic.ttf in Resources */,
 				1B4AE42C283F58FB00FA6420 /* Lato-Heavy.ttf in Resources */,
@@ -1201,6 +1225,8 @@
 				1B4AE3FA283E04C400FA6420 /* CompanyHost.swift in Sources */,
 				1BC1909E285A0DB200585533 /* TabBarCoordinator.swift in Sources */,
 				CE3F9E94291FAA6800480493 /* ProfileSelectAttributesViewModel.swift in Sources */,
+				CE8332D42920F5A500F751FE /* ProfileExperience.swift in Sources */,
+				CE8332D72921009F00F751FE /* ThemeManager.swift in Sources */,
 				1BC190C6285CA91000585533 /* TabBarViewController.swift in Sources */,
 				1BC190E028620D0400585533 /* SearchLocationsVC.swift in Sources */,
 				1B39AA5C2878533B009377A7 /* GooglePlacesManager.swift in Sources */,
@@ -1233,6 +1259,7 @@
 				1B168380283A590B0067F2DB /* RegistrationTravelerViewModel.swift in Sources */,
 				1B39AA2928702C43009377A7 /* OpportunityService.swift in Sources */,
 				1B44302B2886E057002145BC /* FindAvailableDatesVC.swift in Sources */,
+				CE8332D22920EC3600F751FE /* ProfileExperienceViewModel.swift in Sources */,
 				1BC190C4285C60A800585533 /* TabBarPage.swift in Sources */,
 				1BA2DEF9281E8AE800DB128D /* MainCoordinator.swift in Sources */,
 				1B563B722847DD0B00B851C1 /* RegistrationError.swift in Sources */,
@@ -1283,6 +1310,7 @@
 				1B9A3D8A282C05F6003E0C34 /* SplashVC.swift in Sources */,
 				1BC190C2285C5CE200585533 /* SettingsViewModel.swift in Sources */,
 				1BC190AB285C5C4900585533 /* HomeCoordinator.swift in Sources */,
+				CE8332CE2920EC2600F751FE /* ProfileExperienceVC.swift in Sources */,
 				1B442FF1287FE159002145BC /* HomeRouter.swift in Sources */,
 				1BC190A2285A0E8200585533 /* TravelerProfileVC.swift in Sources */,
 				1BC190F5286339DD00585533 /* IndividualHostProfile.swift in Sources */,
