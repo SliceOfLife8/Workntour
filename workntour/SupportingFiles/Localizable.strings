@@ -19,3 +19,10 @@
 "select_date" = "Select Date";
 "description" = "Description";
 "experience_footer_desc" = "By adding your background, you will increase your chances of being accepted by a host.";
+"language" = "Language";
+"languages" = "Languages";
+"select_language" = "Select Language";
+"proficiency" = "Proficiency";
+"languages_bottom_information" = "\"Language is the road map of a culture. It tells you where its people come from and where they are going.\" - Rita Mae Brown";
+"describe_header" = "Describe Yourself";
+"describe_placeholder" = "Describe how awesome you are, how you will be able to help your hosts and what you would like to learn!";

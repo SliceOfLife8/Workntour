@@ -46,15 +46,15 @@ enum Language: String, CaseIterable, Codable {
     var value: String {
         switch self {
         case .greek:
-            return "Greek"
+            return "🇬🇷 Greek"
         case .english:
-            return "English"
+            return "🇬🇧 English"
         case .spanish:
-            return "Spanish"
+            return "🇪🇸 Spanish"
         case .italian:
-            return "Italian"
+            return "🇮🇹 Italian"
         case .german:
-            return "German"
+            return "🇩🇪 German"
         }
     }
 

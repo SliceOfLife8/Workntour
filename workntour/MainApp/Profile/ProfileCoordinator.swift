@@ -17,6 +17,8 @@ enum ProfileStep: Step {
     case selectInterests(preselectedInterests: [LearningOpportunities])
     case selectSkills(preselectedSkills: [TypeOfHelp])
     case openExperience(_ experience: ProfileExperience?)
+    case travelerAddSummary(_ summary: String?)
+    case addLanguage
 }
 
 final class ProfileCoordinator: NavigationCoordinator {
@@ -73,6 +75,16 @@ final class ProfileCoordinator: NavigationCoordinator {
             experienceVC.coordinator = self
 
             navigator.push(experienceVC, animated: true)
+        case .travelerAddSummary(let summary):
+            addSummary(summary)
+        case .addLanguage:
+            let viewModel = LanguagePickerViewModel(data: .init(languages: Language.allCases,
+                                                                proficiencies: LanguagePickerViewModel.Proficiency.allCases))
+            let languagePickerVC = LanguagePickerVC()
+            languagePickerVC.viewModel = viewModel
+            languagePickerVC.coordinator = self
+
+            navigator.push(languagePickerVC, animated: true)
         }
     }
 
@@ -126,6 +138,21 @@ final class ProfileCoordinator: NavigationCoordinator {
         selectAttributesVC.coordinator = self
 
         navigator.push(selectAttributesVC, animated: true)
+    }
+
+    private func addSummary(_ summary: String?) {
+        let data = ProfileAddSummaryViewModel.DataModel(
+            navigationBarTitle: "describe_header".localized(),
+            description: summary,
+            placeholder: "describe_placeholder".localized(),
+            charsLimit: 200
+        )
+
+        let addSummaryVC = ProfileAddSummaryVC()
+        addSummaryVC.viewModel =  ProfileAddSummaryViewModel(data: data)
+        addSummaryVC.coordinator = self
+
+        navigator.push(addSummaryVC, animated: true)
     }
 
 }

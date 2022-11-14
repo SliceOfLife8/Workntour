@@ -153,6 +153,12 @@
 		CE8332D22920EC3600F751FE /* ProfileExperienceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8332D12920EC3600F751FE /* ProfileExperienceViewModel.swift */; };
 		CE8332D42920F5A500F751FE /* ProfileExperience.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8332D32920F5A500F751FE /* ProfileExperience.swift */; };
 		CE8332D72921009F00F751FE /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8332D62921009F00F751FE /* ThemeManager.swift */; };
+		CE8332DE292218D100F751FE /* ProfileAddSummaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8332DD292218D100F751FE /* ProfileAddSummaryVC.swift */; };
+		CE8332E0292218DF00F751FE /* ProfileAddSummaryVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8332DF292218DF00F751FE /* ProfileAddSummaryVC.xib */; };
+		CE8332E2292218ED00F751FE /* ProfileAddSummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8332E1292218ED00F751FE /* ProfileAddSummaryViewModel.swift */; };
+		CE83330529228CFE00F751FE /* LanguagePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83330429228CFD00F751FE /* LanguagePickerVC.swift */; };
+		CE83330729228D0300F751FE /* LanguagePickerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE83330629228D0300F751FE /* LanguagePickerVC.xib */; };
+		CE83330929228D0A00F751FE /* LanguagePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83330829228D0A00F751FE /* LanguagePickerViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -326,6 +332,12 @@
 		CE8332D12920EC3600F751FE /* ProfileExperienceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileExperienceViewModel.swift; sourceTree = "<group>"; };
 		CE8332D32920F5A500F751FE /* ProfileExperience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileExperience.swift; sourceTree = "<group>"; };
 		CE8332D62921009F00F751FE /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
+		CE8332DD292218D100F751FE /* ProfileAddSummaryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAddSummaryVC.swift; sourceTree = "<group>"; };
+		CE8332DF292218DF00F751FE /* ProfileAddSummaryVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileAddSummaryVC.xib; sourceTree = "<group>"; };
+		CE8332E1292218ED00F751FE /* ProfileAddSummaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAddSummaryViewModel.swift; sourceTree = "<group>"; };
+		CE83330429228CFD00F751FE /* LanguagePickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagePickerVC.swift; sourceTree = "<group>"; };
+		CE83330629228D0300F751FE /* LanguagePickerVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LanguagePickerVC.xib; sourceTree = "<group>"; };
+		CE83330829228D0A00F751FE /* LanguagePickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagePickerViewModel.swift; sourceTree = "<group>"; };
 		D1C830038FC1866654646544 /* Pods-workntour.prod debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-workntour.prod debug.xcconfig"; path = "Target Support Files/Pods-workntour/Pods-workntour.prod debug.xcconfig"; sourceTree = "<group>"; };
 		F5701F516D91D3C90DD51441 /* Pods_workntour.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_workntour.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -827,7 +839,9 @@
 				1BC190B1285C5C8600585533 /* ProfileCoordinator.swift */,
 				CE8332CC2920EB3500F751FE /* Experience */,
 				1BC190CA285F24DF00585533 /* Host */,
+				CE83330329228CEA00F751FE /* LanguagePicker */,
 				CE3F9E8D291FA84F00480493 /* SelectAttributes */,
+				CE8332DC292218A900F751FE /* Summary */,
 				1BC190B0285C5C7000585533 /* Traveler */,
 			);
 			path = Profile;
@@ -987,6 +1001,26 @@
 			path = Experience;
 			sourceTree = "<group>";
 		};
+		CE8332DC292218A900F751FE /* Summary */ = {
+			isa = PBXGroup;
+			children = (
+				CE8332DD292218D100F751FE /* ProfileAddSummaryVC.swift */,
+				CE8332DF292218DF00F751FE /* ProfileAddSummaryVC.xib */,
+				CE8332E1292218ED00F751FE /* ProfileAddSummaryViewModel.swift */,
+			);
+			path = Summary;
+			sourceTree = "<group>";
+		};
+		CE83330329228CEA00F751FE /* LanguagePicker */ = {
+			isa = PBXGroup;
+			children = (
+				CE83330429228CFD00F751FE /* LanguagePickerVC.swift */,
+				CE83330629228D0300F751FE /* LanguagePickerVC.xib */,
+				CE83330829228D0A00F751FE /* LanguagePickerViewModel.swift */,
+			);
+			path = LanguagePicker;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1071,12 +1105,14 @@
 				1B4AE42F283F58FB00FA6420 /* Lato-Light.ttf in Resources */,
 				1B7753C8286A275300D81526 /* CreateOpportunityVC.xib in Resources */,
 				1B4AE430283F58FB00FA6420 /* Lato-LightItalic.ttf in Resources */,
+				CE83330729228D0300F751FE /* LanguagePickerVC.xib in Resources */,
 				1B4AE431283F58FB00FA6420 /* Lato-Medium.ttf in Resources */,
 				1B4AE432283F58FB00FA6420 /* Lato-MediumItalic.ttf in Resources */,
 				1B4AE433283F58FB00FA6420 /* Lato-Regular.ttf in Resources */,
 				1B4AE434283F58FB00FA6420 /* Lato-Semibold.ttf in Resources */,
 				1B4AE435283F58FB00FA6420 /* Lato-SemiboldItalic.ttf in Resources */,
 				1B3C383828508B83000EEADF /* RegistrationHostVC.xib in Resources */,
+				CE8332E0292218DF00F751FE /* ProfileAddSummaryVC.xib in Resources */,
 				CE3F9E8C291F9D0200480493 /* Localizable.strings in Resources */,
 				1B442FE7287ED6AB002145BC /* OpportunitiesFiltersVC.xib in Resources */,
 				1B4AE436283F58FB00FA6420 /* Lato-Thin.ttf in Resources */,
@@ -1225,6 +1261,7 @@
 				1B4AE3FA283E04C400FA6420 /* CompanyHost.swift in Sources */,
 				1BC1909E285A0DB200585533 /* TabBarCoordinator.swift in Sources */,
 				CE3F9E94291FAA6800480493 /* ProfileSelectAttributesViewModel.swift in Sources */,
+				CE83330929228D0A00F751FE /* LanguagePickerViewModel.swift in Sources */,
 				CE8332D42920F5A500F751FE /* ProfileExperience.swift in Sources */,
 				CE8332D72921009F00F751FE /* ThemeManager.swift in Sources */,
 				1BC190C6285CA91000585533 /* TabBarViewController.swift in Sources */,
@@ -1252,6 +1289,7 @@
 				1B3C384928520E5C000EEADF /* LoginCoordinator.swift in Sources */,
 				1BC190EF2863394B00585533 /* ProfileService.swift in Sources */,
 				1B7753DB286C2F6200D81526 /* SelectDateRangesVC.swift in Sources */,
+				CE8332DE292218D100F751FE /* ProfileAddSummaryVC.swift in Sources */,
 				1B39AA22287026A7009377A7 /* OpportunityDto.swift in Sources */,
 				1B39AA2728702C35009377A7 /* OpportunityRouter.swift in Sources */,
 				1B39AA332872F175009377A7 /* ImageViewController.swift in Sources */,
@@ -1262,6 +1300,7 @@
 				CE8332D22920EC3600F751FE /* ProfileExperienceViewModel.swift in Sources */,
 				1BC190C4285C60A800585533 /* TabBarPage.swift in Sources */,
 				1BA2DEF9281E8AE800DB128D /* MainCoordinator.swift in Sources */,
+				CE8332E2292218ED00F751FE /* ProfileAddSummaryViewModel.swift in Sources */,
 				1B563B722847DD0B00B851C1 /* RegistrationError.swift in Sources */,
 				1B39AA2C2872F0A1009377A7 /* OpportunityDetailsVC.swift in Sources */,
 				1B7753D8286C26B600D81526 /* DayRangeIndicatorView.swift in Sources */,
@@ -1305,6 +1344,7 @@
 				1BA2DEF7281E8AB600DB128D /* AppCoordinator.swift in Sources */,
 				1BC190BC285C5CC500585533 /* NotificationsViewModel.swift in Sources */,
 				1BC190D62860A53000585533 /* SettingsOption.swift in Sources */,
+				CE83330529228CFE00F751FE /* LanguagePickerVC.swift in Sources */,
 				1B5279E72820471100FDAF5D /* AuthorizationRouter.swift in Sources */,
 				1B442FEC287EE348002145BC /* OpportunityFilterDto.swift in Sources */,
 				1B9A3D8A282C05F6003E0C34 /* SplashVC.swift in Sources */,

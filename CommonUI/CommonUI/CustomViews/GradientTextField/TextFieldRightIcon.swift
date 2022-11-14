@@ -53,4 +53,5 @@ public enum GradientTextFieldType {
     // New format -- We should use only these types
     case plain
     case date
+    case noEditable
 }
