@@ -16,7 +16,7 @@ public struct CountriesModel {
 public class Countries {
 
     // MARK: - Vars
-    private var localIdentifier = Locale.current.collatorIdentifier ?? Locale.current.identifier
+    private var enIdentifier = Locale(identifier: "en") // Locale.current.collatorIdentifier ?? Locale.current.identifier
     // MARK: - Vars about countries
     private var regionCode = Locale.current.regionCode ?? "GR"
     public var countries: [String: String] = [:]
@@ -32,7 +32,7 @@ public class Countries {
 
     func getAllCountries() {
         for (index, element) in NSLocale.isoCountryCodes.enumerated() {
-            if let name = Locale(identifier: localIdentifier).localizedString(forRegionCode: element) {
+            if let name = enIdentifier.localizedString(forRegionCode: element) {
                 countries[element] = name
                 // If you do not find a country extension move on!
                 guard let phoneExtension = Countries.countryPrefixes[element] else {

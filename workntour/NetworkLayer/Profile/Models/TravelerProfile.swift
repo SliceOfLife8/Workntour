@@ -11,8 +11,8 @@ import Foundation
 struct TravelerProfile: Codable {
     let memberID: String
     let role: UserRole
-    let name, surname: String
-    let email, password: String
+    var name, surname, email: String
+    let password: String
     var birthday: String?
     var sex: UserSex?
     var mobile, countryCode, nationality, postalAddress: String?

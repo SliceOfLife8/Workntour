@@ -56,6 +56,26 @@ class TravelerProfileViewModel: BaseViewModel {
         updateTravelerProfile()
     }
 
+    func updateProfile(_ profileDto: TravelerProfile) {
+        loaderVisibility = true
+        service.updateTravelerProfile(model: profileDto)
+            .map {
+                if $0 != nil {
+                    self.traveler = $0 // Update current user's model
+                }
+
+                return $0 != nil
+            }
+            .subscribe(on: RunLoop.main)
+            .catch({ _ -> Just<Bool> in
+                return Just(false)
+            })
+                .handleEvents(receiveCompletion: { _ in
+                    self.loaderVisibility = false
+                })
+                    .assign(to: &$profileUpdated)
+    }
+
     private func updateTravelerProfile() {
         guard let travelerModel = traveler else {
             return

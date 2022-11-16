@@ -159,6 +159,9 @@
 		CE83330529228CFE00F751FE /* LanguagePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83330429228CFD00F751FE /* LanguagePickerVC.swift */; };
 		CE83330729228D0300F751FE /* LanguagePickerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE83330629228D0300F751FE /* LanguagePickerVC.xib */; };
 		CE83330929228D0A00F751FE /* LanguagePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83330829228D0A00F751FE /* LanguagePickerViewModel.swift */; };
+		CEAB0A3629253B560023A2C6 /* TravelerPersonalInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAB0A3529253B560023A2C6 /* TravelerPersonalInfoVC.swift */; };
+		CEAB0A3829253B5E0023A2C6 /* TravelerPersonalInfoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEAB0A3729253B5E0023A2C6 /* TravelerPersonalInfoVC.xib */; };
+		CEAB0A3A29253B870023A2C6 /* TravelerPersonalInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAB0A3929253B870023A2C6 /* TravelerPersonalInfoViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -338,6 +341,9 @@
 		CE83330429228CFD00F751FE /* LanguagePickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagePickerVC.swift; sourceTree = "<group>"; };
 		CE83330629228D0300F751FE /* LanguagePickerVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LanguagePickerVC.xib; sourceTree = "<group>"; };
 		CE83330829228D0A00F751FE /* LanguagePickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagePickerViewModel.swift; sourceTree = "<group>"; };
+		CEAB0A3529253B560023A2C6 /* TravelerPersonalInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelerPersonalInfoVC.swift; sourceTree = "<group>"; };
+		CEAB0A3729253B5E0023A2C6 /* TravelerPersonalInfoVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TravelerPersonalInfoVC.xib; sourceTree = "<group>"; };
+		CEAB0A3929253B870023A2C6 /* TravelerPersonalInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelerPersonalInfoViewModel.swift; sourceTree = "<group>"; };
 		D1C830038FC1866654646544 /* Pods-workntour.prod debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-workntour.prod debug.xcconfig"; path = "Target Support Files/Pods-workntour/Pods-workntour.prod debug.xcconfig"; sourceTree = "<group>"; };
 		F5701F516D91D3C90DD51441 /* Pods_workntour.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_workntour.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -884,6 +890,7 @@
 		1BC190B0285C5C7000585533 /* Traveler */ = {
 			isa = PBXGroup;
 			children = (
+				CEAB0A3429253B3C0023A2C6 /* PersonalInfo */,
 				1BC190A1285A0E8200585533 /* TravelerProfileVC.swift */,
 				1B6A8C9B2896E612003A1540 /* TravelerProfileVC.xib */,
 				1BC190B3285C5C9300585533 /* TravelerProfileViewModel.swift */,
@@ -1021,6 +1028,16 @@
 			path = LanguagePicker;
 			sourceTree = "<group>";
 		};
+		CEAB0A3429253B3C0023A2C6 /* PersonalInfo */ = {
+			isa = PBXGroup;
+			children = (
+				CEAB0A3529253B560023A2C6 /* TravelerPersonalInfoVC.swift */,
+				CEAB0A3729253B5E0023A2C6 /* TravelerPersonalInfoVC.xib */,
+				CEAB0A3929253B870023A2C6 /* TravelerPersonalInfoViewModel.swift */,
+			);
+			path = PersonalInfo;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1099,6 +1116,7 @@
 				CE8332D02920EC2D00F751FE /* ProfileExperienceVC.xib in Resources */,
 				1BC190E82862E91F00585533 /* MapViewController.xib in Resources */,
 				1B4AE42B283F58FB00FA6420 /* Lato-HairlineItalic.ttf in Resources */,
+				CEAB0A3829253B5E0023A2C6 /* TravelerPersonalInfoVC.xib in Resources */,
 				1B4AE42C283F58FB00FA6420 /* Lato-Heavy.ttf in Resources */,
 				1B4AE42D283F58FB00FA6420 /* Lato-HeavyItalic.ttf in Resources */,
 				1B4AE42E283F58FB00FA6420 /* Lato-Italic.ttf in Resources */,
@@ -1296,6 +1314,7 @@
 				1BC190A4285A0EC500585533 /* OpportunitiesVC.swift in Sources */,
 				1B168380283A590B0067F2DB /* RegistrationTravelerViewModel.swift in Sources */,
 				1B39AA2928702C43009377A7 /* OpportunityService.swift in Sources */,
+				CEAB0A3A29253B870023A2C6 /* TravelerPersonalInfoViewModel.swift in Sources */,
 				1B44302B2886E057002145BC /* FindAvailableDatesVC.swift in Sources */,
 				CE8332D22920EC3600F751FE /* ProfileExperienceViewModel.swift in Sources */,
 				1BC190C4285C60A800585533 /* TabBarPage.swift in Sources */,
@@ -1322,6 +1341,7 @@
 				1BC190BE285C5CD200585533 /* SettingsCoordinator.swift in Sources */,
 				1BA2DEFE281E8C1800DB128D /* AppRootVC.swift in Sources */,
 				1B9A3D32282A3CE9003E0C34 /* Traveler.swift in Sources */,
+				CEAB0A3629253B560023A2C6 /* TravelerPersonalInfoVC.swift in Sources */,
 				1B3C383628508B79000EEADF /* RegistrationHostVC.swift in Sources */,
 				1B7315F3281E7DD0001F2E6A /* SceneDelegate.swift in Sources */,
 				1B39AA5128749A7C009377A7 /* OpportunityEnums.swift in Sources */,

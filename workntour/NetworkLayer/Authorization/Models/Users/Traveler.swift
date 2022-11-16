@@ -54,4 +54,24 @@ enum UserSex: String, Codable, CaseIterable {
     case MALE
     case FEMALE
     case OTHER
+
+    var value: String {
+        switch self {
+        case .MALE:
+            return "Male"
+        case .FEMALE:
+            return "Female"
+        case .OTHER:
+            return "Other"
+        }
+    }
+
+    init?(caseName: String) {
+        for key in UserSex.allCases where key.value == caseName {
+            self = key
+            return
+        }
+
+        return nil
+    }
 }

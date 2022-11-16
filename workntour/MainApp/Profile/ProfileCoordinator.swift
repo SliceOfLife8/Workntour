@@ -14,6 +14,8 @@ import PhotosUI
 enum ProfileStep: Step {
     case state(_ default: DefaultStep)
     case openGalleryPicker
+    case updateTravelerProfile(_ profile: TravelerProfile)
+    case travelerEditPersonalInfo
     case selectInterests(preselectedInterests: [LearningOpportunities])
     case selectSkills(preselectedSkills: [TypeOfHelp])
     case openExperience(_ experience: ProfileExperience?)
@@ -63,8 +65,24 @@ final class ProfileCoordinator: NavigationCoordinator {
             AlertHelper.showDefaultAlert(rootViewController,
                                          title: title,
                                          message: subtitle)
+        case .updateTravelerProfile(let profileDto):
+            let travelerProfileVC = rootViewController.viewControllers.first as? TravelerProfileVC
+            travelerProfileVC?.viewModel?.updateProfile(profileDto)
+
+            navigator.popViewController(animated: true)
         case .openGalleryPicker:
             openPhotoPicker()
+        case .travelerEditPersonalInfo:
+            guard let profileDto = UserDataManager.shared.retrieve(TravelerProfile.self) else {
+                assertionFailure("It's impossible to reach here! So, you fucked up!")
+                return
+            }
+
+            let editInfoVC = TravelerPersonalInfoVC()
+            editInfoVC.viewModel = TravelerPersonalInfoViewModel(data: .init(profile: profileDto))
+            editInfoVC.coordinator = self
+
+            navigator.push(editInfoVC, animated: true)
         case .selectInterests(let learningOpportunities):
             selectInterests(learningOpportunities)
         case .selectSkills(let skills):
