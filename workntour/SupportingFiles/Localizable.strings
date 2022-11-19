@@ -49,3 +49,6 @@
 "country_placeholder" = "Enter your country";
 "mobile_num" = "Mobile Number";
 "missing_mandatory_fields" = "Please verify that all mandatory fields are filled.";
+"type_of_traveler_header" = "Select your Type";
+"type_of_traveler_description" = "What kind of traveler are you? Please declare it, so you can match with the perfect host!";
+"type_of_traveler_title" = "Type";

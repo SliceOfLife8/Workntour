@@ -25,7 +25,7 @@ public class SelectAttributesHeaderView: UICollectionReusableView {
     public func configureLayout(for model: DataModel) {
         descriptionLabel.text = model.description
         titleLabel.text = model.title
-        if model.currentQuantity < 3 {
+        if model.currentQuantity < model.minQuantity {
             quantityLabel.text = "(\(model.currentQuantity)/\(model.minQuantity))"
             quantityLabel.textColor = .red
         }

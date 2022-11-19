@@ -35,7 +35,7 @@ struct TravelerProfile: Codable {
         return "\(name) \(surname)"
     }
 
-    var percents: (_360: Double, _100: Int, duration: Double) {
+    var percents: ProfilePercents {
         var percent: Double = 0.0
 
         percent += name.hasValue ? 1/9 : 0
@@ -53,8 +53,16 @@ struct TravelerProfile: Codable {
         let percent360 = roundedPercent*360
         let animationDuration: Double = (percent100 <= 50) ? 1 : 1.5
 
-        return (percent360, percent100, animationDuration)
+        return .init(percent360: percent360,
+                     percent100: percent100,
+                     duration: animationDuration)
     }
+}
+
+struct ProfilePercents {
+    let percent360: Double
+    let percent100: Int
+    let duration: Double
 }
 
 private extension String {

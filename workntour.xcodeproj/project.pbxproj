@@ -162,6 +162,8 @@
 		CEAB0A3629253B560023A2C6 /* TravelerPersonalInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAB0A3529253B560023A2C6 /* TravelerPersonalInfoVC.swift */; };
 		CEAB0A3829253B5E0023A2C6 /* TravelerPersonalInfoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEAB0A3729253B5E0023A2C6 /* TravelerPersonalInfoVC.xib */; };
 		CEAB0A3A29253B870023A2C6 /* TravelerPersonalInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAB0A3929253B870023A2C6 /* TravelerPersonalInfoViewModel.swift */; };
+		CED06CFE2928DEA000C054E3 /* TravelerProfileSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED06CFD2928DEA000C054E3 /* TravelerProfileSections.swift */; };
+		CED06D04292909CA00C054E3 /* SpecialDietary.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED06D03292909CA00C054E3 /* SpecialDietary.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -344,6 +346,8 @@
 		CEAB0A3529253B560023A2C6 /* TravelerPersonalInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelerPersonalInfoVC.swift; sourceTree = "<group>"; };
 		CEAB0A3729253B5E0023A2C6 /* TravelerPersonalInfoVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TravelerPersonalInfoVC.xib; sourceTree = "<group>"; };
 		CEAB0A3929253B870023A2C6 /* TravelerPersonalInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelerPersonalInfoViewModel.swift; sourceTree = "<group>"; };
+		CED06CFD2928DEA000C054E3 /* TravelerProfileSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelerProfileSections.swift; sourceTree = "<group>"; };
+		CED06D03292909CA00C054E3 /* SpecialDietary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialDietary.swift; sourceTree = "<group>"; };
 		D1C830038FC1866654646544 /* Pods-workntour.prod debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-workntour.prod debug.xcconfig"; path = "Target Support Files/Pods-workntour/Pods-workntour.prod debug.xcconfig"; sourceTree = "<group>"; };
 		F5701F516D91D3C90DD51441 /* Pods_workntour.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_workntour.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -962,6 +966,8 @@
 				1BC190F22863399E00585533 /* CompanyHostProfile.swift */,
 				1B6A8C9D2897A836003A1540 /* TravelerType.swift */,
 				CE8332D32920F5A500F751FE /* ProfileExperience.swift */,
+				CED06CFD2928DEA000C054E3 /* TravelerProfileSections.swift */,
+				CED06D03292909CA00C054E3 /* SpecialDietary.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1291,6 +1297,7 @@
 				1BC190B6285C5CA400585533 /* OpportunitiesViewModel.swift in Sources */,
 				1B443047288A722A002145BC /* MapOfOpportunitiesViewModel.swift in Sources */,
 				CE3F9E8F291FA88700480493 /* ProfileSelectAttributesVC.swift in Sources */,
+				CED06CFE2928DEA000C054E3 /* TravelerProfileSections.swift in Sources */,
 				1B442FF3287FE161002145BC /* HomeService.swift in Sources */,
 				1BC190F32863399E00585533 /* CompanyHostProfile.swift in Sources */,
 				1BC190AF285C5C6300585533 /* HomeViewModel.swift in Sources */,
@@ -1354,6 +1361,7 @@
 				1B39AA392872FF4B009377A7 /* OpportunitesDetailsViewModel.swift in Sources */,
 				1B4AE3F8283E04BB00FA6420 /* IndividualHost.swift in Sources */,
 				1B1683AA283D20E20067F2DB /* GenericResponse.swift in Sources */,
+				CED06D04292909CA00C054E3 /* SpecialDietary.swift in Sources */,
 				1BC190B4285C5C9300585533 /* TravelerProfileViewModel.swift in Sources */,
 				1B9A3D2D28295F6F003E0C34 /* AppConfig.swift in Sources */,
 				1BC190ED2863394100585533 /* ProfileRouter.swift in Sources */,

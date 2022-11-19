@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension String {
 
@@ -127,4 +128,52 @@ extension String {
 
         return details
     }
+}
+
+// MARK: - Estimate height
+extension String {
+
+    public func calculatedHeight(
+        onConstrainedWidth width: CGFloat,
+        fontName: FontName,
+        fontSize: CGFloat,
+        maxNumberOfLines: Int
+    ) -> CGFloat {
+        let font = UIFont.scriptFont(fontName, size: fontSize)
+        let numberOfLines = numberOfLinesWithConstrainedWidth(width, font: font)
+        if numberOfLines > 1 {
+            let lines = maxNumberOfLines == 0
+            ? numberOfLines
+            : min(numberOfLines, maxNumberOfLines)
+            return CGFloat(lines) * font.lineHeight
+        }
+        else {
+            return font.lineHeight
+        }
+    }
+
+    func numberOfLinesWithConstrainedWidth(_ width: CGFloat, font: UIFont) -> Int {
+        return Int(ceil(self.withoutHtmlTags().heightWithConstrainedWidth(width, font: font) / font.lineHeight))
+    }
+
+    func withoutHtmlTags() -> String {
+        return self.replacingOccurrences(of: "<br>", with: "\n").replacingOccurrences(of: "<[^>]+>",
+                                                                                      with: "",
+                                                                                      options: String.CompareOptions.regularExpression,
+                                                                                      range: nil)
+    }
+
+    /// Gets the height of the corresponding string compared to the given width and font.
+    func heightWithConstrainedWidth(_ width: CGFloat, font: UIFont) -> CGFloat {
+        let constraintRect = CGSize(width: width, height: CGFloat.greatestFiniteMagnitude)
+        let boundingBox = self.boundingRect(
+            with: constraintRect,
+            options: NSStringDrawingOptions.usesLineFragmentOrigin,
+            attributes: [NSAttributedString.Key.font: font],
+            context: nil
+        )
+
+        return boundingBox.height
+    }
+
 }

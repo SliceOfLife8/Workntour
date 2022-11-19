@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Lato-Regular.ttf">
+            <string>Lato-Regular</string>
+        </array>
+        <array key="Lato-Semibold.ttf">
+            <string>Lato-Semibold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ProfileSimpleCell" customModule="CommonUI" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="300" height="120"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="300" height="120"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="3vL-ce-hmv" userLabel="Top Stack View">
+                        <rect key="frame" x="24" y="16" width="252" height="50"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5V7-Fb-Sft">
+                                <rect key="frame" x="0.0" y="0.0" width="252" height="50"/>
+                                <fontDescription key="fontDescription" name="Lato-Semibold" family="Lato" pointSize="16"/>
+                                <color key="textColor" name="floatingLabel"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eYG-Kn-51c">
+                        <rect key="frame" x="0.0" y="82" width="300" height="32"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="lKV-qW-ZYf">
+                                <rect key="frame" x="24" y="16" width="204" height="0.0"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FGU-h8-fmy">
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
+                                        <color key="textColor" name="placeholder"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="5kH-hZ-lad">
+                                <rect key="frame" x="260" y="5.9999999999999982" width="24" height="20.333333333333329"/>
+                                <color key="tintColor" red="0.74117647058823533" green="0.74117647058823533" blue="0.74117647058823533" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="eG5-Tb-0wN"/>
+                                    <constraint firstAttribute="width" secondItem="5kH-hZ-lad" secondAttribute="height" multiplier="1:1" id="xXI-M1-eQq"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="lKV-qW-ZYf" secondAttribute="bottom" constant="16" id="W3E-aZ-WkJ"/>
+                            <constraint firstAttribute="trailing" secondItem="5kH-hZ-lad" secondAttribute="trailing" constant="16" id="g9E-B2-jR4"/>
+                            <constraint firstItem="lKV-qW-ZYf" firstAttribute="leading" secondItem="eYG-Kn-51c" secondAttribute="leading" constant="24" id="mLa-BV-dih"/>
+                            <constraint firstItem="lKV-qW-ZYf" firstAttribute="top" secondItem="eYG-Kn-51c" secondAttribute="top" constant="16" id="mNT-Rg-4Vn"/>
+                            <constraint firstItem="5kH-hZ-lad" firstAttribute="centerY" secondItem="eYG-Kn-51c" secondAttribute="centerY" id="pn6-cg-H6q"/>
+                            <constraint firstItem="5kH-hZ-lad" firstAttribute="leading" secondItem="lKV-qW-ZYf" secondAttribute="trailing" constant="32" id="sdv-aT-b3Q"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="3vL-ce-hmv" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="24" id="3hQ-kW-PeQ"/>
+                <constraint firstItem="eYG-Kn-51c" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="MxV-oG-r9A"/>
+                <constraint firstAttribute="trailing" secondItem="eYG-Kn-51c" secondAttribute="trailing" id="WYl-MB-TfI"/>
+                <constraint firstItem="eYG-Kn-51c" firstAttribute="top" secondItem="3vL-ce-hmv" secondAttribute="bottom" constant="16" id="mF6-KH-7u6"/>
+                <constraint firstAttribute="trailing" secondItem="3vL-ce-hmv" secondAttribute="trailing" constant="24" id="mQK-WJ-o7r"/>
+                <constraint firstItem="3vL-ce-hmv" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="16" id="tCb-rK-C3F"/>
+            </constraints>
+            <connections>
+                <outlet property="descriptionContainerView" destination="eYG-Kn-51c" id="mob-6T-iEO"/>
+                <outlet property="descriptionLabel" destination="FGU-h8-fmy" id="igG-Hy-TcD"/>
+                <outlet property="titleLabel" destination="5V7-Fb-Sft" id="nzT-IH-oKt"/>
+            </connections>
+            <point key="canvasLocation" x="125" y="21"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="chevron.right" catalog="system" width="97" height="128"/>
+        <namedColor name="floatingLabel">
+            <color red="0.2627450980392157" green="0.094117647058823528" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="placeholder">
+            <color red="0.56862745098039214" green="0.55294117647058827" blue="0.66274509803921566" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

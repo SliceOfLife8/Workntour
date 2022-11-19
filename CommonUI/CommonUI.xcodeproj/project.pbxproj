@@ -56,6 +56,13 @@
 		CE3F9E9C291FB3CE00480493 /* ChipCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3F9E9A291FB3CE00480493 /* ChipCell.swift */; };
 		CE3F9E9D291FB3CE00480493 /* ChipCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE3F9E9B291FB3CE00480493 /* ChipCell.xib */; };
 		CE3F9E9F291FB50600480493 /* ChipButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3F9E9E291FB50600480493 /* ChipButton.swift */; };
+		CEAB0A4C2927EAAB0023A2C6 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAB0A4A2927EAAB0023A2C6 /* ProfileHeaderView.swift */; };
+		CEAB0A4D2927EAAB0023A2C6 /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEAB0A4B2927EAAB0023A2C6 /* ProfileHeaderView.xib */; };
+		CED06CF62927F0AD00C054E3 /* ProfileSimpleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED06CF42927F0AD00C054E3 /* ProfileSimpleCell.swift */; };
+		CED06CF72927F0AD00C054E3 /* ProfileSimpleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CED06CF52927F0AD00C054E3 /* ProfileSimpleCell.xib */; };
+		CED06CFC2928D01900C054E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CED06CFB2928D01900C054E3 /* Assets.xcassets */; };
+		CED06D012929060400C054E3 /* ProfileFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED06CFF2929060400C054E3 /* ProfileFooterView.swift */; };
+		CED06D022929060400C054E3 /* ProfileFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CED06D002929060400C054E3 /* ProfileFooterView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,6 +137,13 @@
 		CE3F9E9A291FB3CE00480493 /* ChipCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipCell.swift; sourceTree = "<group>"; };
 		CE3F9E9B291FB3CE00480493 /* ChipCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChipCell.xib; sourceTree = "<group>"; };
 		CE3F9E9E291FB50600480493 /* ChipButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipButton.swift; sourceTree = "<group>"; };
+		CEAB0A4A2927EAAB0023A2C6 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		CEAB0A4B2927EAAB0023A2C6 /* ProfileHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileHeaderView.xib; sourceTree = "<group>"; };
+		CED06CF42927F0AD00C054E3 /* ProfileSimpleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSimpleCell.swift; sourceTree = "<group>"; };
+		CED06CF52927F0AD00C054E3 /* ProfileSimpleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileSimpleCell.xib; sourceTree = "<group>"; };
+		CED06CFB2928D01900C054E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CED06CFF2929060400C054E3 /* ProfileFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFooterView.swift; sourceTree = "<group>"; };
+		CED06D002929060400C054E3 /* ProfileFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileFooterView.xib; sourceTree = "<group>"; };
 		DE8B6C42B8BFFEEB49C2C0B1 /* Pods-CommonUI-CommonUITests.staging release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonUI-CommonUITests.staging release.xcconfig"; path = "Target Support Files/Pods-CommonUI-CommonUITests/Pods-CommonUI-CommonUITests.staging release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -283,6 +297,7 @@
 				1B4AE443283F708100FA6420 /* CustomViews */,
 				1B4AE408283E691000FA6420 /* Buttons */,
 				1B4AE40B283E692000FA6420 /* Utils */,
+				CED06CFB2928D01900C054E3 /* Assets.xcassets */,
 				1B527A2E282059A600FDAF5D /* CommonUI.h */,
 				1B527A2F282059A600FDAF5D /* CommonUI.docc */,
 			);
@@ -360,10 +375,16 @@
 		CE3F9E95291FACBF00480493 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				CE3F9E96291FACDE00480493 /* SelectAttributesHeaderView.swift */,
-				CE3F9E97291FACDE00480493 /* SelectAttributesHeaderView.xib */,
 				CE3F9E9A291FB3CE00480493 /* ChipCell.swift */,
+				CED06CFF2929060400C054E3 /* ProfileFooterView.swift */,
+				CEAB0A4A2927EAAB0023A2C6 /* ProfileHeaderView.swift */,
+				CED06CF42927F0AD00C054E3 /* ProfileSimpleCell.swift */,
+				CE3F9E96291FACDE00480493 /* SelectAttributesHeaderView.swift */,
 				CE3F9E9B291FB3CE00480493 /* ChipCell.xib */,
+				CED06D002929060400C054E3 /* ProfileFooterView.xib */,
+				CEAB0A4B2927EAAB0023A2C6 /* ProfileHeaderView.xib */,
+				CED06CF52927F0AD00C054E3 /* ProfileSimpleCell.xib */,
+				CE3F9E97291FACDE00480493 /* SelectAttributesHeaderView.xib */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -466,13 +487,17 @@
 				1B39AA4528743B86009377A7 /* OpportunityDetailsHeaderView.xib in Resources */,
 				1B39AA4F28746AEB009377A7 /* OpportunityDetailsMapCell.xib in Resources */,
 				1B7753D2286B2CF200D81526 /* OpportunityImageCell.xib in Resources */,
+				CEAB0A4D2927EAAB0023A2C6 /* ProfileHeaderView.xib in Resources */,
 				1B442FF8288081ED002145BC /* OpportunitiesFooterView.xib in Resources */,
+				CED06CF72927F0AD00C054E3 /* ProfileSimpleCell.xib in Resources */,
+				CED06CFC2928D01900C054E3 /* Assets.xcassets in Resources */,
 				1B39AA572875B40F009377A7 /* OpportunityDetailsDatesCell.xib in Resources */,
 				CE3F9E9D291FB3CE00480493 /* ChipCell.xib in Resources */,
 				CE3F9E99291FACDE00480493 /* SelectAttributesHeaderView.xib in Resources */,
 				1B308A532842452600797F32 /* RegistrationCell.xib in Resources */,
 				1BE6EA972868B23D009CBE6D /* MyOpportunityCell.xib in Resources */,
 				1B39AA4B28744A8C009377A7 /* OpportunityDetailsCell.xib in Resources */,
+				CED06D022929060400C054E3 /* ProfileFooterView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -559,6 +584,7 @@
 				1BE6EA962868B23D009CBE6D /* MyOpportunityCell.swift in Sources */,
 				1B308A4B28414E2100797F32 /* TextFieldRightIcon.swift in Sources */,
 				1B39AA3F287436FD009377A7 /* OpportunityDetailsHeaderView.swift in Sources */,
+				CED06D012929060400C054E3 /* ProfileFooterView.swift in Sources */,
 				CE3F9E9F291FB50600480493 /* ChipButton.swift in Sources */,
 				1B442FF7288081ED002145BC /* OpportunitiesFooterView.swift in Sources */,
 				1B39AA61287C2EA6009377A7 /* TransparentButton.swift in Sources */,
@@ -575,9 +601,11 @@
 				1B39AA4E28746AEB009377A7 /* OpportunityDetailsMapCell.swift in Sources */,
 				1B39AA372872FE2A009377A7 /* PageControl.swift in Sources */,
 				1B563B802848C47A00B851C1 /* CustomViewProtocol.swift in Sources */,
+				CEAB0A4C2927EAAB0023A2C6 /* ProfileHeaderView.swift in Sources */,
 				1B4AE44C2840AEFC00FA6420 /* Checkbox.swift in Sources */,
 				1B39AA562875B40F009377A7 /* OpportunityDetailsDatesCell.swift in Sources */,
 				1BC190D3285F3B0500585533 /* GradientButton.swift in Sources */,
+				CED06CF62927F0AD00C054E3 /* ProfileSimpleCell.swift in Sources */,
 				1B44301428814A32002145BC /* DynamicHeightCollectionView.swift in Sources */,
 				1B443024288472B2002145BC /* TapticEngine.swift in Sources */,
 				1B7753DF286C7EB800D81526 /* String+Extensions.swift in Sources */,

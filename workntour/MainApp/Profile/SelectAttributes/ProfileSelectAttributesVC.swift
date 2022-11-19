@@ -25,7 +25,7 @@ class ProfileSelectAttributesVC: BaseVC<ProfileSelectAttributesViewModel, Profil
                 forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                 withReuseIdentifier: SelectAttributesHeaderView.identifier
             )
-            collectionView.allowsMultipleSelection = true
+            collectionView.allowsMultipleSelection = viewModel?.data.allowMultipleSelection ?? true
             collectionView.delegate = self
             collectionView.dataSource = self
         }
@@ -45,16 +45,16 @@ class ProfileSelectAttributesVC: BaseVC<ProfileSelectAttributesViewModel, Profil
             action: #selector(saveBtnTapped)
         )
         navigationItem.rightBarButtonItems = [saveAction]
-        navigationItem.rightBarButtonItem?.isEnabled = viewModel.data.attributes.filter { $0.isSelected }.count >= 3
+        navigationItem.rightBarButtonItem?.isEnabled = viewModel.data.attributes.filter { $0.isSelected }.count >= viewModel.data.minItemsToBeSelected
     }
 
     override func bindViews() {
         super.bindViews()
 
-        viewModel?.$profileUpdated
-            .dropFirst()
-            .sink(receiveValue: { [weak self] status in
-                print("status: \(status)")
+        viewModel?.$updateProfileDto
+            .compactMap { $0 }
+            .sink(receiveValue: { [weak self] profile in
+                self?.coordinator?.navigate(to: .updateTravelerProfile(profile))
             })
             .store(in: &storage)
     }
@@ -74,13 +74,13 @@ class ProfileSelectAttributesVC: BaseVC<ProfileSelectAttributesViewModel, Profil
             minQuantity: data.minItemsToBeSelected,
             currentQuantity: currentItemsNum
         ))
-        navigationItem.rightBarButtonItem?.isEnabled = currentItemsNum >= 3
+        navigationItem.rightBarButtonItem?.isEnabled = currentItemsNum >= data.minItemsToBeSelected
     }
 
     // MARK: - Actions
 
     @objc private func saveBtnTapped() {
-        viewModel?.updateTravelerProfile()
+        viewModel?.updateInfo()
     }
 }
 

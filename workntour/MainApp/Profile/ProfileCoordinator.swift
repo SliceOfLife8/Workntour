@@ -21,6 +21,7 @@ enum ProfileStep: Step {
     case openExperience(_ experience: ProfileExperience?)
     case travelerAddSummary(_ summary: String?)
     case addLanguage
+    case travelerSelectType(_ type: TravelerType?)
 }
 
 final class ProfileCoordinator: NavigationCoordinator {
@@ -103,6 +104,8 @@ final class ProfileCoordinator: NavigationCoordinator {
             languagePickerVC.coordinator = self
 
             navigator.push(languagePickerVC, animated: true)
+        case .travelerSelectType(let type):
+            selectTravelerType(type)
         }
     }
 
@@ -171,6 +174,28 @@ final class ProfileCoordinator: NavigationCoordinator {
         addSummaryVC.coordinator = self
 
         navigator.push(addSummaryVC, animated: true)
+    }
+
+    private func selectTravelerType(_ type: TravelerType?) {
+        let attributes = TravelerType.allCases.map {
+            ProfileSelectAttributesViewModel.ProfileAttribute(title: $0.value,
+                                                              isSelected: type == $0)
+        }
+
+        let data = ProfileSelectAttributesViewModel.DataModel(
+            navigationBarTitle: "type_of_traveler_header".localized(),
+            mode: .travelerType,
+            headerTitle: "type_of_traveler_title".localized(),
+            description: "type_of_traveler_description".localized(),
+            minItemsToBeSelected: 1,
+            attributes: attributes,
+            allowMultipleSelection: false
+        )
+        let selectAttributesVC = ProfileSelectAttributesVC()
+        selectAttributesVC.viewModel = ProfileSelectAttributesViewModel(data: data)
+        selectAttributesVC.coordinator = self
+
+        navigator.push(selectAttributesVC, animated: true)
     }
 
 }

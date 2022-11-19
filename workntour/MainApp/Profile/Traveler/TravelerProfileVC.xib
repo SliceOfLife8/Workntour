@@ -6,39 +6,12 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="Lato-Bold.ttf">
-            <string>Lato-Bold</string>
-        </array>
-        <array key="Lato-Medium.ttf">
-            <string>Lato-Medium</string>
-        </array>
-        <array key="Lato-Regular.ttf">
-            <string>Lato-Regular</string>
-        </array>
-    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BaseVC" customModule="workntour" customModuleProvider="target">
             <connections>
-                <outlet property="ageTextField" destination="i6d-5f-80O" id="nhx-BF-rvd"/>
-                <outlet property="emailTextField" destination="HKK-3B-VdB" id="nSn-lT-f9S"/>
-                <outlet property="fullnameLabel" destination="LXc-V1-amh" id="yFB-6M-2bR"/>
-                <outlet property="infoLabel" destination="QX1-Bj-8wf" id="dkO-hn-E0O"/>
-                <outlet property="mainStackView" destination="72B-jn-1he" id="XOh-eO-ukd"/>
-                <outlet property="mobileNumTextField" destination="pKw-fy-YZg" id="LRB-ZP-IAN"/>
-                <outlet property="nameTextField" destination="pH5-Wj-fan" id="Jy1-Zk-lod"/>
-                <outlet property="nationalityTextField" destination="TTE-GC-yP8" id="vf4-8Q-TLh"/>
-                <outlet property="percentBtn" destination="fpe-uB-SxJ" id="uIJ-h7-mDc"/>
-                <outlet property="postalAddressTextField" destination="Elj-Zb-Xew" id="jvo-Dq-LEs"/>
-                <outlet property="progressBar" destination="lCJ-pq-3iD" id="ta6-AN-bBu"/>
-                <outlet property="scrollView" destination="hPJ-h5-iaj" id="dVr-E4-4V7"/>
-                <outlet property="surnameTextField" destination="0tO-X4-NjE" id="Omz-U8-0ax"/>
-                <outlet property="travelerChip" destination="W4W-f5-WHu" id="PYg-1T-qZ5"/>
-                <outlet property="travelerIcon" destination="1F6-xi-14G" id="Q6O-0P-SwW"/>
-                <outlet property="typeOfTraveler" destination="P8E-bQ-wy8" id="bAa-TE-qDw"/>
+                <outlet property="collectionView" destination="9HB-HT-n5l" id="PWf-JG-IlK"/>
                 <outlet property="view" destination="gds-Rq-s8w" id="PAc-RQ-fpK"/>
             </connections>
         </placeholder>
@@ -47,277 +20,31 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="hPJ-h5-iaj">
-                    <rect key="frame" x="0.0" y="48" width="414" height="848"/>
-                    <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QoA-tx-vhF" userLabel="Content View">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="848"/>
-                            <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lCJ-pq-3iD" customClass="KDCircularProgress" customModule="KDCircularProgress">
-                                    <rect key="frame" x="87" y="8" width="240" height="240"/>
-                                    <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="traveler" translatesAutoresizingMaskIntoConstraints="NO" id="1F6-xi-14G">
-                                            <rect key="frame" x="30" y="30" width="180" height="180"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="180" id="Lwc-Zq-0E1"/>
-                                                <constraint firstAttribute="height" constant="180" id="t6t-D3-toT"/>
-                                            </constraints>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
-                                            </userDefinedRuntimeAttributes>
-                                        </imageView>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5mw-BI-bLL" userLabel="upload image">
-                                            <rect key="frame" x="178" y="40" width="32" height="32"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="32" id="I6d-eJ-wLM"/>
-                                                <constraint firstAttribute="height" constant="32" id="J9c-DZ-f3W"/>
-                                            </constraints>
-                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                            <state key="normal" image="upload_image"/>
-                                            <connections>
-                                                <action selector="uploadImageTapped:" destination="-1" eventType="touchUpInside" id="hx4-Al-WUc"/>
-                                            </connections>
-                                        </button>
-                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fpe-uB-SxJ" userLabel="percent" customClass="GradientButton" customModule="CommonUI">
-                                            <rect key="frame" x="108" y="192" width="24" height="32"/>
-                                            <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="12"/>
-                                            <inset key="contentEdgeInsets" minX="12" minY="9" maxX="12" maxY="9"/>
-                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                            <state key="normal">
-                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </state>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                    <real key="value" value="16"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
-                                        </button>
-                                    </subviews>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                    <constraints>
-                                        <constraint firstItem="fpe-uB-SxJ" firstAttribute="centerX" secondItem="lCJ-pq-3iD" secondAttribute="centerX" id="19p-Lm-jnA"/>
-                                        <constraint firstAttribute="width" constant="240" id="2U2-1U-Bt7"/>
-                                        <constraint firstItem="1F6-xi-14G" firstAttribute="centerY" secondItem="lCJ-pq-3iD" secondAttribute="centerY" id="8KO-dh-oJw"/>
-                                        <constraint firstItem="1F6-xi-14G" firstAttribute="centerX" secondItem="lCJ-pq-3iD" secondAttribute="centerX" id="AdM-eo-1pb"/>
-                                        <constraint firstItem="5mw-BI-bLL" firstAttribute="top" secondItem="1F6-xi-14G" secondAttribute="top" constant="10" id="QrB-pY-dIR"/>
-                                        <constraint firstAttribute="height" constant="240" id="fJh-YN-VEc"/>
-                                        <constraint firstItem="fpe-uB-SxJ" firstAttribute="bottom" secondItem="1F6-xi-14G" secondAttribute="bottom" constant="14" id="iDQ-8p-q0e"/>
-                                        <constraint firstItem="5mw-BI-bLL" firstAttribute="trailing" secondItem="1F6-xi-14G" secondAttribute="trailing" id="wIv-vm-1Pf"/>
-                                    </constraints>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="angle">
-                                            <real key="value" value="0.0"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
-                                            <real key="value" value="-270"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="boolean" keyPath="clockwise" value="YES"/>
-                                        <userDefinedRuntimeAttribute type="boolean" keyPath="roundedCorners" value="YES"/>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="progressThickness">
-                                            <real key="value" value="0.10000000000000001"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="color" keyPath="trackColor">
-                                            <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="color" keyPath="IBColor1">
-                                            <color key="value" name="mint"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="color" keyPath="IBColor2">
-                                            <color key="value" name="purple"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="glowAmount">
-                                            <real key="value" value="0.20000000000000001"/>
-                                        </userDefinedRuntimeAttribute>
-                                    </userDefinedRuntimeAttributes>
-                                </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LXc-V1-amh" userLabel="fullname">
-                                    <rect key="frame" x="48" y="256" width="318" height="0.0"/>
-                                    <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="36"/>
-                                    <color key="textColor" name="lavender"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W4W-f5-WHu" userLabel="type">
-                                    <rect key="frame" x="170.5" y="272.5" width="73" height="25"/>
-                                    <color key="backgroundColor" name="mint"/>
-                                    <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
-                                    <inset key="contentEdgeInsets" minX="12" minY="4" maxX="12" maxY="4"/>
-                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                    <state key="normal" title="Traveler">
-                                        <color key="titleColor" name="purpleBlack"/>
-                                    </state>
-                                </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QX1-Bj-8wf" userLabel="intro">
-                                    <rect key="frame" x="24" y="325.5" width="366" height="0.0"/>
-                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
-                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="72B-jn-1he">
-                                    <rect key="frame" x="24" y="349.5" width="366" height="370"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cPw-F5-rvr" userLabel="name">
-                                            <rect key="frame" x="0.0" y="0.0" width="366" height="16.5"/>
-                                            <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
-                                            <color key="textColor" name="floatingLabel"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pH5-Wj-fan" userLabel="name TF" customClass="GradientTextField" customModule="CommonUI">
-                                            <rect key="frame" x="0.0" y="22.5" width="366" height="18.5"/>
-                                            <color key="backgroundColor" red="0.40000000000000002" green="0.4392156862745098" blue="0.52156862745098043" alpha="0.19534604912562087" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </textField>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Surname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U78-9D-4Hg" userLabel="surname">
-                                            <rect key="frame" x="0.0" y="47" width="366" height="16.5"/>
-                                            <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
-                                            <color key="textColor" name="floatingLabel"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0tO-X4-NjE" userLabel="surname TF" customClass="GradientTextField" customModule="CommonUI">
-                                            <rect key="frame" x="0.0" y="69.5" width="366" height="18.5"/>
-                                            <color key="backgroundColor" red="0.40000000000000002" green="0.4392156862745098" blue="0.52156862745098043" alpha="0.20285852697511383" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </textField>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nationality" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dxc-gZ-fOe" userLabel="nationality">
-                                            <rect key="frame" x="0.0" y="94" width="366" height="16.5"/>
-                                            <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
-                                            <color key="textColor" name="floatingLabel"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TTE-GC-yP8" userLabel="nationality TF" customClass="GradientTextField" customModule="CommonUI">
-                                            <rect key="frame" x="0.0" y="116.5" width="366" height="18.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits" returnKeyType="next"/>
-                                        </textField>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Age" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eZm-y6-WGo" userLabel="age">
-                                            <rect key="frame" x="0.0" y="141" width="366" height="16.5"/>
-                                            <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
-                                            <color key="textColor" name="floatingLabel"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i6d-5f-80O" userLabel="age TF" customClass="GradientTextField" customModule="CommonUI">
-                                            <rect key="frame" x="0.0" y="163.5" width="366" height="18.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </textField>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B1L-4m-jky" userLabel="email">
-                                            <rect key="frame" x="0.0" y="188" width="366" height="16.5"/>
-                                            <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
-                                            <color key="textColor" name="floatingLabel"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HKK-3B-VdB" userLabel="email TF" customClass="GradientTextField" customModule="CommonUI">
-                                            <rect key="frame" x="0.0" y="210.5" width="366" height="18.5"/>
-                                            <color key="backgroundColor" red="0.40000000000000002" green="0.4392156862745098" blue="0.52156862745098043" alpha="0.19705099143729304" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </textField>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type of traveler" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hf0-eu-q7G" userLabel="type">
-                                            <rect key="frame" x="0.0" y="235" width="366" height="16.5"/>
-                                            <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
-                                            <color key="textColor" name="floatingLabel"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P8E-bQ-wy8" userLabel="type TF" customClass="GradientTextField" customModule="CommonUI">
-                                            <rect key="frame" x="0.0" y="257.5" width="366" height="18.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </textField>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Postal Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p1j-Uk-EuC" userLabel="postalCode">
-                                            <rect key="frame" x="0.0" y="282" width="366" height="16.5"/>
-                                            <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
-                                            <color key="textColor" name="floatingLabel"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Elj-Zb-Xew" userLabel="postalCode TF" customClass="GradientTextField" customModule="CommonUI">
-                                            <rect key="frame" x="0.0" y="304.5" width="366" height="18.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </textField>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mobile Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SuR-6g-Qrc" userLabel="mobile num">
-                                            <rect key="frame" x="0.0" y="329" width="366" height="16.5"/>
-                                            <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
-                                            <color key="textColor" name="floatingLabel"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pKw-fy-YZg" userLabel="mobileNum TF" customClass="GradientTextField" customModule="CommonUI">
-                                            <rect key="frame" x="0.0" y="351.5" width="366" height="18.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </textField>
-                                    </subviews>
-                                </stackView>
-                            </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <constraints>
-                                <constraint firstItem="72B-jn-1he" firstAttribute="top" secondItem="QX1-Bj-8wf" secondAttribute="bottom" constant="24" id="7Ij-SB-p5n"/>
-                                <constraint firstItem="LXc-V1-amh" firstAttribute="leading" secondItem="QoA-tx-vhF" secondAttribute="leading" constant="48" id="Dl7-BA-V2c"/>
-                                <constraint firstItem="LXc-V1-amh" firstAttribute="top" secondItem="lCJ-pq-3iD" secondAttribute="bottom" constant="8" id="FrQ-hC-sJb"/>
-                                <constraint firstItem="lCJ-pq-3iD" firstAttribute="top" secondItem="QoA-tx-vhF" secondAttribute="top" constant="8" id="Hyk-28-b1g"/>
-                                <constraint firstAttribute="trailing" secondItem="QX1-Bj-8wf" secondAttribute="trailing" constant="24" id="PSw-YR-tJZ"/>
-                                <constraint firstItem="QX1-Bj-8wf" firstAttribute="leading" secondItem="QoA-tx-vhF" secondAttribute="leading" constant="24" id="Sk8-r9-ths"/>
-                                <constraint firstItem="W4W-f5-WHu" firstAttribute="centerX" secondItem="LXc-V1-amh" secondAttribute="centerX" id="akU-kT-s90"/>
-                                <constraint firstItem="lCJ-pq-3iD" firstAttribute="centerX" secondItem="QoA-tx-vhF" secondAttribute="centerX" id="iVu-PV-yTg"/>
-                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="72B-jn-1he" secondAttribute="bottom" constant="24" id="jdS-ya-gGN"/>
-                                <constraint firstItem="W4W-f5-WHu" firstAttribute="top" secondItem="LXc-V1-amh" secondAttribute="bottom" constant="16.5" id="jwC-Yq-vmw"/>
-                                <constraint firstAttribute="trailing" secondItem="LXc-V1-amh" secondAttribute="trailing" constant="48" id="k08-PO-rMj"/>
-                                <constraint firstItem="QX1-Bj-8wf" firstAttribute="top" secondItem="W4W-f5-WHu" secondAttribute="bottom" constant="28" id="ktr-Vf-xdP"/>
-                                <constraint firstItem="72B-jn-1he" firstAttribute="leading" secondItem="QoA-tx-vhF" secondAttribute="leading" constant="24" id="vep-ca-MdE"/>
-                                <constraint firstAttribute="trailing" secondItem="72B-jn-1he" secondAttribute="trailing" constant="24" id="ylW-DD-gcb"/>
-                            </constraints>
-                        </view>
-                    </subviews>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="9HB-HT-n5l">
+                    <rect key="frame" x="0.0" y="48" width="414" height="814"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstItem="QoA-tx-vhF" firstAttribute="top" secondItem="hPJ-h5-iaj" secondAttribute="top" id="C97-Gg-xXd"/>
-                        <constraint firstItem="QoA-tx-vhF" firstAttribute="height" secondItem="hPJ-h5-iaj" secondAttribute="height" priority="250" id="DUd-YB-FJ8"/>
-                        <constraint firstAttribute="bottom" secondItem="QoA-tx-vhF" secondAttribute="bottom" id="I0S-z7-HCl"/>
-                        <constraint firstItem="QoA-tx-vhF" firstAttribute="leading" secondItem="hPJ-h5-iaj" secondAttribute="leading" id="JhX-KO-mWI"/>
-                        <constraint firstItem="QoA-tx-vhF" firstAttribute="width" secondItem="hPJ-h5-iaj" secondAttribute="width" id="i2E-iP-8ed"/>
-                        <constraint firstAttribute="trailing" secondItem="QoA-tx-vhF" secondAttribute="trailing" id="xCD-v5-DwP"/>
-                    </constraints>
-                </scrollView>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="KPk-PF-lph">
+                        <size key="itemSize" width="128" height="128"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="2Zh-sb-yxM"/>
             <color key="backgroundColor" name="primary"/>
             <constraints>
-                <constraint firstItem="hPJ-h5-iaj" firstAttribute="top" secondItem="2Zh-sb-yxM" secondAttribute="top" id="BZL-Jl-8Ig"/>
-                <constraint firstItem="hPJ-h5-iaj" firstAttribute="trailing" secondItem="2Zh-sb-yxM" secondAttribute="trailing" id="G5P-r4-ZiA"/>
-                <constraint firstItem="hPJ-h5-iaj" firstAttribute="leading" secondItem="2Zh-sb-yxM" secondAttribute="leading" id="GaP-FT-DOa"/>
-                <constraint firstAttribute="bottom" secondItem="hPJ-h5-iaj" secondAttribute="bottom" id="M9V-Ia-fEA"/>
+                <constraint firstItem="2Zh-sb-yxM" firstAttribute="bottom" secondItem="9HB-HT-n5l" secondAttribute="bottom" id="2fQ-f8-W2q"/>
+                <constraint firstItem="9HB-HT-n5l" firstAttribute="leading" secondItem="2Zh-sb-yxM" secondAttribute="leading" id="F15-XY-i4Z"/>
+                <constraint firstItem="2Zh-sb-yxM" firstAttribute="trailing" secondItem="9HB-HT-n5l" secondAttribute="trailing" id="GKL-aS-F0b"/>
+                <constraint firstItem="9HB-HT-n5l" firstAttribute="top" secondItem="2Zh-sb-yxM" secondAttribute="top" id="gld-Ch-kM6"/>
             </constraints>
             <point key="canvasLocation" x="139" y="140"/>
         </view>
     </objects>
-    <designables>
-        <designable name="fpe-uB-SxJ">
-            <size key="intrinsicContentSize" width="24" height="32"/>
-        </designable>
-    </designables>
     <resources>
-        <image name="traveler" width="160" height="161"/>
-        <image name="upload_image" width="33" height="33"/>
-        <namedColor name="floatingLabel">
-            <color red="0.2627450980392157" green="0.094117647058823528" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="lavender">
-            <color red="0.53333333333333333" green="0.4392156862745098" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="mint">
-            <color red="0.054901960784313725" green="0.89411764705882357" blue="0.81176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="primary">
             <color red="0.98039215686274506" green="0.97254901960784312" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="purple">
-            <color red="0.49411764705882355" green="0.43529411764705883" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="purpleBlack">
-            <color red="0.2196078431372549" green="0.20000000000000001" blue="0.31372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

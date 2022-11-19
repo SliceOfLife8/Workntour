@@ -65,6 +65,7 @@ target 'CommonUI' do
   kingfisher
   snapkit
   pod 'NVActivityIndicatorView'
+  pod 'KDCircularProgress'
 
   target 'CommonUITests' do
   end

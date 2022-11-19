@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Lato-Bold.ttf">
+            <string>Lato-Bold</string>
+        </array>
+        <array key="Lato-Medium.ttf">
+            <string>Lato-Medium</string>
+        </array>
+        <array key="Lato-Regular.ttf">
+            <string>Lato-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="U6b-Vx-4bR" customClass="ProfileHeaderView" customModule="CommonUI" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="400"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1u4-n6-88I">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="400"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0uw-J8-5sz" customClass="KDCircularProgress" customModule="KDCircularProgress">
+                            <rect key="frame" x="40" y="8" width="240" height="240"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="traveler" translatesAutoresizingMaskIntoConstraints="NO" id="6iG-cs-HJf">
+                                    <rect key="frame" x="30" y="30" width="180" height="180"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="180" id="Csb-Ox-PSZ"/>
+                                        <constraint firstAttribute="height" constant="180" id="hjf-37-GMH"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
+                                </imageView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h1A-yI-Sau" userLabel="upload image">
+                                    <rect key="frame" x="178" y="40" width="32" height="32"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="32" id="feL-Tf-r3Y"/>
+                                        <constraint firstAttribute="height" constant="32" id="ng7-Xc-9cp"/>
+                                    </constraints>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" image="upload_image"/>
+                                    <connections>
+                                        <action selector="addNewImage:" destination="U6b-Vx-4bR" eventType="touchUpInside" id="A8o-Fc-Onw"/>
+                                    </connections>
+                                </button>
+                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MbW-kG-bDE" userLabel="percent" customClass="GradientButton" customModule="CommonUI">
+                                    <rect key="frame" x="108" y="191" width="24" height="33"/>
+                                    <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="12"/>
+                                    <inset key="contentEdgeInsets" minX="12" minY="9" maxX="12" maxY="9"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="16"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="6iG-cs-HJf" firstAttribute="centerY" secondItem="0uw-J8-5sz" secondAttribute="centerY" id="4v9-Y6-Ncw"/>
+                                <constraint firstAttribute="height" constant="240" id="Ixn-GV-I7F"/>
+                                <constraint firstAttribute="width" constant="240" id="KuM-IB-i0R"/>
+                                <constraint firstItem="h1A-yI-Sau" firstAttribute="top" secondItem="6iG-cs-HJf" secondAttribute="top" constant="10" id="SC1-NK-tk8"/>
+                                <constraint firstItem="h1A-yI-Sau" firstAttribute="trailing" secondItem="6iG-cs-HJf" secondAttribute="trailing" id="SUP-kx-7eg"/>
+                                <constraint firstItem="MbW-kG-bDE" firstAttribute="centerX" secondItem="0uw-J8-5sz" secondAttribute="centerX" id="U1P-be-eB5"/>
+                                <constraint firstItem="MbW-kG-bDE" firstAttribute="bottom" secondItem="6iG-cs-HJf" secondAttribute="bottom" constant="14" id="rKH-dj-qA9"/>
+                                <constraint firstItem="6iG-cs-HJf" firstAttribute="centerX" secondItem="0uw-J8-5sz" secondAttribute="centerX" id="sX0-1h-liS"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="angle">
+                                    <real key="value" value="0.0"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
+                                    <real key="value" value="-270"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="clockwise" value="YES"/>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="roundedCorners" value="YES"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath="progressThickness">
+                                    <real key="value" value="0.10000000000000001"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="trackColor">
+                                    <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="IBColor1">
+                                    <color key="value" name="mint"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="IBColor2">
+                                    <color key="value" name="purple"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="glowAmount">
+                                    <real key="value" value="0.20000000000000001"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jxq-du-GqR" userLabel="fullname">
+                            <rect key="frame" x="48" y="256" width="224" height="0.0"/>
+                            <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="36"/>
+                            <color key="textColor" name="lavender"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Nq-dx-WeW" userLabel="type">
+                            <rect key="frame" x="123" y="272" width="74" height="25"/>
+                            <color key="backgroundColor" name="mint"/>
+                            <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
+                            <inset key="contentEdgeInsets" minX="12" minY="4" maxX="12" maxY="4"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="Traveler">
+                                <color key="titleColor" name="purpleBlack"/>
+                            </state>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="740" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wZ9-f0-iRg" userLabel="intro" customClass="LinkableLabel" customModule="CommonUI" customModuleProvider="target">
+                            <rect key="frame" x="24" y="321" width="272" height="0.0"/>
+                            <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="jxq-du-GqR" firstAttribute="top" secondItem="0uw-J8-5sz" secondAttribute="bottom" constant="8" id="3yf-0s-ebk"/>
+                        <constraint firstAttribute="trailing" secondItem="jxq-du-GqR" secondAttribute="trailing" constant="48" id="4p9-pz-yjE"/>
+                        <constraint firstItem="6Nq-dx-WeW" firstAttribute="centerX" secondItem="jxq-du-GqR" secondAttribute="centerX" id="EdT-g1-d2s"/>
+                        <constraint firstItem="wZ9-f0-iRg" firstAttribute="leading" secondItem="1u4-n6-88I" secondAttribute="leading" constant="24" id="EsZ-Vi-eH1"/>
+                        <constraint firstItem="jxq-du-GqR" firstAttribute="leading" secondItem="1u4-n6-88I" secondAttribute="leading" constant="48" id="Huu-3H-bz0"/>
+                        <constraint firstAttribute="trailing" secondItem="wZ9-f0-iRg" secondAttribute="trailing" constant="24" id="Kjq-yQ-D1A"/>
+                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="wZ9-f0-iRg" secondAttribute="bottom" id="Yug-Ha-7HY"/>
+                        <constraint firstItem="wZ9-f0-iRg" firstAttribute="top" secondItem="6Nq-dx-WeW" secondAttribute="bottom" constant="24" id="eZN-ri-aes"/>
+                        <constraint firstItem="6Nq-dx-WeW" firstAttribute="top" secondItem="jxq-du-GqR" secondAttribute="bottom" constant="16" id="oYH-ub-ly4"/>
+                        <constraint firstItem="0uw-J8-5sz" firstAttribute="top" secondItem="1u4-n6-88I" secondAttribute="top" constant="8" id="sKW-NU-WTA"/>
+                        <constraint firstItem="0uw-J8-5sz" firstAttribute="centerX" secondItem="1u4-n6-88I" secondAttribute="centerX" id="sMB-6O-UV9"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="1u4-n6-88I" secondAttribute="trailing" id="BDO-bE-gcI"/>
+                <constraint firstAttribute="bottom" secondItem="1u4-n6-88I" secondAttribute="bottom" id="Npt-cV-7Iy"/>
+                <constraint firstItem="1u4-n6-88I" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" id="gLz-95-0Vr"/>
+                <constraint firstItem="1u4-n6-88I" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" id="v2I-mz-d9C"/>
+            </constraints>
+            <connections>
+                <outlet property="fullnameLabel" destination="jxq-du-GqR" id="hNF-bu-g8e"/>
+                <outlet property="imageView" destination="6iG-cs-HJf" id="6Mx-oc-pDc"/>
+                <outlet property="introLabel" destination="wZ9-f0-iRg" id="vNc-Ts-I9c"/>
+                <outlet property="percentageButton" destination="MbW-kG-bDE" id="QhJ-fN-QM1"/>
+                <outlet property="progressBar" destination="0uw-J8-5sz" id="khS-dI-flF"/>
+                <outlet property="typeButton" destination="6Nq-dx-WeW" id="4GS-xe-4rM"/>
+            </connections>
+            <point key="canvasLocation" x="125" y="21"/>
+        </collectionReusableView>
+    </objects>
+    <designables>
+        <designable name="MbW-kG-bDE">
+            <size key="intrinsicContentSize" width="24" height="33"/>
+        </designable>
+    </designables>
+    <resources>
+        <image name="traveler" width="160" height="161"/>
+        <image name="upload_image" width="33" height="33"/>
+        <namedColor name="lavender">
+            <color red="0.53333333333333333" green="0.4392156862745098" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="mint">
+            <color red="0.054901960784313725" green="0.89411764705882357" blue="0.81176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="purple">
+            <color red="0.49411764705882355" green="0.43529411764705883" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="purpleBlack">
+            <color red="0.2196078431372549" green="0.20000000000000001" blue="0.31372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

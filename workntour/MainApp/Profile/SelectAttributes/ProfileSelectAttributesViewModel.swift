@@ -9,47 +9,33 @@ import Networking
 import Combine
 
 class ProfileSelectAttributesViewModel: BaseViewModel {
-    /// Service
-    private var service: ProfileService
     /// Inputs
     @Published var traveler: TravelerProfile?
 
     /// Outputs
     var data: DataModel
-    @Published var profileUpdated: Bool = false
+    @Published var updateProfileDto: TravelerProfile?
 
     // MARK: - Init
 
-    required init(data: DataModel, service: ProfileService = DataManager.shared) {
+    required init(data: DataModel) {
         self.data = data
-        self.service = service
         self.traveler = UserDataManager.shared.retrieve(TravelerProfile.self)
     }
 
-    func updateTravelerProfile() {
-        guard let travelerModel = traveler else {
-            return
-        }
+    func updateInfo() {
+        guard var travelerDto = traveler else { return }
 
         switch data.mode {
         case .skills:
-            print("update dataModel skills: \(data.convertAttributesToSkills())")
-            return
+            print("add case")
         case .interests:
-            print("update dataModel interests \(data.convertAttributesToSkills())")
+            print("add case")
+        case .travelerType:
+            travelerDto.type = data.convertAttributesToTypeOfTraveler()
         }
 
-        loaderVisibility = true
-        service.updateTravelerProfile(model: travelerModel)
-            .map { $0 != nil }
-            .subscribe(on: RunLoop.main)
-            .catch({ _ -> Just<Bool> in
-                return Just(false)
-            })
-                .handleEvents(receiveCompletion: { _ in
-                    self.loaderVisibility = false
-                })
-                    .assign(to: &$profileUpdated)
+        self.updateProfileDto = travelerDto
     }
 
 }
@@ -76,6 +62,7 @@ extension ProfileSelectAttributesViewModel {
         enum Mode {
             case skills
             case interests
+            case travelerType
         }
 
         // MARK: - Properties
@@ -86,6 +73,7 @@ extension ProfileSelectAttributesViewModel {
         let description: String
         let minItemsToBeSelected: Int
         var attributes: [ProfileAttribute]
+        let allowMultipleSelection: Bool
 
         // MARK: - Constructors/Destructors
 
@@ -95,7 +83,8 @@ extension ProfileSelectAttributesViewModel {
             headerTitle: String,
             description: String,
             minItemsToBeSelected: Int,
-            attributes: [ProfileAttribute]
+            attributes: [ProfileAttribute],
+            allowMultipleSelection: Bool = true
         ) {
             self.navigationBarTitle = navigationBarTitle
             self.mode = mode
@@ -103,6 +92,7 @@ extension ProfileSelectAttributesViewModel {
             self.description = description
             self.minItemsToBeSelected = minItemsToBeSelected
             self.attributes = attributes
+            self.allowMultipleSelection = allowMultipleSelection
         }
 
         // MARK: - Methods
@@ -117,6 +107,13 @@ extension ProfileSelectAttributesViewModel {
             return attributes
                 .filter { $0.isSelected }
                 .compactMap { LearningOpportunities(caseName: $0.title) }
+        }
+
+        func convertAttributesToTypeOfTraveler() -> TravelerType? {
+            return attributes
+                .filter { $0.isSelected }
+                .compactMap { TravelerType(caseName: $0.title) }
+                .first
         }
     }
 }
