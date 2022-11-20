@@ -15,7 +15,16 @@ class LanguagePickerVC: BaseVC<LanguagePickerViewModel, ProfileCoordinator> {
 
     @IBOutlet weak var mainStackView: UIStackView!
 
-    @IBOutlet weak var languageTextField: GradientTextField!
+    @IBOutlet weak var languageTextField: GradientTextField! {
+        didSet {
+            languageLabel.text = "language".localized()
+            languageTextField.configure(
+                placeHolder: "select_language".localized(),
+                type: .noEditable
+            )
+            languageTextField.gradientDelegate = self
+        }
+    }
 
     @IBOutlet weak var languageLabel: UILabel!
 
@@ -50,7 +59,7 @@ class LanguagePickerVC: BaseVC<LanguagePickerViewModel, ProfileCoordinator> {
             languageTextField.text = item
             languageTextField.arrowTapped()
             guard let language = Language(caseName: item) else { return }
-            print("update viewmodel")
+            viewModel?.updateLanguage(language)
         }
 
         dropDown.cancelAction = { [unowned self] in
@@ -66,25 +75,32 @@ class LanguagePickerVC: BaseVC<LanguagePickerViewModel, ProfileCoordinator> {
         super.viewWillAppear(animated)
 
         setupNavigationBar(mainTitle: "languages".localized())
-        let saveAction = UIBarButtonItem(
-            title: "save".localized(),
-            style: .plain,
-            target: self,
-            action: #selector(saveBtnTapped)
-        )
-        navigationItem.rightBarButtonItems = [saveAction]
-        navigationItem.rightBarButtonItem?.isEnabled = false
+
+        if viewModel?.editLanguage == nil {
+            let saveAction = UIBarButtonItem(
+                title: "save".localized(),
+                style: .plain,
+                target: self,
+                action: #selector(saveBtnTapped)
+            )
+            navigationItem.rightBarButtonItems = [saveAction]
+            navigationItem.rightBarButtonItem?.isEnabled = false
+        }
+        else {
+            let bar = UIBarButtonItem(
+                image: UIImage(systemName: "circle.grid.3x3"),
+                style: .plain,
+                target: self,
+                action: nil
+            )
+            self.navigationItem.rightBarButtonItem = bar
+            self.navigationItem.rightBarButtonItem?.menu = addMenuItemsToBarItem()
+        }
     }
 
     override func setupUI() {
         super.setupUI()
 
-        languageLabel.text = "language".localized()
-        languageTextField.configure(
-            placeHolder: "select_language".localized(),
-            type: .noEditable
-        )
-        languageTextField.gradientDelegate = self
         mainStackView.setCustomSpacing(32, after: languageTextField)
         profiencyLabel.text = "proficiency".localized()
         mainStackView.setCustomSpacing(80, after: chipsCollectionView)
@@ -97,15 +113,88 @@ class LanguagePickerVC: BaseVC<LanguagePickerViewModel, ProfileCoordinator> {
         viewModel?.$language
             .compactMap { $0 }
             .sink(receiveValue: { [weak self] status in
-                print("status: \(status)")
+                self?.navigationItem.rightBarButtonItem?.isEnabled = true
             })
             .store(in: &storage)
+
+        viewModel?.$editLanguage
+            .compactMap { $0 }
+            .sink(receiveValue: { [weak self] profileLang in
+                // Update VM + UI
+                self?.viewModel?.lang = profileLang.language
+                self?.viewModel?.prof = profileLang.proficiency
+
+                self?.languageTextField.text = profileLang.language.value
+                self?.languageTextField.backgroundColor = UIColor(hexString: "#667085").withAlphaComponent(0.2)
+                self?.languageTextField.isUserInteractionEnabled = false
+                self?.chipsCollectionView.selectItem(
+                    at: IndexPath(row: profileLang.proficiency.rawValue, section: 0),
+                    animated: false,
+                    scrollPosition: .centeredVertically
+                )
+            })
+            .store(in: &storage)
+    }
+
+    // MARK: - Private Methods
+
+    func addMenuItemsToBarItem() -> UIMenu {
+        // Create actions
+        let updateAction = UIAction(
+            title: "Update",
+            image: UIImage(systemName: "flag.fill"),
+            handler: { [weak self] _ in
+                guard let profileDto = self?.viewModel?.profileDto,
+                      let language = self?.viewModel?.language
+                else {
+                    assertionFailure("Check why language obj is nil")
+                    return
+                }
+
+                self?.coordinator?.modifyLanguage(
+                    mode: .edit,
+                    language: language,
+                    profileDto: profileDto
+                )
+            })
+
+        let deleteAction = UIAction(
+            title: "Delete",
+            image: UIImage(systemName: "trash")?.withTintColor(.red, renderingMode: .alwaysOriginal),
+            handler: { [weak self] _ in
+                guard let profileDto = self?.viewModel?.profileDto,
+                      let language = self?.viewModel?.language
+                else {
+                    assertionFailure("Check why language obj is nil")
+                    return
+                }
+
+                self?.coordinator?.modifyLanguage(
+                    mode: .delete,
+                    language: language,
+                    profileDto: profileDto
+                )
+            })
+
+        // Use the .displayInline option to avoid displaying the menu as a submenu,
+        // and to separate it from the other menu elements using a line separator.
+        return UIMenu(title: "", options: .displayInline, children: [updateAction, deleteAction])
     }
 
     // MARK: - Actions
 
     @objc private func saveBtnTapped() {
-        print("api")
+        guard let profileDto = viewModel?.profileDto,
+              let language = viewModel?.language
+        else {
+            return
+        }
+
+        coordinator?.modifyLanguage(
+            mode: .add,
+            language: language,
+            profileDto: profileDto
+        )
     }
 }
 
@@ -133,7 +222,7 @@ extension LanguagePickerVC: UICollectionViewDataSource, UICollectionViewDelegate
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let proficiency = viewModel?.data.proficiencies[safe: indexPath.row] else { return }
-        print("didSelect: \(proficiency)")
+        viewModel?.updateLanguageProficiency(proficiency)
     }
 }
 

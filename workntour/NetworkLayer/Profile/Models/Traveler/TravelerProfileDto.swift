@@ -8,27 +8,38 @@
 import Foundation
 
 // MARK: - TravelerProfile
-struct TravelerProfile: Codable {
+struct TravelerProfileDto: Codable {
     let memberID: String
     let role: UserRole
     var name, surname, email: String
-    let password: String
     var birthday: String?
     var sex: UserSex?
     var mobile, countryCode, nationality, postalAddress: String?
-    let welcomeDescription, profileImage: String?
+    var address, city, country: String?
     var type: TravelerType?
-    let driverLicense: Bool?
-    let wishList, createdAt: String?
+    var description: String?
+    let profileImage: [ProfileImage]?
+    var interests: [LearningOpportunities]?
+    var languages: [ProfileLanguage]?
+    var skills: [TypeOfHelp]?
+    var experience: [ProfileExperience]?
+    var specialDietary: SpecialDietary?
+    var driverLicense: Bool?
+    let imageData: Data?
+    let createdAt: String?
 
     enum CodingKeys: String, CodingKey {
         case memberID = "memberId"
-        case role, name, surname, email, password, birthday, nationality, sex, postalAddress
+        case role, name, surname, email, birthday, nationality, sex, postalAddress
         case countryCode = "countryCodeMobileNum"
         case mobile = "mobileNum"
-        case welcomeDescription = "description"
+        case address, city, country
         case type = "typeOfTraveler"
-        case profileImage, driverLicense, wishList, createdAt
+        case interests, languages, skills, experience
+        case profileImage, description
+        case driverLicense, specialDietary
+        case imageData = "imageMobile"
+        case createdAt
     }
 
     var fullname: String {

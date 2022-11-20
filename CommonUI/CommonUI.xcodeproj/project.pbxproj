@@ -56,6 +56,14 @@
 		CE3F9E9C291FB3CE00480493 /* ChipCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3F9E9A291FB3CE00480493 /* ChipCell.swift */; };
 		CE3F9E9D291FB3CE00480493 /* ChipCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE3F9E9B291FB3CE00480493 /* ChipCell.xib */; };
 		CE3F9E9F291FB50600480493 /* ChipButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3F9E9E291FB50600480493 /* ChipButton.swift */; };
+		CE446D5F29293694004026FA /* ProfileLanguageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE446D5D29293694004026FA /* ProfileLanguageCell.swift */; };
+		CE446D6029293694004026FA /* ProfileLanguageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE446D5E29293694004026FA /* ProfileLanguageCell.xib */; };
+		CE446D65292A30B8004026FA /* LanguageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE446D63292A30B8004026FA /* LanguageCell.swift */; };
+		CE446D66292A30B8004026FA /* LanguageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE446D64292A30B8004026FA /* LanguageCell.xib */; };
+		CE446D69292A5125004026FA /* ProfileExperienceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE446D67292A5125004026FA /* ProfileExperienceCell.swift */; };
+		CE446D6A292A5125004026FA /* ProfileExperienceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE446D68292A5125004026FA /* ProfileExperienceCell.xib */; };
+		CE446D6D292A5AF9004026FA /* ExperienceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE446D6B292A5AF9004026FA /* ExperienceCell.swift */; };
+		CE446D6E292A5AF9004026FA /* ExperienceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE446D6C292A5AF9004026FA /* ExperienceCell.xib */; };
 		CEAB0A4C2927EAAB0023A2C6 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAB0A4A2927EAAB0023A2C6 /* ProfileHeaderView.swift */; };
 		CEAB0A4D2927EAAB0023A2C6 /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEAB0A4B2927EAAB0023A2C6 /* ProfileHeaderView.xib */; };
 		CED06CF62927F0AD00C054E3 /* ProfileSimpleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED06CF42927F0AD00C054E3 /* ProfileSimpleCell.swift */; };
@@ -137,6 +145,14 @@
 		CE3F9E9A291FB3CE00480493 /* ChipCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipCell.swift; sourceTree = "<group>"; };
 		CE3F9E9B291FB3CE00480493 /* ChipCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChipCell.xib; sourceTree = "<group>"; };
 		CE3F9E9E291FB50600480493 /* ChipButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipButton.swift; sourceTree = "<group>"; };
+		CE446D5D29293694004026FA /* ProfileLanguageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileLanguageCell.swift; sourceTree = "<group>"; };
+		CE446D5E29293694004026FA /* ProfileLanguageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileLanguageCell.xib; sourceTree = "<group>"; };
+		CE446D63292A30B8004026FA /* LanguageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageCell.swift; sourceTree = "<group>"; };
+		CE446D64292A30B8004026FA /* LanguageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LanguageCell.xib; sourceTree = "<group>"; };
+		CE446D67292A5125004026FA /* ProfileExperienceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileExperienceCell.swift; sourceTree = "<group>"; };
+		CE446D68292A5125004026FA /* ProfileExperienceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileExperienceCell.xib; sourceTree = "<group>"; };
+		CE446D6B292A5AF9004026FA /* ExperienceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceCell.swift; sourceTree = "<group>"; };
+		CE446D6C292A5AF9004026FA /* ExperienceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExperienceCell.xib; sourceTree = "<group>"; };
 		CEAB0A4A2927EAAB0023A2C6 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		CEAB0A4B2927EAAB0023A2C6 /* ProfileHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileHeaderView.xib; sourceTree = "<group>"; };
 		CED06CF42927F0AD00C054E3 /* ProfileSimpleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSimpleCell.swift; sourceTree = "<group>"; };
@@ -183,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				1B39AA3D28743606009377A7 /* Opportunities */,
+				CE446D62292A3098004026FA /* Profile */,
 				1B308A4F284244D800797F32 /* Registration */,
 				1BC190D72860A56800585533 /* Settings */,
 			);
@@ -376,15 +393,30 @@
 			isa = PBXGroup;
 			children = (
 				CE3F9E9A291FB3CE00480493 /* ChipCell.swift */,
+				CE446D67292A5125004026FA /* ProfileExperienceCell.swift */,
 				CED06CFF2929060400C054E3 /* ProfileFooterView.swift */,
 				CEAB0A4A2927EAAB0023A2C6 /* ProfileHeaderView.swift */,
+				CE446D5D29293694004026FA /* ProfileLanguageCell.swift */,
 				CED06CF42927F0AD00C054E3 /* ProfileSimpleCell.swift */,
 				CE3F9E96291FACDE00480493 /* SelectAttributesHeaderView.swift */,
 				CE3F9E9B291FB3CE00480493 /* ChipCell.xib */,
+				CE446D68292A5125004026FA /* ProfileExperienceCell.xib */,
 				CED06D002929060400C054E3 /* ProfileFooterView.xib */,
 				CEAB0A4B2927EAAB0023A2C6 /* ProfileHeaderView.xib */,
+				CE446D5E29293694004026FA /* ProfileLanguageCell.xib */,
 				CED06CF52927F0AD00C054E3 /* ProfileSimpleCell.xib */,
 				CE3F9E97291FACDE00480493 /* SelectAttributesHeaderView.xib */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		CE446D62292A3098004026FA /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				CE446D6B292A5AF9004026FA /* ExperienceCell.swift */,
+				CE446D63292A30B8004026FA /* LanguageCell.swift */,
+				CE446D6C292A5AF9004026FA /* ExperienceCell.xib */,
+				CE446D64292A30B8004026FA /* LanguageCell.xib */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -489,13 +521,17 @@
 				1B7753D2286B2CF200D81526 /* OpportunityImageCell.xib in Resources */,
 				CEAB0A4D2927EAAB0023A2C6 /* ProfileHeaderView.xib in Resources */,
 				1B442FF8288081ED002145BC /* OpportunitiesFooterView.xib in Resources */,
+				CE446D66292A30B8004026FA /* LanguageCell.xib in Resources */,
 				CED06CF72927F0AD00C054E3 /* ProfileSimpleCell.xib in Resources */,
 				CED06CFC2928D01900C054E3 /* Assets.xcassets in Resources */,
+				CE446D6A292A5125004026FA /* ProfileExperienceCell.xib in Resources */,
 				1B39AA572875B40F009377A7 /* OpportunityDetailsDatesCell.xib in Resources */,
 				CE3F9E9D291FB3CE00480493 /* ChipCell.xib in Resources */,
 				CE3F9E99291FACDE00480493 /* SelectAttributesHeaderView.xib in Resources */,
+				CE446D6029293694004026FA /* ProfileLanguageCell.xib in Resources */,
 				1B308A532842452600797F32 /* RegistrationCell.xib in Resources */,
 				1BE6EA972868B23D009CBE6D /* MyOpportunityCell.xib in Resources */,
+				CE446D6E292A5AF9004026FA /* ExperienceCell.xib in Resources */,
 				1B39AA4B28744A8C009377A7 /* OpportunityDetailsCell.xib in Resources */,
 				CED06D022929060400C054E3 /* ProfileFooterView.xib in Resources */,
 			);
@@ -590,6 +626,7 @@
 				1B39AA61287C2EA6009377A7 /* TransparentButton.swift in Sources */,
 				1B4AE411283E845C00FA6420 /* SecondaryButton.swift in Sources */,
 				1B39AA4A28744A8C009377A7 /* OpportunityDetailsCell.swift in Sources */,
+				CE446D65292A30B8004026FA /* LanguageCell.swift in Sources */,
 				1B308A522842452600797F32 /* RegistrationCell.swift in Sources */,
 				1B308A4928414D9000797F32 /* UITextFieldPadding.swift in Sources */,
 				1B4AE445283F708F00FA6420 /* LinkableLabel.swift in Sources */,
@@ -598,15 +635,18 @@
 				1B308A42284125C300797F32 /* GradientTextField.swift in Sources */,
 				CE3F9E98291FACDE00480493 /* SelectAttributesHeaderView.swift in Sources */,
 				1B7753D1286B2CF200D81526 /* OpportunityImageCell.swift in Sources */,
+				CE446D5F29293694004026FA /* ProfileLanguageCell.swift in Sources */,
 				1B39AA4E28746AEB009377A7 /* OpportunityDetailsMapCell.swift in Sources */,
 				1B39AA372872FE2A009377A7 /* PageControl.swift in Sources */,
 				1B563B802848C47A00B851C1 /* CustomViewProtocol.swift in Sources */,
 				CEAB0A4C2927EAAB0023A2C6 /* ProfileHeaderView.swift in Sources */,
+				CE446D69292A5125004026FA /* ProfileExperienceCell.swift in Sources */,
 				1B4AE44C2840AEFC00FA6420 /* Checkbox.swift in Sources */,
 				1B39AA562875B40F009377A7 /* OpportunityDetailsDatesCell.swift in Sources */,
 				1BC190D3285F3B0500585533 /* GradientButton.swift in Sources */,
 				CED06CF62927F0AD00C054E3 /* ProfileSimpleCell.swift in Sources */,
 				1B44301428814A32002145BC /* DynamicHeightCollectionView.swift in Sources */,
+				CE446D6D292A5AF9004026FA /* ExperienceCell.swift in Sources */,
 				1B443024288472B2002145BC /* TapticEngine.swift in Sources */,
 				1B7753DF286C7EB800D81526 /* String+Extensions.swift in Sources */,
 				1B4AE40D283E6FDC00FA6420 /* UIImpactFeedbackGenerator+Extension.swift in Sources */,

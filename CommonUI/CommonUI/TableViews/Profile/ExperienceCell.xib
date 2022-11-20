@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Lato-Semibold.ttf">
+            <string>Lato-Semibold</string>
+        </array>
+        <array key="Lato-SemiboldItalic.ttf">
+            <string>Lato-SemiboldItalic</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="KGk-i7-Jjw" customClass="ExperienceCell" customModule="CommonUI" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tyb-26-CoS" userLabel="Separator View">
+                        <rect key="frame" x="24" y="0.0" width="272" height="1"/>
+                        <color key="backgroundColor" red="0.80000000000000004" green="0.8666666666666667" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="jzz-if-5io"/>
+                        </constraints>
+                    </view>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="N7N-Bg-eeM">
+                        <rect key="frame" x="24" y="13.000000000000004" width="272" height="40.333333333333343"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="a1J-E8-F6v">
+                                <rect key="frame" x="0.0" y="0.0" width="196.33333333333334" height="40.333333333333336"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Microsoft Product designer " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ai4-EH-aFX" userLabel="title" customClass="LinkableLabel" customModule="CommonUI" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="196.33333333333334" height="19.333333333333332"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
+                                        </accessibility>
+                                        <fontDescription key="fontDescription" name="Lato-Semibold" family="Lato" pointSize="16"/>
+                                        <color key="textColor" name="purpleBlack"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Sept 2014" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xYm-Hj-jDi" userLabel="dates">
+                                        <rect key="frame" x="0.0" y="23.333333333333336" width="196.33333333333334" height="17"/>
+                                        <fontDescription key="fontDescription" name="Lato-SemiboldItalic" family="Lato" pointSize="14"/>
+                                        <color key="textColor" name="placeholder"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x5z-nv-vZs" userLabel="trash">
+                                <rect key="frame" x="248" y="8.3333333333333321" width="24" height="23.999999999999996"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="x5z-nv-vZs" secondAttribute="height" multiplier="1:1" id="JGg-D6-dE5"/>
+                                    <constraint firstAttribute="height" constant="24" id="UeW-5e-fSd"/>
+                                </constraints>
+                                <color key="tintColor" red="0.53725490200000003" green="0.50196078430000002" blue="0.68627450980000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="trash" catalog="system"/>
+                                <connections>
+                                    <action selector="trashBtnTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="UGO-H3-YIB"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="tyb-26-CoS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="2rv-Eb-Fd0"/>
+                    <constraint firstItem="N7N-Bg-eeM" firstAttribute="top" secondItem="tyb-26-CoS" secondAttribute="bottom" constant="12" id="2xD-Fn-bye"/>
+                    <constraint firstItem="N7N-Bg-eeM" firstAttribute="leading" secondItem="tyb-26-CoS" secondAttribute="leading" id="D2C-hp-aka"/>
+                    <constraint firstItem="tyb-26-CoS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="KVT-TN-ya6"/>
+                    <constraint firstItem="N7N-Bg-eeM" firstAttribute="trailing" secondItem="tyb-26-CoS" secondAttribute="trailing" id="YzB-h7-3nC"/>
+                    <constraint firstAttribute="trailing" secondItem="tyb-26-CoS" secondAttribute="trailing" constant="24" id="loe-qw-Hoh"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="N7N-Bg-eeM" secondAttribute="bottom" constant="10" id="tMH-Vt-MSN"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="dateLabel" destination="xYm-Hj-jDi" id="yPf-Uk-5mH"/>
+                <outlet property="titleLabel" destination="Ai4-EH-aFX" id="YfC-zT-JbZ"/>
+            </connections>
+            <point key="canvasLocation" x="26" y="21"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="trash" catalog="system" width="117" height="128"/>
+        <namedColor name="placeholder">
+            <color red="0.56862745098039214" green="0.55294117647058827" blue="0.66274509803921566" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="purpleBlack">
+            <color red="0.2196078431372549" green="0.20000000000000001" blue="0.31372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

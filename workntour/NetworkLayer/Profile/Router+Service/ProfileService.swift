@@ -16,7 +16,7 @@ protocol ProfileService: AnyObject {
 
     func getCompanyHostProfile(memberId: String) -> AnyPublisher<Bool, ProviderError>
 
-    func updateTravelerProfile(model: TravelerProfile) -> AnyPublisher<TravelerProfile?, ProviderError>
+    func updateTravelerProfile(model: TravelerUpdatedBody) -> AnyPublisher<TravelerProfileDto?, ProviderError>
 
     func updateIndividualHostProfile(model: IndividualHostProfile) -> AnyPublisher<IndividualHostProfile?, ProviderError>
 

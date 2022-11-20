@@ -62,7 +62,7 @@ final class TabBarCoordinator: NSObject, NavigationCoordinator {
         var allPages: [TabBarPage]
         switch userRole {
         case .TRAVELER:
-            allPages = [.homepage, .profile, .notifications, .settings]
+            allPages = [.profile, .notifications, .settings]
         case .COMPANY_HOST, .INDIVIDUAL_HOST:
             allPages = [.profile, .opportunities, .notifications, .settings]
         case .none: // guest mode

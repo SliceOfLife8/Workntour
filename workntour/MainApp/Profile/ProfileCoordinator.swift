@@ -14,13 +14,14 @@ import PhotosUI
 enum ProfileStep: Step {
     case state(_ default: DefaultStep)
     case openGalleryPicker
-    case updateTravelerProfile(_ profile: TravelerProfile)
+    case updateTravelerProfile(_ profile: TravelerProfileDto)
     case travelerEditPersonalInfo
     case selectInterests(preselectedInterests: [LearningOpportunities])
     case selectSkills(preselectedSkills: [TypeOfHelp])
-    case openExperience(_ experience: ProfileExperience?)
+    case openExperience(_ experience: Experience?)
     case travelerAddSummary(_ summary: String?)
-    case addLanguage
+    case addLanguage(existingLanguages: [Language])
+    case editLanguage(_ language: ProfileLanguage)
     case travelerSelectType(_ type: TravelerType?)
 }
 
@@ -74,7 +75,7 @@ final class ProfileCoordinator: NavigationCoordinator {
         case .openGalleryPicker:
             openPhotoPicker()
         case .travelerEditPersonalInfo:
-            guard let profileDto = UserDataManager.shared.retrieve(TravelerProfile.self) else {
+            guard let profileDto = UserDataManager.shared.retrieve(TravelerProfileDto.self) else {
                 assertionFailure("It's impossible to reach here! So, you fucked up!")
                 return
             }
@@ -96,9 +97,15 @@ final class ProfileCoordinator: NavigationCoordinator {
             navigator.push(experienceVC, animated: true)
         case .travelerAddSummary(let summary):
             addSummary(summary)
-        case .addLanguage:
-            let viewModel = LanguagePickerViewModel(data: .init(languages: Language.allCases,
-                                                                proficiencies: LanguagePickerViewModel.Proficiency.allCases))
+        case .addLanguage(let languages):
+            let viewModel = LanguagePickerViewModel(data: .init(exludeLanguages: languages))
+            let languagePickerVC = LanguagePickerVC()
+            languagePickerVC.viewModel = viewModel
+            languagePickerVC.coordinator = self
+
+            navigator.push(languagePickerVC, animated: true)
+        case .editLanguage(let language):
+            let viewModel = LanguagePickerViewModel(data: .init(exludeLanguages: [], editLanguage: language))
             let languagePickerVC = LanguagePickerVC()
             languagePickerVC.viewModel = viewModel
             languagePickerVC.coordinator = self
@@ -196,6 +203,32 @@ final class ProfileCoordinator: NavigationCoordinator {
         selectAttributesVC.coordinator = self
 
         navigator.push(selectAttributesVC, animated: true)
+    }
+
+
+    /// This func is responsible for modify ProfileLanguage objects
+    /// - Parameters:
+    ///   - mode: What operation we would like to do
+    ///   - language: Current language object
+    ///   - profileDto: Traveler's profileDto
+    func modifyLanguage(
+        mode: LanguageMode,
+        language: ProfileLanguage,
+        profileDto: TravelerProfileDto
+    ) {
+        var updatedProfileDto = profileDto
+        switch mode {
+        case .add:
+            updatedProfileDto.languages?.append(language)
+        case .edit:
+            if let index = updatedProfileDto.languages?.firstIndex(where: { $0.language == language.language }) {
+                updatedProfileDto.languages?[index] = language
+            }
+        case .delete:
+            updatedProfileDto.languages = updatedProfileDto.languages?.filter { $0.language != language.language }
+        }
+
+        navigate(to: .updateTravelerProfile(updatedProfileDto))
     }
 
 }

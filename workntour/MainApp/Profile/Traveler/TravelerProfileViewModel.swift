@@ -15,9 +15,7 @@ class TravelerProfileViewModel: BaseViewModel {
     /// Service
     private var service: ProfileService
     /// Inputs
-    @Published var traveler: TravelerProfile?
-
-    var countries: Countries
+    @Published var traveler: TravelerProfileDto?
 
     /// Outputs
     @Published var newImage: Data?
@@ -27,65 +25,15 @@ class TravelerProfileViewModel: BaseViewModel {
     // MARK: - Init
     init(service: ProfileService = DataManager.shared) {
         self.service = service
-        self.traveler = UserDataManager.shared.retrieve(TravelerProfile.self)
-        self.countries = Countries()
+        self.traveler = UserDataManager.shared.retrieve(TravelerProfileDto.self)
 
         super.init()
     }
 
-    func updateSelectedCountry(model: CountriesModel, index: Int) {
-        countries.selectedCountryPrefix = model.regionCode
-        countries.currentCountryFlag = model.flag
-        countries.countrySelectedIndex = index
-    }
-
-    /// Update models + api request
-    func updateProfile(age: String?,
-                       postalAddress: String?,
-                       mobileNum: String?) {
-
-        if let _age = age?.trimmingCharacters(in: .whitespaces) {
-            traveler?.birthday = _age.changeDateFormat()
-        }
-
-        if let _postalAddress = postalAddress?.trimmingCharacters(in: .whitespaces) {
-            traveler?.postalAddress = _postalAddress
-        }
-        if mobileNum?.trimmingPhoneNumber().count == 10 {
-            traveler?.countryCode = countries.selectedCountryPrefix
-            traveler?.mobile = mobileNum?.getPhoneDetails().dropFirst().joined(separator: "")
-        }
-
-        updateTravelerProfile()
-    }
-
-    func updateProfile(_ profileDto: TravelerProfile) {
+    func updateProfile(_ profileDto: TravelerProfileDto, data: Data? = nil) {
         loaderVisibility = true
-        service.updateTravelerProfile(model: profileDto)
-            .map {
-                if $0 != nil {
-                    self.traveler = $0 // Update current user's model
-                }
-
-                return $0 != nil
-            }
-            .subscribe(on: RunLoop.main)
-            .catch({ _ -> Just<Bool> in
-                return Just(false)
-            })
-                .handleEvents(receiveCompletion: { _ in
-                    self.loaderVisibility = false
-                })
-                    .assign(to: &$profileUpdated)
-    }
-
-    private func updateTravelerProfile() {
-        guard let travelerModel = traveler else {
-            return
-        }
-
-        loaderVisibility = true
-        service.updateTravelerProfile(model: travelerModel)
+        let updatedBody = TravelerUpdatedBody(updatedTravelerProfile: profileDto, profileImage: data)
+        service.updateTravelerProfile(model: updatedBody)
             .map {
                 if $0 != nil {
                     self.traveler = $0 // Update current user's model
@@ -123,13 +71,13 @@ extension TravelerProfileViewModel {
     }
 
     func getFooterDataModel() -> ProfileFooterView.DataModel? {
-        // guard let data = traveler else { return nil }
+        guard let data = traveler else { return nil }
 
         return .init(
             dietaryTitle: "Special Dietary Requirements",
-            dietarySelection: 0,
+            dietarySelection: data.specialDietary?.rawValue ?? 0,
             licenseTitle: "Driver’s License",
-            hasLicense: false
+            hasLicense: data.driverLicense ?? false
         )
     }
 
@@ -146,7 +94,7 @@ extension TravelerProfileViewModel {
         case .description:
             return .init(
                 title: TravelerProfileSection.description.value,
-                values: [],
+                values: [data.description],
                 placeholder: "Describe how awesome you are, how you will be able to help your hosts and what you would like to learn!"
             )
         case .typeOfTraveler:
@@ -158,25 +106,46 @@ extension TravelerProfileViewModel {
         case .interests:
             return .init(
                 title: TravelerProfileSection.interests.value,
-                values: [],
+                values: data.interests?.compactMap { $0.value } ?? [],
                 placeholder: "Add your interests so you can match with the perfect host."
             )
         case .skills:
             return .init(
                 title: TravelerProfileSection.skills.value,
-                values: [],
+                values: data.skills?.compactMap { $0.value } ?? [],
                 placeholder: "Add skills that you have that potentially help you match with a host."
             )
         default:
+            assertionFailure("Check collectionView's sizeForItem func.")
             return nil
         }
     }
 
-    func getLanguageCellDataModel() -> ProfileSimpleCell.DataModel? {
+    func getLanguageCellDataModel() -> ProfileLanguageCell.DataModel? {
+        // traveler?.languages?.compactMap { $0.convertToCommonUI() } ?? []
+        let langs = [ProfileLanguage(language: .ITALIAN, proficiency: .BEGINNER),
+                     ProfileLanguage(language: .SWEDISH, proficiency: .INTERMEDIATE)]
         return .init(
             title: TravelerProfileSection.languages.value,
-            values: [],
-            placeholder: "Add your languages & your level."
+            description: "Add your languages & your level.",
+            languages: langs.compactMap { $0.convertToCommonUI() }
+        )
+    }
+
+    func getExperienceCellDataModel() -> ProfileExperienceCell.DataModel? {
+        let experience = [
+            Experience(type: .COMPANY, organization: "Microsoft", position: "Software Engineer", startDate: "", endDate: ""),
+            Experience(type: .UNIVERSITY, organization: "Harvard", position: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled", startDate: "", endDate: ""),
+            Experience(type: .COMPANY, organization: "Apple", position: "Product Designer", startDate: "", endDate: "")
+            ]
+        let dict: [ProfileExperienceCell.DataModel.Mode: [ProfileExperienceCell.DataModel.ExperienceUI]] = [
+            .professional: experience.compactMap { $0.getProfessionalExperiences() },
+            .educational: experience.compactMap { $0.getEducationalExperiences() }
+        ]
+        return .init(
+            title: TravelerProfileSection.experience.value,
+            description: "Add your Experience",
+            experiences: dict
         )
     }
 }

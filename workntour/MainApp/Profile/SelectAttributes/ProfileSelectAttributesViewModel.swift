@@ -10,17 +10,17 @@ import Combine
 
 class ProfileSelectAttributesViewModel: BaseViewModel {
     /// Inputs
-    @Published var traveler: TravelerProfile?
+    @Published var traveler: TravelerProfileDto?
 
     /// Outputs
     var data: DataModel
-    @Published var updateProfileDto: TravelerProfile?
+    @Published var updateProfileDto: TravelerProfileDto?
 
     // MARK: - Init
 
     required init(data: DataModel) {
         self.data = data
-        self.traveler = UserDataManager.shared.retrieve(TravelerProfile.self)
+        self.traveler = UserDataManager.shared.retrieve(TravelerProfileDto.self)
     }
 
     func updateInfo() {

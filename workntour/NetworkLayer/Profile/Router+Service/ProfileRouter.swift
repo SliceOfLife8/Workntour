@@ -12,7 +12,7 @@ enum ProfileRouter: NetworkTarget {
     case getTraveler(_ memberId: String)
     case getIndividualHost(_ memberId: String)
     case getCompanyHost(_ memberId: String)
-    case updateTraveler(body: TravelerProfile)
+    case updateTraveler(body: TravelerUpdatedBody)
     case updateIndividualHost(body: IndividualHostProfile)
     case updateCompanyHost(body: CompanyHostProfile)
 
@@ -23,17 +23,17 @@ enum ProfileRouter: NetworkTarget {
     public var path: String {
         switch self {
         case .getTraveler:
-            return "/retrieveProfile/traveler"
+            return "/profile/retrieveProfile/traveler"
         case .getIndividualHost:
-            return "/retrieveProfile/individualHost"
+            return "/profile/retrieveProfile/individualHost"
         case .getCompanyHost:
-            return "retrieveProfile/companyHost"
+            return "/profileretrieveProfile/companyHost"
         case .updateTraveler:
-            return "/updateProfile/traveler"
+            return "/profile/updateProfile/traveler"
         case .updateIndividualHost:
-            return "/updateProfile/individualHost"
+            return "/profile/updateProfile/individualHost"
         case .updateCompanyHost:
-            return "/updateProfile/companyHost"
+            return "/profile/updateProfile/companyHost"
         }
     }
 

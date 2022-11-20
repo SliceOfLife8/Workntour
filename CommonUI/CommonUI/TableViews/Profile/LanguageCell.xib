@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Lato-Bold.ttf">
+            <string>Lato-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="KGk-i7-Jjw" customClass="LanguageCell" customModule="CommonUI" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="6lM-To-E4X">
+                        <rect key="frame" x="24" y="0.0" width="272" height="79"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Or-zP-Dr8" userLabel="title" customClass="LinkableLabel" customModule="CommonUI" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="39.666666666666664" width="0.0" height="0.0"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
+                                </accessibility>
+                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="16"/>
+                                <color key="textColor" name="purpleBlack"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FpA-0l-TDC" userLabel="trash">
+                                <rect key="frame" x="248" y="27.666666666666671" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="edT-TN-pCn"/>
+                                    <constraint firstAttribute="width" secondItem="FpA-0l-TDC" secondAttribute="height" multiplier="1:1" id="wwH-rh-ip5"/>
+                                </constraints>
+                                <color key="tintColor" red="0.53725490196078429" green="0.50196078431372548" blue="0.68627450980392157" alpha="1" colorSpace="calibratedRGB"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="trash" catalog="system"/>
+                                <connections>
+                                    <action selector="trashTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="H5l-Gv-9M1"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </stackView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g1f-ZX-BGl" userLabel="Separator View">
+                        <rect key="frame" x="24" y="79" width="272" height="1"/>
+                        <color key="backgroundColor" name="badgeBg"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="cvs-Bd-AoV"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="g1f-ZX-BGl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="AdQ-2U-9Sj"/>
+                    <constraint firstItem="6lM-To-E4X" firstAttribute="trailing" secondItem="g1f-ZX-BGl" secondAttribute="trailing" id="K6O-wj-LFk"/>
+                    <constraint firstAttribute="bottom" secondItem="g1f-ZX-BGl" secondAttribute="bottom" id="Nja-Du-Sln"/>
+                    <constraint firstItem="g1f-ZX-BGl" firstAttribute="top" secondItem="6lM-To-E4X" secondAttribute="bottom" id="YJ7-WI-0Bk"/>
+                    <constraint firstItem="6lM-To-E4X" firstAttribute="leading" secondItem="g1f-ZX-BGl" secondAttribute="leading" id="dbP-Yq-CNg"/>
+                    <constraint firstAttribute="trailing" secondItem="g1f-ZX-BGl" secondAttribute="trailing" constant="24" id="e9z-WY-Xqt"/>
+                    <constraint firstItem="6lM-To-E4X" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="iPB-Xn-zcE"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="separatorView" destination="g1f-ZX-BGl" id="M7u-kb-ih9"/>
+                <outlet property="titleLabel" destination="8Or-zP-Dr8" id="tdG-Q3-3Wt"/>
+            </connections>
+            <point key="canvasLocation" x="127" y="21"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="trash" catalog="system" width="117" height="128"/>
+        <namedColor name="badgeBg">
+            <color red="0.92941176470588238" green="0.91764705882352937" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="purpleBlack">
+            <color red="0.2196078431372549" green="0.20000000000000001" blue="0.31372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

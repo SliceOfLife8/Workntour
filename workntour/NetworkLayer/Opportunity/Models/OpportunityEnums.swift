@@ -36,38 +36,6 @@ enum Meal: String, CaseIterable, Codable {
     }
 }
 
-enum Language: String, CaseIterable, Codable {
-    case greek
-    case english
-    case spanish
-    case italian
-    case german
-
-    var value: String {
-        switch self {
-        case .greek:
-            return "🇬🇷 Greek"
-        case .english:
-            return "🇬🇧 English"
-        case .spanish:
-            return "🇪🇸 Spanish"
-        case .italian:
-            return "🇮🇹 Italian"
-        case .german:
-            return "🇩🇪 German"
-        }
-    }
-
-    init?(caseName: String) {
-        for key in Language.allCases where "\(key.value)" == caseName {
-            self = key
-            return
-        }
-
-        return nil
-    }
-}
-
 enum Accommodation: String, CaseIterable, Codable {
     case privateRoom
     case sharedRoom
@@ -163,74 +131,74 @@ enum OpportunityCategory: String, CaseIterable, Codable {
 }
 
 enum TypeOfHelp: String, CaseIterable, Codable {
-    case reception
-    case cleaning
-    case houseKeeping
-    case administrativeTasks
-    case tourGuide
-    case babysitter
-    case vet
-    case animalCare
-    case languages
-    case sportsTeacher
-    case surfing
-    case personalTrainer
-    case farming
-    case painting
-    case handyman
-    case socialMedia
-    case photography
-    case videography
-    case webDevelopment
-    case cooking
-    case bartending
-    case service
+    case RECEPTION
+    case CLEANING
+    case HOUSE_KEEPING
+    case ADMINISTRATIVE_TASKS
+    case TOUR_GUIDE
+    case BABYSITTER
+    case VET
+    case ANIMAL_CARE
+    case LANGUAGES
+    case SPORTS_TEACHER
+    case SURFING
+    case PERSONAL_TRAINER
+    case FARMING
+    case PAINTING
+    case HANDYMAN
+    case SOCIAL_MEDIA
+    case PHOTOGRAPHY
+    case VIDEOGRAPHY
+    case WEB_DEVELOPMENT
+    case COOKING
+    case BARTENDING
+    case SERVICE
 
     var value: String {
         switch self {
-        case .reception:
+        case .RECEPTION:
             return "Reception"
-        case .cleaning:
+        case .CLEANING:
             return "Cleaning"
-        case .houseKeeping:
+        case .HOUSE_KEEPING:
             return "House Keeping"
-        case .administrativeTasks:
+        case .ADMINISTRATIVE_TASKS:
             return "Administrative tasks"
-        case .tourGuide:
+        case .TOUR_GUIDE:
             return "Tour guide"
-        case .babysitter:
+        case .BABYSITTER:
             return "Babysitter"
-        case .vet:
+        case .VET:
             return "Vet"
-        case .animalCare:
+        case .ANIMAL_CARE:
             return "Animal care"
-        case .languages:
+        case .LANGUAGES:
             return "Languages"
-        case .sportsTeacher:
+        case .SPORTS_TEACHER:
             return "Sports teacher"
-        case .surfing:
+        case .SURFING:
             return "Surfing"
-        case .personalTrainer:
+        case .PERSONAL_TRAINER:
             return "Personal Trainer"
-        case .farming:
+        case .FARMING:
             return "Farming"
-        case .painting:
+        case .PAINTING:
             return "Painting"
-        case .handyman:
+        case .HANDYMAN:
             return "Handyman"
-        case .socialMedia:
+        case .SOCIAL_MEDIA:
             return "Social media"
-        case .photography:
+        case .PHOTOGRAPHY:
             return "Photography"
-        case .videography:
+        case .VIDEOGRAPHY:
             return "Videography"
-        case .webDevelopment:
+        case .WEB_DEVELOPMENT:
             return "Web development"
-        case .cooking:
+        case .COOKING:
             return "Cooking"
-        case .bartending:
+        case .BARTENDING:
             return "Bartending"
-        case .service:
+        case .SERVICE:
             return "Service"
         }
     }
@@ -246,116 +214,142 @@ enum TypeOfHelp: String, CaseIterable, Codable {
 }
 
 enum LearningOpportunities: String, CaseIterable, Codable {
-    case hospitality
-    case languages
-    case animalWelfare
-    case volunteering
-    case cultureExchange
-    case charityWork
-    case farming
-    case photography
-    case videography
-    case technology
-    case nonProfit
-    case art
-    case waterSports
-    case nature
-    case writing
-    case yoga
-    case fitness
-    case dancing
-    case gardening
-    case cycling
-    case books
-    case babysitting
-    case cooking
-    case computers
-    case programming
-    case selfDevelopment
-    case sustainability
-    case hitchhiking
-    case sailing
-    case music
-    case movies
-    case fashion
-    case history
-    case architecture
+    case HOSPITALITY
+    case LANGUAGES
+    case ANIMAL_WELFARE
+    case VOLUNTEERING
+    case CULTURE_EXCHANGE
+    case CHARITY_WORK
+    case FARMING
+    case PHOTOGRAPHY
+    case VIDEOGRAPHY
+    case TECHNOLOGY
+    case NON_PROFIT
+    case ART
+    case WATER_SPORTS
+    case NATURE
+    case WRITING
+    case YOGA
+    case FITNESS
+    case DANCING
+    case GARDENING
+    case CYCLING
+    case BOOKS
+    case BABYSITTING
+    case COOKING
+    case COMPUTERS
+    case PROGRAMMING
+    case SELF_DEVELOPMENT
+    case SUSTAINABILITY
+    case HITCHHIKING
+    case SAILING
+    case MUSIC
+    case MOVIES
+    case FASHION
+    case HISTORY
+    case ARCHITECTURE
 
     var value: String {
         switch self {
-        case .hospitality:
+        case .HOSPITALITY:
             return "Hospitality"
-        case .languages:
+        case .LANGUAGES:
             return "Languages"
-        case .animalWelfare:
+        case .ANIMAL_WELFARE:
             return "Animal welfare"
-        case .volunteering:
+        case .VOLUNTEERING:
             return "Volunteering"
-        case .cultureExchange:
+        case .CULTURE_EXCHANGE:
             return "Culture exchange"
-        case .charityWork:
+        case .CHARITY_WORK:
             return "Charity work"
-        case .farming:
+        case .FARMING:
             return "Farming"
-        case .photography:
+        case .PHOTOGRAPHY:
             return "Photography"
-        case .videography:
+        case .VIDEOGRAPHY:
             return "Videography"
-        case .technology:
+        case .TECHNOLOGY:
             return "Technology"
-        case .nonProfit:
+        case .NON_PROFIT:
             return "Non profit"
-        case .art:
+        case .ART:
             return "Art"
-        case .waterSports:
+        case .WATER_SPORTS:
             return "Watersports"
-        case .nature:
+        case .NATURE:
             return "Nature"
-        case .writing:
+        case .WRITING:
             return "Writing"
-        case .yoga:
+        case .YOGA:
             return "Yoga"
-        case .fitness:
+        case .FITNESS:
             return "Fitness"
-        case .dancing:
+        case .DANCING:
             return "Dancing"
-        case .gardening:
+        case .GARDENING:
             return "Gardening"
-        case .cycling:
+        case .CYCLING:
             return "Cycling"
-        case .books:
+        case .BOOKS:
             return "Books"
-        case .babysitting:
+        case .BABYSITTING:
             return "Babysitting"
-        case .cooking:
+        case .COOKING:
             return "Cooking"
-        case .computers:
+        case .COMPUTERS:
             return "Computers"
-        case .programming:
+        case .PROGRAMMING:
             return "Programming"
-        case .selfDevelopment:
+        case .SELF_DEVELOPMENT:
             return "Self development"
-        case .sustainability:
+        case .SUSTAINABILITY:
             return "Sustainability"
-        case .hitchhiking:
+        case .HITCHHIKING:
             return "Hitchhikig"
-        case .sailing:
+        case .SAILING:
             return "Sailing"
-        case .music:
+        case .MUSIC:
             return "Music"
-        case .movies:
+        case .MOVIES:
             return "Movies"
-        case .fashion:
+        case .FASHION:
             return "Fashion"
-        case .history:
+        case .HISTORY:
             return "History"
-        case .architecture:
+        case .ARCHITECTURE:
             return "Architecture"
         }
     }
 
     init?(caseName: String) {
         for key in LearningOpportunities.allCases where "\(key.value)" == caseName {
+            self = key
+            return
+        }
+
+        return nil
+    }
+}
+
+enum LanguageProficiency: Int, CaseIterable, Codable {
+    case BEGINNER = 0
+    case INTERMEDIATE = 1
+    case FLUENT = 2
+
+    var value: String {
+        switch self {
+        case .BEGINNER:
+            return "Beginner"
+        case .INTERMEDIATE:
+            return "Intermediate"
+        case .FLUENT:
+            return "Fluent"
+        }
+    }
+
+    init?(caseName: String) {
+        for key in LanguageProficiency.allCases where "\(key.value)" == caseName {
             self = key
             return
         }

@@ -79,7 +79,7 @@ class ProfileExperienceVC: BaseVC<ProfileExperienceViewModel, ProfileCoordinator
         guard let data = viewModel?.data else { return }
 
         switch data.experience.type {
-        case .professional:
+        case .COMPANY:
             domainLabel.text = "company".localized()
             domainTextField.configure(
                 placeHolder: "company_placeholder".localized(),
@@ -87,7 +87,7 @@ class ProfileExperienceVC: BaseVC<ProfileExperienceViewModel, ProfileCoordinator
                 type: .plain
             )
             segmentedControl.selectedSegmentIndex = 0
-        case .education:
+        case .UNIVERSITY:
             domainLabel.text = "university".localized()
             domainTextField.configure(
                 placeHolder: "university_placeholder".localized(),
@@ -158,9 +158,9 @@ class ProfileExperienceVC: BaseVC<ProfileExperienceViewModel, ProfileCoordinator
         navigationItem.rightBarButtonItem?.isEnabled = true
 
         switch type {
-        case .professional:
+        case .COMPANY:
             segmentedControl.removeSegment(at: 0, animated: false)
-        case .education:
+        case .UNIVERSITY:
             segmentedControl.removeSegment(at: 1, animated: false)
         }
         segmentedControl.selectedSegmentIndex = 0
@@ -172,7 +172,7 @@ class ProfileExperienceVC: BaseVC<ProfileExperienceViewModel, ProfileCoordinator
         guard var experience = viewModel?.data.experience else { return }
 
         if sender.selectedSegmentIndex == 0 {
-            experience.type = .professional
+            experience.type = .COMPANY
             domainLabel.text = "company".localized()
             domainTextField.configure(
                 placeHolder: "company_placeholder".localized(),
@@ -181,7 +181,7 @@ class ProfileExperienceVC: BaseVC<ProfileExperienceViewModel, ProfileCoordinator
             )
         }
         else {
-            experience.type = .education
+            experience.type = .UNIVERSITY
             domainLabel.text = "university".localized()
             domainTextField.configure(
                 placeHolder: "university_placeholder".localized(),

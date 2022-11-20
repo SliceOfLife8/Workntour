@@ -21,6 +21,16 @@ class TravelerProfileVC: BaseVC<TravelerProfileViewModel, ProfileCoordinator> {
                 forCellWithReuseIdentifier: ProfileSimpleCell.identifier
             )
             collectionView.register(
+                UINib(nibName: ProfileLanguageCell.identifier,
+                      bundle: Bundle(for: ProfileLanguageCell.self)),
+                forCellWithReuseIdentifier: ProfileLanguageCell.identifier
+            )
+            collectionView.register(
+                UINib(nibName: ProfileExperienceCell.identifier,
+                      bundle: Bundle(for: ProfileExperienceCell.self)),
+                forCellWithReuseIdentifier: ProfileExperienceCell.identifier
+            )
+            collectionView.register(
                 UINib(nibName: ProfileHeaderView.identifier,
                       bundle: Bundle(for: ProfileHeaderView.self)),
                 forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
@@ -51,7 +61,27 @@ class TravelerProfileVC: BaseVC<TravelerProfileViewModel, ProfileCoordinator> {
                     at: .init(row: 0, section: 0)
                 ) as? ProfileHeaderView
                 headerView?.updateImage(data)
+                guard let profile = self?.viewModel?.traveler else { return }
                 print("talk with VM in order to update profile!")
+            })
+            .store(in: &storage)
+
+        viewModel?.$profileUpdated
+            .dropFirst()
+            .sink(receiveValue: { [weak self] status in
+                if status {
+                    self?.viewModel?.shouldShowAnimation = true
+                    self?.collectionView.reloadData()
+                }
+                else {
+                    self?.coordinator?.navigate(
+                        to: .state(
+                            .showAlert(
+                                title: "",
+                                subtitle: "Something went wrong!\nPlease try again"
+                            )
+                        ))
+                }
             })
             .store(in: &storage)
     }
@@ -61,16 +91,31 @@ class TravelerProfileVC: BaseVC<TravelerProfileViewModel, ProfileCoordinator> {
 extension TravelerProfileVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return TravelerProfileSection.allCases.count - 1
+        return TravelerProfileSection.allCases.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if TravelerProfileSection(rawValue: indexPath.row) == .languages {
             guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: ProfileSimpleCell.identifier,
+                withReuseIdentifier: ProfileLanguageCell.identifier,
                 for: indexPath
-            ) as? ProfileSimpleCell,
+            ) as? ProfileLanguageCell,
                   let data = viewModel?.getLanguageCellDataModel()
+            else {
+                assertionFailure("Check viewModel attributes!")
+                return UICollectionViewCell()
+            }
+
+            cell.configureLayout(for: data)
+            cell.delegate = self
+            return cell
+        }
+        else if TravelerProfileSection(rawValue: indexPath.row) == .experience {
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: ProfileExperienceCell.identifier,
+                for: indexPath
+            ) as? ProfileExperienceCell,
+                  let data = viewModel?.getExperienceCellDataModel()
             else {
                 assertionFailure("Check viewModel attributes!")
                 return UICollectionViewCell()
@@ -97,7 +142,11 @@ extension TravelerProfileVC: UICollectionViewDataSource, UICollectionViewDelegat
         }
     }
 
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        viewForSupplementaryElementOfKind kind: String,
+        at indexPath: IndexPath
+    ) -> UICollectionReusableView {
         switch kind {
         case UICollectionView.elementKindSectionHeader:
             guard let headerView = collectionView.dequeueReusableSupplementaryView(
@@ -139,9 +188,17 @@ extension TravelerProfileVC: UICollectionViewDataSource, UICollectionViewDelegat
         }
     }
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
         if TravelerProfileSection(rawValue: indexPath.row) == .languages {
             guard let dataModel = viewModel?.getLanguageCellDataModel() else { return .zero }
+            return dataModel.sizeForItem(in: collectionView)
+        }
+        else if TravelerProfileSection(rawValue: indexPath.row) == .experience {
+            guard let dataModel = viewModel?.getExperienceCellDataModel() else { return .zero }
             return dataModel.sizeForItem(in: collectionView)
         }
         else {
@@ -150,12 +207,20 @@ extension TravelerProfileVC: UICollectionViewDataSource, UICollectionViewDelegat
         }
     }
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        referenceSizeForHeaderInSection section: Int
+    ) -> CGSize {
         guard let dataModel = viewModel?.getHeaderDataModel() else { return .zero }
         return dataModel.sizeForItem(in: collectionView)
     }
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        referenceSizeForFooterInSection section: Int
+    ) -> CGSize {
         guard let dataModel = viewModel?.getFooterDataModel() else { return .zero }
         return dataModel.sizeForItem(in: collectionView)
     }
@@ -170,10 +235,12 @@ extension TravelerProfileVC: ProfileHeaderViewDelegate, ProfileFooterViewDelegat
     }
 
     func dietaryHasChanged(at index: Int) {
+        viewModel?.traveler?.specialDietary = SpecialDietary(rawValue: index)
         print("update profile!")
     }
 
     func driverLicenseHasChanged(_ hasLicense: Bool) {
+        viewModel?.traveler?.driverLicense = hasLicense
         print("update profile!")
     }
 }
@@ -200,5 +267,40 @@ extension TravelerProfileVC: ProfileSimpleCellDelegate {
         default:
             self.coordinator?.navigate(to: .selectSkills(preselectedSkills: []))
         }
+    }
+}
+
+// MARK: - ProfileLanguageCellDelegate
+extension TravelerProfileVC: ProfileLanguageCellDelegate {
+
+    func addNewLanguage() {
+        let existingLanguages = viewModel?.traveler?.languages?.compactMap { $0.language } ?? []
+        self.coordinator?.navigate(to: .addLanguage(existingLanguages: existingLanguages))
+    }
+
+    func editLanguage(at index: Int) {
+        guard let language = viewModel?.traveler?.languages?[safe: index] else { return }
+        self.coordinator?.navigate(to: .editLanguage(language))
+    }
+
+    func deleteLanguage(at index: Int) {
+        viewModel?.traveler?.languages?.remove(at: index)
+        print("update profile")
+    }
+}
+
+// MARK: - ProfileExperienceCellDelegate
+extension TravelerProfileVC: ProfileExperienceCellDelegate {
+
+    func addNewExperience() {
+        self.coordinator?.navigate(to: .openExperience(nil))
+    }
+
+    func editExperience(at index: Int) {
+        print("ok")
+    }
+
+    func deleteExperience(at index: Int) {
+        print("okeei")
     }
 }

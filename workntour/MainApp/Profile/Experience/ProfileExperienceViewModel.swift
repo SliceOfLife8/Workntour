@@ -11,7 +11,7 @@ class ProfileExperienceViewModel: BaseViewModel {
     /// Service
     private var service: ProfileService
     /// Inputs
-    @Published var traveler: TravelerProfile?
+    @Published var traveler: TravelerProfileDto?
 
     /// Outputs
     var data: DataModel
@@ -22,7 +22,7 @@ class ProfileExperienceViewModel: BaseViewModel {
     required init(data: DataModel, service: ProfileService = DataManager.shared) {
         self.data = data
         self.service = service
-        self.traveler = UserDataManager.shared.retrieve(TravelerProfile.self)
+        self.traveler = UserDataManager.shared.retrieve(TravelerProfileDto.self)
     }
 
 }
@@ -34,11 +34,11 @@ extension ProfileExperienceViewModel {
 
         // MARK: - Properties
 
-        var experience: ProfileExperience
+        var experience: Experience
 
         // MARK: - Constructors/Destructors
-        init(experience: ProfileExperience?) {
-            self.experience = experience ?? ProfileExperience(type: .professional)
+        init(experience: Experience?) {
+            self.experience = experience ?? Experience(type: .COMPANY)
         }
     }
 }

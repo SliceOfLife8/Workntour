@@ -23,7 +23,7 @@ class TravelerPersonalInfoViewModel: BaseViewModel {
     }
 
     /// Outputs
-    @Published var updateProfileDto: TravelerProfile?
+    @Published var updateProfileDto: TravelerProfileDto?
 
     // MARK: - Init
 
@@ -70,10 +70,10 @@ extension TravelerPersonalInfoViewModel {
 
         // MARK: - Properties
 
-        var profile: TravelerProfile
+        var profile: TravelerProfileDto
 
         // MARK: - Constructors/Destructors
-        init(profile: TravelerProfile) {
+        init(profile: TravelerProfileDto) {
             self.profile = profile
         }
     }

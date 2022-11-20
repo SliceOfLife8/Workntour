@@ -139,7 +139,7 @@
 		1BC190E82862E91F00585533 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BC190E72862E91F00585533 /* MapViewController.xib */; };
 		1BC190ED2863394100585533 /* ProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC190EC2863394100585533 /* ProfileRouter.swift */; };
 		1BC190EF2863394B00585533 /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC190EE2863394B00585533 /* ProfileService.swift */; };
-		1BC190F12863397F00585533 /* TravelerProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC190F02863397F00585533 /* TravelerProfile.swift */; };
+		1BC190F12863397F00585533 /* TravelerProfileDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC190F02863397F00585533 /* TravelerProfileDto.swift */; };
 		1BC190F32863399E00585533 /* CompanyHostProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC190F22863399E00585533 /* CompanyHostProfile.swift */; };
 		1BC190F5286339DD00585533 /* IndividualHostProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC190F4286339DD00585533 /* IndividualHostProfile.swift */; };
 		1BE6EA992868BFB8009CBE6D /* OpportunitiesVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BE6EA982868BFB8009CBE6D /* OpportunitiesVC.xib */; };
@@ -148,10 +148,14 @@
 		CE3F9E8F291FA88700480493 /* ProfileSelectAttributesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3F9E8E291FA88700480493 /* ProfileSelectAttributesVC.swift */; };
 		CE3F9E92291FA96100480493 /* ProfileSelectAttributesVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE3F9E91291FA96100480493 /* ProfileSelectAttributesVC.xib */; };
 		CE3F9E94291FAA6800480493 /* ProfileSelectAttributesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3F9E93291FAA6800480493 /* ProfileSelectAttributesViewModel.swift */; };
+		CE446D5A29292F02004026FA /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE446D5929292F02004026FA /* Language.swift */; };
+		CE446D5C292930E1004026FA /* ProfileLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE446D5B292930E1004026FA /* ProfileLanguage.swift */; };
+		CE446D70292A7A24004026FA /* ProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE446D6F292A7A24004026FA /* ProfileImage.swift */; };
+		CE446D73292A7C35004026FA /* TravelerUpdatedBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE446D72292A7C35004026FA /* TravelerUpdatedBody.swift */; };
 		CE8332CE2920EC2600F751FE /* ProfileExperienceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8332CD2920EC2600F751FE /* ProfileExperienceVC.swift */; };
 		CE8332D02920EC2D00F751FE /* ProfileExperienceVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8332CF2920EC2D00F751FE /* ProfileExperienceVC.xib */; };
 		CE8332D22920EC3600F751FE /* ProfileExperienceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8332D12920EC3600F751FE /* ProfileExperienceViewModel.swift */; };
-		CE8332D42920F5A500F751FE /* ProfileExperience.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8332D32920F5A500F751FE /* ProfileExperience.swift */; };
+		CE8332D42920F5A500F751FE /* Experience.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8332D32920F5A500F751FE /* Experience.swift */; };
 		CE8332D72921009F00F751FE /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8332D62921009F00F751FE /* ThemeManager.swift */; };
 		CE8332DE292218D100F751FE /* ProfileAddSummaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8332DD292218D100F751FE /* ProfileAddSummaryVC.swift */; };
 		CE8332E0292218DF00F751FE /* ProfileAddSummaryVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8332DF292218DF00F751FE /* ProfileAddSummaryVC.xib */; };
@@ -318,7 +322,7 @@
 		1BC190E72862E91F00585533 /* MapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
 		1BC190EC2863394100585533 /* ProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRouter.swift; sourceTree = "<group>"; };
 		1BC190EE2863394B00585533 /* ProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
-		1BC190F02863397F00585533 /* TravelerProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelerProfile.swift; sourceTree = "<group>"; };
+		1BC190F02863397F00585533 /* TravelerProfileDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelerProfileDto.swift; sourceTree = "<group>"; };
 		1BC190F22863399E00585533 /* CompanyHostProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyHostProfile.swift; sourceTree = "<group>"; };
 		1BC190F4286339DD00585533 /* IndividualHostProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualHostProfile.swift; sourceTree = "<group>"; };
 		1BE6EA982868BFB8009CBE6D /* OpportunitiesVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OpportunitiesVC.xib; sourceTree = "<group>"; };
@@ -331,11 +335,15 @@
 		CE3F9E8E291FA88700480493 /* ProfileSelectAttributesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSelectAttributesVC.swift; sourceTree = "<group>"; };
 		CE3F9E91291FA96100480493 /* ProfileSelectAttributesVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileSelectAttributesVC.xib; sourceTree = "<group>"; };
 		CE3F9E93291FAA6800480493 /* ProfileSelectAttributesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSelectAttributesViewModel.swift; sourceTree = "<group>"; };
+		CE446D5929292F02004026FA /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
+		CE446D5B292930E1004026FA /* ProfileLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileLanguage.swift; sourceTree = "<group>"; };
+		CE446D6F292A7A24004026FA /* ProfileImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImage.swift; sourceTree = "<group>"; };
+		CE446D72292A7C35004026FA /* TravelerUpdatedBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelerUpdatedBody.swift; sourceTree = "<group>"; };
 		CE6AC9952909A4CD00B962A0 /*  Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = " Info.plist"; sourceTree = "<group>"; };
 		CE8332CD2920EC2600F751FE /* ProfileExperienceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileExperienceVC.swift; sourceTree = "<group>"; };
 		CE8332CF2920EC2D00F751FE /* ProfileExperienceVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileExperienceVC.xib; sourceTree = "<group>"; };
 		CE8332D12920EC3600F751FE /* ProfileExperienceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileExperienceViewModel.swift; sourceTree = "<group>"; };
-		CE8332D32920F5A500F751FE /* ProfileExperience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileExperience.swift; sourceTree = "<group>"; };
+		CE8332D32920F5A500F751FE /* Experience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Experience.swift; sourceTree = "<group>"; };
 		CE8332D62921009F00F751FE /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		CE8332DD292218D100F751FE /* ProfileAddSummaryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAddSummaryVC.swift; sourceTree = "<group>"; };
 		CE8332DF292218DF00F751FE /* ProfileAddSummaryVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileAddSummaryVC.xib; sourceTree = "<group>"; };
@@ -440,6 +448,7 @@
 			children = (
 				1B39AA21287026A7009377A7 /* OpportunityDto.swift */,
 				1B39AA5028749A7C009377A7 /* OpportunityEnums.swift */,
+				CE446D5929292F02004026FA /* Language.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -961,13 +970,10 @@
 		1BC190EA2863392400585533 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				1BC190F02863397F00585533 /* TravelerProfile.swift */,
+				CE446D71292A7BD7004026FA /* Traveler */,
 				1BC190F4286339DD00585533 /* IndividualHostProfile.swift */,
 				1BC190F22863399E00585533 /* CompanyHostProfile.swift */,
-				1B6A8C9D2897A836003A1540 /* TravelerType.swift */,
-				CE8332D32920F5A500F751FE /* ProfileExperience.swift */,
-				CED06CFD2928DEA000C054E3 /* TravelerProfileSections.swift */,
-				CED06D03292909CA00C054E3 /* SpecialDietary.swift */,
+				CE446D6F292A7A24004026FA /* ProfileImage.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1002,6 +1008,20 @@
 				CE3F9E93291FAA6800480493 /* ProfileSelectAttributesViewModel.swift */,
 			);
 			path = SelectAttributes;
+			sourceTree = "<group>";
+		};
+		CE446D71292A7BD7004026FA /* Traveler */ = {
+			isa = PBXGroup;
+			children = (
+				1BC190F02863397F00585533 /* TravelerProfileDto.swift */,
+				1B6A8C9D2897A836003A1540 /* TravelerType.swift */,
+				CE8332D32920F5A500F751FE /* Experience.swift */,
+				CED06CFD2928DEA000C054E3 /* TravelerProfileSections.swift */,
+				CED06D03292909CA00C054E3 /* SpecialDietary.swift */,
+				CE446D5B292930E1004026FA /* ProfileLanguage.swift */,
+				CE446D72292A7C35004026FA /* TravelerUpdatedBody.swift */,
+			);
+			path = Traveler;
 			sourceTree = "<group>";
 		};
 		CE8332CC2920EB3500F751FE /* Experience */ = {
@@ -1286,13 +1306,14 @@
 				1BC1909E285A0DB200585533 /* TabBarCoordinator.swift in Sources */,
 				CE3F9E94291FAA6800480493 /* ProfileSelectAttributesViewModel.swift in Sources */,
 				CE83330929228D0A00F751FE /* LanguagePickerViewModel.swift in Sources */,
-				CE8332D42920F5A500F751FE /* ProfileExperience.swift in Sources */,
+				CE8332D42920F5A500F751FE /* Experience.swift in Sources */,
 				CE8332D72921009F00F751FE /* ThemeManager.swift in Sources */,
 				1BC190C6285CA91000585533 /* TabBarViewController.swift in Sources */,
 				1BC190E028620D0400585533 /* SearchLocationsVC.swift in Sources */,
 				1B39AA5C2878533B009377A7 /* GooglePlacesManager.swift in Sources */,
 				1B7753CA286A276000D81526 /* CreateOpportunityViewModel.swift in Sources */,
 				1BC190B8285C5CB400585533 /* NotificationsCoordinator.swift in Sources */,
+				CE446D5A29292F02004026FA /* Language.swift in Sources */,
 				1BC190DB28620B9300585533 /* LocationManager.swift in Sources */,
 				1BC190B6285C5CA400585533 /* OpportunitiesViewModel.swift in Sources */,
 				1B443047288A722A002145BC /* MapOfOpportunitiesViewModel.swift in Sources */,
@@ -1308,6 +1329,7 @@
 				1BC190D1285F255500585533 /* HostProfileViewModel.swift in Sources */,
 				1B39AA312872F16D009377A7 /* ImagePageViewController.swift in Sources */,
 				1B443045288A721C002145BC /* MapOfOpportunitiesVC.swift in Sources */,
+				CE446D73292A7C35004026FA /* TravelerUpdatedBody.swift in Sources */,
 				1B443033288853BB002145BC /* OpportunityCoordinateModel.swift in Sources */,
 				1B3C384328520E06000EEADF /* LoginVC.swift in Sources */,
 				1B1683A8283D20180067F2DB /* Pagination.swift in Sources */,
@@ -1343,13 +1365,15 @@
 				1B4430282885C93F002145BC /* Filters+CollectionViews.swift in Sources */,
 				1B9A3D8E282C0B31003E0C34 /* AuthorizationService.swift in Sources */,
 				1BC190C9285F1C0700585533 /* UserDataManager.swift in Sources */,
-				1BC190F12863397F00585533 /* TravelerProfile.swift in Sources */,
+				1BC190F12863397F00585533 /* TravelerProfileDto.swift in Sources */,
 				1BC190A6285B15A000585533 /* OpportunitiesCoordinator.swift in Sources */,
 				1BC190BE285C5CD200585533 /* SettingsCoordinator.swift in Sources */,
 				1BA2DEFE281E8C1800DB128D /* AppRootVC.swift in Sources */,
+				CE446D5C292930E1004026FA /* ProfileLanguage.swift in Sources */,
 				1B9A3D32282A3CE9003E0C34 /* Traveler.swift in Sources */,
 				CEAB0A3629253B560023A2C6 /* TravelerPersonalInfoVC.swift in Sources */,
 				1B3C383628508B79000EEADF /* RegistrationHostVC.swift in Sources */,
+				CE446D70292A7A24004026FA /* ProfileImage.swift in Sources */,
 				1B7315F3281E7DD0001F2E6A /* SceneDelegate.swift in Sources */,
 				1B39AA5128749A7C009377A7 /* OpportunityEnums.swift in Sources */,
 				1BA2DEEF281E840900DB128D /* DeepLinkManager.swift in Sources */,

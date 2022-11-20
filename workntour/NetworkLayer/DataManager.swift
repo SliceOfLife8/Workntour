@@ -70,7 +70,7 @@ extension DataManager: ProfileService {
         return networking.request(
             with: ProfileRouter.getTraveler(memberId),
             scheduler: DispatchQueue.main,
-            class: GenericResponse<TravelerProfile>.self)
+            class: GenericResponse<TravelerProfileDto>.self)
         .compactMap {
             UserDataManager.shared.save($0.data,
                                         memberId: $0.data?.memberID,
@@ -108,11 +108,11 @@ extension DataManager: ProfileService {
         .eraseToAnyPublisher()
     }
 
-    func updateTravelerProfile(model: TravelerProfile) -> AnyPublisher<TravelerProfile?, ProviderError> {
+    func updateTravelerProfile(model: TravelerUpdatedBody) -> AnyPublisher<TravelerProfileDto?, ProviderError> {
         return networking.request(
             with: ProfileRouter.updateTraveler(body: model),
             scheduler: DispatchQueue.main,
-            class: GenericResponse<TravelerProfile>.self)
+            class: GenericResponse<TravelerProfileDto>.self)
         .compactMap {
             UserDataManager.shared.save($0.data,
                                         memberId: $0.data?.memberID,
