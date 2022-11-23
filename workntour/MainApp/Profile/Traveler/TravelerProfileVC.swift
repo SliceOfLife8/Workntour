@@ -296,11 +296,11 @@ extension TravelerProfileVC: ProfileExperienceCellDelegate {
         self.coordinator?.navigate(to: .openExperience(nil))
     }
 
-    func editExperience(at index: Int) {
-        print("ok")
+    func editExperience(withUUID uuid: String) {
+        print("edit: \(uuid)")
     }
 
-    func deleteExperience(at index: Int) {
-        print("okeei")
+    func deleteExperience(withUUID uuid: String) {
+        print("delete: \(uuid)")
     }
 }

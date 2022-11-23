@@ -29,7 +29,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1u4-n6-88I">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="400"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0uw-J8-5sz" customClass="KDCircularProgress" customModule="KDCircularProgress">
+                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0uw-J8-5sz" customClass="KDCircularProgress" customModule="KDCircularProgress">
                             <rect key="frame" x="40" y="8" width="240" height="240"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="traveler" translatesAutoresizingMaskIntoConstraints="NO" id="6iG-cs-HJf">

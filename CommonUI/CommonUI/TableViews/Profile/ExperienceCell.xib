@@ -9,11 +9,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Lato-BoldItalic.ttf">
+            <string>Lato-BoldItalic</string>
+        </array>
         <array key="Lato-Semibold.ttf">
             <string>Lato-Semibold</string>
-        </array>
-        <array key="Lato-SemiboldItalic.ttf">
-            <string>Lato-SemiboldItalic</string>
         </array>
     </customFonts>
     <objects>
@@ -34,10 +34,10 @@
                         </constraints>
                     </view>
                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="N7N-Bg-eeM">
-                        <rect key="frame" x="24" y="13.000000000000004" width="272" height="40.333333333333343"/>
+                        <rect key="frame" x="24" y="13" width="272" height="79"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="a1J-E8-F6v">
-                                <rect key="frame" x="0.0" y="0.0" width="196.33333333333334" height="40.333333333333336"/>
+                            <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="a1J-E8-F6v">
+                                <rect key="frame" x="0.0" y="19.333333333333332" width="196.33333333333334" height="40.333333333333343"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Microsoft Product designer " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ai4-EH-aFX" userLabel="title" customClass="LinkableLabel" customModule="CommonUI" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="196.33333333333334" height="19.333333333333332"/>
@@ -49,15 +49,15 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Sept 2014" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xYm-Hj-jDi" userLabel="dates">
-                                        <rect key="frame" x="0.0" y="23.333333333333336" width="196.33333333333334" height="17"/>
-                                        <fontDescription key="fontDescription" name="Lato-SemiboldItalic" family="Lato" pointSize="14"/>
+                                        <rect key="frame" x="0.0" y="23.333333333333329" width="196.33333333333334" height="17"/>
+                                        <fontDescription key="fontDescription" name="Lato-BoldItalic" family="Lato" pointSize="14"/>
                                         <color key="textColor" name="placeholder"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x5z-nv-vZs" userLabel="trash">
-                                <rect key="frame" x="248" y="8.3333333333333321" width="24" height="23.999999999999996"/>
+                                <rect key="frame" x="248" y="27.666666666666664" width="24" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="x5z-nv-vZs" secondAttribute="height" multiplier="1:1" id="JGg-D6-dE5"/>
                                     <constraint firstAttribute="height" constant="24" id="UeW-5e-fSd"/>
@@ -73,6 +73,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </stackView>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="tyb-26-CoS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="2rv-Eb-Fd0"/>
                     <constraint firstItem="N7N-Bg-eeM" firstAttribute="top" secondItem="tyb-26-CoS" secondAttribute="bottom" constant="12" id="2xD-Fn-bye"/>
@@ -80,7 +81,7 @@
                     <constraint firstItem="tyb-26-CoS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="KVT-TN-ya6"/>
                     <constraint firstItem="N7N-Bg-eeM" firstAttribute="trailing" secondItem="tyb-26-CoS" secondAttribute="trailing" id="YzB-h7-3nC"/>
                     <constraint firstAttribute="trailing" secondItem="tyb-26-CoS" secondAttribute="trailing" constant="24" id="loe-qw-Hoh"/>
-                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="N7N-Bg-eeM" secondAttribute="bottom" constant="10" id="tMH-Vt-MSN"/>
+                    <constraint firstAttribute="bottom" secondItem="N7N-Bg-eeM" secondAttribute="bottom" constant="8" id="tMH-Vt-MSN"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

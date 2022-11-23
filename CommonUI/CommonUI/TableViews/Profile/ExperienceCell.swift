@@ -78,8 +78,8 @@ extension ExperienceCell {
 
             let title = "\(organisation), \(position)"
 
-            // 24 Leading, 8 spacing between label and trash, 24 -> arrow's width, 24 trailing
-            let titleWidth = width - 24 - 8 - 24 - 16
+            // 24 Leading, 6 spacing between label and trash, 24 -> arrow's width, 24 trailing
+            let titleWidth = width - 24 - 6 - 24 - 24
             let titleHeight = title.calculatedHeight(
                 onConstrainedWidth: titleWidth,
                 fontName: .semibold,
@@ -98,7 +98,7 @@ extension ExperienceCell {
             + titleHeight
             + 4
             + datesHeight
-            + 12
+            + 8
 
             return CGSize(width: width, height: totalCellHeight)
         }

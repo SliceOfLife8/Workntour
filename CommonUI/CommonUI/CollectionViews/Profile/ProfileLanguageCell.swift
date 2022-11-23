@@ -192,7 +192,7 @@ extension ProfileLanguageCell {
             if numOfLanguages > 0 {
                 totalCellHeight = topSpacing
                     + titleHeight
-                    + 16*2
+                    + 16
                     + CGFloat(numOfLanguages)*48
             }
             else {

@@ -44,6 +44,7 @@ public class ProfileHeaderView: UICollectionReusableView {
         self.dataModel = model
         fullnameLabel.text = model.fullname
         introLabel.text = model.introText
+        progressBar.isHidden = false
     }
 
     public func startAnimation() {

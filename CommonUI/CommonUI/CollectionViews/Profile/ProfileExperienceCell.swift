@@ -10,8 +10,8 @@ import SharedKit
 
 public protocol ProfileExperienceCellDelegate: AnyObject {
     func addNewExperience()
-    func editExperience(at index: Int)
-    func deleteExperience(at index: Int)
+    func editExperience(withUUID uuid: String)
+    func deleteExperience(withUUID uuid: String)
 }
 
 public class ProfileExperienceCell: UICollectionViewCell {
@@ -44,6 +44,7 @@ public class ProfileExperienceCell: UICollectionViewCell {
                       bundle: Bundle(for: ExperienceCell.self)),
                 forCellReuseIdentifier: ExperienceCell.identifier
             )
+            tableView.backgroundColor = .white
             tableView.delegate = self
             tableView.dataSource = self
         }
@@ -67,8 +68,8 @@ public class ProfileExperienceCell: UICollectionViewCell {
         let tableViewHeight = model.tableViewHeight(in: contentView)
 
         if tableViewHeight > 0 {
-            tableView.isHidden = false
             descriptionStackView.isHidden = true
+            tableView.isHidden = false
             tableViewHeightConstraint.constant = tableViewHeight
         }
         else {
@@ -93,20 +94,11 @@ public class ProfileExperienceCell: UICollectionViewCell {
 extension ProfileExperienceCell: UITableViewDelegate, UITableViewDataSource {
 
     public func numberOfSections(in tableView: UITableView) -> Int {
-        return dataModel?.experiences.count ?? 0
+        return dataModel?.numberOfSections() ?? 0
     }
 
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            let numOfExperiences = dataModel?.experiences[.professional]?.count ?? 0
-            if numOfExperiences == 0 {
-                return dataModel?.experiences[.educational]?.count ?? 0
-            }
-            return numOfExperiences
-        }
-        else {
-            return dataModel?.experiences[.educational]?.count ?? 0
-        }
+        return dataModel?.numberOfRowsInSection(section) ?? 0
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -131,26 +123,33 @@ extension ProfileExperienceCell: UITableViewDelegate, UITableViewDataSource {
     }
 
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.editExperience(at: indexPath.row)
+        guard let dataModel else { return }
+        let previousItems = indexPath.section > 0
+        ? tableView.numberOfRows(inSection: 0)
+        : 0
+        delegate?.editExperience(withUUID: dataModel.experiences[indexPath.row + previousItems].uuid)
     }
 
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let dataModel else { return nil }
         let view = UIView()
+        view.backgroundColor = .white
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(label)
         label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24).isActive = true
         label.topAnchor.constraint(equalTo: view.topAnchor, constant: 12).isActive = true
+
         if section == 0 {
-            if dataModel?.experiences[.professional]?.count ?? 0 > 0 {
-                label.text = DataModel.Mode.professional.value
+            if dataModel.experiences.filter({ $0.professional }).count > 0 {
+                label.text = "experience_professional".localized()
             }
             else {
-                label.text = DataModel.Mode.educational.value
+                label.text = "experience_educational".localized()
             }
         }
         else {
-            label.text = DataModel.Mode.educational.value
+            label.text = "experience_educational".localized()
         }
 
         label.textColor = UIColor(hexString: "#14C3AD")
@@ -171,8 +170,16 @@ extension ProfileExperienceCell: UITableViewDelegate, UITableViewDataSource {
 extension ProfileExperienceCell: ExperienceCellDelegate {
 
     func didTrashTap(_ cell: ExperienceCell) {
-        guard let row = tableView.indexPath(for: cell)?.row else { return }
-        delegate?.deleteExperience(at: row)
+        guard let indexPath = tableView.indexPath(for: cell),
+              let dataModel
+        else {
+            return
+        }
+        let previousItems = indexPath.section > 0
+        ? tableView.numberOfRows(inSection: 0)
+        : 0
+
+        delegate?.deleteExperience(withUUID: dataModel.experiences[indexPath.row + previousItems].uuid)
     }
 }
 
@@ -182,17 +189,20 @@ extension ProfileExperienceCell {
     public class DataModel {
 
         public struct ExperienceUI {
+            let uuid: String
             let professional: Bool
             let organisation: String
             let position: String
             let dateText: String
 
             public init(
+                uuid: String,
                 professional: Bool,
                 organisation: String,
                 position: String,
                 dateText: String
             ) {
+                self.uuid = uuid
                 self.professional = professional
                 self.organisation = organisation
                 self.position = position
@@ -202,23 +212,9 @@ extension ProfileExperienceCell {
 
         // MARK: - Properties
 
-        public enum Mode {
-            case professional
-            case educational
-
-            var value: String {
-                switch self {
-                case .professional:
-                    return "Professional"
-                case .educational:
-                    return "Educational"
-                }
-            }
-        }
-
         let title: String
         let description: String
-        let experiences: [Mode: [ExperienceUI]]
+        let experiences: [ExperienceUI]
         let experienceDataModels: [ExperienceCell.DataModel]
 
         // MARK: - Constructors/Destructors
@@ -226,13 +222,12 @@ extension ProfileExperienceCell {
         public init(
             title: String,
             description: String,
-            experiences: [Mode: [ExperienceUI]]
+            experiences: [ExperienceUI]
         ) {
             self.title = title
             self.description = description
-            self.experiences = experiences
-            self.experienceDataModels = experiences.map { $0.value }.flatMap { $0 }
-                .sorted(by: { $0.professional && !$1.professional })
+            self.experiences = experiences.sorted(by: { $0.professional && !$1.professional })
+            self.experienceDataModels = self.experiences
                 .compactMap {
                     .init(
                         organisation: $0.organisation,
@@ -244,19 +239,17 @@ extension ProfileExperienceCell {
 
         func tableViewHeight(in contentView: UIView) -> CGFloat {
             let sectionHeight: CGFloat = 34
-            let rowHeight: CGFloat = 64
 
             var totalHeight: CGFloat = 0
-            let professionalExperiencesNum = experiences[.professional]?.count ?? 0
-            let educationalExperiencesNum = experiences[.educational]?.count ?? 0
+            let professionalExperiencesNum = experiences.filter { $0.professional }.count
+            let educationalExperiencesNum = experiences.filter { !$0.professional }.count
 
             if professionalExperiencesNum > 0 {
-                totalHeight = rowHeight * CGFloat(professionalExperiencesNum)
                 totalHeight += sectionHeight
             }
 
-            experiences[.educational]?.forEach { education in
-                totalHeight += experienceDataModels.first?.sizeForItem(in: contentView).height ?? 0
+            experienceDataModels.forEach { experience in
+                totalHeight += experience.sizeForItem(in: contentView).height
             }
 
             if educationalExperiencesNum > 0 {
@@ -267,6 +260,32 @@ extension ProfileExperienceCell {
         }
 
         // MARK: - Methods
+
+        func numberOfSections() -> Int {
+            var number: Int = 0
+
+            if experiences.filter({ $0.professional }).count > 0 {
+                number += 1
+            }
+            if experiences.filter({ !$0.professional }).count > 0 {
+                number += 1
+            }
+            return number
+        }
+
+        func numberOfRowsInSection(_ section: Int) -> Int {
+            let professionalExperience = experiences.filter({ $0.professional })
+            let educationalExperience = experiences.filter({ !$0.professional })
+
+            if section == .zero {
+                return (professionalExperience.count > 0)
+                ? professionalExperience.count
+                : educationalExperience.count
+            }
+            else {
+                return educationalExperience.count
+            }
+        }
 
         public func sizeForItem(in contentView: UIView) -> CGSize {
             let width = contentView.bounds.width
@@ -295,7 +314,7 @@ extension ProfileExperienceCell {
             if tableHeight > 0 {
                 totalCellHeight = topSpacing
                 + titleHeight
-                + 16*2
+                + 16
                 + tableHeight
             }
             else {
@@ -308,11 +327,5 @@ extension ProfileExperienceCell {
 
             return CGSize(width: width, height: totalCellHeight)
         }
-    }
-}
-
-private extension Collection where Indices.Iterator.Element == Index {
-    subscript(safe index: Index) -> Iterator.Element? {
-        return indices.contains(index) ? self[index] : nil
     }
 }

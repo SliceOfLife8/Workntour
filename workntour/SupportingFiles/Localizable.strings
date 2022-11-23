@@ -52,3 +52,15 @@
 "type_of_traveler_header" = "Select your Type";
 "type_of_traveler_description" = "What kind of traveler are you? Please declare it, so you can match with the perfect host!";
 "type_of_traveler_title" = "Type";
+"experience_professional" = "Professional";
+"experience_educational" = "Professional";
+"traveler_intro" = "Don’t be shy! Workntour is all about getting to know new people, so please introduce yourself to us and to your potential hosts!";
+"dietary_title" = "Special Dietary Requirements";
+"license_title" = "Driver’s License";
+"personal_info_placeholder" = "You can edit your personal info here.";
+"description_placeholder" = "Describe how awesome you are, how you will be able to help your hosts and what you would like to learn!";
+"type_of_traveler_description" = "What type of traveler are you? Give us your input!";
+"interests_placeholder" = "Add your interests so you can match with the perfect host.";
+"skills_placeholder" = "Add skills that you have that potentially help you match with a host.";
+"languages_placeholder" = "Add your languages & your level.";
+"experience_placeholder" = "Add your Experience";

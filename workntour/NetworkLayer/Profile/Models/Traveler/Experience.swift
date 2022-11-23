@@ -11,6 +11,16 @@ import CommonUI
 struct ProfileExperience: Codable {
     let uuid: String
     let experience: Experience
+
+    func convertToCommonUI() -> ProfileExperienceCell.DataModel.ExperienceUI? {
+        return .init(
+            uuid: uuid,
+            professional: experience.type == .COMPANY,
+            organisation: experience.organization ?? "",
+            position: experience.position ?? "",
+            dateText: "kati"
+        )
+    }
 }
 
 struct Experience: Codable {
@@ -61,26 +71,6 @@ struct Experience: Codable {
         self.startDate = startDate
         self.endDate = endDate
         self.description = description
-    }
-
-    func getProfessionalExperiences() -> ProfileExperienceCell.DataModel.ExperienceUI? {
-        guard type == .COMPANY else { return nil }
-        return .init(
-            professional: true,
-            organisation: organization ?? "",
-            position: position ?? "",
-            dateText: "kati"
-        )
-    }
-
-    func getEducationalExperiences() -> ProfileExperienceCell.DataModel.ExperienceUI? {
-        guard type == .UNIVERSITY else { return nil }
-        return .init(
-            professional: true,
-            organisation: organization ?? "",
-            position: position ?? "",
-            dateText: "kati"
-        )
     }
 }
 
