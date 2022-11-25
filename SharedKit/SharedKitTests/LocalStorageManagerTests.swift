@@ -2,7 +2,7 @@
 //  LocalStorageManagerTests.swift
 //  SharedKitTests
 //
-//  Created by Petimezas, Chris, Vodafone on 2/5/22.
+//  Created by Chris Petimezas on 2/5/22.
 //
 
 import XCTest

@@ -2,7 +2,7 @@
 //  RegistrationError.swift
 //  workntour
 //
-//  Created by Petimezas, Chris, Vodafone on 1/6/22.
+//  Created by Chris Petimezas on 1/6/22.
 //
 
 import Foundation

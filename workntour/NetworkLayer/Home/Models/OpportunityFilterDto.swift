@@ -2,7 +2,7 @@
 //  OpportunityFilterDto.swift
 //  workntour
 //
-//  Created by Petimezas, Chris, Vodafone on 13/7/22.
+//  Created by Chris Petimezas on 13/7/22.
 //
 
 import Foundation

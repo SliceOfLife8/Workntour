@@ -2,7 +2,7 @@
 //  IndividualHostProfile.swift
 //  workntour
 //
-//  Created by Petimezas, Chris, Vodafone on 22/6/22.
+//  Created by Chris Petimezas on 22/6/22.
 //
 
 import Foundation

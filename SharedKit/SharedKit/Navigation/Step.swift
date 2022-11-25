@@ -2,7 +2,7 @@
 //  Step.swift
 //  SharedKit
 //
-//  Created by Petimezas, Chris, Vodafone on 12/5/22.
+//  Created by Chris Petimezas on 12/5/22.
 //
 
 import Foundation

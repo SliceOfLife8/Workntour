@@ -2,7 +2,7 @@
 //  OpportunitiesCoordinator.swift
 //  workntour
 //
-//  Created by Petimezas, Chris, Vodafone on 16/6/22.
+//  Created by Chris Petimezas on 16/6/22.
 //
 
 import UIKit

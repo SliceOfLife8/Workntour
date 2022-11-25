@@ -8,6 +8,7 @@
 import UIKit
 import KDCircularProgress
 import SharedKit
+import Kingfisher
 
 public protocol ProfileHeaderViewDelegate: AnyObject {
     func showImagePicker()
@@ -45,22 +46,32 @@ public class ProfileHeaderView: UICollectionReusableView {
         fullnameLabel.text = model.fullname
         introLabel.text = model.introText
         progressBar.isHidden = false
+        imageView.kf.setImage(
+            with: model.profileUrl,
+            placeholder: UIImage(named: model.mode.placeholder,
+                                 in: Bundle(for: type(of: self)),
+                                 with: nil)
+        )
     }
 
     public func startAnimation() {
         guard let dataModel else { return }
-        self.progressBar.animate(fromAngle: 0,
+        percentageButton.setTitle("", for: .normal)
+        percentageButton.isHidden = true
+        progressBar.animate(fromAngle: 0,
                                  toAngle: dataModel.percent360,
                                  duration: dataModel.duration,
                                  completion: { _ in
             self.percentageButton.setTitle("\(dataModel.percent100)% Complete", for: .normal)
-            self.percentageButton.isHidden = false
+            self.percentageButton.isHidden.toggle()
         })
     }
 
     public func updateImage(_ data: Data) {
         imageView.image = UIImage(data: data)
     }
+
+    // MARK: - Actions
     
     @IBAction func addNewImage(_ sender: Any) {
         self.delegate?.showImagePicker()
@@ -74,6 +85,13 @@ extension ProfileHeaderView {
 
         public enum Mode {
             case traveler
+
+            var placeholder: String {
+                switch self {
+                case .traveler:
+                    return "traveler"
+                }
+            }
         }
 
         // MARK: - Properties

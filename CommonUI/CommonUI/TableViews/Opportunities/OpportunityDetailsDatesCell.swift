@@ -2,7 +2,7 @@
 //  OpportunityDetailsDatesCell.swift
 //  CommonUI
 //
-//  Created by Petimezas, Chris, Vodafone on 6/7/22.
+//  Created by Chris Petimezas on 6/7/22.
 //
 
 import UIKit

@@ -2,7 +2,7 @@
 //  Filters+CollectionViews.swift
 //  workntour
 //
-//  Created by Petimezas, Chris, Vodafone on 18/7/22.
+//  Created by Chris Petimezas on 18/7/22.
 //
 
 import UIKit

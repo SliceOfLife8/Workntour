@@ -2,7 +2,7 @@
 //  UITextView+Extensions.swift
 //  SharedKit
 //
-//  Created by Petimezas, Chris, Vodafone on 28/6/22.
+//  Created by Chris Petimezas on 28/6/22.
 //
 
 import UIKit

@@ -2,7 +2,7 @@
 //  MapOfOpportunitiesViewModel.swift
 //  workntour
 //
-//  Created by Petimezas, Chris, Vodafone on 22/7/22.
+//  Created by Chris Petimezas on 22/7/22.
 //
 
 import Foundation

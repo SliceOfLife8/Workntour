@@ -37,6 +37,7 @@
 		1B0EC5EA281EE672007FF79F /* ProvideError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0EC5E7281EE672007FF79F /* ProvideError.swift */; };
 		1B9A3D79282AB4F3003E0C34 /* Pods_Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 614AA8F287AAB23980DA1D81 /* Pods_Networking.framework */; };
 		7373A1993BAD8BFE3A56C36E /* Pods_Networking_NetworkingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6550CA1A95C30A045D828627 /* Pods_Networking_NetworkingTests.framework */; };
+		CE01BD242931235100F87439 /* MultipartForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE01BD232931235100F87439 /* MultipartForm.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +94,7 @@
 		6550CA1A95C30A045D828627 /* Pods_Networking_NetworkingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Networking_NetworkingTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		68FE95F73B98D724040785AD /* Pods-Networking.dev debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Networking.dev debug.xcconfig"; path = "Target Support Files/Pods-Networking/Pods-Networking.dev debug.xcconfig"; sourceTree = "<group>"; };
 		94FD6BAD716A9026483B040F /* Pods-Networking-NetworkingTests.prod release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Networking-NetworkingTests.prod release.xcconfig"; path = "Target Support Files/Pods-Networking-NetworkingTests/Pods-Networking-NetworkingTests.prod release.xcconfig"; sourceTree = "<group>"; };
+		CE01BD232931235100F87439 /* MultipartForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipartForm.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 				1B0EC5E5281EE672007FF79F /* NetworkTarget.swift */,
 				1B0EC5E7281EE672007FF79F /* ProvideError.swift */,
 				1B0EC5E6281EE672007FF79F /* Response.swift */,
+				CE01BD232931235100F87439 /* MultipartForm.swift */,
 				1B0EC591281EE541007FF79F /* Networking.docc */,
 			);
 			path = Networking;
@@ -459,6 +462,7 @@
 				1B0EC5DA281EE654007FF79F /* Preference.swift in Sources */,
 				1B0EC5D2281EE63B007FF79F /* NetworkingProtocol.swift in Sources */,
 				1B0EC5D4281EE644007FF79F /* Environment.swift in Sources */,
+				CE01BD242931235100F87439 /* MultipartForm.swift in Sources */,
 				1B0EC5EA281EE672007FF79F /* ProvideError.swift in Sources */,
 				1B0EC5D9281EE654007FF79F /* NetworkingDebugger.swift in Sources */,
 				1B0EC5D6281EE64C007FF79F /* NetworkingExtensions.swift in Sources */,

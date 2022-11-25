@@ -2,7 +2,7 @@
 //  CommonUITests.swift
 //  CommonUITests
 //
-//  Created by Petimezas, Chris, Vodafone on 27/6/22.
+//  Created by Chris Petimezas on 27/6/22.
 //
 
 import XCTest

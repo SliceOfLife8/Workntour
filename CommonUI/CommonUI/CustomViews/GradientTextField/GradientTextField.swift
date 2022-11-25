@@ -2,7 +2,7 @@
 //  GradientTextField.swift
 //  CommonUI
 //
-//  Created by Petimezas, Chris, Vodafone on 27/5/22.
+//  Created by Chris Petimezas on 27/5/22.
 //
 
 import UIKit
@@ -27,7 +27,7 @@ public class GradientTextField: UITextFieldPadding {
     // MARK: - Vars
     public weak var gradientDelegate: GradientTFDelegate?
 
-    private var datePicker: UIDatePicker = {
+    private lazy var datePicker: UIDatePicker = {
         let picker = UIDatePicker()
         picker.datePickerMode = .date
         picker.preferredDatePickerStyle = .wheels

@@ -2,7 +2,7 @@
 //  SearchOpportunitiesVC.swift
 //  workntour
 //
-//  Created by Petimezas, Chris, Vodafone on 8/7/22.
+//  Created by Chris Petimezas on 8/7/22.
 //
 
 import UIKit

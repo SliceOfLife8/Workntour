@@ -2,7 +2,7 @@
 //  AuthorizationRouter.swift
 //  workntour
 //
-//  Created by Petimezas, Chris, Vodafone on 2/5/22.
+//  Created by Chris Petimezas on 2/5/22.
 //
 
 import Foundation

@@ -2,7 +2,7 @@
 //  PageControl.swift
 //  CommonUI
 //
-//  Created by Petimezas, Chris, Vodafone on 4/7/22.
+//  Created by Chris Petimezas on 4/7/22.
 //
 
 import UIKit

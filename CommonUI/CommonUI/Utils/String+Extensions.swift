@@ -2,7 +2,7 @@
 //  String+Extensions.swift
 //  CommonUI
 //
-//  Created by Petimezas, Chris, Vodafone on 29/6/22.
+//  Created by Chris Petimezas on 29/6/22.
 //
 
 import Foundation

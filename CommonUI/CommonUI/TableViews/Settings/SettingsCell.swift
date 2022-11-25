@@ -2,7 +2,7 @@
 //  SettingsCell.swift
 //  CommonUI
 //
-//  Created by Petimezas, Chris, Vodafone on 20/6/22.
+//  Created by Chris Petimezas on 20/6/22.
 //
 
 import UIKit

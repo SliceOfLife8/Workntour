@@ -2,7 +2,7 @@
 //  UserDataManager.swift
 //  workntour
 //
-//  Created by Petimezas, Chris, Vodafone on 19/6/22.
+//  Created by Chris Petimezas on 19/6/22.
 //
 
 import Foundation

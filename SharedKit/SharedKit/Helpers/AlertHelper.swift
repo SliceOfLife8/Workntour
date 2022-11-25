@@ -2,7 +2,7 @@
 //  AlertHelper.swift
 //  SharedKit
 //
-//  Created by Petimezas, Chris, Vodafone on 26/5/22.
+//  Created by Chris Petimezas on 26/5/22.
 //
 
 import Foundation

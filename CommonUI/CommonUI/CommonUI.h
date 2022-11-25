@@ -2,7 +2,7 @@
 //  CommonUI.h
 //  CommonUI
 //
-//  Created by Petimezas, Chris, Vodafone on 2/5/22.
+//  Created by Chris Petimezas on 2/5/22.
 //
 
 #import <Foundation/Foundation.h>

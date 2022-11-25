@@ -2,7 +2,7 @@
 //  TravelerType.swift
 //  workntour
 //
-//  Created by Petimezas, Chris, Vodafone on 1/8/22.
+//  Created by Chris Petimezas on 1/8/22.
 //
 
 import Foundation

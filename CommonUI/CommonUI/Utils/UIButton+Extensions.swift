@@ -2,7 +2,7 @@
 //  UIButton+Extensions.swift
 //  CommonUI
 //
-//  Created by Petimezas, Chris, Vodafone on 5/6/22.
+//  Created by Chris Petimezas on 5/6/22.
 //
 
 import UIKit

@@ -2,7 +2,7 @@
 //  FirebaseManager.swift
 //  workntour
 //
-//  Created by Petimezas, Chris, Vodafone on 20/5/22.
+//  Created by Chris Petimezas on 20/5/22.
 //
 
 import FirebaseAnalytics

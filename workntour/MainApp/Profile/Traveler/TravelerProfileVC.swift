@@ -2,7 +2,7 @@
 //  TravelerProfileVC.swift
 //  workntour
 //
-//  Created by Petimezas, Chris, Vodafone on 15/6/22.
+//  Created by Chris Petimezas on 15/6/22.
 //
 
 import UIKit
@@ -44,6 +44,14 @@ class TravelerProfileVC: BaseVC<TravelerProfileViewModel, ProfileCoordinator> {
             )
             collectionView.delegate = self
             collectionView.dataSource = self
+            let refreshControl = UIRefreshControl()
+            refreshControl.tintColor = UIColor.appColor(.purple)
+            refreshControl.addTarget(
+                self,
+                action: #selector(pullToRefresh),
+                for: .valueChanged
+            )
+            collectionView.refreshControl = refreshControl
         }
     }
 
@@ -61,8 +69,7 @@ class TravelerProfileVC: BaseVC<TravelerProfileViewModel, ProfileCoordinator> {
                     at: .init(row: 0, section: 0)
                 ) as? ProfileHeaderView
                 headerView?.updateImage(data)
-                guard let profile = self?.viewModel?.traveler else { return }
-                print("talk with VM in order to update profile!")
+                self?.viewModel?.updateProfile(data: data)
             })
             .store(in: &storage)
 
@@ -84,6 +91,23 @@ class TravelerProfileVC: BaseVC<TravelerProfileViewModel, ProfileCoordinator> {
                 }
             })
             .store(in: &storage)
+
+        viewModel?.$getRefreshedProfile
+            .sink(receiveValue: { [weak self] status in
+                if status {
+                    self?.viewModel?.traveler = UserDataManager.shared.retrieve(TravelerProfileDto.self)
+                    self?.viewModel?.profileUpdated = true
+                }
+            })
+            .store(in: &storage)
+    }
+
+    // MARK: - Actions
+
+    @objc
+    private func pullToRefresh() {
+        collectionView.refreshControl?.endRefreshing()
+        viewModel?.retrieveProfile()
     }
 }
 
@@ -236,12 +260,12 @@ extension TravelerProfileVC: ProfileHeaderViewDelegate, ProfileFooterViewDelegat
 
     func dietaryHasChanged(at index: Int) {
         viewModel?.traveler?.specialDietary = SpecialDietary(rawValue: index)
-        print("update profile!")
+        viewModel?.updateProfile()
     }
 
     func driverLicenseHasChanged(_ hasLicense: Bool) {
         viewModel?.traveler?.driverLicense = hasLicense
-        print("update profile!")
+        viewModel?.updateProfile()
     }
 }
 
@@ -285,7 +309,7 @@ extension TravelerProfileVC: ProfileLanguageCellDelegate {
 
     func deleteLanguage(at index: Int) {
         viewModel?.traveler?.languages?.remove(at: index)
-        print("update profile")
+        viewModel?.updateProfile()
     }
 }
 

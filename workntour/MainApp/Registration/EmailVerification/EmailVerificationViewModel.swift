@@ -2,7 +2,7 @@
 //  EmailVerificationViewModel.swift
 //  workntour
 //
-//  Created by Petimezas, Chris, Vodafone on 8/6/22.
+//  Created by Chris Petimezas on 8/6/22.
 //
 
 import Foundation

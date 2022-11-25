@@ -2,7 +2,7 @@
 //  UIImageView+Extensions.swift
 //  CommonUI
 //
-//  Created by Petimezas, Chris, Vodafone on 27/5/22.
+//  Created by Chris Petimezas on 27/5/22.
 //
 
 import UIKit

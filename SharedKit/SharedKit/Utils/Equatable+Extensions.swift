@@ -2,7 +2,7 @@
 //  Equatable+Extensions.swift
 //  SharedKit
 //
-//  Created by Petimezas, Chris, Vodafone on 28/5/22.
+//  Created by Chris Petimezas on 28/5/22.
 //
 
 import Foundation

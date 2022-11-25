@@ -2,7 +2,7 @@
 //  OnboardingCoordinator.swift
 //  workntour
 //
-//  Created by Petimezas, Chris, Vodafone on 1/5/22.
+//  Created by Chris Petimezas on 1/5/22.
 //
 
 import UIKit

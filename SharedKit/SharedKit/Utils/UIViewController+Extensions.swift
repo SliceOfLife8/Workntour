@@ -2,7 +2,7 @@
 //  UIViewController+Extensions.swift
 //  SharedKit
 //
-//  Created by Petimezas, Chris, Vodafone on 25/5/22.
+//  Created by Chris Petimezas on 25/5/22.
 //
 
 import UIKit
