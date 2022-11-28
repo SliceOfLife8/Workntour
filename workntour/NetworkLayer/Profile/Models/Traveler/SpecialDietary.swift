@@ -7,10 +7,10 @@
 
 import Foundation
 
-enum SpecialDietary: Int, CaseIterable, Codable {
-    case NONE = 0
-    case VEGAN = 1
-    case VEGETARIAN = 2
+enum SpecialDietary: String, CaseIterable, Codable {
+    case NONE
+    case VEGAN
+    case VEGETARIAN
 
     var value: String {
         switch self {
@@ -21,6 +21,26 @@ enum SpecialDietary: Int, CaseIterable, Codable {
         case .NONE:
             return "None"
         }
+    }
+
+    var intValue: Int {
+        switch self {
+        case .NONE:
+            return 0
+        case .VEGAN:
+            return 1
+        case .VEGETARIAN:
+            return 2
+        }
+    }
+
+    init?(_ value: Int) {
+        for key in SpecialDietary.allCases where key.intValue == value {
+            self = key
+            return
+        }
+
+        return nil
     }
 
     init?(caseName: String) {

@@ -229,7 +229,7 @@ class TravelerPersonalInfoVC: BaseVC<TravelerPersonalInfoViewModel, ProfileCoord
         addressLabel.text = "address".localized()
         addressTextField.configure(
             placeHolder: "address_placeholder".localized(),
-            text: "FIXME",
+            text: data.address,
             type: .plain
         )
         mainStackView.setCustomSpacing(16, after: addressTextField)
@@ -237,7 +237,7 @@ class TravelerPersonalInfoVC: BaseVC<TravelerPersonalInfoViewModel, ProfileCoord
         cityLabel.text = "city".localized()
         cityTextField.configure(
             placeHolder: "city_placeholder".localized(),
-            text: "FIXME",
+            text: data.city,
             type: .plain
         )
         mainStackView.setCustomSpacing(16, after: cityTextField)
@@ -253,7 +253,7 @@ class TravelerPersonalInfoVC: BaseVC<TravelerPersonalInfoViewModel, ProfileCoord
         countryLabel.text = "country".localized()
         countryTextField.configure(
             placeHolder: "country_placeholder".localized(),
-            text: "FIXME",
+            text: data.country,
             type: .plain
         )
         mainStackView.setCustomSpacing(16, after: countryTextField)

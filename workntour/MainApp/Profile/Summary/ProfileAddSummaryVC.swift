@@ -69,7 +69,15 @@ class ProfileAddSummaryVC: BaseVC<ProfileAddSummaryViewModel, ProfileCoordinator
     // MARK: - Actions
 
     @objc private func saveBtnTapped() {
-        print("call api")
+        let description = descriptionTextView.text.trimmingCharacters(in: .whitespaces)
+        guard var profileDto = UserDataManager.shared.retrieve(TravelerProfileDto.self),
+              !description.isEmpty
+        else {
+            return
+        }
+
+        profileDto.description = description
+        self.coordinator?.navigate(to: .updateTravelerProfile(profileDto))
     }
 
 }

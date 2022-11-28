@@ -25,7 +25,7 @@ final class GooglePlacesManager {
     }
 
     func findPlaces(query: String,
-                    completion: @escaping (Result<[Place], Error>) -> Void) {
+                    completion: @escaping (Swift.Result<[Place], Error>) -> Void) {
         let filter = GMSAutocompleteFilter()
         filter.type = .geocode
         client.findAutocompletePredictions(fromQuery: query,
@@ -45,7 +45,7 @@ final class GooglePlacesManager {
     }
 
     func resolveLocation(for place: Place,
-                         completion: @escaping (Result<CLLocationCoordinate2D, Error>) -> Void) {
+                         completion: @escaping (Swift.Result<CLLocationCoordinate2D, Error>) -> Void) {
         client.fetchPlace(fromPlaceID: place.identifier,
                           placeFields: .coordinate,
                           sessionToken: nil) { googlePlace, error in

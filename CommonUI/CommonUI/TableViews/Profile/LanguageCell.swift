@@ -20,7 +20,11 @@ class LanguageCell: UITableViewCell {
 
     // MARK: - Outlets
 
-    @IBOutlet weak var titleLabel: LinkableLabel!
+    @IBOutlet weak var titleLabel: LinkableLabel! {
+        didSet {
+            titleLabel.isUserInteractionEnabled = false
+        }
+    }
 
     @IBOutlet weak var separatorView: UIView!
 

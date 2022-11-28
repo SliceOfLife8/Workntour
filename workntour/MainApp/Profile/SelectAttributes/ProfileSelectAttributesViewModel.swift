@@ -28,9 +28,9 @@ class ProfileSelectAttributesViewModel: BaseViewModel {
 
         switch data.mode {
         case .skills:
-            print("add case")
+            travelerDto.skills = data.convertAttributesToSkills()
         case .interests:
-            print("add case")
+            travelerDto.interests = data.convertAttributesToInterests()
         case .travelerType:
             travelerDto.type = data.convertAttributesToTypeOfTraveler()
         }

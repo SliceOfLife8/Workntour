@@ -61,7 +61,7 @@ private extension Int {
     }
 }
 
-private extension URLRequest {
+public extension URLRequest {
     func cURL(pretty: Bool = false) -> String {
         let newLine = pretty ? "\\\n" : ""
         let method = (pretty ? "--request " : "-X ") + "\(self.httpMethod ?? "GET") \(newLine)"

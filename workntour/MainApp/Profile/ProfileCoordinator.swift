@@ -8,6 +8,7 @@
 import UIKit
 import SharedKit
 import PhotosUI
+import MobileCoreServices
 
 /** A Coordinator which is responsible about profile section for `Hosts` & `Travelers` . */
 
@@ -219,6 +220,9 @@ final class ProfileCoordinator: NavigationCoordinator {
         var updatedProfileDto = profileDto
         switch mode {
         case .add:
+            if updatedProfileDto.languages == nil {
+                updatedProfileDto.languages = []
+            }
             updatedProfileDto.languages?.append(language)
         case .edit:
             if let index = updatedProfileDto.languages?.firstIndex(where: { $0.language == language.language }) {
@@ -235,6 +239,7 @@ final class ProfileCoordinator: NavigationCoordinator {
 
 // MARK: - PhotoUI Picker
 extension ProfileCoordinator: PHPickerViewControllerDelegate {
+
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         picker.dismiss(animated: true) // dismiss a picker
 
@@ -244,12 +249,14 @@ extension ProfileCoordinator: PHPickerViewControllerDelegate {
             .first
 
         imageItem?.loadObject(ofClass: UIImage.self) { image, _ in
-            if let image = image as? UIImage {
+            if let image = image as? UIImage, let data = image.jpeg(.medium) {
                 DispatchQueue.main.async {
                     if let hostProfileVC = self.rootViewController.topViewController as? HostProfileVC {
                         hostProfileVC.viewModel?.updateProfilePic(with: image.jpeg(.medium))
                     } else if let travelerProfileVC = self.rootViewController.topViewController as? TravelerProfileVC {
-                        travelerProfileVC.viewModel?.newImage = image.jpeg(.medium)
+                        travelerProfileVC.viewModel?.newImage = Media(data: data,
+                                                                      forKey: "profileImage",
+                                                                      withName: imageItem?.suggestedName)
                     }
                 }
             }

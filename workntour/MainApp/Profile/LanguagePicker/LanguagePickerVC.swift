@@ -128,7 +128,7 @@ class LanguagePickerVC: BaseVC<LanguagePickerViewModel, ProfileCoordinator> {
                 self?.languageTextField.backgroundColor = UIColor(hexString: "#667085").withAlphaComponent(0.2)
                 self?.languageTextField.isUserInteractionEnabled = false
                 self?.chipsCollectionView.selectItem(
-                    at: IndexPath(row: profileLang.proficiency.rawValue, section: 0),
+                    at: IndexPath(row: profileLang.proficiency.intValue, section: 0),
                     animated: false,
                     scrollPosition: .centeredVertically
                 )

@@ -63,13 +63,13 @@ class TravelerProfileVC: BaseVC<TravelerProfileViewModel, ProfileCoordinator> {
 
         viewModel?.$newImage
             .compactMap { $0 }
-            .sink(receiveValue: { [weak self] data in
+            .sink(receiveValue: { [weak self] media in
                 let headerView = self?.collectionView.supplementaryView(
                     forElementKind: UICollectionView.elementKindSectionHeader,
                     at: .init(row: 0, section: 0)
                 ) as? ProfileHeaderView
-                headerView?.updateImage(data)
-                self?.viewModel?.updateProfile(data: data)
+                headerView?.updateImage(media.data)
+                self?.viewModel?.updateProfile(withMedia: media)
             })
             .store(in: &storage)
 
@@ -259,7 +259,7 @@ extension TravelerProfileVC: ProfileHeaderViewDelegate, ProfileFooterViewDelegat
     }
 
     func dietaryHasChanged(at index: Int) {
-        viewModel?.traveler?.specialDietary = SpecialDietary(rawValue: index)
+        viewModel?.traveler?.specialDietary = SpecialDietary(index)
         viewModel?.updateProfile()
     }
 
@@ -283,13 +283,21 @@ extension TravelerProfileVC: ProfileSimpleCellDelegate {
         case 0:
             self.coordinator?.navigate(to: .travelerEditPersonalInfo)
         case 1:
-            self.coordinator?.navigate(to: .travelerAddSummary(nil))
+            self.coordinator?.navigate(to: .travelerAddSummary(data.description))
         case 2:
             self.coordinator?.navigate(to: .travelerSelectType(data.type))
         case 3:
-            self.coordinator?.navigate(to: .selectInterests(preselectedInterests: []))
+            self.coordinator?.navigate(
+                to: .selectInterests(
+                    preselectedInterests: data.interests ?? []
+                )
+            )
         default:
-            self.coordinator?.navigate(to: .selectSkills(preselectedSkills: []))
+            self.coordinator?.navigate(
+                to: .selectSkills(
+                    preselectedSkills: data.skills ?? []
+                )
+            )
         }
     }
 }

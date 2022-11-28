@@ -331,29 +331,3 @@ enum LearningOpportunities: String, CaseIterable, Codable {
         return nil
     }
 }
-
-enum LanguageProficiency: Int, CaseIterable, Codable {
-    case BEGINNER = 0
-    case INTERMEDIATE = 1
-    case FLUENT = 2
-
-    var value: String {
-        switch self {
-        case .BEGINNER:
-            return "Beginner"
-        case .INTERMEDIATE:
-            return "Intermediate"
-        case .FLUENT:
-            return "Fluent"
-        }
-    }
-
-    init?(caseName: String) {
-        for key in LanguageProficiency.allCases where "\(key.value)" == caseName {
-            self = key
-            return
-        }
-
-        return nil
-    }
-}

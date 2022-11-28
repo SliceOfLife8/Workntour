@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - Language
 enum Language: String, CaseIterable, Codable {
     case GREEK
     case ENGLISH
@@ -55,6 +56,53 @@ enum Language: String, CaseIterable, Codable {
 
     init?(caseName: String) {
         for key in Language.allCases where "\(key.value)" == caseName {
+            self = key
+            return
+        }
+
+        return nil
+    }
+}
+
+// MARK: - LanguageProficiency
+enum LanguageProficiency: String, CaseIterable, Codable {
+    case BEGINNER
+    case INTERMEDIATE
+    case FLUENT
+
+    var value: String {
+        switch self {
+        case .BEGINNER:
+            return "Beginner"
+        case .INTERMEDIATE:
+            return "Intermediate"
+        case .FLUENT:
+            return "Fluent"
+        }
+    }
+
+    var intValue: Int {
+        switch self {
+        case .BEGINNER:
+            return 0
+        case .INTERMEDIATE:
+            return 1
+        case .FLUENT:
+            return 2
+        }
+    }
+
+    init?(_ value: Int) {
+        for key in LanguageProficiency.allCases where key.intValue == value {
+            self = key
+            return
+        }
+
+        return nil
+    }
+
+    init?(caseName: String) {
+        for key in LanguageProficiency.allCases where "\(key.value)" == caseName {
             self = key
             return
         }

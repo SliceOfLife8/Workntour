@@ -144,6 +144,8 @@
 		1BC190F5286339DD00585533 /* IndividualHostProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC190F4286339DD00585533 /* IndividualHostProfile.swift */; };
 		1BE6EA992868BFB8009CBE6D /* OpportunitiesVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BE6EA982868BFB8009CBE6D /* OpportunitiesVC.xib */; };
 		2707FF96C7CBD64F6B2EA3B7 /* Pods_workntour.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5701F516D91D3C90DD51441 /* Pods_workntour.framework */; };
+		CE01BD262933D2E500F87439 /* MediaContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE01BD252933D2E500F87439 /* MediaContext.swift */; };
+		CE01BD3429350C2C00F87439 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE01BD3329350C2C00F87439 /* Media.swift */; };
 		CE3F9E8C291F9D0200480493 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE3F9E8B291F9D0200480493 /* Localizable.strings */; };
 		CE3F9E8F291FA88700480493 /* ProfileSelectAttributesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3F9E8E291FA88700480493 /* ProfileSelectAttributesVC.swift */; };
 		CE3F9E92291FA96100480493 /* ProfileSelectAttributesVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE3F9E91291FA96100480493 /* ProfileSelectAttributesVC.xib */; };
@@ -331,6 +333,8 @@
 		A9A28C3C30B3A10BAB51F50A /* Pods-workntour.prod release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-workntour.prod release.xcconfig"; path = "Target Support Files/Pods-workntour/Pods-workntour.prod release.xcconfig"; sourceTree = "<group>"; };
 		AA61DB065AE3B9EE59633469 /* Pods-workntour.staging debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-workntour.staging debug.xcconfig"; path = "Target Support Files/Pods-workntour/Pods-workntour.staging debug.xcconfig"; sourceTree = "<group>"; };
 		B0657D0C965FCA5EF3E62D12 /* Pods-workntour.staging release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-workntour.staging release.xcconfig"; path = "Target Support Files/Pods-workntour/Pods-workntour.staging release.xcconfig"; sourceTree = "<group>"; };
+		CE01BD252933D2E500F87439 /* MediaContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaContext.swift; sourceTree = "<group>"; };
+		CE01BD3329350C2C00F87439 /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
 		CE3F9E8B291F9D0200480493 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		CE3F9E8E291FA88700480493 /* ProfileSelectAttributesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSelectAttributesVC.swift; sourceTree = "<group>"; };
 		CE3F9E91291FA96100480493 /* ProfileSelectAttributesVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileSelectAttributesVC.xib; sourceTree = "<group>"; };
@@ -625,6 +629,7 @@
 			children = (
 				1B9A3D33282A416F003E0C34 /* README.md */,
 				1B9A3D8F282C0BAF003E0C34 /* DataManager.swift */,
+				CE01BD252933D2E500F87439 /* MediaContext.swift */,
 				1B9A3D2E282A3B6D003E0C34 /* Authorization */,
 				1BC190E92863391600585533 /* Profile */,
 				1B39AA2328702BF6009377A7 /* Opportunity */,
@@ -974,6 +979,7 @@
 				1BC190F4286339DD00585533 /* IndividualHostProfile.swift */,
 				1BC190F22863399E00585533 /* CompanyHostProfile.swift */,
 				CE446D6F292A7A24004026FA /* ProfileImage.swift */,
+				CE01BD3329350C2C00F87439 /* Media.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1337,6 +1343,7 @@
 				1BC190EF2863394B00585533 /* ProfileService.swift in Sources */,
 				1B7753DB286C2F6200D81526 /* SelectDateRangesVC.swift in Sources */,
 				CE8332DE292218D100F751FE /* ProfileAddSummaryVC.swift in Sources */,
+				CE01BD3429350C2C00F87439 /* Media.swift in Sources */,
 				1B39AA22287026A7009377A7 /* OpportunityDto.swift in Sources */,
 				1B39AA2728702C35009377A7 /* OpportunityRouter.swift in Sources */,
 				1B39AA332872F175009377A7 /* ImageViewController.swift in Sources */,
@@ -1351,6 +1358,7 @@
 				CE8332E2292218ED00F751FE /* ProfileAddSummaryViewModel.swift in Sources */,
 				1B563B722847DD0B00B851C1 /* RegistrationError.swift in Sources */,
 				1B39AA2C2872F0A1009377A7 /* OpportunityDetailsVC.swift in Sources */,
+				CE01BD262933D2E500F87439 /* MediaContext.swift in Sources */,
 				1B7753D8286C26B600D81526 /* DayRangeIndicatorView.swift in Sources */,
 				1BA2DF08281E8D7700DB128D /* OnboardingCoordinator.swift in Sources */,
 				1B442FE9287ED6B7002145BC /* OpportunitiesFiltersViewModel.swift in Sources */,

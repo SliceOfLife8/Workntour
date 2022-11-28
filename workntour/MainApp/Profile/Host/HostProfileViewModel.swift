@@ -90,22 +90,22 @@ class HostProfileViewModel: BaseViewModel {
         }
 
         loaderVisibility = true
-        service.updateCompanyHostProfile(model: companyModel)
-            .map {
-                if $0 != nil {
-                    self.companyHost = $0 // Update current user's model
-                }
-
-                return $0 != nil
-            }
-            .subscribe(on: RunLoop.main)
-            .catch({ _ -> Just<Bool> in
-                return Just(false)
-            })
-                .handleEvents(receiveCompletion: { _ in
-                    self.loaderVisibility = false
-                })
-                    .assign(to: &$profileUpdated)
+//        service.updateCompanyHostProfile(model: companyModel)
+//            .map {
+//                if $0 != nil {
+//                    self.companyHost = $0 // Update current user's model
+//                }
+//
+//                return $0 != nil
+//            }
+//            .subscribe(on: RunLoop.main)
+//            .catch({ _ -> Just<Bool> in
+//                return Just(false)
+//            })
+//                .handleEvents(receiveCompletion: { _ in
+//                    self.loaderVisibility = false
+//                })
+//                    .assign(to: &$profileUpdated)
     }
 
     private func updateIndividualHostProfile() {
@@ -114,22 +114,22 @@ class HostProfileViewModel: BaseViewModel {
         }
 
         loaderVisibility = true
-        service.updateIndividualHostProfile(model: individualModel)
-            .map {
-                if $0 != nil {
-                    self.individualHost = $0 // Update current user's model
-                }
-
-                return $0 != nil
-            }
-            .subscribe(on: RunLoop.main)
-            .catch({ _ -> Just<Bool> in
-                return Just(false)
-            })
-                .handleEvents(receiveCompletion: { _ in
-                    self.loaderVisibility = false
-                })
-                    .assign(to: &$profileUpdated)
+//        service.updateIndividualHostProfile(model: individualModel)
+//            .map {
+//                if $0 != nil {
+//                    self.individualHost = $0 // Update current user's model
+//                }
+//
+//                return $0 != nil
+//            }
+//            .subscribe(on: RunLoop.main)
+//            .catch({ _ -> Just<Bool> in
+//                return Just(false)
+//            })
+//                .handleEvents(receiveCompletion: { _ in
+//                    self.loaderVisibility = false
+//                })
+//                    .assign(to: &$profileUpdated)
     }
 
 }

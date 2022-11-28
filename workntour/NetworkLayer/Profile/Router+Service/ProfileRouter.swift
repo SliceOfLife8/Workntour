@@ -12,9 +12,6 @@ enum ProfileRouter: NetworkTarget {
     case getTraveler(_ memberId: String)
     case getIndividualHost(_ memberId: String)
     case getCompanyHost(_ memberId: String)
-    case updateTraveler(body: TravelerUpdatedBody)
-    case updateIndividualHost(body: IndividualHostProfile)
-    case updateCompanyHost(body: CompanyHostProfile)
 
     public var baseURL: URL {
         Environment.current.apiBaseURL
@@ -28,41 +25,15 @@ enum ProfileRouter: NetworkTarget {
             return "/profile/retrieveProfile/individualHost"
         case .getCompanyHost:
             return "/profileretrieveProfile/companyHost"
-        case .updateTraveler:
-            return "/profile/updateProfile/traveler"
-        case .updateIndividualHost:
-            return "/profile/updateProfile/individualHost"
-        case .updateCompanyHost:
-            return "/profile/updateProfile/companyHost"
         }
     }
 
     public var methodType: MethodType {
-        switch self {
-        case .getTraveler, .getIndividualHost, .getCompanyHost:
-            return .get
-        case .updateTraveler, .updateIndividualHost, .updateCompanyHost:
-            return .put
-        }
+        .get
     }
 
-    // swiftlint:disable force_try
     public var workType: WorkType {
-        let jsonEncoder: JSONEncoder = .init()
-
-        switch self {
-        case .getTraveler, .getIndividualHost, .getCompanyHost:
-            return .requestPlain
-        case .updateTraveler(let body):
-            let jsonData = try! jsonEncoder.encode(body)
-            return .requestData(data: jsonData)
-        case .updateIndividualHost(let body):
-            let jsonData = try! jsonEncoder.encode(body)
-            return .requestData(data: jsonData)
-        case .updateCompanyHost(let body):
-            let jsonData = try! jsonEncoder.encode(body)
-            return .requestData(data: jsonData)
-        }
+        .requestPlain
     }
 
     public var providerType: AuthProviderType {
@@ -87,8 +58,6 @@ enum ProfileRouter: NetworkTarget {
             return [
                 "memberId": id
             ]
-        case .updateTraveler, .updateIndividualHost, .updateCompanyHost:
-            return nil
         }
     }
 

@@ -9,5 +9,5 @@ import Foundation
 
 struct TravelerUpdatedBody: Codable {
     let updatedTravelerProfile: TravelerProfileDto
-    let profileImage: Data?
+    let media: Media?
 }
