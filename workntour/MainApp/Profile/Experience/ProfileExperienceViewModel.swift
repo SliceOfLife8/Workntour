@@ -11,11 +11,10 @@ class ProfileExperienceViewModel: BaseViewModel {
     /// Service
     private var service: ProfileService
     /// Inputs
-    @Published var traveler: TravelerProfileDto?
+    var traveler: TravelerProfileDto?
 
     /// Outputs
     var data: DataModel
-    @Published var profileUpdated: Bool = false
 
     // MARK: - Init
 
@@ -32,13 +31,32 @@ extension ProfileExperienceViewModel {
 
     class DataModel {
 
+        enum Mode {
+            case add
+            case edit
+        }
+
         // MARK: - Properties
 
         var experience: Experience
+        let uuid: String
+        let mode: Mode
 
         // MARK: - Constructors/Destructors
-        init(experience: Experience?) {
-            self.experience = experience ?? Experience(type: .COMPANY)
+
+        init(experience: ProfileExperience? = nil) {
+            self.mode = (experience == nil) ? .add : .edit
+            self.uuid = experience?.uuid ?? UUID().uuidString
+            self.experience = experience?.experience ?? Experience(type: .COMPANY)
+        }
+
+        // MARK: - Methods
+
+        func convertToExperience() -> ProfileExperience {
+            return .init(
+                uuid: uuid,
+                experience: experience
+            )
         }
     }
 }

@@ -62,7 +62,7 @@ final class TabBarCoordinator: NSObject, NavigationCoordinator {
         var allPages: [TabBarPage]
         switch userRole {
         case .TRAVELER:
-            allPages = [.profile, .notifications, .settings]
+            allPages = [.homepage, .profile, .notifications, .settings]
         case .COMPANY_HOST, .INDIVIDUAL_HOST:
             allPages = [.profile, .opportunities, .notifications, .settings]
         case .none: // guest mode
@@ -86,6 +86,7 @@ final class TabBarCoordinator: NSObject, NavigationCoordinator {
         rootViewController.tabBar.unselectedItemTintColor = UIColor.appColor(.lavenderTint1)
 
         rootViewController.delegate = self
+        rootViewController.selectedIndex = 1
     }
 
     @available(iOS 15.0, *)
@@ -124,13 +125,18 @@ final class TabBarCoordinator: NSObject, NavigationCoordinator {
             settingsCoordinator.start()
         }
 
-        navigationViewController.tabBarItem = UITabBarItem(title: page.pageTitleValue, image: page.tabIcon?.withRenderingMode(.alwaysOriginal), selectedImage: page.tabSelectedIcon)
+        navigationViewController.tabBarItem = UITabBarItem(
+            title: page.pageTitleValue,
+            image: page.tabIcon?.withRenderingMode(.alwaysOriginal),
+            selectedImage: page.tabSelectedIcon
+        )
 
         return navigationViewController
     }
 
     func currentPage() -> TabBarPage? { TabBarPage(index: rootViewController.selectedIndex) }
 
+    #warning("Not working!")
     func selectPage(_ page: TabBarPage) {
         rootViewController.selectedIndex = page.pageOrderNumber()
     }

@@ -1,45 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="Lato-Bold.ttf">
-            <string>Lato-Bold</string>
-        </array>
-        <array key="Lato-Medium.ttf">
-            <string>Lato-Medium</string>
-        </array>
-        <array key="Lato-Regular.ttf">
-            <string>Lato-Regular</string>
-        </array>
-    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BaseVC" customModule="workntour" customModuleProvider="target">
             <connections>
-                <outlet property="countryTextField" destination="7r7-0c-XhM" id="ss9-7c-Dre"/>
-                <outlet property="emailTextField" destination="Mgi-tb-np2" id="KpJ-Z1-RlD"/>
-                <outlet property="fixedNumTextField" destination="oJk-S5-L4C" id="3jJ-8w-QE9"/>
-                <outlet property="hostIcon" destination="say-dW-DeO" id="39Q-Yp-TAT"/>
-                <outlet property="hostName" destination="u59-bt-nFh" id="FCX-FQ-bFz"/>
-                <outlet property="hostTypeChip" destination="6Jv-Ac-MaM" id="skg-uV-84O"/>
-                <outlet property="introLabel" destination="QNL-vw-wSQ" id="yPD-a3-T9N"/>
-                <outlet property="mainStackView" destination="2Xi-8O-Z6z" id="ppM-ak-eE0"/>
-                <outlet property="mobileTextField" destination="Vf8-ma-2kb" id="bYC-ay-uzR"/>
-                <outlet property="nationalityLabel" destination="tlK-65-wCY" id="a0s-Wc-k4D"/>
-                <outlet property="nationalityTextField" destination="bIO-aO-CZt" id="ePM-72-aEH"/>
-                <outlet property="percentBtn" destination="tnB-az-VwA" id="dHb-gg-oZ2"/>
-                <outlet property="postalAddressTextField" destination="mNc-JJ-SB5" id="4Ik-fa-gRj"/>
-                <outlet property="progressBar" destination="fb0-eL-hZu" id="MgF-2R-c8P"/>
-                <outlet property="scrollView" destination="cIW-Qp-iun" id="GN6-hQ-YgO"/>
-                <outlet property="sexLabel" destination="MRw-Sh-Gc0" id="fV6-In-IkW"/>
-                <outlet property="sexTextField" destination="a4G-Cd-HmS" id="TFf-dR-4pp"/>
+                <outlet property="collectionView" destination="sG1-IB-r8B" id="7qN-fV-8Fq"/>
                 <outlet property="view" destination="iN0-l3-epB" id="eEj-8q-OPw"/>
             </connections>
         </placeholder>
@@ -48,263 +20,31 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="cIW-Qp-iun">
-                    <rect key="frame" x="0.0" y="44" width="414" height="852"/>
-                    <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hyg-0i-X3y" userLabel="Content View">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="852"/>
-                            <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fb0-eL-hZu" customClass="KDCircularProgress" customModule="KDCircularProgress">
-                                    <rect key="frame" x="87" y="8" width="240" height="240"/>
-                                    <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="host" translatesAutoresizingMaskIntoConstraints="NO" id="say-dW-DeO">
-                                            <rect key="frame" x="30" y="30" width="180" height="180"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="180" id="7tZ-SN-gzn"/>
-                                                <constraint firstAttribute="width" constant="180" id="be8-fe-eTL"/>
-                                            </constraints>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
-                                            </userDefinedRuntimeAttributes>
-                                        </imageView>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfz-2n-8WR" userLabel="upload image">
-                                            <rect key="frame" x="178" y="40" width="32" height="32"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="32" id="Q4K-wP-KbQ"/>
-                                                <constraint firstAttribute="width" constant="32" id="dHA-ll-cCc"/>
-                                            </constraints>
-                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                            <state key="normal" image="upload_image"/>
-                                            <connections>
-                                                <action selector="uploadImageTapped:" destination="-1" eventType="touchUpInside" id="fdt-m5-dxd"/>
-                                            </connections>
-                                        </button>
-                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tnB-az-VwA" userLabel="percent" customClass="GradientButton" customModule="CommonUI">
-                                            <rect key="frame" x="108" y="191" width="24" height="33"/>
-                                            <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="12"/>
-                                            <inset key="contentEdgeInsets" minX="12" minY="9" maxX="12" maxY="9"/>
-                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                            <state key="normal">
-                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </state>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                    <real key="value" value="16"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
-                                        </button>
-                                    </subviews>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                    <constraints>
-                                        <constraint firstItem="tnB-az-VwA" firstAttribute="centerX" secondItem="fb0-eL-hZu" secondAttribute="centerX" id="6fv-1e-DEM"/>
-                                        <constraint firstItem="say-dW-DeO" firstAttribute="centerY" secondItem="fb0-eL-hZu" secondAttribute="centerY" id="7Le-vw-vY9"/>
-                                        <constraint firstItem="say-dW-DeO" firstAttribute="centerX" secondItem="fb0-eL-hZu" secondAttribute="centerX" id="Gbv-O5-2SL"/>
-                                        <constraint firstItem="tnB-az-VwA" firstAttribute="bottom" secondItem="say-dW-DeO" secondAttribute="bottom" constant="14" id="Xws-HV-0yg"/>
-                                        <constraint firstItem="jfz-2n-8WR" firstAttribute="trailing" secondItem="say-dW-DeO" secondAttribute="trailing" id="eB9-le-jqX"/>
-                                        <constraint firstItem="jfz-2n-8WR" firstAttribute="top" secondItem="say-dW-DeO" secondAttribute="top" constant="10" id="kCx-Vk-X72"/>
-                                        <constraint firstAttribute="height" constant="240" id="qsf-9n-inF"/>
-                                        <constraint firstAttribute="width" constant="240" id="xFO-bm-g1h"/>
-                                    </constraints>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="angle">
-                                            <real key="value" value="0.0"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
-                                            <real key="value" value="-270"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="boolean" keyPath="clockwise" value="YES"/>
-                                        <userDefinedRuntimeAttribute type="boolean" keyPath="roundedCorners" value="YES"/>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="progressThickness">
-                                            <real key="value" value="0.10000000000000001"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="color" keyPath="trackColor">
-                                            <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="color" keyPath="IBColor1">
-                                            <color key="value" name="mint"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="color" keyPath="IBColor2">
-                                            <color key="value" name="purple"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="glowAmount">
-                                            <real key="value" value="0.20000000000000001"/>
-                                        </userDefinedRuntimeAttribute>
-                                    </userDefinedRuntimeAttributes>
-                                </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u59-bt-nFh" userLabel="name">
-                                    <rect key="frame" x="48" y="256" width="318" height="0.0"/>
-                                    <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="36"/>
-                                    <color key="textColor" name="lavender"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Jv-Ac-MaM" userLabel="type">
-                                    <rect key="frame" x="195" y="272.5" width="24" height="25"/>
-                                    <color key="backgroundColor" name="mint"/>
-                                    <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
-                                    <inset key="contentEdgeInsets" minX="12" minY="4" maxX="12" maxY="4"/>
-                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                    <state key="normal">
-                                        <color key="titleColor" name="purpleBlack"/>
-                                    </state>
-                                </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QNL-vw-wSQ" userLabel="intro">
-                                    <rect key="frame" x="24" y="325.5" width="366" height="0.0"/>
-                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
-                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="2Xi-8O-Z6z">
-                                    <rect key="frame" x="24" y="349.5" width="366" height="231.5"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0tv-Zl-RfS" userLabel="email">
-                                            <rect key="frame" x="0.0" y="0.0" width="366" height="17"/>
-                                            <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
-                                            <color key="textColor" name="floatingLabel"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mgi-tb-np2" userLabel="email TF" customClass="GradientTextField" customModule="CommonUI">
-                                            <rect key="frame" x="0.0" y="23" width="366" height="18.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </textField>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Postal Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GBL-UX-3mw" userLabel="postal address">
-                                            <rect key="frame" x="0.0" y="47.5" width="366" height="17"/>
-                                            <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
-                                            <color key="textColor" name="floatingLabel"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mNc-JJ-SB5" userLabel="postal address TF" customClass="GradientTextField" customModule="CommonUI">
-                                            <rect key="frame" x="0.0" y="70.5" width="366" height="18.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </textField>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GM8-I0-e5l" userLabel="country">
-                                            <rect key="frame" x="0.0" y="95" width="366" height="17"/>
-                                            <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
-                                            <color key="textColor" name="floatingLabel"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7r7-0c-XhM" userLabel="country TF" customClass="GradientTextField" customModule="CommonUI">
-                                            <rect key="frame" x="0.0" y="118" width="366" height="18.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits" returnKeyType="next"/>
-                                        </textField>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mobile Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ALm-r2-7Ck" userLabel="mobile">
-                                            <rect key="frame" x="0.0" y="142.5" width="366" height="17"/>
-                                            <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
-                                            <color key="textColor" name="floatingLabel"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vf8-ma-2kb" userLabel="mobile TF" customClass="GradientTextField" customModule="CommonUI">
-                                            <rect key="frame" x="0.0" y="165.5" width="366" height="18.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </textField>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fixed Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bpj-mH-4TO" userLabel="fixed num">
-                                            <rect key="frame" x="0.0" y="190" width="366" height="17"/>
-                                            <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
-                                            <color key="textColor" name="floatingLabel"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oJk-S5-L4C" userLabel="fixed num TF" customClass="GradientTextField" customModule="CommonUI">
-                                            <rect key="frame" x="0.0" y="213" width="366" height="18.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </textField>
-                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nationality" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tlK-65-wCY" userLabel="nationality">
-                                            <rect key="frame" x="0.0" y="231.5" width="366" height="0.0"/>
-                                            <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
-                                            <color key="textColor" name="floatingLabel"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bIO-aO-CZt" userLabel="nationality" customClass="GradientTextField" customModule="CommonUI">
-                                            <rect key="frame" x="0.0" y="231.5" width="366" height="0.0"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </textField>
-                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sex" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MRw-Sh-Gc0" userLabel="sex">
-                                            <rect key="frame" x="0.0" y="231.5" width="366" height="0.0"/>
-                                            <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
-                                            <color key="textColor" name="floatingLabel"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a4G-Cd-HmS" userLabel="sex TF" customClass="GradientTextField" customModule="CommonUI">
-                                            <rect key="frame" x="0.0" y="231.5" width="366" height="0.0"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </textField>
-                                    </subviews>
-                                </stackView>
-                            </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <constraints>
-                                <constraint firstAttribute="trailing" secondItem="2Xi-8O-Z6z" secondAttribute="trailing" constant="24" id="CBf-Qu-YX2"/>
-                                <constraint firstAttribute="trailing" secondItem="u59-bt-nFh" secondAttribute="trailing" constant="48" id="ETx-06-ioz"/>
-                                <constraint firstAttribute="trailing" secondItem="QNL-vw-wSQ" secondAttribute="trailing" constant="24" id="GZB-6X-Mbk"/>
-                                <constraint firstItem="fb0-eL-hZu" firstAttribute="top" secondItem="hyg-0i-X3y" secondAttribute="top" constant="8" id="RGd-ki-A4A"/>
-                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="2Xi-8O-Z6z" secondAttribute="bottom" constant="24" id="TjP-9U-qIJ"/>
-                                <constraint firstItem="u59-bt-nFh" firstAttribute="top" secondItem="fb0-eL-hZu" secondAttribute="bottom" constant="8" id="VGM-ty-8vb"/>
-                                <constraint firstItem="QNL-vw-wSQ" firstAttribute="top" secondItem="6Jv-Ac-MaM" secondAttribute="bottom" constant="28" id="YlM-H8-Zrb"/>
-                                <constraint firstItem="6Jv-Ac-MaM" firstAttribute="centerX" secondItem="u59-bt-nFh" secondAttribute="centerX" id="iNX-Mk-YiD"/>
-                                <constraint firstItem="2Xi-8O-Z6z" firstAttribute="top" secondItem="QNL-vw-wSQ" secondAttribute="bottom" constant="24" id="k1u-SL-B1X"/>
-                                <constraint firstItem="u59-bt-nFh" firstAttribute="leading" secondItem="hyg-0i-X3y" secondAttribute="leading" constant="48" id="lHZ-Dv-80p"/>
-                                <constraint firstItem="fb0-eL-hZu" firstAttribute="centerX" secondItem="hyg-0i-X3y" secondAttribute="centerX" id="nXu-2U-q97"/>
-                                <constraint firstItem="6Jv-Ac-MaM" firstAttribute="top" secondItem="u59-bt-nFh" secondAttribute="bottom" constant="16.5" id="rUe-ko-9cL"/>
-                                <constraint firstItem="2Xi-8O-Z6z" firstAttribute="leading" secondItem="hyg-0i-X3y" secondAttribute="leading" constant="24" id="unh-kF-aKi"/>
-                                <constraint firstItem="QNL-vw-wSQ" firstAttribute="leading" secondItem="hyg-0i-X3y" secondAttribute="leading" constant="24" id="vxq-aD-IFh"/>
-                            </constraints>
-                        </view>
-                    </subviews>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="sG1-IB-r8B">
+                    <rect key="frame" x="0.0" y="48" width="414" height="814"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstItem="hyg-0i-X3y" firstAttribute="leading" secondItem="cIW-Qp-iun" secondAttribute="leading" id="Kyh-pF-x0k"/>
-                        <constraint firstItem="hyg-0i-X3y" firstAttribute="top" secondItem="cIW-Qp-iun" secondAttribute="top" id="MV6-cq-YpA"/>
-                        <constraint firstItem="hyg-0i-X3y" firstAttribute="height" secondItem="cIW-Qp-iun" secondAttribute="height" priority="250" id="dgt-4a-bWY"/>
-                        <constraint firstAttribute="trailing" secondItem="hyg-0i-X3y" secondAttribute="trailing" id="i70-Go-Cqf"/>
-                        <constraint firstItem="hyg-0i-X3y" firstAttribute="width" secondItem="cIW-Qp-iun" secondAttribute="width" id="lfz-Mc-URs"/>
-                        <constraint firstAttribute="bottom" secondItem="hyg-0i-X3y" secondAttribute="bottom" id="vcQ-ce-U5h"/>
-                    </constraints>
-                </scrollView>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="IMe-aO-Ii0">
+                        <size key="itemSize" width="128" height="128"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" name="primary"/>
             <constraints>
-                <constraint firstItem="cIW-Qp-iun" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="DQu-JQ-eml"/>
-                <constraint firstAttribute="bottom" secondItem="cIW-Qp-iun" secondAttribute="bottom" id="luM-rx-rbK"/>
-                <constraint firstItem="cIW-Qp-iun" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="mH8-g4-u6X"/>
-                <constraint firstItem="cIW-Qp-iun" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="u1j-2n-MeJ"/>
+                <constraint firstItem="sG1-IB-r8B" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="A4N-9u-MaN"/>
+                <constraint firstItem="sG1-IB-r8B" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="FTz-5r-Ifi"/>
+                <constraint firstAttribute="trailing" secondItem="sG1-IB-r8B" secondAttribute="trailing" id="gXq-Ll-8ui"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="sG1-IB-r8B" secondAttribute="bottom" id="xfn-DX-HNx"/>
             </constraints>
             <point key="canvasLocation" x="139" y="140"/>
         </view>
     </objects>
-    <designables>
-        <designable name="tnB-az-VwA">
-            <size key="intrinsicContentSize" width="24" height="33"/>
-        </designable>
-    </designables>
     <resources>
-        <image name="host" width="160" height="160"/>
-        <image name="upload_image" width="33" height="33"/>
-        <namedColor name="floatingLabel">
-            <color red="0.2627450980392157" green="0.094117647058823528" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="lavender">
-            <color red="0.53333333333333333" green="0.4392156862745098" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="mint">
-            <color red="0.054901960784313725" green="0.89411764705882357" blue="0.81176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="primary">
             <color red="0.98039215686274506" green="0.97254901960784312" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="purple">
-            <color red="0.49411764705882355" green="0.43529411764705883" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="purpleBlack">
-            <color red="0.2196078431372549" green="0.20000000000000001" blue="0.31372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

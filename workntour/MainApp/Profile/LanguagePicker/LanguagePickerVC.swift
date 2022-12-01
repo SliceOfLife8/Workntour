@@ -138,7 +138,7 @@ class LanguagePickerVC: BaseVC<LanguagePickerViewModel, ProfileCoordinator> {
 
     // MARK: - Private Methods
 
-    func addMenuItemsToBarItem() -> UIMenu {
+    private func addMenuItemsToBarItem() -> UIMenu {
         // Create actions
         let updateAction = UIAction(
             title: "Update",
@@ -178,7 +178,11 @@ class LanguagePickerVC: BaseVC<LanguagePickerViewModel, ProfileCoordinator> {
 
         // Use the .displayInline option to avoid displaying the menu as a submenu,
         // and to separate it from the other menu elements using a line separator.
-        return UIMenu(title: "", options: .displayInline, children: [updateAction, deleteAction])
+        return UIMenu(
+            title: "",
+            options: .displayInline,
+            children: [updateAction, deleteAction]
+        )
     }
 
     // MARK: - Actions

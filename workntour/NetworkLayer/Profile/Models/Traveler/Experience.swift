@@ -12,13 +12,20 @@ struct ProfileExperience: Codable {
     let uuid: String
     let experience: Experience
 
-    func convertToCommonUI() -> ProfileExperienceCell.DataModel.ExperienceUI? {
+    enum CodingKeys: String, CodingKey {
+        case uuid = "experienceId"
+        case experience
+    }
+
+    func convertToCommonUI() -> ProfileExperienceCell.DataModel.ExperienceUI {
+        let dateStart = experience.startDate?.getMonthYear() ?? ""
+        let dateEnd = experience.endDate?.getMonthYear() ?? ""
         return .init(
             uuid: uuid,
             professional: experience.type == .COMPANY,
             organisation: experience.organization ?? "",
             position: experience.position ?? "",
-            dateText: "kati"
+            dateText: "\(dateStart) - \(dateEnd)"
         )
     }
 }
@@ -32,7 +39,7 @@ struct Experience: Codable {
     var description: String?
 
     enum CodingKeys: String, CodingKey {
-        case type
+        case type = "typeOfExperience"
         case organization = "nameOfOrganisation"
         case startDate = "startedOn"
         case endDate = "endedOn"
@@ -74,7 +81,7 @@ struct Experience: Codable {
     }
 }
 
-enum ExperienceType: CaseIterable, Codable {
+enum ExperienceType: String, CaseIterable, Codable {
     case COMPANY
     case UNIVERSITY
 

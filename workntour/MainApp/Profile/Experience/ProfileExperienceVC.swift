@@ -60,17 +60,27 @@ class ProfileExperienceVC: BaseVC<ProfileExperienceViewModel, ProfileCoordinator
         guard let experience = viewModel?.data.experience else { return }
 
         setupNavigationBar(mainTitle: "experience".localized())
-        let saveAction = UIBarButtonItem(
-            title: "save".localized(),
-            style: .plain,
-            target: self,
-            action: #selector(saveBtnTapped)
-        )
-        navigationItem.rightBarButtonItems = [saveAction]
-        navigationItem.rightBarButtonItem?.isEnabled = false
 
-        guard experience.isPrefilled else { return }
-        editView(experieceType: experience.type)
+        if experience.isPrefilled {
+            let bar = UIBarButtonItem(
+                image: UIImage(systemName: "circle.grid.3x3"),
+                style: .plain,
+                target: self,
+                action: nil
+            )
+            self.navigationItem.rightBarButtonItem = bar
+            self.navigationItem.rightBarButtonItem?.menu = addMenuItemsToBarItem()
+        }
+        else {
+            let saveAction = UIBarButtonItem(
+                title: "save".localized(),
+                style: .plain,
+                target: self,
+                action: #selector(saveBtnTapped)
+            )
+            navigationItem.rightBarButtonItems = [saveAction]
+            navigationItem.rightBarButtonItem?.isEnabled = false
+        }
     }
 
     override func setupUI() {
@@ -126,6 +136,16 @@ class ProfileExperienceVC: BaseVC<ProfileExperienceViewModel, ProfileCoordinator
         descriptionTextView.text = data.experience.description
         mainStackView.setCustomSpacing(12, after: descriptionTextView)
         footerLabel.text = "experience_footer_desc".localized()
+
+        guard data.experience.isPrefilled else { return }
+
+        switch data.experience.type {
+        case .COMPANY:
+            segmentedControl.removeSegment(at: 1, animated: false)
+        case .UNIVERSITY:
+            segmentedControl.removeSegment(at: 0, animated: false)
+        }
+        segmentedControl.selectedSegmentIndex = 0
     }
 
     // MARK: - Private Methods
@@ -145,58 +165,86 @@ class ProfileExperienceVC: BaseVC<ProfileExperienceViewModel, ProfileCoordinator
         )
     }
 
-    /// This func is responsible for show proper view when data are already provided.
-    private func editView(experieceType type: ExperienceType) {
-        let deleteAction = UIBarButtonItem(
-            title: "delete".localized(),
-            style: .plain,
-            target: self,
-            action: #selector(deleteBtnTapped)
-        )
-        deleteAction.tintColor = .red
-        navigationItem.rightBarButtonItems?.append(deleteAction)
-        navigationItem.rightBarButtonItem?.isEnabled = true
+    func addMenuItemsToBarItem() -> UIMenu {
+        // Create actions
+        let updateAction = UIAction(
+            title: "Update",
+            image: UIImage(systemName: "pencil"),
+            handler: { [weak self] _ in
+                self?.saveBtnTapped()
+            })
 
-        switch type {
-        case .COMPANY:
-            segmentedControl.removeSegment(at: 0, animated: false)
-        case .UNIVERSITY:
-            segmentedControl.removeSegment(at: 1, animated: false)
-        }
-        segmentedControl.selectedSegmentIndex = 0
+        let deleteAction = UIAction(
+            title: "Delete",
+            image: UIImage(systemName: "trash")?.withTintColor(.red, renderingMode: .alwaysOriginal),
+            handler: { [weak self] _ in
+                self?.deleteBtnTapped()
+            })
+
+        return UIMenu(
+            title: "",
+            options: .displayInline,
+            children: [updateAction, deleteAction]
+        )
     }
 
     // MARK: - Actions
 
     @IBAction func segmentedControlValueChanged(_ sender: UISegmentedControl) {
-        guard var experience = viewModel?.data.experience else { return }
+        guard let viewModel else { return }
 
         if sender.selectedSegmentIndex == 0 {
-            experience.type = .COMPANY
+            viewModel.data.experience.type = .COMPANY
             domainLabel.text = "company".localized()
             domainTextField.configure(
                 placeHolder: "company_placeholder".localized(),
-                text: experience.organization,
+                text: viewModel.data.experience.organization,
                 type: .plain
             )
         }
         else {
-            experience.type = .UNIVERSITY
+            viewModel.data.experience.type = .UNIVERSITY
             domainLabel.text = "university".localized()
             domainTextField.configure(
                 placeHolder: "university_placeholder".localized(),
-                text: experience.organization,
+                text: viewModel.data.experience.organization,
                 type: .plain
             )
         }
     }
 
     @objc private func saveBtnTapped() {
-        print("call api")
+        guard let viewModel,
+              var profileDto = viewModel.traveler
+        else {
+            return
+        }
+
+        switch viewModel.data.mode {
+        case .add:
+            if profileDto.experience == nil {
+                profileDto.experience = []
+            }
+            profileDto.experience?.append(viewModel.data.convertToExperience())
+        case .edit:
+            if let index = profileDto.experience?.firstIndex(where: { $0.uuid == viewModel.data.uuid }) {
+                profileDto.experience?[index] = viewModel.data.convertToExperience()
+            }
+        }
+
+        self.coordinator?.navigate(to: .updateTravelerProfile(profileDto))
     }
 
-    @objc private func deleteBtnTapped() {
-        print("delete action!")
+    private func deleteBtnTapped() {
+        guard let viewModel,
+              var profileDto = viewModel.traveler
+        else {
+            return
+        }
+
+        profileDto.experience = profileDto.experience?.filter { $0.uuid != viewModel.data.uuid }
+
+        self.coordinator?.navigate(to: .updateTravelerProfile(profileDto))
     }
 
     @IBAction func domainDidChange(_ sender: UITextField) {
@@ -207,18 +255,18 @@ class ProfileExperienceVC: BaseVC<ProfileExperienceViewModel, ProfileCoordinator
 
     @IBAction func positionDidChange(_ sender: UITextField) {
         guard let viewModel else { return }
-        viewModel.data.experience.position = sender.text?.changeDateFormat() // "2013-11-13"
+        viewModel.data.experience.position = sender.text
         navigationItem.rightBarButtonItem?.isEnabled = viewModel.data.experience.isPrefilled ? true : false
     }
     
     @IBAction func startDateDidEndEditing(_ sender: UITextField) {
         guard let viewModel else { return }
-        viewModel.data.experience.startDate = sender.text?.changeDateFormat()
+        viewModel.data.experience.startDate = sender.text?.changeDateFormat() // "2013-11-13"
     }
 
     @IBAction func endDateDidEndEditing(_ sender: UITextField) {
         guard let viewModel else { return }
-        viewModel.data.experience.endDate = sender.text
+        viewModel.data.experience.endDate = sender.text?.changeDateFormat()
     }
 
 }

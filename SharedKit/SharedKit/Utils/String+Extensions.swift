@@ -92,6 +92,15 @@ extension String {
         return dateFormatter.date(from: self)
     }
 
+    public func getMonthYear() -> String? {
+        guard let date = self.asDate()
+        else {
+            return nil
+        }
+
+        return "\(date.month) \(date.year)"
+    }
+
     public func userAgeEligibility() -> Bool {
         guard let birthdayDate = self.stringToDate(),
               let minimumRequiredDate = Calendar.current.date(byAdding: .year, value: -18, to: Date()) else {

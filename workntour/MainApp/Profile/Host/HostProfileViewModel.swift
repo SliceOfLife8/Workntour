@@ -6,130 +6,77 @@
 //
 
 import Combine
-import Networking
 import SharedKit
+import CommonUI
 
 class HostProfileViewModel: BaseViewModel {
     /// Service
     private var service: ProfileService
     /// Inputs
     var isCompany: Bool = false
-    @Published var companyHost: CompanyHostProfile?
-    @Published var individualHost: IndividualHostProfile?
-
-    var countries: Countries
+    @Published var companyHost: CompanyHostProfileDto?
+    @Published var individualHost: IndividualHostProfileDto?
 
     /// Outputs
-    @Published var newImage: Data?
+    @Published var newImage: Media?
     @Published var profileUpdated: Bool = false
+    @Published var getRefreshedProfile: Bool = false
+    var shouldShowAnimation: Bool = true
 
     // MARK: - Init
-    init(service: ProfileService = DataManager.shared,
-         isHostCompany: Bool) {
+    init(
+        service: ProfileService = DataManager.shared,
+         isHostCompany: Bool
+    ) {
         self.service = service
         self.isCompany = isHostCompany
-        self.companyHost = UserDataManager.shared.retrieve(CompanyHostProfile.self)
-        self.individualHost = UserDataManager.shared.retrieve(IndividualHostProfile.self)
-        self.countries = Countries()
+        self.companyHost = UserDataManager.shared.retrieve(CompanyHostProfileDto.self)
+        self.individualHost = UserDataManager.shared.retrieve(IndividualHostProfileDto.self)
 
         super.init()
     }
 
-    func updateProfilePic(with imageData: Data?) {
-        if isCompany {
-            companyHost?.profileImage = imageData
-        } else {
-            individualHost?.image = imageData
-        }
-        newImage = imageData
+}
+
+// MARK: - DataModels
+extension HostProfileViewModel { 
+
+    func getHeaderDataModel() -> ProfileHeaderView.DataModel? {
+        guard let data = companyHost else { return nil }
+        let percents = data.percents
+
+        return nil
+
+//        return .init(
+//            mode: .traveler,
+//            profileUrl: data.getProfileImage(),
+//            fullname: data.name,
+//            introText: "traveler_intro".localized(),
+//            percent360: percents.percent360,
+//            percent100: percents.percent100,
+//            duration: percents.duration
+//        )
     }
 
-    func updateSelectedCountry(model: CountriesModel, index: Int) {
-        countries.selectedCountryPrefix = model.regionCode
-        countries.currentCountryFlag = model.flag
-        countries.countrySelectedIndex = index
-    }
+    func getSimpleCellDataModel(_ index: Int) -> ProfileSimpleCell.DataModel? {
+        guard let data = companyHost else { return nil }
 
-    /// Update models + api request
-    func updateProfile(postalAddress: String?,
-                       mobileNum: String?,
-                       fixedNumber: String?) {
-
-        if isCompany {
-            if let _postalAddress = postalAddress?.trimmingCharacters(in: .whitespaces) {
-                companyHost?.postalAddress = _postalAddress
-            }
-            if mobileNum?.trimmingPhoneNumber().count == 10 {
-                companyHost?.countryCode = countries.selectedCountryPrefix
-                companyHost?.mobile = mobileNum?.getPhoneDetails().dropFirst().joined(separator: "")
-            }
-            if let _fixedNumber = fixedNumber?.trimmingCharacters(in: .whitespaces) {
-                companyHost?.fixedNumber = _fixedNumber
-            }
-
-            updateCompanyHostProfile()
-        } else {
-            if let _postalAddress = postalAddress?.trimmingCharacters(in: .whitespaces) {
-                individualHost?.postalAddress = _postalAddress
-            }
-            if mobileNum?.trimmingPhoneNumber().count == 10 {
-                individualHost?.countryCode = countries.selectedCountryPrefix
-                individualHost?.mobile = mobileNum?.getPhoneDetails().dropFirst().joined(separator: "")
-            }
-            if let _fixedNumber = fixedNumber?.trimmingCharacters(in: .whitespaces) {
-                individualHost?.fixedNumber = _fixedNumber
-            }
-
-            updateIndividualHostProfile()
+        switch HostProfileSection(rawValue: index) {
+        case .personalInfo:
+            return .init(
+                title: HostProfileSection.personalInfo.value,
+                values: [],
+                placeholder: "personal_info_placeholder".localized()
+            )
+        case .description:
+            return .init(
+                title: HostProfileSection.description.value,
+                values: [data.description],
+                placeholder: "description_placeholder".localized()
+            )
+        default:
+            assertionFailure("Check collectionView's sizeForItem func.")
+            return nil
         }
     }
-
-    private func updateCompanyHostProfile() {
-        guard let companyModel = companyHost else {
-            return
-        }
-
-        loaderVisibility = true
-//        service.updateCompanyHostProfile(model: companyModel)
-//            .map {
-//                if $0 != nil {
-//                    self.companyHost = $0 // Update current user's model
-//                }
-//
-//                return $0 != nil
-//            }
-//            .subscribe(on: RunLoop.main)
-//            .catch({ _ -> Just<Bool> in
-//                return Just(false)
-//            })
-//                .handleEvents(receiveCompletion: { _ in
-//                    self.loaderVisibility = false
-//                })
-//                    .assign(to: &$profileUpdated)
-    }
-
-    private func updateIndividualHostProfile() {
-        guard let individualModel = individualHost else {
-            return
-        }
-
-        loaderVisibility = true
-//        service.updateIndividualHostProfile(model: individualModel)
-//            .map {
-//                if $0 != nil {
-//                    self.individualHost = $0 // Update current user's model
-//                }
-//
-//                return $0 != nil
-//            }
-//            .subscribe(on: RunLoop.main)
-//            .catch({ _ -> Just<Bool> in
-//                return Just(false)
-//            })
-//                .handleEvents(receiveCompletion: { _ in
-//                    self.loaderVisibility = false
-//                })
-//                    .assign(to: &$profileUpdated)
-    }
-
 }

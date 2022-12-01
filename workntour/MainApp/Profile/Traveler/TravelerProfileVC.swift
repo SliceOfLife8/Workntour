@@ -306,17 +306,17 @@ extension TravelerProfileVC: ProfileSimpleCellDelegate {
 extension TravelerProfileVC: ProfileLanguageCellDelegate {
 
     func addNewLanguage() {
-        let existingLanguages = viewModel?.traveler?.languages?.compactMap { $0.language } ?? []
+        let existingLanguages = viewModel?.traveler?.language?.compactMap { $0.language } ?? []
         self.coordinator?.navigate(to: .addLanguage(existingLanguages: existingLanguages))
     }
 
     func editLanguage(at index: Int) {
-        guard let language = viewModel?.traveler?.languages?[safe: index] else { return }
+        guard let language = viewModel?.traveler?.language?[safe: index] else { return }
         self.coordinator?.navigate(to: .editLanguage(language))
     }
 
     func deleteLanguage(at index: Int) {
-        viewModel?.traveler?.languages?.remove(at: index)
+        viewModel?.traveler?.language?.remove(at: index)
         viewModel?.updateProfile()
     }
 }
@@ -329,10 +329,19 @@ extension TravelerProfileVC: ProfileExperienceCellDelegate {
     }
 
     func editExperience(withUUID uuid: String) {
-        print("edit: \(uuid)")
+        guard let experience = viewModel?.traveler?.experience?
+            .filter({ $0.uuid == uuid }).first
+        else {
+            return
+        }
+
+        self.coordinator?.navigate(to: .openExperience(experience))
     }
 
     func deleteExperience(withUUID uuid: String) {
-        print("delete: \(uuid)")
+        let updatedExperiences = viewModel?.traveler?.experience?
+            .filter({ $0.uuid != uuid })
+        viewModel?.traveler?.experience = updatedExperiences
+        viewModel?.updateProfile()
     }
 }

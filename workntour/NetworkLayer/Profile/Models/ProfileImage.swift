@@ -8,6 +8,11 @@
 import Foundation
 
 struct ProfileImage: Codable {
-    let uuid: String
+    let id: String
     let url: String
+
+    enum CodingKeys: String, CodingKey {
+        case id = "imageId"
+        case url = "imageUrl"
+    }
 }

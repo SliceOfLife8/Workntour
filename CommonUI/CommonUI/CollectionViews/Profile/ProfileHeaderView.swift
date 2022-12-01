@@ -85,11 +85,14 @@ extension ProfileHeaderView {
 
         public enum Mode {
             case traveler
+            case host
 
             var placeholder: String {
                 switch self {
                 case .traveler:
                     return "traveler"
+                case .host:
+                    return "host"
                 }
             }
         }

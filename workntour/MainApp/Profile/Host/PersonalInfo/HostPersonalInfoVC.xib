@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Lato-Medium.ttf">
+            <string>Lato-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BaseVC" customModule="workntour" customModuleProvider="target">
+            <connections>
+                <outlet property="addressLabel" destination="ik3-9R-k4A" id="Rnr-pn-k8Y"/>
+                <outlet property="addressTextField" destination="1JV-lD-Cht" id="cyP-2Z-EQv"/>
+                <outlet property="cityLabel" destination="Psd-nv-tfK" id="xaV-Tb-NrF"/>
+                <outlet property="cityTextField" destination="DJp-65-E73" id="Y2O-3k-XNG"/>
+                <outlet property="countryLabel" destination="Jnj-T8-Wqe" id="ONR-Sg-N7Y"/>
+                <outlet property="countryTextField" destination="0Pi-56-ZOX" id="AcT-iv-1LJ"/>
+                <outlet property="emailLabel" destination="kAa-IJ-zMf" id="QIx-5c-m6c"/>
+                <outlet property="emailTextField" destination="ltA-kc-Ri0" id="R13-Ts-orE"/>
+                <outlet property="fixedNumber" destination="gze-uC-UKW" id="I7L-vg-XGd"/>
+                <outlet property="fixedNumberTextField" destination="W04-XZ-k1k" id="S1Z-Xw-vVS"/>
+                <outlet property="mainStackView" destination="zLH-Q3-Frf" id="uc6-Zm-seV"/>
+                <outlet property="mobileNumLabel" destination="LnU-bS-cuH" id="8iO-Il-M3x"/>
+                <outlet property="mobileNumTextField" destination="uGe-43-UDB" id="gNt-td-IOQ"/>
+                <outlet property="nameLabel" destination="QR4-VV-S5w" id="Brn-ei-agd"/>
+                <outlet property="nameTextField" destination="HC3-43-Wyj" id="b0g-lO-VWX"/>
+                <outlet property="postalCodeLabel" destination="eXV-Sd-0XV" id="I67-HT-oWw"/>
+                <outlet property="postalCodeTextField" destination="og4-Y3-BpK" id="Dxs-ux-whS"/>
+                <outlet property="scrollView" destination="zti-5G-7Ic" id="juK-sB-W3h"/>
+                <outlet property="surnameLabel" destination="QPD-yN-pbp" id="DCq-fg-AZe"/>
+                <outlet property="surnameTextField" destination="CGZ-WT-K5M" id="dWf-hq-rgb"/>
+                <outlet property="vatLabel" destination="hcG-Sz-F5J" id="KL1-jN-bUR"/>
+                <outlet property="vatTextField" destination="fGJ-fo-o6b" id="oMN-zQ-jxf"/>
+                <outlet property="view" destination="GAS-ph-7Bt" id="Kwk-Rz-pTz"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="GAS-ph-7Bt">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="zti-5G-7Ic">
+                    <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fuO-L9-2s4" userLabel="Content View">
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="759"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="zLH-Q3-Frf">
+                                    <rect key="frame" x="24" y="32.000000000000028" width="345" height="470.66666666666674"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QR4-VV-S5w" userLabel="name">
+                                            <rect key="frame" x="0.0" y="0.0" width="345" height="17"/>
+                                            <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
+                                            <color key="textColor" name="floatingLabel"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HC3-43-Wyj" userLabel="name TF" customClass="GradientTextField" customModule="CommonUI">
+                                            <rect key="frame" x="0.0" y="23" width="345" height="18.666666666666671"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Surname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QPD-yN-pbp" userLabel="surname">
+                                            <rect key="frame" x="0.0" y="47.666666666666657" width="345" height="17"/>
+                                            <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
+                                            <color key="textColor" name="floatingLabel"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CGZ-WT-K5M" userLabel="surname TF" customClass="GradientTextField" customModule="CommonUI">
+                                            <rect key="frame" x="0.0" y="70.666666666666657" width="345" height="18.666666666666671"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kAa-IJ-zMf" userLabel="email">
+                                            <rect key="frame" x="0.0" y="95.333333333333343" width="345" height="17"/>
+                                            <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
+                                            <color key="textColor" name="floatingLabel"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ltA-kc-Ri0" userLabel="email TF" customClass="GradientTextField" customModule="CommonUI">
+                                            <rect key="frame" x="0.0" y="118.33333333333334" width="345" height="18.666666666666657"/>
+                                            <color key="backgroundColor" red="0.40000000000000002" green="0.43921568630000002" blue="0.52156862749999999" alpha="0.19705099139999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ik3-9R-k4A" userLabel="address">
+                                            <rect key="frame" x="0.0" y="143" width="345" height="17"/>
+                                            <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
+                                            <color key="textColor" name="floatingLabel"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1JV-lD-Cht" userLabel="address TF" customClass="GradientTextField" customModule="CommonUI">
+                                            <rect key="frame" x="0.0" y="166" width="345" height="18.666666666666657"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Psd-nv-tfK" userLabel="city">
+                                            <rect key="frame" x="0.0" y="190.66666666666669" width="345" height="17"/>
+                                            <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
+                                            <color key="textColor" name="floatingLabel"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DJp-65-E73" userLabel="city TF" customClass="GradientTextField" customModule="CommonUI">
+                                            <rect key="frame" x="0.0" y="213.66666666666669" width="345" height="18.666666666666657"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Postal Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eXV-Sd-0XV" userLabel="postalCode">
+                                            <rect key="frame" x="0.0" y="238.33333333333331" width="345" height="17"/>
+                                            <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
+                                            <color key="textColor" name="floatingLabel"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="og4-Y3-BpK" userLabel="postalCode TF" customClass="GradientTextField" customModule="CommonUI">
+                                            <rect key="frame" x="0.0" y="261.33333333333331" width="345" height="18.666666666666686"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jnj-T8-Wqe" userLabel="country">
+                                            <rect key="frame" x="0.0" y="286" width="345" height="17"/>
+                                            <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
+                                            <color key="textColor" name="floatingLabel"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Pi-56-ZOX" userLabel="country TF" customClass="GradientTextField" customModule="CommonUI">
+                                            <rect key="frame" x="0.0" y="309" width="345" height="18.666666666666686"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mobile Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LnU-bS-cuH" userLabel="mobile num">
+                                            <rect key="frame" x="0.0" y="333.66666666666669" width="345" height="17"/>
+                                            <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
+                                            <color key="textColor" name="floatingLabel"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uGe-43-UDB" userLabel="mobileNum TF" customClass="GradientTextField" customModule="CommonUI">
+                                            <rect key="frame" x="0.0" y="356.66666666666669" width="345" height="18.666666666666686"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fixed Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gze-uC-UKW" userLabel="fixed num">
+                                            <rect key="frame" x="0.0" y="381.33333333333331" width="345" height="17"/>
+                                            <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
+                                            <color key="textColor" name="floatingLabel"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W04-XZ-k1k" userLabel="fixed num TF" customClass="GradientTextField" customModule="CommonUI">
+                                            <rect key="frame" x="0.0" y="404.33333333333331" width="345" height="18.666666666666686"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VAT Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hcG-Sz-F5J" userLabel="vat">
+                                            <rect key="frame" x="0.0" y="429" width="345" height="17"/>
+                                            <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
+                                            <color key="textColor" name="floatingLabel"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fGJ-fo-o6b" userLabel="vat TF" customClass="GradientTextField" customModule="CommonUI">
+                                            <rect key="frame" x="0.0" y="452" width="345" height="18.666666666666686"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="zLH-Q3-Frf" firstAttribute="leading" secondItem="fuO-L9-2s4" secondAttribute="leading" constant="24" id="KFF-Fx-Zff"/>
+                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="zLH-Q3-Frf" secondAttribute="bottom" constant="24" id="Qig-oT-Eyu"/>
+                                <constraint firstAttribute="trailing" secondItem="zLH-Q3-Frf" secondAttribute="trailing" constant="24" id="X27-Vq-g2k"/>
+                                <constraint firstItem="zLH-Q3-Frf" firstAttribute="top" secondItem="fuO-L9-2s4" secondAttribute="top" constant="32" id="haB-0K-gO5"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="fuO-L9-2s4" firstAttribute="top" secondItem="zti-5G-7Ic" secondAttribute="top" id="4YA-GS-ozn"/>
+                        <constraint firstItem="fuO-L9-2s4" firstAttribute="leading" secondItem="zti-5G-7Ic" secondAttribute="leading" id="AgM-WS-QPk"/>
+                        <constraint firstItem="fuO-L9-2s4" firstAttribute="width" secondItem="zti-5G-7Ic" secondAttribute="width" id="GxS-5f-9oA"/>
+                        <constraint firstAttribute="trailing" secondItem="fuO-L9-2s4" secondAttribute="trailing" id="QHz-ZY-bto"/>
+                        <constraint firstAttribute="bottom" secondItem="fuO-L9-2s4" secondAttribute="bottom" id="YTx-pt-NQ7"/>
+                        <constraint firstItem="fuO-L9-2s4" firstAttribute="height" secondItem="zti-5G-7Ic" secondAttribute="height" priority="250" id="yZ3-8C-jeN"/>
+                    </constraints>
+                </scrollView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="kZ7-sG-FiY"/>
+            <color key="backgroundColor" name="primary"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="zti-5G-7Ic" secondAttribute="trailing" id="0ID-zM-3gm"/>
+                <constraint firstItem="zti-5G-7Ic" firstAttribute="leading" secondItem="kZ7-sG-FiY" secondAttribute="leading" id="dwS-vt-IQ6"/>
+                <constraint firstItem="kZ7-sG-FiY" firstAttribute="bottom" secondItem="zti-5G-7Ic" secondAttribute="bottom" id="dzs-z3-vGU"/>
+                <constraint firstItem="zti-5G-7Ic" firstAttribute="top" secondItem="kZ7-sG-FiY" secondAttribute="top" id="roj-eQ-pqk"/>
+            </constraints>
+            <point key="canvasLocation" x="124" y="21"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="floatingLabel">
+            <color red="0.2627450980392157" green="0.094117647058823528" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="primary">
+            <color red="0.98039215686274506" green="0.97254901960784312" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

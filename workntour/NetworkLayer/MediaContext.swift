@@ -82,6 +82,7 @@ enum MediaContext {
                     completion(Result.failure(AppError.dataNotFound))
                 }
             } catch let error {
+                debugPrint("statusCode: \(response.statusCode)")
                 completion(Result.failure(AppError.jsonParsingError(error as! DecodingError)))
             }
         })

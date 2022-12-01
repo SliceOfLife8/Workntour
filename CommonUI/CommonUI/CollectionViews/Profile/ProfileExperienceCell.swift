@@ -71,6 +71,7 @@ public class ProfileExperienceCell: UICollectionViewCell {
             descriptionStackView.isHidden = true
             tableView.isHidden = false
             tableViewHeightConstraint.constant = tableViewHeight
+            tableView.reloadData()
         }
         else {
             descriptionStackView.isHidden = false

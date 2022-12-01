@@ -76,7 +76,7 @@ extension ProfileSimpleCell {
                 self.textColor = UIColor.appColor(.placeholder)
             }
             else {
-                self.description = _values.joined(separator: " ")
+                self.description = _values.joined(separator: ", ")
                 self.textColor = UIColor.appColor(.floatingLabel)
             }
         }

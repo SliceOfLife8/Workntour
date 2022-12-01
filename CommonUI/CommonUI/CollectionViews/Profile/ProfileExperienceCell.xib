@@ -91,7 +91,6 @@
                 <constraint firstItem="1wQ-dc-TC9" firstAttribute="leading" secondItem="8v5-dC-xam" secondAttribute="leading" constant="24" id="YVq-rO-PkP"/>
                 <constraint firstAttribute="trailing" secondItem="bzh-3U-kqm" secondAttribute="trailing" id="YjS-Uk-hdi"/>
                 <constraint firstItem="1wQ-dc-TC9" firstAttribute="top" secondItem="8v5-dC-xam" secondAttribute="top" constant="16" id="Yl4-uv-hwR"/>
-                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="bzh-3U-kqm" secondAttribute="bottom" id="cH3-CA-12I"/>
             </constraints>
             <connections>
                 <outlet property="descriptionLabel" destination="jMG-6E-qKv" id="Wl5-ZF-18Q"/>

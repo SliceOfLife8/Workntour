@@ -18,9 +18,9 @@ struct TravelerProfileDto: Codable {
     var address, city, country: String?
     var type: TravelerType?
     var description: String?
-    private let profileImage: [String: String]?
+    private let profileImage: ProfileImage?
     var interests: [LearningOpportunities]?
-    var languages: [ProfileLanguage]?
+    var language: [ProfileLanguage]?
     var skills: [TypeOfHelp]?
     var experience: [ProfileExperience]?
     var specialDietary: SpecialDietary?
@@ -39,7 +39,7 @@ struct TravelerProfileDto: Codable {
         case mobile = "mobileNum"
         case address, city, country
         case type = "typeOfTraveler"
-        case interests, languages, skills, experience
+        case interests, language, skills, experience
         case profileImage, description
         case driverLicense, specialDietary
         case imageData = "imageMobile"
@@ -53,7 +53,7 @@ struct TravelerProfileDto: Codable {
     var percents: ProfilePercents {
         var percent: Double = 0.0
 
-        percent += profileImage.isNilOrEmpty ? 0 : 1/totalFields
+        percent += profileImage != nil ? 1/totalFields : 0
         percent += hasValue(name)
         percent += hasValue(surname)
         percent += hasValue(nationality)
@@ -68,7 +68,7 @@ struct TravelerProfileDto: Codable {
         percent += type != .none ? 1/totalFields : 0
         percent += interests.isNilOrEmpty ? 0 : 1/totalFields
         percent += skills.isNilOrEmpty ? 0 : 1/totalFields
-        percent += languages.isNilOrEmpty ? 0 : 1/totalFields
+        percent += language.isNilOrEmpty ? 0 : 1/totalFields
         percent += experience.isNilOrEmpty ? 0 : 1/totalFields
 
         let roundedPercent = percent.rounded(toPlaces: 2)
@@ -98,7 +98,7 @@ struct TravelerProfileDto: Codable {
     }
 
     func getProfileImage() -> URL? {
-        guard let firstValue = profileImage?.values.first
+        guard let firstValue = profileImage?.url
         else {
             return nil
         }

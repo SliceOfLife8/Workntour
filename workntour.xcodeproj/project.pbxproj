@@ -140,12 +140,16 @@
 		1BC190ED2863394100585533 /* ProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC190EC2863394100585533 /* ProfileRouter.swift */; };
 		1BC190EF2863394B00585533 /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC190EE2863394B00585533 /* ProfileService.swift */; };
 		1BC190F12863397F00585533 /* TravelerProfileDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC190F02863397F00585533 /* TravelerProfileDto.swift */; };
-		1BC190F32863399E00585533 /* CompanyHostProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC190F22863399E00585533 /* CompanyHostProfile.swift */; };
-		1BC190F5286339DD00585533 /* IndividualHostProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC190F4286339DD00585533 /* IndividualHostProfile.swift */; };
+		1BC190F32863399E00585533 /* CompanyHostProfileDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC190F22863399E00585533 /* CompanyHostProfileDto.swift */; };
+		1BC190F5286339DD00585533 /* IndividualHostProfileDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC190F4286339DD00585533 /* IndividualHostProfileDto.swift */; };
 		1BE6EA992868BFB8009CBE6D /* OpportunitiesVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BE6EA982868BFB8009CBE6D /* OpportunitiesVC.xib */; };
 		2707FF96C7CBD64F6B2EA3B7 /* Pods_workntour.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5701F516D91D3C90DD51441 /* Pods_workntour.framework */; };
 		CE01BD262933D2E500F87439 /* MediaContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE01BD252933D2E500F87439 /* MediaContext.swift */; };
 		CE01BD3429350C2C00F87439 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE01BD3329350C2C00F87439 /* Media.swift */; };
+		CE01BD4129373AA600F87439 /* HostProfileSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE01BD4029373AA600F87439 /* HostProfileSections.swift */; };
+		CE01BD5029379FF500F87439 /* HostPersonalInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE01BD4F29379FF500F87439 /* HostPersonalInfoVC.swift */; };
+		CE01BD5229379FFB00F87439 /* HostPersonalInfoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE01BD5129379FFB00F87439 /* HostPersonalInfoVC.xib */; };
+		CE01BD542937A00400F87439 /* HostPersonalInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE01BD532937A00400F87439 /* HostPersonalInfoViewModel.swift */; };
 		CE3F9E8C291F9D0200480493 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE3F9E8B291F9D0200480493 /* Localizable.strings */; };
 		CE3F9E8F291FA88700480493 /* ProfileSelectAttributesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3F9E8E291FA88700480493 /* ProfileSelectAttributesVC.swift */; };
 		CE3F9E92291FA96100480493 /* ProfileSelectAttributesVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE3F9E91291FA96100480493 /* ProfileSelectAttributesVC.xib */; };
@@ -325,8 +329,8 @@
 		1BC190EC2863394100585533 /* ProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRouter.swift; sourceTree = "<group>"; };
 		1BC190EE2863394B00585533 /* ProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
 		1BC190F02863397F00585533 /* TravelerProfileDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelerProfileDto.swift; sourceTree = "<group>"; };
-		1BC190F22863399E00585533 /* CompanyHostProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyHostProfile.swift; sourceTree = "<group>"; };
-		1BC190F4286339DD00585533 /* IndividualHostProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualHostProfile.swift; sourceTree = "<group>"; };
+		1BC190F22863399E00585533 /* CompanyHostProfileDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyHostProfileDto.swift; sourceTree = "<group>"; };
+		1BC190F4286339DD00585533 /* IndividualHostProfileDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualHostProfileDto.swift; sourceTree = "<group>"; };
 		1BE6EA982868BFB8009CBE6D /* OpportunitiesVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OpportunitiesVC.xib; sourceTree = "<group>"; };
 		2544630698253F96E0BC47D6 /* Pods-workntour.dev debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-workntour.dev debug.xcconfig"; path = "Target Support Files/Pods-workntour/Pods-workntour.dev debug.xcconfig"; sourceTree = "<group>"; };
 		437B52C06849CB14B21AF948 /* Pods-workntour.dev release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-workntour.dev release.xcconfig"; path = "Target Support Files/Pods-workntour/Pods-workntour.dev release.xcconfig"; sourceTree = "<group>"; };
@@ -335,6 +339,11 @@
 		B0657D0C965FCA5EF3E62D12 /* Pods-workntour.staging release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-workntour.staging release.xcconfig"; path = "Target Support Files/Pods-workntour/Pods-workntour.staging release.xcconfig"; sourceTree = "<group>"; };
 		CE01BD252933D2E500F87439 /* MediaContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaContext.swift; sourceTree = "<group>"; };
 		CE01BD3329350C2C00F87439 /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
+		CE01BD4029373AA600F87439 /* HostProfileSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostProfileSections.swift; sourceTree = "<group>"; };
+		CE01BD4F29379FF500F87439 /* HostPersonalInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostPersonalInfoVC.swift; sourceTree = "<group>"; };
+		CE01BD5129379FFB00F87439 /* HostPersonalInfoVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HostPersonalInfoVC.xib; sourceTree = "<group>"; };
+		CE01BD532937A00400F87439 /* HostPersonalInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostPersonalInfoViewModel.swift; sourceTree = "<group>"; };
+		CE01BD552937CE6700F87439 /* workntour.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = workntour.entitlements; sourceTree = "<group>"; };
 		CE3F9E8B291F9D0200480493 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		CE3F9E8E291FA88700480493 /* ProfileSelectAttributesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSelectAttributesVC.swift; sourceTree = "<group>"; };
 		CE3F9E91291FA96100480493 /* ProfileSelectAttributesVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileSelectAttributesVC.xib; sourceTree = "<group>"; };
@@ -688,6 +697,7 @@
 		1B7315EF281E7DD0001F2E6A /* workntour */ = {
 			isa = PBXGroup;
 			children = (
+				CE01BD552937CE6700F87439 /* workntour.entitlements */,
 				1B5279E52820469100FDAF5D /* NetworkLayer */,
 				1BA2DEEC281E832200DB128D /* Core */,
 				1BA2DF05281E8D3F00DB128D /* MainApp */,
@@ -929,6 +939,7 @@
 		1BC190CA285F24DF00585533 /* Host */ = {
 			isa = PBXGroup;
 			children = (
+				CE01BD4E29379FCB00F87439 /* PersonalInfo */,
 				1BC190CC285F251800585533 /* HostProfileVC.swift */,
 				1BC190CE285F253C00585533 /* HostProfileVC.xib */,
 				1BC190D0285F255500585533 /* HostProfileViewModel.swift */,
@@ -975,9 +986,8 @@
 		1BC190EA2863392400585533 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				CE01BD3F29373A9100F87439 /* Host */,
 				CE446D71292A7BD7004026FA /* Traveler */,
-				1BC190F4286339DD00585533 /* IndividualHostProfile.swift */,
-				1BC190F22863399E00585533 /* CompanyHostProfile.swift */,
 				CE446D6F292A7A24004026FA /* ProfileImage.swift */,
 				CE01BD3329350C2C00F87439 /* Media.swift */,
 			);
@@ -1004,6 +1014,26 @@
 				A9A28C3C30B3A10BAB51F50A /* Pods-workntour.prod release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		CE01BD3F29373A9100F87439 /* Host */ = {
+			isa = PBXGroup;
+			children = (
+				1BC190F4286339DD00585533 /* IndividualHostProfileDto.swift */,
+				1BC190F22863399E00585533 /* CompanyHostProfileDto.swift */,
+				CE01BD4029373AA600F87439 /* HostProfileSections.swift */,
+			);
+			path = Host;
+			sourceTree = "<group>";
+		};
+		CE01BD4E29379FCB00F87439 /* PersonalInfo */ = {
+			isa = PBXGroup;
+			children = (
+				CE01BD4F29379FF500F87439 /* HostPersonalInfoVC.swift */,
+				CE01BD532937A00400F87439 /* HostPersonalInfoViewModel.swift */,
+				CE01BD5129379FFB00F87439 /* HostPersonalInfoVC.xib */,
+			);
+			path = PersonalInfo;
 			sourceTree = "<group>";
 		};
 		CE3F9E8D291FA84F00480493 /* SelectAttributes */ = {
@@ -1136,6 +1166,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B4AE426283F58FB00FA6420 /* Lato-Black.ttf in Resources */,
+				CE01BD5229379FFB00F87439 /* HostPersonalInfoVC.xib in Resources */,
 				1B3C384528520E11000EEADF /* LoginVC.xib in Resources */,
 				1BE6EA992868BFB8009CBE6D /* OpportunitiesVC.xib in Resources */,
 				1B4AE427283F58FB00FA6420 /* Lato-BlackItalic.ttf in Resources */,
@@ -1310,6 +1341,7 @@
 				1B9A3D8C282C060A003E0C34 /* SplashViewModel.swift in Sources */,
 				1B4AE3FA283E04C400FA6420 /* CompanyHost.swift in Sources */,
 				1BC1909E285A0DB200585533 /* TabBarCoordinator.swift in Sources */,
+				CE01BD4129373AA600F87439 /* HostProfileSections.swift in Sources */,
 				CE3F9E94291FAA6800480493 /* ProfileSelectAttributesViewModel.swift in Sources */,
 				CE83330929228D0A00F751FE /* LanguagePickerViewModel.swift in Sources */,
 				CE8332D42920F5A500F751FE /* Experience.swift in Sources */,
@@ -1326,10 +1358,12 @@
 				CE3F9E8F291FA88700480493 /* ProfileSelectAttributesVC.swift in Sources */,
 				CED06CFE2928DEA000C054E3 /* TravelerProfileSections.swift in Sources */,
 				1B442FF3287FE161002145BC /* HomeService.swift in Sources */,
-				1BC190F32863399E00585533 /* CompanyHostProfile.swift in Sources */,
+				1BC190F32863399E00585533 /* CompanyHostProfileDto.swift in Sources */,
 				1BC190AF285C5C6300585533 /* HomeViewModel.swift in Sources */,
 				1B39AA4728744791009377A7 /* OpportunityDetailsModel.swift in Sources */,
+				CE01BD542937A00400F87439 /* HostPersonalInfoViewModel.swift in Sources */,
 				1B44304C288A93AB002145BC /* CountClusterAnnotationView.swift in Sources */,
+				CE01BD5029379FF500F87439 /* HostPersonalInfoVC.swift in Sources */,
 				1B9A3D90282C0BAF003E0C34 /* DataManager.swift in Sources */,
 				1BA2DF02281E8C7300DB128D /* BaseVC.swift in Sources */,
 				1BC190D1285F255500585533 /* HostProfileViewModel.swift in Sources */,
@@ -1413,7 +1447,7 @@
 				CE8332CE2920EC2600F751FE /* ProfileExperienceVC.swift in Sources */,
 				1B442FF1287FE159002145BC /* HomeRouter.swift in Sources */,
 				1BC190A2285A0E8200585533 /* TravelerProfileVC.swift in Sources */,
-				1BC190F5286339DD00585533 /* IndividualHostProfile.swift in Sources */,
+				1BC190F5286339DD00585533 /* IndividualHostProfileDto.swift in Sources */,
 				1B7753D4286B371C00D81526 /* CreateOpportunityVC+Extensions.swift in Sources */,
 				1B6A8C9E2897A836003A1540 /* TravelerType.swift in Sources */,
 				1B16837B2837C07B0067F2DB /* FirebaseManager.swift in Sources */,
@@ -1559,6 +1593,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = workntour/workntour.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 13;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1607,6 +1642,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = workntour/workntour.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = 8QYX9VGMBQ;
@@ -1717,6 +1753,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = workntour/workntour.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 13;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1827,6 +1864,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = workntour/workntour.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 13;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1932,6 +1970,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = workntour/workntour.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = 8QYX9VGMBQ;
@@ -2036,6 +2075,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = workntour/workntour.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = 8QYX9VGMBQ;

@@ -1,5 +1,5 @@
 //
-//  IndividualHostProfile.swift
+//  IndividualHostProfileDto.swift
 //  workntour
 //
 //  Created by Chris Petimezas on 22/6/22.
@@ -7,8 +7,8 @@
 
 import Foundation
 
-// MARK: - IndividualHostProfile
-struct IndividualHostProfile: Codable {
+// MARK: - IndividualHostProfileDto
+struct IndividualHostProfileDto: Codable {
     let memberID: String
     let role: UserRole
     let name, surname: String

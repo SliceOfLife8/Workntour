@@ -1,5 +1,5 @@
 //
-//  CompanyHostProfile.swift
+//  CompanyHostProfileDto.swift
 //  workntour
 //
 //  Created by Chris Petimezas on 22/6/22.
@@ -8,16 +8,21 @@
 import Foundation
 import SharedKit
 
-// MARK: - CompanyHostProfile
-struct CompanyHostProfile: Codable {
-    let memberID: String
+// MARK: - CompanyHostProfileDto
+struct CompanyHostProfileDto: Codable {
+    let memberID, companyID: String
     let role: UserRole
-    let name, companyID: String
+    var name: String
     let email, password: String
     var country, postalAddress: String?
     var countryCode, mobile, fixedNumber: String?
     var profileImage: Data?
-    let description, createdAt: String?
+    var description: String?
+    let createdAt: String?
+
+    // MARK: - Private Properties
+
+    let totalFields: Double = 18
 
     enum CodingKeys: String, CodingKey {
         case memberID = "memberId"

@@ -84,7 +84,7 @@ extension DataManager: ProfileService {
         return networking.request(
             with: ProfileRouter.getIndividualHost(memberId),
             scheduler: DispatchQueue.main,
-            class: GenericResponse<IndividualHostProfile>.self)
+            class: GenericResponse<IndividualHostProfileDto>.self)
         .compactMap {
             UserDataManager.shared.save($0.data,
                                         memberId: $0.data?.memberID,
@@ -98,7 +98,7 @@ extension DataManager: ProfileService {
         return networking.request(
             with: ProfileRouter.getCompanyHost(memberId),
             scheduler: DispatchQueue.main,
-            class: GenericResponse<CompanyHostProfile>.self)
+            class: GenericResponse<CompanyHostProfileDto>.self)
         .compactMap {
             UserDataManager.shared.save($0.data,
                                         memberId: $0.data?.memberID,

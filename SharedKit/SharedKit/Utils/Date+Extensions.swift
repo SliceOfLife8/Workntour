@@ -27,4 +27,16 @@ extension Date {
     func isGreaterThan(_ date: Date) -> Bool {
         return self > date
     }
+
+    var month: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM"
+        return dateFormatter.string(from: self)
+    }
+
+    var year: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy"
+        return dateFormatter.string(from: self)
+    }
 }

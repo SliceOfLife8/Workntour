@@ -9,6 +9,7 @@ import UIKit
 import SharedKit
 import PhotosUI
 import MobileCoreServices
+import UniformTypeIdentifiers
 
 /** A Coordinator which is responsible about profile section for `Hosts` & `Travelers` . */
 
@@ -16,17 +17,19 @@ enum ProfileStep: Step {
     case state(_ default: DefaultStep)
     case openGalleryPicker
     case updateTravelerProfile(_ profile: TravelerProfileDto)
+    case updateCompanyProfile(_ profile: CompanyHostProfileDto)
+    case updateIndividualProfile(_ profile: IndividualHostProfileDto)
     case travelerEditPersonalInfo
     case selectInterests(preselectedInterests: [LearningOpportunities])
     case selectSkills(preselectedSkills: [TypeOfHelp])
-    case openExperience(_ experience: Experience?)
+    case openExperience(_ experience: ProfileExperience?)
     case travelerAddSummary(_ summary: String?)
     case addLanguage(existingLanguages: [Language])
     case editLanguage(_ language: ProfileLanguage)
     case travelerSelectType(_ type: TravelerType?)
 }
 
-final class ProfileCoordinator: NavigationCoordinator {
+final class ProfileCoordinator: NSObject, NavigationCoordinator {
 
     var parent: TabBarCoordinator
     var childCoordinators: [Coordinator] = []
@@ -71,6 +74,16 @@ final class ProfileCoordinator: NavigationCoordinator {
         case .updateTravelerProfile(let profileDto):
             let travelerProfileVC = rootViewController.viewControllers.first as? TravelerProfileVC
             travelerProfileVC?.viewModel?.updateProfile(profileDto)
+
+            navigator.popViewController(animated: true)
+        case .updateCompanyProfile(let profileDto):
+            let travelerProfileVC = rootViewController.viewControllers.first as? HostProfileVC
+            // travelerProfileVC?.viewModel?.updateProfile(profileDto)
+
+            navigator.popViewController(animated: true)
+        case .updateIndividualProfile(let profileDto):
+            let travelerProfileVC = rootViewController.viewControllers.first as? HostProfileVC
+            // travelerProfileVC?.viewModel?.updateProfile(profileDto)
 
             navigator.popViewController(animated: true)
         case .openGalleryPicker:
@@ -220,19 +233,26 @@ final class ProfileCoordinator: NavigationCoordinator {
         var updatedProfileDto = profileDto
         switch mode {
         case .add:
-            if updatedProfileDto.languages == nil {
-                updatedProfileDto.languages = []
+            if updatedProfileDto.language == nil {
+                updatedProfileDto.language = []
             }
-            updatedProfileDto.languages?.append(language)
+            updatedProfileDto.language?.append(language)
         case .edit:
-            if let index = updatedProfileDto.languages?.firstIndex(where: { $0.language == language.language }) {
-                updatedProfileDto.languages?[index] = language
+            if let index = updatedProfileDto.language?.firstIndex(where: { $0.language == language.language }) {
+                updatedProfileDto.language?[index] = language
             }
         case .delete:
-            updatedProfileDto.languages = updatedProfileDto.languages?.filter { $0.language != language.language }
+            updatedProfileDto.language = updatedProfileDto.language?.filter { $0.language != language.language }
         }
 
         navigate(to: .updateTravelerProfile(updatedProfileDto))
+    }
+
+    func selectFiles() {
+        let types = [UTType.pdf]
+        let documentPickerController = UIDocumentPickerViewController(forOpeningContentTypes: types)
+        documentPickerController.delegate = self
+        rootViewController.present(documentPickerController, animated: true)
     }
 
 }
@@ -252,7 +272,7 @@ extension ProfileCoordinator: PHPickerViewControllerDelegate {
             if let image = image as? UIImage, let data = image.jpeg(.medium) {
                 DispatchQueue.main.async {
                     if let hostProfileVC = self.rootViewController.topViewController as? HostProfileVC {
-                        hostProfileVC.viewModel?.updateProfilePic(with: image.jpeg(.medium))
+                        //hostProfileVC.viewModel?.updateProfilePic(with: image.jpeg(.medium))
                     } else if let travelerProfileVC = self.rootViewController.topViewController as? TravelerProfileVC {
                         travelerProfileVC.viewModel?.newImage = Media(data: data,
                                                                       forKey: "profileImage",
@@ -260,6 +280,31 @@ extension ProfileCoordinator: PHPickerViewControllerDelegate {
                     }
                 }
             }
+        }
+    }
+}
+
+// MARK: - PDF Picker
+extension ProfileCoordinator: UIDocumentPickerDelegate {
+
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        guard let pdfFile = urls.first,
+              pdfFile.startAccessingSecurityScopedResource()
+        else {
+            return
+        }
+
+        defer { pdfFile.stopAccessingSecurityScopedResource() }
+        do {
+            let documentData = try Data(contentsOf: pdfFile)
+            let pdf = Media(
+                data: documentData,
+                forKey: "pdf",
+                withName: pdfFile.lastPathComponent
+            )
+            print("update viewModel!: \(pdf)")
+        } catch {
+            print("No data!")
         }
     }
 }

@@ -150,38 +150,15 @@ extension TravelerProfileViewModel {
         return .init(
             title: TravelerProfileSection.languages.value,
             description: "languages_placeholder".localized(),
-            languages: traveler?.languages?.compactMap { $0.convertToCommonUI() } ?? []
+            languages: traveler?.language?.compactMap { $0.convertToCommonUI() } ?? []
         )
     }
 
     func getExperienceCellDataModel() -> ProfileExperienceCell.DataModel? {
-        let experiences = [
-            ProfileExperience(
-                uuid: "CBDDA38B-996C-4CE7-9C5C-DD5FAF5F964A",
-                experience: Experience(type: .COMPANY, organization: "Microsoft", position: "Software Engineer", startDate: "", endDate: "")
-            ),
-            ProfileExperience(
-                uuid: "727FA0EF-8AA8-4BA5-8F6F-52BE790A7ECB",
-                experience: Experience(type: .UNIVERSITY, organization: "Harvard", position: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled", startDate: "", endDate: "")
-            ),
-            ProfileExperience(
-                uuid: "B4D561D4-1D64-4863-A475-E493E89A2BAE",
-                experience: Experience(type: .COMPANY, organization: "Apple", position: "Product Designer", startDate: "", endDate: "")
-            ),
-            ProfileExperience(
-                uuid: "473413EA-CDDA-4C09-A97D-F3427D63EA93",
-                experience: Experience(type: .COMPANY, organization: "Samsung", position: "I am working on a quiz project and trying to convert an array of bools to an array of strings so that I can present the user with their answers. I have tried to enumerate the question array and pull out all the users answers and the correct answers and append them to a new array.", startDate: "", endDate: "")
-            ),
-            ProfileExperience(
-                uuid: "00A71247-AAF7-4014-800B-3984E882C324",
-                experience: Experience(type: .UNIVERSITY, organization: "TeamViewer", position: "We want to revamp the UI of our current tooltip and make it more engaging by adding a banner/animated banner along with the text.", startDate: "", endDate: "")
-            )
-        ]
-
         return .init(
             title: TravelerProfileSection.experience.value,
             description: "experience_placeholder".localized(),
-            experiences: experiences.compactMap { $0.convertToCommonUI() }
+            experiences: traveler?.experience?.compactMap { $0.convertToCommonUI() } ?? []
         )
     }
 }

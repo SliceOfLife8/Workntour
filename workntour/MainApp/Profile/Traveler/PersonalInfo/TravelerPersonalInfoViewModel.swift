@@ -58,7 +58,9 @@ class TravelerPersonalInfoViewModel: BaseViewModel {
         data.profile.email = email
         data.profile.postalAddress = postalCode
         data.profile.mobile = mobileNum?.getPhoneDetails().dropFirst().joined(separator: "")
-        // Pending address, city, country
+        data.profile.address = address
+        data.profile.city = city
+        data.profile.country = country
         self.updateProfileDto = data.profile
     }
 }
@@ -73,6 +75,7 @@ extension TravelerPersonalInfoViewModel {
         var profile: TravelerProfileDto
 
         // MARK: - Constructors/Destructors
+
         init(profile: TravelerProfileDto) {
             self.profile = profile
         }
