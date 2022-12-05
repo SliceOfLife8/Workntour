@@ -51,6 +51,8 @@
 		1BE6EA962868B23D009CBE6D /* MyOpportunityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE6EA942868B23D009CBE6D /* MyOpportunityCell.swift */; };
 		1BE6EA972868B23D009CBE6D /* MyOpportunityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BE6EA952868B23D009CBE6D /* MyOpportunityCell.xib */; };
 		3DAAC6659A6708C5BB855B19 /* Pods_CommonUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E98C51A674C58C719026597 /* Pods_CommonUI.framework */; };
+		CE22953F293E3E5000FCEE09 /* AuthorizedPersonalDocumentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE22953D293E3E5000FCEE09 /* AuthorizedPersonalDocumentCell.swift */; };
+		CE229540293E3E5000FCEE09 /* AuthorizedPersonalDocumentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE22953E293E3E5000FCEE09 /* AuthorizedPersonalDocumentCell.xib */; };
 		CE3F9E98291FACDE00480493 /* SelectAttributesHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3F9E96291FACDE00480493 /* SelectAttributesHeaderView.swift */; };
 		CE3F9E99291FACDE00480493 /* SelectAttributesHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE3F9E97291FACDE00480493 /* SelectAttributesHeaderView.xib */; };
 		CE3F9E9C291FB3CE00480493 /* ChipCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3F9E9A291FB3CE00480493 /* ChipCell.swift */; };
@@ -140,6 +142,8 @@
 		92D490ECAD9310463C79C1F6 /* Pods-CommonUI.staging release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonUI.staging release.xcconfig"; path = "Target Support Files/Pods-CommonUI/Pods-CommonUI.staging release.xcconfig"; sourceTree = "<group>"; };
 		986E624FFAE205F286F1F14C /* Pods-CommonUI.prod debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonUI.prod debug.xcconfig"; path = "Target Support Files/Pods-CommonUI/Pods-CommonUI.prod debug.xcconfig"; sourceTree = "<group>"; };
 		B01A41FDCBD9C31AFD5DB559 /* Pods-CommonUI-CommonUITests.dev debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonUI-CommonUITests.dev debug.xcconfig"; path = "Target Support Files/Pods-CommonUI-CommonUITests/Pods-CommonUI-CommonUITests.dev debug.xcconfig"; sourceTree = "<group>"; };
+		CE22953D293E3E5000FCEE09 /* AuthorizedPersonalDocumentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizedPersonalDocumentCell.swift; sourceTree = "<group>"; };
+		CE22953E293E3E5000FCEE09 /* AuthorizedPersonalDocumentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthorizedPersonalDocumentCell.xib; sourceTree = "<group>"; };
 		CE3F9E96291FACDE00480493 /* SelectAttributesHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAttributesHeaderView.swift; sourceTree = "<group>"; };
 		CE3F9E97291FACDE00480493 /* SelectAttributesHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectAttributesHeaderView.xib; sourceTree = "<group>"; };
 		CE3F9E9A291FB3CE00480493 /* ChipCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipCell.swift; sourceTree = "<group>"; };
@@ -392,6 +396,7 @@
 		CE3F9E95291FACBF00480493 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				CE22953D293E3E5000FCEE09 /* AuthorizedPersonalDocumentCell.swift */,
 				CE3F9E9A291FB3CE00480493 /* ChipCell.swift */,
 				CE446D67292A5125004026FA /* ProfileExperienceCell.swift */,
 				CED06CFF2929060400C054E3 /* ProfileFooterView.swift */,
@@ -399,6 +404,7 @@
 				CE446D5D29293694004026FA /* ProfileLanguageCell.swift */,
 				CED06CF42927F0AD00C054E3 /* ProfileSimpleCell.swift */,
 				CE3F9E96291FACDE00480493 /* SelectAttributesHeaderView.swift */,
+				CE22953E293E3E5000FCEE09 /* AuthorizedPersonalDocumentCell.xib */,
 				CE3F9E9B291FB3CE00480493 /* ChipCell.xib */,
 				CE446D68292A5125004026FA /* ProfileExperienceCell.xib */,
 				CED06D002929060400C054E3 /* ProfileFooterView.xib */,
@@ -523,6 +529,7 @@
 				1B442FF8288081ED002145BC /* OpportunitiesFooterView.xib in Resources */,
 				CE446D66292A30B8004026FA /* LanguageCell.xib in Resources */,
 				CED06CF72927F0AD00C054E3 /* ProfileSimpleCell.xib in Resources */,
+				CE229540293E3E5000FCEE09 /* AuthorizedPersonalDocumentCell.xib in Resources */,
 				CED06CFC2928D01900C054E3 /* Assets.xcassets in Resources */,
 				CE446D6A292A5125004026FA /* ProfileExperienceCell.xib in Resources */,
 				1B39AA572875B40F009377A7 /* OpportunityDetailsDatesCell.xib in Resources */,
@@ -649,6 +656,7 @@
 				CE446D6D292A5AF9004026FA /* ExperienceCell.swift in Sources */,
 				1B443024288472B2002145BC /* TapticEngine.swift in Sources */,
 				1B7753DF286C7EB800D81526 /* String+Extensions.swift in Sources */,
+				CE22953F293E3E5000FCEE09 /* AuthorizedPersonalDocumentCell.swift in Sources */,
 				1B4AE40D283E6FDC00FA6420 /* UIImpactFeedbackGenerator+Extension.swift in Sources */,
 				1B4AE40A283E691D00FA6420 /* PrimaryButton.swift in Sources */,
 				1B527A30282059A600FDAF5D /* CommonUI.docc in Sources */,

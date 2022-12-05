@@ -64,3 +64,8 @@
 "skills_placeholder" = "Add skills that you have that potentially help you match with a host.";
 "languages_placeholder" = "Add your languages & your level.";
 "experience_placeholder" = "Add your Experience";
+"host_intro" = "Introduce yourself to us, so that we can go ahead and promote the opportunities that you have to offer. Please indicate what type of host you are and tell us about your project or business to help us understand your needs.";
+"host_description_placeholder" = "Describe your company and your team, so that we can understand what type of help you need from the travelers.";
+"apd" = "Authorized Person Document";
+"insert_link" = "Insert your link";
+"insert_link_here" = "Insert your link here";

@@ -71,8 +71,8 @@ class LanguagePickerVC: BaseVC<LanguagePickerViewModel, ProfileCoordinator> {
 
     // MARK: - Life Cycle
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewWillFirstAppear() {
+        super.viewWillFirstAppear()
 
         setupNavigationBar(mainTitle: "languages".localized())
 
@@ -142,7 +142,7 @@ class LanguagePickerVC: BaseVC<LanguagePickerViewModel, ProfileCoordinator> {
         // Create actions
         let updateAction = UIAction(
             title: "Update",
-            image: UIImage(systemName: "flag.fill"),
+            image: UIImage(systemName: "pencil"),
             handler: { [weak self] _ in
                 guard let profileDto = self?.viewModel?.profileDto,
                       let language = self?.viewModel?.language

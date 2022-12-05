@@ -20,7 +20,8 @@ class BaseVC<VM: BaseViewModel, C: Coordinator>: UIViewController {
     weak var otherCoordinator: Coordinator? /// This used if we need to have more coordinators refered to a specific VC
 
     var storage = Set<AnyCancellable>()
-    var preventNavBarFromAppearing: Bool = false /// This variable is used from prevent navigationBar from appearing. This is basically used when we want two behaviours for the same ViewController.
+    var preventNavBarFromAppearing: Bool = false /// This variable is used from prevent navigationBar from appearing. This is basically used when we want two behaviours for the same ViewController
+    private var isFirstAppearance: Bool = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +34,10 @@ class BaseVC<VM: BaseViewModel, C: Coordinator>: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
+        if isFirstAppearance {
+            viewWillFirstAppear()
+        }
 
         if self is SplashVC || self is HostProfileVC || self is OpportunityDetailsVC || self is MapOfOpportunitiesVC || self is TravelerProfileVC {
             hideNavigationBar(animated)
@@ -48,6 +53,10 @@ class BaseVC<VM: BaseViewModel, C: Coordinator>: UIViewController {
             hideNavigationBar(animated)
         }
         preventNavBarFromAppearing = false
+    }
+
+    func viewWillFirstAppear() {
+        isFirstAppearance = false
     }
 
     func bindViews() {

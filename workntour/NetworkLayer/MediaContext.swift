@@ -22,11 +22,14 @@ enum Result<T> {
 
 enum MediaContext {
     case updateTraveler(body: TravelerUpdatedBody)
+    case updateCompanyHost(body: CompanyUpdatedBody)
 
     var path: String {
         switch self {
         case .updateTraveler:
             return "/profile/updateProfile/traveler"
+        case .updateCompanyHost:
+            return "/profile/updateProfile/companyHost"
         }
     }
 
@@ -39,23 +42,34 @@ enum MediaContext {
 
         // now create the URLRequest object using the url object
         var request = URLRequest(url: dataURL, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 30)
+        let boundary = generateBoundaryString()
+        request.httpMethod = "PUT"
+        request.addValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
 
         let parameters: [String: String]
-        let boundary = generateBoundaryString()
-        var mediaImage: Media?
 
         switch self {
         case .updateTraveler(let body):
-            mediaImage = body.media
-
             let jsonData = try! JSONEncoder().encode(body.updatedTravelerProfile)
             let value = String(decoding: jsonData, as: UTF8.self)
             parameters = ["updatedTravelerProfile": value]
-        }
 
-        request.httpMethod = "PUT"
-        request.addValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-        request.httpBody = createDataBody(withParameters: parameters, media: mediaImage, boundary: boundary)
+            request.httpBody = createDataBody(
+                withParameters: parameters,
+                media: body.media,
+                boundary: boundary
+            )
+        case .updateCompanyHost(let body):
+            let jsonData = try! JSONEncoder().encode(body.updatedCompanyHostProfile)
+            let value = String(decoding: jsonData, as: UTF8.self)
+            parameters = ["updatedCompanyHostProfile": value]
+
+            request.httpBody = createDataBody(
+                withParameters: parameters,
+                media: body.media,
+                boundary: boundary
+            )
+        }
 
         SwiftyBeaver.verbose("CURL:\n \(request.cURL(pretty: true))")
 

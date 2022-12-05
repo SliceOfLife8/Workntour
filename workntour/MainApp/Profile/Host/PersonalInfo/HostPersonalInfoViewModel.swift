@@ -15,7 +15,13 @@ class HostPersonalInfoViewModel: BaseViewModel {
     var countries: Countries
 
     var countryPrefix: String {
-        return data.mode.getCountryCode ?? (countries.selectedCountryPrefix ?? "30")
+        guard let countryCode = data.mode.getCountryCode,
+              !countryCode.isEmpty
+        else {
+            return countries.selectedCountryPrefix ?? "30"
+        }
+
+        return countryCode
     }
 
     var countryFlag: String? {
@@ -49,6 +55,7 @@ class HostPersonalInfoViewModel: BaseViewModel {
         fixedNum: String?,
         vatNum: String?
     ) {
+        let phoneDetails = mobileNum?.getPhoneDetails()
         data.mode.adjust(
             name: name,
             surname: surname,
@@ -56,7 +63,7 @@ class HostPersonalInfoViewModel: BaseViewModel {
             city: city,
             postalCode: postalCode,
             country: country,
-            mobileNum: mobileNum,
+            mobileNum: phoneDetails?.count == 1 ? phoneDetails?.joined() : phoneDetails?.dropFirst().joined(),
             fixedNum: fixedNum,
             vatNum: vatNum
         )
@@ -86,9 +93,22 @@ extension HostPersonalInfoViewModel {
                 vatNum: String?
             ) {
                 switch self {
-                case .company(var profile):
-                    profile.name = name
-                    profile.postalAddress = postalCode
+                case .company(let profile):
+                    let newProfile = CompanyHostProfileDto(
+                        memberID: profile.memberID,
+                        role: profile.role,
+                        name: name,
+                        email: profile.email,
+                        city: city,
+                        address: address,
+                        country: country,
+                        postalAddress: postalCode,
+                        countryCode: profile.countryCode,
+                        mobile: mobileNum,
+                        fixedNumber: fixedNum,
+                        vat: vatNum
+                    )
+                    self = .company(newProfile)
                 case .individual(var profile):
                     profile.postalAddress = postalCode
                 case .none:
@@ -100,8 +120,10 @@ extension HostPersonalInfoViewModel {
                 switch self {
                 case .company(var profile):
                     profile.countryCode = code
+                    self = .company(profile)
                 case .individual(var profile):
                     profile.countryCode = code
+                    self = .individual(profile)
                 case .none:
                     break
                 }

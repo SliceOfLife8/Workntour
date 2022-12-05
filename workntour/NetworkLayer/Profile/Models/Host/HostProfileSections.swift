@@ -17,7 +17,7 @@ enum HostProfileSection: Int, CaseIterable {
         case .personalInfo:
             return "Personal Info"
         case .description:
-            return "Describe Yourself"
+            return "Describe your property"
         case .apd:
             return "Authorized Personal Document"
         }

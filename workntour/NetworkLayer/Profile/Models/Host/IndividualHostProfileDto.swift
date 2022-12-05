@@ -19,6 +19,27 @@ struct IndividualHostProfileDto: Codable {
     var sex: UserSex?
     let createdAt: String?
 
+    // MARK: - Init
+    init(memberID: String, role: UserRole, name: String, surname: String, email: String, password: String, birthday: String, country: String? = nil, countryCode: String? = nil, mobile: String? = nil, fixedNumber: String? = nil, nationality: String? = nil, description: String? = nil, postalAddress: String? = nil, image: Data? = nil, sex: UserSex? = nil, createdAt: String?) {
+        self.memberID = memberID
+        self.role = role
+        self.name = name
+        self.surname = surname
+        self.email = email
+        self.password = password
+        self.birthday = birthday
+        self.country = country
+        self.countryCode = countryCode
+        self.mobile = mobile
+        self.fixedNumber = fixedNumber
+        self.nationality = nationality
+        self.description = description
+        self.postalAddress = postalAddress
+        self.image = image
+        self.sex = sex
+        self.createdAt = createdAt
+    }
+
     enum CodingKeys: String, CodingKey {
         case memberID = "memberId"
         case role

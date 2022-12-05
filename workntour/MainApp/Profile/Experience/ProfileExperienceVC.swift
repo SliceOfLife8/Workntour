@@ -55,8 +55,8 @@ class ProfileExperienceVC: BaseVC<ProfileExperienceViewModel, ProfileCoordinator
         descriptionTextView.delegate = self
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewWillFirstAppear() {
+        super.viewWillFirstAppear()
         guard let experience = viewModel?.data.experience else { return }
 
         setupNavigationBar(mainTitle: "experience".localized())

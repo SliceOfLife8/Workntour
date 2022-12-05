@@ -14,8 +14,8 @@ class HostProfileViewModel: BaseViewModel {
     private var service: ProfileService
     /// Inputs
     var isCompany: Bool = false
-    @Published var companyHost: CompanyHostProfileDto?
-    @Published var individualHost: IndividualHostProfileDto?
+    var companyHost: CompanyHostProfileDto?
+    var individualHost: IndividualHostProfileDto?
 
     /// Outputs
     @Published var newImage: Media?
@@ -26,7 +26,7 @@ class HostProfileViewModel: BaseViewModel {
     // MARK: - Init
     init(
         service: ProfileService = DataManager.shared,
-         isHostCompany: Bool
+        isHostCompany: Bool
     ) {
         self.service = service
         self.isCompany = isHostCompany
@@ -36,26 +36,94 @@ class HostProfileViewModel: BaseViewModel {
         super.init()
     }
 
+    func updateProfile(
+        _ incomingProfileDto: CompanyHostProfileDto? = nil,
+        withMedia media: Media? = nil
+    ) {
+        guard let companyHost else { return }
+        let profileDto = incomingProfileDto ?? companyHost
+
+        loaderVisibility = true
+        let updatedBody = CompanyUpdatedBody(updatedCompanyHostProfile: profileDto, media: media)
+
+        MediaContext.updateCompanyHost(body: updatedBody).dataRequest(
+            objectType: GenericResponse<CompanyHostProfileDto>.self,
+            completion: { (result: Result) in
+                switch result {
+                case .success(let profile):
+                    DispatchQueue.main.async {
+                        self.profileUpdated = true
+                        self.loaderVisibility = false
+                    }
+                    self.companyHost = profile.data
+                    UserDataManager.shared.save(
+                        profile.data,
+                        memberId: profile.data?.memberID,
+                        role: profile.data?.role
+                    )
+                case .failure:
+                    DispatchQueue.main.async {
+                        self.profileUpdated = false
+                        self.loaderVisibility = false
+                    }
+                }
+            })
+    }
+
+    func retrieveProfile() {
+        guard let memberId = UserDataManager.shared.memberId else { return }
+        
+        if isCompany {
+            service.getCompanyHostProfile(memberId: memberId)
+                .subscribe(on: RunLoop.main)
+                .catch({ _ -> Just<Bool> in
+                    return Just(false)
+                })
+                    .handleEvents(receiveCompletion: { status in
+                        self.loaderVisibility = false
+                        self.profileUpdated = true
+                        self.companyHost = UserDataManager.shared.retrieve(CompanyHostProfileDto.self)
+                    })
+                        .assign(to: &$getRefreshedProfile)
+        }
+        else {
+            service.getIndividualHostProfile(memberId: memberId)
+                .subscribe(on: RunLoop.main)
+                .catch({ _ -> Just<Bool> in
+                    return Just(false)
+                })
+                    .handleEvents(receiveCompletion: { _ in
+                        self.loaderVisibility = false
+                        self.profileUpdated = true
+                        self.individualHost = UserDataManager.shared.retrieve(IndividualHostProfileDto.self)
+                    })
+                        .assign(to: &$getRefreshedProfile)
+        }
+    }
+
 }
 
 // MARK: - DataModels
-extension HostProfileViewModel { 
+extension HostProfileViewModel {
+
+    var numberOfRows: Int {
+        let cases = HostProfileSection.allCases.count
+        return isCompany ? cases : cases - 1
+    }
 
     func getHeaderDataModel() -> ProfileHeaderView.DataModel? {
         guard let data = companyHost else { return nil }
         let percents = data.percents
 
-        return nil
-
-//        return .init(
-//            mode: .traveler,
-//            profileUrl: data.getProfileImage(),
-//            fullname: data.name,
-//            introText: "traveler_intro".localized(),
-//            percent360: percents.percent360,
-//            percent100: percents.percent100,
-//            duration: percents.duration
-//        )
+        return .init(
+            mode: .host,    
+            profileUrl: data.getProfileImage(),
+            fullname: data.name,
+            introText: "host_intro".localized(),
+            percent360: percents.percent360,
+            percent100: percents.percent100,
+            duration: percents.duration
+        )
     }
 
     func getSimpleCellDataModel(_ index: Int) -> ProfileSimpleCell.DataModel? {
@@ -72,11 +140,20 @@ extension HostProfileViewModel {
             return .init(
                 title: HostProfileSection.description.value,
                 values: [data.description],
-                placeholder: "description_placeholder".localized()
+                placeholder: "host_description_placeholder".localized()
             )
         default:
             assertionFailure("Check collectionView's sizeForItem func.")
             return nil
         }
+    }
+
+    func getApdCellDataModel() -> AuthorizedPersonalDocumentCell.DataModel? {
+        guard let companyHost else { return nil }
+
+        return .init(
+            title: "apd".localized(),
+            docName: companyHost.getDocumentName()
+        )
     }
 }

@@ -12,6 +12,11 @@ struct ProfileLanguage: Codable, Equatable {
     let language: Language
     let proficiency: LanguageProficiency
 
+    enum CodingKeys: String, CodingKey {
+        case language = "languages"
+        case proficiency = "languageProficiency"
+    }
+
     func convertToCommonUI() -> ProfileLanguageCell.DataModel.ProfileLanguageUI {
         return .init(
             language: language.value,

@@ -24,7 +24,7 @@ enum ProfileRouter: NetworkTarget {
         case .getIndividualHost:
             return "/profile/retrieveProfile/individualHost"
         case .getCompanyHost:
-            return "/profileretrieveProfile/companyHost"
+            return "/profile/retrieveProfile/companyHost"
         }
     }
 

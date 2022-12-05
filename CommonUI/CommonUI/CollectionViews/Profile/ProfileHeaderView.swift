@@ -46,6 +46,10 @@ public class ProfileHeaderView: UICollectionReusableView {
         fullnameLabel.text = model.fullname
         introLabel.text = model.introText
         progressBar.isHidden = false
+        typeButton.setTitle(
+            model.mode.placeholder.capitalizingFirstLetter(),
+            for: .normal
+        )
         imageView.kf.setImage(
             with: model.profileUrl,
             placeholder: UIImage(named: model.mode.placeholder,

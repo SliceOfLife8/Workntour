@@ -26,6 +26,14 @@ extension String {
         return emailPredicate.evaluate(with: self)
     }
 
+    public var validURL: Bool {
+        get {
+            let regEx = "((?:http|https)://)?(?:www\\.)?[\\w\\d\\-_]+\\.\\w{2,3}(\\.\\w{2})?(/(?<=/)(?:[\\w\\d\\-./_]+)?)?"
+            let predicate = NSPredicate(format: "SELF MATCHES %@", argumentArray: [regEx])
+            return predicate.evaluate(with: self)
+        }
+    }
+
     // MARK: - Password validation
     private var passwordPredicate: NSPredicate {
         // least 1 uppercase, 1 digit, 1 lowercase, 1 symbol
@@ -62,6 +70,14 @@ extension String {
         }
 
         return false
+    }
+
+    public func capitalizingFirstLetter() -> String {
+        return prefix(1).capitalized + dropFirst()
+    }
+
+    mutating func capitalizeFirstLetter() {
+        self = self.capitalizingFirstLetter()
     }
 }
 

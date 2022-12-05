@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Lato-Medium.ttf">
+            <string>Lato-Medium</string>
+        </array>
+        <array key="Lato-Regular.ttf">
+            <string>Lato-Regular</string>
+        </array>
+        <array key="Lato-Semibold.ttf">
+            <string>Lato-Semibold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="cYM-6F-uyO" customClass="AuthorizedPersonalDocumentCell" customModule="CommonUI" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="300" height="250"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="300" height="250"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="mDC-99-8ap" userLabel="Top Stack View">
+                        <rect key="frame" x="24" y="16" width="252" height="20"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="djZ-VF-30K">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="20"/>
+                                <fontDescription key="fontDescription" name="Lato-Semibold" family="Lato" pointSize="16"/>
+                                <color key="textColor" name="floatingLabel"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rKV-OH-geM">
+                                <rect key="frame" x="234" y="0.0" width="18" height="20"/>
+                                <color key="tintColor" name="lavender"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="plus" catalog="system"/>
+                                <connections>
+                                    <action selector="addNewApdTapped:" destination="cYM-6F-uyO" eventType="touchUpInside" id="Pzh-fY-qTQ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="a3c-Wj-sqK"/>
+                        </constraints>
+                    </stackView>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="OVh-m1-fOG" userLabel="Main Stack View">
+                        <rect key="frame" x="0.0" y="52" width="300" height="183"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wJJ-wI-1TY" userLabel="APD View">
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="126"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="upload_doc" translatesAutoresizingMaskIntoConstraints="NO" id="2ai-1J-D6Z">
+                                        <rect key="frame" x="119.66666666666669" y="14" width="61" height="39"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="61" id="Q9k-e2-m1B"/>
+                                            <constraint firstAttribute="height" constant="39" id="XqF-rp-Tsc"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Click to upload your file" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qxK-6g-PK9" userLabel="upload file">
+                                        <rect key="frame" x="32" y="67" width="236" height="17"/>
+                                        <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
+                                        <color key="textColor" name="lavender"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PDF only" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="et4-nT-eVb" userLabel="description">
+                                        <rect key="frame" x="24" y="88" width="252" height="14.666666666666671"/>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
+                                        <color key="textColor" name="lavenderTint2"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="qxK-6g-PK9" secondAttribute="trailing" constant="32" id="0ge-DQ-FOu"/>
+                                    <constraint firstItem="qxK-6g-PK9" firstAttribute="top" secondItem="2ai-1J-D6Z" secondAttribute="bottom" constant="14" id="EDJ-BG-SRY"/>
+                                    <constraint firstItem="2ai-1J-D6Z" firstAttribute="centerX" secondItem="wJJ-wI-1TY" secondAttribute="centerX" id="Hwo-kz-Dze"/>
+                                    <constraint firstItem="et4-nT-eVb" firstAttribute="top" secondItem="qxK-6g-PK9" secondAttribute="bottom" constant="4" id="L4s-ph-P7i"/>
+                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="et4-nT-eVb" secondAttribute="bottom" constant="8" id="SyD-I0-SbT"/>
+                                    <constraint firstAttribute="trailing" secondItem="et4-nT-eVb" secondAttribute="trailing" constant="24" id="VIb-g4-Nxv"/>
+                                    <constraint firstItem="2ai-1J-D6Z" firstAttribute="top" secondItem="wJJ-wI-1TY" secondAttribute="top" constant="14" id="imV-Sa-6ns"/>
+                                    <constraint firstItem="qxK-6g-PK9" firstAttribute="leading" secondItem="wJJ-wI-1TY" secondAttribute="leading" constant="32" id="swI-u2-qVv"/>
+                                    <constraint firstItem="et4-nT-eVb" firstAttribute="leading" secondItem="wJJ-wI-1TY" secondAttribute="leading" constant="24" id="vwX-BG-273"/>
+                                    <constraint firstAttribute="height" constant="126" id="zOV-Dy-IIn"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="3mD-4z-uDA" userLabel="Uploaded file">
+                                <rect key="frame" x="0.0" y="126" width="300" height="57"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your document has been successfully uploaded." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h0v-kS-fwf" userLabel="description">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="17"/>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                                        <color key="textColor" red="0.30980392156862746" green="0.61568627450980395" blue="0.38823529411764707" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="8he-fd-QwU">
+                                        <rect key="frame" x="0.0" y="33" width="300" height="24"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YPo-rw-KIr" userLabel="Document name">
+                                                <rect key="frame" x="0.0" y="0.0" width="268" height="24"/>
+                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
+                                                <color key="textColor" name="purpleBlack"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="etF-UR-RW1" userLabel="trash">
+                                                <rect key="frame" x="276" y="0.0" width="24" height="24"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="etF-UR-RW1" secondAttribute="height" multiplier="1:1" id="8wL-A7-R6z"/>
+                                                    <constraint firstAttribute="height" constant="24" id="Kwh-by-HW1"/>
+                                                </constraints>
+                                                <color key="tintColor" red="0.53725490200000003" green="0.50196078430000002" blue="0.68627450980000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" image="trash" catalog="system"/>
+                                                <connections>
+                                                    <action selector="trashActionTapped:" destination="cYM-6F-uyO" eventType="touchUpInside" id="Ofm-uY-7jr"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </stackView>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="OVh-m1-fOG" firstAttribute="top" secondItem="mDC-99-8ap" secondAttribute="bottom" constant="16" id="H9g-ss-0JT"/>
+                <constraint firstAttribute="trailing" secondItem="OVh-m1-fOG" secondAttribute="trailing" id="Itt-Qz-g5Q"/>
+                <constraint firstItem="mDC-99-8ap" firstAttribute="leading" secondItem="cYM-6F-uyO" secondAttribute="leading" constant="24" id="q23-jb-QL9"/>
+                <constraint firstItem="OVh-m1-fOG" firstAttribute="leading" secondItem="cYM-6F-uyO" secondAttribute="leading" id="rTj-lM-OQm"/>
+                <constraint firstAttribute="trailing" secondItem="mDC-99-8ap" secondAttribute="trailing" constant="24" id="uUl-if-w0I"/>
+                <constraint firstItem="mDC-99-8ap" firstAttribute="top" secondItem="cYM-6F-uyO" secondAttribute="top" constant="16" id="vyM-Lo-wVp"/>
+            </constraints>
+            <connections>
+                <outlet property="apdView" destination="wJJ-wI-1TY" id="LT9-b7-J6Z"/>
+                <outlet property="docNameLabel" destination="YPo-rw-KIr" id="cLS-sH-FqP"/>
+                <outlet property="mainStackView" destination="OVh-m1-fOG" id="7YE-HZ-i3d"/>
+                <outlet property="titleLabel" destination="djZ-VF-30K" id="jzf-gM-Tip"/>
+                <outlet property="uploadedFileStackView" destination="3mD-4z-uDA" id="nTS-dc-0Db"/>
+            </connections>
+            <point key="canvasLocation" x="140" y="21"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="trash" catalog="system" width="117" height="128"/>
+        <image name="upload_doc" width="65" height="43"/>
+        <namedColor name="floatingLabel">
+            <color red="0.2627450980392157" green="0.094117647058823528" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="lavender">
+            <color red="0.53333333333333333" green="0.4392156862745098" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="lavenderTint2">
+            <color red="0.72156862745098038" green="0.70196078431372544" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="purpleBlack">
+            <color red="0.2196078431372549" green="0.20000000000000001" blue="0.31372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

@@ -21,6 +21,11 @@ class HostProfileVC: BaseVC<HostProfileViewModel, ProfileCoordinator> {
                 forCellWithReuseIdentifier: ProfileSimpleCell.identifier
             )
             collectionView.register(
+                UINib(nibName: AuthorizedPersonalDocumentCell.identifier,
+                      bundle: Bundle(for: AuthorizedPersonalDocumentCell.self)),
+                forCellWithReuseIdentifier: AuthorizedPersonalDocumentCell.identifier
+            )
+            collectionView.register(
                 UINib(nibName: ProfileHeaderView.identifier,
                       bundle: Bundle(for: ProfileHeaderView.self)),
                 forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
@@ -28,6 +33,7 @@ class HostProfileVC: BaseVC<HostProfileViewModel, ProfileCoordinator> {
             )
             collectionView.delegate = self
             collectionView.dataSource = self
+            collectionView.contentInset.bottom = 24
             let refreshControl = UIRefreshControl()
             refreshControl.tintColor = UIColor.appColor(.purple)
             refreshControl.addTarget(
@@ -52,7 +58,7 @@ class HostProfileVC: BaseVC<HostProfileViewModel, ProfileCoordinator> {
                     at: .init(row: 0, section: 0)
                 ) as? ProfileHeaderView
                 headerView?.updateImage(media.data)
-                //self?.viewModel?.updateProfile(withMedia: media)
+                self?.viewModel?.updateProfile(withMedia: media)
             })
             .store(in: &storage)
 
@@ -74,15 +80,6 @@ class HostProfileVC: BaseVC<HostProfileViewModel, ProfileCoordinator> {
                 }
             })
             .store(in: &storage)
-
-        viewModel?.$getRefreshedProfile
-            .sink(receiveValue: { [weak self] status in
-                if status {
-//                    self?.viewModel?.traveler = UserDataManager.shared.retrieve(TravelerProfileDto.self)
-//                    self?.viewModel?.profileUpdated = true
-                }
-            })
-            .store(in: &storage)
     }
 
 
@@ -91,7 +88,7 @@ class HostProfileVC: BaseVC<HostProfileViewModel, ProfileCoordinator> {
     @objc
     private func pullToRefresh() {
         collectionView.refreshControl?.endRefreshing()
-        // viewModel?.retrieveProfile()
+        viewModel?.retrieveProfile()
     }
 
 }
@@ -100,23 +97,40 @@ class HostProfileVC: BaseVC<HostProfileViewModel, ProfileCoordinator> {
 extension HostProfileVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return HostProfileSection.allCases.count
+        return viewModel?.numberOfRows ?? 0
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: ProfileSimpleCell.identifier,
-            for: indexPath
-        ) as? ProfileSimpleCell,
-              let data = viewModel?.getSimpleCellDataModel(indexPath.row)
-        else {
-            assertionFailure("Check viewModel attributes!")
-            return UICollectionViewCell()
-        }
+        if HostProfileSection(rawValue: indexPath.row) == .apd {
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: AuthorizedPersonalDocumentCell.identifier,
+                for: indexPath
+            ) as? AuthorizedPersonalDocumentCell,
+                  let data = viewModel?.getApdCellDataModel()
+            else {
+                assertionFailure("Check viewModel attributes!")
+                return UICollectionViewCell()
+            }
 
-        cell.configureLayout(for: data)
-        cell.delegate = self
-        return cell
+            cell.configureLayout(for: data)
+            cell.delegate = self
+            return cell
+        }
+        else {
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: ProfileSimpleCell.identifier,
+                for: indexPath
+            ) as? ProfileSimpleCell,
+                  let data = viewModel?.getSimpleCellDataModel(indexPath.row)
+            else {
+                assertionFailure("Check viewModel attributes!")
+                return UICollectionViewCell()
+            }
+
+            cell.configureLayout(for: data)
+            cell.delegate = self
+            return cell
+        }
     }
 
     func collectionView(
@@ -155,8 +169,14 @@ extension HostProfileVC: UICollectionViewDataSource, UICollectionViewDelegate, U
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
-        guard let dataModel = viewModel?.getSimpleCellDataModel(indexPath.row) else { return .zero }
-        return dataModel.sizeForItem(in: collectionView)
+        if HostProfileSection(rawValue: indexPath.row) == .apd {
+            guard let dataModel = viewModel?.getApdCellDataModel() else { return .zero }
+            return dataModel.sizeForItem(in: collectionView)
+        }
+        else {
+            guard let dataModel = viewModel?.getSimpleCellDataModel(indexPath.row) else { return .zero }
+            return dataModel.sizeForItem(in: collectionView)
+        }
     }
 
     func collectionView(
@@ -182,16 +202,29 @@ extension HostProfileVC: ProfileSimpleCellDelegate {
 
     func contentViewDidSelect(_ cell: ProfileSimpleCell) {
         guard let index = collectionView.indexPath(for: cell)?.row,
-              let data = viewModel?.companyHost
+              let viewModel
         else {
             return
         }
 
         if index == 0 {
-            self.coordinator?.navigate(to: .travelerEditPersonalInfo)
+            self.coordinator?.navigate(to: .hostEditPersonalInfo)
         }
         else {
-            print("navigate to open description")
+            self.coordinator?.navigate(
+                to: .hostDescription(
+                    viewModel.isCompany ? viewModel.companyHost?.description : viewModel.individualHost?.description,
+                    link: viewModel.companyHost?.link
+                )
+            )
         }
+    }
+}
+
+// MARK: - AuthorizedPersonalDocumentCellDelegate
+extension HostProfileVC: AuthorizedPersonalDocumentCellDelegate {
+
+    func uploadFileDidSelect() {
+        self.coordinator?.navigate(to: .openDocumentPicker)
     }
 }

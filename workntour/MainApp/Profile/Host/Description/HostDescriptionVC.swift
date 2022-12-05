@@ -1,14 +1,15 @@
 //
-//  ProfileAddSummaryVC.swift
+//  HostDescriptionVC.swift
 //  workntour
 //
-//  Created by Chris Petimezas on 14/11/22.
+//  Created by Chris Petimezas on 1/12/22.
 //
 
 import UIKit
+import CommonUI
 import SharedKit
 
-class ProfileAddSummaryVC: BaseVC<ProfileAddSummaryViewModel, ProfileCoordinator> {
+class HostDescriptionVC: BaseVC<HostDescriptionViewModel, ProfileCoordinator> {
 
     // MARK: - Outlets
 
@@ -20,11 +21,11 @@ class ProfileAddSummaryVC: BaseVC<ProfileAddSummaryViewModel, ProfileCoordinator
         }
     }
 
-    @IBOutlet weak var descriptionTextView: UITextView! {
+    @IBOutlet weak var textView: UITextView! {
         didSet {
-            descriptionTextView.dataDetectorTypes = .link
-            descriptionTextView.returnKeyType = .done
-            descriptionTextView.delegate = self
+            textView.dataDetectorTypes = .link
+            textView.returnKeyType = .done
+            textView.delegate = self
         }
     }
 
@@ -32,10 +33,13 @@ class ProfileAddSummaryVC: BaseVC<ProfileAddSummaryViewModel, ProfileCoordinator
 
     @IBOutlet weak var placeholderLabel: UILabel!
 
+    @IBOutlet weak var linkButton: PrimaryButton!
+
     // MARK: - Life Cycle
 
     override func viewWillFirstAppear() {
         super.viewWillFirstAppear()
+
         guard let viewModel else { return }
 
         setupNavigationBar(mainTitle: viewModel.data.navigationBarTitle)
@@ -57,33 +61,75 @@ class ProfileAddSummaryVC: BaseVC<ProfileAddSummaryViewModel, ProfileCoordinator
         let currentCharacters = viewModel.data.description?.count ?? 0
 
         limitLabel.text = "\(currentCharacters)/\(viewModel.data.charsLimit)"
+
         if let currentText = viewModel.data.description {
             placeholderLabel.isHidden = true
-            descriptionTextView.text = currentText
+            textView.text = currentText
         }
         else {
             placeholderLabel.text = viewModel.data.placeholder
         }
+
+        let linkText = viewModel.data.link ?? "insert_link".localized()
+        linkButton.setTitle(linkText, for: .normal)
     }
 
     // MARK: - Actions
 
     @objc private func saveBtnTapped() {
-        let description = descriptionTextView.text.trimmingCharacters(in: .whitespaces)
-        guard var profileDto = UserDataManager.shared.retrieve(TravelerProfileDto.self),
-              !description.isEmpty
-        else {
-            return
+        let description = textView.text.trimmingCharacters(in: .whitespaces)
+        var linkText: String? = nil
+
+        if let text = linkButton.titleLabel?.text,
+           text != "insert_link".localized() {
+            linkText = text
         }
 
-        profileDto.description = description
-        self.coordinator?.navigate(to: .updateTravelerProfile(profileDto))
+        if var companyDto = UserDataManager.shared.retrieve(CompanyHostProfileDto.self) {
+            companyDto.description = description
+            companyDto.link = linkText
+            self.coordinator?.navigate(to: .updateCompanyProfile(companyDto))
+        }
+        else if var individualDto = UserDataManager.shared.retrieve(IndividualHostProfileDto.self) {
+            individualDto.description = description
+            //individualDto.link = text
+            self.coordinator?.navigate(to: .updateIndividualProfile(individualDto))
+        }
     }
 
+    @IBAction func linkBtnTapped(_ sender: Any) {
+        let alertController = UIAlertController(
+            title: "",
+            message: "insert_link_here".localized(),
+            preferredStyle: .alert
+        )
+        alertController.addTextField { textField in
+            textField.placeholder = "www.google.com"
+            textField.text = self.viewModel?.data.link
+        }
+
+        let okAction = UIAlertAction(
+            title: "OK",
+            style: .default) { [weak alertController] _ in
+                guard let textField = alertController?.textFields?.first,
+                      let text = textField.text,
+                      text.validURL
+                else {
+                    return
+                }
+
+                self.linkButton.setTitle(text, for: .normal)
+                self.navigationItem.rightBarButtonItem?.isEnabled = true
+            }
+
+        alertController.addAction(okAction)
+
+        self.present(alertController, animated: true)
+    }
 }
 
 // MARK: - UITextViewDelegate
-extension ProfileAddSummaryVC: UITextViewDelegate {
+extension HostDescriptionVC: UITextViewDelegate {
 
     func textViewDidBeginEditing(_ textView: UITextView) {
         placeholderLabel.isHidden = true

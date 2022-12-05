@@ -33,8 +33,8 @@ class ProfileSelectAttributesVC: BaseVC<ProfileSelectAttributesViewModel, Profil
 
     // MARK: - Life Cycle
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewWillFirstAppear() {
+        super.viewWillFirstAppear()
         guard let viewModel else { return }
 
         setupNavigationBar(mainTitle: viewModel.data.navigationBarTitle)

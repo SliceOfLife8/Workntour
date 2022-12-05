@@ -150,6 +150,11 @@
 		CE01BD5029379FF500F87439 /* HostPersonalInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE01BD4F29379FF500F87439 /* HostPersonalInfoVC.swift */; };
 		CE01BD5229379FFB00F87439 /* HostPersonalInfoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE01BD5129379FFB00F87439 /* HostPersonalInfoVC.xib */; };
 		CE01BD542937A00400F87439 /* HostPersonalInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE01BD532937A00400F87439 /* HostPersonalInfoViewModel.swift */; };
+		CE01BD5C2938F32C00F87439 /* HostDescriptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE01BD5B2938F32C00F87439 /* HostDescriptionVC.swift */; };
+		CE01BD5E2938F33200F87439 /* HostDescriptionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE01BD5D2938F33200F87439 /* HostDescriptionVC.xib */; };
+		CE01BD602938F33A00F87439 /* HostDescriptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE01BD5F2938F33A00F87439 /* HostDescriptionViewModel.swift */; };
+		CE22953A293CE62100FCEE09 /* AuthorizedDoc.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE229539293CE62100FCEE09 /* AuthorizedDoc.swift */; };
+		CE22953C293CE73400FCEE09 /* CompanyUpdatedBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE22953B293CE73400FCEE09 /* CompanyUpdatedBody.swift */; };
 		CE3F9E8C291F9D0200480493 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE3F9E8B291F9D0200480493 /* Localizable.strings */; };
 		CE3F9E8F291FA88700480493 /* ProfileSelectAttributesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3F9E8E291FA88700480493 /* ProfileSelectAttributesVC.swift */; };
 		CE3F9E92291FA96100480493 /* ProfileSelectAttributesVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE3F9E91291FA96100480493 /* ProfileSelectAttributesVC.xib */; };
@@ -344,6 +349,11 @@
 		CE01BD5129379FFB00F87439 /* HostPersonalInfoVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HostPersonalInfoVC.xib; sourceTree = "<group>"; };
 		CE01BD532937A00400F87439 /* HostPersonalInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostPersonalInfoViewModel.swift; sourceTree = "<group>"; };
 		CE01BD552937CE6700F87439 /* workntour.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = workntour.entitlements; sourceTree = "<group>"; };
+		CE01BD5B2938F32C00F87439 /* HostDescriptionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostDescriptionVC.swift; sourceTree = "<group>"; };
+		CE01BD5D2938F33200F87439 /* HostDescriptionVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HostDescriptionVC.xib; sourceTree = "<group>"; };
+		CE01BD5F2938F33A00F87439 /* HostDescriptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostDescriptionViewModel.swift; sourceTree = "<group>"; };
+		CE229539293CE62100FCEE09 /* AuthorizedDoc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizedDoc.swift; sourceTree = "<group>"; };
+		CE22953B293CE73400FCEE09 /* CompanyUpdatedBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyUpdatedBody.swift; sourceTree = "<group>"; };
 		CE3F9E8B291F9D0200480493 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		CE3F9E8E291FA88700480493 /* ProfileSelectAttributesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSelectAttributesVC.swift; sourceTree = "<group>"; };
 		CE3F9E91291FA96100480493 /* ProfileSelectAttributesVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileSelectAttributesVC.xib; sourceTree = "<group>"; };
@@ -939,6 +949,7 @@
 		1BC190CA285F24DF00585533 /* Host */ = {
 			isa = PBXGroup;
 			children = (
+				CE01BD5A2938F31100F87439 /* Description */,
 				CE01BD4E29379FCB00F87439 /* PersonalInfo */,
 				1BC190CC285F251800585533 /* HostProfileVC.swift */,
 				1BC190CE285F253C00585533 /* HostProfileVC.xib */,
@@ -1022,6 +1033,8 @@
 				1BC190F4286339DD00585533 /* IndividualHostProfileDto.swift */,
 				1BC190F22863399E00585533 /* CompanyHostProfileDto.swift */,
 				CE01BD4029373AA600F87439 /* HostProfileSections.swift */,
+				CE229539293CE62100FCEE09 /* AuthorizedDoc.swift */,
+				CE22953B293CE73400FCEE09 /* CompanyUpdatedBody.swift */,
 			);
 			path = Host;
 			sourceTree = "<group>";
@@ -1034,6 +1047,16 @@
 				CE01BD5129379FFB00F87439 /* HostPersonalInfoVC.xib */,
 			);
 			path = PersonalInfo;
+			sourceTree = "<group>";
+		};
+		CE01BD5A2938F31100F87439 /* Description */ = {
+			isa = PBXGroup;
+			children = (
+				CE01BD5B2938F32C00F87439 /* HostDescriptionVC.swift */,
+				CE01BD5D2938F33200F87439 /* HostDescriptionVC.xib */,
+				CE01BD5F2938F33A00F87439 /* HostDescriptionViewModel.swift */,
+			);
+			path = Description;
 			sourceTree = "<group>";
 		};
 		CE3F9E8D291FA84F00480493 /* SelectAttributes */ = {
@@ -1166,6 +1189,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B4AE426283F58FB00FA6420 /* Lato-Black.ttf in Resources */,
+				CE01BD5E2938F33200F87439 /* HostDescriptionVC.xib in Resources */,
 				CE01BD5229379FFB00F87439 /* HostPersonalInfoVC.xib in Resources */,
 				1B3C384528520E11000EEADF /* LoginVC.xib in Resources */,
 				1BE6EA992868BFB8009CBE6D /* OpportunitiesVC.xib in Resources */,
@@ -1342,6 +1366,7 @@
 				1B4AE3FA283E04C400FA6420 /* CompanyHost.swift in Sources */,
 				1BC1909E285A0DB200585533 /* TabBarCoordinator.swift in Sources */,
 				CE01BD4129373AA600F87439 /* HostProfileSections.swift in Sources */,
+				CE01BD602938F33A00F87439 /* HostDescriptionViewModel.swift in Sources */,
 				CE3F9E94291FAA6800480493 /* ProfileSelectAttributesViewModel.swift in Sources */,
 				CE83330929228D0A00F751FE /* LanguagePickerViewModel.swift in Sources */,
 				CE8332D42920F5A500F751FE /* Experience.swift in Sources */,
@@ -1427,6 +1452,7 @@
 				1B39AA392872FF4B009377A7 /* OpportunitesDetailsViewModel.swift in Sources */,
 				1B4AE3F8283E04BB00FA6420 /* IndividualHost.swift in Sources */,
 				1B1683AA283D20E20067F2DB /* GenericResponse.swift in Sources */,
+				CE22953C293CE73400FCEE09 /* CompanyUpdatedBody.swift in Sources */,
 				CED06D04292909CA00C054E3 /* SpecialDietary.swift in Sources */,
 				1BC190B4285C5C9300585533 /* TravelerProfileViewModel.swift in Sources */,
 				1B9A3D2D28295F6F003E0C34 /* AppConfig.swift in Sources */,
@@ -1442,6 +1468,7 @@
 				1B5279E72820471100FDAF5D /* AuthorizationRouter.swift in Sources */,
 				1B442FEC287EE348002145BC /* OpportunityFilterDto.swift in Sources */,
 				1B9A3D8A282C05F6003E0C34 /* SplashVC.swift in Sources */,
+				CE22953A293CE62100FCEE09 /* AuthorizedDoc.swift in Sources */,
 				1BC190C2285C5CE200585533 /* SettingsViewModel.swift in Sources */,
 				1BC190AB285C5C4900585533 /* HomeCoordinator.swift in Sources */,
 				CE8332CE2920EC2600F751FE /* ProfileExperienceVC.swift in Sources */,
@@ -1451,6 +1478,7 @@
 				1B7753D4286B371C00D81526 /* CreateOpportunityVC+Extensions.swift in Sources */,
 				1B6A8C9E2897A836003A1540 /* TravelerType.swift in Sources */,
 				1B16837B2837C07B0067F2DB /* FirebaseManager.swift in Sources */,
+				CE01BD5C2938F32C00F87439 /* HostDescriptionVC.swift in Sources */,
 				1BC190CD285F251800585533 /* HostProfileVC.swift in Sources */,
 				1B3C383A28508BA9000EEADF /* RegistrationHostViewModel.swift in Sources */,
 			);

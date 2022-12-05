@@ -43,6 +43,7 @@ public class ProfileLanguageCell: UICollectionViewCell {
                       bundle: Bundle(for: LanguageCell.self)),
                 forCellReuseIdentifier: LanguageCell.identifier
             )
+            tableView.backgroundColor = .white
             tableView.delegate = self
             tableView.dataSource = self
         }
@@ -71,6 +72,7 @@ public class ProfileLanguageCell: UICollectionViewCell {
             tableView.isHidden = false
             descriptionStackView.isHidden = true
             tableViewHeightConstraint.constant = 48 * CGFloat(model.languages.count)
+            tableView.reloadData()
         }
     }
 

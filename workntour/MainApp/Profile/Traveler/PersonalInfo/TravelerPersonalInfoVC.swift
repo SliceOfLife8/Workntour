@@ -159,8 +159,8 @@ class TravelerPersonalInfoVC: BaseVC<TravelerPersonalInfoViewModel, ProfileCoord
         ]
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewWillFirstAppear() {
+        super.viewWillFirstAppear()
 
         setupNavigationBar(mainTitle: "edit_info".localized())
         let saveAction = UIBarButtonItem(

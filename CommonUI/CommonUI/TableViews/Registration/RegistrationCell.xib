@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -58,7 +58,7 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sqd-Tu-Rvq" userLabel="APD View">
                                 <rect key="frame" x="0.0" y="39" width="272" height="126"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="h8P-7t-Dd1">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="upload_doc" translatesAutoresizingMaskIntoConstraints="NO" id="h8P-7t-Dd1">
                                         <rect key="frame" x="105.5" y="14" width="61" height="39"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="61" id="tCQ-Cf-A2v"/>
@@ -124,7 +124,6 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
-                <outlet property="apdDocIcon" destination="h8P-7t-Dd1" id="KRP-bY-8Q5"/>
                 <outlet property="apdView" destination="sqd-Tu-Rvq" id="HqB-H8-8Je"/>
                 <outlet property="descriptionLabel" destination="FMg-dA-oiD" id="ZDf-2W-bsk"/>
                 <outlet property="gradientTextField" destination="ZYr-TG-sf5" id="JYn-r8-YwY"/>
@@ -135,6 +134,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="upload_doc" width="65" height="43"/>
         <namedColor name="lavender">
             <color red="0.53333333333333333" green="0.4392156862745098" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

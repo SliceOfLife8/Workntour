@@ -15,7 +15,13 @@ class TravelerPersonalInfoViewModel: BaseViewModel {
     var countries: Countries
 
     var countryPrefix: String {
-        return data.profile.countryCode ?? (countries.selectedCountryPrefix ?? "30")
+        guard let countryCode = data.profile.countryCode,
+              !countryCode.isEmpty
+        else {
+            return countries.selectedCountryPrefix ?? "30"
+        }
+
+        return countryCode
     }
 
     var countryFlag: String? {
@@ -52,12 +58,13 @@ class TravelerPersonalInfoViewModel: BaseViewModel {
         country: String?,
         mobileNum: String?
     ) {
+        let phoneDetails = mobileNum?.getPhoneDetails()
         data.profile.name = name
         data.profile.surname = surname
         data.profile.birthday = age?.changeDateFormat()
         data.profile.email = email
         data.profile.postalAddress = postalCode
-        data.profile.mobile = mobileNum?.getPhoneDetails().dropFirst().joined(separator: "")
+        data.profile.mobile = phoneDetails?.count == 1 ? phoneDetails?.joined() : phoneDetails?.dropFirst().joined()
         data.profile.address = address
         data.profile.city = city
         data.profile.country = country

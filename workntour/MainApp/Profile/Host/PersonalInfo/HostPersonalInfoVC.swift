@@ -103,8 +103,8 @@ class HostPersonalInfoVC: BaseVC<HostPersonalInfoViewModel, ProfileCoordinator> 
         ]
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewWillFirstAppear() {
+        super.viewWillFirstAppear()
 
         setupNavigationBar(mainTitle: "edit_info".localized())
         let saveAction = UIBarButtonItem(
@@ -150,7 +150,7 @@ class HostPersonalInfoVC: BaseVC<HostPersonalInfoViewModel, ProfileCoordinator> 
         addressLabel.text = "address".localized()
         addressTextField.configure(
             placeHolder: "address_placeholder".localized(),
-            text: "FIX ME",
+            text: data.address,
             type: .plain
         )
         mainStackView.setCustomSpacing(16, after: addressTextField)
@@ -158,7 +158,7 @@ class HostPersonalInfoVC: BaseVC<HostPersonalInfoViewModel, ProfileCoordinator> 
         cityLabel.text = "city".localized()
         cityTextField.configure(
             placeHolder: "city_placeholder".localized(),
-            text: "FIX ME",
+            text: data.city,
             type: .plain
         )
         mainStackView.setCustomSpacing(16, after: cityTextField)
@@ -200,7 +200,7 @@ class HostPersonalInfoVC: BaseVC<HostPersonalInfoViewModel, ProfileCoordinator> 
         vatLabel.text = "VAT Number"
         vatTextField.configure(
             placeHolder: "Enter your VAT number",
-            text: "FIX ME",
+            text: data.vat,
             type: .vatNumber
         )
         mainStackView.setCustomSpacing(16, after: vatTextField)

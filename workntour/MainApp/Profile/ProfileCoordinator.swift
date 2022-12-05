@@ -16,10 +16,13 @@ import UniformTypeIdentifiers
 enum ProfileStep: Step {
     case state(_ default: DefaultStep)
     case openGalleryPicker
+    case openDocumentPicker
     case updateTravelerProfile(_ profile: TravelerProfileDto)
     case updateCompanyProfile(_ profile: CompanyHostProfileDto)
     case updateIndividualProfile(_ profile: IndividualHostProfileDto)
     case travelerEditPersonalInfo
+    case hostEditPersonalInfo
+    case hostDescription(_ description: String?, link: String?)
     case selectInterests(preselectedInterests: [LearningOpportunities])
     case selectSkills(preselectedSkills: [TypeOfHelp])
     case openExperience(_ experience: ProfileExperience?)
@@ -78,7 +81,7 @@ final class ProfileCoordinator: NSObject, NavigationCoordinator {
             navigator.popViewController(animated: true)
         case .updateCompanyProfile(let profileDto):
             let travelerProfileVC = rootViewController.viewControllers.first as? HostProfileVC
-            // travelerProfileVC?.viewModel?.updateProfile(profileDto)
+            travelerProfileVC?.viewModel?.updateProfile(profileDto)
 
             navigator.popViewController(animated: true)
         case .updateIndividualProfile(let profileDto):
@@ -88,6 +91,8 @@ final class ProfileCoordinator: NSObject, NavigationCoordinator {
             navigator.popViewController(animated: true)
         case .openGalleryPicker:
             openPhotoPicker()
+        case .openDocumentPicker:
+            selectFiles()
         case .travelerEditPersonalInfo:
             guard let profileDto = UserDataManager.shared.retrieve(TravelerProfileDto.self) else {
                 assertionFailure("It's impossible to reach here! So, you fucked up!")
@@ -99,6 +104,37 @@ final class ProfileCoordinator: NSObject, NavigationCoordinator {
             editInfoVC.coordinator = self
 
             navigator.push(editInfoVC, animated: true)
+        case .hostEditPersonalInfo:
+            var viewModel: HostPersonalInfoViewModel
+            if let companyDto = UserDataManager.shared.retrieve(CompanyHostProfileDto.self) {
+                viewModel = HostPersonalInfoViewModel(data: .init(mode: .company(companyDto)))
+            }
+            else if let individualDto = UserDataManager.shared.retrieve(IndividualHostProfileDto.self) {
+                viewModel = HostPersonalInfoViewModel(data: .init(mode: .individual(individualDto)))
+            }
+            else {
+                assertionFailure("It's impossible to reach here! So, you fucked up!")
+                return
+            }
+            let editInfoVC = HostPersonalInfoVC()
+            editInfoVC.viewModel = viewModel
+            editInfoVC.coordinator = self
+
+            navigator.push(editInfoVC, animated: true)
+        case .hostDescription(let desc, let link):
+            let hostDesciptionVC = HostDescriptionVC()
+            hostDesciptionVC.viewModel = HostDescriptionViewModel(
+                data: .init(
+                    navigationBarTitle: HostProfileSection.description.value,
+                    description: desc,
+                    link: link,
+                    placeholder: "host_description_placeholder".localized(),
+                    charsLimit: 500
+                )
+            )
+            hostDesciptionVC.coordinator = self
+
+            navigator.push(hostDesciptionVC, animated: true)
         case .selectInterests(let learningOpportunities):
             selectInterests(learningOpportunities)
         case .selectSkills(let skills):
@@ -272,7 +308,9 @@ extension ProfileCoordinator: PHPickerViewControllerDelegate {
             if let image = image as? UIImage, let data = image.jpeg(.medium) {
                 DispatchQueue.main.async {
                     if let hostProfileVC = self.rootViewController.topViewController as? HostProfileVC {
-                        //hostProfileVC.viewModel?.updateProfilePic(with: image.jpeg(.medium))
+                        hostProfileVC.viewModel?.newImage = Media(data: data,
+                                                                  forKey: "profileImage",
+                                                                  withName: imageItem?.suggestedName)
                     } else if let travelerProfileVC = self.rootViewController.topViewController as? TravelerProfileVC {
                         travelerProfileVC.viewModel?.newImage = Media(data: data,
                                                                       forKey: "profileImage",
@@ -289,6 +327,7 @@ extension ProfileCoordinator: UIDocumentPickerDelegate {
 
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
         guard let pdfFile = urls.first,
+              let hostProfileVC = self.rootViewController.topViewController as? HostProfileVC,
               pdfFile.startAccessingSecurityScopedResource()
         else {
             return
@@ -299,12 +338,29 @@ extension ProfileCoordinator: UIDocumentPickerDelegate {
             let documentData = try Data(contentsOf: pdfFile)
             let pdf = Media(
                 data: documentData,
-                forKey: "pdf",
+                forKey: "authorizedDoc",
                 withName: pdfFile.lastPathComponent
             )
-            print("update viewModel!: \(pdf)")
+            hostProfileVC.viewModel?.updateProfile(withMedia: pdf)
         } catch {
             print("No data!")
         }
     }
 }
+
+/*
+extension UIApplication {
+
+    public var keyWindow: UIWindow? {
+        windows.first(where: \.isKeyWindow)
+    }
+
+    func replaceNavigationRoot(with viewController: UIViewController) {
+        guard let navigationController = UIApplication.shared.keyWindow?
+            .rootViewController as? UINavigationController else { return }
+        var viewControllers = navigationController.viewControllers
+        viewControllers.removeFirst()
+        viewControllers.insert(viewController, at: 0)
+        navigationController.setViewControllers(viewControllers, animated: false)
+    }
+}*/

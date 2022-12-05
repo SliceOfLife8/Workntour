@@ -33,12 +33,10 @@ public class RegistrationCell: UITableViewCell {
     @IBOutlet public weak var gradientTextField: GradientTextField!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var apdView: UIView!
-    @IBOutlet weak var apdDocIcon: UIImageView!
 
     public override func awakeFromNib() {
         super.awakeFromNib()
         apdView.layer.cornerRadius = 8
-        apdDocIcon.image = UIImage(named: "upload_doc", in: Bundle.main, compatibleWith: nil)
     }
 
     public override func layoutSubviews() {
