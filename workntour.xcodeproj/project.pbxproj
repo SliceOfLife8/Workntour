@@ -155,6 +155,7 @@
 		CE01BD602938F33A00F87439 /* HostDescriptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE01BD5F2938F33A00F87439 /* HostDescriptionViewModel.swift */; };
 		CE22953A293CE62100FCEE09 /* AuthorizedDoc.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE229539293CE62100FCEE09 /* AuthorizedDoc.swift */; };
 		CE22953C293CE73400FCEE09 /* CompanyUpdatedBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE22953B293CE73400FCEE09 /* CompanyUpdatedBody.swift */; };
+		CE229542293F207600FCEE09 /* IndividualUpdatedBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE229541293F207600FCEE09 /* IndividualUpdatedBody.swift */; };
 		CE3F9E8C291F9D0200480493 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE3F9E8B291F9D0200480493 /* Localizable.strings */; };
 		CE3F9E8F291FA88700480493 /* ProfileSelectAttributesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3F9E8E291FA88700480493 /* ProfileSelectAttributesVC.swift */; };
 		CE3F9E92291FA96100480493 /* ProfileSelectAttributesVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE3F9E91291FA96100480493 /* ProfileSelectAttributesVC.xib */; };
@@ -354,6 +355,7 @@
 		CE01BD5F2938F33A00F87439 /* HostDescriptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostDescriptionViewModel.swift; sourceTree = "<group>"; };
 		CE229539293CE62100FCEE09 /* AuthorizedDoc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizedDoc.swift; sourceTree = "<group>"; };
 		CE22953B293CE73400FCEE09 /* CompanyUpdatedBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyUpdatedBody.swift; sourceTree = "<group>"; };
+		CE229541293F207600FCEE09 /* IndividualUpdatedBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualUpdatedBody.swift; sourceTree = "<group>"; };
 		CE3F9E8B291F9D0200480493 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		CE3F9E8E291FA88700480493 /* ProfileSelectAttributesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSelectAttributesVC.swift; sourceTree = "<group>"; };
 		CE3F9E91291FA96100480493 /* ProfileSelectAttributesVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileSelectAttributesVC.xib; sourceTree = "<group>"; };
@@ -1035,6 +1037,7 @@
 				CE01BD4029373AA600F87439 /* HostProfileSections.swift */,
 				CE229539293CE62100FCEE09 /* AuthorizedDoc.swift */,
 				CE22953B293CE73400FCEE09 /* CompanyUpdatedBody.swift */,
+				CE229541293F207600FCEE09 /* IndividualUpdatedBody.swift */,
 			);
 			path = Host;
 			sourceTree = "<group>";
@@ -1442,6 +1445,7 @@
 				1B3C383628508B79000EEADF /* RegistrationHostVC.swift in Sources */,
 				CE446D70292A7A24004026FA /* ProfileImage.swift in Sources */,
 				1B7315F3281E7DD0001F2E6A /* SceneDelegate.swift in Sources */,
+				CE229542293F207600FCEE09 /* IndividualUpdatedBody.swift in Sources */,
 				1B39AA5128749A7C009377A7 /* OpportunityEnums.swift in Sources */,
 				1BA2DEEF281E840900DB128D /* DeepLinkManager.swift in Sources */,
 				1B308A5528424FBE00797F32 /* RegistrationModel.swift in Sources */,

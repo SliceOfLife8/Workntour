@@ -79,7 +79,6 @@ extension HostPersonalInfoViewModel {
         enum Mode {
             case company(CompanyHostProfileDto)
             case individual(IndividualHostProfileDto)
-            case none
 
             mutating func adjust(
                 name: String,
@@ -110,9 +109,21 @@ extension HostPersonalInfoViewModel {
                     )
                     self = .company(newProfile)
                 case .individual(var profile):
-                    profile.postalAddress = postalCode
-                case .none:
-                    break
+                    let newProfile = IndividualHostProfileDto(
+                        memberID: profile.memberID,
+                        role: profile.role,
+                        name: name,
+                        surname: surname,
+                        email: profile.email,
+                        city: city,
+                        address: address,
+                        country: country,
+                        countryCode: profile.countryCode,
+                        mobile: mobileNum,
+                        fixedNumber: fixedNum,
+                        postalAddress: vatNum
+                    )
+                    self = .individual(newProfile)
                 }
             }
 
@@ -124,8 +135,6 @@ extension HostPersonalInfoViewModel {
                 case .individual(var profile):
                     profile.countryCode = code
                     self = .individual(profile)
-                case .none:
-                    break
                 }
             }
 
@@ -135,8 +144,6 @@ extension HostPersonalInfoViewModel {
                     return profile.countryCode
                 case .individual(let profile):
                     return profile.countryCode
-                case .none:
-                    return nil
                 }
             }
         }

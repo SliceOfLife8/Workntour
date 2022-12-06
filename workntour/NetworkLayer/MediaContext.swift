@@ -23,6 +23,7 @@ enum Result<T> {
 enum MediaContext {
     case updateTraveler(body: TravelerUpdatedBody)
     case updateCompanyHost(body: CompanyUpdatedBody)
+    case updateIndividualHost(body: IndividualUpdatedBody)
 
     var path: String {
         switch self {
@@ -30,6 +31,8 @@ enum MediaContext {
             return "/profile/updateProfile/traveler"
         case .updateCompanyHost:
             return "/profile/updateProfile/companyHost"
+        case .updateIndividualHost:
+            return "/profile/updateProfile/individualHost"
         }
     }
 
@@ -63,6 +66,16 @@ enum MediaContext {
             let jsonData = try! JSONEncoder().encode(body.updatedCompanyHostProfile)
             let value = String(decoding: jsonData, as: UTF8.self)
             parameters = ["updatedCompanyHostProfile": value]
+
+            request.httpBody = createDataBody(
+                withParameters: parameters,
+                media: body.media,
+                boundary: boundary
+            )
+        case .updateIndividualHost(let body):
+            let jsonData = try! JSONEncoder().encode(body.updatedIndividualHost)
+            let value = String(decoding: jsonData, as: UTF8.self)
+            parameters = ["updatedIndividualHost": value]
 
             request.httpBody = createDataBody(
                 withParameters: parameters,

@@ -92,7 +92,7 @@ class HostDescriptionVC: BaseVC<HostDescriptionViewModel, ProfileCoordinator> {
         }
         else if var individualDto = UserDataManager.shared.retrieve(IndividualHostProfileDto.self) {
             individualDto.description = description
-            //individualDto.link = text
+            individualDto.link = linkText
             self.coordinator?.navigate(to: .updateIndividualProfile(individualDto))
         }
     }

@@ -58,7 +58,12 @@ class HostProfileVC: BaseVC<HostProfileViewModel, ProfileCoordinator> {
                     at: .init(row: 0, section: 0)
                 ) as? ProfileHeaderView
                 headerView?.updateImage(media.data)
-                self?.viewModel?.updateProfile(withMedia: media)
+                if self?.viewModel?.isCompany == true {
+                    self?.viewModel?.updateProfile(withMedia: media)
+                }
+                else {
+                    self?.viewModel?.updateProfile(media: media)
+                }
             })
             .store(in: &storage)
 
@@ -214,7 +219,7 @@ extension HostProfileVC: ProfileSimpleCellDelegate {
             self.coordinator?.navigate(
                 to: .hostDescription(
                     viewModel.isCompany ? viewModel.companyHost?.description : viewModel.individualHost?.description,
-                    link: viewModel.companyHost?.link
+                    link: viewModel.isCompany ? viewModel.companyHost?.link : viewModel.individualHost?.link
                 )
             )
         }

@@ -80,13 +80,13 @@ final class ProfileCoordinator: NSObject, NavigationCoordinator {
 
             navigator.popViewController(animated: true)
         case .updateCompanyProfile(let profileDto):
-            let travelerProfileVC = rootViewController.viewControllers.first as? HostProfileVC
-            travelerProfileVC?.viewModel?.updateProfile(profileDto)
+            let hostProfileVC = rootViewController.viewControllers.first as? HostProfileVC
+            hostProfileVC?.viewModel?.updateProfile(profileDto)
 
             navigator.popViewController(animated: true)
         case .updateIndividualProfile(let profileDto):
-            let travelerProfileVC = rootViewController.viewControllers.first as? HostProfileVC
-            // travelerProfileVC?.viewModel?.updateProfile(profileDto)
+            let hostProfileVC = rootViewController.viewControllers.first as? HostProfileVC
+            hostProfileVC?.viewModel?.updateProfile(incomingProfileDto: profileDto)
 
             navigator.popViewController(animated: true)
         case .openGalleryPicker:

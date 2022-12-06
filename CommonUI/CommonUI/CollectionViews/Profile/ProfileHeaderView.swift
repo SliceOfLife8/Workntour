@@ -47,7 +47,7 @@ public class ProfileHeaderView: UICollectionReusableView {
         introLabel.text = model.introText
         progressBar.isHidden = false
         typeButton.setTitle(
-            model.mode.placeholder.capitalizingFirstLetter(),
+            model.mode.value,
             for: .normal
         )
         imageView.kf.setImage(
@@ -89,14 +89,26 @@ extension ProfileHeaderView {
 
         public enum Mode {
             case traveler
-            case host
+            case company
+            case individual
 
             var placeholder: String {
                 switch self {
                 case .traveler:
                     return "traveler"
-                case .host:
+                case .company, .individual:
                     return "host"
+                }
+            }
+
+            var value: String {
+                switch self {
+                case .traveler:
+                    return "Traveler"
+                case .company:
+                    return "Company"
+                case .individual:
+                    return "Individual"
                 }
             }
         }

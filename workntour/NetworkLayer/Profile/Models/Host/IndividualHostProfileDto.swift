@@ -11,69 +11,96 @@ import Foundation
 struct IndividualHostProfileDto: Codable {
     let memberID: String
     let role: UserRole
-    let name, surname: String
-    let email, password, birthday: String
-    var country, countryCode, mobile, fixedNumber, nationality: String?
-    var description, postalAddress: String?
-    var image: Data?
-    var sex: UserSex?
+    let name, surname, email: String
+    var city, address: String?
+    var country, countryCode, mobile, fixedNumber: String?
+    var description, link, postalAddress: String?
+    var profileImage: ProfileImage?
     let createdAt: String?
-
+    
     // MARK: - Init
-    init(memberID: String, role: UserRole, name: String, surname: String, email: String, password: String, birthday: String, country: String? = nil, countryCode: String? = nil, mobile: String? = nil, fixedNumber: String? = nil, nationality: String? = nil, description: String? = nil, postalAddress: String? = nil, image: Data? = nil, sex: UserSex? = nil, createdAt: String?) {
+
+    init(memberID: String, role: UserRole, name: String, surname: String, email: String, city: String? = nil, address: String? = nil, country: String? = nil, countryCode: String? = nil, mobile: String? = nil, fixedNumber: String? = nil, description: String? = nil, link: String? = nil, postalAddress: String? = nil, image: ProfileImage? = nil, createdAt: String? = nil) {
         self.memberID = memberID
         self.role = role
         self.name = name
         self.surname = surname
         self.email = email
-        self.password = password
-        self.birthday = birthday
+        self.city = city
+        self.address = address
         self.country = country
         self.countryCode = countryCode
         self.mobile = mobile
         self.fixedNumber = fixedNumber
-        self.nationality = nationality
         self.description = description
+        self.link = link
         self.postalAddress = postalAddress
-        self.image = image
-        self.sex = sex
+        self.profileImage = image
         self.createdAt = createdAt
     }
 
     enum CodingKeys: String, CodingKey {
         case memberID = "memberId"
         case role
-        case name, surname, email, password, birthday
-        case country, fixedNumber, nationality, description
+        case name, surname, email
+        case city, address
+        case country, fixedNumber, description, link
         case countryCode = "countryCodeMobileNum"
         case mobile = "mobileNum"
-        case image = "profileImage"
-        case sex, postalAddress, createdAt
+        case profileImage
+        case postalAddress, createdAt
     }
+
+    // MARK: - Private Properties
+
+    let totalFields: Double = 12
 
     var fullname: String {
         return "\(name) \(surname)"
     }
 
-    var percents: (_360: Double, _100: Int, duration: Double) {
+    var percents: ProfilePercents {
         var percent: Double = 0.0
 
-        percent += fullname.hasValue ? 1/9 : 0
-        percent += email.hasValue ? 1/9 : 0
-        percent += (country?.hasValue == true) ? 1/9 : 0
-        percent += (postalAddress?.hasValue == true) ? 1/9 : 0
-        percent += (mobile?.hasValue == true) ? 1/9 : 0
-        percent += (fixedNumber?.hasValue == true) ? 1/9 : 0
-        percent += (nationality?.hasValue == true) ? 1/9 : 0
-        percent += (sex != nil) ? 1/9 : 0
-        percent += (image != nil) ? 1/9 : 0
+        percent += hasValue(name)
+        percent += hasValue(surname)
+        percent += hasValue(email)
+        percent += hasValue(address)
+        percent += hasValue(city)
+        percent += hasValue(postalAddress)
+        percent += hasValue(country)
+        percent += hasValue(mobile)
+        percent += hasValue(fixedNumber)
+        percent += hasValue(description)
+        percent += hasValue(link)
+        percent += hasValue(profileImage?.url)
 
         let roundedPercent = percent.rounded(toPlaces: 2)
         let percent100 = Int(roundedPercent*100)
         let percent360 = roundedPercent*360
         let animationDuration: Double = (percent100 <= 50) ? 1 : 1.5
 
-        return (percent360, percent100, animationDuration)
+        return .init(percent360: percent360,
+                     percent100: percent100,
+                     duration: animationDuration)
+    }
+
+    // MARK: - Methods
+
+    func hasValue(_ text: String?) -> Double {
+        guard let text else { return 0 }
+        return !text.trimmingCharacters(in: .whitespaces).isEmpty
+        ? 1/totalFields
+        : 0
+    }
+
+    func getProfileImage() -> URL? {
+        guard let firstValue = profileImage?.url
+        else {
+            return nil
+        }
+
+        return URL(string: firstValue)
     }
 }
 

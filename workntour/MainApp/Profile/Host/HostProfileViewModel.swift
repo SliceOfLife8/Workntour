@@ -70,6 +70,40 @@ class HostProfileViewModel: BaseViewModel {
             })
     }
 
+    func updateProfile(
+        incomingProfileDto: IndividualHostProfileDto? = nil,
+        media: Media? = nil
+    ) {
+        guard let individualHost else { return }
+        let profileDto = incomingProfileDto ?? individualHost
+
+        loaderVisibility = true
+        let updatedBody = IndividualUpdatedBody(updatedIndividualHost: profileDto, media: media)
+
+        MediaContext.updateIndividualHost(body: updatedBody).dataRequest(
+            objectType: GenericResponse<IndividualHostProfileDto>.self,
+            completion: { (result: Result) in
+                switch result {
+                case .success(let profile):
+                    DispatchQueue.main.async {
+                        self.profileUpdated = true
+                        self.loaderVisibility = false
+                    }
+                    self.individualHost = profile.data
+                    UserDataManager.shared.save(
+                        profile.data,
+                        memberId: profile.data?.memberID,
+                        role: profile.data?.role
+                    )
+                case .failure:
+                    DispatchQueue.main.async {
+                        self.profileUpdated = false
+                        self.loaderVisibility = false
+                    }
+                }
+            })
+    }
+
     func retrieveProfile() {
         guard let memberId = UserDataManager.shared.memberId else { return }
         
@@ -112,22 +146,44 @@ extension HostProfileViewModel {
     }
 
     func getHeaderDataModel() -> ProfileHeaderView.DataModel? {
-        guard let data = companyHost else { return nil }
-        let percents = data.percents
+        if let companyData = companyHost {
+            let percents = companyData.percents
 
-        return .init(
-            mode: .host,    
-            profileUrl: data.getProfileImage(),
-            fullname: data.name,
-            introText: "host_intro".localized(),
-            percent360: percents.percent360,
-            percent100: percents.percent100,
-            duration: percents.duration
-        )
+            return .init(
+                mode: .company,
+                profileUrl: companyData.getProfileImage(),
+                fullname: companyData.name,
+                introText: "host_intro".localized(),
+                percent360: percents.percent360,
+                percent100: percents.percent100,
+                duration: percents.duration
+            )
+        }
+        else if let individualData = individualHost {
+            let percents = individualData.percents
+
+            return .init(
+                mode: .individual,
+                profileUrl: individualData.getProfileImage(),
+                fullname: individualData.fullname,
+                introText: "host_intro".localized(),
+                percent360: percents.percent360,
+                percent100: percents.percent100,
+                duration: percents.duration
+            )
+        }
+
+        return nil
     }
 
     func getSimpleCellDataModel(_ index: Int) -> ProfileSimpleCell.DataModel? {
-        guard let data = companyHost else { return nil }
+        var descriptionValue: String? = nil
+        if let companyData = companyHost {
+            descriptionValue = companyData.description
+        }
+        else if let individualData = individualHost {
+            descriptionValue = individualData.description
+        }
 
         switch HostProfileSection(rawValue: index) {
         case .personalInfo:
@@ -139,7 +195,7 @@ extension HostProfileViewModel {
         case .description:
             return .init(
                 title: HostProfileSection.description.value,
-                values: [data.description],
+                values: [descriptionValue],
                 placeholder: "host_description_placeholder".localized()
             )
         default:

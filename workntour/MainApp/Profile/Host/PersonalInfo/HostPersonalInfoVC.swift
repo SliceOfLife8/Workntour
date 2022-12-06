@@ -238,7 +238,7 @@ class HostPersonalInfoVC: BaseVC<HostPersonalInfoViewModel, ProfileCoordinator> 
         addressLabel.text = "address".localized()
         addressTextField.configure(
             placeHolder: "address_placeholder".localized(),
-            text: "FIX ME",
+            text: data.address,
             type: .plain
         )
         mainStackView.setCustomSpacing(16, after: addressTextField)
@@ -246,7 +246,7 @@ class HostPersonalInfoVC: BaseVC<HostPersonalInfoViewModel, ProfileCoordinator> 
         cityLabel.text = "city".localized()
         cityTextField.configure(
             placeHolder: "city_placeholder".localized(),
-            text: "FIX ME",
+            text: data.city,
             type: .plain
         )
         mainStackView.setCustomSpacing(16, after: cityTextField)
