@@ -52,11 +52,17 @@ final class MainCoordinator: NavigationCoordinator {
     }
 
     func showAlert() {
-        AlertHelper.showAlertWithTwoActions(rootViewController, title: "Sign Up as a", leftButtonTitle: "Traveler", rightButtonTitle: "Host", leftAction: {
-            self.startRegistrationFlow(forType: .TRAVELER)
-        }, rightAction: {
-            self.startRegistrationFlow(forType: .INDIVIDUAL_HOST)
-        })
+        AlertHelper.showAlertWithTwoActions(
+            rootViewController,
+            title: "sign_up".localized(),
+            hasCancelOption: true,
+            leftButtonTitle: "traveler".localized(),
+            rightButtonTitle: "host".localized(),
+            leftAction: {
+                self.startRegistrationFlow(forType: .TRAVELER)
+            }, rightAction: {
+                self.startRegistrationFlow(forType: .INDIVIDUAL_HOST)
+            })
     }
 
     private func startRegistrationFlow(forType type: UserRole) {
@@ -71,7 +77,7 @@ final class MainCoordinator: NavigationCoordinator {
 
     /// Create TabBarCoordinator & set it as rootViewController of our main NavigationController
     func showMainFlow() {
-        rootViewController.hideNavigationBar(false)
+        // rootViewController.hideNavigationBar(false)
         let tabCoordinator = TabBarCoordinator(parent: self, rootViewController)
         pushCoordinator(tabCoordinator, animated: false)
         navigator.setRootViewController(tabCoordinator.rootViewController, animated: false)

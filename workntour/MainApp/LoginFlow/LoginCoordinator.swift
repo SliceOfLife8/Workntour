@@ -43,7 +43,7 @@ final class LoginCoordinator: PresentationCoordinator {
     func navigate(to step: LoginStep) {
         switch step {
         case .successfulLogin:
-            parent.dismissCoordinator(self, modalStyle: .coverVertical, animated: true, completion: {
+            parent.dismissCoordinator(self, modalStyle: .coverVertical, animated: false, completion: {
                 DispatchQueue.main.async {
                     self.parent.showMainFlow()
                 }
@@ -60,7 +60,13 @@ final class LoginCoordinator: PresentationCoordinator {
     }
 
     func showAlert() {
-        AlertHelper.showAlertWithTwoActions(rootViewController, title: "Sign Up as a", leftButtonTitle: "Traveler", rightButtonTitle: "Host", leftAction: {
+        AlertHelper.showAlertWithTwoActions(
+            rootViewController,
+            title: "sign_up".localized(),
+            hasCancelOption: true,
+            leftButtonTitle: "traveler".localized(),
+            rightButtonTitle: "host".localized(),
+            leftAction: {
             self.startRegistrationFlow(forType: .TRAVELER)
         }, rightAction: {
             self.startRegistrationFlow(forType: .INDIVIDUAL_HOST)
@@ -71,5 +77,4 @@ final class LoginCoordinator: PresentationCoordinator {
         let registrationCoordinator = RegistrationCoordinator(parent: self, role: type)
         presentCoordinator(registrationCoordinator, modalStyle: .overFullScreen, animated: true)
     }
-
 }

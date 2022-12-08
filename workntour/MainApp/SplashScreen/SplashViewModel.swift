@@ -18,6 +18,4 @@ import UIKit
  Published.Publisher (which is the type you get for an @Published property) publishes the current value of the property immediately.
  */
 
-class SplashViewModel: BaseViewModel {
-
-}
+class SplashViewModel: EmptyViewModel {}

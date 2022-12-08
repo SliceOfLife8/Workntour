@@ -30,9 +30,9 @@ class LoginVC: BaseVC<LoginViewModel, LoginCoordinator> {
     override func setupTexts() {
         super.setupTexts()
 
-        loginBtn.setTitle("Log in", for: .normal)
-        registrationLabel.text = "Not a member? Register here"
-        let actionPart = "Register here"
+        loginBtn.setTitle("login".localized(), for: .normal)
+        registrationLabel.text = "new_member".localized()
+        let actionPart = "new_member_action_part".localized()
         registrationLabel.changeFont(ofText: actionPart, with: UIFont.scriptFont(.bold, size: 14))
         registrationLabel.changeTextColor(ofText: actionPart, with: UIColor.appColor(.mint))
 
@@ -48,9 +48,17 @@ class LoginVC: BaseVC<LoginViewModel, LoginCoordinator> {
 
         credentialsStackView.setCustomSpacing(16, after: emailTextField)
         forgotPasswordBtn.underline()
-        setupNavigationBar(mainTitle: "Log in")
-        emailTextField.configure(placeHolder: "Enter your email", text: viewModel?.email, type: .email)
-        passwordTextField.configure(placeHolder: "Enter your password", text: viewModel?.password, type: .password)
+        setupNavigationBar(mainTitle: "login".localized())
+        emailTextField.configure(
+            placeHolder: "email_placeholder".localized(),
+            text: viewModel?.email,
+            type: .email
+        )
+        passwordTextField.configure(
+            placeHolder: "password_placeholder".localized(),
+            text: viewModel?.password,
+            type: .password
+        )
 
         emailTextField.addTarget(self, action: #selector(emailDidChange), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(passwordDidChange), for: .editingChanged)

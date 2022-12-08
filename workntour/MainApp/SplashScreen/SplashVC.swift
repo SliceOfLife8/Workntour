@@ -24,11 +24,11 @@ class SplashVC: BaseVC<SplashViewModel, MainCoordinator> {
 
     override func setupTexts() {
         super.setupTexts()
-        loginBtn.setTitle("Log in", for: .normal)
-        loginAsGuestBtn.setTitle("Log in as a guest", for: .normal)
+        loginBtn.setTitle("login".localized(), for: .normal)
+        loginAsGuestBtn.setTitle("guest_login".localized(), for: .normal)
 
-        registrationPoint.text = "Not a member? Register here"
-        let actionPart = "Register here"
+        registrationPoint.text = "new_member".localized()
+        let actionPart = "new_member_action_part".localized()
         registrationPoint.changeFont(ofText: actionPart, with: UIFont.scriptFont(.bold, size: 14))
         registrationPoint.changeTextColor(ofText: actionPart, with: UIColor.appColor(.mint))
 

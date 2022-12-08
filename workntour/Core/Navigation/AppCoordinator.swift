@@ -24,12 +24,11 @@ final class AppCoordinator: PresentationCoordinator {
         let hasUserSeenOnboardingFlow = LocalStorageManager.shared.retrieve(forKey: .onboarding, type: Bool.self)
 
         if hasUserSeenOnboardingFlow == true {
-            // Navigate him to the next screen
+            route(isFirstTimeUser: false)
         } else {
-            self.route(isFirstTimeUser: false)
+            route(isFirstTimeUser: true)
         }
     }
-
 }
 
 // MARK: - Routing
@@ -48,24 +47,22 @@ private extension AppCoordinator {
             rootViewController.set(childViewController: mainCoordinator.rootViewController)
         }
     }
-
 }
 
 // MARK: - Onboarding Coordinator Delegate
 extension AppCoordinator: OnboardingCoordinatorDelegate {
 
     func onboardingCoordinatorDidFinish(_ coordinator: OnboardingCoordinator, userIsGranted: Bool) {
-        LocalStorageManager.shared.save(true,
-                                        forKey: .onboarding,
-                                        withMethod: .userDefaults)
+        LocalStorageManager.shared.save(
+            true,
+            forKey: .onboarding,
+            withMethod: .userDefaults
+        )
 
         if userIsGranted {
             route(isFirstTimeUser: false)
 
             dismissCoordinator(coordinator, modalStyle: .flipHorizontal, animated: true)
-        } else {
-            // something else
         }
     }
-
 }

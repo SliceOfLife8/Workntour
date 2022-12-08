@@ -178,6 +178,9 @@
 		CEAB0A3629253B560023A2C6 /* TravelerPersonalInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAB0A3529253B560023A2C6 /* TravelerPersonalInfoVC.swift */; };
 		CEAB0A3829253B5E0023A2C6 /* TravelerPersonalInfoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEAB0A3729253B5E0023A2C6 /* TravelerPersonalInfoVC.xib */; };
 		CEAB0A3A29253B870023A2C6 /* TravelerPersonalInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAB0A3929253B870023A2C6 /* TravelerPersonalInfoViewModel.swift */; };
+		CEBA31172940E57600602111 /* OnboardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBA31162940E57600602111 /* OnboardingVC.swift */; };
+		CEBA31192940E57F00602111 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBA31182940E57F00602111 /* OnboardingViewModel.swift */; };
+		CEBA31242940EDAB00602111 /* OnboardingVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEBA31232940EDAB00602111 /* OnboardingVC.xib */; };
 		CED06CFE2928DEA000C054E3 /* TravelerProfileSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED06CFD2928DEA000C054E3 /* TravelerProfileSections.swift */; };
 		CED06D04292909CA00C054E3 /* SpecialDietary.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED06D03292909CA00C054E3 /* SpecialDietary.swift */; };
 /* End PBXBuildFile section */
@@ -379,6 +382,9 @@
 		CEAB0A3529253B560023A2C6 /* TravelerPersonalInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelerPersonalInfoVC.swift; sourceTree = "<group>"; };
 		CEAB0A3729253B5E0023A2C6 /* TravelerPersonalInfoVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TravelerPersonalInfoVC.xib; sourceTree = "<group>"; };
 		CEAB0A3929253B870023A2C6 /* TravelerPersonalInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelerPersonalInfoViewModel.swift; sourceTree = "<group>"; };
+		CEBA31162940E57600602111 /* OnboardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingVC.swift; sourceTree = "<group>"; };
+		CEBA31182940E57F00602111 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
+		CEBA31232940EDAB00602111 /* OnboardingVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingVC.xib; sourceTree = "<group>"; };
 		CED06CFD2928DEA000C054E3 /* TravelerProfileSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelerProfileSections.swift; sourceTree = "<group>"; };
 		CED06D03292909CA00C054E3 /* SpecialDietary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialDietary.swift; sourceTree = "<group>"; };
 		D1C830038FC1866654646544 /* Pods-workntour.prod debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-workntour.prod debug.xcconfig"; path = "Target Support Files/Pods-workntour/Pods-workntour.prod debug.xcconfig"; sourceTree = "<group>"; };
@@ -845,6 +851,9 @@
 			isa = PBXGroup;
 			children = (
 				1BA2DF07281E8D7700DB128D /* OnboardingCoordinator.swift */,
+				CEBA31162940E57600602111 /* OnboardingVC.swift */,
+				CEBA31232940EDAB00602111 /* OnboardingVC.xib */,
+				CEBA31182940E57F00602111 /* OnboardingViewModel.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -1196,6 +1205,7 @@
 				CE01BD5229379FFB00F87439 /* HostPersonalInfoVC.xib in Resources */,
 				1B3C384528520E11000EEADF /* LoginVC.xib in Resources */,
 				1BE6EA992868BFB8009CBE6D /* OpportunitiesVC.xib in Resources */,
+				CEBA31242940EDAB00602111 /* OnboardingVC.xib in Resources */,
 				1B4AE427283F58FB00FA6420 /* Lato-BlackItalic.ttf in Resources */,
 				1B4AE428283F58FB00FA6420 /* Lato-Bold.ttf in Resources */,
 				1B39AA5F287C2930009377A7 /* HomeVC.xib in Resources */,
@@ -1403,6 +1413,7 @@
 				1B1683A8283D20180067F2DB /* Pagination.swift in Sources */,
 				1B3C384928520E5C000EEADF /* LoginCoordinator.swift in Sources */,
 				1BC190EF2863394B00585533 /* ProfileService.swift in Sources */,
+				CEBA31172940E57600602111 /* OnboardingVC.swift in Sources */,
 				1B7753DB286C2F6200D81526 /* SelectDateRangesVC.swift in Sources */,
 				CE8332DE292218D100F751FE /* ProfileAddSummaryVC.swift in Sources */,
 				CE01BD3429350C2C00F87439 /* Media.swift in Sources */,
@@ -1481,6 +1492,7 @@
 				1BC190F5286339DD00585533 /* IndividualHostProfileDto.swift in Sources */,
 				1B7753D4286B371C00D81526 /* CreateOpportunityVC+Extensions.swift in Sources */,
 				1B6A8C9E2897A836003A1540 /* TravelerType.swift in Sources */,
+				CEBA31192940E57F00602111 /* OnboardingViewModel.swift in Sources */,
 				1B16837B2837C07B0067F2DB /* FirebaseManager.swift in Sources */,
 				CE01BD5C2938F32C00F87439 /* HostDescriptionVC.swift in Sources */,
 				1BC190CD285F251800585533 /* HostProfileVC.swift in Sources */,

@@ -13,8 +13,6 @@ protocol TabCoordinatorProtocol: Coordinator {
 
     func selectPage(_ page: TabBarPage)
 
-    func setSelectedIndex(_ index: Int)
-
     func currentPage() -> TabBarPage?
 }
 
@@ -24,6 +22,7 @@ final class TabBarCoordinator: NSObject, NavigationCoordinator {
     var childCoordinators: [Coordinator] = []
     var navigator: NavigatorType
     var rootViewController: TabBarViewController
+    var pages: [TabBarPage] = []
 
     private var userRole: UserRole?
     private var homePageIsVisible: Bool = false
@@ -59,17 +58,14 @@ final class TabBarCoordinator: NSObject, NavigationCoordinator {
 
     func start() {
         // Let's define which pages do we want to add into tab bar
-        var allPages: [TabBarPage]
         switch userRole {
         case .TRAVELER:
-            allPages = [.homepage, .profile, .notifications, .settings]
+            pages = [.homepage, .profile, .notifications, .settings]
         case .COMPANY_HOST, .INDIVIDUAL_HOST:
-            allPages = [.profile, .opportunities, .notifications, .settings]
+            pages = [.profile, .opportunities, .notifications, .settings]
         case .none: // guest mode
-            allPages = [.homepage, .notifications, .settings]
+            pages = [.homepage, .notifications, .settings]
         }
-
-        let pages: [TabBarPage] = allPages.sorted(by: { $0.pageOrderNumber() < $1.pageOrderNumber() })
 
         let controllers: [UINavigationController] = pages.map({ getTabController($0) })
 
@@ -86,7 +82,7 @@ final class TabBarCoordinator: NSObject, NavigationCoordinator {
         rootViewController.tabBar.unselectedItemTintColor = UIColor.appColor(.lavenderTint1)
 
         rootViewController.delegate = self
-        rootViewController.selectedIndex = 1
+        selectPage(.notifications)
     }
 
     @available(iOS 15.0, *)
@@ -136,15 +132,9 @@ final class TabBarCoordinator: NSObject, NavigationCoordinator {
 
     func currentPage() -> TabBarPage? { TabBarPage(index: rootViewController.selectedIndex) }
 
-    #warning("Not working!")
     func selectPage(_ page: TabBarPage) {
-        rootViewController.selectedIndex = page.pageOrderNumber()
-    }
-
-    func setSelectedIndex(_ index: Int) {
-        guard let page = TabBarPage(index: index) else { return }
-
-        rootViewController.selectedIndex = page.pageOrderNumber()
+        guard let currentIndex = pages.firstIndex(of: page) else { return }
+        rootViewController.selectedIndex = currentIndex
     }
 }
 

@@ -1,4 +1,4 @@
-// Profile
+// MARK: - Profile
 "save" = "Save";
 "delete" = "Delete";
 "interests" = "Interests";
@@ -69,3 +69,27 @@
 "apd" = "Authorized Person Document";
 "insert_link" = "Insert your link";
 "insert_link_here" = "Insert your link here";
+
+// MARK: - Login, Registration & Onboarding
+"cancel" = "Cancel";
+"sign_up" = "Sign Up as a";
+"traveler" = "Traveler";
+"host" = "Host";
+"login" = "Log in";
+"guest_login" = "Log in as a guest";
+"new_member" = "Not a member? Register here";
+"new_member_action_part" = "Register here";
+"remember_me" = "Remember me";
+"Forgot password" = "Forgot password";
+"onboarding_page_one_title" = "Travel the world and live like a local!";
+"onboarding_page_one_description" = "Offer your time and skills and receive food and accomodation.";
+"onboarding_page_two_title" = "Receive travelers that want to help you!";
+"onboarding_page_two_description" = "Promote the opportunity you offer and travelers will contact you.";
+"onboarding_page_three_title" = "Review your experience!";
+"onboarding_page_three_description" = "Give feedback on your experience.";
+"next" = "Next";
+"get_started" = "Get started";
+"password_placeholder" = "Enter your password";
+"login_wrong_creds" = "You have entered an invalid username or password";
+"next" = "Next";
+"get_started" = "Get Started";

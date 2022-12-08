@@ -24,20 +24,18 @@ final class OnboardingCoordinator: NavigationCoordinator {
     var navigator: NavigatorType
     var rootViewController: UINavigationController
 
-    // private let onboardingViewModel: OnboardingViewModel
-
     init() {
-        // onboardingViewModel = OnboardingViewModel()
-        // let onboardingVC = OnboardingVC(onboardingViewModel)
-
-        let navigationController = UINavigationController(rootViewController: UIViewController())
+        let navigationController = UINavigationController()
         navigationController.navigationBar.isHidden = true
         self.navigator = Navigator(navigationController: navigationController)
         self.rootViewController = navigationController
     }
 
     func start() {
-        // onboardingViewModel.delegate = self
-    }
+        let onboardingVC = OnboardingVC()
+        onboardingVC.viewModel = OnboardingViewModel()
+        onboardingVC.coordinator = self
 
+        navigator.push(onboardingVC, animated: false)
+    }
 }

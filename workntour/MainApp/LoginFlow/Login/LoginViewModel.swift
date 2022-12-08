@@ -32,7 +32,7 @@ class LoginViewModel: BaseViewModel {
 
     var validatedEmail: AnyPublisher<String?, Never> {
         return $email
-            .debounce(for: 0.5, scheduler: RunLoop.main)
+            .debounce(for: 0.2, scheduler: RunLoop.main)
             .removeDuplicates()
             .map { email in
                 return email.isEmailValid() ? email : nil
@@ -42,7 +42,7 @@ class LoginViewModel: BaseViewModel {
 
     var validatedPassword: AnyPublisher<String?, Never> {
         return $password
-            .debounce(for: 0.5, scheduler: RunLoop.main)
+            .debounce(for: 0.2, scheduler: RunLoop.main)
             .map { password in
                 return password.isPasswordValid() ? password : nil
             }
@@ -70,7 +70,7 @@ class LoginViewModel: BaseViewModel {
             .subscribe(on: RunLoop.main)
             .catch({ [weak self] error -> Just<LoginModel?> in
                 if case .invalidServerResponseWithStatusCode(let code) = error, code == 404 {
-                    self?.errorMessage = "You have entered an invalid username or password"
+                    self?.errorMessage = "login_wrong_creds".localized()
                 } else {
                     self?.errorMessage = error.errorDescription
                 }
@@ -119,5 +119,4 @@ class LoginViewModel: BaseViewModel {
             LocalStorageManager.shared.removeKey(.password)
         }
     }
-
 }

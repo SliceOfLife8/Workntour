@@ -68,6 +68,8 @@
 		CE446D6E292A5AF9004026FA /* ExperienceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE446D6C292A5AF9004026FA /* ExperienceCell.xib */; };
 		CEAB0A4C2927EAAB0023A2C6 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAB0A4A2927EAAB0023A2C6 /* ProfileHeaderView.swift */; };
 		CEAB0A4D2927EAAB0023A2C6 /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEAB0A4B2927EAAB0023A2C6 /* ProfileHeaderView.xib */; };
+		CEBA31212940E8B500602111 /* OnboardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBA311F2940E8B500602111 /* OnboardingCell.swift */; };
+		CEBA31222940E8B500602111 /* OnboardingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEBA31202940E8B500602111 /* OnboardingCell.xib */; };
 		CED06CF62927F0AD00C054E3 /* ProfileSimpleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED06CF42927F0AD00C054E3 /* ProfileSimpleCell.swift */; };
 		CED06CF72927F0AD00C054E3 /* ProfileSimpleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CED06CF52927F0AD00C054E3 /* ProfileSimpleCell.xib */; };
 		CED06CFC2928D01900C054E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CED06CFB2928D01900C054E3 /* Assets.xcassets */; };
@@ -159,6 +161,8 @@
 		CE446D6C292A5AF9004026FA /* ExperienceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExperienceCell.xib; sourceTree = "<group>"; };
 		CEAB0A4A2927EAAB0023A2C6 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		CEAB0A4B2927EAAB0023A2C6 /* ProfileHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileHeaderView.xib; sourceTree = "<group>"; };
+		CEBA311F2940E8B500602111 /* OnboardingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCell.swift; sourceTree = "<group>"; };
+		CEBA31202940E8B500602111 /* OnboardingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingCell.xib; sourceTree = "<group>"; };
 		CED06CF42927F0AD00C054E3 /* ProfileSimpleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSimpleCell.swift; sourceTree = "<group>"; };
 		CED06CF52927F0AD00C054E3 /* ProfileSimpleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileSimpleCell.xib; sourceTree = "<group>"; };
 		CED06CFB2928D01900C054E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -356,6 +360,7 @@
 			children = (
 				1B44301328814A32002145BC /* DynamicHeightCollectionView.swift */,
 				1B442FF4288081B6002145BC /* HomePage */,
+				CEBA311E2940E89E00602111 /* Onboarding */,
 				1BE6EA932868B1FC009CBE6D /* Opportunities */,
 				CE3F9E95291FACBF00480493 /* Profile */,
 			);
@@ -425,6 +430,15 @@
 				CE446D64292A30B8004026FA /* LanguageCell.xib */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		CEBA311E2940E89E00602111 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				CEBA311F2940E8B500602111 /* OnboardingCell.swift */,
+				CEBA31202940E8B500602111 /* OnboardingCell.xib */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -540,6 +554,7 @@
 				1BE6EA972868B23D009CBE6D /* MyOpportunityCell.xib in Resources */,
 				CE446D6E292A5AF9004026FA /* ExperienceCell.xib in Resources */,
 				1B39AA4B28744A8C009377A7 /* OpportunityDetailsCell.xib in Resources */,
+				CEBA31222940E8B500602111 /* OnboardingCell.xib in Resources */,
 				CED06D022929060400C054E3 /* ProfileFooterView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -630,6 +645,7 @@
 				CED06D012929060400C054E3 /* ProfileFooterView.swift in Sources */,
 				CE3F9E9F291FB50600480493 /* ChipButton.swift in Sources */,
 				1B442FF7288081ED002145BC /* OpportunitiesFooterView.swift in Sources */,
+				CEBA31212940E8B500602111 /* OnboardingCell.swift in Sources */,
 				1B39AA61287C2EA6009377A7 /* TransparentButton.swift in Sources */,
 				1B4AE411283E845C00FA6420 /* SecondaryButton.swift in Sources */,
 				1B39AA4A28744A8C009377A7 /* OpportunityDetailsCell.swift in Sources */,

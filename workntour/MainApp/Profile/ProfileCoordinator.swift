@@ -347,20 +347,3 @@ extension ProfileCoordinator: UIDocumentPickerDelegate {
         }
     }
 }
-
-/*
-extension UIApplication {
-
-    public var keyWindow: UIWindow? {
-        windows.first(where: \.isKeyWindow)
-    }
-
-    func replaceNavigationRoot(with viewController: UIViewController) {
-        guard let navigationController = UIApplication.shared.keyWindow?
-            .rootViewController as? UINavigationController else { return }
-        var viewControllers = navigationController.viewControllers
-        viewControllers.removeFirst()
-        viewControllers.insert(viewController, at: 0)
-        navigationController.setViewControllers(viewControllers, animated: false)
-    }
-}*/

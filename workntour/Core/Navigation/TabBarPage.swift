@@ -47,21 +47,6 @@ enum TabBarPage {
         }
     }
 
-    func pageOrderNumber() -> Int {
-        switch self {
-        case .homepage:
-            return 0
-        case .opportunities:
-            return 1
-        case .profile:
-            return 2
-        case .notifications:
-            return 3
-        case .settings:
-            return 4
-        }
-    }
-
     var tabIcon: UIImage? {
         let name: String
 

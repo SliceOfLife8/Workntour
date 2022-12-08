@@ -10,15 +10,18 @@ import UIKit
 
 public class AlertHelper {
 
-    public static func showAlertWithTwoActions(_ controller: UIViewController,
-                                               title: String,
-                                               message: String? = nil,
-                                               leftButtonTitle: String,
-                                               leftButtonStyle: UIAlertAction.Style = .default,
-                                               rightButtonTitle: String,
-                                               rightButtonStyle: UIAlertAction.Style = .default,
-                                               leftAction: @escaping ()-> Void,
-                                               rightAction: @escaping ()-> Void) {
+    public static func showAlertWithTwoActions(
+        _ controller: UIViewController,
+        title: String,
+        message: String? = nil,
+        hasCancelOption: Bool = false,
+        leftButtonTitle: String,
+        leftButtonStyle: UIAlertAction.Style = .default,
+        rightButtonTitle: String,
+        rightButtonStyle: UIAlertAction.Style = .default,
+        leftAction: @escaping ()-> Void,
+        rightAction: @escaping ()-> Void
+    ) {
 
         let attributedString = NSAttributedString(string: title, attributes: [
             NSAttributedString.Key.font: UIFont.scriptFont(.bold, size: 17),
@@ -34,6 +37,9 @@ public class AlertHelper {
         dialog.addAction(UIAlertAction(title: rightButtonTitle, style: rightButtonStyle, handler: { _ in
             rightAction()
         }))
+        if hasCancelOption {
+            dialog.addAction(UIAlertAction(title: "cancel".localized(), style: .cancel))
+        }
 
         dialog.view.tintColor = UIColor.appColor(.lavender2)
 
