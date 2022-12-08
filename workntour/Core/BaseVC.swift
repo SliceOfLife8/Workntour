@@ -11,6 +11,14 @@ import SharedKit
 import SnapKit
 import NVActivityIndicatorView
 
+/*
+ I should remove the following third-party libraries
+     · SnapKit
+     · FlexiblePageControl
+     · CombineDataSources
+     · Google Places
+ */
+
 typealias DisposeBag = Set<AnyCancellable>
 
 class BaseVC<VM: BaseViewModel, C: Coordinator>: UIViewController {

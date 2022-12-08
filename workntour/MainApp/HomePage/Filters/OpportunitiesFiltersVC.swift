@@ -143,20 +143,16 @@ class OpportunitiesFiltersVC: BaseVC<OpportunitiesFiltersViewModel, HomeCoordina
         viewModel?.filters.resetFilters()
         setupSlider()
         // Update homeVC in order to reset filters
-        guard let _viewModel = viewModel else {
-            return
-        }
+        guard let viewModel else { return }
 
-        self.coordinator?.navigate(to: .updateFilters(_viewModel.filters))
+        self.coordinator?.navigate(to: .updateFilters(viewModel.filters))
     }
 
     @IBAction func showResultsBtnTapped(_ sender: Any) {
-        guard let _viewModel = viewModel else {
-            return
-        }
+        guard let viewModel else { return }
 
         self.dismiss(animated: true, completion: {
-            self.coordinator?.navigate(to: .updateFilters(_viewModel.filters))
+            self.coordinator?.navigate(to: .updateFilters(viewModel.filters))
         })
     }
 }

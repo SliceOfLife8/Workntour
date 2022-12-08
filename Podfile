@@ -20,10 +20,6 @@ def snapkit
   pod 'SnapKit'
 end
 
-def material_components
-  pod 'MaterialComponents/Chips'
-end
-
 def common
   pod 'CombineDataSources'
   pod 'DropDown'
@@ -48,7 +44,6 @@ target 'workntour' do
   common
   firebase
   kingfisher
-  material_components
   snapkit
 end
 

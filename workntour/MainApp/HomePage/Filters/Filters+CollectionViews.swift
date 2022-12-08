@@ -6,37 +6,47 @@
 //
 
 import UIKit
-import MaterialComponents.MaterialChips
+import CommonUI
 
 // MARK: - CollectionView Delegates
 extension OpportunitiesFiltersVC: UICollectionViewDelegate, UICollectionViewDataSource {
 
     func setupCollectionViews() {
         categoriesCollectionView.register(
-            MDCChipCollectionViewCell.self,
-            forCellWithReuseIdentifier: "identifier")
+            UINib(nibName: ChipCell.identifier,
+                  bundle: Bundle(for: ChipCell.self)),
+            forCellWithReuseIdentifier: ChipCell.identifier
+        )
         categoriesCollectionView.delegate = self
         categoriesCollectionView.dataSource = self
         typeOfHelpCollectionView.register(
-            MDCChipCollectionViewCell.self,
-            forCellWithReuseIdentifier: "identifier")
+            UINib(nibName: ChipCell.identifier,
+                  bundle: Bundle(for: ChipCell.self)),
+            forCellWithReuseIdentifier: ChipCell.identifier
+        )
         typeOfHelpCollectionView.delegate = self
         typeOfHelpCollectionView.dataSource = self
         typeOfHelpCollectionView.allowsMultipleSelection = true
         accommodationCollectionView.register(
-            MDCChipCollectionViewCell.self,
-            forCellWithReuseIdentifier: "identifier")
+            UINib(nibName: ChipCell.identifier,
+                  bundle: Bundle(for: ChipCell.self)),
+            forCellWithReuseIdentifier: ChipCell.identifier
+        )
         accommodationCollectionView.delegate = self
         accommodationCollectionView.dataSource = self
         mealsCollectionView.register(
-            MDCChipCollectionViewCell.self,
-            forCellWithReuseIdentifier: "identifier")
+            UINib(nibName: ChipCell.identifier,
+                  bundle: Bundle(for: ChipCell.self)),
+            forCellWithReuseIdentifier: ChipCell.identifier
+        )
         mealsCollectionView.delegate = self
         mealsCollectionView.dataSource = self
         mealsCollectionView.allowsMultipleSelection = true
         languagesCollectionView.register(
-            MDCChipCollectionViewCell.self,
-            forCellWithReuseIdentifier: "identifier")
+            UINib(nibName: ChipCell.identifier,
+                  bundle: Bundle(for: ChipCell.self)),
+            forCellWithReuseIdentifier: ChipCell.identifier
+        )
         languagesCollectionView.delegate = self
         languagesCollectionView.dataSource = self
         languagesCollectionView.allowsMultipleSelection = true
@@ -59,10 +69,14 @@ extension OpportunitiesFiltersVC: UICollectionViewDelegate, UICollectionViewData
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        // swiftlint:disable:next force_cast
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "identifier", for: indexPath) as! MDCChipCollectionViewCell
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: ChipCell.identifier,
+            for: indexPath
+        ) as? ChipCell
+        else {
+            return UICollectionViewCell()
+        }
 
-        let chipView = cell.chipView
         var title: String?
 
         if collectionView == categoriesCollectionView {
@@ -77,20 +91,16 @@ extension OpportunitiesFiltersVC: UICollectionViewDelegate, UICollectionViewData
             title = Language.allCases[safe: indexPath.row]?.value
         }
 
-        chipView.titleLabel.text = title
-        chipView.titleFont = UIFont.scriptFont(.bold, size: 12)
-        chipView.setBackgroundColor(UIColor.appColor(.badgeBg), for: .normal)
-        chipView.setBackgroundColor(UIColor.appColor(.lavender), for: .selected)
-        chipView.setTitleColor(UIColor.appColor(.lavender2), for: .normal)
-        chipView.setTitleColor(.white, for: .selected)
+        cell.configureLayout(for: .init(title: title ?? ""))
 
         return cell
     }
 
     /// Update filterDto datasource
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let chipCell = collectionView.cellForItem(at: indexPath) as? MDCChipCollectionViewCell
-        guard let title = chipCell?.chipView.titleLabel.text else {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? ChipCell,
+              let title = cell.dataModel?.title
+        else {
             return
         }
 
@@ -109,17 +119,19 @@ extension OpportunitiesFiltersVC: UICollectionViewDelegate, UICollectionViewData
 
     /// Update filter datasource. Remove options only from collectionViews that have multiple selection enabled.
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        let chipCell = collectionView.cellForItem(at: indexPath) as? MDCChipCollectionViewCell
-        guard let title = chipCell?.chipView.titleLabel.text, let _viewModel = viewModel else {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? ChipCell,
+              let title = cell.dataModel?.title,
+              let viewModel
+        else {
             return
         }
 
         if collectionView == typeOfHelpCollectionView, let typeOfHelp = TypeOfHelp(caseName: title) {
-            _viewModel.filters.typeOfHelp = _viewModel.filters.typeOfHelp.filter { $0 != typeOfHelp }
+            viewModel.filters.typeOfHelp = viewModel.filters.typeOfHelp.filter { $0 != typeOfHelp }
         } else if collectionView == mealsCollectionView, let meal = Meal(caseName: title) {
-            _viewModel.filters.meals = _viewModel.filters.meals.filter { $0 != meal }
+            viewModel.filters.meals = viewModel.filters.meals.filter { $0 != meal }
         } else if collectionView == languagesCollectionView, let lang = Language(caseName: title) {
-            _viewModel.filters.languagesRequired = _viewModel.filters.languagesRequired.filter { $0 != lang }
+            viewModel.filters.languagesRequired = viewModel.filters.languagesRequired.filter { $0 != lang }
         }
     }
 }

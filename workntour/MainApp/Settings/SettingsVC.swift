@@ -8,7 +8,6 @@
 import UIKit
 import SharedKit
 import CommonUI
-import CombineDataSources
 
 class SettingsVC: BaseVC<SettingsViewModel, SettingsCoordinator> {
 

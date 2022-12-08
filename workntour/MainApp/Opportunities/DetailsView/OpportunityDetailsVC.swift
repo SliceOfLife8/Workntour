@@ -8,7 +8,6 @@
 import UIKit
 import SharedKit
 import CommonUI
-import MaterialComponents.MaterialChips
 
 class OpportunityDetailsVC: BaseVC<OpportunitesDetailsViewModel, OpportunitiesCoordinator> {
     private(set) var opporunityId: String
@@ -57,15 +56,17 @@ class OpportunityDetailsVC: BaseVC<OpportunitesDetailsViewModel, OpportunitiesCo
         return button
     }()
 
-    private lazy var bookButton: MDCChipView = {
-        let chipView = MDCChipView()
-        chipView.titleLabel.text = "Book"
-        chipView.titleFont = UIFont.scriptFont(.bold, size: 16)
-        chipView.setBackgroundColor(UIColor.appColor(.lavender), for: .normal)
-        chipView.setTitleColor(UIColor.appColor(.badgeBg), for: .normal)
-        chipView.isHidden = true
-        chipView.addTarget(self, action: #selector(bookTapped), for: .touchUpInside)
-        return chipView
+    private lazy var bookButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Book", for: .normal)
+        button.titleLabel?.font = UIFont.scriptFont(.bold, size: 16)
+        button.backgroundColor = UIColor.appColor(.lavender)
+        button.setTitleColor(UIColor.appColor(.badgeBg), for: .normal)
+        button.isHidden = true
+        button.clipsToBounds = true
+        button.layer.cornerRadius = 0.5 * button.bounds.size.width
+        button.addTarget(self, action: #selector(bookTapped), for: .touchUpInside)
+        return button
     }()
 
     lazy var pageController: ImagePageViewController = {

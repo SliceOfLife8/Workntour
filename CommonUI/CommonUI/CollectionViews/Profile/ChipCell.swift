@@ -30,9 +30,14 @@ public class ChipCell: UICollectionViewCell {
         }
     }
 
+    // MARK: - Properties
+
+    public var dataModel: DataModel?
+
     // MARK: - Methods
 
     public func configureLayout(for model: DataModel) {
+        self.dataModel = model
         chipButton.setTitle(model.title, for: .normal)
     }
 
@@ -45,7 +50,7 @@ extension ChipCell {
 
         // MARK: - Properties
 
-        let title: String
+        public let title: String
 
         // MARK: - Constructors/Destructors
 

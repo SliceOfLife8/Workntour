@@ -82,7 +82,6 @@ final class TabBarCoordinator: NSObject, NavigationCoordinator {
         rootViewController.tabBar.unselectedItemTintColor = UIColor.appColor(.lavenderTint1)
 
         rootViewController.delegate = self
-        selectPage(.notifications)
     }
 
     @available(iOS 15.0, *)
