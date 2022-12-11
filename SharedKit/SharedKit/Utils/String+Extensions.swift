@@ -10,8 +10,30 @@ import UIKit
 
 extension String {
 
+    /// Fetches a localized String
+    ///
+    /// - Returns: return value(String) for key
     public func localized() -> String {
-        return NSLocalizedString(self, tableName: "Localizable", bundle: .main, value: self, comment: self)
+        return NSLocalizedString(
+            self,
+            tableName: "Localizable",
+            bundle: .main,
+            value: self,
+            comment: self
+        )
+    }
+
+
+    /// Fetches a localised String Arguments
+    ///
+    /// - Parameter arguments: parameters to be added in a string
+    /// - Returns: localized string
+    public func localized(with arguments: CVarArg...) -> String {
+        return String(
+            format: self.localized(),
+            locale: nil,
+            arguments: arguments
+        )
     }
 
     // MARK: - Email validation
@@ -192,5 +214,4 @@ extension String {
 
         return boundingBox.height
     }
-
 }

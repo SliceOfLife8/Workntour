@@ -32,49 +32,39 @@ public class RegistrationCell: UITableViewCell {
     @IBOutlet weak var optionalLabel: UILabel!
     @IBOutlet public weak var gradientTextField: GradientTextField!
     @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var apdView: UIView!
-
-    public override func awakeFromNib() {
-        super.awakeFromNib()
-        apdView.layer.cornerRadius = 8
-    }
-
-    public override func layoutSubviews() {
-        super.layoutSubviews()
-        apdView.removeGradientLayers()
-        apdView.setGradientLayer(borderWidth: 1)
-    }
 
     public override func prepareForReuse() {
         super.prepareForReuse()
         gradientTextField.resetView()
-        apdView.removeGradientLayers()
         gradientTextField.isHidden = false
-        apdView.isHidden = true
     }
     
-    public func setupCell(title: String,
-                          isRequired: Bool,
-                          isOptionalLabelVisible: Bool,
-                          placeholder: String,
-                          text: String?,
-                          type: GradientTextFieldType,
-                          countryFlag: String?,
-                          regionCode: String?,
-                          description: String?,
-                          error: String?) {
-        titleLabel.text = isRequired ? "\(title)*" : title
+    public func setupCell(
+        title: String,
+        isOptionalLabelVisible: Bool,
+        placeholder: String,
+        text: String?,
+        type: GradientTextFieldType,
+        countryFlag: String?,
+        regionCode: String?,
+        description: String?,
+        error: String?
+    ) {
+        titleLabel.text = title
         optionalLabel.isHidden = !isOptionalLabelVisible
-        if type == .apd {
-            apdView.isHidden = false
-            gradientTextField.isHidden = true
-        }
         // Errors
         let hasError = error != nil
         self.descriptionText = description
         showError(error, descriptionText: description)
         // Gradient Text Field
-        gradientTextField.configure(placeHolder: placeholder, text: text, countryFlag: countryFlag, regionCode: regionCode, type: type, error: hasError)
+        gradientTextField.configure(
+            placeHolder: placeholder,
+            text: text,
+            countryFlag: countryFlag,
+            regionCode: regionCode,
+            type: type,
+            error: hasError
+        )
         gradientTextField.gradientDelegate = self
     }
 
@@ -92,11 +82,11 @@ public class RegistrationCell: UITableViewCell {
     public func roundCorners() {
         gradientTextField.removeGradientLayers()
     }
-    
 }
 
-
+// MARK: - GradientTFDelegate
 extension RegistrationCell: GradientTFDelegate {
+
     public func didChange() {
         self.delegate?.textFieldDidChange(cell: self)
     }

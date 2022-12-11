@@ -41,7 +41,6 @@ public enum GradientTextFieldType {
     case nationality
     case sex
     case vatNumber
-    case apd
     case fixedNumber
     case opportunityCategory
     case typeOfHelp

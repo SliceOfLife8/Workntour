@@ -6,7 +6,6 @@
 //
 
 import Combine
-import Networking
 import SharedKit
 import CommonUI
 
@@ -17,7 +16,7 @@ class RegistrationHostViewModel: BaseViewModel {
     var cellsValues: [GradientTextFieldType: String?] = [:]
 
     /// Inputs
-    @Published var data: [RegistrationModel] = []
+    var data: [RegistrationModel] = []
     /// Outputs
     @Published var individualSelected: Bool = true
     @Published var signUpCompleted: String?
@@ -44,7 +43,6 @@ class RegistrationHostViewModel: BaseViewModel {
             .age: nil,
             .phone: nil,
             .vatNumber: nil,
-            .apd: nil,
             .fixedNumber: nil
         ]
     }
@@ -56,21 +54,21 @@ class RegistrationHostViewModel: BaseViewModel {
         cellValuesInit() // Reset cell values
 
         var models: [RegistrationModel] = [
-            RegistrationModel(title: "Name",
-                              placeholder: "Enter your name",
+            RegistrationModel(title: "name".localized(),
+                              placeholder: "name_placeholder".localized(),
                               type: .name),
-            RegistrationModel(title: "Surname",
-                              placeholder: "Enter your surname",
+            RegistrationModel(title: "surname".localized(),
+                              placeholder: "surname_placeholder".localized(),
                               type: .surname),
-            RegistrationModel(title: "Email",
-                              placeholder: "Enter your email",
+            RegistrationModel(title: "email".localized(),
+                              placeholder: "email_placeholder".localized(),
                               type: .email),
-            RegistrationModel(title: "Password",
-                              placeholder: "Enter your password",
+            RegistrationModel(title: "password".localized(),
+                              placeholder: "password_placeholder".localized(),
                               type: .password,
-                              description: "Password should contain minimum of 8 characters total with at least 1 uppercase, 1 lowercase, 1 special character."),
-            RegistrationModel(title: "Confirm password",
-                              placeholder: "Confirm your password",
+                              description: "password_description".localized()),
+            RegistrationModel(title: "confirm_password".localized(),
+                              placeholder: "confirm_password_placeholder".localized(),
                               type: .verifyPassword)
         ]
 
@@ -78,8 +76,8 @@ class RegistrationHostViewModel: BaseViewModel {
             models.append(contentsOf: individualHostExtraModels())
         } else {
             models.remove(at: [0, 1]) // Drop first two items
-            models.insert(RegistrationModel(title: "Company Name",
-                                            placeholder: "Enter your company name",
+            models.insert(RegistrationModel(title: "company_name".localized(),
+                                            placeholder: "company_name_placeholder".localized(),
                                             type: .name), at: 0)
             models.append(contentsOf: companyHostExtraModels())
         }
@@ -93,10 +91,10 @@ class RegistrationHostViewModel: BaseViewModel {
         let countryPrefix = countries.selectedCountryPrefix ?? ""
 
         return [
-            RegistrationModel(title: "Age",
-                              placeholder: "Select your Birthday Date",
+            RegistrationModel(title: "age".localized(),
+                              placeholder: "age_placeholder".localized(),
                               type: .age),
-            RegistrationModel(title: "Phone Number",
+            RegistrationModel(title: "phone_num".localized(),
                               isRequired: false,
                               optionalTextVisible: true,
                               placeholder: "+\(countryPrefix) xxxxxxxxxx",
@@ -110,19 +108,14 @@ class RegistrationHostViewModel: BaseViewModel {
     /// - returns: The updated-final array of models.
     private func companyHostExtraModels() -> [RegistrationModel] {
         return [
-            RegistrationModel(title: "Company VAT Number",
-                              placeholder: "Enter your company ID",
+            RegistrationModel(title: "company_vat".localized(),
+                              placeholder: "company_vat_placeholder".localized(),
                               type: .vatNumber),
-            RegistrationModel(title: "Fixed Number",
+            RegistrationModel(title: "company_fixed_num".localized(),
                               isRequired: false,
                               optionalTextVisible: true,
-                              placeholder: "Enter your fixed number",
-                              type: .fixedNumber),
-            RegistrationModel(title: "Authorized Person Document",
-                              isRequired: false,
-                              optionalTextVisible: true,
-                              placeholder: "",
-                              type: .apd)
+                              placeholder: "company_fixed_num_placeholder".localized(),
+                              type: .fixedNumber)
         ]
     }
 
@@ -185,9 +178,7 @@ class RegistrationHostViewModel: BaseViewModel {
         pullOfErrors.removeAll()
 
         for (key, value) in cellsValues {
-            guard let text = value?.trimmingCharacters(in: .whitespaces) else {
-                continue
-            }
+            let text = value?.trimmingCharacters(in: .whitespaces) ?? ""
 
             switch key {
             case .name:
@@ -240,7 +231,7 @@ class RegistrationHostViewModel: BaseViewModel {
             .subscribe(on: RunLoop.main)
             .catch({ [weak self] error -> Just<String?> in
                 if case .invalidServerResponseWithStatusCode(let code) = error, code == 409 {
-                    self?.errorMessage = "This email address is already being used!"
+                    self?.errorMessage = "email_already_used".localized()
                 } else {
                     self?.errorMessage = error.errorDescription
                 }
@@ -269,7 +260,7 @@ class RegistrationHostViewModel: BaseViewModel {
             .subscribe(on: RunLoop.main)
             .catch({ [weak self] error -> Just<String?> in
                 if case .invalidServerResponseWithStatusCode(let code) = error, code == 409 {
-                    self?.errorMessage = "This email address is already being used!"
+                    self?.errorMessage = "email_already_used".localized()
                 } else {
                     self?.errorMessage = error.errorDescription
                 }

@@ -7,6 +7,7 @@
 
 import UIKit
 import SharedKit
+import SnapKit
 
 class EmailVerificationVC: BaseVC<EmailVerificationViewModel, RegistrationCoordinator> {
 
@@ -19,7 +20,7 @@ class EmailVerificationVC: BaseVC<EmailVerificationViewModel, RegistrationCoordi
         label.font = UIFont.scriptFont(.bold, size: 24)
         label.numberOfLines = 0
         label.textAlignment = .center
-        label.text = "Check your Inbox!"
+        label.text = "check_inbox".localized()
         return label
     }()
 
@@ -30,7 +31,7 @@ class EmailVerificationVC: BaseVC<EmailVerificationViewModel, RegistrationCoordi
         label.numberOfLines = 0
         label.textAlignment = .center
         label.setLineHeight(lineHeight: 1.33)
-        label.text = "Click the link we sent to \(email) to sign in."
+        label.text = "email_verification_link".localized(with: email)
         return label
     }()
 
@@ -59,8 +60,12 @@ class EmailVerificationVC: BaseVC<EmailVerificationViewModel, RegistrationCoordi
     }
 
     private func setupNavBar() {
-        setupNavigationBar(mainTitle: "Email verification")
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(closeBtnTapped))
+        setupNavigationBar(mainTitle: "email_verification".localized())
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            image: UIImage(systemName: "xmark"),
+            style: .plain,
+            target: self, action: #selector(closeBtnTapped)
+        )
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false // Disable swipe-back gesture
     }
 

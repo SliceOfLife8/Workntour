@@ -34,7 +34,7 @@
 "nationality" = "Nationality";
 "nationality_placeholder" = "Select your nationality";
 "age" = "Age";
-"age_placeholder" = "Enter your age";
+"age_placeholder" = "Select your Birthday Date";
 "sex" = "Sex";
 "sex_placeholder" = "I am";
 "email" = "Email*";
@@ -72,7 +72,8 @@
 
 // MARK: - Login, Registration & Onboarding
 "cancel" = "Cancel";
-"sign_up" = "Sign Up as a";
+"sign_up_as" = "Sign Up as a";
+"sign_up" = "Sign Up";
 "traveler" = "Traveler";
 "host" = "Host";
 "login" = "Log in";
@@ -93,3 +94,19 @@
 "login_wrong_creds" = "You have entered an invalid username or password";
 "next" = "Next";
 "get_started" = "Get Started";
+"password" = "Password*";
+"password_placeholder" = "Enter your password";
+"password_description" = "Password should contain minimum of 8 characters total with at least 1 uppercase, 1 lowercase, 1 special character.";
+"confirm_password" = "Confirm password*";
+"confirm_password_placeholder" = "Confirm your password";
+"company_name" = "Company name*";
+"company_name_placeholder" = "Enter your company name";
+"phone_num" = "Phone Number";
+"company_vat" = "Company VAT Number*";
+"company_vat_placeholder" = "Enter your company ID";
+"company_fixed_num" = "Fixed Number";
+"company_fixed_num_placeholder" = "Enter your fixed number";
+"email_already_used" = "This email address is already being used!";
+"check_inbox" = "Check your Inbox!";
+"email_verification" = "Email verification";
+"email_verification_link" = "Click the link we sent to %@ to sign in.";

@@ -5,10 +5,8 @@
 //  Created by Chris Petimezas on 22/5/22.
 //
 
-import UIKit
 import SharedKit
 import CommonUI
-import CombineDataSources
 import DropDown
 import NVActivityIndicatorView
 
@@ -55,17 +53,27 @@ class RegistrationTravelerVC: BaseVC<RegistrationTravelerViewModel, Registration
 
     private lazy var nationalitiesDropDown: DropDown = {
         let dropDown = DropDown()
-        dropDown.dataSource = ["American", "British", "Greek"]
-        dropDown.dismissMode = .onTap
+        dropDown.dataSource = viewModel?.countries.models.compactMap { $0.flag } ?? []
+
+        dropDown.cellNib = UINib(nibName: "CountriesDropDownCell", bundle: nil)
 
         dropDown.customCellConfiguration = { (_, item: String, cell: DropDownCell) -> Void in
-            cell.optionLabel.text = item
+            guard let cell = cell as? CountriesDropDownCell else { return }
+
+            // Setup your custom UI components
+            let model = self.viewModel?.countries.models.filter { $0.flag == item }.first
+            cell.configure(
+                flag: model?.flag,
+                name: model?.name,
+                prefix: nil
+            )
         }
 
         dropDown.selectionAction = { [unowned self] (_, item: String) in
             let nationalitiesCell = tableView.visibleCells.suffix(2).first as? RegistrationCell
-            nationalitiesCell?.gradientTextField.text = item
-            self.viewModel?.cellsValues[.nationality] = item
+            let country = viewModel?.countries.models.filter { $0.flag == item }.first?.name
+            nationalitiesCell?.gradientTextField.text = country
+            self.viewModel?.cellsValues[.nationality] = country
             nationalitiesCell?.gradientTextField.arrowTapped()
         }
 
@@ -79,7 +87,7 @@ class RegistrationTravelerVC: BaseVC<RegistrationTravelerViewModel, Registration
 
     private lazy var sexDropDown: DropDown = {
         let dropDown = DropDown()
-        dropDown.dataSource = UserSex.allCases.map { $0.rawValue }
+        dropDown.dataSource = UserSex.allCases.map { $0.value }
         dropDown.dismissMode = .onTap
 
         dropDown.customCellConfiguration = { (_, item: String, cell: DropDownCell) -> Void in
@@ -89,7 +97,7 @@ class RegistrationTravelerVC: BaseVC<RegistrationTravelerViewModel, Registration
         dropDown.selectionAction = { [unowned self] (_, item: String) in
             let sexCell = tableView.visibleCells.last as? RegistrationCell
             sexCell?.gradientTextField.text = item
-            self.viewModel?.cellsValues[.sex] = item
+            self.viewModel?.cellsValues[.sex] = UserSex(caseName: item)?.rawValue
             sexCell?.gradientTextField.arrowTapped()
         }
 
@@ -102,48 +110,50 @@ class RegistrationTravelerVC: BaseVC<RegistrationTravelerViewModel, Registration
     }()
 
     // MARK: - Outlets
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView: UITableView! {
+        didSet {
+            tableView.register(
+                UINib(nibName: RegistrationCell.identifier,
+                      bundle: Bundle(for: RegistrationCell.self)),
+                forCellReuseIdentifier: RegistrationCell.identifier
+            )
+            tableView.keyboardDismissMode = .interactive
+            tableView.dataSource = self
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         setupNavBar()
-        setupTableView()
         registerNotifications()
         customizeDropDown()
 
-        self.viewModel?.fetchModels()
+        viewModel?.fetchModels()
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        setupTableViewFooter()
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        guard tableView.tableFooterView == nil else { return }
+
+        let footerView = UIView(frame: CGRect(
+            origin: .zero,
+            size: CGSize(width: tableView.frame.size.width, height: 96)
+        ))
+        footerView.addSubview(signUpButton)
+        signUpButton.snp.makeConstraints {
+            $0.edges.equalToSuperview().inset(24)
+        }
+        signUpButton.addTarget(self,
+                               action: #selector(signUpTapped),
+                               for: .touchUpInside)
+        signUpButton.setTitle("sign_up".localized(), for: .normal)
+        tableView.tableFooterView = footerView
     }
 
     override func bindViews() {
         super.bindViews()
-        viewModel?.$data
-            .bind(subscriber:
-                    tableView.rowsSubscriber(cellIdentifier:
-                                                RegistrationCell.identifier,
-                                             cellType: RegistrationCell.self,
-                                             cellConfig: { [weak self] (cell, _, model) in
-                cell.setupCell(title: model.title,
-                               isRequired: model.isRequired,
-                               isOptionalLabelVisible: model.optionalTextVisible,
-                               placeholder: model.placeholder,
-                               text: self?.viewModel?.cellsValues[model.type].flatMap { $0 },
-                               type: model.type,
-                               countryFlag: model.countryEmoji,
-                               regionCode: model.countryPrefixCode,
-                               description: model.description,
-                               error: self?.viewModel?.pullOfErrors[model.type]?.flatMap { $0 }?.description)
-
-                DispatchQueue.main.async {
-                    cell.roundCorners()
-                }
-                cell.delegate = self
-            }))
-            .store(in: &storage)
 
         viewModel?.$errorMessage
             .dropFirst()
@@ -170,10 +180,11 @@ class RegistrationTravelerVC: BaseVC<RegistrationTravelerViewModel, Registration
 
     @objc private func signUpTapped() {
         self.view.endEditing(true) // Important step!
-        let hasErrors = viewModel?.verifyRequiredFields()
+        guard let viewModel else { return }
+        let hasErrors = viewModel.verifyRequiredFields()
 
         if hasErrors == true {
-            for (index, element) in viewModel!.pullOfErrors {
+            for (index, element) in viewModel.pullOfErrors {
                 var cell: RegistrationCell?
 
                 switch index {
@@ -201,42 +212,27 @@ class RegistrationTravelerVC: BaseVC<RegistrationTravelerViewModel, Registration
                 cell?.gradientTextField.removeGradientLayers()
             }
         } else {
-            viewModel?.registerTraveler()
+            viewModel.registerTraveler()
         }
     }
-
 }
 
 // MARK: - Basic setup
 private extension RegistrationTravelerVC {
+
     private func setupNavBar() {
-        self.setupNavigationBar(mainTitle: "Sign up")
-        navigationItem.title = "Sign up"
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(closeBtnTapped))
+        self.setupNavigationBar(mainTitle: "sign_up".localized())
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(
+            image: UIImage(systemName: "xmark"),
+            style: .plain,
+            target: self,
+            action: #selector(closeBtnTapped)
+        )
     }
 
     private func registerNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-
-    private func setupTableView() {
-        tableView.register(UINib(nibName: RegistrationCell.identifier, bundle: Bundle(for: RegistrationCell.self)), forCellReuseIdentifier: RegistrationCell.identifier)
-        tableView.keyboardDismissMode = .interactive
-    }
-
-    private func setupTableViewFooter() {
-        let footerView = UIView(frame: CGRect(origin: .zero,
-                                              size: CGSize(width: tableView.frame.size.width, height: 96)))
-        footerView.addSubview(signUpButton)
-        signUpButton.snp.makeConstraints {
-            $0.edges.equalToSuperview().inset(24)
-        }
-        signUpButton.addTarget(self,
-                               action: #selector(signUpTapped),
-                               for: .touchUpInside)
-        signUpButton.setTitle("Sign Up", for: .normal)
-        tableView.tableFooterView = footerView
     }
 
     private func customizeDropDown() {
@@ -253,8 +249,48 @@ private extension RegistrationTravelerVC {
     }
 }
 
+// MARK: - UITableViewDataSource
+extension RegistrationTravelerVC: UITableViewDataSource {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel?.data.count ?? 0
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: RegistrationCell.identifier,
+            for: indexPath
+        ) as? RegistrationCell,
+              let viewModel,
+              let data = viewModel.data[safe: indexPath.row]
+        else {
+            return UITableViewCell()
+        }
+
+        cell.setupCell(
+            title: data.title,
+            isOptionalLabelVisible: data.optionalTextVisible,
+            placeholder: data.placeholder,
+            text: viewModel.cellsValues[data.type].flatMap { $0 },
+            type: data.type,
+            countryFlag: data.countryEmoji,
+            regionCode: data.countryPrefixCode,
+            description: data.description,
+            error: viewModel.pullOfErrors[data.type]?.flatMap { $0 }?.description
+        )
+
+        DispatchQueue.main.async {
+            cell.roundCorners()
+        }
+        cell.delegate = self
+
+        return cell
+    }
+}
+
 // MARK: - RegistrationCellDelegate
 extension RegistrationTravelerVC: RegistrationCellDelegate {
+
     func textFieldDidBeginEditing(cell: RegistrationCell) {
         guard let indexPath = tableView.indexPath(for: cell),
               let type = cell.gradientTextField.type else {

@@ -54,7 +54,7 @@ final class MainCoordinator: NavigationCoordinator {
     func showAlert() {
         AlertHelper.showAlertWithTwoActions(
             rootViewController,
-            title: "sign_up".localized(),
+            title: "sign_up_as".localized(),
             hasCancelOption: true,
             leftButtonTitle: "traveler".localized(),
             rightButtonTitle: "host".localized(),

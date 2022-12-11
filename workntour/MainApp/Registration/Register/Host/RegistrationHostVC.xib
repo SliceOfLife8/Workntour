@@ -1,23 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="Lato-Regular.ttf">
-            <string>Lato-Regular</string>
-        </array>
-    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BaseVC" customModule="workntour" customModuleProvider="target">
             <connections>
-                <outlet property="companyBtn" destination="cUM-4Q-HKV" id="dMo-Ck-UIY"/>
-                <outlet property="individualBtn" destination="ubk-Vq-yY1" id="l7P-f6-4Lu"/>
+                <outlet property="segmentedControl" destination="c5R-hz-r74" id="3OU-X2-SJA"/>
                 <outlet property="tableView" destination="m9S-KU-4s4" id="atf-tF-OEv"/>
                 <outlet property="view" destination="MBy-YK-UtA" id="BSb-aE-ZNJ"/>
             </connections>
@@ -28,77 +22,31 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="emd-z6-mGJ">
-                    <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                    <rect key="frame" x="0.0" y="48" width="414" height="848"/>
                     <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="JFm-kt-IzT">
-                            <rect key="frame" x="70" y="32" width="274" height="20"/>
-                            <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QCH-EQ-0tJ" userLabel="Individual">
-                                    <rect key="frame" x="0.0" y="0.0" width="125" height="20"/>
-                                    <subviews>
-                                        <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ubk-Vq-yY1" customClass="Checkbox" customModule="CommonUI">
-                                            <rect key="frame" x="0.0" y="0.0" width="125" height="20"/>
-                                            <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
-                                            <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                            <state key="normal" title="Individual">
-                                                <color key="titleColor" name="softBlack"/>
-                                            </state>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isChecked" value="YES"/>
-                                            </userDefinedRuntimeAttributes>
-                                        </button>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="ubk-Vq-yY1" secondAttribute="bottom" id="2ZC-Jy-3YF"/>
-                                        <constraint firstAttribute="trailing" secondItem="ubk-Vq-yY1" secondAttribute="trailing" id="L6O-VQ-ek6"/>
-                                        <constraint firstItem="ubk-Vq-yY1" firstAttribute="leading" secondItem="QCH-EQ-0tJ" secondAttribute="leading" id="RZP-TW-QUp"/>
-                                        <constraint firstItem="ubk-Vq-yY1" firstAttribute="top" secondItem="QCH-EQ-0tJ" secondAttribute="top" id="WDS-hR-py5"/>
-                                    </constraints>
-                                </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="poO-Ez-3JI" userLabel="Host">
-                                    <rect key="frame" x="149" y="0.0" width="125" height="20"/>
-                                    <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cUM-4Q-HKV" customClass="Checkbox" customModule="CommonUI">
-                                            <rect key="frame" x="0.0" y="0.0" width="125" height="20"/>
-                                            <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
-                                            <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                            <state key="normal" title="Company">
-                                                <color key="titleColor" name="softBlack"/>
-                                            </state>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isChecked" value="NO"/>
-                                            </userDefinedRuntimeAttributes>
-                                        </button>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="cUM-4Q-HKV" secondAttribute="bottom" id="VUT-FK-9ei"/>
-                                        <constraint firstAttribute="trailing" secondItem="cUM-4Q-HKV" secondAttribute="trailing" id="keo-2u-7Yc"/>
-                                        <constraint firstItem="cUM-4Q-HKV" firstAttribute="leading" secondItem="poO-Ez-3JI" secondAttribute="leading" id="vvM-7s-Gqe"/>
-                                        <constraint firstItem="cUM-4Q-HKV" firstAttribute="top" secondItem="poO-Ez-3JI" secondAttribute="top" id="zfD-c0-aoB"/>
-                                    </constraints>
-                                </view>
-                            </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="20" id="VCa-JI-BQe"/>
-                            </constraints>
-                        </stackView>
+                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="c5R-hz-r74">
+                            <rect key="frame" x="128.5" y="32" width="157" height="32"/>
+                            <segments>
+                                <segment title="Individual"/>
+                                <segment title="Company"/>
+                            </segments>
+                            <color key="selectedSegmentTintColor" name="lavenderTint1"/>
+                            <connections>
+                                <action selector="segmentedControlHasChanged:" destination="-1" eventType="valueChanged" id="isQ-SE-ibj"/>
+                            </connections>
+                        </segmentedControl>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="m9S-KU-4s4">
-                            <rect key="frame" x="0.0" y="68" width="414" height="784"/>
+                            <rect key="frame" x="0.0" y="79" width="414" height="769"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </tableView>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="JFm-kt-IzT" firstAttribute="top" secondItem="emd-z6-mGJ" secondAttribute="top" constant="32" id="7YG-Un-jkr"/>
-                        <constraint firstItem="m9S-KU-4s4" firstAttribute="top" secondItem="JFm-kt-IzT" secondAttribute="bottom" constant="16" id="FkM-Fg-x5F"/>
-                        <constraint firstAttribute="trailing" secondItem="JFm-kt-IzT" secondAttribute="trailing" constant="70" id="TEz-0f-JBc"/>
+                        <constraint firstItem="c5R-hz-r74" firstAttribute="top" secondItem="emd-z6-mGJ" secondAttribute="top" constant="32" id="CAG-9A-fhg"/>
+                        <constraint firstItem="c5R-hz-r74" firstAttribute="centerX" secondItem="emd-z6-mGJ" secondAttribute="centerX" id="OMy-LZ-Aje"/>
                         <constraint firstAttribute="bottom" secondItem="m9S-KU-4s4" secondAttribute="bottom" id="iCY-P7-nIl"/>
-                        <constraint firstItem="JFm-kt-IzT" firstAttribute="leading" secondItem="emd-z6-mGJ" secondAttribute="leading" constant="70" id="leP-H3-wM7"/>
+                        <constraint firstItem="m9S-KU-4s4" firstAttribute="top" secondItem="c5R-hz-r74" secondAttribute="bottom" constant="16" id="pFA-I0-D9W"/>
                         <constraint firstItem="m9S-KU-4s4" firstAttribute="leading" secondItem="emd-z6-mGJ" secondAttribute="leading" id="w2I-6V-MFm"/>
                         <constraint firstAttribute="trailing" secondItem="m9S-KU-4s4" secondAttribute="trailing" id="yob-OA-p8Z"/>
                     </constraints>
@@ -116,11 +64,11 @@
         </view>
     </objects>
     <resources>
+        <namedColor name="lavenderTint1">
+            <color red="0.61176470588235299" green="0.5607843137254902" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="primary">
             <color red="0.98039215686274506" green="0.97254901960784312" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="softBlack">
-            <color red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

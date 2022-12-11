@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -31,32 +31,32 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1wc-gd-Pfg">
-                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <rect key="frame" x="0.0" y="48" width="414" height="814"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="cdZ-YQ-FN5" userLabel="logo">
-                            <rect key="frame" x="184.5" y="32" width="45" height="75"/>
+                            <rect key="frame" x="184.5" y="8" width="45" height="75"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="45" id="xVj-GO-6jI"/>
                                 <constraint firstAttribute="height" constant="75" id="yqx-IG-zHp"/>
                             </constraints>
                         </imageView>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_title.png" translatesAutoresizingMaskIntoConstraints="NO" id="FNm-Dp-Ggr" userLabel="workntour">
-                            <rect key="frame" x="57" y="121" width="300" height="23"/>
+                            <rect key="frame" x="57" y="97" width="300" height="23"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="23" id="YEc-Fx-EX0"/>
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Work. Travel. Connect." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8q8-e0-UwY" userLabel="promo text">
-                            <rect key="frame" x="32" y="156" width="350" height="19.5"/>
+                            <rect key="frame" x="32" y="132" width="350" height="19.5"/>
                             <fontDescription key="fontDescription" name="Lato-Semibold" family="Lato" pointSize="16"/>
                             <color key="textColor" red="0.44705882352941173" green="0.52549019607843139" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash_illustration" translatesAutoresizingMaskIntoConstraints="NO" id="M61-Wh-W1x" userLabel="illustration">
-                            <rect key="frame" x="0.0" y="187.5" width="414" height="317.5"/>
+                            <rect key="frame" x="0.0" y="163.5" width="414" height="317.5"/>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IIS-6j-vnX" userLabel="login" customClass="PrimaryButton" customModule="CommonUI">
-                            <rect key="frame" x="24" y="626" width="366" height="48"/>
+                            <rect key="frame" x="24" y="622" width="366" height="48"/>
                             <color key="backgroundColor" name="lavender"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="48" id="wf9-rx-7ce"/>
@@ -78,7 +78,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="01O-bm-Mdm" userLabel="Guest" customClass="SecondaryButton" customModule="CommonUI">
-                            <rect key="frame" x="24" y="690" width="366" height="48"/>
+                            <rect key="frame" x="24" y="686" width="366" height="48"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="48" id="r9t-DP-agJ"/>
@@ -98,7 +98,7 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="751" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SJF-gj-RQP" userLabel="registration" customClass="LinkableLabel" customModule="CommonUI">
-                            <rect key="frame" x="207" y="770" width="0.0" height="0.0"/>
+                            <rect key="frame" x="207" y="766" width="0.0" height="0.0"/>
                             <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
                             <color key="textColor" red="0.086274509803921567" green="0.086274509803921567" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -111,7 +111,7 @@
                         <constraint firstItem="01O-bm-Mdm" firstAttribute="trailing" secondItem="IIS-6j-vnX" secondAttribute="trailing" id="8jM-Ay-LsP"/>
                         <constraint firstItem="FNm-Dp-Ggr" firstAttribute="top" secondItem="cdZ-YQ-FN5" secondAttribute="bottom" constant="14" id="B5f-L9-W25"/>
                         <constraint firstItem="IIS-6j-vnX" firstAttribute="leading" secondItem="1wc-gd-Pfg" secondAttribute="leading" constant="24" id="EHs-eC-gsY"/>
-                        <constraint firstItem="cdZ-YQ-FN5" firstAttribute="top" secondItem="1wc-gd-Pfg" secondAttribute="top" constant="32" id="GON-ol-ojM"/>
+                        <constraint firstItem="cdZ-YQ-FN5" firstAttribute="top" secondItem="1wc-gd-Pfg" secondAttribute="top" constant="8" id="GON-ol-ojM"/>
                         <constraint firstItem="M61-Wh-W1x" firstAttribute="top" secondItem="8q8-e0-UwY" secondAttribute="bottom" constant="12" id="IGL-He-hHf"/>
                         <constraint firstItem="8q8-e0-UwY" firstAttribute="top" secondItem="FNm-Dp-Ggr" secondAttribute="bottom" constant="12" id="KdX-os-9ry"/>
                         <constraint firstItem="SJF-gj-RQP" firstAttribute="centerX" secondItem="01O-bm-Mdm" secondAttribute="centerX" id="P00-S2-hJj"/>
@@ -133,7 +133,7 @@
             <constraints>
                 <constraint firstItem="1wc-gd-Pfg" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="0YS-ja-WZd"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="1wc-gd-Pfg" secondAttribute="trailing" id="ExH-tM-j5T"/>
-                <constraint firstItem="1wc-gd-Pfg" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="gcO-1C-acC"/>
+                <constraint firstItem="1wc-gd-Pfg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="48" id="gcO-1C-acC"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="1wc-gd-Pfg" secondAttribute="bottom" id="x3D-AO-lx3"/>
             </constraints>
             <point key="canvasLocation" x="152" y="153"/>

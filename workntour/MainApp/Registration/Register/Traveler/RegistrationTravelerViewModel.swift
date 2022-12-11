@@ -15,7 +15,7 @@ class RegistrationTravelerViewModel: BaseViewModel {
     private var service: AuthorizationService
 
     /// Inputs
-    @Published var data: [RegistrationModel] = []
+    var data: [RegistrationModel] = []
     var cellsValues: [GradientTextFieldType: String?] = Dictionary(uniqueKeysWithValues: [.name, .surname, .email, .password, .verifyPassword, .age, .phone, .nationality, .sex].map {($0, nil)})
     /// Outputs
     @Published var signUpCompleted: String?
@@ -35,32 +35,32 @@ class RegistrationTravelerViewModel: BaseViewModel {
         let countryPrefix = countries.selectedCountryPrefix ?? ""
 
         let models: [RegistrationModel] = [
-            RegistrationModel(title: "Name",
-                              placeholder: "Enter your name",
+            RegistrationModel(title: "name".localized(),
+                              placeholder: "name_placeholder".localized(),
                               type: .name,
                               error: pullOfErrors[.name].flatMap { $0 }?.description),
-            RegistrationModel(title: "Surname",
-                              placeholder: "Enter your surname",
+            RegistrationModel(title: "surname".localized(),
+                              placeholder: "surname_placeholder".localized(),
                               type: .surname,
                               error: pullOfErrors[.surname].flatMap { $0 }?.description),
-            RegistrationModel(title: "Email",
-                              placeholder: "Enter your email",
+            RegistrationModel(title: "email".localized(),
+                              placeholder: "email_placeholder".localized(),
                               type: .email,
                               error: pullOfErrors[.email].flatMap { $0 }?.description),
-            RegistrationModel(title: "Password",
-                              placeholder: "Enter your password",
+            RegistrationModel(title: "password".localized(),
+                              placeholder: "password_placeholder".localized(),
                               type: .password,
-                              description: "Password should contain minimum of 8 characters total with at least 1 uppercase, 1 lowercase, 1 special character.",
+                              description: "password_description".localized(),
                               error: pullOfErrors[.password].flatMap { $0 }?.description),
-            RegistrationModel(title: "Confirm password",
-                              placeholder: "Confirm your password",
+            RegistrationModel(title: "confirm_password".localized(),
+                              placeholder: "confirm_password_placeholder".localized(),
                               type: .verifyPassword,
                               error: pullOfErrors[.verifyPassword].flatMap { $0 }?.description),
-            RegistrationModel(title: "Age",
-                              placeholder: "Select your Birthday Date",
+            RegistrationModel(title: "age".localized(),
+                              placeholder: "age_placeholder".localized(),
                               type: .age,
                               error: pullOfErrors[.age].flatMap { $0 }?.description),
-            RegistrationModel(title: "Phone Number",
+            RegistrationModel(title: "phone_num".localized(),
                               isRequired: false,
                               optionalTextVisible: true,
                               placeholder: "+\(countryPrefix) xxxxxxxxxx",
@@ -68,15 +68,15 @@ class RegistrationTravelerViewModel: BaseViewModel {
                               countryEmoji: countries.currentCountryFlag,
                               prefixCode: countryPrefix,
                               error: pullOfErrors[.phone].flatMap { $0 }?.description),
-            RegistrationModel(title: "Nationality",
+            RegistrationModel(title: "nationality".localized(),
                               isRequired: false,
                               optionalTextVisible: true,
-                              placeholder: "Select your Nationality",
+                              placeholder: "nationality_placeholder".localized(),
                               type: .nationality),
-            RegistrationModel(title: "Sex",
+            RegistrationModel(title: "sex".localized(),
                               isRequired: false,
                               optionalTextVisible: true,
-                              placeholder: "I am",
+                              placeholder: "sex_placeholder".localized(),
                               type: .sex)
         ]
 
@@ -157,7 +157,7 @@ class RegistrationTravelerViewModel: BaseViewModel {
             .subscribe(on: RunLoop.main)
             .catch({ [weak self] error -> Just<String?> in
                 if case .invalidServerResponseWithStatusCode(let code) = error, code == 409 {
-                    self?.errorMessage = "This email address is already being used!"
+                    self?.errorMessage = "email_already_used".localized()
                 } else {
                     self?.errorMessage = error.errorDescription
                 }

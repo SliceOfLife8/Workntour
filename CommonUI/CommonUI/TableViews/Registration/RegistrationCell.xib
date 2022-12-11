@@ -55,43 +55,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sqd-Tu-Rvq" userLabel="APD View">
-                                <rect key="frame" x="0.0" y="39" width="272" height="126"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="upload_doc" translatesAutoresizingMaskIntoConstraints="NO" id="h8P-7t-Dd1">
-                                        <rect key="frame" x="105.5" y="14" width="61" height="39"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="61" id="tCQ-Cf-A2v"/>
-                                            <constraint firstAttribute="height" constant="39" id="yeX-wR-L7p"/>
-                                        </constraints>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Click to upload your file" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="za6-9V-fNR" userLabel="upload file">
-                                        <rect key="frame" x="32" y="67" width="208" height="17"/>
-                                        <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
-                                        <color key="textColor" name="lavender"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SVG, PNG, JPG or GIF (max. 800x400px)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2bP-Dh-t9r" userLabel="description">
-                                        <rect key="frame" x="24" y="88" width="224" height="14.5"/>
-                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
-                                        <color key="textColor" name="lavenderTint2"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="126" id="9dN-GA-YMx"/>
-                                    <constraint firstItem="h8P-7t-Dd1" firstAttribute="top" secondItem="sqd-Tu-Rvq" secondAttribute="top" constant="14" id="Avv-g9-Fto"/>
-                                    <constraint firstItem="2bP-Dh-t9r" firstAttribute="top" secondItem="za6-9V-fNR" secondAttribute="bottom" constant="4" id="KvZ-Ns-h0Z"/>
-                                    <constraint firstItem="za6-9V-fNR" firstAttribute="top" secondItem="h8P-7t-Dd1" secondAttribute="bottom" constant="14" id="Op7-b3-DL9"/>
-                                    <constraint firstItem="h8P-7t-Dd1" firstAttribute="centerX" secondItem="sqd-Tu-Rvq" secondAttribute="centerX" id="THv-iO-GRW"/>
-                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="2bP-Dh-t9r" secondAttribute="bottom" constant="8" id="ecg-6U-rKD"/>
-                                    <constraint firstItem="za6-9V-fNR" firstAttribute="leading" secondItem="sqd-Tu-Rvq" secondAttribute="leading" constant="32" id="fRS-TD-UDK"/>
-                                    <constraint firstAttribute="trailing" secondItem="2bP-Dh-t9r" secondAttribute="trailing" constant="24" id="kKX-Op-B67"/>
-                                    <constraint firstItem="2bP-Dh-t9r" firstAttribute="leading" secondItem="sqd-Tu-Rvq" secondAttribute="leading" constant="24" id="sUJ-BQ-aZF"/>
-                                    <constraint firstAttribute="trailing" secondItem="za6-9V-fNR" secondAttribute="trailing" constant="32" id="y9z-fg-UyE"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </stackView>
@@ -124,7 +87,6 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
-                <outlet property="apdView" destination="sqd-Tu-Rvq" id="HqB-H8-8Je"/>
                 <outlet property="descriptionLabel" destination="FMg-dA-oiD" id="ZDf-2W-bsk"/>
                 <outlet property="gradientTextField" destination="ZYr-TG-sf5" id="JYn-r8-YwY"/>
                 <outlet property="optionalLabel" destination="1dE-BJ-sPC" id="Sfg-fp-j6w"/>
@@ -134,13 +96,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="upload_doc" width="65" height="43"/>
-        <namedColor name="lavender">
-            <color red="0.53333333333333333" green="0.4392156862745098" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="lavenderTint2">
-            <color red="0.72156862745098038" green="0.70196078431372544" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="placeholder">
             <color red="0.56862745098039214" green="0.55294117647058827" blue="0.66274509803921566" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

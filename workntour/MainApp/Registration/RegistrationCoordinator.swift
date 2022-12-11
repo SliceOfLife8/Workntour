@@ -89,5 +89,4 @@ final class RegistrationCoordinator: NavigationCoordinator {
 
         navigator.push(hostVC, animated: true)
     }
-
 }

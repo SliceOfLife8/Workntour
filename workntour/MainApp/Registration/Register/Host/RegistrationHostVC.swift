@@ -5,15 +5,15 @@
 //  Created by Chris Petimezas on 8/6/22.
 //
 
-import UIKit
 import SharedKit
 import CommonUI
-import CombineDataSources
 import DropDown
 import NVActivityIndicatorView
 
 class RegistrationHostVC: BaseVC<RegistrationHostViewModel, RegistrationCoordinator> {
+
     // MARK: - Vars
+
     private var signUpButton: PrimaryButton = {
         let button = PrimaryButton()
         button.radius = 8
@@ -54,9 +54,20 @@ class RegistrationHostVC: BaseVC<RegistrationHostViewModel, RegistrationCoordina
     }()
 
     // MARK: - Outlets
-    @IBOutlet weak var individualBtn: Checkbox!
-    @IBOutlet weak var companyBtn: Checkbox!
-    @IBOutlet weak var tableView: UITableView!
+
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+
+    @IBOutlet weak var tableView: UITableView! {
+        didSet {
+            tableView.register(
+                UINib(nibName: RegistrationCell.identifier,
+                      bundle: Bundle(for: RegistrationCell.self)),
+                forCellReuseIdentifier: RegistrationCell.identifier
+            )
+            tableView.keyboardDismissMode = .interactive
+            tableView.dataSource = self
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,48 +75,44 @@ class RegistrationHostVC: BaseVC<RegistrationHostViewModel, RegistrationCoordina
         setupNavBar()
         registerNotifications()
         customizeDropDown()
-        setupTableView()
-        individualBtn.delegate = self
-        companyBtn.delegate = self
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        setupTableViewFooter()
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        guard tableView.tableFooterView == nil else { return }
+
+        let footerView = UIView(frame: CGRect(
+            origin: .zero,
+            size: CGSize(width: tableView.frame.size.width, height: 96)
+        ))
+        footerView.addSubview(signUpButton)
+        signUpButton.snp.makeConstraints {
+            $0.edges.equalToSuperview().inset(24)
+        }
+        signUpButton.addTarget(self,
+                               action: #selector(signUpTapped),
+                               for: .touchUpInside)
+        signUpButton.setTitle("sign_up".localized(), for: .normal)
+        tableView.tableFooterView = footerView
     }
 
     override func bindViews() {
         super.bindViews()
-        viewModel?.$data
-            .bind(subscriber:
-                    tableView.rowsSubscriber(cellIdentifier:
-                                                RegistrationCell.identifier,
-                                             cellType: RegistrationCell.self,
-                                             cellConfig: { [weak self] (cell, _, model) in
-                cell.setupCell(title: model.title,
-                               isRequired: model.isRequired,
-                               isOptionalLabelVisible: model.optionalTextVisible,
-                               placeholder: model.placeholder,
-                               text: self?.viewModel?.cellsValues[model.type].flatMap { $0 },
-                               type: model.type,
-                               countryFlag: model.countryEmoji,
-                               regionCode: model.countryPrefixCode,
-                               description: model.description,
-                               error: self?.viewModel?.pullOfErrors[model.type]?.flatMap { $0 }?.description)
-
-                DispatchQueue.main.async {
-                    cell.roundCorners()
-                }
-                cell.delegate = self
-            }))
-            .store(in: &storage)
 
         viewModel?.$individualSelected
-            .debounce(for: 0.1, scheduler: RunLoop.main)
             .sink { [weak self] value in
+                guard let self else { return }
                 // Delete all rows & then add new datasource
-                self?.viewModel?.data.removeAll()
-                self?.viewModel?.fetchModels(value ? .INDIVIDUAL_HOST : .COMPANY_HOST)
+                self.viewModel?.data.removeAll()
+                self.viewModel?.fetchModels(value ? .INDIVIDUAL_HOST : .COMPANY_HOST)
+                UIView.transition(
+                    with: self.tableView,
+                    duration: 0.5,
+                    options: [.curveEaseInOut, .transitionCrossDissolve],
+                    animations: {
+                        self.tableView.reloadData()
+                    })
             }
             .store(in: &storage)
 
@@ -127,26 +134,14 @@ class RegistrationHostVC: BaseVC<RegistrationHostViewModel, RegistrationCoordina
             .store(in: &storage)
     }
 
-    // MARK: - Actions
-    @objc private func closeBtnTapped() {
-        self.coordinator?.navigate(to: .close)
-    }
-
-    @objc private func signUpTapped() {
-        self.view.endEditing(true) // Important step!
-
-        if individualBtn.isChecked {
-            verifyIndividualHost()
-        } else {
-            verifyCompanyHost()
-        }
-    }
+    // MARK: - Private Methods
 
     private func verifyIndividualHost() {
-        let hasErrors = viewModel?.verifyRequiredFieldsAboutIndividualHost()
+        guard let viewModel else { return }
+        let hasErrors = viewModel.verifyRequiredFieldsAboutIndividualHost()
 
         if hasErrors == true {
-            for (index, element) in viewModel!.pullOfErrors {
+            for (index, element) in viewModel.pullOfErrors {
                 var cell: RegistrationCell?
 
                 switch index {
@@ -174,15 +169,16 @@ class RegistrationHostVC: BaseVC<RegistrationHostViewModel, RegistrationCoordina
                 cell?.gradientTextField.removeGradientLayers()
             }
         } else {
-            viewModel?.registerIndividualHost()
+            viewModel.registerIndividualHost()
         }
     }
 
     private func verifyCompanyHost() {
-        let hasErrors = viewModel?.verifyRequiredFieldsAboutCompanyHost()
+        guard let viewModel else { return }
+        let hasErrors = viewModel.verifyRequiredFieldsAboutCompanyHost()
 
         if hasErrors == true {
-            for (index, element) in viewModel!.pullOfErrors {
+            for (index, element) in viewModel.pullOfErrors {
                 var cell: RegistrationCell?
 
                 switch index {
@@ -208,40 +204,59 @@ class RegistrationHostVC: BaseVC<RegistrationHostViewModel, RegistrationCoordina
                 cell?.gradientTextField.removeGradientLayers()
             }
         } else {
-            viewModel?.registerCompanyHost()
+            viewModel.registerCompanyHost()
         }
+    }
+
+    // MARK: - Actions
+
+    @objc private func closeBtnTapped() {
+        self.coordinator?.navigate(to: .close)
+    }
+
+    @objc private func signUpTapped() {
+        self.view.endEditing(true) // Important step!
+
+        if segmentedControl.selectedSegmentIndex == 0 {
+            verifyIndividualHost()
+        }
+        else {
+            verifyCompanyHost()
+        }
+    }
+
+    @IBAction func segmentedControlHasChanged(_ sender: UISegmentedControl) {
+        // Notify all subscribers
+        viewModel?.individualSelected = sender.selectedSegmentIndex == 0
     }
 }
 
 // MARK: - Basic setup
 private extension RegistrationHostVC {
+
     private func setupNavBar() {
-        self.setupNavigationBar(mainTitle: "Sign up")
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(closeBtnTapped))
+        self.setupNavigationBar(mainTitle: "sign_up".localized())
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(
+            image: UIImage(systemName: "xmark"),
+            style: .plain,
+            target: self,
+            action: #selector(closeBtnTapped)
+        )
     }
 
     private func registerNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-
-    private func setupTableView() {
-        tableView.register(UINib(nibName: RegistrationCell.identifier, bundle: Bundle(for: RegistrationCell.self)), forCellReuseIdentifier: RegistrationCell.identifier)
-        tableView.keyboardDismissMode = .interactive
-    }
-
-    private func setupTableViewFooter() {
-        let footerView = UIView(frame: CGRect(origin: .zero,
-                                              size: CGSize(width: tableView.frame.size.width, height: 96)))
-        footerView.addSubview(signUpButton)
-        signUpButton.snp.makeConstraints {
-            $0.edges.equalToSuperview().inset(24)
-        }
-        signUpButton.addTarget(self,
-                               action: #selector(signUpTapped),
-                               for: .touchUpInside)
-        signUpButton.setTitle("Sign Up", for: .normal)
-        tableView.tableFooterView = footerView
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShow),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillHide),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
     }
 
     private func customizeDropDown() {
@@ -258,27 +273,52 @@ private extension RegistrationHostVC {
     }
 }
 
-// MARK: - Checkbox delegate
-extension RegistrationHostVC: CheckBoxDelegate {
-    func didChange(isChecked: Bool, box: Checkbox) {
+// MARK: - UITableViewDataSource
+extension RegistrationHostVC: UITableViewDataSource {
 
-        if box == individualBtn {
-            companyBtn.isChecked.toggle()
-        } else {
-            individualBtn.isChecked.toggle()
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel?.data.count ?? 0
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: RegistrationCell.identifier,
+            for: indexPath
+        ) as? RegistrationCell,
+              let viewModel,
+              let data = viewModel.data[safe: indexPath.row]
+        else {
+            return UITableViewCell()
         }
 
-        individualBtn.isUserInteractionEnabled = (box == individualBtn) ? false : true
-        companyBtn.isUserInteractionEnabled = (box == individualBtn) ? true : false
-        viewModel?.individualSelected = box == individualBtn // Notify all subscribers
+        cell.setupCell(
+            title: data.title,
+            isOptionalLabelVisible: data.optionalTextVisible,
+            placeholder: data.placeholder,
+            text: viewModel.cellsValues[data.type].flatMap { $0 },
+            type: data.type,
+            countryFlag: data.countryEmoji,
+            regionCode: data.countryPrefixCode,
+            description: data.description,
+            error: viewModel.pullOfErrors[data.type]?.flatMap { $0 }?.description
+        )
+
+        DispatchQueue.main.async {
+            cell.roundCorners()
+        }
+        cell.delegate = self
+
+        return cell
     }
 }
 
 // MARK: - RegistrationCellDelegate
 extension RegistrationHostVC: RegistrationCellDelegate {
+
     func textFieldDidBeginEditing(cell: RegistrationCell) {
         guard let indexPath = tableView.indexPath(for: cell),
-              let type = cell.gradientTextField.type else {
+              let type = cell.gradientTextField.type
+        else {
             return
         }
 
@@ -332,6 +372,7 @@ extension RegistrationHostVC: RegistrationCellDelegate {
 
 // MARK: - Keyboard Notifications
 private extension RegistrationHostVC {
+
     @objc private func keyboardWillShow(notification: Notification) {
         guard let keyboardFrame = notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
         tableView.contentInset.bottom = view.convert(keyboardFrame.cgRectValue, from: nil).size.height

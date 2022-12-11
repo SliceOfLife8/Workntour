@@ -69,6 +69,10 @@ extension SettingsVC: UITableViewDelegate, UITableViewDataSource {
         return section?.title
     }
 
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        (view as? UITableViewHeaderFooterView)?.textLabel?.textColor = .lightGray
+    }
+
     func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
         (view as? UITableViewHeaderFooterView)?.textLabel?.textAlignment = .center
     }

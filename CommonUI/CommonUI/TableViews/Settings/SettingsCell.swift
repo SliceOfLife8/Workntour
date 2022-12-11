@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SharedKit
 
 public class SettingsCell: UITableViewCell {
 
@@ -28,12 +29,14 @@ public class SettingsCell: UITableViewCell {
 
     private let label: UILabel = {
         let label = UILabel()
+        label.textColor = UIColor.appColor(.softBlack)
         label.numberOfLines = 1
         return label
     }()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        backgroundColor = .clear
         contentView.addSubview(label)
         contentView.addSubview(iconContainer)
         iconContainer.addSubview(iconImageView)
@@ -70,14 +73,15 @@ public class SettingsCell: UITableViewCell {
         iconContainer.backgroundColor = nil
     }
 
-    public func configure(title: String,
-                          icon: UIImage?,
-                          iconBgColor: UIColor?,
-                          type: AccessoryType) {
+    public func configure(
+        title: String,
+        icon: UIImage?,
+        iconBgColor: UIColor?,
+        type: AccessoryType
+    ) {
         label.text = title
         iconImageView.image = icon
         iconContainer.backgroundColor = iconBgColor
         accessoryType = type
     }
-
 }
