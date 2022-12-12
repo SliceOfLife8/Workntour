@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '14.0'
+platform :ios, '15.0'
 
 use_frameworks!
 inhibit_all_warnings!
@@ -21,7 +21,6 @@ def snapkit
 end
 
 def common
-  pod 'CombineDataSources'
   pod 'DropDown'
   pod 'NVActivityIndicatorView'
   pod 'EasyTipView'

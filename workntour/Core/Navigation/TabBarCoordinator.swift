@@ -71,9 +71,8 @@ final class TabBarCoordinator: NSObject, NavigationCoordinator {
 
         rootViewController.setViewControllers(controllers, animated: true)
         // Customize TabBar
-        if #available(iOS 15.0, *) {
-            updateTabBarAppearance()
-        }
+        updateTabBarAppearance()
+
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont.scriptFont(.medium, size: 10)], for: .normal)
         UITabBar.appearance().barTintColor = UIColor.white
         rootViewController.tabBar.clipsToBounds = true // Remove top line
@@ -84,7 +83,6 @@ final class TabBarCoordinator: NSObject, NavigationCoordinator {
         rootViewController.delegate = self
     }
 
-    @available(iOS 15.0, *)
     private func updateTabBarAppearance() {
         let appearance = UITabBarAppearance()
         appearance.configureWithOpaqueBackground()

@@ -15,8 +15,13 @@ import NVActivityIndicatorView
  I should remove the following third-party libraries
      · SnapKit
      · FlexiblePageControl
-     · CombineDataSources
      · Google Places
+ Authentication Flow:
+    · Forgot password
+    · Email verification
+    · Access & refresh token
+    · Splash screen add new methods
+    · Add GoogleSignIn & Apple Sign in
  */
 
 typealias DisposeBag = Set<AnyCancellable>
