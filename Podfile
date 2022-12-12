@@ -30,6 +30,7 @@ def common
   pod 'GooglePlaces'
   pod 'SkeletonView'
   pod 'Cluster'
+  pod 'GoogleSignIn'
 end
 
 def logging
