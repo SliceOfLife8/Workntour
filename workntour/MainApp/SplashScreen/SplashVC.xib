@@ -9,6 +9,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Lato-Italic.ttf">
+            <string>Lato-Italic</string>
+        </array>
         <array key="Lato-Medium.ttf">
             <string>Lato-Medium</string>
         </array>
@@ -19,6 +22,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BaseVC" customModule="workntour" customModuleProvider="target">
             <connections>
+                <outlet property="appleLoginBtn" destination="cM2-tH-k6W" id="ukB-BE-2zl"/>
+                <outlet property="googleLoginBtn" destination="OFz-z4-5VS" id="BUy-YN-aaa"/>
                 <outlet property="loginAsGuestBtn" destination="01O-bm-Mdm" id="1D1-P6-hOG"/>
                 <outlet property="loginBtn" destination="IIS-6j-vnX" id="4UO-MA-ipc"/>
                 <outlet property="registrationPoint" destination="SJF-gj-RQP" id="RHI-Ea-baF"/>
@@ -34,29 +39,29 @@
                     <rect key="frame" x="0.0" y="48" width="414" height="814"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="cdZ-YQ-FN5" userLabel="logo">
-                            <rect key="frame" x="184.5" y="8" width="45" height="75"/>
+                            <rect key="frame" x="184.5" y="6" width="45" height="75"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="45" id="xVj-GO-6jI"/>
                                 <constraint firstAttribute="height" constant="75" id="yqx-IG-zHp"/>
                             </constraints>
                         </imageView>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_title.png" translatesAutoresizingMaskIntoConstraints="NO" id="FNm-Dp-Ggr" userLabel="workntour">
-                            <rect key="frame" x="57" y="97" width="300" height="23"/>
+                            <rect key="frame" x="57" y="93" width="300" height="23"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="23" id="YEc-Fx-EX0"/>
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Work. Travel. Connect." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8q8-e0-UwY" userLabel="promo text">
-                            <rect key="frame" x="32" y="132" width="350" height="19.5"/>
+                            <rect key="frame" x="32" y="128" width="350" height="19.5"/>
                             <fontDescription key="fontDescription" name="Lato-Semibold" family="Lato" pointSize="16"/>
                             <color key="textColor" red="0.44705882352941173" green="0.52549019607843139" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash_illustration" translatesAutoresizingMaskIntoConstraints="NO" id="M61-Wh-W1x" userLabel="illustration">
-                            <rect key="frame" x="0.0" y="163.5" width="414" height="317.5"/>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="splash_illustration" translatesAutoresizingMaskIntoConstraints="NO" id="M61-Wh-W1x" userLabel="illustration">
+                            <rect key="frame" x="0.0" y="159.5" width="414" height="317.5"/>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IIS-6j-vnX" userLabel="login" customClass="PrimaryButton" customModule="CommonUI">
-                            <rect key="frame" x="24" y="622" width="366" height="48"/>
+                            <rect key="frame" x="24" y="521" width="366" height="48"/>
                             <color key="backgroundColor" name="lavender"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="48" id="wf9-rx-7ce"/>
@@ -78,7 +83,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="01O-bm-Mdm" userLabel="Guest" customClass="SecondaryButton" customModule="CommonUI">
-                            <rect key="frame" x="24" y="686" width="366" height="48"/>
+                            <rect key="frame" x="24" y="577" width="366" height="48"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="48" id="r9t-DP-agJ"/>
@@ -97,8 +102,60 @@
                                 <action selector="loginAsGuestBtnTapped:" destination="-1" eventType="touchUpInside" id="dKp-L2-Akw"/>
                             </connections>
                         </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fXj-MQ-qX4">
+                            <rect key="frame" x="197.5" y="637" width="19" height="17"/>
+                            <fontDescription key="fontDescription" name="Lato-Italic" family="Lato" pointSize="14"/>
+                            <color key="textColor" name="lavenderTint3"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cM2-tH-k6W" userLabel="Apple" customClass="SecondaryButton" customModule="CommonUI">
+                            <rect key="frame" x="24" y="666" width="366" height="48"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="48" id="AdP-OO-6gr"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="0.0"/>
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <inset key="titleEdgeInsets" minX="12" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" image="applelogo" catalog="system"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="radius">
+                                    <real key="value" value="24"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="mainColor">
+                                    <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="appleLoginBtnTapped:" destination="-1" eventType="touchUpInside" id="iII-P4-j23"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OFz-z4-5VS" userLabel="Google" customClass="SecondaryButton" customModule="CommonUI">
+                            <rect key="frame" x="24" y="722" width="366" height="48"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="48" id="dh0-Vs-8ag"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="0.0"/>
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <inset key="titleEdgeInsets" minX="12" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" image="google_icon"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="radius">
+                                    <real key="value" value="24"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="mainColor">
+                                    <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="googleLoginBtnTapped:" destination="-1" eventType="touchUpInside" id="tZZ-pU-jnr"/>
+                            </connections>
+                        </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="751" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SJF-gj-RQP" userLabel="registration" customClass="LinkableLabel" customModule="CommonUI">
-                            <rect key="frame" x="207" y="766" width="0.0" height="0.0"/>
+                            <rect key="frame" x="207" y="802" width="0.0" height="0.0"/>
                             <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
                             <color key="textColor" red="0.086274509803921567" green="0.086274509803921567" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -107,24 +164,32 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="8q8-e0-UwY" secondAttribute="trailing" constant="32" id="4XT-dl-6X1"/>
-                        <constraint firstItem="IIS-6j-vnX" firstAttribute="top" relation="greaterThanOrEqual" secondItem="M61-Wh-W1x" secondAttribute="bottom" constant="48" id="7lE-Gy-Txm"/>
+                        <constraint firstItem="cM2-tH-k6W" firstAttribute="top" secondItem="fXj-MQ-qX4" secondAttribute="bottom" constant="12" id="7IW-Uk-Ek3"/>
+                        <constraint firstItem="IIS-6j-vnX" firstAttribute="top" relation="greaterThanOrEqual" secondItem="M61-Wh-W1x" secondAttribute="bottom" constant="32" id="7lE-Gy-Txm"/>
+                        <constraint firstItem="cM2-tH-k6W" firstAttribute="leading" secondItem="01O-bm-Mdm" secondAttribute="leading" id="8cP-tR-aNa"/>
                         <constraint firstItem="01O-bm-Mdm" firstAttribute="trailing" secondItem="IIS-6j-vnX" secondAttribute="trailing" id="8jM-Ay-LsP"/>
-                        <constraint firstItem="FNm-Dp-Ggr" firstAttribute="top" secondItem="cdZ-YQ-FN5" secondAttribute="bottom" constant="14" id="B5f-L9-W25"/>
+                        <constraint firstItem="FNm-Dp-Ggr" firstAttribute="top" secondItem="cdZ-YQ-FN5" secondAttribute="bottom" constant="12" id="B5f-L9-W25"/>
                         <constraint firstItem="IIS-6j-vnX" firstAttribute="leading" secondItem="1wc-gd-Pfg" secondAttribute="leading" constant="24" id="EHs-eC-gsY"/>
-                        <constraint firstItem="cdZ-YQ-FN5" firstAttribute="top" secondItem="1wc-gd-Pfg" secondAttribute="top" constant="8" id="GON-ol-ojM"/>
+                        <constraint firstItem="cdZ-YQ-FN5" firstAttribute="top" secondItem="1wc-gd-Pfg" secondAttribute="top" constant="6" id="GON-ol-ojM"/>
                         <constraint firstItem="M61-Wh-W1x" firstAttribute="top" secondItem="8q8-e0-UwY" secondAttribute="bottom" constant="12" id="IGL-He-hHf"/>
                         <constraint firstItem="8q8-e0-UwY" firstAttribute="top" secondItem="FNm-Dp-Ggr" secondAttribute="bottom" constant="12" id="KdX-os-9ry"/>
                         <constraint firstItem="SJF-gj-RQP" firstAttribute="centerX" secondItem="01O-bm-Mdm" secondAttribute="centerX" id="P00-S2-hJj"/>
+                        <constraint firstItem="fXj-MQ-qX4" firstAttribute="top" secondItem="01O-bm-Mdm" secondAttribute="bottom" constant="12" id="Q2i-uj-d2T"/>
                         <constraint firstAttribute="trailing" secondItem="M61-Wh-W1x" secondAttribute="trailing" id="RNw-M5-tuY"/>
                         <constraint firstItem="cdZ-YQ-FN5" firstAttribute="centerX" secondItem="1wc-gd-Pfg" secondAttribute="centerX" id="Rgg-wM-ERD"/>
+                        <constraint firstItem="OFz-z4-5VS" firstAttribute="top" secondItem="cM2-tH-k6W" secondAttribute="bottom" constant="8" id="SEn-VL-xes"/>
+                        <constraint firstItem="OFz-z4-5VS" firstAttribute="trailing" secondItem="cM2-tH-k6W" secondAttribute="trailing" id="VRe-Kb-3J8"/>
                         <constraint firstItem="M61-Wh-W1x" firstAttribute="leading" secondItem="1wc-gd-Pfg" secondAttribute="leading" id="aiR-bG-zeV"/>
                         <constraint firstItem="FNm-Dp-Ggr" firstAttribute="centerX" secondItem="cdZ-YQ-FN5" secondAttribute="centerX" id="cXr-s4-rRJ"/>
                         <constraint firstItem="01O-bm-Mdm" firstAttribute="leading" secondItem="IIS-6j-vnX" secondAttribute="leading" id="g2b-6h-RN2"/>
+                        <constraint firstItem="OFz-z4-5VS" firstAttribute="leading" secondItem="cM2-tH-k6W" secondAttribute="leading" id="nEK-p2-hVl"/>
                         <constraint firstAttribute="trailing" secondItem="IIS-6j-vnX" secondAttribute="trailing" constant="24" id="nWP-0d-gyR"/>
-                        <constraint firstAttribute="bottom" secondItem="SJF-gj-RQP" secondAttribute="bottom" constant="48" id="pmH-TY-ttV"/>
-                        <constraint firstItem="SJF-gj-RQP" firstAttribute="top" secondItem="01O-bm-Mdm" secondAttribute="bottom" constant="32" id="ptx-F3-8U2"/>
+                        <constraint firstAttribute="bottom" secondItem="SJF-gj-RQP" secondAttribute="bottom" constant="12" id="pmH-TY-ttV"/>
+                        <constraint firstItem="SJF-gj-RQP" firstAttribute="top" secondItem="OFz-z4-5VS" secondAttribute="bottom" constant="32" id="ptx-F3-8U2"/>
                         <constraint firstItem="8q8-e0-UwY" firstAttribute="leading" secondItem="1wc-gd-Pfg" secondAttribute="leading" constant="32" id="sFf-EG-Fx0"/>
-                        <constraint firstItem="01O-bm-Mdm" firstAttribute="top" secondItem="IIS-6j-vnX" secondAttribute="bottom" constant="16" id="y28-HI-9IG"/>
+                        <constraint firstItem="fXj-MQ-qX4" firstAttribute="centerX" secondItem="01O-bm-Mdm" secondAttribute="centerX" id="wjP-T7-y35"/>
+                        <constraint firstItem="01O-bm-Mdm" firstAttribute="top" secondItem="IIS-6j-vnX" secondAttribute="bottom" constant="8" id="y28-HI-9IG"/>
+                        <constraint firstItem="cM2-tH-k6W" firstAttribute="trailing" secondItem="01O-bm-Mdm" secondAttribute="trailing" id="zXu-33-Ptf"/>
                     </constraints>
                 </view>
             </subviews>
@@ -133,18 +198,23 @@
             <constraints>
                 <constraint firstItem="1wc-gd-Pfg" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="0YS-ja-WZd"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="1wc-gd-Pfg" secondAttribute="trailing" id="ExH-tM-j5T"/>
-                <constraint firstItem="1wc-gd-Pfg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="48" id="gcO-1C-acC"/>
+                <constraint firstItem="1wc-gd-Pfg" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="gcO-1C-acC"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="1wc-gd-Pfg" secondAttribute="bottom" id="x3D-AO-lx3"/>
             </constraints>
             <point key="canvasLocation" x="152" y="153"/>
         </view>
     </objects>
     <resources>
+        <image name="applelogo" catalog="system" width="105" height="128"/>
+        <image name="google_icon" width="24" height="24"/>
         <image name="logo.png" width="91" height="91"/>
         <image name="logo_title.png" width="300" height="47"/>
         <image name="splash_illustration" width="231" height="318"/>
         <namedColor name="lavender">
             <color red="0.53333333333333333" green="0.4392156862745098" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="lavenderTint3">
+            <color red="0.78823529411764703" green="0.76078431372549016" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="primary">
             <color red="0.98039215686274506" green="0.97254901960784312" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

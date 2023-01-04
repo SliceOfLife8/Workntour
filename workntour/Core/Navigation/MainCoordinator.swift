@@ -12,6 +12,8 @@ enum MainStep: Step {
     case registrationPoint
     case login
     case loginAsGuest
+    case appleLogin
+    case googleLogin
 }
 
 // MARK: - MainCoordinator
@@ -48,6 +50,10 @@ final class MainCoordinator: NavigationCoordinator {
             startLoginFlow()
         case .loginAsGuest:
             showMainFlow()
+        case .appleLogin:
+            print("Apple login!")
+        case .googleLogin:
+            print("Google login!")
         }
     }
 

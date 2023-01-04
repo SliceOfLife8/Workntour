@@ -20,7 +20,6 @@ import NVActivityIndicatorView
     · Forgot password
     · Email verification
     · Access & refresh token
-    · Splash screen add new methods
     · Add GoogleSignIn & Apple Sign in
  */
 

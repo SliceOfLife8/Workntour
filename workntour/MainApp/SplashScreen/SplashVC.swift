@@ -12,8 +12,23 @@ import CommonUI
 class SplashVC: BaseVC<SplashViewModel, MainCoordinator> {
 
     // MARK: - Outlets
+
     @IBOutlet weak var loginBtn: PrimaryButton!
+
     @IBOutlet weak var loginAsGuestBtn: SecondaryButton!
+
+    @IBOutlet weak var appleLoginBtn: SecondaryButton! {
+        didSet {
+            appleLoginBtn.layer.borderColor = UIColor.appColor(.separator).cgColor
+        }
+    }
+
+    @IBOutlet weak var googleLoginBtn: SecondaryButton! {
+        didSet {
+            googleLoginBtn.layer.borderColor = UIColor.appColor(.separator).cgColor
+        }
+    }
+
     @IBOutlet weak var registrationPoint: LinkableLabel!
 
     override func viewDidLoad() {
@@ -26,6 +41,8 @@ class SplashVC: BaseVC<SplashViewModel, MainCoordinator> {
         super.setupTexts()
         loginBtn.setTitle("login".localized(), for: .normal)
         loginAsGuestBtn.setTitle("guest_login".localized(), for: .normal)
+        appleLoginBtn.setTitle("apple_login".localized(), for: .normal)
+        googleLoginBtn.setTitle("google_login".localized(), for: .normal)
 
         registrationPoint.text = "new_member".localized()
         let actionPart = "new_member_action_part".localized()
@@ -40,6 +57,7 @@ class SplashVC: BaseVC<SplashViewModel, MainCoordinator> {
     }
 
     // MARK: - Actions
+
     @IBAction func loginBtnTapped(_ sender: Any) {
         self.coordinator?.navigate(to: .login)
     }
@@ -47,5 +65,13 @@ class SplashVC: BaseVC<SplashViewModel, MainCoordinator> {
     @IBAction func loginAsGuestBtnTapped(_ sender: Any) {
         self.preventNavBarFromAppearing = true
         self.coordinator?.navigate(to: .loginAsGuest)
+    }
+
+    @IBAction func appleLoginBtnTapped(_ sender: Any) {
+        self.coordinator?.navigate(to: .appleLogin)
+    }
+
+    @IBAction func googleLoginBtnTapped(_ sender: Any) {
+        self.coordinator?.navigate(to: .googleLogin)
     }
 }

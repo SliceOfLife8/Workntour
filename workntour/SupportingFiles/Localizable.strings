@@ -78,6 +78,8 @@
 "host" = "Host";
 "login" = "Log in";
 "guest_login" = "Log in as a guest";
+"apple_login" = "Continue with Apple";
+"google_login" = "Continue with Google";
 "new_member" = "Not a member? Register here";
 "new_member_action_part" = "Register here";
 "remember_me" = "Remember me";
