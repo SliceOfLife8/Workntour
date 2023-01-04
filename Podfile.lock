@@ -1,10 +1,4 @@
 PODS:
-  - AppAuth (1.6.0):
-    - AppAuth/Core (= 1.6.0)
-    - AppAuth/ExternalUserAgent (= 1.6.0)
-  - AppAuth/Core (1.6.0)
-  - AppAuth/ExternalUserAgent (1.6.0):
-    - AppAuth/Core
   - Cluster (3.0.3)
   - DropDown (2.3.13)
   - EasyTipView (2.1.0)
@@ -79,10 +73,6 @@ PODS:
     - nanopb (< 2.30910.0, >= 2.30908.0)
     - PromisesObjC (< 3.0, >= 1.2)
   - GooglePlaces (7.2.0)
-  - GoogleSignIn (6.2.4):
-    - AppAuth (~> 1.5)
-    - GTMAppAuth (~> 1.3)
-    - GTMSessionFetcher/Core (< 3.0, >= 1.1)
   - GoogleUtilities/AppDelegateSwizzler (7.10.0):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
@@ -102,10 +92,6 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (7.10.0):
     - GoogleUtilities/Logger
-  - GTMAppAuth (1.3.1):
-    - AppAuth/Core (~> 1.6)
-    - GTMSessionFetcher/Core (< 3.0, >= 1.5)
-  - GTMSessionFetcher/Core (2.3.0)
   - HorizonCalendar (1.14.2)
   - KDCircularProgress (1.5.4)
   - Kingfisher (7.4.1)
@@ -131,7 +117,6 @@ DEPENDENCIES:
   - FlexiblePageControl
   - FloatingPanel
   - GooglePlaces
-  - GoogleSignIn
   - HorizonCalendar
   - KDCircularProgress
   - Kingfisher
@@ -142,7 +127,6 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
-    - AppAuth
     - Cluster
     - DropDown
     - EasyTipView
@@ -157,10 +141,7 @@ SPEC REPOS:
     - GoogleAppMeasurement
     - GoogleDataTransport
     - GooglePlaces
-    - GoogleSignIn
     - GoogleUtilities
-    - GTMAppAuth
-    - GTMSessionFetcher
     - HorizonCalendar
     - KDCircularProgress
     - Kingfisher
@@ -172,7 +153,6 @@ SPEC REPOS:
     - SwiftyBeaver
 
 SPEC CHECKSUMS:
-  AppAuth: 8fca6b5563a5baef2c04bee27538025e4ceb2add
   Cluster: d72510594f60d901905953aafdc811d1888177ae
   DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
   EasyTipView: a92b6edc377b81c5ac18e9fd35d5ee78e9409488
@@ -187,10 +167,7 @@ SPEC CHECKSUMS:
   GoogleAppMeasurement: c7d6fff39bf2d829587d74088d582e32d75133c3
   GoogleDataTransport: 1c8145da7117bd68bbbed00cf304edb6a24de00f
   GooglePlaces: 590dea495d69431454ea92217033c3184995165d
-  GoogleSignIn: 5651ce3a61e56ca864160e79b484cd9ed3f49b7a
   GoogleUtilities: bad72cb363809015b1f7f19beb1f1cd23c589f95
-  GTMAppAuth: 0ff230db599948a9ad7470ca667337803b3fc4dd
-  GTMSessionFetcher: 3a63d75eecd6aa32c2fc79f578064e1214dfdec2
   HorizonCalendar: 01743b993e066e8375b9c3a22bfe62f98d7c4c33
   KDCircularProgress: 98200c6b8e85d22bc04eb644721d3b1e12b0686b
   Kingfisher: cd762a593a61b2fbecf7645c00f9a801a3ebfc9c
@@ -201,6 +178,6 @@ SPEC CHECKSUMS:
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   SwiftyBeaver: c8241b4745aa269a78ca5a022532c6915e948536
 
-PODFILE CHECKSUM: 1e4bf5bda3d69c4d3879bfe362d228f63c67c7cd
+PODFILE CHECKSUM: d55a57e9991c22c2bdc06c167885cde72c31c482
 
 COCOAPODS: 1.11.3

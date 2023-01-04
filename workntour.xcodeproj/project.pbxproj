@@ -183,6 +183,7 @@
 		CEBA31242940EDAB00602111 /* OnboardingVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEBA31232940EDAB00602111 /* OnboardingVC.xib */; };
 		CED06CFE2928DEA000C054E3 /* TravelerProfileSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED06CFD2928DEA000C054E3 /* TravelerProfileSections.swift */; };
 		CED06D04292909CA00C054E3 /* SpecialDietary.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED06D03292909CA00C054E3 /* SpecialDietary.swift */; };
+		CED28EE22965902F0080C7AA /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = CED28EE12965902F0080C7AA /* BottomSheet */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -396,6 +397,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CED28EE22965902F0080C7AA /* BottomSheet in Frameworks */,
 				1B9A3D7F282AB849003E0C34 /* Networking.framework in Frameworks */,
 				1B9A3D222828EA99003E0C34 /* CommonUI.framework in Frameworks */,
 				1B9A3D272828EA9E003E0C34 /* SharedKit.framework in Frameworks */,
@@ -1158,6 +1160,9 @@
 			dependencies = (
 			);
 			name = workntour;
+			packageProductDependencies = (
+				CED28EE12965902F0080C7AA /* BottomSheet */,
+			);
 			productName = workntour;
 			productReference = 1B7315ED281E7DCF001F2E6A /* workntour.app */;
 			productType = "com.apple.product-type.application";
@@ -1186,6 +1191,9 @@
 				Base,
 			);
 			mainGroup = 1B7315E4281E7DCF001F2E6A;
+			packageReferences = (
+				CED28EE02965902F0080C7AA /* XCRemoteSwiftPackageReference "BottomSheet" */,
+			);
 			productRefGroup = 1B7315EE281E7DCF001F2E6A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -2192,6 +2200,25 @@
 			defaultConfigurationName = "Dev Release";
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CED28EE02965902F0080C7AA /* XCRemoteSwiftPackageReference "BottomSheet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/joomcode/BottomSheet";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CED28EE12965902F0080C7AA /* BottomSheet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CED28EE02965902F0080C7AA /* XCRemoteSwiftPackageReference "BottomSheet" */;
+			productName = BottomSheet;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1B7315E5281E7DCF001F2E6A /* Project object */;
 }
