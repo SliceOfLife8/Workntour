@@ -70,7 +70,7 @@
 "insert_link" = "Insert your link";
 "insert_link_here" = "Insert your link here";
 
-// MARK: - Login, Registration & Onboarding
+// MARK: - Login, Registration, ForgotPassword & Onboarding
 "cancel" = "Cancel";
 "sign_up_as" = "Sign Up as a";
 "sign_up" = "Sign Up";
@@ -112,3 +112,9 @@
 "check_inbox" = "Check your Inbox!";
 "email_verification" = "Email verification";
 "email_verification_link" = "Click the link we sent to %@ to sign in.";
+"forgot_password" = "FORGOT PASSWORD";
+"forgot_password_description" = "Provide your account's email  for which you want to reset your password";
+"registered_email" = "Enter your registered email";
+"invalid_registered_email" = "Invalid email. Please enter your registered email.";
+"request_password_link" = "Request reset password link";
+"forgot_password_successful_message" = "A message was sent to your email";

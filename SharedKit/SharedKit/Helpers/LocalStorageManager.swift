@@ -11,6 +11,7 @@ public enum LocalDataKey: String, CaseIterable {
     case onboarding
     case email
     case password
+    case emailForgotPassword
 }
 
 public enum DataPersistenceMethod {

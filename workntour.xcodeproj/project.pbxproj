@@ -184,6 +184,9 @@
 		CED06CFE2928DEA000C054E3 /* TravelerProfileSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED06CFD2928DEA000C054E3 /* TravelerProfileSections.swift */; };
 		CED06D04292909CA00C054E3 /* SpecialDietary.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED06D03292909CA00C054E3 /* SpecialDietary.swift */; };
 		CED28EE22965902F0080C7AA /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = CED28EE12965902F0080C7AA /* BottomSheet */; };
+		CED28EE72965C5330080C7AA /* ForgotPasswordRequestLinkVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED28EE62965C5330080C7AA /* ForgotPasswordRequestLinkVC.swift */; };
+		CED28EE92965C53D0080C7AA /* ForgotPasswordRequestLinkVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CED28EE82965C53D0080C7AA /* ForgotPasswordRequestLinkVC.xib */; };
+		CED28EEB2965C5460080C7AA /* ForgotPasswordRequestLinkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED28EEA2965C5460080C7AA /* ForgotPasswordRequestLinkViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -388,6 +391,9 @@
 		CEBA31232940EDAB00602111 /* OnboardingVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingVC.xib; sourceTree = "<group>"; };
 		CED06CFD2928DEA000C054E3 /* TravelerProfileSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelerProfileSections.swift; sourceTree = "<group>"; };
 		CED06D03292909CA00C054E3 /* SpecialDietary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialDietary.swift; sourceTree = "<group>"; };
+		CED28EE62965C5330080C7AA /* ForgotPasswordRequestLinkVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordRequestLinkVC.swift; sourceTree = "<group>"; };
+		CED28EE82965C53D0080C7AA /* ForgotPasswordRequestLinkVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForgotPasswordRequestLinkVC.xib; sourceTree = "<group>"; };
+		CED28EEA2965C5460080C7AA /* ForgotPasswordRequestLinkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordRequestLinkViewModel.swift; sourceTree = "<group>"; };
 		D1C830038FC1866654646544 /* Pods-workntour.prod debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-workntour.prod debug.xcconfig"; path = "Target Support Files/Pods-workntour/Pods-workntour.prod debug.xcconfig"; sourceTree = "<group>"; };
 		F5701F516D91D3C90DD51441 /* Pods_workntour.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_workntour.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -840,6 +846,7 @@
 				1B9A3D88282C05D5003E0C34 /* SplashScreen */,
 				1B16837C283A58CB0067F2DB /* Registration */,
 				1B3C384128520DE9000EEADF /* LoginFlow */,
+				CED28EE42965C4930080C7AA /* ForgotPassword */,
 				1BC190A7285C5BB400585533 /* HomePage */,
 				1BC190A0285A0E5E00585533 /* Profile */,
 				1BC1909F285A0E4F00585533 /* Opportunities */,
@@ -1137,6 +1144,24 @@
 			path = PersonalInfo;
 			sourceTree = "<group>";
 		};
+		CED28EE42965C4930080C7AA /* ForgotPassword */ = {
+			isa = PBXGroup;
+			children = (
+				CED28EE52965C4D00080C7AA /* RequestLink */,
+			);
+			path = ForgotPassword;
+			sourceTree = "<group>";
+		};
+		CED28EE52965C4D00080C7AA /* RequestLink */ = {
+			isa = PBXGroup;
+			children = (
+				CED28EE62965C5330080C7AA /* ForgotPasswordRequestLinkVC.swift */,
+				CED28EE82965C53D0080C7AA /* ForgotPasswordRequestLinkVC.xib */,
+				CED28EEA2965C5460080C7AA /* ForgotPasswordRequestLinkViewModel.swift */,
+			);
+			path = RequestLink;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1248,6 +1273,7 @@
 				1B9A3D85282B9096003E0C34 /* Colors.xcassets in Resources */,
 				1BC190CF285F253C00585533 /* HostProfileVC.xib in Resources */,
 				1B4AE406283E61CE00FA6420 /* SplashVC.xib in Resources */,
+				CED28EE92965C53D0080C7AA /* ForgotPasswordRequestLinkVC.xib in Resources */,
 				1B4AE3FE283E4B4D00FA6420 /* logo.png in Resources */,
 				1B9A3D1728282710003E0C34 /* GoogleService-Info.Dev.plist in Resources */,
 				1B7315FA281E7DD5001F2E6A /* Assets.xcassets in Resources */,
@@ -1443,6 +1469,7 @@
 				1B7753D8286C26B600D81526 /* DayRangeIndicatorView.swift in Sources */,
 				1BA2DF08281E8D7700DB128D /* OnboardingCoordinator.swift in Sources */,
 				1B442FE9287ED6B7002145BC /* OpportunitiesFiltersViewModel.swift in Sources */,
+				CED28EE72965C5330080C7AA /* ForgotPasswordRequestLinkVC.swift in Sources */,
 				1BC190C0285C5CD900585533 /* SettingsVC.swift in Sources */,
 				1B714B582840DBB5000D85D0 /* RegistrationCoordinator.swift in Sources */,
 				1B3C38312850782F000EEADF /* EmailVerificationViewModel.swift in Sources */,
@@ -1480,6 +1507,7 @@
 				1BC190B4285C5C9300585533 /* TravelerProfileViewModel.swift in Sources */,
 				1B9A3D2D28295F6F003E0C34 /* AppConfig.swift in Sources */,
 				1BC190ED2863394100585533 /* ProfileRouter.swift in Sources */,
+				CED28EEB2965C5460080C7AA /* ForgotPasswordRequestLinkViewModel.swift in Sources */,
 				1B3C384028520853000EEADF /* LoginModel.swift in Sources */,
 				1B16837E283A58F00067F2DB /* RegistrationTravelerVC.swift in Sources */,
 				1B1683A6283D1F6E0067F2DB /* ErrorResponse.swift in Sources */,

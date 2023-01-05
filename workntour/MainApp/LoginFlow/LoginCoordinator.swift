@@ -9,13 +9,13 @@ import UIKit
 import SharedKit
 import Combine
 import SwiftyBeaver
+import BottomSheet
 
 enum LoginStep: Step {
+    case state(_ default: DefaultStep)
     case successfulLogin
-    case close
     case register
     case forgotPassword
-    case errorDialog(description: String)
 }
 
 /** A Coordinator which takes a user through the login flow. */
@@ -42,20 +42,24 @@ final class LoginCoordinator: PresentationCoordinator {
 
     func navigate(to step: LoginStep) {
         switch step {
+        case .state(.showAlert(let title, let subtitle)):
+            AlertHelper.showDefaultAlert(
+                rootViewController,
+                title: title,
+                message: subtitle
+            )
+        case .state(.back):
+            parent.dismissCoordinator(self, modalStyle: .coverVertical, animated: true)
         case .successfulLogin:
             parent.dismissCoordinator(self, modalStyle: .coverVertical, animated: false, completion: {
                 DispatchQueue.main.async {
                     self.parent.showMainFlow()
                 }
             })
-        case .close:
-            parent.dismissCoordinator(self, modalStyle: .coverVertical, animated: true, completion: nil)
         case .register:
             showAlert()
         case .forgotPassword:
-            print("Not for MVP!")
-        case .errorDialog(let description):
-            AlertHelper.showDefaultAlert(rootViewController, title: "Error message", message: description)
+            requestPasswordLink()
         }
     }
 
@@ -76,5 +80,20 @@ final class LoginCoordinator: PresentationCoordinator {
     private func startRegistrationFlow(forType type: UserRole) {
         let registrationCoordinator = RegistrationCoordinator(parent: self, role: type)
         presentCoordinator(registrationCoordinator, modalStyle: .overFullScreen, animated: true)
+    }
+
+    private func requestPasswordLink() {
+        let requestLinkVC = ForgotPasswordRequestLinkVC()
+        requestLinkVC.viewModel = ForgotPasswordRequestLinkViewModel()
+        requestLinkVC.coordinator = self
+
+        rootViewController.presentBottomSheet(
+            viewController: requestLinkVC,
+            configuration: BottomSheetConfiguration(
+                cornerRadius: 16,
+                pullBarConfiguration: .visible(.init(height: 20)),
+                shadowConfiguration: .init(backgroundColor: UIColor.black.withAlphaComponent(0.6))
+            )
+        )
     }
 }

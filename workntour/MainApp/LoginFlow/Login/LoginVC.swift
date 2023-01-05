@@ -79,7 +79,9 @@ class LoginVC: BaseVC<LoginViewModel, LoginCoordinator> {
             .dropFirst()
             .sink(receiveValue: { [weak self] error in
                 if let errorDescription = error {
-                    self?.coordinator?.navigate(to: .errorDialog(description: errorDescription))
+                    self?.coordinator?.navigate(
+                        to: .state(.showAlert(title: "Error message", subtitle: errorDescription))
+                    )
                 }
             })
             .store(in: &storage)
