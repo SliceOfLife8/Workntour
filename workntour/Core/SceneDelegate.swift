@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SharedKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -16,6 +17,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                willConnectTo session: UISceneSession,
                options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
+
+        if let urlContext = connectionOptions.urlContexts.first {
+
+            let sendingAppID = urlContext.options.sourceApplication
+            let url = urlContext.url
+            print("source application = \(sendingAppID ?? "Unknown")")
+            print("url = \(url)")
+
+            LocalStorageManager.shared.removeKey(.onboarding)
+
+            // Process the URL similarly to the UIApplicationDelegate example.
+        }
 
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.windowScene = windowScene
@@ -56,4 +69,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         completionHandler(handledShortcutItem)
     }
 
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        guard let url = URLContexts.first?.url else { return }
+
+        print("Incoming URL: \(url)")
+        DeepLinkManager.shared.registerCalledURL(url: url)
+    }
 }

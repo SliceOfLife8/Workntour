@@ -7,7 +7,6 @@
 
 import UIKit
 import CommonUI
-import BottomSheet
 
 class ForgotPasswordRequestLinkVC: BaseVC<ForgotPasswordRequestLinkViewModel, LoginCoordinator> {
 

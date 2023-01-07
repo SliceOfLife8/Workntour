@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Lato-Bold.ttf">
+            <string>Lato-Bold</string>
+        </array>
+        <array key="Lato-Medium.ttf">
+            <string>Lato-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BaseVC" customModule="workntour" customModuleProvider="target">
+            <connections>
+                <outlet property="cancelButton" destination="yin-yr-7Uf" id="BAC-u8-VjU"/>
+                <outlet property="descriptionLabel" destination="1vL-bb-LgF" id="dzb-u6-9xu"/>
+                <outlet property="resendLinkButton" destination="q0a-sK-a0M" id="ht8-mk-wFa"/>
+                <outlet property="titleLabel" destination="Fd3-kc-I4c" id="tIs-td-WyO"/>
+                <outlet property="view" destination="7z9-nJ-pbe" id="ikW-jh-XZA"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="7z9-nJ-pbe">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wC3-K2-5Mf" userLabel="Content View">
+                    <rect key="frame" x="0.0" y="59" width="393" height="793"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="LLy-cd-HH4" userLabel="Top StackView">
+                            <rect key="frame" x="32" y="24" width="329" height="54"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LINK EXPIRED" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fd3-kc-I4c" userLabel="title">
+                                    <rect key="frame" x="81.333333333333329" y="0.0" width="166.66666666666669" height="30"/>
+                                    <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="25"/>
+                                    <color key="textColor" name="purpleBlack"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1vL-bb-LgF" userLabel="description">
+                                    <rect key="frame" x="164.66666666666666" y="54" width="0.0" height="0.0"/>
+                                    <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="17"/>
+                                    <color key="textColor" name="basicText"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="OC7-gr-mWq" userLabel="Bottom StackView">
+                            <rect key="frame" x="24" y="126" width="345" height="93"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q0a-sK-a0M" userLabel="link" customClass="PrimaryButton" customModule="CommonUI">
+                                    <rect key="frame" x="0.0" y="0.0" width="345" height="48"/>
+                                    <color key="backgroundColor" name="lavender"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="48" id="Sx0-Jl-eUg"/>
+                                    </constraints>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="radius">
+                                            <real key="value" value="6"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="enabledStateColor">
+                                            <color key="value" name="lavender"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="enabledStateTitleColor">
+                                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="resendLinkButtonTapped:" destination="-1" eventType="touchUpInside" id="XOA-LJ-PEf"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yin-yr-7Uf" userLabel="cancel">
+                                    <rect key="frame" x="0.0" y="64" width="345" height="29"/>
+                                    <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="14"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="Cancel">
+                                        <color key="titleColor" name="mint"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="cancelButtonTapped:" destination="-1" eventType="touchUpInside" id="1a0-zW-NlO"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="OC7-gr-mWq" firstAttribute="leading" secondItem="wC3-K2-5Mf" secondAttribute="leading" constant="24" id="4jk-X5-Dd0"/>
+                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="OC7-gr-mWq" secondAttribute="bottom" constant="24" id="XZW-rc-cZp"/>
+                        <constraint firstItem="LLy-cd-HH4" firstAttribute="top" secondItem="wC3-K2-5Mf" secondAttribute="top" constant="24" id="df3-ZO-epl"/>
+                        <constraint firstAttribute="trailing" secondItem="LLy-cd-HH4" secondAttribute="trailing" constant="32" id="dvT-rh-Ut2"/>
+                        <constraint firstAttribute="trailing" secondItem="OC7-gr-mWq" secondAttribute="trailing" constant="24" id="fHU-Vm-dVU"/>
+                        <constraint firstItem="OC7-gr-mWq" firstAttribute="top" secondItem="LLy-cd-HH4" secondAttribute="bottom" constant="48" id="m6w-XU-cqP"/>
+                        <constraint firstItem="LLy-cd-HH4" firstAttribute="leading" secondItem="wC3-K2-5Mf" secondAttribute="leading" constant="32" id="qdq-f2-lfX"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="bLk-O6-ggS"/>
+            <color key="backgroundColor" name="primary"/>
+            <constraints>
+                <constraint firstItem="wC3-K2-5Mf" firstAttribute="trailing" secondItem="7z9-nJ-pbe" secondAttribute="trailing" id="Gsa-tD-BvE"/>
+                <constraint firstAttribute="bottom" secondItem="wC3-K2-5Mf" secondAttribute="bottom" id="Xhu-Wa-eYN"/>
+                <constraint firstItem="wC3-K2-5Mf" firstAttribute="leading" secondItem="7z9-nJ-pbe" secondAttribute="leading" id="cSS-OV-9Sh"/>
+                <constraint firstItem="wC3-K2-5Mf" firstAttribute="top" secondItem="bLk-O6-ggS" secondAttribute="top" id="fEt-Kk-CrR"/>
+            </constraints>
+            <point key="canvasLocation" x="139" y="140"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="basicText">
+            <color red="0.16099999845027924" green="0.15700000524520874" blue="0.17599999904632568" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="lavender">
+            <color red="0.53333333333333333" green="0.4392156862745098" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="mint">
+            <color red="0.054901960784313725" green="0.89411764705882357" blue="0.81176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="primary">
+            <color red="0.98039215686274506" green="0.97254901960784312" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="purpleBlack">
+            <color red="0.2196078431372549" green="0.20000000000000001" blue="0.31372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

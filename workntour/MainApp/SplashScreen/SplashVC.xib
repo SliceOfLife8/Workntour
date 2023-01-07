@@ -118,7 +118,7 @@
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <inset key="titleEdgeInsets" minX="12" minY="0.0" maxX="0.0" maxY="0.0"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                            <state key="normal" image="applelogo" catalog="system"/>
+                            <state key="normal" image="apple.logo" catalog="system"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="radius">
                                     <real key="value" value="24"/>
@@ -205,7 +205,7 @@
         </view>
     </objects>
     <resources>
-        <image name="applelogo" catalog="system" width="105" height="128"/>
+        <image name="apple.logo" catalog="system" width="105" height="128"/>
         <image name="google_icon" width="24" height="24"/>
         <image name="logo.png" width="91" height="91"/>
         <image name="logo_title.png" width="300" height="47"/>
