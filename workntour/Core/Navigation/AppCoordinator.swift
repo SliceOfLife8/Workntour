@@ -7,6 +7,8 @@
 
 import UIKit
 import SharedKit
+import BottomSheet
+import CommonUI
 
 /** The application's root `Coordinator`. */
 
@@ -18,14 +20,17 @@ final class AppCoordinator: PresentationCoordinator {
     init(window: UIWindow) {
         window.rootViewController = rootViewController
         window.makeKeyAndVisible()
+        DeepLinkManager.shared.delegate = self
     }
 
     func start() {
-        let hasUserSeenOnboardingFlow = LocalStorageManager.shared.retrieve(forKey: .onboarding, type: Bool.self)
-
-        if hasUserSeenOnboardingFlow == true {
+        if LocalStorageManager.shared.retrieve(
+            forKey: .onboarding,
+            type: Bool.self
+        ) == true {
             route(isFirstTimeUser: false)
-        } else {
+        }
+        else {
             route(isFirstTimeUser: true)
         }
     }
@@ -63,6 +68,36 @@ extension AppCoordinator: OnboardingCoordinatorDelegate {
             route(isFirstTimeUser: false)
 
             dismissCoordinator(coordinator, modalStyle: .flipHorizontal, animated: true)
+        }
+    }
+}
+
+// MARK: - DeepLinkManagerDelegate
+extension AppCoordinator: DeepLinkManagerDelegate {
+
+    func redirect(to route: DeepLinkRoute) {
+        /// Remove all presented Coordinators!
+        let mainCoordinator = childCoordinators.first as? MainCoordinator
+        mainCoordinator?.rootViewController.topViewController?.presentedViewController?.dismiss(animated: false)
+
+        switch route {
+        case .forgotPasswordVerification:
+            /*
+             Create EmailVerificationUseCase to make network call
+             & show either LinkExpiredVC nor SetupNewCredentialsVC
+             */
+            let expiredVC = LinkExpiredVC()
+            expiredVC.viewModel = LinkExpiredViewModel(data: .init(mode: .forgotPassword))
+            expiredVC.coordinator = self
+
+            rootViewController.presentBottomSheet(
+                viewController: expiredVC,
+                configuration: BottomSheetConfiguration(
+                    cornerRadius: 16,
+                    pullBarConfiguration: .visible(.init(height: 20)),
+                    shadowConfiguration: .init(backgroundColor: UIColor.black.withAlphaComponent(0.6))
+                )
+            )
         }
     }
 }

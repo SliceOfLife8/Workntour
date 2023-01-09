@@ -7,6 +7,7 @@
 
 import UIKit
 import SharedKit
+import FirebaseDynamicLinks
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -18,22 +19,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
 
-        if let urlContext = connectionOptions.urlContexts.first {
-
-            let sendingAppID = urlContext.options.sourceApplication
-            let url = urlContext.url
-            print("source application = \(sendingAppID ?? "Unknown")")
-            print("url = \(url)")
-
-            LocalStorageManager.shared.removeKey(.onboarding)
-
-            // Process the URL similarly to the UIApplicationDelegate example.
-        }
-
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.windowScene = windowScene
         appCoordinator = AppCoordinator(window: self.window!)
         appCoordinator?.start()
+
+        if let webPageUrl = connectionOptions.userActivities.compactMap({ $0.webpageURL }).first {
+            DeepLinkManager.shared.registerCalledURL(url: webPageUrl)
+            print("do something here: \(webPageUrl)")
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -69,10 +63,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         completionHandler(handledShortcutItem)
     }
 
-    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
-        guard let url = URLContexts.first?.url else { return }
+    /// Handle Incoming URLs
+    func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
+        guard let url = userActivity.webpageURL else { return }
 
-        print("Incoming URL: \(url)")
-        DeepLinkManager.shared.registerCalledURL(url: url)
+        DynamicLinks.dynamicLinks().handleUniversalLink(url, completion: { link, error in
+            print("dynamicLink: \(link) -- error: \(error)")
+            DeepLinkManager.shared.registerCalledURL(url: url)
+        })
+        // Handle the deep link. For example, show the deep-linked content or
+        // apply a promotional offer to the user's account.
+        // ...
     }
 }

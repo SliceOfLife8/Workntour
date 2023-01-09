@@ -7,7 +7,6 @@
 
 import UIKit
 import SharedKit
-import BottomSheet
 
 enum MainStep: Step {
     case registrationPoint
@@ -52,17 +51,7 @@ final class MainCoordinator: NavigationCoordinator {
         case .loginAsGuest:
             showMainFlow()
         case .appleLogin:
-            let expiredVC = LinkExpiredVC()
-            expiredVC.viewModel = LinkExpiredViewModel(data: .init(mode: .forgotPassword))
-
-            rootViewController.presentBottomSheet(
-                viewController: expiredVC,
-                configuration: BottomSheetConfiguration(
-                    cornerRadius: 16,
-                    pullBarConfiguration: .visible(.init(height: 20)),
-                    shadowConfiguration: .init(backgroundColor: UIColor.black.withAlphaComponent(0.6))
-                )
-            )
+            print("Apple login!")
         case .googleLogin:
             print("Google login!")
         }

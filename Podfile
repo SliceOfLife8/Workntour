@@ -9,6 +9,7 @@ workspace 'workntour.xcworkspace'
 def firebase
   pod 'Firebase/Crashlytics'
   pod 'Firebase/Core'
+  pod 'Firebase/DynamicLinks'
 end
 
 def kingfisher

@@ -8,7 +8,7 @@
 import UIKit
 import CommonUI
 
-class LinkExpiredVC: BaseVC<LinkExpiredViewModel, LoginCoordinator> {
+class LinkExpiredVC: BaseVC<LinkExpiredViewModel, AppCoordinator> {
 
     // MARK: - Outlets
 

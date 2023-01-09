@@ -53,6 +53,7 @@
 		3DAAC6659A6708C5BB855B19 /* Pods_CommonUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E98C51A674C58C719026597 /* Pods_CommonUI.framework */; };
 		CE22953F293E3E5000FCEE09 /* AuthorizedPersonalDocumentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE22953D293E3E5000FCEE09 /* AuthorizedPersonalDocumentCell.swift */; };
 		CE229540293E3E5000FCEE09 /* AuthorizedPersonalDocumentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE22953E293E3E5000FCEE09 /* AuthorizedPersonalDocumentCell.xib */; };
+		CE3B712F296BF456003FF982 /* GenericBottomSheetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3B712E296BF456003FF982 /* GenericBottomSheetVC.swift */; };
 		CE3F9E98291FACDE00480493 /* SelectAttributesHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3F9E96291FACDE00480493 /* SelectAttributesHeaderView.swift */; };
 		CE3F9E99291FACDE00480493 /* SelectAttributesHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE3F9E97291FACDE00480493 /* SelectAttributesHeaderView.xib */; };
 		CE3F9E9C291FB3CE00480493 /* ChipCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3F9E9A291FB3CE00480493 /* ChipCell.swift */; };
@@ -146,6 +147,7 @@
 		B01A41FDCBD9C31AFD5DB559 /* Pods-CommonUI-CommonUITests.dev debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonUI-CommonUITests.dev debug.xcconfig"; path = "Target Support Files/Pods-CommonUI-CommonUITests/Pods-CommonUI-CommonUITests.dev debug.xcconfig"; sourceTree = "<group>"; };
 		CE22953D293E3E5000FCEE09 /* AuthorizedPersonalDocumentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizedPersonalDocumentCell.swift; sourceTree = "<group>"; };
 		CE22953E293E3E5000FCEE09 /* AuthorizedPersonalDocumentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthorizedPersonalDocumentCell.xib; sourceTree = "<group>"; };
+		CE3B712E296BF456003FF982 /* GenericBottomSheetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericBottomSheetVC.swift; sourceTree = "<group>"; };
 		CE3F9E96291FACDE00480493 /* SelectAttributesHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAttributesHeaderView.swift; sourceTree = "<group>"; };
 		CE3F9E97291FACDE00480493 /* SelectAttributesHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectAttributesHeaderView.xib; sourceTree = "<group>"; };
 		CE3F9E9A291FB3CE00480493 /* ChipCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipCell.swift; sourceTree = "<group>"; };
@@ -321,6 +323,7 @@
 				1B308A4E284244D000797F32 /* TableViews */,
 				1B4AE443283F708100FA6420 /* CustomViews */,
 				1B4AE408283E691000FA6420 /* Buttons */,
+				CE3B712D296BF444003FF982 /* BottomSheet */,
 				1B4AE40B283E692000FA6420 /* Utils */,
 				CED06CFB2928D01900C054E3 /* Assets.xcassets */,
 				1B527A2E282059A600FDAF5D /* CommonUI.h */,
@@ -396,6 +399,14 @@
 			);
 			name = Pods;
 			path = ../Pods;
+			sourceTree = "<group>";
+		};
+		CE3B712D296BF444003FF982 /* BottomSheet */ = {
+			isa = PBXGroup;
+			children = (
+				CE3B712E296BF456003FF982 /* GenericBottomSheetVC.swift */,
+			);
+			path = BottomSheet;
 			sourceTree = "<group>";
 		};
 		CE3F9E95291FACBF00480493 /* Profile */ = {
@@ -643,6 +654,7 @@
 				1B308A4B28414E2100797F32 /* TextFieldRightIcon.swift in Sources */,
 				1B39AA3F287436FD009377A7 /* OpportunityDetailsHeaderView.swift in Sources */,
 				CED06D012929060400C054E3 /* ProfileFooterView.swift in Sources */,
+				CE3B712F296BF456003FF982 /* GenericBottomSheetVC.swift in Sources */,
 				CE3F9E9F291FB50600480493 /* ChipButton.swift in Sources */,
 				1B442FF7288081ED002145BC /* OpportunitiesFooterView.swift in Sources */,
 				CEBA31212940E8B500602111 /* OnboardingCell.swift in Sources */,

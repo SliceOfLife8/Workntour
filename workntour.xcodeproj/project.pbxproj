@@ -158,7 +158,10 @@
 		CE3B711A2966E699003FF982 /* LinkExpiredVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3B71192966E699003FF982 /* LinkExpiredVC.swift */; };
 		CE3B711C2966E6B7003FF982 /* LinkExpiredVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE3B711B2966E6B7003FF982 /* LinkExpiredVC.xib */; };
 		CE3B711E2966E6C1003FF982 /* LinkExpiredViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3B711D2966E6C1003FF982 /* LinkExpiredViewModel.swift */; };
-		CE3B71212969D761003FF982 /* GoogleService-Info.Dev.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE3B71202969D761003FF982 /* GoogleService-Info.Dev.plist */; };
+		CE3B71232969E443003FF982 /* GoogleService-Info.Dev.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE3B71222969E443003FF982 /* GoogleService-Info.Dev.plist */; };
+		CE3B7128296BF38B003FF982 /* SetupNewCredentialsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3B7127296BF38A003FF982 /* SetupNewCredentialsVC.swift */; };
+		CE3B712A296BF392003FF982 /* SetupNewCredentialsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE3B7129296BF392003FF982 /* SetupNewCredentialsVC.xib */; };
+		CE3B712C296BF39D003FF982 /* SetupNewCredentialsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3B712B296BF39D003FF982 /* SetupNewCredentialsViewModel.swift */; };
 		CE3F9E8C291F9D0200480493 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE3F9E8B291F9D0200480493 /* Localizable.strings */; };
 		CE3F9E8F291FA88700480493 /* ProfileSelectAttributesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3F9E8E291FA88700480493 /* ProfileSelectAttributesVC.swift */; };
 		CE3F9E92291FA96100480493 /* ProfileSelectAttributesVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE3F9E91291FA96100480493 /* ProfileSelectAttributesVC.xib */; };
@@ -368,7 +371,10 @@
 		CE3B71192966E699003FF982 /* LinkExpiredVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkExpiredVC.swift; sourceTree = "<group>"; };
 		CE3B711B2966E6B7003FF982 /* LinkExpiredVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LinkExpiredVC.xib; sourceTree = "<group>"; };
 		CE3B711D2966E6C1003FF982 /* LinkExpiredViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkExpiredViewModel.swift; sourceTree = "<group>"; };
-		CE3B71202969D761003FF982 /* GoogleService-Info.Dev.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.Dev.plist"; sourceTree = "<group>"; };
+		CE3B71222969E443003FF982 /* GoogleService-Info.Dev.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.Dev.plist"; sourceTree = "<group>"; };
+		CE3B7127296BF38A003FF982 /* SetupNewCredentialsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupNewCredentialsVC.swift; sourceTree = "<group>"; };
+		CE3B7129296BF392003FF982 /* SetupNewCredentialsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetupNewCredentialsVC.xib; sourceTree = "<group>"; };
+		CE3B712B296BF39D003FF982 /* SetupNewCredentialsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupNewCredentialsViewModel.swift; sourceTree = "<group>"; };
 		CE3F9E8B291F9D0200480493 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		CE3F9E8E291FA88700480493 /* ProfileSelectAttributesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSelectAttributesVC.swift; sourceTree = "<group>"; };
 		CE3F9E91291FA96100480493 /* ProfileSelectAttributesVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileSelectAttributesVC.xib; sourceTree = "<group>"; };
@@ -760,7 +766,7 @@
 		1B9A3D15282826F6003E0C34 /* GoogleService */ = {
 			isa = PBXGroup;
 			children = (
-				CE3B71202969D761003FF982 /* GoogleService-Info.Dev.plist */,
+				CE3B71222969E443003FF982 /* GoogleService-Info.Dev.plist */,
 			);
 			path = GoogleService;
 			sourceTree = "<group>";
@@ -1096,6 +1102,16 @@
 			path = LinkExpired;
 			sourceTree = "<group>";
 		};
+		CE3B7126296BF35C003FF982 /* NewCredentials */ = {
+			isa = PBXGroup;
+			children = (
+				CE3B7127296BF38A003FF982 /* SetupNewCredentialsVC.swift */,
+				CE3B7129296BF392003FF982 /* SetupNewCredentialsVC.xib */,
+				CE3B712B296BF39D003FF982 /* SetupNewCredentialsViewModel.swift */,
+			);
+			path = NewCredentials;
+			sourceTree = "<group>";
+		};
 		CE3F9E8D291FA84F00480493 /* SelectAttributes */ = {
 			isa = PBXGroup;
 			children = (
@@ -1164,6 +1180,7 @@
 			isa = PBXGroup;
 			children = (
 				CE3B71182966E678003FF982 /* LinkExpired */,
+				CE3B7126296BF35C003FF982 /* NewCredentials */,
 				CED28EE52965C4D00080C7AA /* RequestLink */,
 			);
 			path = ForgotPassword;
@@ -1268,7 +1285,7 @@
 				1B4AE42B283F58FB00FA6420 /* Lato-HairlineItalic.ttf in Resources */,
 				CEAB0A3829253B5E0023A2C6 /* TravelerPersonalInfoVC.xib in Resources */,
 				1B4AE42C283F58FB00FA6420 /* Lato-Heavy.ttf in Resources */,
-				CE3B71212969D761003FF982 /* GoogleService-Info.Dev.plist in Resources */,
+				CE3B71232969E443003FF982 /* GoogleService-Info.Dev.plist in Resources */,
 				1B4AE42D283F58FB00FA6420 /* Lato-HeavyItalic.ttf in Resources */,
 				1B4AE42E283F58FB00FA6420 /* Lato-Italic.ttf in Resources */,
 				1B4AE42F283F58FB00FA6420 /* Lato-Light.ttf in Resources */,
@@ -1278,6 +1295,7 @@
 				1B4AE431283F58FB00FA6420 /* Lato-Medium.ttf in Resources */,
 				1B4AE432283F58FB00FA6420 /* Lato-MediumItalic.ttf in Resources */,
 				1B4AE433283F58FB00FA6420 /* Lato-Regular.ttf in Resources */,
+				CE3B712A296BF392003FF982 /* SetupNewCredentialsVC.xib in Resources */,
 				1B4AE434283F58FB00FA6420 /* Lato-Semibold.ttf in Resources */,
 				1B4AE435283F58FB00FA6420 /* Lato-SemiboldItalic.ttf in Resources */,
 				1B3C383828508B83000EEADF /* RegistrationHostVC.xib in Resources */,
@@ -1513,6 +1531,7 @@
 				CE229542293F207600FCEE09 /* IndividualUpdatedBody.swift in Sources */,
 				1B39AA5128749A7C009377A7 /* OpportunityEnums.swift in Sources */,
 				1BA2DEEF281E840900DB128D /* DeepLinkManager.swift in Sources */,
+				CE3B712C296BF39D003FF982 /* SetupNewCredentialsViewModel.swift in Sources */,
 				1B308A5528424FBE00797F32 /* RegistrationModel.swift in Sources */,
 				1BC190DE28620C7300585533 /* MapViewController.swift in Sources */,
 				1B3C382F28507823000EEADF /* EmailVerificationVC.swift in Sources */,
@@ -1544,6 +1563,7 @@
 				1BC190AB285C5C4900585533 /* HomeCoordinator.swift in Sources */,
 				CE8332CE2920EC2600F751FE /* ProfileExperienceVC.swift in Sources */,
 				1B442FF1287FE159002145BC /* HomeRouter.swift in Sources */,
+				CE3B7128296BF38B003FF982 /* SetupNewCredentialsVC.swift in Sources */,
 				1BC190A2285A0E8200585533 /* TravelerProfileVC.swift in Sources */,
 				1BC190F5286339DD00585533 /* IndividualHostProfileDto.swift in Sources */,
 				1B7753D4286B371C00D81526 /* CreateOpportunityVC+Extensions.swift in Sources */,
@@ -1696,7 +1716,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = workntour/workntour.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = J4RRFD24Q5;
 				ENABLE_BITCODE = NO;
@@ -1746,7 +1766,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = workntour/workntour.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = J4RRFD24Q5;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1858,7 +1878,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = workntour/workntour.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = J4RRFD24Q5;
 				ENABLE_BITCODE = NO;
@@ -1970,7 +1990,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = workntour/workntour.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = J4RRFD24Q5;
 				ENABLE_BITCODE = NO;
@@ -2077,7 +2097,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = workntour/workntour.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = J4RRFD24Q5;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2183,7 +2203,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = workntour/workntour.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = J4RRFD24Q5;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (

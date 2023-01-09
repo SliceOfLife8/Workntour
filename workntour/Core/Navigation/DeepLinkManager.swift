@@ -9,27 +9,27 @@ import Foundation
 import UIKit
 
 enum DeepLinkRoute {
-    case dashboard
+    case forgotPasswordVerification
 
     init?(url: URL) {
-        guard
-            let components = URLComponents(url: url, resolvingAgainstBaseURL: true),
-            components.host == "www.example.com",
-            let query = components.queryItems
-            else { return nil }
+        guard let components = URLComponents(url: url, resolvingAgainstBaseURL: true),
+              components.host?.oneOf(other: "workntour.com", "workntour.page.link") == true
+        else {
+            return nil
+        }
+
         switch components.path {
-        case "/blabla/dashboard": self = .dashboard
+        case "/verification": self = .forgotPasswordVerification
         default: return nil
         }
     }
 
     init?(shortcutItem: UIApplicationShortcutItem) {
         switch shortcutItem.type {
-        // add cases about shortcut items
+            // add cases about shortcut items
         default: return nil
         }
     }
-
 }
 
 class DeepLinkingUserInfo: NSObject {
@@ -48,6 +48,8 @@ protocol DeepLinkManagerDelegate: AnyObject {
 
 class DeepLinkManager {
 
+    static let shared = DeepLinkManager()
+
     var operationQueue = OperationQueue()
     weak var delegate: DeepLinkManagerDelegate?
 
@@ -58,11 +60,9 @@ class DeepLinkManager {
         }
     }
 
-    static let shared = DeepLinkManager()
-
     fileprivate init() {
         self.operationQueue.maxConcurrentOperationCount = 1
-        self.isSuspended = true
+        self.isSuspended = false
     }
 
     @discardableResult
@@ -87,5 +87,4 @@ class DeepLinkManager {
     func registerShortcutItem(shortcutItem: UIApplicationShortcutItem) -> Bool {
         return self.registerRoute(route: DeepLinkRoute(shortcutItem: shortcutItem))
     }
-
 }
