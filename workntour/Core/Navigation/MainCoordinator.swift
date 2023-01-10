@@ -7,6 +7,7 @@
 
 import UIKit
 import SharedKit
+import BottomSheet
 
 enum MainStep: Step {
     case registrationPoint
@@ -51,7 +52,7 @@ final class MainCoordinator: NavigationCoordinator {
         case .loginAsGuest:
             showMainFlow()
         case .appleLogin:
-            print("Apple login!")
+            setupCreds()
         case .googleLogin:
             print("Google login!")
         }
@@ -87,5 +88,20 @@ final class MainCoordinator: NavigationCoordinator {
         let tabCoordinator = TabBarCoordinator(parent: self, rootViewController)
         pushCoordinator(tabCoordinator, animated: false)
         navigator.setRootViewController(tabCoordinator.rootViewController, animated: false)
+    }
+
+    private func setupCreds() {
+        let setupCredsVC = SetupNewCredentialsVC()
+        setupCredsVC.viewModel = SetupNewCredentialsViewModel()
+        setupCredsVC.coordinator = parent
+
+        rootViewController.presentBottomSheet(
+            viewController: setupCredsVC,
+            configuration: BottomSheetConfiguration(
+                cornerRadius: 16,
+                pullBarConfiguration: .visible(.init(height: 20)),
+                shadowConfiguration: .init(backgroundColor: UIColor.black.withAlphaComponent(0.6))
+            )
+        )
     }
 }

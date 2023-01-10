@@ -70,7 +70,7 @@
 "insert_link" = "Insert your link";
 "insert_link_here" = "Insert your link here";
 
-// MARK: - Login, Registration, ForgotPassword & Onboarding
+// MARK: - Login, Registration & Onboarding
 "cancel" = "Cancel";
 "sign_up_as" = "Sign Up as a";
 "sign_up" = "Sign Up";
@@ -112,9 +112,28 @@
 "check_inbox" = "Check your Inbox!";
 "email_verification" = "Email verification";
 "email_verification_link" = "Click the link we sent to %@ to sign in.";
+
+// MARK: - ForgotPassword
 "forgot_password" = "FORGOT PASSWORD";
 "forgot_password_description" = "Provide your account's email  for which you want to reset your password";
 "registered_email" = "Enter your registered email";
 "invalid_registered_email" = "Invalid email. Please enter your registered email.";
 "request_password_link" = "Request reset password link";
 "forgot_password_successful_message" = "A message was sent to your email";
+"link_expired" = "LINK EXPIRED";
+"link_expired_description" = "Your link has expired, because you have not used it. Reset password link expires in every 24 hours and can be used only once. You can create a new one by clicking the button below.";
+"resend_link" = "Resend another link";
+"new_creds" = "NEW CREDENTIALS";
+"password_size_validation" = "Password must be at least 8 characters long.";
+"password_upper_case_validation" = "Password must contain at least one upper case.";
+"password_lower_case_validation" = "Password must contain one lower case letter.";
+"password_num_special_char_validation" = "Password must contain at least one number or special character.";
+"new_password" = "New Password";
+"new_password_placeholder" = "Enter your new password";
+"retype_password" = "Re-type Password";
+"retype_password_placeholder" = "Re-type your new password";
+"submit" = "Submit";
+"password_updated" = "PASSWORD UPDATED";
+"password_not_updated" = "Password not updated";
+"password_updated_description" = "Your password has been updated.";
+"password_not_updated_description" = "Something went wrong. Your password has not been updated!";

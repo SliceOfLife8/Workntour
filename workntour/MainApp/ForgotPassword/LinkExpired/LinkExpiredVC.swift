@@ -14,20 +14,20 @@ class LinkExpiredVC: BaseVC<LinkExpiredViewModel, AppCoordinator> {
 
     @IBOutlet weak var titleLabel: UILabel! {
         didSet {
-            titleLabel.text = "LINK EXPIRED"
+            titleLabel.text = "link_expired".localized()
         }
     }
 
     @IBOutlet weak var descriptionLabel: UILabel! {
         didSet {
-            descriptionLabel.text = "Your link has expired, because you have not used it. Reset password link expires in every 24 hours and can be used only once. You can create a new one by clicking the button below."
+            descriptionLabel.text = "link_expired_description".localized()
         }
     }
 
     @IBOutlet weak var resendLinkButton: PrimaryButton! {
         didSet {
             resendLinkButton.setTitle(
-                "Resend another link",
+                "resend_link".localized(),
                 for: .normal
             )
         }
