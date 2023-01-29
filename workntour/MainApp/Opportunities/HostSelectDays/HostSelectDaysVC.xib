@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Lato-Medium.ttf">
+            <string>Lato-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BaseVC" customModule="workntour" customModuleProvider="target">
+            <connections>
+                <outlet property="daysLengthLabel" destination="Sep-Ms-a3b" id="6at-T7-Bwe"/>
+                <outlet property="daysOffLengthLabel" destination="ktn-ef-owC" id="lcy-Ta-Yta"/>
+                <outlet property="daysOffTextField" destination="QsU-cf-R9c" id="JAT-3Q-56a"/>
+                <outlet property="daysOffsLabel" destination="ZCl-59-BMO" id="Fbl-xq-6id"/>
+                <outlet property="mainStackView" destination="uG8-32-PdR" id="3Pl-9I-Z0W"/>
+                <outlet property="stayAtLeastLabel" destination="1Pa-Gs-xTE" id="Sqf-UM-daN"/>
+                <outlet property="stayAtLeastTextField" destination="8aJ-0d-aJ1" id="xUc-I3-IPf"/>
+                <outlet property="stayNoMoreLabel" destination="OBT-ZX-q0U" id="9t5-ZZ-MI0"/>
+                <outlet property="stayNoMoreTextField" destination="rdZ-ns-hFt" id="tmf-jY-pU3"/>
+                <outlet property="travelersStayLabel" destination="cjY-QK-N1f" id="rKs-SH-MxU"/>
+                <outlet property="view" destination="2BA-iQ-oCF" id="TLm-Xr-lgs"/>
+                <outlet property="workingHoursLabel" destination="6I7-Jb-wwU" id="2Om-sv-x71"/>
+                <outlet property="workingHoursLengthLabel" destination="ogQ-n4-eLX" id="GDM-cs-4WT"/>
+                <outlet property="workingHoursTextField" destination="hpb-Z9-hiv" id="e9b-TW-cm0"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="2BA-iQ-oCF">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="aKp-YA-xBB">
+                    <rect key="frame" x="0.0" y="59" width="393" height="793"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sck-3r-xkx" userLabel="Content View">
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="793"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="uG8-32-PdR">
+                                    <rect key="frame" x="16" y="24" width="361" height="313.66666666666669"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What’s the ideal length of stay for your travelers?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cjY-QK-N1f">
+                                            <rect key="frame" x="0.0" y="0.0" width="301.33333333333331" height="17"/>
+                                            <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
+                                            <color key="textColor" red="0.26274509800000001" green="0.094117647060000004" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="fHQ-9t-6Ow">
+                                            <rect key="frame" x="0.0" y="25" width="112.33333333333333" height="22"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Max. 90 days)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sep-Ms-a3b" userLabel="days length">
+                                                    <rect key="frame" x="0.0" y="0.0" width="88.666666666666671" height="22"/>
+                                                    <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
+                                                    <color key="textColor" red="0.26274509800000001" green="0.094117647060000004" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xzv-vw-5hi" userLabel="days length info">
+                                                    <rect key="frame" x="92.666666666666671" y="0.0" width="19.666666666666671" height="22"/>
+                                                    <color key="tintColor" name="purple"/>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                    <state key="normal" image="info.circle" catalog="system"/>
+                                                    <connections>
+                                                        <action selector="lengthOfStayInfoButtonTapped:" destination="-1" eventType="touchUpInside" id="FaR-gB-Oio"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </stackView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stay for at least" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Pa-Gs-xTE">
+                                            <rect key="frame" x="0.0" y="55" width="95.333333333333329" height="17"/>
+                                            <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
+                                            <color key="textColor" red="0.26274509800000001" green="0.094117647060000004" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8aJ-0d-aJ1" userLabel="minimum num of days" customClass="GradientTextField" customModule="CommonUI">
+                                            <rect key="frame" x="0.0" y="80" width="361" height="18.666666666666671"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                            <connections>
+                                                <action selector="stayAtLeastTextFieldDidChange:" destination="-1" eventType="editingChanged" id="Y9M-Ml-bDm"/>
+                                            </connections>
+                                        </textField>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stay no more than" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OBT-ZX-q0U">
+                                            <rect key="frame" x="0.0" y="106.66666666666666" width="112.33333333333333" height="17"/>
+                                            <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
+                                            <color key="textColor" red="0.26274509800000001" green="0.094117647060000004" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rdZ-ns-hFt" userLabel="maximum num of days" customClass="GradientTextField" customModule="CommonUI">
+                                            <rect key="frame" x="0.0" y="131.66666666666666" width="361" height="18.666666666666657"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                            <connections>
+                                                <action selector="stayNoMoreTextField:" destination="-1" eventType="editingChanged" id="Jiz-Aw-kYL"/>
+                                            </connections>
+                                        </textField>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What are the total weekly working hours?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6I7-Jb-wwU">
+                                            <rect key="frame" x="0.0" y="158.33333333333334" width="257" height="17"/>
+                                            <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
+                                            <color key="textColor" red="0.26274509800000001" green="0.094117647060000004" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="5ps-WP-2cn">
+                                            <rect key="frame" x="0.0" y="183.33333333333331" width="139.66666666666666" height="22"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Max. 32hrs/week)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ogQ-n4-eLX" userLabel="hours/week">
+                                                    <rect key="frame" x="0.0" y="0.0" width="116" height="22"/>
+                                                    <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
+                                                    <color key="textColor" red="0.26274509800000001" green="0.094117647060000004" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Xp-Ex-aa9" userLabel="working hours info">
+                                                    <rect key="frame" x="120.00000000000001" y="0.0" width="19.666666666666671" height="22"/>
+                                                    <color key="tintColor" name="purple"/>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                    <state key="normal" image="info.circle" catalog="system"/>
+                                                    <connections>
+                                                        <action selector="workingHoursInfoButtonTapped:" destination="-1" eventType="touchUpInside" id="4pF-15-HcU"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </stackView>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hpb-Z9-hiv" userLabel="maximum hours per week" customClass="GradientTextField" customModule="CommonUI">
+                                            <rect key="frame" x="0.0" y="213.33333333333331" width="361" height="18.666666666666657"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                            <connections>
+                                                <action selector="workingHoursTextField:" destination="-1" eventType="editingChanged" id="2ve-mr-9YH"/>
+                                            </connections>
+                                        </textField>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How many days off (without helping) per week?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZCl-59-BMO">
+                                            <rect key="frame" x="0.0" y="240" width="291.66666666666669" height="17"/>
+                                            <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
+                                            <color key="textColor" red="0.26274509800000001" green="0.094117647060000004" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="BrO-8y-BiC">
+                                            <rect key="frame" x="0.0" y="265" width="164.33333333333334" height="22"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Max. 6 days off/week)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ktn-ef-owC" userLabel="hours/week">
+                                                    <rect key="frame" x="0.0" y="0.0" width="140.66666666666666" height="22"/>
+                                                    <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
+                                                    <color key="textColor" red="0.26274509800000001" green="0.094117647060000004" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="esU-XZ-K9Z" userLabel="days off info">
+                                                    <rect key="frame" x="144.66666666666666" y="0.0" width="19.666666666666657" height="22"/>
+                                                    <color key="tintColor" name="purple"/>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                    <state key="normal" image="info.circle" catalog="system"/>
+                                                    <connections>
+                                                        <action selector="daysOffInfoButtonTapped:" destination="-1" eventType="touchUpInside" id="oEi-JD-TJl"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </stackView>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QsU-cf-R9c" userLabel="days off per week" customClass="GradientTextField" customModule="CommonUI">
+                                            <rect key="frame" x="0.0" y="295" width="361" height="18.666666666666686"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="rdZ-ns-hFt" firstAttribute="width" secondItem="uG8-32-PdR" secondAttribute="width" id="9Bo-fk-CKs"/>
+                                        <constraint firstItem="QsU-cf-R9c" firstAttribute="width" secondItem="uG8-32-PdR" secondAttribute="width" id="F3R-42-ua6"/>
+                                        <constraint firstItem="hpb-Z9-hiv" firstAttribute="width" secondItem="uG8-32-PdR" secondAttribute="width" id="a0p-1w-B3N"/>
+                                        <constraint firstItem="8aJ-0d-aJ1" firstAttribute="width" secondItem="uG8-32-PdR" secondAttribute="width" id="vfa-wQ-ND0"/>
+                                    </constraints>
+                                </stackView>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="uG8-32-PdR" secondAttribute="bottom" constant="24" id="BfW-aH-9Q4"/>
+                                <constraint firstItem="uG8-32-PdR" firstAttribute="top" secondItem="sck-3r-xkx" secondAttribute="top" constant="24" id="C5U-a1-xZB"/>
+                                <constraint firstItem="uG8-32-PdR" firstAttribute="leading" secondItem="sck-3r-xkx" secondAttribute="leading" constant="16" id="UTL-sr-gQh"/>
+                                <constraint firstAttribute="trailing" secondItem="uG8-32-PdR" secondAttribute="trailing" constant="16" id="p7B-op-ifd"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="sck-3r-xkx" firstAttribute="width" secondItem="aKp-YA-xBB" secondAttribute="width" id="0Ty-vw-dZ7"/>
+                        <constraint firstAttribute="bottom" secondItem="sck-3r-xkx" secondAttribute="bottom" id="SBi-Os-dM8"/>
+                        <constraint firstItem="sck-3r-xkx" firstAttribute="height" secondItem="aKp-YA-xBB" secondAttribute="height" priority="250" id="ncE-Fn-sbO"/>
+                        <constraint firstAttribute="trailing" secondItem="sck-3r-xkx" secondAttribute="trailing" id="q09-8S-8fX"/>
+                        <constraint firstItem="sck-3r-xkx" firstAttribute="top" secondItem="aKp-YA-xBB" secondAttribute="top" id="qCg-dv-KG5"/>
+                        <constraint firstItem="sck-3r-xkx" firstAttribute="leading" secondItem="aKp-YA-xBB" secondAttribute="leading" id="vPe-cW-WVd"/>
+                    </constraints>
+                </scrollView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="HRZ-oi-FbR"/>
+            <color key="backgroundColor" name="primary"/>
+            <constraints>
+                <constraint firstItem="aKp-YA-xBB" firstAttribute="trailing" secondItem="HRZ-oi-FbR" secondAttribute="trailing" id="Pfo-Y2-kLc"/>
+                <constraint firstItem="aKp-YA-xBB" firstAttribute="leading" secondItem="HRZ-oi-FbR" secondAttribute="leading" id="cgG-KV-n1U"/>
+                <constraint firstItem="aKp-YA-xBB" firstAttribute="top" secondItem="HRZ-oi-FbR" secondAttribute="top" id="vti-2F-Shv"/>
+                <constraint firstAttribute="bottom" secondItem="aKp-YA-xBB" secondAttribute="bottom" id="wHB-ML-ApF"/>
+            </constraints>
+            <point key="canvasLocation" x="139" y="140"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="info.circle" catalog="system" width="128" height="123"/>
+        <namedColor name="primary">
+            <color red="0.98039215686274506" green="0.97254901960784312" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="purple">
+            <color red="0.49411764705882355" green="0.43529411764705883" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

@@ -5,9 +5,12 @@
 //  Created by Chris Petimezas on 5/1/23.
 //
 
-import Foundation
+import SharedKit
 
 class LinkExpiredViewModel: BaseViewModel {
+
+    // Outputs
+    @Published var linkWasSent: Bool?
 
     // MARK: - Properties
 
@@ -17,6 +20,11 @@ class LinkExpiredViewModel: BaseViewModel {
 
     required init(data: DataModel) {
         self.data = data
+    }
+
+    func requestResetPasswordLink(withEmail email: String) {
+        print("call api")
+        linkWasSent = true
     }
 }
 
@@ -43,7 +51,7 @@ extension LinkExpiredViewModel {
             case .registration:
                 self.description = "FIX ME"
             case .forgotPassword:
-                self.description = "Your link has expired, because you have not used it. Reset password link expires in every 24 hours and can be used only once. You can create a new one by clicking the button below."
+                self.description = "link_expired_description".localized()
             }
         }
     }

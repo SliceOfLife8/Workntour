@@ -49,7 +49,6 @@ class OpportunitesDetailsViewModel: BaseViewModel {
                     OpportunityDetailsModel(title: String(output.minDays), description: String(output.maxDays), showDays: true),
                     OpportunityDetailsModel(location: output.location),
                     OpportunityDetailsModel(title: "Languages required", description: output.languagesRequired.map { $0.value }.joined(separator: ", ")),
-                    OpportunityDetailsModel(title: "Languages spoken", description: output.languagesSpoken?.compactMap { $0.value }.joined(separator: ", ")),
                     OpportunityDetailsModel(title: "Learning Opportunities", description: output.learningOpportunities.map { $0.value }.joined(separator: ", ")),
                     OpportunityDetailsModel(title: output.dates.first?.start, description: output.dates.first?.end, dates: true)
                 ]

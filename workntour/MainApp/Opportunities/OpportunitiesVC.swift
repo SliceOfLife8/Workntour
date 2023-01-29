@@ -15,6 +15,7 @@ import SkeletonView
 class OpportunitiesVC: BaseVC<OpportunitiesViewModel, OpportunitiesCoordinator> {
 
     // MARK: - Outlets
+
     @IBOutlet weak var collectionView: UICollectionView!
 
     override func viewDidLoad() {
@@ -39,6 +40,12 @@ class OpportunitiesVC: BaseVC<OpportunitiesViewModel, OpportunitiesCoordinator> 
         navigationItem.rightBarButtonItems = [plusIcon]
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        navigationItem.title = ""
+    }
+
     override func bindViews() {
         super.bindViews()
 
@@ -51,7 +58,8 @@ class OpportunitiesVC: BaseVC<OpportunitiesViewModel, OpportunitiesCoordinator> 
     }
 
     @objc func createNewOpportunityAction() {
-        self.coordinator?.navigate(to: .createOpportunity)
+        let dataModel = CreateOpportunityViewModel.DataModel(mode: .create)
+        coordinator?.navigate(to: .createOpportunity(dataModel: dataModel))
     }
 
 }
@@ -90,9 +98,26 @@ extension OpportunitiesVC: UICollectionViewDelegateFlowLayout, UICollectionViewD
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let opportunityId = viewModel?.data?[safe: indexPath.row]?.opportunityId else {
+        guard let opportunity = viewModel?.data?[safe: indexPath.row] else {
             return
         }
-        self.coordinator?.navigate(to: .showDetailsView(id: opportunityId))
+        let opportunityDto = OpportunityDto(
+            memberId: "a1210e1a-5118-4abe-8ee3-6d5927865689",
+            category: .farm,
+            images: [],
+            imagesUrl: ["https://www.hackingwithswift.com/uploads/swift-evolution-7.jpg", "https://images.idgesg.net/images/article/2020/06/swiftui-icon-100850528-large.jpg?auto=webp&quality=85,70", "https://png.pngitem.com/pimgs/s/14-143099_transparent-java-png-ios-swift-logo-png-download.png"],
+            title: "Test title",
+            description: "Test description",
+            typeOfHelp: [.BABYSITTER, .COOKING],
+            location: OpportunityLocation(placemark: .init(name: "Καστοριά", country: "Ελλαδα", area: "Δυτικής Μακεδονίας", locality: "Καστοριά", postalCode: "12341"), latitude: 40.5179435, longitude: 21.2502361),
+            dates: [.init(start: "2023-04-01", end: "2023-04-30")], minDays: 7, maxDays: 30, workingHours: 32, daysOff: 0,
+            languagesRequired: [.BULGARIAN, .ENGLISH, .ITALIAN],
+            accommodation: .privateRoom,
+            meals: [.breakfast, .lunch],
+            learningOpportunities: [.ANIMAL_WELFARE, .CULTURE_EXCHANGE],
+            optionals: nil
+        )
+        let dataModel = CreateOpportunityViewModel.DataModel(mode: .edit(opportunityDto))
+        coordinator?.navigate(to: .createOpportunity(dataModel: dataModel))
     }
 }

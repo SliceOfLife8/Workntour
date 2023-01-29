@@ -13,7 +13,9 @@ enum OpportunitiesStep: Step {
     case state(_ default: DefaultStep)
     case showMap
     case closeMap
-    case createOpportunity
+    case createOpportunity(dataModel: CreateOpportunityViewModel.DataModel)
+    case selectWorkingDaysHours(dates: OpportunitySelectDates?)
+    case createOpportunityAddOptionals(_ optionals: OpportunityOptionals?)
     case showDetailsView(id: String)
     case openGalleryPicker
     case saveLocation(attribute: PlacemarkAttributes?, latitude: Double, longitude: Double)
@@ -62,17 +64,22 @@ final class OpportunitiesCoordinator: NavigationCoordinator {
         case .saveLocation(let attributes, let latitude, let longitude):
             let location = OpportunityLocation(placemark: attributes, latitude: latitude, longitude: longitude)
             let opportunityVC = rootViewController.topViewController as? CreateOpportunityVC
-            opportunityVC?.setupAddress(location: location)
+            opportunityVC?.viewModel?.location = location
             self.navigate(to: .closeMap)
-        case .createOpportunity:
-            createOpportunityScene()
+        case .createOpportunity(let model):
+            createOpportunityScene(dataModel: model)
+        case .createOpportunityAddOptionals(let optionals):
+            additionalOfferings(optionals)
+        case .selectWorkingDaysHours(let dates):
+            let model = HostSelectDaysViewModel.DataModel(dates: dates)
+            hostSelectDays(dataModel: model)
         case .openGalleryPicker:
             openPhotoPicker()
         case .openCalendar:
             openHorizonCalendar()
         case .saveDateRangeSelection(let start, let end):
             let previousVC = rootViewController.previousViewController as? CreateOpportunityVC
-            previousVC?.setupAvailableDates(from: start, to: end)
+            previousVC?.viewModel?.dates = [OpportunityDates(start: start, end: end)]
             navigator.popViewController(animated: true)
         case .state(.showAlert(let title, let subtitle)):
             AlertHelper.showDefaultAlert(rootViewController,
@@ -87,16 +94,38 @@ final class OpportunitiesCoordinator: NavigationCoordinator {
         }
     }
 
-    private func createOpportunityScene() {
+    // MARK: - Internal Methods
+
+    func setupDays(minDays: Int, maxDays: Int, workingHours: Int, daysOff: Int) {
+        let previousVC = rootViewController.previousViewController as? CreateOpportunityVC
+        previousVC?.viewModel?.workingDays = OpportunitySelectDates(
+            minDays: minDays,
+            maxDays: maxDays,
+            workingHours: workingHours,
+            daysOff: daysOff
+        )
+        navigator.popViewController(animated: true)
+    }
+
+    func addOpportunityExtraOfferings(optionals: OpportunityOptionals) {
+        let previousVC = rootViewController.previousViewController as? CreateOpportunityVC
+        previousVC?.viewModel?.additonalOfferings = optionals
+        navigator.popViewController(animated: true)
+    }
+
+    // MARK: - Private Methods
+
+    private func createOpportunityScene(dataModel: CreateOpportunityViewModel.DataModel) {
         let createOpportunityVC = CreateOpportunityVC()
-        createOpportunityVC.viewModel = CreateOpportunityViewModel()
+        createOpportunityVC.viewModel = CreateOpportunityViewModel(dataModel: dataModel)
         createOpportunityVC.coordinator = self
 
         navigator.push(createOpportunityVC, animated: true)
     }
 
     private func openPhotoPicker() {
-        var configuration = PHPickerConfiguration()
+        let photoLibrary = PHPhotoLibrary.shared()
+        var configuration = PHPickerConfiguration(photoLibrary: photoLibrary)
         configuration.filter = .images
         configuration.selectionLimit = 7
 
@@ -134,11 +163,25 @@ final class OpportunitiesCoordinator: NavigationCoordinator {
         navigator.popViewController(animated: true)
     }
 
+    private func hostSelectDays(dataModel: HostSelectDaysViewModel.DataModel) {
+        let selectDaysVC = HostSelectDaysVC()
+        selectDaysVC.viewModel = HostSelectDaysViewModel(dataModel: dataModel)
+        selectDaysVC.coordinator = self
+        navigator.push(selectDaysVC, animated: true)
+    }
+
+    private func additionalOfferings(_ optionals: OpportunityOptionals?) {
+        let additionalOfferingsVC = HostAdditionalOfferingsVC()
+        additionalOfferingsVC.viewModel = HostAdditionalOfferingsViewModel(dataModel: .init(optionals: optionals))
+        additionalOfferingsVC.coordinator = self
+        navigator.push(additionalOfferingsVC, animated: true)
+    }
 }
 
 extension OpportunitiesCoordinator: PHPickerViewControllerDelegate {
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         picker.dismiss(animated: true) // dismiss a picker
+        let opportunityVC = rootViewController.topViewController as? CreateOpportunityVC
 
         let imageItems = results
             .map { $0.itemProvider }
@@ -159,9 +202,7 @@ extension OpportunitiesCoordinator: PHPickerViewControllerDelegate {
         }
 
         dispatchGroup.notify(queue: .main) {
-            let opportunityVC = self.rootViewController.topViewController as? CreateOpportunityVC
-            opportunityVC?.viewModel?.images = images
-            opportunityVC?.viewModel?.updateProgressBar()
+            opportunityVC?.viewModel?.images.append(contentsOf: images)
         }
     }
 }

@@ -5,13 +5,15 @@
 //  Created by Chris Petimezas on 27/6/22.
 //
 
-import Foundation
 import UIKit
 import Combine
+import Kingfisher
 
 class CreateOpportunityViewModel: BaseViewModel {
     // Services
     private var service: OpportunityService
+    var NUM_OF_REQUIRED_FIELDS: Float = 11
+    var dataModel: DataModel
 
     /// Inputs
     var category: OpportunityCategory? {
@@ -30,27 +32,17 @@ class CreateOpportunityViewModel: BaseViewModel {
             updateProgressBar()
         }
     }
-    var location: OpportunityLocation? {
+    @Published var location: OpportunityLocation? {
         didSet {
             updateProgressBar()
         }
     }
-    var dates: [OpportunityDates] = [] {
+    @Published var dates: [OpportunityDates] = [] {
         didSet {
             updateProgressBar()
         }
     }
-    var minDays: Int = 0 {
-        didSet {
-            updateProgressBar()
-        }
-    }
-    var maxDays: Int = 0 {
-        didSet {
-            updateProgressBar()
-        }
-    }
-    var totalHours: Int = 0 {
+    @Published var workingDays: OpportunitySelectDates? {
         didSet {
             updateProgressBar()
         }
@@ -60,7 +52,6 @@ class CreateOpportunityViewModel: BaseViewModel {
             updateProgressBar()
         }
     }
-    var languagesSpoken: [Language] = []
     var accommodation: Accommodation? {
         didSet {
             updateProgressBar()
@@ -76,69 +67,113 @@ class CreateOpportunityViewModel: BaseViewModel {
             updateProgressBar()
         }
     }
-    @Published var images: [UIImage] = []
+    var additonalOfferings: OpportunityOptionals?
+    @Published var images: [UIImage] = [] {
+        didSet {
+            updateProgressBar()
+        }
+    }
 
     /// Outputs
     @Published var progress: Float = 0
     @Published var validData: Bool?
-    @Published var opportunityIsCreated: Bool = false
+    @Published var opportunityCreated: Bool = false
+    @Published var opportunityUpdated: Bool = false
+    @Published var opportunityDeleted: Bool = false
 
-    var opportunityModel: OpportunityDto?
+    @Published var opportunityModel: OpportunityDto?
 
-    init(service: OpportunityService = DataManager.shared) {
+    // MARK: - Constructors/Destructors
+
+    init(
+        dataModel: DataModel,
+        service: OpportunityService = DataManager.shared
+    ) {
         self.service = service
-
+        self.dataModel = dataModel
+        var imagesUrls: [URL] = []
+        if case .edit(let opportunityDto) = dataModel.mode {
+            self.opportunityModel = opportunityDto
+            self.category = opportunityDto.category
+            self.jobTitle = opportunityDto.title
+            self.jobDescription = opportunityDto.description
+            self.typeOfHelp = opportunityDto.typeOfHelp
+            imagesUrls = opportunityDto.imageUrls
+                .compactMap { URL(string: $0) }
+            self.location = opportunityDto.location
+            self.dates = opportunityDto.dates
+            self.workingDays = OpportunitySelectDates(opportunity: opportunityDto)
+            self.languagesRequired = opportunityDto.languagesRequired
+            self.accommodation = opportunityDto.accommodation
+            self.meals = opportunityDto.meals
+            self.learningOpportunities = opportunityDto.learningOpportunities
+            self.additonalOfferings = opportunityDto.optionals
+        }
         super.init()
+        defer { updateProgressBar() }
+        imagesUrls.forEach {
+            ImageDownloader.default.downloadImage(with: $0) { result in
+                switch result {
+                case .success(let imageResult):
+                    self.images.append(imageResult.image)
+                default: break
+                }
+            }
+        }
     }
 
     // swiftlint:disable cyclomatic_complexity
-    /// 13 Required fields in order to activate `Create` button
-    func updateProgressBar() {
+    /// 11 Required fields in order to activate `Create` button
+    private func updateProgressBar() {
         var percent: Float = 0
 
-        if category != nil { percent += 1/13 }
-        if !jobTitle.isEmpty { percent += 1/13 }
-        if images.count > 0 { percent += 1/13 }
-        if typeOfHelp.count > 0 { percent += 1/13 }
-        if location != nil { percent += 1/13 }
-        if dates.count > 0 { percent += 1/13 }
-        if minDays > 0 { percent += 1/13 }
-        if maxDays > 0 && maxDays >= minDays { percent += 1/13 }
-        if (1...32).contains(totalHours) { percent += 1/13 }
-        if languagesRequired.count > 0 { percent += 1/13 }
-        if accommodation != nil { percent += 1/13 }
-        if meals.count > 0 { percent += 1/13 }
-        if learningOpportunities.count > 0 { percent += 1/13 }
+        if category != nil { percent += 1/NUM_OF_REQUIRED_FIELDS }
+        if !jobTitle.isEmpty { percent += 1/NUM_OF_REQUIRED_FIELDS }
+        if images.count > 0 { percent += 1/NUM_OF_REQUIRED_FIELDS }
+        if typeOfHelp.count > 0 { percent += 1/NUM_OF_REQUIRED_FIELDS }
+        if location != nil { percent += 1/NUM_OF_REQUIRED_FIELDS }
+        if dates.count > 0 { percent += 1/NUM_OF_REQUIRED_FIELDS }
+        if workingDays != nil { percent += 1/NUM_OF_REQUIRED_FIELDS }
+        if languagesRequired.count > 0 { percent += 1/NUM_OF_REQUIRED_FIELDS }
+        if accommodation != nil { percent += 1/NUM_OF_REQUIRED_FIELDS }
+        if meals.count > 0 { percent += 1/NUM_OF_REQUIRED_FIELDS }
+        if learningOpportunities.count > 0 { percent += 1/NUM_OF_REQUIRED_FIELDS }
 
         progress = percent
     }
 
     /// We should validate all required data here. This func should be called when `Create button` is `enabled`.
     func validateData() {
-        guard let _category = category,
-              let _location = location,
-              let _accommodation = accommodation
+        guard let category,
+              let location,
+              let accommodation,
+              let workingDays
         else {
             validData = false
             return
         }
 
-        opportunityModel = OpportunityDto(memberId: UserDataManager.shared.memberId,
-                                          category: _category,
-                                          images: images.compactMap { $0.jpeg(.medium) },
-                                          title: jobTitle,
-                                          description: jobDescription,
-                                          typeOfHelp: typeOfHelp,
-                                          location: _location,
-                                          dates: dates,
-                                          minDays: minDays,
-                                          maxDays: maxDays,
-                                          workingHours: totalHours,
-                                          languagesRequired: languagesRequired,
-                                          languagesSpoken: languagesSpoken,
-                                          accommodation: _accommodation,
-                                          meals: meals,
-                                          learningOpportunities: learningOpportunities)
+        opportunityModel = OpportunityDto(
+            memberId: UserDataManager.shared.memberId,
+            category: category,
+            images: images.compactMap { $0.jpeg(.medium) },
+            imagesUrl: [],
+            title: jobTitle,
+            description: jobDescription,
+            typeOfHelp: typeOfHelp,
+            location: location,
+            dates: dates,
+            minDays: workingDays.minimumDays,
+            maxDays: workingDays.maximumDays,
+            workingHours: workingDays.maxWorkingHours,
+            daysOff: workingDays.daysOff,
+            languagesRequired: languagesRequired,
+            accommodation: accommodation,
+            meals: meals,
+            learningOpportunities: learningOpportunities,
+            optionals: additonalOfferings
+        )
+
         validData = true
     }
 
@@ -156,6 +191,47 @@ class CreateOpportunityViewModel: BaseViewModel {
                 .handleEvents(receiveCompletion: { _ in
                     self.loaderVisibility = false
                 })
-                    .assign(to: &$opportunityIsCreated)
+                    .assign(to: &$opportunityCreated)
+    }
+
+    func updateOpportunity() {
+        print("update opportunity!")
+    }
+
+    func deleteOpportunity() {
+        guard let id = opportunityModel?.opportunityId else { return }
+
+        loaderVisibility = true
+        service.deleteOpportunity(byId: id)
+            .subscribe(on: RunLoop.main)
+            .catch({ _ -> Just<Bool> in
+                return Just(false)
+            })
+                .handleEvents(receiveCompletion: { _ in
+                    self.loaderVisibility = false
+                })
+                    .assign(to: &$opportunityDeleted)
+    }
+}
+
+// MARK: - DataModel
+extension CreateOpportunityViewModel {
+
+    class DataModel {
+
+        enum Mode {
+            case create
+            case edit(OpportunityDto)
+        }
+
+        // MARK: - Properties
+
+        let mode: Mode
+
+        // MARK: - Constructors/Destructors
+
+        init(mode: Mode) {
+            self.mode = mode
+        }
     }
 }

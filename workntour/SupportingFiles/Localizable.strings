@@ -1,5 +1,6 @@
 // MARK: - Profile
 "save" = "Save";
+"update" = "Update";
 "delete" = "Delete";
 "interests" = "Interests";
 "ur_interests" = "Your Interests";
@@ -137,3 +138,35 @@
 "password_not_updated" = "Password not updated";
 "password_updated_description" = "Your password has been updated.";
 "password_not_updated_description" = "Something went wrong. Your password has not been updated!";
+
+// MARK: - Create Opportunity
+"navigation_item_add" = "Add";
+"create_opportunity_setup_days_title" = "Setup days";
+"create_opportunity_setup_days_subtitle" = "working days & hours per week";
+"minimum_num_of_days" = "Minimum number of days";
+"maximum_num_of_days" = "Maximum number of days";
+"maximum_hours" = "Maximum hours per week";
+"days_off" = "Days Off per week";
+"length_of_stay_info" = "We find that the sweet spot here is to ask your travelers to stay for at least 14 days but no more than 40 days.";
+"working_hours_info" = "Try to find a balance between work and travel. We recommend 18 hours per week for this position.";
+"days_off_info" = "We recommend at least 2 days off.";
+"languages_spoken" = "Languages spoken";
+"extra_offerings" = "Additional Offerings";
+"extra_offerings_info" = "By offering more to your travelers, your chances of receiving Workntour requests increases!";
+"experiences_offered" = "Experiences Offered";
+"experiences_offered_description" = "What will make you stand out from other hosts? The experiences that the traveler will gain alongside you and the adventures that will offer! So think of any activities that you will be able to offer to your travelers. ex. Horse riding at the beaches of Milos, or hiking at Mount Parnassus, or Acropolis tour.";
+"special_dietary" = "Special Dietary Requirement";
+"couples_accepted" = "Couples/pairs accepted for the position";
+"free_wifi" = "Free Wi-Fi Available";
+"smoking_allowed" = "Smoking Allowed";
+"pets_allowed" = "Pets Allowed";
+"category_placeholder" = "Select your category";
+"type_of_help_placeholder" = "Select your preferences for a perfect traveler";
+"languages_required_placeholder" = "Add required languages needed";
+"accomodations_placeholder" = "Select accommodation type";
+"learning_opportunities_placeholder" = "Select learning opportunities";
+"create_opportunity_images_info" = "The images you upload should be in high resolution. Like that your travelers will be willing to approach you! It is important to include photos of your property, the accommodation that you will be providing to travelers and anything else that will make your opportunity attractive to travelers. Please do not include pictures that show the name of your Business or Property, as they will be removed.";
+"create_opportunity_images_info_bold" = "Please do not include pictures that show the name of your Business or Property, as they will be removed.";
+"create_opportunity_popup_info" = "Please fill in all %@ required fields in order to activate Create button";
+"create_opportunity_title" = "New Opportunity";
+"create" = "Create";

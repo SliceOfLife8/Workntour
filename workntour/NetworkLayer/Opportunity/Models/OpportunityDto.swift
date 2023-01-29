@@ -21,17 +21,13 @@ struct OpportunityDto: Hashable, Codable {
     let minDays: Int
     let maxDays: Int
     let workingHours: Int
-    var daysOff: Int?
+    var daysOff: Int
     let languagesRequired: [Language]
-    let languagesSpoken: [Language]?
     let accommodation: Accommodation
     let meals: [Meal]
     var additionalOfferings: [String]?
     let learningOpportunities: [LearningOpportunities]
-    var adventuresOffered: String?
-    var wifi: Bool?
-    var smoking: Bool?
-    var pets: Bool?
+    let optionals: OpportunityOptionals?
 
     enum CodingKeys: String, CodingKey {
         case memberId, opportunityId
@@ -45,23 +41,38 @@ struct OpportunityDto: Hashable, Codable {
         case minDays = "minimumDays"
         case maxDays = "maximumDays"
         case workingHours = "totalWorkingHours"
-        case daysOff, languagesRequired, languagesSpoken
+        case daysOff, languagesRequired
         case accommodation = "accommodationProvided"
         case meals, additionalOfferings, learningOpportunities
-        case adventuresOffered, wifi
-        case smoking = "smokingAllowed"
-        case pets = "petsAllowed"
+        case optionals
     }
 
-    init(memberId: String?, opportunityId: String? = nil, category: OpportunityCategory, images: [Data], title: String, description: String?, typeOfHelp: [TypeOfHelp],
-         location: OpportunityLocation, dates: [OpportunityDates], minDays: Int, maxDays: Int, workingHours: Int,
-         languagesRequired: [Language], languagesSpoken: [Language]?, accommodation: Accommodation, meals: [Meal],
-         learningOpportunities: [LearningOpportunities]) {
+    init(
+        memberId: String?,
+        opportunityId: String? = nil,
+        category: OpportunityCategory,
+        images: [Data],
+        imagesUrl: [String],
+        title: String,
+        description: String?,
+        typeOfHelp: [TypeOfHelp],
+        location: OpportunityLocation,
+        dates: [OpportunityDates],
+        minDays: Int,
+        maxDays: Int,
+        workingHours: Int,
+        daysOff: Int,
+        languagesRequired: [Language],
+        accommodation: Accommodation,
+        meals: [Meal],
+        learningOpportunities: [LearningOpportunities],
+        optionals: OpportunityOptionals?
+    ) {
         self.memberId = memberId
         self.opportunityId = opportunityId
         self.category = category
-        self.images = images
-        self.imageUrls = []
+        self.images = []
+        self.imageUrls = imagesUrl
         self.title = title
         self.description = description
         self.typeOfHelp = typeOfHelp
@@ -70,11 +81,12 @@ struct OpportunityDto: Hashable, Codable {
         self.minDays = minDays
         self.maxDays = maxDays
         self.workingHours = workingHours
+        self.daysOff = daysOff
         self.languagesRequired = languagesRequired
-        self.languagesSpoken = languagesSpoken
         self.accommodation = accommodation
         self.meals = meals
         self.learningOpportunities = learningOpportunities
+        self.optionals = optionals
     }
 }
 

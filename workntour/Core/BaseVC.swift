@@ -38,8 +38,8 @@ class BaseVC<VM: BaseViewModel, C: Coordinator>: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        bindViews()
         setupUI()
+        bindViews()
         setupTexts()
         trackScreen()
     }

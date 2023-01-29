@@ -7,6 +7,7 @@
 
 import UIKit
 import CommonUI
+import SharedKit
 
 class LinkExpiredVC: BaseVC<LinkExpiredViewModel, AppCoordinator> {
 
@@ -50,6 +51,37 @@ class LinkExpiredVC: BaseVC<LinkExpiredViewModel, AppCoordinator> {
         estimateHeight()
     }
 
+    override func bindViews() {
+        super.bindViews()
+        let mainCoordinator = coordinator?.childCoordinators.first as? MainCoordinator
+
+        viewModel?.$linkWasSent
+            .compactMap { $0 }
+            .sink(receiveValue: { [weak self] status in
+                self?.dismiss(
+                    animated: true,
+                    completion: {
+                        if status {
+                            mainCoordinator?.navigate(
+                                to: .showGenericAlert(
+                                    title: "",
+                                    subtitle: "forgot_password_successful_message".localized()
+                                )
+                            )
+                        }
+                        else {
+                            mainCoordinator?.navigate(
+                                to: .showGenericAlert(
+                                    title: "Error message",
+                                    subtitle: "Something went wrong!"
+                                )
+                            )
+                        }
+                    })
+            })
+            .store(in: &storage)
+    }
+
     // MARK: - Private Methods
 
     private func estimateHeight() {
@@ -62,11 +94,31 @@ class LinkExpiredVC: BaseVC<LinkExpiredViewModel, AppCoordinator> {
         }
     }
 
-
     // MARK: - Actions
 
     @IBAction func resendLinkButtonTapped(_ sender: Any) {
-        print("okei")
+        if let storedEmail = LocalStorageManager.shared.retrieve(
+            forKey: .emailForgotPassword,
+            type: String.self
+        ) {
+            viewModel?.requestResetPasswordLink(withEmail: storedEmail)
+        }
+        else {
+            self.dismiss(
+                animated: true,
+                completion: { [weak self] in
+                    // Show ForgotPasswordRequestLink screen.
+                    let mainCoordinator = self?.coordinator?.childCoordinators.first as? MainCoordinator
+                    if let loginCoordinator = mainCoordinator?.childCoordinators
+                        .compactMap({ $0 as? LoginCoordinator }).first {
+                        loginCoordinator.navigate(to: .forgotPassword)
+                    }
+                    else {
+                        mainCoordinator?.navigate(to: .login)
+                        (mainCoordinator?.childCoordinators.last as? LoginCoordinator)?.navigate(to: .forgotPassword)
+                    }
+                })
+        }
     }
 
     @IBAction func cancelButtonTapped(_ sender: Any) {

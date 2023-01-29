@@ -131,7 +131,7 @@ public class GradientTextField: UITextFieldPadding {
         case .password, .verifyPassword:
             self.isSecureTextEntry = true
             self.rightIcon = .hidePassword
-        case .phone, .vatNumber:
+        case .phone, .vatNumber, .num:
             self.keyboardType = .numberPad
         case .nationality, .sex, .opportunityCategory, .typeOfHelp, .languagesRequired, .languagesSpoken, .accommodation, .learningOpportunities, .travelerType, .noEditable:
             self.isEditable = false

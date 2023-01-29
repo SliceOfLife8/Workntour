@@ -44,6 +44,7 @@
 		1B9A3D87282B91CE003E0C34 /* AssetColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9A3D86282B91CE003E0C34 /* AssetColor.swift */; };
 		1B9A3DCD282D737E003E0C34 /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9A3DCC282D737E003E0C34 /* Step.swift */; };
 		CE01BD3229350B8B00F87439 /* Data+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE01BD3129350B8B00F87439 /* Data+Extensions.swift */; };
+		CE4557DE297D4042003EA00C /* UINavigationItem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4557DD297D4042003EA00C /* UINavigationItem+Extensions.swift */; };
 		CE8332D92921015800F751FE /* TextFieldsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8332D82921015800F751FE /* TextFieldsHelper.swift */; };
 /* End PBXBuildFile section */
 
@@ -96,6 +97,7 @@
 		1B9A3D86282B91CE003E0C34 /* AssetColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetColor.swift; sourceTree = "<group>"; };
 		1B9A3DCC282D737E003E0C34 /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
 		CE01BD3129350B8B00F87439 /* Data+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extensions.swift"; sourceTree = "<group>"; };
+		CE4557DD297D4042003EA00C /* UINavigationItem+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationItem+Extensions.swift"; sourceTree = "<group>"; };
 		CE8332D82921015800F751FE /* TextFieldsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldsHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -189,6 +191,7 @@
 				1B44302528859793002145BC /* Extension+CaseIterable.swift */,
 				1B6A8C99289589E0003A1540 /* Double+Extensions.swift */,
 				CE01BD3129350B8B00F87439 /* Data+Extensions.swift */,
+				CE4557DD297D4042003EA00C /* UINavigationItem+Extensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -380,6 +383,7 @@
 				1B527A3F2820F4E400FDAF5D /* Navigator.swift in Sources */,
 				1B4AE43E283F621500FA6420 /* UIFont+Extensions.swift in Sources */,
 				1B4AE4492840A68B00FA6420 /* UIImage+Extensions.swift in Sources */,
+				CE4557DE297D4042003EA00C /* UINavigationItem+Extensions.swift in Sources */,
 				1B9A3DCD282D737E003E0C34 /* Step.swift in Sources */,
 				1B9A3D74282A84FE003E0C34 /* ControlSubscription.swift in Sources */,
 				1B3C384C28526691000EEADF /* UIButton+Extensions.swift in Sources */,

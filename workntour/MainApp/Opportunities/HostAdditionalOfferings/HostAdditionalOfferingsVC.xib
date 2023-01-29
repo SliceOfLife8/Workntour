@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Lato-Medium.ttf">
+            <string>Lato-Medium</string>
+        </array>
+        <array key="Lato-Regular.ttf">
+            <string>Lato-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BaseVC" customModule="workntour" customModuleProvider="target">
+            <connections>
+                <outlet property="couplesAcceptedLabel" destination="1oB-z5-TBe" id="Et6-Lf-LtI"/>
+                <outlet property="couplesAcceptedSegmentedControl" destination="6nv-8b-n2c" id="cxx-Xx-0pI"/>
+                <outlet property="dietaryLabel" destination="TfK-6h-FJa" id="t7f-ei-LjT"/>
+                <outlet property="dietarySegmentedControl" destination="FEY-Bt-aWU" id="10G-iX-SU7"/>
+                <outlet property="experienceTextView" destination="X4f-wj-FU1" id="yqf-hT-dSi"/>
+                <outlet property="experiencesLabel" destination="gKn-s7-JW0" id="rxA-70-RTi"/>
+                <outlet property="freeWifiLabel" destination="Bba-ph-g6N" id="ARM-nZ-izY"/>
+                <outlet property="freeWifiSegmentedControl" destination="GzP-RL-5oo" id="1fe-Ly-c3x"/>
+                <outlet property="languagesCollectionView" destination="cd7-F0-ATs" id="y7o-K1-YLY"/>
+                <outlet property="languagesLabel" destination="2cZ-iv-PDa" id="DlU-Cd-Lwm"/>
+                <outlet property="offeringsCollectionView" destination="F3c-F5-fCH" id="CYO-4Z-gfl"/>
+                <outlet property="offeringsLabel" destination="2GC-fB-gNT" id="rJt-Fx-hU8"/>
+                <outlet property="petsAllowedLabel" destination="HkY-PA-fhz" id="mp8-0Y-pEI"/>
+                <outlet property="petsAllowedSegmentedControl" destination="qIX-UP-6Dk" id="Ufq-qF-BLu"/>
+                <outlet property="scrollView" destination="mvh-CH-RX9" id="7tU-nw-Q56"/>
+                <outlet property="smokingAllowedLabel" destination="z2u-o1-dma" id="LV4-yW-lVX"/>
+                <outlet property="smokingAllowedSegmentedControl" destination="cYz-wc-ydE" id="8p3-3K-oSJ"/>
+                <outlet property="view" destination="6Fj-E6-8Rc" id="jVO-sD-81i"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="6Fj-E6-8Rc">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="mvh-CH-RX9">
+                    <rect key="frame" x="0.0" y="59" width="393" height="793"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kEX-GS-SsO" userLabel="Content View">
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="804"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Bp8-sa-caG">
+                                    <rect key="frame" x="16" y="24" width="361" height="756"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Languages spoken" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2cZ-iv-PDa">
+                                            <rect key="frame" x="0.0" y="0.0" width="112.66666666666667" height="17"/>
+                                            <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
+                                            <color key="textColor" red="0.26274509800000001" green="0.094117647060000004" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="cd7-F0-ATs" userLabel="languages" customClass="DynamicHeightCollectionView" customModule="CommonUI">
+                                            <rect key="frame" x="0.0" y="33" width="361" height="50"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" priority="250" constant="10" id="Qzp-sb-SvA"/>
+                                            </constraints>
+                                            <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Xgm-iJ-gqX">
+                                                <size key="itemSize" width="128" height="128"/>
+                                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                            </collectionViewFlowLayout>
+                                        </collectionView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="opt-lv-MdQ">
+                                            <rect key="frame" x="0.0" y="99" width="148.33333333333334" height="22"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Additional Offerings" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2GC-fB-gNT" userLabel="offerings">
+                                                    <rect key="frame" x="0.0" y="0.0" width="124.66666666666667" height="22"/>
+                                                    <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
+                                                    <color key="textColor" red="0.26274509800000001" green="0.094117647060000004" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hq6-p8-l1s" userLabel="offerings info">
+                                                    <rect key="frame" x="128.66666666666666" y="0.0" width="19.666666666666657" height="22"/>
+                                                    <color key="tintColor" name="purple"/>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                    <state key="normal" image="info.circle" catalog="system"/>
+                                                    <connections>
+                                                        <action selector="offeringsInfoButtonTapped:" destination="-1" eventType="touchUpInside" id="0Gv-BX-z1l"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </stackView>
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="F3c-F5-fCH" userLabel="offerings" customClass="DynamicHeightCollectionView" customModule="CommonUI">
+                                            <rect key="frame" x="0.0" y="137" width="361" height="50"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" priority="250" constant="10" id="kIe-pe-Um3"/>
+                                            </constraints>
+                                            <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2Vq-gI-qlC">
+                                                <size key="itemSize" width="128" height="128"/>
+                                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                            </collectionViewFlowLayout>
+                                        </collectionView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Experiences Offered" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gKn-s7-JW0" userLabel="experiences">
+                                            <rect key="frame" x="0.0" y="203" width="126" height="17"/>
+                                            <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
+                                            <color key="textColor" red="0.26274509800000001" green="0.094117647060000004" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="interactive" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="X4f-wj-FU1">
+                                            <rect key="frame" x="0.0" y="236" width="361" height="120"/>
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="120" id="UU9-jo-y5j"/>
+                                            </constraints>
+                                            <color key="textColor" name="basicText"/>
+                                            <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Special Dietary Requirements" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TfK-6h-FJa" userLabel="dietary">
+                                            <rect key="frame" x="0.0" y="372" width="181" height="17"/>
+                                            <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
+                                            <color key="textColor" red="0.26274509800000001" green="0.094117647060000004" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="FEY-Bt-aWU">
+                                            <rect key="frame" x="0.0" y="405" width="195" height="32"/>
+                                            <segments>
+                                                <segment title="None"/>
+                                                <segment title="Vegan"/>
+                                                <segment title="Vegeterian"/>
+                                            </segments>
+                                            <color key="selectedSegmentTintColor" name="lavenderTint1"/>
+                                            <connections>
+                                                <action selector="dietaryHasChanged:" destination="-1" eventType="valueChanged" id="dnA-pG-keB"/>
+                                            </connections>
+                                        </segmentedControl>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Couples/pairs accepted for the position" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1oB-z5-TBe" userLabel="couples accepted">
+                                            <rect key="frame" x="0.0" y="452" width="242.66666666666666" height="17"/>
+                                            <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
+                                            <color key="textColor" red="0.26274509800000001" green="0.094117647060000004" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="6nv-8b-n2c">
+                                            <rect key="frame" x="0.0" y="485" width="77" height="32"/>
+                                            <segments>
+                                                <segment title="Yes"/>
+                                                <segment title="No"/>
+                                            </segments>
+                                            <color key="selectedSegmentTintColor" name="lavenderTint1"/>
+                                            <connections>
+                                                <action selector="couplesAcceptedHasChanged:" destination="-1" eventType="valueChanged" id="5GE-0L-gtB"/>
+                                            </connections>
+                                        </segmentedControl>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Free Wi-Fi Available " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bba-ph-g6N" userLabel="wifi">
+                                            <rect key="frame" x="0.0" y="532" width="127" height="17"/>
+                                            <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
+                                            <color key="textColor" red="0.26274509800000001" green="0.094117647060000004" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="GzP-RL-5oo">
+                                            <rect key="frame" x="0.0" y="565" width="77" height="32"/>
+                                            <segments>
+                                                <segment title="Yes"/>
+                                                <segment title="No"/>
+                                            </segments>
+                                            <color key="selectedSegmentTintColor" name="lavenderTint1"/>
+                                            <connections>
+                                                <action selector="wifiHasChanged:" destination="-1" eventType="valueChanged" id="2jH-hw-UwD"/>
+                                            </connections>
+                                        </segmentedControl>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Smoking Allowed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z2u-o1-dma" userLabel="smoking">
+                                            <rect key="frame" x="0.0" y="612" width="106.33333333333333" height="17"/>
+                                            <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
+                                            <color key="textColor" red="0.26274509800000001" green="0.094117647060000004" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="cYz-wc-ydE">
+                                            <rect key="frame" x="0.0" y="645" width="77" height="32"/>
+                                            <segments>
+                                                <segment title="Yes"/>
+                                                <segment title="No"/>
+                                            </segments>
+                                            <color key="selectedSegmentTintColor" name="lavenderTint1"/>
+                                            <connections>
+                                                <action selector="smokingHasChanged:" destination="-1" eventType="valueChanged" id="U0I-ci-lU5"/>
+                                            </connections>
+                                        </segmentedControl>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pets Allowed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HkY-PA-fhz" userLabel="pets">
+                                            <rect key="frame" x="0.0" y="692" width="80" height="17"/>
+                                            <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
+                                            <color key="textColor" red="0.26274509800000001" green="0.094117647060000004" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="qIX-UP-6Dk">
+                                            <rect key="frame" x="0.0" y="725" width="77" height="32"/>
+                                            <segments>
+                                                <segment title="Yes"/>
+                                                <segment title="No"/>
+                                            </segments>
+                                            <color key="selectedSegmentTintColor" name="lavenderTint1"/>
+                                            <connections>
+                                                <action selector="petsHasChanged:" destination="-1" eventType="valueChanged" id="D4k-CB-9K4"/>
+                                            </connections>
+                                        </segmentedControl>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="cd7-F0-ATs" firstAttribute="width" secondItem="Bp8-sa-caG" secondAttribute="width" id="4rX-gR-iiM"/>
+                                        <constraint firstItem="F3c-F5-fCH" firstAttribute="width" secondItem="Bp8-sa-caG" secondAttribute="width" id="hDa-Tb-BmY"/>
+                                        <constraint firstItem="X4f-wj-FU1" firstAttribute="width" secondItem="Bp8-sa-caG" secondAttribute="width" id="iwT-Lt-bw1"/>
+                                    </constraints>
+                                </stackView>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="Bp8-sa-caG" secondAttribute="trailing" constant="16" id="2SL-av-X6d"/>
+                                <constraint firstItem="Bp8-sa-caG" firstAttribute="leading" secondItem="kEX-GS-SsO" secondAttribute="leading" constant="16" id="IFE-h1-OP1"/>
+                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Bp8-sa-caG" secondAttribute="bottom" constant="24" id="QF4-5z-r2Q"/>
+                                <constraint firstItem="Bp8-sa-caG" firstAttribute="top" secondItem="kEX-GS-SsO" secondAttribute="top" constant="24" id="i0L-V8-jcg"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="kEX-GS-SsO" secondAttribute="bottom" id="3e1-sV-7Ds"/>
+                        <constraint firstItem="kEX-GS-SsO" firstAttribute="top" secondItem="mvh-CH-RX9" secondAttribute="top" id="Blz-CA-eRW"/>
+                        <constraint firstItem="kEX-GS-SsO" firstAttribute="leading" secondItem="mvh-CH-RX9" secondAttribute="leading" id="YoG-ZX-QKv"/>
+                        <constraint firstItem="kEX-GS-SsO" firstAttribute="width" secondItem="mvh-CH-RX9" secondAttribute="width" id="ieN-nK-mYS"/>
+                        <constraint firstItem="kEX-GS-SsO" firstAttribute="height" secondItem="mvh-CH-RX9" secondAttribute="height" priority="250" id="kk4-yX-AdR"/>
+                        <constraint firstAttribute="trailing" secondItem="kEX-GS-SsO" secondAttribute="trailing" id="wwO-VX-U65"/>
+                    </constraints>
+                </scrollView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="5A0-Zf-Rpu"/>
+            <color key="backgroundColor" name="primary"/>
+            <constraints>
+                <constraint firstItem="mvh-CH-RX9" firstAttribute="leading" secondItem="5A0-Zf-Rpu" secondAttribute="leading" id="9WT-7p-DoQ"/>
+                <constraint firstAttribute="bottom" secondItem="mvh-CH-RX9" secondAttribute="bottom" id="HNQ-dk-pqn"/>
+                <constraint firstItem="mvh-CH-RX9" firstAttribute="top" secondItem="5A0-Zf-Rpu" secondAttribute="top" id="frc-zq-2ZI"/>
+                <constraint firstItem="mvh-CH-RX9" firstAttribute="trailing" secondItem="5A0-Zf-Rpu" secondAttribute="trailing" id="gVU-yG-Xnn"/>
+            </constraints>
+            <point key="canvasLocation" x="139" y="140"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="info.circle" catalog="system" width="128" height="123"/>
+        <namedColor name="basicText">
+            <color red="0.16099999845027924" green="0.15700000524520874" blue="0.17599999904632568" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="lavenderTint1">
+            <color red="0.61176470588235299" green="0.5607843137254902" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="primary">
+            <color red="0.98039215686274506" green="0.97254901960784312" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="purple">
+            <color red="0.49411764705882355" green="0.43529411764705883" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

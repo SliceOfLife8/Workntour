@@ -77,27 +77,52 @@ extension AppCoordinator: DeepLinkManagerDelegate {
 
     func redirect(to route: DeepLinkRoute) {
         /// Remove all presented Coordinators!
-        let mainCoordinator = childCoordinators.first as? MainCoordinator
-        mainCoordinator?.rootViewController.topViewController?.presentedViewController?.dismiss(animated: false)
+        if let mainCoordinator = childCoordinators.first as? MainCoordinator {
+            mainCoordinator.rootViewController.topViewController?.presentedViewController?.dismiss(animated: false)
+        }
 
         switch route {
         case .forgotPasswordVerification:
+            rootViewController.showLoader()
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+                self.rootViewController.stopLoader()
+            })
             /*
              Create EmailVerificationUseCase to make network call
              & show either LinkExpiredVC nor SetupNewCredentialsVC
              */
-            let expiredVC = LinkExpiredVC()
-            expiredVC.viewModel = LinkExpiredViewModel(data: .init(mode: .forgotPassword))
-            expiredVC.coordinator = self
-
-            rootViewController.presentBottomSheet(
-                viewController: expiredVC,
-                configuration: BottomSheetConfiguration(
-                    cornerRadius: 16,
-                    pullBarConfiguration: .visible(.init(height: 20)),
-                    shadowConfiguration: .init(backgroundColor: UIColor.black.withAlphaComponent(0.6))
-                )
-            )
+            linkWasExpired()
         }
+    }
+
+    private func setupNewCredentials() {
+        let setupCredsVC = SetupNewCredentialsVC()
+        setupCredsVC.viewModel = SetupNewCredentialsViewModel()
+        setupCredsVC.coordinator = self
+
+        rootViewController.presentBottomSheet(
+            viewController: setupCredsVC,
+            configuration: BottomSheetConfiguration(
+                cornerRadius: 16,
+                pullBarConfiguration: .visible(.init(height: 20)),
+                shadowConfiguration: .init(backgroundColor: UIColor.black.withAlphaComponent(0.6))
+            )
+        )
+    }
+
+    private func linkWasExpired() {
+        let expiredVC = LinkExpiredVC()
+        expiredVC.viewModel = LinkExpiredViewModel(data: .init(mode: .forgotPassword))
+        expiredVC.coordinator = self
+
+        rootViewController.presentBottomSheet(
+            viewController: expiredVC,
+            configuration: BottomSheetConfiguration(
+                cornerRadius: 16,
+                pullBarConfiguration: .visible(.init(height: 20)),
+                shadowConfiguration: .init(backgroundColor: UIColor.black.withAlphaComponent(0.6))
+            )
+        )
     }
 }

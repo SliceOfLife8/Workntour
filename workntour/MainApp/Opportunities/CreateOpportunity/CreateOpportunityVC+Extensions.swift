@@ -18,19 +18,20 @@ extension CreateOpportunityVC: GradientTFDelegate, UITextViewDelegate {
         if textField == categoryTextField {
             categoriesDropDown.anchorView = categoryTextField
             categoriesDropDown.show()
-        } else if textField == typeOfHelpTextField {
+        }
+        else if textField == typeOfHelpTextField {
             typeOfHelpDropDown.anchorView = typeOfHelpTextField
             typeOfHelpDropDown.show()
-        } else if textField == languagesRequiredTextField {
+        }
+        else if textField == languagesRequiredTextField {
             languagesRequiredDropDown.anchorView = languagesRequiredTextField
             languagesRequiredDropDown.show()
-        } else if textField == languagesSpokenTextField {
-            languagesSpokenDropDown.anchorView = languagesSpokenTextField
-            languagesSpokenDropDown.show()
-        } else if textField == accommodationsTextField {
+        }
+        else if textField == accommodationsTextField {
             accommodationsDropDown.anchorView = accommodationsTextField
             accommodationsDropDown.show()
-        } else if textField == learningOpportunitesTextField {
+        }
+        else if textField == learningOpportunitesTextField {
             learningOpportunitiesDropDown.anchorView = learningOpportunitesTextField
             learningOpportunitiesDropDown.show()
         }
@@ -38,9 +39,10 @@ extension CreateOpportunityVC: GradientTFDelegate, UITextViewDelegate {
 
     func textViewDidChange(_ textView: UITextView) {
         if textView == jobTitleTextView {
-            self.viewModel?.jobTitle = textView.text.trimmingCharacters(in: .whitespacesAndNewlines)
-        } else if textView == jobDescriptionTextView {
-            self.viewModel?.jobDescription = textView.text.trimmingCharacters(in: .whitespacesAndNewlines)
+            viewModel?.jobTitle = textView.text.trimmingCharacters(in: .whitespacesAndNewlines)
+        }
+        else if textView == jobDescriptionTextView {
+            viewModel?.jobDescription = textView.text.trimmingCharacters(in: .whitespacesAndNewlines)
         }
     }
 }
@@ -60,7 +62,7 @@ extension CreateOpportunityVC: UICollectionViewDataSource, OpportunityImageCellD
             return
         }
 
-        self.viewModel?.images.remove(at: selectedRow)
+        viewModel?.images.remove(at: selectedRow)
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -108,31 +110,31 @@ extension CreateOpportunityVC: UICollectionViewDataSource, OpportunityImageCellD
 extension CreateOpportunityVC: CheckBoxDelegate {
     /// Update meals object
     func didChange(isChecked: Bool, box: Checkbox) {
-        guard let _viewModel = viewModel else { return }
+        guard let viewModel else { return }
 
         if box == breakfastBtn {
             if isChecked {
-                _viewModel.meals.append(.breakfast)
+                viewModel.meals.append(.breakfast)
             } else {
-                _viewModel.meals = _viewModel.meals.filter { $0 != .breakfast }
+                viewModel.meals = viewModel.meals.filter { $0 != .breakfast }
             }
         } else if box == lunchBtn {
             if isChecked {
-                _viewModel.meals.append(.lunch)
+                viewModel.meals.append(.lunch)
             } else {
-                _viewModel.meals = _viewModel.meals.filter { $0 != .lunch }
+                viewModel.meals = viewModel.meals.filter { $0 != .lunch }
             }
         } else if box == dinnerBtn {
             if isChecked {
-                _viewModel.meals.append(.dinner)
+                viewModel.meals.append(.dinner)
             } else {
-                _viewModel.meals = _viewModel.meals.filter { $0 != .dinner }
+                viewModel.meals = viewModel.meals.filter { $0 != .dinner }
             }
         } else if box == useSharedKitchenBtn {
             if isChecked {
-                _viewModel.meals.append(.useSharedKitchen)
+                viewModel.meals.append(.useSharedKitchen)
             } else {
-                _viewModel.meals = _viewModel.meals.filter { $0 != .useSharedKitchen }
+                viewModel.meals = viewModel.meals.filter { $0 != .useSharedKitchen }
             }
         }
     }
