@@ -40,6 +40,7 @@ class MapViewController: BaseVC<EmptyViewModel, OpportunitiesCoordinator> {
         panel.set(contentViewController: searchVC)
         panel.addPanel(toParent: self)
         panel.surfaceView.appearance.cornerRadius = 12
+        panel.surfaceView.appearance.backgroundColor = .white
         panel.delegate = self
         mapView.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(mapViewLongPress(_:))))
         easyTipView = EasyTipView(text: "You can either search for a location or select a new one by holding your finger to the map.", preferences: preferences)

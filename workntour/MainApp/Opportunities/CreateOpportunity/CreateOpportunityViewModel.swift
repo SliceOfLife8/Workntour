@@ -37,7 +37,7 @@ class CreateOpportunityViewModel: BaseViewModel {
             updateProgressBar()
         }
     }
-    @Published var dates: [OpportunityDates] = [] {
+    @Published var dates: [CalendarDate] = [] {
         didSet {
             updateProgressBar()
         }
@@ -101,7 +101,7 @@ class CreateOpportunityViewModel: BaseViewModel {
             imagesUrls = opportunityDto.imageUrls
                 .compactMap { URL(string: $0) }
             self.location = opportunityDto.location
-            self.dates = opportunityDto.dates
+            self.dates = opportunityDto.dates.compactMap { $0.convertToDates() }
             self.workingDays = OpportunitySelectDates(opportunity: opportunityDto)
             self.languagesRequired = opportunityDto.languagesRequired
             self.accommodation = opportunityDto.accommodation
@@ -162,7 +162,7 @@ class CreateOpportunityViewModel: BaseViewModel {
             description: jobDescription,
             typeOfHelp: typeOfHelp,
             location: location,
-            dates: dates,
+            dates: dates.compactMap { $0.convertToOpportunityDate() },
             minDays: workingDays.minimumDays,
             maxDays: workingDays.maximumDays,
             workingHours: workingDays.maxWorkingHours,

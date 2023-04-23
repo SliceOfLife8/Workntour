@@ -25,7 +25,6 @@ struct OpportunityDto: Hashable, Codable {
     let languagesRequired: [Language]
     let accommodation: Accommodation
     let meals: [Meal]
-    var additionalOfferings: [String]?
     let learningOpportunities: [LearningOpportunities]
     let optionals: OpportunityOptionals?
 
@@ -43,7 +42,7 @@ struct OpportunityDto: Hashable, Codable {
         case workingHours = "totalWorkingHours"
         case daysOff, languagesRequired
         case accommodation = "accommodationProvided"
-        case meals, additionalOfferings, learningOpportunities
+        case meals, learningOpportunities
         case optionals
     }
 
@@ -97,6 +96,16 @@ struct OpportunityDates: Hashable, Codable {
     enum CodingKeys: String, CodingKey {
         case start = "startDate"
         case end = "endDate"
+    }
+
+    func convertToDates() -> CalendarDate? {
+        guard let startDate = start?.asDate(),
+              let endDate = end?.asDate()
+        else {
+            return nil
+        }
+
+        return CalendarDate(start: startDate, end: endDate)
     }
 }
 

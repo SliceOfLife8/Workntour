@@ -92,7 +92,8 @@ final class HomeCoordinator: NavigationCoordinator {
     }
 
     private func openDatePicker() {
-        let selectDates = SelectDateRangesVC()
+        let model = SelectDateRangesVC.DataModel(preselectedDates: [])
+        let selectDates = SelectDateRangesVC(dataModel: model)
         selectDates.otherCoordinator = self
 
         if let filtersNav = rootViewController.presentedViewController as? UINavigationController {

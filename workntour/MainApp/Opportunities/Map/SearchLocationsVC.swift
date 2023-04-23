@@ -24,6 +24,7 @@ class SearchLocationsVC: UIViewController {
         let label = UILabel()
         label.text = "Where to?"
         label.font = UIFont.scriptFont(.bold, size: 22)
+        label.textColor = UIColor.appColor(.basicText)
         return label
     }()
 
@@ -40,7 +41,7 @@ class SearchLocationsVC: UIViewController {
         let table = UITableView()
         table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         table.tableFooterView = UIView()
-        table.backgroundColor = .secondarySystemBackground
+        table.backgroundColor = .clear
         return table
     }()
 
@@ -49,7 +50,7 @@ class SearchLocationsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .secondarySystemBackground
+        view.backgroundColor = .white
         view.makeCorner(withRadius: 8)
         setupUI()
         tableView.delegate = self

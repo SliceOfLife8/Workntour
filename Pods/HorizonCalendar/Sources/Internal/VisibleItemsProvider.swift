@@ -112,7 +112,7 @@ final class VisibleItemsProvider {
     offset: CGPoint)
     -> VisibleItemsDetails
   {
-    var visibleItems = Set<VisibleCalendarItem>()
+    var visibleItems = Set<VisibleItem>()
     var centermostLayoutItem = previouslyVisibleLayoutItem
     var firstVisibleDay: Day?
     var lastVisibleDay: Day?
@@ -120,13 +120,14 @@ final class VisibleItemsProvider {
     var lastVisibleMonth: Month?
     var framesForVisibleMonths = [Month: CGRect]()
     var framesForVisibleDays = [Day: CGRect]()
+    var framesForDaysForVisibleMonths = [Month: [Day: CGRect]]()
     var contentStartBoundary: CGFloat?
     var contentEndBoundary: CGFloat?
     var heightOfPinnedContent = CGFloat(0)
 
     // Default the initial capacity to 100, which is approximately enough room for 3 months worth of
     // calendar item models.
-    var calendarItemModelCache = Dictionary<VisibleCalendarItem.ItemType, InternalAnyCalendarItemModel>(
+    var calendarItemModelCache = Dictionary<VisibleItem.ItemType, InternalAnyCalendarItemModel>(
       minimumCapacity: previousCalendarItemModelCache?.capacity ?? 100)
 
     // `extendedBounds` is used to make sure that we're always laying out a continuous set of items,
@@ -183,6 +184,7 @@ final class VisibleItemsProvider {
           lastVisibleMonth: &lastVisibleMonth,
           framesForVisibleMonths: &framesForVisibleMonths,
           framesForVisibleDays: &framesForVisibleDays,
+          framesForDaysForVisibleMonths: &framesForDaysForVisibleMonths,
           contentStartBoundary: &contentStartBoundary,
           contentEndBoundary: &contentEndBoundary,
           visibleItems: &visibleItems,
@@ -210,6 +212,7 @@ final class VisibleItemsProvider {
           lastVisibleMonth: &lastVisibleMonth,
           framesForVisibleMonths: &framesForVisibleMonths,
           framesForVisibleDays: &framesForVisibleDays,
+          framesForDaysForVisibleMonths: &framesForDaysForVisibleMonths,
           contentStartBoundary: &contentStartBoundary,
           contentEndBoundary: &contentEndBoundary,
           visibleItems: &visibleItems,
@@ -249,6 +252,12 @@ final class VisibleItemsProvider {
       framesForVisibleDays: framesForVisibleDays,
       visibleItems: &visibleItems)
 
+    // Handle background items
+    handleMonthBackgroundItemsIfNeeded(
+      framesForVisibleMonths: framesForVisibleMonths,
+      framesForDaysForVisibleMonths: framesForDaysForVisibleMonths,
+      visibleItems: &visibleItems)
+
     previousCalendarItemModelCache = calendarItemModelCache
 
     return VisibleItemsDetails(
@@ -267,9 +276,9 @@ final class VisibleItemsProvider {
   func visibleItemsForAccessibilityElements(
     surroundingPreviouslyVisibleLayoutItem previouslyVisibleLayoutItem: LayoutItem,
     visibleMonthRange: MonthRange)
-    -> [VisibleCalendarItem]
+    -> [VisibleItem]
   {
-    var visibleItems = [VisibleCalendarItem]()
+    var visibleItems = [VisibleItem]()
 
     // Look behind / ahead by 1 month to ensure that users can navigate by heading, even if an
     // adjacent month header is off-screen.
@@ -297,7 +306,7 @@ final class VisibleItemsProvider {
         return
       }
 
-      let item = VisibleCalendarItem(
+      let item = VisibleItem(
         calendarItemModel: calendarItemModel,
         itemType: .layoutItemType(layoutItem.itemType),
         frame: layoutItem.frame)
@@ -342,7 +351,7 @@ final class VisibleItemsProvider {
   private let frameProvider: FrameProvider
 
   private var previousCalendarItemModelCache: [
-    VisibleCalendarItem.ItemType: InternalAnyCalendarItemModel
+    VisibleItem.ItemType: InternalAnyCalendarItemModel
   ]?
 
   private var calendar: Calendar {
@@ -458,7 +467,7 @@ final class VisibleItemsProvider {
     return LayoutItem(itemType: itemType, frame: frame)
   }
 
-  // Builds a `DayRangeLayoutContext` by getting frames for each day layout item in the prodvided
+  // Builds a `DayRangeLayoutContext` by getting frames for each day layout item in the provided
   // `dayRange`, using the provided `day` and `frame` as a starting point.
   private func dayRangeLayoutContext(
     for dayRange: DayRange,
@@ -569,7 +578,7 @@ final class VisibleItemsProvider {
   // Handles a layout item by creating a visible calendar item and adding it to the `visibleItems`
   // set if it's in `bounds`. This function also handles any visible items associated with the
   // provided `layoutItem`. For example, an individual `day` layout item may also have an associated
-  // selection layer visible item, or a day range visible item.
+  // day range or overlay visible item.
   private func handleLayoutItem(
     _ layoutItem: LayoutItem,
     inBounds bounds: CGRect,
@@ -582,10 +591,11 @@ final class VisibleItemsProvider {
     lastVisibleMonth: inout Month?,
     framesForVisibleMonths: inout [Month: CGRect],
     framesForVisibleDays: inout [Day: CGRect],
+    framesForDaysForVisibleMonths: inout [Month: [Day: CGRect]],
     contentStartBoundary: inout CGFloat?,
     contentEndBoundary: inout CGFloat?,
-    visibleItems: inout Set<VisibleCalendarItem>,
-    calendarItemModelCache: inout [VisibleCalendarItem.ItemType: InternalAnyCalendarItemModel],
+    visibleItems: inout Set<VisibleItem>,
+    calendarItemModelCache: inout [VisibleItem.ItemType: InternalAnyCalendarItemModel],
     originsForMonths: inout [Month: CGPoint],
     handledDayRanges: inout Set<DayRange>,
     shouldStop: inout Bool)
@@ -601,9 +611,12 @@ final class VisibleItemsProvider {
       monthFrame = frameProvider.frameOfMonth(month, withOrigin: monthOrigin)
     }
 
+    let layoutNonVisibleItemsInPartiallyVisibleMonth = content.monthsLayout.isHorizontal ||
+      content.monthBackgroundItemProvider != nil
+
     if
       layoutItem.frame.intersects(extendedBounds) ||
-      (content.monthsLayout.isHorizontal && monthFrame.intersects(extendedBounds))
+      (layoutNonVisibleItemsInPartiallyVisibleMonth && monthFrame.intersects(extendedBounds))
     {
       firstVisibleMonth = min(firstVisibleMonth ?? month, month)
       lastVisibleMonth = max(lastVisibleMonth ?? month, month)
@@ -615,6 +628,12 @@ final class VisibleItemsProvider {
         contentStartBoundary: &contentStartBoundary,
         contentEndBoundary: &contentEndBoundary)
 
+      if case .day(let day) = layoutItem.itemType {
+        var framesForDaysInMonth = framesForDaysForVisibleMonths[month] ?? [:]
+        framesForDaysInMonth[day] = layoutItem.frame
+        framesForDaysForVisibleMonths[month] = framesForDaysInMonth
+      }
+
       // Handle items that actually intersect the visible bounds.
       if layoutItem.frame.intersects(bounds) {
         // Store the month frame from above in the `framesForVisibleMonths` now that we've
@@ -623,7 +642,7 @@ final class VisibleItemsProvider {
           framesForVisibleMonths[month] = monthFrame
         }
 
-        let itemType = VisibleCalendarItem.ItemType.layoutItemType(layoutItem.itemType)
+        let itemType = VisibleItem.ItemType.layoutItemType(layoutItem.itemType)
 
         let calendarItemModel: InternalAnyCalendarItemModel
         switch layoutItem.itemType {
@@ -640,7 +659,7 @@ final class VisibleItemsProvider {
             !content.monthsLayout.pinDaysOfWeekToTop,
             let separatorOptions = content.daysOfTheWeekRowSeparatorOptions
           {
-            let separatorItemType = VisibleCalendarItem.ItemType.daysOfWeekRowSeparator(month)
+            let separatorItemType = VisibleItem.ItemType.daysOfWeekRowSeparator(month)
             let separatorCalendarItemModel = calendarItemModelCache.value(
               for: separatorItemType,
               missingValueProvider: {
@@ -658,7 +677,7 @@ final class VisibleItemsProvider {
               })
 
             visibleItems.insert(
-              VisibleCalendarItem(
+              VisibleItem(
                 calendarItemModel: separatorCalendarItemModel,
                 itemType: separatorItemType,
                 frame: frameProvider.frameOfDaysOfWeekRowSeparator(
@@ -682,6 +701,22 @@ final class VisibleItemsProvider {
               previousCalendarItemModelCache?[itemType] ?? content.dayItemProvider(day)
             })
 
+          // Handle the optional day background for this day
+          let dayBackgroundItemModel = calendarItemModelCache.optionalValue(
+            for: .dayBackground(day),
+            missingValueProvider: {
+              previousCalendarItemModelCache?[.dayBackground(day)]
+                ?? content.dayBackgroundItemProvider?(day)
+            })
+          if let dayBackgroundItemModel = dayBackgroundItemModel {
+            visibleItems.insert(
+              VisibleItem(
+                calendarItemModel: dayBackgroundItemModel,
+                itemType: .dayBackground(day),
+                frame: layoutItem.frame))
+          }
+
+          // Handle any day ranges that contain this day
           handleDayRangesContaining(
             day,
             withFrame: layoutItem.frame,
@@ -704,7 +739,7 @@ final class VisibleItemsProvider {
           }
         }
 
-        let visibleItem = VisibleCalendarItem(
+        let visibleItem = VisibleItem(
           calendarItemModel: calendarItemModel,
           itemType: .layoutItemType(layoutItem.itemType),
           frame: layoutItem.frame)
@@ -752,7 +787,7 @@ final class VisibleItemsProvider {
     _ day: Day,
     withFrame frame: CGRect,
     inBounds bounds: CGRect,
-    visibleItems: inout Set<VisibleCalendarItem>,
+    visibleItems: inout Set<VisibleItem>,
     handledDayRanges: inout Set<DayRange>,
     originsForMonths: inout [Month: CGPoint])
   {
@@ -771,7 +806,11 @@ final class VisibleItemsProvider {
         containing: day,
         withFrame: frame,
         originsForMonths: &originsForMonths)
-      handleDayRange(dayRange, with: layoutContext, inBounds: bounds, visibleItems: &visibleItems)
+      handleDayRange(
+        dayRange,
+        with: layoutContext,
+        inBounds: bounds,
+        visibleItems: &visibleItems)
       handledDayRanges.insert(dayRange)
     }
   }
@@ -782,7 +821,7 @@ final class VisibleItemsProvider {
     _ dayRange: DayRange,
     with dayRangeLayoutContext: DayRangeLayoutContext,
     inBounds bounds: CGRect,
-    visibleItems: inout Set<VisibleCalendarItem>)
+    visibleItems: inout Set<VisibleItem>)
   {
     guard
       let dayRangeItemProvider = content.dayRangesAndItemProvider?.dayRangeItemProvider
@@ -794,11 +833,12 @@ final class VisibleItemsProvider {
 
     let frame = dayRangeLayoutContext.frame
     let dayRangeLayoutContext = CalendarViewContent.DayRangeLayoutContext(
+      dayRange: dayRange,
       daysAndFrames: dayRangeLayoutContext.daysAndFrames,
       boundingUnionRectOfDayFrames: dayRangeLayoutContext.boundingUnionRectOfDayFrames)
 
     visibleItems.insert(
-      VisibleCalendarItem(
+      VisibleItem(
         calendarItemModel: dayRangeItemProvider(dayRangeLayoutContext),
         itemType: .dayRange(dayRange),
         frame: frame))
@@ -806,19 +846,19 @@ final class VisibleItemsProvider {
 
   private func handlePinnedDaysOfWeekIfNeeded(
     yContentOffset: CGFloat,
-    calendarItemModelCache: inout [VisibleCalendarItem.ItemType: InternalAnyCalendarItemModel],
-    visibleItems: inout Set<VisibleCalendarItem>,
+    calendarItemModelCache: inout [VisibleItem.ItemType: InternalAnyCalendarItemModel],
+    visibleItems: inout Set<VisibleItem>,
     heightOfPinnedContent: inout CGFloat)
   {
     var hasUpdatesHeightOfPinnedContent = false
     for dayOfWeekPosition in DayOfWeekPosition.allCases {
-      let itemType = VisibleCalendarItem.ItemType.pinnedDayOfWeek(dayOfWeekPosition)
+      let itemType = VisibleItem.ItemType.pinnedDayOfWeek(dayOfWeekPosition)
 
       let frame = frameProvider.frameOfPinnedDayOfWeek(
         at: dayOfWeekPosition,
         yContentOffset: yContentOffset)
       visibleItems.insert(
-        VisibleCalendarItem(
+        VisibleItem(
           calendarItemModel: calendarItemModelCache.value(
             for: itemType,
             missingValueProvider: {
@@ -838,7 +878,7 @@ final class VisibleItemsProvider {
     // The pinned days-of-the-week row needs a background view to prevent gaps between individual
     // items as content is scrolled underneath.
     visibleItems.insert(
-      VisibleCalendarItem(
+      VisibleItem(
         calendarItemModel: .legacy(
           CalendarItem<UIView, Int>(
             viewModel: 0,
@@ -854,7 +894,7 @@ final class VisibleItemsProvider {
 
     // Create a visible item for the separator view, if needed.
     if let separatorOptions = content.daysOfTheWeekRowSeparatorOptions {
-      let separatorItemType = VisibleCalendarItem.ItemType.pinnedDaysOfWeekRowSeparator
+      let separatorItemType = VisibleItem.ItemType.pinnedDaysOfWeekRowSeparator
       let separatorCalendarItemModel = calendarItemModelCache.value(
         for: separatorItemType,
         missingValueProvider: {
@@ -872,7 +912,7 @@ final class VisibleItemsProvider {
         })
 
       visibleItems.insert(
-        VisibleCalendarItem(
+        VisibleItem(
           calendarItemModel: separatorCalendarItemModel,
           itemType: separatorItemType,
           frame: frameProvider.frameOfPinnedDaysOfWeekRowSeparator(
@@ -885,7 +925,7 @@ final class VisibleItemsProvider {
     bounds: CGRect,
     framesForVisibleMonths: [Month: CGRect],
     framesForVisibleDays: [Day: CGRect],
-    visibleItems: inout Set<VisibleCalendarItem>)
+    visibleItems: inout Set<VisibleItem>)
   {
     guard
       let (overlaidItemLocations, itemModelProvider) = content.overlaidItemLocationsAndItemProvider
@@ -907,10 +947,84 @@ final class VisibleItemsProvider {
       }
 
       visibleItems.insert(
-        VisibleCalendarItem(
+        VisibleItem(
           calendarItemModel: itemModelProvider(layoutContext),
           itemType: .overlayItem(overlaidItemLocation),
           frame: bounds))
+    }
+  }
+
+  private func handleMonthBackgroundItemsIfNeeded(
+    framesForVisibleMonths: [Month: CGRect],
+    framesForDaysForVisibleMonths: [Month: [Day: CGRect]],
+    visibleItems: inout Set<VisibleItem>)
+  {
+    guard let monthBackgroundItemProvider = content.monthBackgroundItemProvider else { return }
+
+    for (month, monthFrame) in framesForVisibleMonths {
+      guard let framesForDays = framesForDaysForVisibleMonths[month] else { continue }
+
+      // We need to expand the frame of the month so that we have enough room at the edges to draw
+      // the background without getting clipped.
+      let extraWidth: CGFloat
+      let extraHeight: CGFloat
+      if content.monthsLayout.isHorizontal {
+        extraWidth = content.interMonthSpacing // half before leading edge, half after trailing edge
+        extraHeight = size.height - monthFrame.height
+      } else {
+        extraWidth = size.width - monthFrame.width
+        extraHeight = content.interMonthSpacing // half before top edge, half after bottom edge
+      }
+
+      let expandedMonthFrame = CGRect(
+        x: monthFrame.minX - (extraWidth / 2),
+        y: monthFrame.minY - (extraHeight / 2),
+        width: monthFrame.width + extraWidth,
+        height: monthFrame.height + extraHeight)
+      let frameToBoundsTransform = CGAffineTransform(
+        translationX: -expandedMonthFrame.minX,
+        y: -expandedMonthFrame.minY)
+
+      // Get the month header frame
+      let monthHeaderFrame = frameProvider.frameOfMonthHeader(inMonthWithOrigin: monthFrame.origin)
+      let finalMonthHeaderFrame = monthHeaderFrame
+        .applying(frameToBoundsTransform)
+        .alignedToPixels(forScreenWithScale: scale)
+
+      // Get the days-of-the-week item frames
+      var dayOfWeekPositionsAndFrames = [(dayOfWeekPosition: DayOfWeekPosition, frame: CGRect)]()
+      for dayOfWeekPosition in DayOfWeekPosition.allCases {
+        let dayOfWeekFrame = frameProvider.frameOfDayOfWeek(
+          at: dayOfWeekPosition,
+          inMonthWithOrigin: monthFrame.origin)
+        let finalDayOfWeekFrame = dayOfWeekFrame
+          .applying(frameToBoundsTransform)
+          .alignedToPixels(forScreenWithScale: scale)
+        dayOfWeekPositionsAndFrames.append((dayOfWeekPosition, finalDayOfWeekFrame))
+      }
+
+      // Get all frames for days in the month
+      var daysAndFrames = [(day: Day, frame: CGRect)]()
+      for (day, dayFrame) in framesForDays {
+        let finalDayFrame = dayFrame
+          .applying(frameToBoundsTransform)
+          .alignedToPixels(forScreenWithScale: scale)
+        daysAndFrames.append((day, finalDayFrame))
+      }
+
+      let monthLayoutContext = CalendarViewContent.MonthLayoutContext(
+        month: month,
+        monthHeaderFrame: finalMonthHeaderFrame,
+        dayOfWeekPositionsAndFrames: dayOfWeekPositionsAndFrames,
+        daysAndFrames: daysAndFrames.sorted(by: { $0.day < $1.day }),
+        bounds: CGRect(origin: .zero, size: expandedMonthFrame.size))
+      if let itemModel = monthBackgroundItemProvider(monthLayoutContext) {
+        let visibleItem = VisibleItem(
+          calendarItemModel: itemModel,
+          itemType: .monthBackground(month),
+          frame: expandedMonthFrame)
+        visibleItems.insert(visibleItem)
+      }
     }
   }
 
@@ -1022,7 +1136,7 @@ final class VisibleItemsProvider {
 // MARK: - VisibleItemsDetails
 
 struct VisibleItemsDetails {
-  let visibleItems: Set<VisibleCalendarItem>
+  let visibleItems: Set<VisibleItem>
   let centermostLayoutItem: LayoutItem
   let visibleDayRange: DayRange?
   let visibleMonthRange: MonthRange?

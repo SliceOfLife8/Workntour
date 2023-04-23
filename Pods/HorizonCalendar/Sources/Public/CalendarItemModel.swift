@@ -13,6 +13,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import SwiftUI
 import UIKit
 
 // MARK: - CalendarItemModel
@@ -30,14 +31,15 @@ public struct CalendarItemModel<ViewRepresentable>: AnyCalendarItemModel where
 
   // MARK: Lifecycle
 
-  /// Initializes a new `CalendarItemModel`.
+  /// Initializes a new `CalendarItemModel` that can be returned from the various item-provider `CalendarViewContent`
+  /// closures.
   ///
   /// - Parameters:
   ///   - invariantViewProperties: A type containing all of the immutable / view-model-independent properties necessary to
   ///   initialize a `ViewType`. Use this to configure appearance options that do not change based on the data in the `viewModel`.
   ///   For example, you might pass a type that contains properties to configure a `UILabel`'s `textAlignment`, `textColor`,
-  ///   and `font`, assuming none of those things change in response to `viewModel` updates.
-  ///   - viewModel: A type containing all of the variable data necessary to update an instance of`ViewType`. Use this to specify
+  ///   and `font`, assuming none of those values change in response to `viewModel` updates.
+  ///   - viewModel: A type containing all of the variable data necessary to update an instance of `ViewType`. Use this to specify
   ///   the dynamic, data-driven parts of the view.
   public init(
     invariantViewProperties: ViewRepresentable.InvariantViewProperties,
@@ -83,5 +85,48 @@ public struct CalendarItemModel<ViewRepresentable>: AnyCalendarItemModel where
 
   private let invariantViewProperties: ViewRepresentable.InvariantViewProperties
   private let viewModel: ViewRepresentable.ViewModel
+
+}
+
+// MARK: UIKit Convenience Factory
+
+extension CalendarItemViewRepresentable {
+
+  /// Creates a `CalendarItemModel` that can be returned from the various item-provider `CalendarViewContent` closures.
+  ///
+  /// - Parameters:
+  ///   - invariantViewProperties: A type containing all of the immutable / view-model-independent properties necessary to
+  ///   initialize a `ViewType`. Use this to configure appearance options that do not change based on the data in the `viewModel`.
+  ///   For example, you might pass a type that contains properties to configure a `UILabel`'s `textAlignment`, `textColor`,
+  ///   and `font`, assuming none of those values change in response to `viewModel` updates.
+  ///   - viewModel: A type containing all of the variable data necessary to update an instance of `ViewType`. Use this to specify
+  ///   the dynamic, data-driven parts of the view.
+  public static func calendarItemModel(
+    invariantViewProperties: InvariantViewProperties,
+    viewModel: ViewModel)
+    -> CalendarItemModel<Self>
+  {
+    CalendarItemModel<Self>(invariantViewProperties: invariantViewProperties, viewModel: viewModel)
+  }
+
+}
+
+// MARK: SwiftUI Convenience Factory
+
+@available(iOS 13.0, *)
+extension View {
+
+  /// Creates a `CalendarItemModel` from a SwiftUI `View`.
+  ///
+  /// This is equivalent to manually creating a
+  /// `CalendarItemModel<SwiftUIWrapperView<YourView>>`, where `YourView` is some SwiftUI `View`.
+  ///
+  /// - Warning: Using a SwiftUI view with the calendar will cause `SwiftUIView.HostingController`(s) to be added to the
+  /// closest view controller in the responder chain in relation to the `CalendarView`.
+  public var calendarItemModel: CalendarItemModel<SwiftUIWrapperView<Self>> {
+    CalendarItemModel<SwiftUIWrapperView<Self>>(
+      invariantViewProperties: .init(initialContent: self),
+      viewModel: .init(content: self))
+  }
 
 }

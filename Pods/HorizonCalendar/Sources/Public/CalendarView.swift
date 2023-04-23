@@ -47,10 +47,6 @@ public final class CalendarView: UIView {
 
     super.init(frame: .zero)
 
-    (layer as! RenderInContextObservingLayer).willRenderInContext = { [weak self] in
-      self?.sortScrollViewSublayersByZPositions()
-    }
-
     if #available(iOS 13.0, *) {
       backgroundColor = .systemBackground
     } else {
@@ -77,8 +73,6 @@ public final class CalendarView: UIView {
   }
 
   // MARK: Public
-
-  public override class var layerClass: AnyClass { RenderInContextObservingLayer.self }
 
   /// A closure (that is retained) that is invoked whenever a day is selected.
   public var daySelectionHandler: ((Day) -> Void)?
@@ -240,12 +234,19 @@ public final class CalendarView: UIView {
   /// - Parameters:
   ///   - content: The content to use when rendering `CalendarView`.
   public func setContent(_ content: CalendarViewContent) {
+    let oldContent = self.content
+
     if let contentBackgroundColor = content.backgroundColor {
       backgroundColor = contentBackgroundColor
     }
 
     _visibleItemsProvider = nil
-    scrollToItemContext = nil
+
+    // We only need to clear the `scrollToItemContext` if the monthsLayout changed or the visible
+    // day range changed.
+    if content.monthsLayout != oldContent.monthsLayout || content.dayRange != oldContent.dayRange {
+      scrollToItemContext = nil
+    }
 
     let isAnchorLayoutItemValid: Bool
     switch anchorLayoutItem?.itemType {
@@ -268,8 +269,6 @@ public final class CalendarView: UIView {
     } else {
       scrollView.decelerationRate = .normal
     }
-
-    let oldContent = self.content
 
     if
       oldContent.monthsLayout != content.monthsLayout ||
@@ -397,6 +396,7 @@ public final class CalendarView: UIView {
   // MARK: Private
 
   private let reuseManager = ItemViewReuseManager()
+  private let subviewInsertionIndexTracker = SubviewInsertionIndexTracker()
 
   private var content: CalendarViewContent
 
@@ -406,7 +406,7 @@ public final class CalendarView: UIView {
   private var anchorLayoutItem: LayoutItem?
   private var _visibleItemsProvider: VisibleItemsProvider?
   private var visibleItemsDetails: VisibleItemsDetails?
-  private var visibleViewsForVisibleItems = [VisibleCalendarItem: ItemView]()
+  private var visibleViewsForVisibleItems = [VisibleItem: ItemView]()
 
   private var previousBounds = CGRect.zero
   private var previousLayoutMargins = UIEdgeInsets.zero
@@ -416,6 +416,7 @@ public final class CalendarView: UIView {
 
   private var cachedAccessibilityElements: [Any]?
   private var focusedAccessibilityElement: Any?
+  private var itemTypeOfFocusedAccessibilityElement: VisibleItem.ItemType?
 
   private var scrollToItemContext: ScrollToItemContext? {
     willSet {
@@ -617,12 +618,10 @@ public final class CalendarView: UIView {
   }
 
   private func updateVisibleViews(
-    withVisibleItems visibleItems: Set<VisibleCalendarItem>,
-    previouslyVisibleItems: Set<VisibleCalendarItem>)
+    withVisibleItems visibleItems: Set<VisibleItem>,
+    previouslyVisibleItems: Set<VisibleItem>)
   {
-    var visibleItemsWithViewsToRemove = previouslyVisibleItems
-    let previousVisibleViewsForVisibleItems = visibleViewsForVisibleItems
-
+    var viewsToHideForVisibleItems = visibleViewsForVisibleItems
     visibleViewsForVisibleItems.removeAll(keepingCapacity: true)
 
     reuseManager.viewsForVisibleItems(
@@ -630,8 +629,12 @@ public final class CalendarView: UIView {
       viewHandler: { view, visibleItem, previousBackingVisibleItem, isReusedViewSameAsPreviousView in
         UIView.conditionallyPerformWithoutAnimation(when: !isReusedViewSameAsPreviousView) {
           if view.superview == nil {
-            scrollView.addSubview(view)
+            let insertionIndex = subviewInsertionIndexTracker.insertionIndex(
+              forSubviewWithCorrespondingItemType: visibleItem.itemType)
+            scrollView.insertSubview(view, at: insertionIndex)
           }
+
+          view.isHidden = false
 
           configureView(view, with: visibleItem)
         }
@@ -639,21 +642,29 @@ public final class CalendarView: UIView {
         visibleViewsForVisibleItems[visibleItem] = view
 
         if let previousBackingVisibleItem = previousBackingVisibleItem {
-          visibleItemsWithViewsToRemove.remove(previousBackingVisibleItem)
+          // Don't hide views that were reused
+          viewsToHideForVisibleItems.removeValue(forKey: previousBackingVisibleItem)
+        }
+
+        if
+          UIAccessibility.isVoiceOverRunning,
+          itemTypeOfFocusedAccessibilityElement == visibleItem.itemType
+        {
+          // Preserve the focused accessibility element even after views are reused
+          UIAccessibility.post(notification: .screenChanged, argument: view.contentView)
         }
       })
 
-    // Remove any old views that weren't reused
-    for visibleItemWithViewToRemove in visibleItemsWithViewsToRemove {
-      previousVisibleViewsForVisibleItems[visibleItemWithViewToRemove]?.removeFromSuperview()
+    // Hide any old views that weren't reused. This is faster than adding / removing subviews.
+    for (_, viewToHide) in viewsToHideForVisibleItems {
+      viewToHide.isHidden = true
     }
   }
 
-  private func configureView(_ view: ItemView, with visibleItem: VisibleCalendarItem) {
+  private func configureView(_ view: ItemView, with visibleItem: VisibleItem) {
     view.calendarItemModel = visibleItem.calendarItemModel
 
     view.frame = visibleItem.frame.alignedToPixels(forScreenWithScale: scale)
-    view.layer.zPosition = visibleItem.itemType.zPosition
 
     if traitCollection.layoutDirection == .rightToLeft {
       view.transform = .init(scaleX: -1, y: 1)
@@ -829,12 +840,6 @@ public final class CalendarView: UIView {
         })
       }
     }
-  }
-
-  /// This is needed to ensure that the `scrollView.sublayers` array is sorted according to each sublayer's `zPosition`.
-  /// This prevents z-index-related rendering issues when a `CalendarView` is being snapshotted via `CALayer.render(in:)`.
-  private func sortScrollViewSublayersByZPositions() {
-    scrollView.layer.sublayers?.sort { $0.zPosition < $1.zPosition }
   }
 
   private func maintainScrollPositionAfterBoundsOrMarginsChange() {
@@ -1060,8 +1065,8 @@ extension CalendarView {
         visibleMonthRange: visibleMonthRange)
 
       var elements = [Any]()
-      for visibleCalendarItem in visibleItems {
-        guard case .layoutItemType = visibleCalendarItem.itemType else {
+      for visibleItem in visibleItems {
+        guard case .layoutItemType = visibleItem.itemType else {
           assertionFailure("""
             Only visible calendar items with itemType == .layoutItemType should be considered for
             use as an accessibility element.
@@ -1069,12 +1074,12 @@ extension CalendarView {
           continue
         }
         let element: Any
-        if let visibleView = visibleViewsForVisibleItems[visibleCalendarItem] {
+        if let visibleView = visibleViewsForVisibleItems[visibleItem] {
           element = visibleView
         } else {
           guard
             let accessibilityElement = OffScreenCalendarItemAccessibilityElement(
-              correspondingItem: visibleCalendarItem,
+              correspondingItem: visibleItem,
               scrollViewContainer: scrollView)
           else
           {
@@ -1082,10 +1087,10 @@ extension CalendarView {
           }
 
           accessibilityElement.accessibilityFrameInContainerSpace = CGRect(
-            x: visibleCalendarItem.frame.minX - scrollView.contentOffset.x,
-            y: visibleCalendarItem.frame.minY - scrollView.contentOffset.y,
-            width: visibleCalendarItem.frame.width,
-            height: visibleCalendarItem.frame.height)
+            x: visibleItem.frame.minX - scrollView.contentOffset.x,
+            y: visibleItem.frame.minY - scrollView.contentOffset.y,
+            width: visibleItem.frame.width,
+            height: visibleItem.frame.height)
           element = accessibilityElement
         }
 
@@ -1159,21 +1164,26 @@ extension CalendarView {
     guard let element = notification.userInfo?[UIAccessibility.focusedElementUserInfoKey] else {
       return
     }
+    
     focusedAccessibilityElement = element
 
-    guard let offScreenElement = element as? OffScreenCalendarItemAccessibilityElement else {
-      return
+    if let contentView = element as? UIView, let itemView = contentView.superview as? ItemView {
+      itemTypeOfFocusedAccessibilityElement = visibleViewsForVisibleItems
+        .first { _, visibleView in itemView === visibleView }?
+        .key.itemType
     }
 
-    switch offScreenElement.correspondingItem.itemType {
-    case .layoutItemType(.monthHeader(let month)):
-      let dateInTargetMonth = calendar.firstDate(of: month)
-      scroll(toMonthContaining: dateInTargetMonth, scrollPosition: .centered, animated: false)
-    case .layoutItemType(.day(let day)):
-      let dateInTargetDay = calendar.startDate(of: day)
-      scroll(toDayContaining: dateInTargetDay, scrollPosition: .centered, animated: false)
-    default:
-      break
+    if let offScreenElement = element as? OffScreenCalendarItemAccessibilityElement {
+      switch offScreenElement.correspondingItem.itemType {
+      case .layoutItemType(.monthHeader(let month)):
+        let dateInTargetMonth = calendar.firstDate(of: month)
+        scroll(toMonthContaining: dateInTargetMonth, scrollPosition: .centered, animated: false)
+      case .layoutItemType(.day(let day)):
+        let dateInTargetDay = calendar.startDate(of: day)
+        scroll(toDayContaining: dateInTargetDay, scrollPosition: .centered, animated: false)
+      default:
+        break
+      }
     }
   }
 

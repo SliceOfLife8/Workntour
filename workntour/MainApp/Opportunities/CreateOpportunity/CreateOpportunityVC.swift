@@ -345,7 +345,7 @@ class CreateOpportunityVC: BaseVC<CreateOpportunityViewModel, OpportunitiesCoord
             .store(in: &storage)
 
         viewModel?.$dates
-            .compactMap { $0.first }
+            .compactMap { $0.first?.convertToOpportunityDate() }
             .sink(receiveValue: { [weak self] dates in
                 if let from = dates.start, let to = dates.end {
                     self?.datesLabel.text = "\(from) - \(to)"
@@ -494,7 +494,9 @@ class CreateOpportunityVC: BaseVC<CreateOpportunityViewModel, OpportunitiesCoord
     }
 
     @IBAction func openCalendarAction(_ sender: Any) {
-        coordinator?.navigate(to: .openCalendar)
+        guard let viewModel else { return }
+        let dataModel = SelectDateRangesVC.DataModel(preselectedDates: viewModel.dates)
+        coordinator?.navigate(to: .openCalendar(dataModel: dataModel))
     }
 
     @IBAction func workingDaysTapped(_ sender: Any) {

@@ -39,4 +39,10 @@ extension Date {
         dateFormatter.dateFormat = "yyyy"
         return dateFormatter.string(from: self)
     }
+
+    public func toString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.string(from: self)
+    }
 }

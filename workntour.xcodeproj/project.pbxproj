@@ -185,6 +185,7 @@
 		CE83330529228CFE00F751FE /* LanguagePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83330429228CFD00F751FE /* LanguagePickerVC.swift */; };
 		CE83330729228D0300F751FE /* LanguagePickerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE83330629228D0300F751FE /* LanguagePickerVC.xib */; };
 		CE83330929228D0A00F751FE /* LanguagePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83330829228D0A00F751FE /* LanguagePickerViewModel.swift */; };
+		CEA2AEA5298829620051B72F /* CalendarDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA2AEA4298829620051B72F /* CalendarDate.swift */; };
 		CEAB0A3629253B560023A2C6 /* TravelerPersonalInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAB0A3529253B560023A2C6 /* TravelerPersonalInfoVC.swift */; };
 		CEAB0A3829253B5E0023A2C6 /* TravelerPersonalInfoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEAB0A3729253B5E0023A2C6 /* TravelerPersonalInfoVC.xib */; };
 		CEAB0A3A29253B870023A2C6 /* TravelerPersonalInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAB0A3929253B870023A2C6 /* TravelerPersonalInfoViewModel.swift */; };
@@ -407,6 +408,7 @@
 		CE83330429228CFD00F751FE /* LanguagePickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagePickerVC.swift; sourceTree = "<group>"; };
 		CE83330629228D0300F751FE /* LanguagePickerVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LanguagePickerVC.xib; sourceTree = "<group>"; };
 		CE83330829228D0A00F751FE /* LanguagePickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagePickerViewModel.swift; sourceTree = "<group>"; };
+		CEA2AEA4298829620051B72F /* CalendarDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDate.swift; sourceTree = "<group>"; };
 		CEAB0A3529253B560023A2C6 /* TravelerPersonalInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelerPersonalInfoVC.swift; sourceTree = "<group>"; };
 		CEAB0A3729253B5E0023A2C6 /* TravelerPersonalInfoVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TravelerPersonalInfoVC.xib; sourceTree = "<group>"; };
 		CEAB0A3929253B870023A2C6 /* TravelerPersonalInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelerPersonalInfoViewModel.swift; sourceTree = "<group>"; };
@@ -518,6 +520,7 @@
 				1B39AA5028749A7C009377A7 /* OpportunityEnums.swift */,
 				CE446D5929292F02004026FA /* Language.swift */,
 				CE444E1A29866D3C00329E60 /* OpportunitySelectDates.swift */,
+				CEA2AEA4298829620051B72F /* CalendarDate.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1560,6 +1563,7 @@
 				1B4430282885C93F002145BC /* Filters+CollectionViews.swift in Sources */,
 				1B9A3D8E282C0B31003E0C34 /* AuthorizationService.swift in Sources */,
 				1BC190C9285F1C0700585533 /* UserDataManager.swift in Sources */,
+				CEA2AEA5298829620051B72F /* CalendarDate.swift in Sources */,
 				1BC190F12863397F00585533 /* TravelerProfileDto.swift in Sources */,
 				1BC190A6285B15A000585533 /* OpportunitiesCoordinator.swift in Sources */,
 				CE3B711A2966E699003FF982 /* LinkExpiredVC.swift in Sources */,

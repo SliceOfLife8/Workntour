@@ -19,8 +19,8 @@ enum OpportunitiesStep: Step {
     case showDetailsView(id: String)
     case openGalleryPicker
     case saveLocation(attribute: PlacemarkAttributes?, latitude: Double, longitude: Double)
-    case openCalendar
-    case saveDateRangeSelection(from: String, to: String)
+    case openCalendar(dataModel: SelectDateRangesVC.DataModel)
+    case saveDateRangeSelection(from: Date, to: Date)
     case updateOpportunitiesOnLanding
     case deleteOpportunity
 }
@@ -75,11 +75,11 @@ final class OpportunitiesCoordinator: NavigationCoordinator {
             hostSelectDays(dataModel: model)
         case .openGalleryPicker:
             openPhotoPicker()
-        case .openCalendar:
-            openHorizonCalendar()
+        case .openCalendar(let model):
+            openHorizonCalendar(model)
         case .saveDateRangeSelection(let start, let end):
             let previousVC = rootViewController.previousViewController as? CreateOpportunityVC
-            previousVC?.viewModel?.dates = [OpportunityDates(start: start, end: end)]
+            previousVC?.viewModel?.dates.append(CalendarDate(start: start, end: end))
             navigator.popViewController(animated: true)
         case .state(.showAlert(let title, let subtitle)):
             AlertHelper.showDefaultAlert(rootViewController,
@@ -134,8 +134,8 @@ final class OpportunitiesCoordinator: NavigationCoordinator {
         rootViewController.present(picker, animated: true)
     }
 
-    private func openHorizonCalendar() {
-        let selectDates = SelectDateRangesVC()
+    private func openHorizonCalendar(_ model: SelectDateRangesVC.DataModel) {
+        let selectDates = SelectDateRangesVC(dataModel: model)
         selectDates.coordinator = self
         selectDates.hidesBottomBarWhenPushed = true
         navigator.push(selectDates, animated: true)

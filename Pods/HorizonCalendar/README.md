@@ -9,7 +9,7 @@ A declarative, performant, calendar UI component that supports use cases ranging
 ![Swift](https://github.com/airbnb/HorizonCalendar/workflows/Swift/badge.svg)
 
 ## Introduction
-`HorizonCalendar` is UIKit library for displaying a range of dates in a vertically-scrolling or horizontally-scrolling calendar component. Its declarative API makes updating the calendar straightforward, while also providing many customization points to support a diverse set of designs and use cases.
+`HorizonCalendar` is an interactive calendar component for iOS (compatible with UIKit and SwiftUI). Its declarative API makes updating the calendar straightforward, while also providing many customization points to support a diverse set of designs and use cases.
 
 Features:
 
@@ -18,16 +18,18 @@ Features:
 - Declarative API that enables unidirectional data flow for updating the content of the calendar
 - A custom layout system that enables virtually infinite date ranges without increasing memory usage
 - Pagination for horizontally-scrolling calendars
-- Specify custom views for individual days, month headers, and days of the week
-- Specify custom views to highlight date ranges
-- Specify custom views to overlay parts of the calendar, enabling features like tooltips
+- Specify custom views (`UIView` or SwiftUI `View`) for individual days, month headers, and days of the week
+- Specify custom views (`UIView` or SwiftUI `View`) to highlight date ranges
+- Specify custom views (`UIView` or SwiftUI `View`) to overlay parts of the calendar, enabling features like tooltips
+- Specify custom views (`UIView` or SwiftUI `View`) for month background decorations (colors, grids, etc.)
+- Specify custom views (`UIView` or SwiftUI `View`) for day background decorations (colors, patterns, etc.)
 - A day selection handler to monitor when a day is tapped
 - Customizable layout metrics
 - Pin the days-of-the-week row to the top
 - Show partial boundary months (exactly 2020-03-14 to 2020-04-20, for example)
 - Scroll to arbitrary dates and months, with or without animation
 - Robust accessibility support
-- Inset the content without affecting the scrollable region using `UIView` layout margins
+- Inset the content without affecting the scrollable region using layout margins
 - Separator below the days-of-the-week row
 - Right-to-left layout support
 
@@ -58,6 +60,7 @@ Features:
       - [Adjusting layout metrics](#adjusting-layout-metrics)
       - [Adding a day range indicator](#adding-a-day-range-indicator)
       - [Adding a tooltip](#adding-a-tooltip)
+      - [Adding grid lines](#adding-grid-lines)
     - [Responding to day selection](#responding-to-day-selection)
 - [Technical Details](#technical-details)
 - [Contributions](#contributions)
@@ -167,7 +170,7 @@ NSLayoutConstraint.activate([
 
 At this point, building and running your app should result in something that looks like this:
 
-![Basic Calendar](Docs/Images/tutorial1.png)
+![Basic Calendar](Docs/Images/tutorial_setup.png)
 
 
 ### Customizing `CalendarView`
@@ -191,7 +194,7 @@ private func makeContent() -> CalendarViewContent {
 
 The `dayItemProvider(_:)` function on `CalendarViewContent` returns a new `CalendarViewContent` instance with the custom day item model provider configured. This function takes a single parameter - a provider closure that returns a `CalendarItemModel` for a given `Day`.
 
-`CalendarItemModel` is a type that abstracts away the creation and configuration of a `UIView`. It's generic over a `ViewRepresentable` type, which can be any type conforming to `CalendarItemViewRepresentable`. You can think of `CalendarItemViewRepresentable` as a blueprint for creating and updating instances of a particular type of view to be displayed in the calendar. For example, if we want to use a `UILabel` for our custom day view, we'll need to create a type that knows how to create and update that label. Here's a simple example:
+`CalendarItemModel` is a type that abstracts away the creation and configuration of a view displayed in the calendar. It's generic over a `ViewRepresentable` type, which can be any type conforming to `CalendarItemViewRepresentable`. You can think of `CalendarItemViewRepresentable` as a blueprint for creating and updating instances of a particular type of view to be displayed in the calendar. For example, if we want to use a `UILabel` for our custom day view, we'll need to create a type that knows how to create and update that label. Here's a simple example:
 ```swift
 import HorizonCalendar
 
@@ -243,7 +246,7 @@ Now that we have a type conforming to `CalendarItemViewRepresentable`, we can us
   return CalendarViewContent(...)
 
     .dayItemProvider { day in
-      CalendarItemModel<DayLabel>(
+      DayLabel.calendarItemModel(
         invariantViewProperties: .init(
           font: UIFont.systemFont(ofSize: 18), 
           textColor: .darkGray,
@@ -252,11 +255,24 @@ Now that we have a type conforming to `CalendarItemViewRepresentable`, we can us
     }
 ```
 
+Using a SwiftUI view is even easier - simply initialize your SwiftUI view and call `.calendarItemModel` on it. There's no need to create a custom type conforming to `CalendarItemViewRepresentable` like we had to do with the UIKit example above.
+
+```swift
+  return CalendarViewContent(...)
+
+    .dayItemProvider { day in
+      Text("\(day.day)")
+        .font(.system(size: 18))
+        .foregroundColor(Color(UIColor.darkGray))
+        .calendarItemModel
+    }
+```
+
 Similar item model provider functions are available to customize the views used for month headers, day-of-the-week items, and more.
 
 If you build and run your app, it should now look like this:
 
-![Custom Day Views](Docs/Images/tutorial2.png)
+![Custom Day Views](Docs/Images/tutorial_day.png)
 
 #### Adjusting layout metrics
 We can also use `CalendarViewContent` to adjust layout metrics. We can improve the layout of our current `CalendarView` by adding some additional spacing between individual days and months:
@@ -273,7 +289,7 @@ Just like when we configured a custom day view via the day item provider, change
 
 After building and running your app, you should see a much less cramped layout:
 
-![Custom Layout Metrics](Docs/Images/tutorial3.png)
+![Custom Layout Metrics](Docs/Images/tutorial_layout_metrics.png)
 
 #### Adding a day range indicator
 Day range indicators are useful for date pickers that need to highlight not just individual days, but ranges of days. `HorizonCalendar` offers an API to do exactly this via the `CalendarViewContent` function `dayRangeItemProvider(for:_:)`. Similar to what we did for our custom day item model provider, for day ranges, we need to provide a `CalendarItemModel` for each day range we want to highlight.
@@ -381,7 +397,7 @@ Last, we need to return a `CalendarItemModel` representing our `DayRangeIndicato
     ...
     
     .dayRangeItemProvider(for: [dateRangeToHighlight]) { dayRangeLayoutContext in
-      CalendarItemModel<DayRangeIndicatorView>(
+      DayRangeIndicatorView.calendarItemModel(
         invariantViewProperties: .init(indicatorColor: UIColor.blue.withAlphaComponent(0.15)),
         viewModel: .init(framesOfDaysToHighlight: dayRangeLayoutContext.daysAndFrames.map { $0.frame }))
     }
@@ -389,7 +405,7 @@ Last, we need to return a `CalendarItemModel` representing our `DayRangeIndicato
 
 If you build and run the app, you should see a day range indicator view that highlights 2020-01-20 to 2020-02-07:
 
-![Day Range Indicator](Docs/Images/tutorial4.png)
+![Day Range Indicator](Docs/Images/tutorial_day_range.png)
 
 #### Adding a tooltip
 `HorizonCalendar` provides an API to overlay parts of the calendar with custom views. One use case that this enables is adding tooltips to certain days - a feature that's used in the Airbnb app to inform users when their checkout date must be a certain number of days in the future from their check-in date.
@@ -538,7 +554,7 @@ Last, we need to return a `CalendarItemModel` representing our `TooltipView` fro
     ...
     
     .overlayItemProvider(for: [overlaidItemLocation]) { overlayLayoutContext in
-      CalendarItemModel<TooltipView>(
+      TooltipView.calendarItemModel(
         invariantViewProperties: .init(
           backgroundColor: .white, 
           borderColor: .black, 
@@ -552,7 +568,28 @@ Last, we need to return a `CalendarItemModel` representing our `TooltipView` fro
 
 If you build and run the app, you should see a tooltip view hovering above 2020-01-15:
 
-![Tooltip View](Docs/Images/tutorial5.png)
+![Tooltip View](Docs/Images/tutorial_tooltip.png)
+
+#### Adding grid lines
+`HorizonCalendar` provides an API to add a decorative background behind each month. By using the included `MonthGridBackgroundView` with the `monthBackgroundItemProvider`, we can easily add grid lines to each of the months in the calendar:
+
+```swift
+  return CalendarViewContent(...)
+    ...
+    
+    .horizontalDayMargin(8)
+    .verticalDayMargin(8)
+    
+    .monthBackgroundItemProvider { monthLayoutContext in
+      MonthGridBackgroundView.calendarItemModel(
+        invariantViewProperties: .init(horizontalDayMargin: 8, verticalDayMargin: 8),
+        viewModel: .init(framesOfDays: monthLayoutContext.daysAndFrames.map { $0.frame }))
+    }
+```
+
+The month background item provider works similarly to the overlay item provider and day range item provider; for each month in the calendar, the item provider closure will be invoked with a layout context. This layout context contains information about the size and positions of elements in the month. Using this information, you can draw grid lines, borders, backgrounds, and more.
+
+![Tooltip View](Docs/Images/tutorial_grid.png)
 
 
 ### Responding to day selection
@@ -584,7 +621,7 @@ The day selection handler closure is invoked whenever a day in the calendar is s
         invariantViewProperties.backgroundColor = .blue
       }
       
-      return CalendarItemModel<DayLabel>(
+      return DayLabel.calendarItemModel(
         invariantViewProperties: invariantViewProperties,
         viewModel: .init(day: day))
   }
@@ -604,7 +641,7 @@ calendarView.daySelectionHandler = { [weak self] day in
 
 After building and running the app, tapping days should cause them to turn blue:
 
-![Day Selection](Docs/Images/tutorial6.png)
+![Day Selection](Docs/Images/tutorial_day_selection.png)
 
 ## Technical Details
 If you'd like to learn about how `HorizonCalendar` was implemented, check out the [Technical Details](Docs/TECHNICAL_DETAILS.md) document. It provides an overview of `HorizonCalendar`'s architecture, along with information about why it's not implemented using `UICollectionView`. 
