@@ -7,7 +7,6 @@
 
 import UIKit
 import SharedKit
-import FirebaseDynamicLinks
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -71,12 +70,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
         guard let url = userActivity.webpageURL else { return }
 
-        DynamicLinks.dynamicLinks().handleUniversalLink(url, completion: { link, error in
-            print("dynamicLink: \(link) -- error: \(error)")
-            DeepLinkManager.shared.registerCalledURL(url: url)
-        })
-        // Handle the deep link. For example, show the deep-linked content or
-        // apply a promotional offer to the user's account.
-        // ...
+        DeepLinkManager.shared.registerCalledURL(url: url)
     }
 }

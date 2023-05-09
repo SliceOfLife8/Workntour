@@ -10,13 +10,29 @@ import Combine
 
 class SetupNewCredentialsViewModel: BaseViewModel {
 
+    // MARK: - Properties
+
+    private var service: AuthorizationService
+
+    var data: DataModel
+
     // Outputs
     @Published var passwordLengthIsValid: Bool = false
     @Published var passwordContainsUpperCaseLetter: Bool = false
     @Published var passwordContainsLowerCaseLetter: Bool = false
     @Published var passwordContainsNumAndSpecialChar: Bool = false
 
-    @Published var passwordChanged: Bool?
+    @Published var passwordChanged: Bool = false
+
+    // MARK: - Constructors/Destructors
+
+    required init(
+        service: AuthorizationService = DataManager.shared,
+        data: DataModel
+    ) {
+        self.service = service
+        self.data = data
+    }
 
     var validatePasswords: AnyPublisher<Bool, Never> {
         return Publishers.CombineLatest4(
@@ -51,6 +67,30 @@ class SetupNewCredentialsViewModel: BaseViewModel {
     }
 
     func updateCredentials(_ newPassword: String) {
-        passwordChanged = true
+        service.updatePassword(
+            .init(token: data.token, password: newPassword)
+        )
+        .subscribe(on: DispatchQueue.main)
+        .catch({ _ -> Just<Bool> in
+            return Just(false)
+        })
+            .assign(to: &$passwordChanged)
+    }
+}
+
+// MARK: - DataModel
+extension SetupNewCredentialsViewModel {
+
+    class DataModel {
+
+        // MARK: - Properties
+
+        let token: String
+
+        // MARK: - Constructors/Destructors
+
+        init(token: String) {
+            self.token = token
+        }
     }
 }

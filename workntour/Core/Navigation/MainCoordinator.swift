@@ -85,6 +85,7 @@ final class MainCoordinator: NSObject, NavigationCoordinator {
     }
     
     private func startLoginFlow() {
+        if rootViewController.topViewController is LoginVC { return } // TODO: Find a better way to dismiss VCs.
         let loginCoordinator = LoginCoordinator(parent: self)
         pushCoordinator(loginCoordinator, animated: true)
     }

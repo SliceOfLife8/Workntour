@@ -22,47 +22,6 @@ class DataManager {
     }
 }
 
-// MARK: - AuthorizationService
-extension DataManager: AuthorizationService {
-
-    func travelerRegistration(model: Traveler) -> AnyPublisher<String?, ProviderError> {
-        return networking.request(
-            with: AuthorizationRouter.registerTraveler(model),
-            scheduler: DispatchQueue.main,
-            class: GenericResponse<Traveler>.self)
-        .map { $0.data?.email }
-        .eraseToAnyPublisher()
-    }
-
-    func individualHostRegistration(model: IndividualHost) -> AnyPublisher<String?, ProviderError> {
-        return networking.request(
-            with: AuthorizationRouter.registerHostIndividual(model),
-            scheduler: DispatchQueue.main,
-            class: GenericResponse<IndividualHost>.self)
-        .map { $0.data?.email }
-        .eraseToAnyPublisher()
-    }
-
-    func companyHostRegistration(model: CompanyHost) -> AnyPublisher<String?, ProviderError> {
-        return networking.request(
-            with: AuthorizationRouter.registerHostCompany(model),
-            scheduler: DispatchQueue.main,
-            class: GenericResponse<CompanyHost>.self)
-        .map { $0.data?.email }
-        .eraseToAnyPublisher()
-    }
-
-    func login(email: String, password: String) -> AnyPublisher<LoginModel, ProviderError> {
-        return networking.request(
-            with: AuthorizationRouter.login(email: email, password: password),
-            scheduler: DispatchQueue.main,
-            class: GenericResponse<LoginModel>.self)
-        .compactMap { $0.data }
-        .eraseToAnyPublisher()
-    }
-
-}
-
 // MARK: - ProfileService
 extension DataManager: ProfileService {
 

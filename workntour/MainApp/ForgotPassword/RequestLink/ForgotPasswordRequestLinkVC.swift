@@ -7,6 +7,7 @@
 
 import UIKit
 import CommonUI
+import SharedKit
 
 class ForgotPasswordRequestLinkVC: BaseVC<ForgotPasswordRequestLinkViewModel, LoginCoordinator> {
 
@@ -96,7 +97,7 @@ class ForgotPasswordRequestLinkVC: BaseVC<ForgotPasswordRequestLinkViewModel, Lo
         super.bindViews()
 
         viewModel?.$linkWasSent
-            .compactMap { $0 }
+            .dropFirst()
             .sink(receiveValue: { [weak self] status in
                 self?.dismiss(animated: true, completion: {
                     if status {

@@ -46,7 +46,12 @@ public class AlertHelper {
         controller.present(dialog, animated: true, completion: nil)
     }
 
-    public static func showDefaultAlert(_ controller: UIViewController, title: String, message: String? = nil) {
+    public static func showDefaultAlert(
+        _ controller: UIViewController,
+        title: String,
+        message: String? = nil,
+        dismissCompletion: @escaping ()-> Void = {}
+    ) {
         let attributedString = NSAttributedString(string: title, attributes: [
             NSAttributedString.Key.font: UIFont.scriptFont(.bold, size: 17),
             NSAttributedString.Key.foregroundColor: UIColor.appColor(.lavender)
@@ -55,8 +60,16 @@ public class AlertHelper {
         let dialog = UIAlertController(title: "", message: message, preferredStyle: .alert)
         dialog.setValue(attributedString, forKey: "attributedTitle")
 
-        dialog.addAction(UIAlertAction(title: "OK", style: .default))
-        
+        dialog.addAction(
+            UIAlertAction(
+                title: "OK",
+                style: .default,
+                handler: { _ in
+                    dismissCompletion()
+                }
+            )
+        )
+
         dialog.view.tintColor = UIColor.appColor(.lavender2)
 
         controller.present(dialog, animated: true, completion: nil)

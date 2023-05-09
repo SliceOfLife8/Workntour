@@ -9,10 +9,18 @@ import Foundation
 import Networking
 
 enum AuthorizationRouter: NetworkTarget {
+    // Registration
     case registerTraveler(_ traveler: Traveler)
     case registerHostIndividual(_ individual: IndividualHost)
     case registerHostCompany(_ company: CompanyHost)
+    case verifyRegistration(token: String)
+    case updateVerifyRegistration(token: String)
+    // Login
     case login(email: String, password: String)
+    // Forgot password
+    case forgotPassword(email: String)
+    case updatePassword(_ model: PasswordChange)
+
 
     public var baseURL: URL {
         Environment.current.apiBaseURL
@@ -20,19 +28,34 @@ enum AuthorizationRouter: NetworkTarget {
 
     public var path: String {
         switch self {
+        case .login:
+            return "/login"
         case .registerTraveler:
             return "/registration/traveler"
         case .registerHostIndividual:
             return "/registration/host/individual"
         case .registerHostCompany:
             return "registration/host/company"
-        case .login:
-            return "/login"
+        case .verifyRegistration(let token):
+            return "/emailVerificationTokenStatus/\(token)"
+        case .updateVerifyRegistration(let token):
+            return "/updateEmailVerificationToken/\(token)"
+        case .forgotPassword(let email):
+            return "/password/change/send/\(email)"
+        case .updatePassword:
+            return "/password/change"
         }
     }
 
     public var methodType: MethodType {
-        .post
+        switch self {
+        case .verifyRegistration, .forgotPassword:
+            return .get
+        case .updateVerifyRegistration, .updatePassword:
+            return .put
+        default:
+            return .post
+        }
     }
 
     // swiftlint:disable force_try
@@ -48,6 +71,9 @@ enum AuthorizationRouter: NetworkTarget {
             return .requestData(data: jsonData)
         case .registerHostCompany(let company):
             let jsonData = try! jsonEncoder.encode(company)
+            return .requestData(data: jsonData)
+        case .updatePassword(let model):
+            let jsonData = try! jsonEncoder.encode(model)
             return .requestData(data: jsonData)
         default:
             return .requestPlain

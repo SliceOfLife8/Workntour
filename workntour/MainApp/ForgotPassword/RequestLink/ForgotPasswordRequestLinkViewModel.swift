@@ -5,6 +5,7 @@
 //  Created by Chris Petimezas on 4/1/23.
 //
 
+import Combine
 import SharedKit
 
 class ForgotPasswordRequestLinkViewModel: BaseViewModel {
@@ -12,9 +13,9 @@ class ForgotPasswordRequestLinkViewModel: BaseViewModel {
     private var authorizationService: AuthorizationService
 
     // Outputs
-    @Published var linkWasSent: Bool?
+    @Published var linkWasSent: Bool = false
 
-    // MARK: - Constructors/Desctructors
+    // MARK: - Constructors/Destructors
 
     init(authorizationService: AuthorizationService = DataManager.shared) {
         self.authorizationService = authorizationService
@@ -25,13 +26,11 @@ class ForgotPasswordRequestLinkViewModel: BaseViewModel {
     // MARK: - Methods
 
     func requestResetPasswordLink(withEmail email: String) {
-        print("call api")
-        linkWasSent = true
-        // Upon successful response store key
-//        LocalStorageManager.shared.save(
-//            email,
-//            forKey: .emailForgotPassword,
-//            withMethod: .userDefaults
-//        )
+        authorizationService.forgotPassword(email: email)
+            .subscribe(on: DispatchQueue.main)
+            .catch({ _ -> Just<Bool> in
+                return Just(false)
+            })
+                .assign(to: &$linkWasSent)
     }
 }

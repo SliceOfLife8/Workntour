@@ -113,6 +113,10 @@
 "check_inbox" = "Check your Inbox!";
 "email_verification" = "Email verification";
 "email_verification_link" = "Click the link we sent to %@ to sign in.";
+"email_veritification_expired_link" = "Your link has expired, because you have not used it. Email verification link expires in every 24 hours and can be used only once. You can create a new one by clicking the button below.";
+"resend_link" = "Resend another link";
+"account_activation" = "Your account is activated";
+"account_activation_description" = "You can now explore new opportunities!";
 
 // MARK: - ForgotPassword
 "forgot_password" = "FORGOT PASSWORD";

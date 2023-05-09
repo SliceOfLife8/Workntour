@@ -9,18 +9,32 @@ import Foundation
 import UIKit
 
 enum DeepLinkRoute {
-    case forgotPasswordVerification
+    case forgotPasswordVerification(token: String)
+    case verifyRegistration(token: String)
 
     init?(url: URL) {
         guard let components = URLComponents(url: url, resolvingAgainstBaseURL: true),
-              components.host?.oneOf(other: "workntour.com", "workntour.page.link") == true
+              components.host?.oneOf(other: "workntour.com", "workntour.page.link") == true,
+              let innerLink = components.queryItems?.first?.value,
+              let innerURL = URLComponents(string: innerLink)
         else {
             return nil
         }
 
-        switch components.path {
-        case "/verification": self = .forgotPasswordVerification
-        default: return nil
+        // Verification related deep links
+        if innerURL.path == "/verification",
+           let query = innerURL.queryItems?.first,
+           let queryValue = query.value {
+            switch query.name {
+            case "forgotPasswordToken":
+                self = .forgotPasswordVerification(token: queryValue)
+            case "emailVerificationToken":
+                self = .verifyRegistration(token: queryValue)
+            default: return nil
+            }
+        }
+        else {
+            return nil
         }
     }
 

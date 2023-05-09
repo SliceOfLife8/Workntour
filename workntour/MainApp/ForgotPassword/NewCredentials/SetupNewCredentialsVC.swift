@@ -207,7 +207,7 @@ class SetupNewCredentialsVC: BaseVC<SetupNewCredentialsViewModel, AppCoordinator
             .store(in: &storage)
 
         viewModel?.$passwordChanged
-            .compactMap { $0 }
+            .dropFirst()
             .sink(receiveValue: { value in
                 self.dismiss(
                     animated: true,

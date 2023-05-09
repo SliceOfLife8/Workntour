@@ -142,7 +142,7 @@
 		1BC190F32863399E00585533 /* CompanyHostProfileDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC190F22863399E00585533 /* CompanyHostProfileDto.swift */; };
 		1BC190F5286339DD00585533 /* IndividualHostProfileDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC190F4286339DD00585533 /* IndividualHostProfileDto.swift */; };
 		1BE6EA992868BFB8009CBE6D /* OpportunitiesVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BE6EA982868BFB8009CBE6D /* OpportunitiesVC.xib */; };
-		2707FF96C7CBD64F6B2EA3B7 /* Pods_workntour.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5701F516D91D3C90DD51441 /* Pods_workntour.framework */; };
+		7E993068D1B84117C8A8CE7C /* Pods_workntour.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAEB86C49E7B730B7933D3B8 /* Pods_workntour.framework */; };
 		CE01BD262933D2E500F87439 /* MediaContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE01BD252933D2E500F87439 /* MediaContext.swift */; };
 		CE01BD3429350C2C00F87439 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE01BD3329350C2C00F87439 /* Media.swift */; };
 		CE01BD4129373AA600F87439 /* HostProfileSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE01BD4029373AA600F87439 /* HostProfileSections.swift */; };
@@ -189,6 +189,9 @@
 		CEAB0A3629253B560023A2C6 /* TravelerPersonalInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAB0A3529253B560023A2C6 /* TravelerPersonalInfoVC.swift */; };
 		CEAB0A3829253B5E0023A2C6 /* TravelerPersonalInfoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEAB0A3729253B5E0023A2C6 /* TravelerPersonalInfoVC.xib */; };
 		CEAB0A3A29253B870023A2C6 /* TravelerPersonalInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAB0A3929253B870023A2C6 /* TravelerPersonalInfoViewModel.swift */; };
+		CEAE6C142A09227E00F8059E /* EmailVerificationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAE6C132A09227E00F8059E /* EmailVerificationUseCase.swift */; };
+		CEAE6C1A2A0A440E00F8059E /* PasswordChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAE6C192A0A440E00F8059E /* PasswordChange.swift */; };
+		CEAE6C1C2A0A44E900F8059E /* Authorization+DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAE6C1B2A0A44E900F8059E /* Authorization+DataManager.swift */; };
 		CEBA31172940E57600602111 /* OnboardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBA31162940E57600602111 /* OnboardingVC.swift */; };
 		CEBA31192940E57F00602111 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBA31182940E57F00602111 /* OnboardingViewModel.swift */; };
 		CEBA31242940EDAB00602111 /* OnboardingVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEBA31232940EDAB00602111 /* OnboardingVC.xib */; };
@@ -359,11 +362,13 @@
 		1BC190F22863399E00585533 /* CompanyHostProfileDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyHostProfileDto.swift; sourceTree = "<group>"; };
 		1BC190F4286339DD00585533 /* IndividualHostProfileDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualHostProfileDto.swift; sourceTree = "<group>"; };
 		1BE6EA982868BFB8009CBE6D /* OpportunitiesVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OpportunitiesVC.xib; sourceTree = "<group>"; };
-		2544630698253F96E0BC47D6 /* Pods-workntour.dev debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-workntour.dev debug.xcconfig"; path = "Target Support Files/Pods-workntour/Pods-workntour.dev debug.xcconfig"; sourceTree = "<group>"; };
-		437B52C06849CB14B21AF948 /* Pods-workntour.dev release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-workntour.dev release.xcconfig"; path = "Target Support Files/Pods-workntour/Pods-workntour.dev release.xcconfig"; sourceTree = "<group>"; };
-		A9A28C3C30B3A10BAB51F50A /* Pods-workntour.prod release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-workntour.prod release.xcconfig"; path = "Target Support Files/Pods-workntour/Pods-workntour.prod release.xcconfig"; sourceTree = "<group>"; };
-		AA61DB065AE3B9EE59633469 /* Pods-workntour.staging debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-workntour.staging debug.xcconfig"; path = "Target Support Files/Pods-workntour/Pods-workntour.staging debug.xcconfig"; sourceTree = "<group>"; };
-		B0657D0C965FCA5EF3E62D12 /* Pods-workntour.staging release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-workntour.staging release.xcconfig"; path = "Target Support Files/Pods-workntour/Pods-workntour.staging release.xcconfig"; sourceTree = "<group>"; };
+		1E8DC9AA6ECFB977CBEF3C45 /* Pods-workntour.dev release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-workntour.dev release.xcconfig"; path = "Target Support Files/Pods-workntour/Pods-workntour.dev release.xcconfig"; sourceTree = "<group>"; };
+		3F3EEFEAEC5FA6AB025C98F1 /* Pods-workntour.dev debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-workntour.dev debug.xcconfig"; path = "Target Support Files/Pods-workntour/Pods-workntour.dev debug.xcconfig"; sourceTree = "<group>"; };
+		7E6184880C0248F719563AFA /* Pods-workntour.prod release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-workntour.prod release.xcconfig"; path = "Target Support Files/Pods-workntour/Pods-workntour.prod release.xcconfig"; sourceTree = "<group>"; };
+		89746E73E28CC6909F9BB26C /* Pods-workntour.staging debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-workntour.staging debug.xcconfig"; path = "Target Support Files/Pods-workntour/Pods-workntour.staging debug.xcconfig"; sourceTree = "<group>"; };
+		8CE5D31068CBA371AD6F809F /* Pods-workntour.staging release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-workntour.staging release.xcconfig"; path = "Target Support Files/Pods-workntour/Pods-workntour.staging release.xcconfig"; sourceTree = "<group>"; };
+		B00DABF6C57DB2D055D2CB2C /* Pods-workntour.prod debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-workntour.prod debug.xcconfig"; path = "Target Support Files/Pods-workntour/Pods-workntour.prod debug.xcconfig"; sourceTree = "<group>"; };
+		BAEB86C49E7B730B7933D3B8 /* Pods_workntour.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_workntour.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE01BD252933D2E500F87439 /* MediaContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaContext.swift; sourceTree = "<group>"; };
 		CE01BD3329350C2C00F87439 /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
 		CE01BD4029373AA600F87439 /* HostProfileSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostProfileSections.swift; sourceTree = "<group>"; };
@@ -412,6 +417,9 @@
 		CEAB0A3529253B560023A2C6 /* TravelerPersonalInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelerPersonalInfoVC.swift; sourceTree = "<group>"; };
 		CEAB0A3729253B5E0023A2C6 /* TravelerPersonalInfoVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TravelerPersonalInfoVC.xib; sourceTree = "<group>"; };
 		CEAB0A3929253B870023A2C6 /* TravelerPersonalInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelerPersonalInfoViewModel.swift; sourceTree = "<group>"; };
+		CEAE6C132A09227E00F8059E /* EmailVerificationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerificationUseCase.swift; sourceTree = "<group>"; };
+		CEAE6C192A0A440E00F8059E /* PasswordChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordChange.swift; sourceTree = "<group>"; };
+		CEAE6C1B2A0A44E900F8059E /* Authorization+DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Authorization+DataManager.swift"; sourceTree = "<group>"; };
 		CEBA31162940E57600602111 /* OnboardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingVC.swift; sourceTree = "<group>"; };
 		CEBA31182940E57F00602111 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		CEBA31232940EDAB00602111 /* OnboardingVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingVC.xib; sourceTree = "<group>"; };
@@ -424,8 +432,6 @@
 		CED28EE62965C5330080C7AA /* ForgotPasswordRequestLinkVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordRequestLinkVC.swift; sourceTree = "<group>"; };
 		CED28EE82965C53D0080C7AA /* ForgotPasswordRequestLinkVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForgotPasswordRequestLinkVC.xib; sourceTree = "<group>"; };
 		CED28EEA2965C5460080C7AA /* ForgotPasswordRequestLinkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordRequestLinkViewModel.swift; sourceTree = "<group>"; };
-		D1C830038FC1866654646544 /* Pods-workntour.prod debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-workntour.prod debug.xcconfig"; path = "Target Support Files/Pods-workntour/Pods-workntour.prod debug.xcconfig"; sourceTree = "<group>"; };
-		F5701F516D91D3C90DD51441 /* Pods_workntour.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_workntour.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -437,7 +443,7 @@
 				1B9A3D7F282AB849003E0C34 /* Networking.framework in Frameworks */,
 				1B9A3D222828EA99003E0C34 /* CommonUI.framework in Frameworks */,
 				1B9A3D272828EA9E003E0C34 /* SharedKit.framework in Frameworks */,
-				2707FF96C7CBD64F6B2EA3B7 /* Pods_workntour.framework in Frameworks */,
+				7E993068D1B84117C8A8CE7C /* Pods_workntour.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -460,6 +466,7 @@
 				1B714B572840DBB5000D85D0 /* RegistrationCoordinator.swift */,
 				1B308A44284126D100797F32 /* Register */,
 				1B308A432841268500797F32 /* EmailVerification */,
+				CE3B71182966E678003FF982 /* LinkExpired */,
 			);
 			path = Registration;
 			sourceTree = "<group>";
@@ -479,6 +486,7 @@
 			children = (
 				1B3C382E28507823000EEADF /* EmailVerificationVC.swift */,
 				1B3C38302850782F000EEADF /* EmailVerificationViewModel.swift */,
+				CEAE6C132A09227E00F8059E /* EmailVerificationUseCase.swift */,
 			);
 			path = EmailVerification;
 			sourceTree = "<group>";
@@ -659,10 +667,11 @@
 		1B4AE3F6283E04A500FA6420 /* Users */ = {
 			isa = PBXGroup;
 			children = (
-				1B9A3D31282A3CE9003E0C34 /* Traveler.swift */,
-				1B4AE3F7283E04BB00FA6420 /* IndividualHost.swift */,
 				1B4AE3F9283E04C400FA6420 /* CompanyHost.swift */,
+				1B4AE3F7283E04BB00FA6420 /* IndividualHost.swift */,
 				1B3C383F28520853000EEADF /* LoginModel.swift */,
+				CEAE6C192A0A440E00F8059E /* PasswordChange.swift */,
+				1B9A3D31282A3CE9003E0C34 /* Traveler.swift */,
 			);
 			path = Users;
 			sourceTree = "<group>";
@@ -795,6 +804,7 @@
 		1B9A3D2E282A3B6D003E0C34 /* Authorization */ = {
 			isa = PBXGroup;
 			children = (
+				CEAE6C1B2A0A44E900F8059E /* Authorization+DataManager.swift */,
 				1B9A3D30282A3B91003E0C34 /* Router+Service */,
 				1B9A3D2F282A3B84003E0C34 /* Models */,
 			);
@@ -909,7 +919,7 @@
 				1B527A37282059CB00FDAF5D /* CommonUI.framework */,
 				1B527A1A2820509B00FDAF5D /* SharedKit.framework */,
 				1B5279DE281FDA6D00FDAF5D /* Networking.framework */,
-				F5701F516D91D3C90DD51441 /* Pods_workntour.framework */,
+				BAEB86C49E7B730B7933D3B8 /* Pods_workntour.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1072,12 +1082,12 @@
 		4FCCF42523D2AF3614D7C2A8 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				2544630698253F96E0BC47D6 /* Pods-workntour.dev debug.xcconfig */,
-				AA61DB065AE3B9EE59633469 /* Pods-workntour.staging debug.xcconfig */,
-				D1C830038FC1866654646544 /* Pods-workntour.prod debug.xcconfig */,
-				437B52C06849CB14B21AF948 /* Pods-workntour.dev release.xcconfig */,
-				B0657D0C965FCA5EF3E62D12 /* Pods-workntour.staging release.xcconfig */,
-				A9A28C3C30B3A10BAB51F50A /* Pods-workntour.prod release.xcconfig */,
+				3F3EEFEAEC5FA6AB025C98F1 /* Pods-workntour.dev debug.xcconfig */,
+				89746E73E28CC6909F9BB26C /* Pods-workntour.staging debug.xcconfig */,
+				B00DABF6C57DB2D055D2CB2C /* Pods-workntour.prod debug.xcconfig */,
+				1E8DC9AA6ECFB977CBEF3C45 /* Pods-workntour.dev release.xcconfig */,
+				8CE5D31068CBA371AD6F809F /* Pods-workntour.staging release.xcconfig */,
+				7E6184880C0248F719563AFA /* Pods-workntour.prod release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -1222,7 +1232,6 @@
 		CED28EE42965C4930080C7AA /* ForgotPassword */ = {
 			isa = PBXGroup;
 			children = (
-				CE3B71182966E678003FF982 /* LinkExpired */,
 				CE3B7126296BF35C003FF982 /* NewCredentials */,
 				CED28EE52965C4D00080C7AA /* RequestLink */,
 			);
@@ -1246,7 +1255,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1B731601281E7DD5001F2E6A /* Build configuration list for PBXNativeTarget "workntour" */;
 			buildPhases = (
-				8ED960121FA4D4DB5DE001A2 /* [CP] Check Pods Manifest.lock */,
+				E8A8C57D99A2172E942D6F92 /* [CP] Check Pods Manifest.lock */,
 				1B8DA75B282594230032E20B /* SwiftLint */,
 				1B7315E9281E7DCF001F2E6A /* Sources */,
 				1B7315EA281E7DCF001F2E6A /* Frameworks */,
@@ -1254,8 +1263,8 @@
 				1B9A3D1A28282DE6003E0C34 /* Copy Google Info Plist file */,
 				1B9A3D1428282517003E0C34 /* Firebase dSYMs */,
 				1B9A3D242828EA99003E0C34 /* Embed Frameworks */,
-				029E61A064FD8B2C9505B978 /* [CP] Embed Pods Frameworks */,
-				A274B466399F6AB7490B2340 /* [CP] Copy Pods Resources */,
+				F6125FA2AA11D810EE0DB169 /* [CP] Embed Pods Frameworks */,
+				C44D59913A3757887C898CB5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1366,23 +1375,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		029E61A064FD8B2C9505B978 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-workntour/Pods-workntour-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-workntour/Pods-workntour-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-workntour/Pods-workntour-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		1B8DA75B282594230032E20B /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
@@ -1442,7 +1434,24 @@
 			shellPath = /bin/sh;
 			shellScript = "GOOGLE_SERVICE_INFO_PLIST_FROM=\"${PROJECT_DIR}/workntour/SupportingFiles/GoogleService/${GOOGLE_SERVICE_PROPERTY}\"\nBUILD_APP_DIR=\"${BUILT_PRODUCTS_DIR}/${FULL_PRODUCT_NAME}\"\nGOOGLE_SERVICE_INFO_PLIST_TO=\"${BUILD_APP_DIR}/GoogleService-Info.plist\"\ncp \"${GOOGLE_SERVICE_INFO_PLIST_FROM}\" \"${GOOGLE_SERVICE_INFO_PLIST_TO}\" \n";
 		};
-		8ED960121FA4D4DB5DE001A2 /* [CP] Check Pods Manifest.lock */ = {
+		C44D59913A3757887C898CB5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-workntour/Pods-workntour-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-workntour/Pods-workntour-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-workntour/Pods-workntour-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E8A8C57D99A2172E942D6F92 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1464,21 +1473,21 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A274B466399F6AB7490B2340 /* [CP] Copy Pods Resources */ = {
+		F6125FA2AA11D810EE0DB169 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-workntour/Pods-workntour-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-workntour/Pods-workntour-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-workntour/Pods-workntour-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-workntour/Pods-workntour-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-workntour/Pods-workntour-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-workntour/Pods-workntour-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1511,6 +1520,7 @@
 				1B443047288A722A002145BC /* MapOfOpportunitiesViewModel.swift in Sources */,
 				CE3F9E8F291FA88700480493 /* ProfileSelectAttributesVC.swift in Sources */,
 				CED06CFE2928DEA000C054E3 /* TravelerProfileSections.swift in Sources */,
+				CEAE6C1C2A0A44E900F8059E /* Authorization+DataManager.swift in Sources */,
 				1B442FF3287FE161002145BC /* HomeService.swift in Sources */,
 				1BC190F32863399E00585533 /* CompanyHostProfileDto.swift in Sources */,
 				1BC190AF285C5C6300585533 /* HomeViewModel.swift in Sources */,
@@ -1523,6 +1533,7 @@
 				1BC190D1285F255500585533 /* HostProfileViewModel.swift in Sources */,
 				1B39AA312872F16D009377A7 /* ImagePageViewController.swift in Sources */,
 				1B443045288A721C002145BC /* MapOfOpportunitiesVC.swift in Sources */,
+				CEAE6C142A09227E00F8059E /* EmailVerificationUseCase.swift in Sources */,
 				CE446D73292A7C35004026FA /* TravelerUpdatedBody.swift in Sources */,
 				1B443033288853BB002145BC /* OpportunityCoordinateModel.swift in Sources */,
 				1B3C384328520E06000EEADF /* LoginVC.swift in Sources */,
@@ -1600,6 +1611,7 @@
 				1B16837E283A58F00067F2DB /* RegistrationTravelerVC.swift in Sources */,
 				1B1683A6283D1F6E0067F2DB /* ErrorResponse.swift in Sources */,
 				1B39AA5A28784BF2009377A7 /* OpportunitiesResultsVC.swift in Sources */,
+				CEAE6C1A2A0A440E00F8059E /* PasswordChange.swift in Sources */,
 				1BA2DEF7281E8AB600DB128D /* AppCoordinator.swift in Sources */,
 				1BC190BC285C5CC500585533 /* NotificationsViewModel.swift in Sources */,
 				1BC190D62860A53000585533 /* SettingsOption.swift in Sources */,
@@ -1761,14 +1773,14 @@
 		};
 		1B731602281E7DD5001F2E6A /* Dev Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2544630698253F96E0BC47D6 /* Pods-workntour.dev debug.xcconfig */;
+			baseConfigurationReference = 3F3EEFEAEC5FA6AB025C98F1 /* Pods-workntour.dev debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = workntour/workntour.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = J4RRFD24Q5;
 				ENABLE_BITCODE = NO;
@@ -1811,14 +1823,14 @@
 		};
 		1B731603281E7DD5001F2E6A /* Dev Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 437B52C06849CB14B21AF948 /* Pods-workntour.dev release.xcconfig */;
+			baseConfigurationReference = 1E8DC9AA6ECFB977CBEF3C45 /* Pods-workntour.dev release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = workntour/workntour.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = J4RRFD24Q5;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1923,14 +1935,14 @@
 		};
 		1B9A3CE52827B2D1003E0C34 /* Prod Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D1C830038FC1866654646544 /* Pods-workntour.prod debug.xcconfig */;
+			baseConfigurationReference = B00DABF6C57DB2D055D2CB2C /* Pods-workntour.prod debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = workntour/workntour.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = J4RRFD24Q5;
 				ENABLE_BITCODE = NO;
@@ -2035,14 +2047,14 @@
 		};
 		1B9A3CE72827B2E6003E0C34 /* Staging Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AA61DB065AE3B9EE59633469 /* Pods-workntour.staging debug.xcconfig */;
+			baseConfigurationReference = 89746E73E28CC6909F9BB26C /* Pods-workntour.staging debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = workntour/workntour.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = J4RRFD24Q5;
 				ENABLE_BITCODE = NO;
@@ -2142,14 +2154,14 @@
 		};
 		1B9A3CE92827B303003E0C34 /* Staging Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B0657D0C965FCA5EF3E62D12 /* Pods-workntour.staging release.xcconfig */;
+			baseConfigurationReference = 8CE5D31068CBA371AD6F809F /* Pods-workntour.staging release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = workntour/workntour.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = J4RRFD24Q5;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2248,14 +2260,14 @@
 		};
 		1B9A3CEB2827B305003E0C34 /* Prod Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A9A28C3C30B3A10BAB51F50A /* Pods-workntour.prod release.xcconfig */;
+			baseConfigurationReference = 7E6184880C0248F719563AFA /* Pods-workntour.prod release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = workntour/workntour.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = J4RRFD24Q5;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (

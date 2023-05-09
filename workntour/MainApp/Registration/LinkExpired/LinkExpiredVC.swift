@@ -21,7 +21,7 @@ class LinkExpiredVC: BaseVC<LinkExpiredViewModel, AppCoordinator> {
 
     @IBOutlet weak var descriptionLabel: UILabel! {
         didSet {
-            descriptionLabel.text = "link_expired_description".localized()
+            descriptionLabel.text = viewModel?.data.description
         }
     }
 
@@ -97,28 +97,9 @@ class LinkExpiredVC: BaseVC<LinkExpiredViewModel, AppCoordinator> {
     // MARK: - Actions
 
     @IBAction func resendLinkButtonTapped(_ sender: Any) {
-        if let storedEmail = LocalStorageManager.shared.retrieve(
-            forKey: .emailForgotPassword,
-            type: String.self
-        ) {
-            viewModel?.requestResetPasswordLink(withEmail: storedEmail)
-        }
-        else {
-            self.dismiss(
-                animated: true,
-                completion: { [weak self] in
-                    // Show ForgotPasswordRequestLink screen.
-                    let mainCoordinator = self?.coordinator?.childCoordinators.first as? MainCoordinator
-                    if let loginCoordinator = mainCoordinator?.childCoordinators
-                        .compactMap({ $0 as? LoginCoordinator }).first {
-                        loginCoordinator.navigate(to: .forgotPassword)
-                    }
-                    else {
-                        mainCoordinator?.navigate(to: .login)
-                        (mainCoordinator?.childCoordinators.last as? LoginCoordinator)?.navigate(to: .forgotPassword)
-                    }
-                })
-        }
+        guard let data = viewModel?.data else { return }
+
+        viewModel?.resendRegistrationVerificationLink(data.token)
     }
 
     @IBAction func cancelButtonTapped(_ sender: Any) {

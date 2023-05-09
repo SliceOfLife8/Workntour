@@ -104,7 +104,7 @@ class BaseVC<VM: BaseViewModel, C: Coordinator>: UIViewController {
     }
 }
 
-private extension DisposeBag {
+extension DisposeBag {
     mutating func cancelAll() {
         forEach { $0.cancel() }
         removeAll()
